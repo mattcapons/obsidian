@@ -21,6 +21,12 @@ The crucial analysis question is how many recursive calls are made, how much sma
 
 Source: [[lecture3-DandC.pdf#page=2|Design paradigm]]. For recurrence tools, see [[Algorithm as recipes#Solving recurrences]].
 
+### Turning the design into an exam answer
+
+For correctness, use induction on input size: establish the base case, assume recursive calls solve smaller instances, then explain why combining those answers solves this instance. For complexity, count the calls actually made and charge the divide/combine work separately. A split into two pieces does not imply two recursive calls, and a block addition is not constant-time when blocks grow.
+
+The supplied deck adapts these examples from [Demaine and Leiserson's MIT divide-and-conquer notes](https://ocw.mit.edu/courses/6-046j-introduction-to-algorithms-sma-5503-fall-2005/9cdb6914be3e87215cb86f327ee4180b_lec3.pdf). Use only the matching examples here; that external lecture also contains material outside the supplied deck.
+
 ## Merge sort as the template
 
 Merge sort divides an array into two halves, recursively sorts both, and performs a linear merge:
@@ -50,6 +56,10 @@ BINARY-SEARCH(A, target, lo, hi)       // inclusive bounds
 ```
 
 For $[3,5,7,8,9,12,15]$ and target $9$, compare with $8$, then search $[9,12,15]$; compare with $12$, then find $9$.
+
+![[aapp-lecture3-binary-search.png|720]]
+
+*After discarding the left half, binary search compares the target 9 with the middle of the remaining region, 12.* [[lecture3-DandC.pdf#page=12|Source slide 12]].
 
 There is only **one** recursive call per level:
 
@@ -137,6 +147,10 @@ $$
 
 Since $n^{\log_2 8}=n^3$, Case 1 gives $\Theta(n^3)$. The algorithm reorganizes the computation without improving its asymptotic arithmetic count.
 
+![[aapp-lecture3-matrix-blocks.png|720]]
+
+*Each output block is a sum of two block products: ordinary recursion still needs eight recursive multiplications.* [[lecture3-DandC.pdf#page=23|Source slide 23]].
+
 Source: [[lecture3-DandC.pdf#page=20|Matrix multiplication, pp. 20–27]].
 
 ## Strassen's algorithm
@@ -179,6 +193,29 @@ $$
 
 The extra terms cancel. The other output blocks can be checked similarly. This is valid for matrix blocks because it does **not** assume that multiplication commutes.
 
+### Numerical check of the seven products
+
+**Supplementary worked example:** let
+
+$$
+A=\begin{pmatrix}1&2\\3&4\end{pmatrix},\qquad
+B=\begin{pmatrix}5&6\\7&8\end{pmatrix}.
+$$
+
+Using the lecture's $P_i$ convention gives
+
+$$
+(P_1,P_2,P_3,P_4,P_5,P_6,P_7)=(-2,24,35,8,65,-30,-22).
+$$
+
+Consequently $r=65+8-24-30=19$, $s=-2+24=22$, $t=35+8=43$, and $u=65-2-35+22=50$:
+
+$$
+AB=\begin{pmatrix}19&22\\43&50\end{pmatrix}.
+$$
+
+Checking by the ordinary row-column rule produces the same result. Product numbering differs across textbooks, so keep each set of product formulas together with its corresponding reconstruction formulas.
+
 ### Complexity
 
 Seven recursive multiplications and 18 block additions/subtractions give
@@ -215,6 +252,10 @@ $$
 
 Thus its bounding area is $H(n)W(n)=\Theta(n\log n)$.
 
+![[aapp-lecture3-tree-layout.png|720]]
+
+*The straightforward tree layout grows linearly in width and logarithmically in height.* [[lecture3-DandC.pdf#page=43|Source slide 43]].
+
 ### H-tree layout
 
 The H-shaped construction packs four quarter-sized subtrees into a roughly square layout. Its side length obeys
@@ -229,7 +270,9 @@ The Master theorem reference term is $n^{\log_4 2}=\sqrt n$, so $L(n)=\Theta(\sq
 
 Source: [[lecture3-DandC.pdf#page=39|Layouts, pp. 39–46]].
 
-![[lecture3-DandC.pdf#page=46]]
+![[aapp-lecture3-h-tree.png|720]]
+
+*The H-tree packs four smaller subtrees into a square-like region, reducing the area to linear growth.* [[lecture3-DandC.pdf#page=46|Source slide 46]].
 
 ## Comparison table
 
@@ -248,6 +291,20 @@ Source: [[lecture3-DandC.pdf#page=39|Layouts, pp. 39–46]].
 - Reuse duplicate subproblem results, as in exponentiation.
 - Dividing into blocks is not enough: reducing expensive recursive work makes Strassen faster asymptotically.
 - Recurrences can describe time, dimensions, and other resources.
+
+## Exam practice
+
+These are original problems using the deck's algorithms and layouts.
+
+**1. Explain duplicate recursion.** A power routine makes two independent calls to compute $a^{n/2}$, then multiplies their results. Compare it with computing that value once and storing it.
+
+> [!faq]- Worked solution
+> For even powers of two, duplicate calls give $T(n)=2T(n/2)+\Theta(1)=\Theta(n)$. Reusing a single result gives $T(n)=T(n/2)+\Theta(1)=\Theta(\log n)$. Both are correct, but their computation trees differ. Counting the mathematical expression's two factors as two necessary calls misses the opportunity to reuse a value.
+
+**2. Analyze a layout rather than runtime.** An H-tree side length satisfies $L(n)=2L(n/4)+c$, with $L(1)=\ell_0>0$. Derive the side length and area for $n=4^k$.
+
+> [!faq]- Worked solution
+> Expansion gives $L(n)=2^k\ell_0+c(2^k-1)$. Since $2^k=\sqrt n$, the side is $\Theta(\sqrt n)$ and the square's area is $\Theta(n)$. The recurrence counts side length, so its answer must be squared to obtain area.
 
 ## Revision questions
 

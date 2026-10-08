@@ -28,6 +28,10 @@ Source: [[lecture4b-ISPC.pdf#page=3|Roadmap and introduction, pp. 3–9]].
 
 This distinction matters: creating eight logical instances does not mean creating eight operating-system threads. Conversely, one gang's vectorized execution does not by itself spread work across all CPU cores.
 
+![[aapp-lecture4b-multicore-architecture.png|720]]
+
+*A simplified multicore architecture: cores have local caches and share lower-level memory resources.* [[lecture4b-ISPC.pdf#page=5|Source slide 5]].
+
 The slides compare manual low-level vector coding, C/C++ compiler auto-vectorization, and ISPC. Their statement that auto-vectorization is “disabled by default” should not be treated as universal: the behavior depends on the compiler and selected optimization flags.
 
 Source: [[lecture4b-ISPC.pdf#page=5|Architecture and approaches, pp. 5–8]].
@@ -37,6 +41,10 @@ Source: [[lecture4b-ISPC.pdf#page=5|Architecture and approaches, pp. 5–8]].
 ISPC compiles its source into object code and can generate a header exposing exported functions. A C/C++ application includes the generated interface and links the object code with its own code. Task-based code additionally needs an appropriate task runtime.
 
 This lets the application delegate computational kernels while retaining its surrounding C/C++ structure. The compilation diagram is in [[lecture4b-ISPC.pdf#page=10|page 10]].
+
+![[aapp-lecture4b-compilation.png|720]]
+
+*Compile the ISPC kernel and C/C++ application separately, then link their object files into one application.* [[lecture4b-ISPC.pdf#page=10|Source slide 10]].
 
 The deck links the [ISPC user guide](https://ispc.github.io/ispc.html) and [downloads](https://ispc.github.io/downloads.html). The user guide was consulted for the focused language clarifications below; examples in this note are study examples, not a compiled project.
 
@@ -48,6 +56,10 @@ An ISPC function runs as a **gang** of logical program instances. Each instance 
 - `programCount` is the gang size.
 
 Do not hard-code a gang size into an algorithm unless the target-specific assumption is intentional. Logical gang size and hardware vector width are related but should not be casually equated for every target.
+
+![[aapp-lecture4b-gang-execution.png|720]]
+
+*A gang handles successive groups of array elements; the colors distinguish logical program instances, rather than separate OS threads.* [[lecture4b-ISPC.pdf#page=17|Source slide 17]].
 
 Source: [[lecture4b-ISPC.pdf#page=16|Gang execution, pp. 16–18]] · [[lecture4b-ISPC.pdf#page=28|Instance identifiers]].
 
@@ -61,6 +73,14 @@ Source: [[lecture4b-ISPC.pdf#page=16|Gang execution, pp. 16–18]] · [[lecture4
 The default for ordinary local scalar declarations is `varying`. A uniform input can participate in a varying expression, but assigning an arbitrary varying result to a uniform variable is invalid. These details are documented in the [official qualifier reference](https://ispc.github.io/ispc.html#uniform-and-varying-qualifiers).
 
 “Varying/private” describes per-instance values; it does not imply that all memory referenced by an instance is isolated. Instances can access shared array storage and can race if their writes collide.
+
+### Masks and divergence
+
+**Supplementary language clarification:** a gang shares a program counter, while an execution mask identifies the active instances. A varying conditional can run both branches under different masks; varying loops continue until all participating instances finish. [Official ISPC execution model](https://ispc.github.io/ispc.html#control-flow-within-a-gang).
+
+For four lanes with inputs $[1,7,3,8]$ and condition `x > 5`, the true-branch mask is $[0,1,0,1]$. Only lanes 1 and 3 update their varying counters. A `uniform` counter would not represent four independent local counts.
+
+In a Mandelbrot gang where iteration counts are $[2,2,2,100]$, the long-running pixel keeps the loop going after the other three lanes become inactive. The pixels are independent, but their different control paths can reduce SIMD utilization.
 
 ## The foreach statement
 
@@ -133,6 +153,8 @@ For fixed term count $N$ and array length $n$, total arithmetic work is $\Theta(
 
 This is a teaching approximation, not a replacement for a numerical library. Large arguments, finite precision, and an insufficient truncation order affect accuracy. Validate against a reference before comparing performance.
 
+**Supplementary numerical check:** for $x=1$ and exactly three terms, the corrected kernel should approximate $1-1/6+1/120=101/120\approx0.8416667$. For $x=0$, every term is zero; for $x=-1$, the result is the negative of the value at $1$. These checks expose indexing and sign errors without treating a timing result as evidence of correctness.
+
 ### Reading the timing screenshots
 
 The examples on pages 21 and 23 show C++ timings smaller than the corresponding ISPC timings in those particular runs. They do not establish that ISPC is always faster. Warm-up, optimization settings, vectorization, memory access, and implementation correctness all affect comparisons.
@@ -165,6 +187,10 @@ export uniform int count_greater_than(
 `counter` is varying: each instance accumulates its own count. `reduce_add` combines the active instances' values into a uniform result. This behavior is specified in the [official reduction reference](https://ispc.github.io/ispc.html#reductions).
 
 The condition can differ between instances. A mask selects which instances execute the increment. A varying branch should therefore be understood in terms of active instances rather than independent CPU threads.
+
+**Why reduce after the loop?** Accumulate varying local totals during `foreach`, then call `reduce_add` once. Repeated cross-lane reductions inside the loop can spend more time communicating than vectorization saves. Favor contiguous lane accesses where the data permits. These principles are explained in the [ISPC performance guide](https://ispc.github.io/perfguide.html#implementing-reductions-efficiently).
+
+In the row-major matrix example, neighboring column lanes read neighboring entries of $B$ at a fixed $k$, while sharing the row's $A$ value. This favorable lane access is different from the full cache behavior across all $k$ iterations; SIMD-friendly code can still have memory bottlenecks.
 
 For input $[1,7,3,8,9,2,6,0]$ and threshold $5$, the final count is $4$. Every element is examined once, so counting work is linear in the input length, plus a small gang-level reduction.
 
@@ -231,6 +257,10 @@ Distinct tasks write different rows, and distinct column iterations write differ
 
 Page 41 illustrates broader CPU utilization with tasks. Utilization alone is not a speedup measurement: use the metrics in [[PRAM#Performance quantities]] to evaluate whether the extra resources reduce time efficiently.
 
+![[aapp-lecture4b-task-utilization.png|720]]
+
+*The slide screenshot contrasts one busy worker with broad CPU utilization after enabling multicore tasks; it does not by itself measure speedup.* [[lecture4b-ISPC.pdf#page=41|Source slide 41]].
+
 Source: [[lecture4b-ISPC.pdf#page=39|Gang-only implementation]] · [[lecture4b-ISPC.pdf#page=40|Task implementation]] · [[lecture4b-ISPC.pdf#page=41|Resource usage]].
 
 ## Mandelbrot exercise
@@ -248,9 +278,21 @@ The Mandelbrot set consists of parameters for which the sequence stays bounded. 
 
 A renderer assigns each pixel a complex parameter and records an escape iteration, or a maximum iteration count. Different pixels are independent, making the exercise suitable for SIMD and task decomposition.
 
+![[aapp-lecture4b-mandelbrot-complex-plane.png|600]]
+
+*A rendered view of the Mandelbrot set in the complex plane: black depicts the set, with colored bands outside it.* [Image: Lars H. Rohwedder / Wikimedia Commons, public domain](https://commons.wikimedia.org/wiki/File:Mandelbrot_Set_in_Complex_Plane.png).
+
 **Supplementary implementation reasoning:** nearby pixels may require very different iteration counts. Within a gang, this leads to inactive lanes waiting for longer-running lanes; across tasks, it can cause load imbalance. Use moderate-sized tiles and measure both computation time and load distribution. A finite maximum iteration count approximates the image and does not prove membership for every non-escaping sample.
 
 Source: [[lecture4b-ISPC.pdf#page=43|Exercise and set definition, pp. 43–44]] · [[lecture4b-ISPC.pdf#page=45|Rendering diagram]].
+
+## Reduction order and numerical results
+
+**Supplementary connection to the lecture examples:** real-number addition is associative, but floating-point addition can lose that property through rounding. A tree reduction may therefore differ from a sequential accumulation even when both implement the same mathematical sum. Compare floating-point outputs with a stated tolerance; exact integer counting remains exact when the integer range is sufficient. [Goldberg, *What Every Computer Scientist Should Know About Floating-Point Arithmetic*](https://docs.oracle.com/cd/E19957-01/806-3568/ncg_goldberg.html).
+
+For instance, in double precision, $(10^{16}+(-10^{16}))+1$ is $1$, while $10^{16}+((-10^{16})+1)$ can be $0$. This is a rounding example, not an algebraic difference in the intended mathematical result.
+
+For benchmark comparisons, use the same inputs, term count, output accuracy requirement, and comparable optimization settings. Check the answers first, separate warm-up from measured runs, and report repeated timings. The presence of SIMD or higher CPU utilization alone does not establish speedup.
 
 ## Takeaways
 
@@ -258,6 +300,20 @@ Source: [[lecture4b-ISPC.pdf#page=43|Exercise and set definition, pp. 43–44]] 
 - `uniform` and `varying` express whether values differ between instances.
 - Independent outputs fit `foreach`; global outputs need communication or reduction.
 - Correctness and numerical equivalence must be checked before benchmarking.
+
+## Exam practice
+
+These are original traces of the language ideas covered by the slides.
+
+**1. Trace a reduction.** Four instances have local counters $[2,1,3,4]$ after `foreach`. What does `reduce_add(counter)` return? What changes if it is called while only lanes 1 and 3 are active?
+
+> [!faq]- Worked solution
+> With all four active, it returns the uniform value $10$. With only lanes 1 and 3 active, the reduction includes their values only, giving $1+4=5$. A reduction inside a varying branch is not automatically a reduction over the whole gang. Place the final count reduction after the conditional and loop, as in the note's kernel.
+
+**2. Separate the parallelism levels.** A gang has eight logical instances. A row-task matrix multiplication launches 100 tasks on a four-worker runtime. Does this create 800 OS threads?
+
+> [!faq]- Worked solution
+> No. A task executes a gang's SPMD work using SIMD execution; the runtime schedules tasks on four workers. The task count, logical instance count, hardware vector width, and worker count are different quantities. Multiple tasks must be scheduled on each worker over time.
 
 ## Revision questions
 

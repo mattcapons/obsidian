@@ -26,12 +26,26 @@ Study collection for the six currently available slide decks. Read the notes in 
 
 ## How to use these notes
 
+Reusable workflows: [[Study Note Prompts#Build and enhance a course collection|build notes for another course]] · [[Study Note Prompts#Continue when new slides arrive|add new slide material]].
+
 1. Read an explanation and reproduce its worked example without looking.
 2. For each algorithm, identify the input, correctness argument, cost model, and complexity.
 3. Use the revision questions to test whether you can explain the result, rather than only recall its formula.
 4. Open the linked PDF pages for the original diagrams and code.
 
 The notes consolidate repeated slides. Supplementary explanations and apparent slide errors are labeled explicitly. Revision questions include short answers at the end of each technical note.
+
+## Exam practice and review
+
+The notes have been reviewed against the supplied slides and checked with selected university materials and official documentation. Added explanations remain tied to the existing deck topics; citations appear beside the claims they support. Course administration still follows the uploaded introduction.
+
+- [[Algorithm as recipes#Exam practice]] — sorting traces and recurrence-case selection.
+- [[Divide and Conquer#Exam practice]] — recursion reuse and H-tree dimensions.
+- [[PRAM#Exam practice]] — operation counts and sequential-baseline choices.
+- [[ISPC#Exam practice]] — active-lane reductions and gang/task distinctions.
+- [[Randomized Algorithms#Exam practice]] — expected hiring cost and sampling budgets.
+
+The worked problems are original practice, not retrieved past-paper questions. The six decks establish the current collection's boundaries; they do not establish that every announced exam topic has already been supplied.
 
 ## Topics announced but not yet supplied
 

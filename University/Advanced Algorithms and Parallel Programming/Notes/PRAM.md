@@ -32,6 +32,10 @@ Processors can be idle. Each knows its identifier, allowing distinct processors 
 
 The model idealizes shared-memory access as unit-time. It does not charge realistic cache, network, bandwidth, or synchronization overhead.
 
+![[aapp-lecture4-ram-pram.png|720]]
+
+*RAM has one processor; PRAM has several processors communicating through shared memory in synchronous rounds.* [[lecture4-PRAM.pdf#page=4|Source slide 4]].
+
 Source: [[lecture4-PRAM.pdf#page=4|Machine model and rounds, pp. 4–5]].
 
 ## Memory-access rules
@@ -115,6 +119,10 @@ $$
 
 **Supplementary interpretation:** $W/T_\infty$ is its average parallelism. Reserving substantially more processors cannot remove the critical path.
 
+**Supplementary connection to the simulation slides:** under ideal unit-cost operations and suitable scheduling, a computation of work $W$ and depth $D$ can run on CREW PRAM in $O(W/p+D)$ time. This is Brent's scheduling principle; it refines the idea of batching virtual processors. It supplies an explanation of the existing work/depth quantities, rather than a claim about actual machine timing. [Blelloch and Maggs, *Parallel Algorithms*, §25.2.4](https://www.cs.cmu.edu/~guyb/papers/BM10.pdf).
+
+For the tree sum, $W=\Theta(n)$ and $D=\Theta(\log n)$, giving the ideal bound $O(n/p+\log n)$. This describes a schedule for that computation. The chunk-and-tree algorithm below reorganizes the computation for the chosen $p$ and has its own $\log p$ reduction term.
+
 A binary tree reduction of $n=2^{20}$ values has linear work and about 20 combination levels. Its abundant parallelism eventually saturates; it does not imply useful utilization of arbitrarily many processors.
 
 Source: [[lecture4-PRAM.pdf#page=15|Work, critical path, and reporting, pp. 15–18]].
@@ -128,6 +136,10 @@ y_i=\sum_{j=1}^n A_{ij}x_j.
 $$
 
 Different output entries are independent. They read common vector entries but write distinct $y_i$, making the natural row-based schedule CREW.
+
+![[aapp-lecture4-map-rows.png|720]]
+
+*Partition the matrix by rows: processors share the input vector but own independent output entries.* [[lecture4-PRAM.pdf#page=20|Source slide 20]].
 
 **Supplementary analysis for a dense $n\times n$ matrix:** with $1\le p\le n$ and sequential dot products within each assigned row,
 
@@ -156,6 +168,10 @@ $$
 
 This is work-efficient but not cost-optimal at that processor allocation: more processors become idle at each level.
 
+![[aapp-lecture4-reduction-tree.png|720]]
+
+*Eight values become four partial sums, then two, then one: tree depth is logarithmic while the number of additions is linear.* [[lecture4-PRAM.pdf#page=21|Source slide 21]].
+
 **Memory legality:** use distinct source and destination arrays at each level, swapping them between rounds. Each source value is read by only one combining processor, and each output has one writer, so this schedule is EREW. This explicit staging avoids ambiguity in interpreting the in-place shorthand on page 14.
 
 ### Chunk first, then reduce
@@ -168,6 +184,15 @@ C_p=\Theta(n+p\log p).
 $$
 
 It is cost-optimal while $p\log p=O(n)$. Once the reduction overhead dominates local work, adding processors offers diminishing returns.
+
+Using the optimal sequential sum as baseline, the chunk-and-tree model gives, up to constant factors,
+
+$$
+S_p=\Theta\left(\frac{n}{n/p+\log p}\right),\qquad
+E_p^*=\Theta\left(\frac{n}{n+p\log p}\right).
+$$
+
+If $p\log p\ll n$, local work dominates and scaling is close to linear in this ideal model. If $p\log p\gg n$, the reduction term dominates and efficiency shrinks. Thus “work-efficient” and “efficient use of a particular allocation” answer different questions.
 
 > [!note] Numerical heuristic in the deck
 > Page 22 labels roughly 65k processors safe for $n=10^6$. But $65{,}536\log_2 65{,}536=1{,}048{,}576$, already comparable to $n$, rather than “well below” it. Treat the table as an illustration and evaluate $p\log p$ for the actual values.
@@ -183,6 +208,10 @@ s_i=\sum_{j=1}^i a_j.
 $$
 
 Example: $[3,1,4,2]\mapsto[3,4,8,10]$.
+
+![[aapp-lecture4-prefix-sum.png|720]]
+
+*The slide illustrates computing every prefix through staged combinations; the CR labels mark concurrent reads. The pseudocode below gives a separate explicit construction.* [[lecture4-PRAM.pdf#page=23|Source slide 23]].
 
 **Supplementary logarithmic-depth construction:** at round $k$, combine each entry with the entry $2^k$ positions before it, when that index exists. Read a snapshot of the preceding round and write a separate output array. This gives one explicit implementation of the slide's depth bound; it is not a transcription of every arrow in its diagram.
 
@@ -202,6 +231,16 @@ After each round, the covered interval doubles. This simple construction has $\T
 Prefix sums support compaction, partitioning, and assigning output positions: if an element should be kept, a prefix count of keep-flags tells it where to write.
 
 Source: [[lecture4-PRAM.pdf#page=23|Prefix-sum pattern]].
+
+### Inclusive scan, exclusive scan, and compaction
+
+**Supplementary clarification:** an inclusive sum includes the current element; an exclusive sum includes only earlier elements and starts with the additive identity $0$. A scan can use any associative operator; a general exclusive scan also needs an identity. Commutativity is not required when the original element order is preserved. [Blelloch, *Prefix Sums and Their Applications*, §§1.1–1.2](https://www.cs.cmu.edu/~guyb/papers/Ble93.pdf).
+
+For $[3,1,4,2]$, the inclusive result is $[3,4,8,10]$ and the exclusive result is $[0,3,4,8]$.
+
+**Worked compaction example:** let keep-flags be $[1,0,1,1,0]$. Their exclusive scan is $[0,1,1,2,3]$. Only kept elements write: input positions $0,2,3$ write to output positions $0,1,2$. These positions are distinct, so the output writes are exclusive; the preserved input order makes the compaction stable. The output length is the sum of the flags, $3$.
+
+This explains a use of prefix sums already listed in the deck, without adding another sorting or graph algorithm.
 
 ## Simulating limited resources
 
@@ -237,6 +276,10 @@ $$
 
 The growing problem can expose communication and global synchronization costs even when local work remains constant.
 
+![[aapp-lecture4-scaling.png|720]]
+
+*Strong scaling fixes total problem size; weak scaling fixes work per processor. Compare results only when the experiment is clear.* [[lecture4-PRAM.pdf#page=28|Source slide 28]].
+
 ### Amdahl's law
 
 With serial fraction $s$ of the **fixed-size sequential runtime**, ideal speedup is
@@ -257,6 +300,10 @@ $$
 
 With $s=0.1$ and $P=8$, it is $7.3$. This does not contradict Amdahl: the workload and definition of the measured serial fraction differ.
 
+**Supplementary derivation from the lecture's formulas:** normalize the fixed-size sequential runtime to one. Amdahl's parallel runtime is the unchanged serial part $s$ plus $(1-s)/P$. For Gustafson, normalize the observed parallel runtime to one: the sequential machine would execute the same serial part $s$ and $P$ copies of the observed parallel part $1-s$.
+
+Neither expression includes communication or scheduling overhead. An overhead term $h(P)$ in Amdahl's normalized runtime changes the prediction to $1/(s+(1-s)/P+h(P))$. This helps explain a measured plateau without changing the ideal law.
+
 Source: [[lecture4-PRAM.pdf#page=28|Scaling experiments, pp. 28–30]] · [[lecture4-PRAM.pdf#page=31|Scaling laws]].
 
 ## Labs and performance reporting
@@ -274,6 +321,20 @@ Source: [[lecture4-PRAM.pdf#page=18|Reporting template]] · [[lecture4-PRAM.pdf#
 - A critical path survives even with unlimited processors.
 - Speedup and efficiency comparisons require consistent baselines.
 - Strong and weak scaling fix different quantities.
+
+## Exam practice
+
+These are original problems under explicit idealized assumptions.
+
+**1. Work, time, and cost.** Sum 16 values on four processors. Count only additions: each processor first sums four local values, then four partial sums are reduced by a binary tree.
+
+> [!faq]- Worked solution
+> Local sums take three rounds, followed by two tree rounds: $T_4=5$. Work is $4\cdot3+3=15$ additions. Allocated cost is $4\cdot5=20$ processor-rounds. The sequential addition count is 15, so $S_4=3$ and $E_4^*=3/4$. Reads, initialization, and barriers are deliberately excluded from this small count. The idle slots during tree reduction explain $C_4>W$.
+
+**2. Baseline trap.** Suppose $T^*=50$, $T_1=100$, $T_4=30$. Calculate speedup and both efficiency conventions.
+
+> [!faq]- Worked solution
+> $S_4=50/30=5/3$. Best-baseline efficiency is $E_4^*=50/(4\cdot30)=5/12$. The lecture's one-processor-implementation convention gives $E_4=100/(4\cdot30)=5/6$. The larger number does not remove the implementation's extra sequential work. Always state the baseline before interpreting the result.
 
 ## Revision questions
 

@@ -35,6 +35,10 @@ The introduction additionally lists the hiring problem, random permutations, ran
 
 Source: [[lecture1-Intro-Course2026-2027.pdf#page=4|Algorithm syllabus, pp. 4–5]].
 
+![[aapp-lecture1-algorithm-roadmap.png|720]]
+
+*A visual roadmap of the first algorithm topics announced in the course introduction.* [[lecture1-Intro-Course2026-2027.pdf#page=4|Source slide 4]].
+
 ## Part II: parallel programming
 
 The parallel part connects an abstract machine model to practical languages and libraries:
@@ -54,6 +58,10 @@ Source: [[lecture1-Intro-Course2026-2027.pdf#page=6|Parallel syllabus]].
 
 The stated prerequisites are operations research, basic data structures, and computational complexity; C/C++ knowledge is helpful.
 
+![[aapp-lecture1-prerequisites.png|720]]
+
+*The background knowledge the course expects you to bring to the algorithm and programming material.* [[lecture1-Intro-Course2026-2027.pdf#page=7|Source slide 7]].
+
 For a technical topic, prepare to answer four questions:
 
 1. **Problem:** What is the input and what output is required?
@@ -62,6 +70,22 @@ For a technical topic, prepare to answer four questions:
 4. **Implementation:** Which assumptions break on a real machine?
 
 This question sequence is a supplementary study aid, based on the course objectives.
+
+## Study priorities for the supplied decks
+
+This checklist defines the scope of this note collection, based on the six PDFs currently supplied. It is a study guide, not confirmation that these PDFs cover the entire exam.
+
+| Note | What to be able to do without looking |
+|---|---|
+| [[Algorithm as recipes]] | Trace sorting, distinguish bounds from input cases, derive and solve recurrences |
+| [[Divide and Conquer]] | Identify recursive calls, verify Strassen's products, analyze tree-layout dimensions |
+| [[PRAM]] | Check access legality, calculate time/work/cost, interpret scaling experiments |
+| [[ISPC]] | Identify uniform/varying data, trace masks and local counts, explain gang versus task parallelism |
+| [[Randomized Algorithms]] | State the probability space, use indicators, derive expected hires and sampling failure |
+
+For a written answer, state the assumptions, explain the algorithm, justify correctness, and show the calculation. For an open question, connect the definition to one of the lecture examples. The technical notes now include **Exam practice** sections with original problems and worked solutions based on these topics.
+
+External material in the notes supplies explanations for these same concepts. The broader syllabus announced in the introduction remains a roadmap until its decks or exercises are supplied. Dates and grading rules continue to come from the uploaded introduction rather than unrelated external courses.
 
 ## Teaching material
 

@@ -59,6 +59,18 @@ $$
 
 The first result follows by bounding the polynomial above and below by constant multiples of $n^3$ once $n$ is sufficiently large. The second follows because $2n^2/n^3=2/n\to0$.
 
+### Comparing growth rates
+
+For positive $g(n)$, the ratio $f(n)/g(n)$ is often a useful first check:
+
+- Ratio tending to zero establishes $f=o(g)$.
+- Ratio tending to a finite positive constant establishes $f=\Theta(g)$.
+- Ratio tending to infinity establishes $f=\omega(g)$.
+
+The converse for $\Theta$ need not give a limit: a bounded positive oscillating ratio can still establish a tight bound. Also, changing the logarithm's base multiplies it by a constant, because $\log_b n=\log_a n/\log_a b$ for fixed $a,b>1$.
+
+For example, $\log n=o(n^{1/2})$ and $n\log n=o(n^2)$. When proving a bound, state the constants and the threshold beyond which the inequality holds; do not only say “drop small terms.” This is supplementary reasoning for the notation in slides 11–13.
+
 > [!warning] Bounds and cases are different concepts
 > $O$ does not mean “worst case,” and $\Omega$ does not mean “best case.” Each is a bound on whichever running-time function you are analyzing. A best-case function can have an $O$ bound; a worst-case function can have an $\Omega$ bound.
 
@@ -69,6 +81,10 @@ Sorting takes a sequence $\langle a_1,\ldots,a_n\rangle$ and produces a nondecre
 ### Insertion sort
 
 Maintain a sorted prefix. Take the next element, shift larger prefix elements one place to the right, and insert the element into the resulting gap.
+
+![[aapp-lecture2-insertion-sort.png|720]]
+
+*The green prefix is already sorted; the next key must be inserted into its correct position.* [[lecture2-AlgorithmAsRecipe.pdf#page=8|Source slide 8]].
 
 ```text
 INSERTION-SORT(A)                 // zero-based indexing
@@ -96,11 +112,19 @@ $$
 
 Insertion sort uses constant auxiliary space and is stable with the strict comparison `>`: equal keys are not shifted past each other.
 
+**Supplementary worked count:** an inversion is a pair $i<j$ with $A[i]>A[j]$. Each rightward shift removes one inversion, so the total number of shifts is the initial inversion count. In $[4,1,3,2]$, the inversions are $(4,1),(4,3),(4,2),(3,2)$: four shifts in total. The outer-loop overhead remains linear even when there are no inversions. This explains why nearly sorted inputs can be cheap.
+
+The linear best case and quadratic worst case should always be attached to the stated input conditions. The underlying operation-count approach is also explained in [MIT's insertion-sort and merge-sort lecture](https://ocw.mit.edu/courses/6-046j-introduction-to-algorithms-sma-5503-fall-2005/resources/lecture-1-administrivia-introduction-analysis-of-algorithms-insertion-sort-mergesort/index.html).
+
 Source: [[lecture2-AlgorithmAsRecipe.pdf#page=8|Insertion sort and counting experiment, pp. 8–9]].
 
 ### Merge sort
 
 Split into two halves, recursively sort each half, and merge the results. Merging repeatedly selects the smaller first remaining element from the two sorted sequences.
+
+![[aapp-lecture2-merge-sort.png|720]]
+
+*Divide the array, solve the two halves, then merge the sorted results.* [[lecture2-AlgorithmAsRecipe.pdf#page=14|Source slide 14]].
 
 ```text
 MERGE-SORT(A)
@@ -130,18 +154,31 @@ Source: [[lecture2-AlgorithmAsRecipe.pdf#page=14|Merge sort and recursion tree, 
 
 For small or nearly sorted inputs, insertion sort can be competitive. The asymptotic comparison predicts growth, not a universal crossover size.
 
+![[aapp-lecture2-growth-comparison.png|720]]
+
+*The gap between quadratic and n log n growth widens as the input grows. The vertical axis uses a logarithmic scale.* [[lecture2-AlgorithmAsRecipe.pdf#page=16|Source slide 16]].
+
 ## Solving recurrences
 
 Three useful approaches are a recursion tree, substitution, and the Master theorem. A recursion tree helps formulate a guess; substitution proves a bound by induction.
 
-**Supplementary substitution example:** for $T(n)=2T(n/2)+cn$, assume $T(n/2)\le K(n/2)\log_2(n/2)$. Then
+![[aapp-lecture2-recursion-tree.png|720]]
+
+*At each level, the total merge work is proportional to n. There are logarithmically many levels.* [[lecture2-AlgorithmAsRecipe.pdf#page=15|Source slide 15]].
+
+**Supplementary substitution proof:** take powers of two, $T(1)=d>0$, and $T(n)=2T(n/2)+cn$ with $c>0$. Prove $T(n)\le Kn\log_2n+Dn$ using $K\ge c$ and $D\ge d$.
+
+The base case gives $T(1)=d\le D$. For the induction step,
 
 $$
-T(n)\le Kn(\log_2 n-1)+cn
-\le Kn\log_2n
+\begin{aligned}
+T(n)&\le 2\left(K\frac n2\log_2\frac n2+D\frac n2\right)+cn\\
+&=Kn\log_2n+Dn+(c-K)n\\
+&\le Kn\log_2n+Dn.
+\end{aligned}
 $$
 
-when $K\ge c$. A suitable base-case adjustment completes the upper bound. The level-cost argument supplies the matching lower bound.
+This makes the base-case constant explicit. For this exact recurrence, expanding levels gives $T(n)=dn+cn\log_2n$, supplying both the upper and lower bound. Hence $T(n)=\Theta(n\log n)$. For a nonrecursive term specified only as $\Theta(n)$, use constant upper and lower multiples of $n$ rather than asserting an exact equality.
 
 ### Master theorem
 
@@ -160,6 +197,8 @@ compare $f(n)$ with $n^d$, where $d=\log_b a$.
 | 3 | $f(n)=\Omega(n^{d+\varepsilon})$ and $af(n/b)\le cf(n)$ for some $c<1$, eventually | $T(n)=\Theta(f(n))$ |
 
 In Cases 1 and 3, the difference must be polynomial. Merely being smaller or larger is insufficient. In Case 3, do not omit the regularity condition.
+
+**Application checklist:** $a,b$ must be constants, and the nonrecursive cost must be eventually positive. Identify $a,b,f(n)$, compute $d=\log_ba$, and justify a case. If a condition fails, use a recursion tree or substitution. In standard balanced recurrences, floors and ceilings do not alter these asymptotic results. This is the form used in [MIT's Master theorem practice sheet](https://people.csail.mit.edu/thies/6.046-web/master.pdf).
 
 Source: [[lecture2-AlgorithmAsRecipe.pdf#page=18|Methods and Master theorem, pp. 18–21]].
 
@@ -190,7 +229,7 @@ For $T(1)=1$ and $T(n)=2T(n/2)+n$ at powers of two, the exact value is $n(1+\log
 The Dijkstra fragment illustrates a graph problem whose input size is described by vertices and edges. Relaxing $(u,v)$ means replacing `dist[v]` when `dist[u] + weight(u,v)` is smaller.
 
 > [!note] Supplementary clarification of the slide code
-> Dijkstra requires nonnegative edge weights. For the lazy priority-queue implementation shown, skip a popped entry when its stored distance differs from the current `dist[u]`. Otherwise stale entries can repeat edge scans, so the usual efficient implementation analysis does not directly describe the fragment as printed. A heap implementation with decrease-key has the familiar $O((V+E)\log V)$ bound; lazy heaps are commonly analyzed using $\log E$ instead.
+> Dijkstra requires nonnegative edge weights. In the lazy priority-queue version, add `if (d != dist[u]) continue;` immediately after popping an entry. This avoids rescanning edges for obsolete distances. An indexed binary heap with decrease-key gives $O((V+E)\log V)$; the lazy heap can have $O(E)$ entries and is bounded by $O(V+(E+1)\log(E+2))$, including initialization. For simple graphs this is commonly expressed with a $\log V$ factor. The distinction and stale-entry check are explained in the [implementation's own documentation](https://cp-algorithms.com/graph/dijkstra_sparse.html#priority_queue).
 
 Relaxations may expose parallel work, but dependencies between distance updates and selecting the next vertex still need a correctness argument.
 
@@ -202,6 +241,20 @@ Source: [[lecture2-AlgorithmAsRecipe.pdf#page=17|Benchmark experiment]] · [[lec
 - A sorting result must preserve the multiset as well as order it.
 - Constants matter in measurements; dominant terms matter for asymptotic growth.
 - Recurrences express both recursive and nonrecursive work.
+
+## Exam practice
+
+These are original practice questions based on the supplied deck, not past exam questions.
+
+**1. Trace and count.** Sort $[4,1,3,2]$ by insertion sort. Count element shifts, then explain why the count is not the same as elapsed time.
+
+> [!faq]- Worked solution
+> The arrays after each insertion are $[1,4,3,2]$, $[1,3,4,2]$, and $[1,2,3,4]$. Shift counts are $1,1,2$, totaling $4$. Time also includes comparisons, key writes, loop control, and machine-dependent costs.
+
+**2. Select a recurrence case.** Solve $T(n)=3T(n/2)+n^2$. Then explain why simply calling the nonrecursive term “larger” is insufficient.
+
+> [!faq]- Worked solution
+> The reference exponent is $d=\log_2 3\approx1.585$. The gap $2-d>0$ is polynomial. Regularity holds because $3(n/2)^2=(3/4)n^2$. Case 3 gives $\Theta(n^2)$. A positive polynomial gap and regularity are both required, rather than just a qualitative comparison.
 
 ## Revision questions
 
