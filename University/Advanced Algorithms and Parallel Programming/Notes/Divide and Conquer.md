@@ -27,6 +27,8 @@ For correctness, use induction on input size: establish the base case, assume re
 
 The supplied deck adapts these examples from [Demaine and Leiserson's MIT divide-and-conquer notes](https://ocw.mit.edu/courses/6-046j-introduction-to-algorithms-sma-5503-fall-2005/9cdb6914be3e87215cb86f327ee4180b_lec3.pdf). Use only the matching examples here; that external lecture also contains material outside the supplied deck.
 
+Later applications: [[Sorting#Recursion shape and running time]] contrasts balanced, unequal, and random partitions; [[Minimum Cut#Karger–Stein]] uses two recursive calls on graphs of roughly $n/\sqrt2$ vertices. Both require a progress/termination argument as well as a recurrence.
+
 ## Merge sort as the template
 
 Merge sort divides an array into two halves, recursively sorts both, and performs a linear merge:
@@ -38,6 +40,14 @@ $$
 Here $a=2$, $b=2$, and $n^{\log_ba}=n$. Case 2 of the Master theorem gives $\Theta(n\log n)$. Each level contributes linear total work.
 
 Source: [[lecture3-DandC.pdf#page=4|Merge sort and theorem review, pp. 4–7]].
+
+### From a recursive specification to a proof
+
+A recursive algorithm needs both a **size decrease** and a **correct combination rule**. A smaller argument ensures eventual arrival at a base case; it does not prove that the final answer solves the original problem. Conversely, a correct algebraic identity can still produce a nonterminating program if the recursive input fails to shrink.
+
+For merge sort, both halves have fewer elements than the original array when $n>1$. The induction hypothesis supplies sorted permutations of the halves. The merge invariant in [[Algorithm as recipes#Looking inside the merge]] then supplies a sorted permutation of their union. These are separate links in the reasoning: termination, correctness of subresults, and correctness of combination.
+
+The recurrence counts both recursive calls because the ordinary sequential algorithm finishes both. If they are executed in parallel, elapsed time is governed by the slower call plus the remaining dependencies; total work still counts both. The distinction becomes explicit in [[PRAM#Performance quantities]].
 
 ## Binary search
 
@@ -72,6 +82,23 @@ in the worst case. Finding the target immediately takes constant time. The divid
 **Supplementary space distinction:** the recursive version uses $O(\log n)$ stack space; an iterative version uses $O(1)$ auxiliary space.
 
 Source: [[lecture3-DandC.pdf#page=8|Binary search, pp. 8–16]].
+
+### Why an unsuccessful search is also correct
+
+The maintained claim is: **if the target occurs, an occurrence remains in the current interval**. If the midpoint value is below the target, sortedness implies every earlier value is also below it, so positions through the midpoint can be discarded. The symmetric argument handles a larger midpoint value. If the interval becomes empty, no possible occurrence remains.
+
+For the same array $[3,5,7,8,9,12,15]$, search for 10 using zero-based bounds. The intervals and midpoint values are:
+
+| Interval | Midpoint index and value | Decision |
+|---|---|---|
+| $[0,6]$ | 3, value 8 | Keep $[4,6]$ |
+| $[4,6]$ | 5, value 12 | Keep $[4,4]$ |
+| $[4,4]$ | 4, value 9 | Keep $[5,4]$ |
+| Empty | No midpoint | Return NOT-FOUND |
+
+Updating to `mid + 1` or `mid - 1` excludes the tested element and guarantees progress. Keeping `mid` as a boundary can leave a one-element interval unchanged. With duplicates, the algorithm may return any matching index; finding the first occurrence requires an additional boundary-search specification.
+
+The logarithmic time also assumes constant-time access to a midpoint and that subproblems are represented by indices. Copying half the array on every recursive call would add linear total copying work along the path; repeatedly finding a midpoint by walking a linked list changes the access model too.
 
 ## Exponentiation by squaring
 
@@ -111,6 +138,26 @@ for growing positive $n$.
 > The bound counts arithmetic operations at unit cost, as in the slides. When exact integer values become very large, multiplication is not constant-time; bit complexity requires a separate analysis.
 
 Source: [[lecture3-DandC.pdf#page=17|Powering a number, pp. 17–19]].
+
+### Following the calls and returns of POWER
+
+For $a=2,n=13$, the call arguments decrease as $13\to6\to3\to1\to0$. The values are produced on the way back:
+
+| Returning from exponent | Saved half-power | Computation | Returned value |
+|---|---|---|---|
+| 0 | — | Base case | 1 |
+| 1 | 1 | $1^2\cdot2$ | 2 |
+| 3 | 2 | $2^2\cdot2$ | 8 |
+| 6 | 8 | $8^2$ | 64 |
+| 13 | 64 | $64^2\cdot2$ | 8192 |
+
+At each call, the recursive result is correct by induction. Squaring doubles its exponent; the extra multiplication supplies the remaining factor for an odd exponent. Each division by two removes one binary digit of $n$, explaining the logarithmic number of calls.
+
+With the printed base case at $n=0$, this exact trace includes multiplications by 1 at $n=1$; an additional $n=1$ base case can remove them without changing the asymptotic result. Counting carefully means analyzing the code actually printed rather than assuming every implementation has the same exact multiplication count.
+
+![[aapp-depth-dandc-power.png|720]]
+
+*Original trace of $2^{13}$: recursive calls shrink the exponent; returned values reconstruct it using square and optional multiply.*
 
 ## Matrix multiplication
 
@@ -153,6 +200,14 @@ Since $n^{\log_2 8}=n^3$, Case 1 gives $\Theta(n^3)$. The algorithm reorganizes 
 
 Source: [[lecture3-DandC.pdf#page=20|Matrix multiplication, pp. 20–27]].
 
+### Why matrix blocks are not scalar entries
+
+In a $4\times4$ multiplication, the symbols $a,b,c,d$ represent $2\times2$ matrices. Computing $ae$ means an entire recursive matrix multiplication. Adding $ae+bg$ means four scalar additions. At a general size $n$, each block has $(n/2)^2$ entries, so four output-block additions perform $n^2$ scalar additions at that level.
+
+Correctness follows from splitting the row-column sum over the two ranges of the inner index. For an entry in the top-left output block, terms involving the first half of the inner indices form $ae$; the rest form $bg$. Their sum accounts for every term exactly once. The same argument gives the other three output blocks.
+
+For powers of two, ordinary block recursion reaches scalar multiplications after $\log_2n$ levels. There are $8^{\log_2n}=n^3$ scalar-product leaves. Dividing the data visually into four quadrants does not imply four recursive products: each of the four outputs requires two products.
+
 ## Strassen's algorithm
 
 Strassen reduces the recursive multiplication count from eight to seven, at the cost of extra block additions and subtractions.
@@ -192,6 +247,21 @@ r={}&(ae+ah+de+dh)+(dg-de)\\
 $$
 
 The extra terms cancel. The other output blocks can be checked similarly. This is valid for matrix blocks because it does **not** assume that multiplication commutes.
+
+For completeness, the remaining reconstructions cancel as follows:
+
+$$
+\begin{aligned}
+s&=(af-ah)+(ah+bh)=af+bh,\\
+t&=(ce+de)+(dg-de)=ce+dg,\\
+u&=(ae+ah+de+dh)+(af-ah)\\
+&\quad-(ce+de)-(ae+af-ce-cf)=cf+dh.
+\end{aligned}
+$$
+
+Each individual product keeps its factor order. For example, $a(f-h)=af-ah$, not $fa-ha$. The method requires addition, subtraction and distributive multiplication; one cannot directly reuse it for a different problem merely by renaming its operators. In particular, the cancellation argument depends on subtraction.
+
+The 18 block additions/subtractions can also be checked: ten form the inputs to $P_1,\ldots,P_7$ and eight reconstruct $r,s,t,u$. These operations are cheaper asymptotically than the recursive multiplications, which is why exchanging extra additions for one fewer product can pay off.
 
 ### Numerical check of the seven products
 
@@ -234,6 +304,18 @@ The improvement is in the exponent, so its relative significance grows with $n$.
 
 Source: [[lecture3-DandC.pdf#page=29|Seven products and reconstruction, pp. 29–32]] · [[lecture3-DandC.pdf#page=33|Algorithm and analysis, pp. 33–38]].
 
+### Why saving one product compounds
+
+At depth $\ell$, ordinary recursion has $8^\ell$ calls while Strassen has $7^\ell$. At scalar depth $\log_2n$, the leaf-count ratio is
+
+$$
+\frac{n^3}{n^{\log_2 7}}=n^{\log_2(8/7)}.
+$$
+
+This ratio grows with $n$: the improvement is repeated at every level, not a one-time saving of one eighth of the work. For $n=4$, ordinary recursion has 64 scalar-product leaves and Strassen 49. The extra additions can still dominate at small sizes, so these counts alone do not predict wall-clock speed.
+
+Padding a dimension $n$ to a power of two $N$ with $n\le N<2n$ increases $N^{\log_2 7}$ by at most a constant factor relative to $n^{\log_2 7}$. That is why it preserves the asymptotic bound even though the extra storage and arithmetic may be noticeable in practice.
+
 ## VLSI tree layouts
 
 The final example changes the quantity being analyzed: instead of running time, analyze the **area** needed to embed a complete binary tree with $n$ leaves in a grid.
@@ -274,6 +356,16 @@ Source: [[lecture3-DandC.pdf#page=39|Layouts, pp. 39–46]].
 
 *The H-tree packs four smaller subtrees into a square-like region, reducing the area to linear growth.* [[lecture3-DandC.pdf#page=46|Source slide 46]].
 
+### Reading the layout recurrences geometrically
+
+In the straightforward layout, two equal-height drawings sit **beside** each other. Their widths add, while their heights do not; only a constant amount is added above them for the parent and wiring separation. This is the geometric reason for the coefficient 2 in the width recurrence and coefficient 1 in the height recurrence.
+
+In the H-tree, two levels of the binary tree are grouped so that four subtrees, each with $n/4$ leaves, occupy four regions. Along one side of the resulting square, only two such regions lie side by side. Hence the side-length recurrence has coefficient 2, even though four recursive subdrawings exist. Recurrence coefficients measure the resource under discussion, not always the total number of recursive calls.
+
+For an illustrative normalized model $H(1)=W(1)=L(1)=1$ with unit separating gaps, $H(n)=\log_2n+1$, $W(n)=2n-1$, and $L(n)=2\sqrt n-1$ at the allowed powers. At $n=16$, the first bounding box has area $5\cdot31=155$, while the H-tree box has area $7^2=49$. These numbers depend on the normalization; the robust conclusions are $\Theta(n\log n)$ and $\Theta(n)$ area respectively.
+
+The lower bound counts distinct node locations, not edge lengths or execution steps. A binary tree with $n$ leaves has $2n-1$ nodes, so a grid embedding with constant minimum area per node needs $\Omega(n)$ area. This makes the H-tree's linear area meaningful as an optimal order of growth under the pictured layout assumptions.
+
 ## Comparison table
 
 | Example | Recurrence | Result |
@@ -305,6 +397,11 @@ These are original problems using the deck's algorithms and layouts.
 
 > [!faq]- Worked solution
 > Expansion gives $L(n)=2^k\ell_0+c(2^k-1)$. Since $2^k=\sqrt n$, the side is $\Theta(\sqrt n)$ and the square's area is $\Theta(n)$. The recurrence counts side length, so its answer must be squared to obtain area.
+
+**3. Build the recurrence from the operation.** A binary-search implementation copies the selected half into a new array before recursing. How does its worst-case time compare with the index-based version?
+
+> [!faq]- Worked solution
+> Copying introduces $\Theta(n)$ work at a size-$n$ call. The recurrence is $T(n)=T(n/2)+\Theta(n)$, whose geometric work sum is $n+n/2+\cdots=\Theta(n)$. Index-based search uses constant work outside its one recursive call and remains $\Theta(\log n)$. The logical search decisions are the same; the representation of a subproblem changes the cost.
 
 ## Revision questions
 

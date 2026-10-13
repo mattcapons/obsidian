@@ -25,6 +25,14 @@ The carbonara analogy illustrates two ideas: a larger workload takes more time, 
 
 Analysis abstracts away machine-specific timings. Benchmarking complements it by revealing constants, memory behavior, and the crossover between implementations. Neither replaces correctness.
 
+### Turning an input into a cost function
+
+The input size must describe the data the algorithm actually processes. A list with $n$ fixed-size keys has $n$ items; an $n\times n$ matrix has $n^2$ entries, even though its dimension is called $n$. An adjacency-list graph uses space proportional to $V+E$, whereas an adjacency matrix has $V^2$ entries. Calling all of these inputs “size $n$” without specifying the convention makes complexity comparisons ambiguous.
+
+Next choose an operation: key comparisons for sorting, additions for a reduction, or edge examinations for a graph scan. A loop over every array element performs $n$ iterations. A nested loop with both indices ranging independently over $n$ values has $n^2$ iterations; a triangular loop with the inner index running only to the outer index has $1+2+\cdots+n=n(n+1)/2$. The latter is still quadratic even though it does about half as many iterations.
+
+Under a unit-cost model, a bounded number of instructions per iteration changes the count by a constant factor. It cannot hide operations on arbitrarily large objects: comparing long strings or multiplying very large integers may itself require substantial work. The slides' arithmetic models assume the operands fit the chosen basic-operation convention.
+
 ### Best, average, and worst case
 
 For inputs $x$ of size $n$:
@@ -37,6 +45,14 @@ $$
 Average-case time is an expectation over a specified input distribution. Without a distribution, an average-case claim is incomplete. [[Randomized Algorithms#Where randomness comes from]] explains how this differs from averaging over random choices made by an algorithm.
 
 Source: [[lecture2-AlgorithmAsRecipe.pdf#page=10|Cases and asymptotic analysis, pp. 10–13]].
+
+**One problem, three cost functions:** sequentially search for a key in a length-$n$ array. Finding it at the first position costs one comparison; finding it last or proving absence costs $n$. If the key is promised present and each position is equally likely, the average is
+
+$$
+\frac{1+2+\cdots+n}{n}=\frac{n+1}{2}.
+$$
+
+Thus the best case is $\Theta(1)$, while average and worst cases are both $\Theta(n)$ for this model. Changing the probability of absence or the distribution of positions changes the average. An “average” is not generally obtained by taking the midpoint between best and worst; this example happens to have evenly spaced, equally likely costs.
 
 ## Asymptotic notation
 
@@ -58,6 +74,22 @@ $$
 $$
 
 The first result follows by bounding the polynomial above and below by constant multiples of $n^3$ once $n$ is sufficiently large. The second follows because $2n^2/n^3=2/n\to0$.
+
+### What the constants in a bound do
+
+Consider $f(n)=3n^2+2n+7$ for integer $n\ge1$. Because $n\le n^2$ and $1\le n^2$,
+
+$$
+3n^2\le f(n)\le3n^2+2n^2+7n^2=12n^2.
+$$
+
+Here $c_1=3$, $c_2=12$, and $n_0=1$ prove $f(n)=\Theta(n^2)$. The constants need not be the smallest possible; they only have to be fixed independently of $n$. An upper bound $f(n)\le c(n)n$ with $c(n)=3n+9$ does **not** prove $O(n)$, because its supposed constant grows with input size.
+
+For a contrasting example, $n^2\le n^3$ when $n\ge1$, so $n^2=O(n^3)$. It is not $\Theta(n^3)$: no fixed positive lower constant can satisfy $cn^3\le n^2$ for arbitrarily large $n$. Tightness requires both directions.
+
+![[aapp-depth-recipes-bounds.png|720]]
+
+*Original illustration of the explicit bound $3n^2\le3n^2+2n+7\le12n^2$ for $n\ge1$. The inequalities, rather than the finite plot alone, prove the asymptotic claim.*
 
 ### Comparing growth rates
 
@@ -118,6 +150,10 @@ The linear best case and quadratic worst case should always be attached to the s
 
 Source: [[lecture2-AlgorithmAsRecipe.pdf#page=8|Insertion sort and counting experiment, pp. 8–9]].
 
+**Counting the actual comparison test:** the page 9 code increments `comp` only when `i >= 0` holds and `A[i] > key` is evaluated. For $[4,1,3,2]$, the three insertions make 1, 2 and 3 key comparisons respectively, while they shift 1, 1 and 2 elements. Total: six comparisons and four shifts. When a key reaches the beginning, the failed index test ends the loop without another key comparison. This is why “number of comparisons = shifts + one per insertion” is not universally exact.
+
+Saving `key` before shifting is necessary because its original array cell can be overwritten. The variable is part of the correctness argument: shifting makes a gap, and the saved value fills it. The sorted-prefix invariant also says nothing about the untouched suffix being sorted; the outer loop gradually brings that suffix into the invariant.
+
 ### Merge sort
 
 Split into two halves, recursively sort each half, and merge the results. Merging repeatedly selects the smaller first remaining element from the two sorted sequences.
@@ -144,6 +180,23 @@ $$
 Each recursion level has $\Theta(n)$ total merge work, and there are $\Theta(\log n)$ levels. Standard array implementations use $\Theta(n)$ auxiliary storage. Stability requires resolving equal keys in favor of the left half.
 
 Source: [[lecture2-AlgorithmAsRecipe.pdf#page=14|Merge sort and recursion tree, pp. 14–15]].
+
+### Looking inside the merge
+
+Merge $L=[2,5,8]$ and $R=[1,5,7]$. Compare the two first unconsumed values, append the smaller, and advance only that side's pointer:
+
+| Compared heads | Chosen item | Output so far |
+|---|---|---|
+| 2 and 1 | Right 1 | $[1]$ |
+| 2 and 5 | Left 2 | $[1,2]$ |
+| 5 and 5 | Left 5 | $[1,2,5_L]$ |
+| 8 and 5 | Right 5 | $[1,2,5_L,5_R]$ |
+| 8 and 7 | Right 7 | $[1,2,5_L,5_R,7]$ |
+| Right exhausted | Append left remainder | $[1,2,5_L,5_R,7,8]$ |
+
+Why can the smaller head be emitted safely? Every remaining item behind either head is at least that head, because each input list is sorted. Therefore the smaller head is a smallest remaining item overall. This preserves the invariant that the output contains exactly the smallest items removed so far, in order. When one side is exhausted, the other is already sorted and can simply be appended.
+
+Merging lengths $a,b$ moves exactly $a+b$ items and makes at most $a+b-1$ key comparisons when both are nonempty. It needs no fresh sorting inside the merge. Selecting the left equal key first preserves original cross-half order, which is how merge sort retains stability.
 
 ### Comparison
 
@@ -179,6 +232,14 @@ T(n)&\le 2\left(K\frac n2\log_2\frac n2+D\frac n2\right)+cn\\
 $$
 
 This makes the base-case constant explicit. For this exact recurrence, expanding levels gives $T(n)=dn+cn\log_2n$, supplying both the upper and lower bound. Hence $T(n)=\Theta(n\log n)$. For a nonrecursive term specified only as $\Theta(n)$, use constant upper and lower multiples of $n$ rather than asserting an exact equality.
+
+### Reading a recursion tree level by level
+
+For $T(n)=aT(n/b)+f(n)$, depth $\ell$ has $a^\ell$ subproblems, each of size $n/b^\ell$. The **total** nonrecursive work at that depth is therefore $a^\ell f(n/b^\ell)$. Recursion reaches constant size when $n/b^h=1$, giving $h=\log_b n$. The number of leaves is $a^h=a^{\log_b n}=n^{\log_ba}$: this is where the Master theorem's reference term comes from.
+
+For merge sort on eight values with nonrecursive work equal to the subproblem size, the internal levels have costs $8$, $2\cdot4=8$, and $4\cdot2=8$. There are eight constant-size leaves. With $T(1)=1$, the total is $8+8+8+8=32$. The logarithmic number of levels multiplies linear work **across a whole level**, not the work of one selected recursive path.
+
+The three Master cases ask where most work accumulates: near the leaves, spread across levels, or near the root. This is an interpretation of the theorem, while the polynomial-gap and regularity conditions below are what justify choosing a case.
 
 ### Master theorem
 
@@ -235,6 +296,20 @@ Relaxations may expose parallel work, but dependencies between distance updates 
 
 Source: [[lecture2-AlgorithmAsRecipe.pdf#page=17|Benchmark experiment]] · [[lecture2-AlgorithmAsRecipe.pdf#page=22|Recurrence and Dijkstra mini-lab]].
 
+### Understanding the Dijkstra fragment
+
+A tentative distance is the length of the best source-to-vertex path discovered so far. Initialize the source to 0 and other vertices to infinity. The priority queue repeatedly selects the smallest tentative distance; relaxation asks whether going through that vertex improves a neighbor's current estimate.
+
+For edges $s\to a$ of weight 4, $s\to b$ of weight 1, and $b\to a$ of weight 2, processing $s$ discovers distances 4 and 1. Processing $b$ next improves $a$ to $1+2=3$. In a lazy queue, both `(4,a)` and `(3,a)` can now be present. The distance-3 entry is current; the distance-4 entry is stale and should be skipped when popped.
+
+Nonnegative weights are needed for the greedy finalization argument: extending a route cannot make it cheaper by traversing an unseen negative edge. The queue orders discovered candidates, rather than magically knowing all shortest paths. This explanation stays within the shortest-path fragment on [[lecture2-AlgorithmAsRecipe.pdf#page=22|slide 22]]; it is not a separate treatment of graph algorithms.
+
+### What the recurrence mini-lab measures
+
+The function on page 22 **computes the numerical value** of a recurrence: `2*T(n/2) + n`. The multiplication by two does not call `T` twice. Evaluating this code has one recursive call per level, even though its returned value is $n(1+\log_2n)$ on powers of two. Do not confuse a program that evaluates a mathematical cost formula with a program whose own runtime equals that formula.
+
+For an actual sorting benchmark, restore the same unsorted input before each algorithm's timed run; otherwise the second algorithm may receive an already sorted array. Keep copying and data generation outside the timed region if the intended measurement is sorting alone. Test the sorted output and preserved multiset, since a wrong program can appear fast. The slide's `bench` reports a mean over repetitions; a median is an alternative robust summary, not what that particular code computes.
+
 ## Takeaways
 
 - Define the input size and operation model before writing a complexity bound.
@@ -255,6 +330,11 @@ These are original practice questions based on the supplied deck, not past exam 
 
 > [!faq]- Worked solution
 > The reference exponent is $d=\log_2 3\approx1.585$. The gap $2-d>0$ is polynomial. Regularity holds because $3(n/2)^2=(3/4)n^2$. Case 3 gives $\Theta(n^2)$. A positive polynomial gap and regularity are both required, rather than just a qualitative comparison.
+
+**3. Explain a numerical recurrence experiment.** With $T(1)=1$ and $T(n)=2T(n/2)+n$, compute $T(8)$. Does the slide's code `return 2*T(n/2)+n` itself execute two recursive calls?
+
+> [!faq]- Worked solution
+> $T(2)=4$, $T(4)=12$, $T(8)=32$. The code executes one recursive call and doubles its result; on powers of two its own call depth is logarithmic. A returned cost value of 32 does not mean the evaluator executed 32 elementary steps.
 
 ## Revision questions
 

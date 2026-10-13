@@ -7,7 +7,7 @@ source: "[[lecture5-Randomization.pdf]]"
 ---
 # Randomized Algorithms
 
-[[AAPP Index|Course index]] · Previous: [[ISPC]] · Related: [[Algorithm as recipes#Input size and running time]]
+[[AAPP Index|Course index]] · Previous: [[ISPC]] · Next: [[Minimum Cut]] · Related: [[Algorithm as recipes#Input size and running time]]
 
 ## Overview
 
@@ -52,6 +52,14 @@ A strong expected-time guarantee holds for **every fixed input**, averaging only
 > [!note] Expectation and high probability
 > A small expected cost does not by itself establish a high-probability bound. The hiring derivation in this deck proves an expectation; a stronger tail guarantee needs additional analysis. Likewise, a randomized algorithm is not automatically efficient merely because it uses random choices.
 
+### Fixing the input before taking an expectation
+
+Imagine the applicant ranks arrive in the fixed order $[1,2,3,4]$, with larger ranks better. Without shuffling, four hires occur every time. The random-input analysis does not change that execution; it says that this order is only one outcome among uniformly weighted permutations. After a uniform shuffle, however, this same fixed list can yield any order, so its **randomized execution** has expected hire count $H_4$.
+
+The order of the statements matters: a worst-case expected bound means that for every fixed input, the expectation over random choices is small. It does not mean one lucky random choice works well on every input, and it does not mean every run is fast. In symbols, bounding $\max_x\mathbb E_R[T(x,R)]$ does not bound $\max_{x,R}T(x,R)$ by the same quantity.
+
+A probability model must also specify what the elementary outcomes are. In the hiring analysis they are complete permutations; in repeated sampling they are sequences of sampled indices. An event, such as “the third arrival is hired,” is a subset of those outcomes. A random variable assigns a number, such as a hire count, to each outcome.
+
 ## Indicator variables
 
 For an event $E_i$, define
@@ -88,6 +96,14 @@ $$
 This distributes a sum; it never replaces a joint probability with a product. For example, let $X$ indicate heads on one fair coin and let $Y=1-X$. They are dependent, but $\mathbb E[X+Y]=1=1/2+1/2$. Independence is needed for the general product rule $\mathbb E[XY]=\mathbb E[X]\mathbb E[Y]$, not for linearity. [Aspnes's Yale notes on random variables, §§3.2–3.3](https://www.cs.yale.edu/homes/aspnes/pinewiki/RandomVariables.html).
 
 Source: [[lecture5-Randomization.pdf#page=5|Analysis tools]] · [[lecture5-Randomization.pdf#page=12|Indicators, pp. 12–13]].
+
+### Building an indicator analysis rather than guessing a formula
+
+Start with the quantity being counted. If it counts objects or events, give each candidate event a 0/1 indicator. Check that the total really is their sum on **each individual execution**, before taking any expectation. Then find each event probability using symmetry, counting, or conditioning; finally add those probabilities.
+
+For the dependent coin example above, $XY=0$ on every outcome because one of $X,Y$ is zero. Thus $\mathbb E[XY]=0$, while $\mathbb E[X]\mathbb E[Y]=1/4$. This explicitly shows why a valid sum rule cannot be reused as a product rule. By contrast, $X+Y=1$ on every outcome, and its expected value is exactly the sum of the two expectations.
+
+If events have different costs, write $C=\sum_i c_iX_i$ with fixed costs $c_i$, giving $\mathbb E[C]=\sum_i c_i\Pr(X_i=1)$. This is the same method as the hiring cost model below, with costs attached to events instead of merely counting them.
 
 ## The hiring problem
 
@@ -169,6 +185,29 @@ For $n=4$, $H_4=1+1/2+1/3+1/4=25/12\approx2.083$ expected hires. This can be fra
 
 Source: [[lecture5-Randomization.pdf#page=10|Sample space, pp. 10–11]] · [[lecture5-Randomization.pdf#page=14|Probability and expectation, pp. 14–16]].
 
+### A complete three-applicant sample space
+
+Let rank 3 be best. Listing all six equally likely orders makes the expectation tangible:
+
+| Order | Hire indicators by position | Number of hires |
+|---|---|---|
+| 1, 2, 3 | 1, 1, 1 | 3 |
+| 1, 3, 2 | 1, 1, 0 | 2 |
+| 2, 1, 3 | 1, 0, 1 | 2 |
+| 2, 3, 1 | 1, 1, 0 | 2 |
+| 3, 1, 2 | 1, 0, 0 | 1 |
+| 3, 2, 1 | 1, 0, 0 | 1 |
+
+The direct average is $11/6$. Summing column averages gives $1+3/6+2/6=1+1/2+1/3=11/6$ too. The indicator argument obtains the same answer without listing $n!$ rows for general $n$.
+
+Why does $1/i$ not depend on $n$? Once the set of the first $i$ applicants is fixed, their relative order is uniform. Its best member is equally likely to occupy each of those $i$ positions. Applicants who have not arrived cannot affect whether the current arrival is best *so far*.
+
+**Supplementary explanation of logarithmic growth:** group the harmonic terms into blocks $1/2$, then $1/3+1/4$, then $1/5+\cdots+1/8$, and so on. A block with $2^{j-1}$ terms, whose denominators lie between $2^{j-1}+1$ and $2^j$, contributes between $1/2$ and 1. There are logarithmically many blocks. This gives an intuitive reason for $H_n=\Theta(\log n)$ without relying only on an integral.
+
+![[aapp-depth-random-hiring-symmetry.png|720]]
+
+*The slide's four-applicant enumeration illustrates the same symmetry: eight of 24 orders hire the third arrival. The relevant maximum is among the first three arrivals.* [[lecture5-Randomization.pdf#page=14|Source slide 14]].
+
 ### Expected cost is not only the hire count
 
 **Supplementary cost model:** if an interview costs $c_i$ and a hire/replacement costs $c_h$, then
@@ -202,6 +241,12 @@ The slides motivate this strategy but do not give a full permutation-generation 
 
 Source: [[lecture5-Randomization.pdf#page=17|From input assumptions to randomization, pp. 17–19]].
 
+### Why the shrinking-range shuffle is uniform
+
+For a specified final arrangement of three distinct applicants, the last position must receive its designated applicant with probability $1/3$. Conditional on that choice, the second position must receive its designated applicant from the two remaining ones, with probability $1/2$. The final unassigned item is forced. Therefore that arrangement has probability $(1/3)(1/2)=1/6$.
+
+For $n$ applicants the same reasoning gives $1/n\cdot1/(n-1)\cdots1/1=1/n!$ for each target arrangement. Allowing `j == i` is necessary: a position is permitted to keep the element it already contains. The argument assumes each random choice is uniform over its permitted range. Merely calling a routine “shuffle” is not a proof of that property.
+
 ## Las Vegas and Monte Carlo
 
 | Family | Correctness | Time | Efficient version in the lecture |
@@ -229,6 +274,12 @@ For a decision problem:
 State the guarantee conditional on the **true input class**, such as “for every NO input, the probability of YES is zero.” Do not confuse this with the probability that an answer is wrong conditional on observing that answer; that would also require a distribution over inputs.
 
 This makes precise the output-based wording used on slide 22.
+
+### Interpreting the error direction
+
+For the decision question “does this array contain an a?”, a bounded sampler can return YES only after reading an actual `a`. On an array with no `a`, it can never falsely return YES. On an array that contains `a`, it might sample only other entries and return NO: this is a possible **false negative**, with probability determined by the target fraction and sample budget.
+
+Under the lecture's promise that half the entries are `a`, a NO interpretation is always a mistaken conclusion about existence; returning `FAIL` is more precise because it describes the search outcome without asserting absence. The witness returned on success is easy to check. In [[Minimum Cut]], a returned partition is also easy to check as a cut, but checking that it is *minimum* is a different task. This is why repeated min-cut trials do not automatically become Las Vegas by checking feasibility.
 
 ## Example: finding an a
 
@@ -266,6 +317,16 @@ $$
 The probability that no success occurs within $k$ trials is $2^{-k}$, tending to zero. Termination is almost sure, but there is **no finite deterministic worst-case trial bound**. Under unit-cost sampling and lookup, expected time is $O(1)$.
 
 Source: [[lecture5-Randomization.pdf#page=26|Las Vegas sampling]].
+
+### Probability of stopping now versus still waiting
+
+For half-target input, $\Pr(K=3)=1/8$ describes the sequence “miss, miss, hit.” The event $K>3$ means three misses, also probability $1/8$ in this special case. These are different events that happen to have equal probabilities when the hit probability is $1/2$. Generally,
+
+$$
+\Pr(K=t)=(1-q)^{t-1}q,\qquad \Pr(K>t)=(1-q)^t.
+$$
+
+The expected value 2 is not a two-trial deadline: one quarter of runs still have no success after two samples. For every finite $k$, the all-miss event has positive probability. Yet the probability of missing forever is $\lim_{k\to\infty}2^{-k}=0$, which is the precise meaning of almost-sure termination here.
 
 ### Monte Carlo version
 
@@ -321,6 +382,24 @@ For this restart calculation the geometric waiting time has finite expectation. 
 
 In the bounded version, finding a valid index early may finish in fewer than $k$ trials, but the **worst-case** bound remains $k$. Repeating an already-valid witness check is not necessary; the probability calculation concerns runs that have not yet succeeded.
 
+### Why independent repetition improves the guarantee
+
+With fresh independent samples, every previous miss leaves the next hit probability unchanged. For $q=1/2$, each additional trial halves the remaining failure probability: $1/2,1/4,1/8,\ldots$. If instead one random index is selected once and then reread $k$ times, all observations are identical. Failure remains $1/2$, regardless of $k$. Repetition only amplifies success when it introduces the randomness required by the probability argument.
+
+Sampling without replacement has a different calculation. In an array with five targets and five nontargets, the probability of three misses is
+
+$$
+\frac5{10}\frac4{9}\frac3{8}=\frac1{12},
+$$
+
+rather than $1/8$ with replacement. After five misses, a sixth distinct sample must succeed. This is a supplementary comparison to expose the model assumption, not the sampling procedure used by the slides.
+
+The unbounded routine has $\mathbb E[K]=2$. For a version stopped after at most $k$ trials, the actual number of samples is $\min(K,k)$, so its expectation is $\sum_{t=0}^{k-1}2^{-t}=2(1-2^{-k})$, while its worst-case budget is still $k$. The equality follows because sample $t+1$ is performed exactly when the first $t$ samples missed. Worst-case budget, expected samples, and failure probability answer three different questions.
+
+## Applications in the next lectures
+
+[[Minimum Cut]] applies Monte Carlo analysis: a returned cut is valid, but optimality can fail, and independent repetitions reduce that risk. Its contraction proof multiplies **conditional** probabilities along a run. [[Sorting#Randomized quicksort]] instead gives a Las Vegas example: random pivots change running time while preserving sorting correctness, and conditioning on pivot rank produces an expected-time recurrence.
+
 ## Takeaways
 
 - Always specify whether the expectation is over inputs or internal random choices.
@@ -342,6 +421,11 @@ These are original problems using the deck's probability model.
 
 > [!faq]- Worked solution
 > The expected count is $1/(1/4)=4$. Failure after $k$ trials is $(3/4)^k$. The required budget is $k\ge\lceil\ln(0.01)/\ln(3/4)\rceil=17$. The logarithm of $3/4$ is negative, so dividing by it reverses the inequality. Sixteen trials fail with probability about $0.01002$; seventeen with about $0.00752$.
+
+**3. Detect dependent repetition.** A sampler picks a uniform array index once, then checks that location 20 times. Half the array is `a`. What is its failure probability, and how should the procedure change to obtain $2^{-20}$?
+
+> [!faq]- Worked solution
+> It fails with probability $1/2$: choosing a `b` initially forces every check to miss. Sample a fresh independent uniform index on each trial to get the product $(1/2)^{20}$. Repeating a deterministic observation does not create independent evidence.
 
 ## Revision questions
 

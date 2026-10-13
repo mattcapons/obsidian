@@ -5,7 +5,7 @@ tags:
 ---
 # Advanced Algorithms and Parallel Programming
 
-Study collection for the six currently available slide decks. Read the notes in lecture order; follow the cross-links when a later lecture reuses an earlier idea.
+Study collection for the eight currently available slide decks. Read the notes in lecture order; follow the cross-links when a later lecture reuses an earlier idea.
 
 ## Lectures
 
@@ -17,14 +17,20 @@ Study collection for the six currently available slide decks. Read the notes in 
 | 4 | [[PRAM]] | Memory rules, work, cost, speedup, parallel patterns, scaling | [[lecture4-PRAM.pdf\|PRAM]] |
 | 4b | [[ISPC]] | SIMD, gangs, uniform/varying data, reductions, tasks | [[lecture4b-ISPC.pdf\|ISPC]] |
 | 5 | [[Randomized Algorithms]] | Indicators, hiring problem, Las Vegas, Monte Carlo | [[lecture5-Randomization.pdf\|Randomization]] |
+| 6 | [[Minimum Cut]] | Contraction, survival probabilities, amplification, Karger–Stein | [[lecture6-MinCut.pdf\|Minimum cut]] |
+| 7 | [[Sorting]] | Randomized quicksort, comparison lower bounds, counting and radix sort | [[lecture7-Sort.pdf\|Sorting]] |
 
 ## Study routes
 
 - **Analyze a sequential algorithm:** [[Algorithm as recipes#Asymptotic notation]] → [[Algorithm as recipes#Solving recurrences]] → [[Divide and Conquer#Comparison table]].
 - **Understand parallel performance:** [[PRAM#Performance quantities]] → [[PRAM#Reduction]] → [[PRAM#Strong and weak scaling]] → [[ISPC#Two levels of parallelism]].
 - **Analyze randomness:** [[Randomized Algorithms#Where randomness comes from]] → [[Randomized Algorithms#Indicator variables]] → [[Randomized Algorithms#The hiring problem]] → [[Randomized Algorithms#Las Vegas and Monte Carlo]].
+- **Apply randomized analysis:** [[Randomized Algorithms#Las Vegas and Monte Carlo]] → [[Minimum Cut#Success probability]] → [[Minimum Cut#Karger–Stein]] → [[Sorting#Randomized quicksort]].
+- **Understand sorting guarantees:** [[Algorithm as recipes#Sorting and correctness]] → [[Sorting#Quicksort and partitioning]] → [[Sorting#Comparison-sorting lower bound]] → [[Sorting#Counting sort]] → [[Sorting#Radix sort]].
 
 ## How to use these notes
+
+Course-specific source mapping, conventions, and outstanding gaps: [[University/Advanced Algorithms and Parallel Programming/Course Workflow|Course Workflow]].
 
 Reusable workflows: [[Study Note Prompts#Build and enhance a course collection|build notes for another course]] · [[Study Note Prompts#Continue when new slides arrive|add new slide material]].
 
@@ -32,6 +38,8 @@ Reusable workflows: [[Study Note Prompts#Build and enhance a course collection|b
 2. For each algorithm, identify the input, correctness argument, cost model, and complexity.
 3. Use the revision questions to test whether you can explain the result, rather than only recall its formula.
 4. Open the linked PDF pages for the original diagrams and code.
+
+The explanations now include intermediate reasoning, round-by-round and lane-by-lane traces, and additional local diagrams. In particular, [[PRAM#Tracing the doubling scan]], [[ISPC#What the manual shuffle reduction actually changes]], and [[Sorting#Expanding the expected recurrence for four keys]] unpack steps that were previously compressed.
 
 The notes consolidate repeated slides. Supplementary explanations and apparent slide errors are labeled explicitly. Revision questions include short answers at the end of each technical note.
 
@@ -44,9 +52,11 @@ The notes have been reviewed against the supplied slides and checked with select
 - [[PRAM#Exam practice]] — operation counts and sequential-baseline choices.
 - [[ISPC#Exam practice]] — active-lane reductions and gang/task distinctions.
 - [[Randomized Algorithms#Exam practice]] — expected hiring cost and sampling budgets.
+- [[Minimum Cut#Exam practice]] — edge sampling, amplification budgets, recursion termination.
+- [[Sorting#Exam practice]] — partition traces, expected comparisons, stability, radix cost models.
 
-The worked problems are original practice, not retrieved past-paper questions. The six decks establish the current collection's boundaries; they do not establish that every announced exam topic has already been supplied.
+The worked problems are original practice, not retrieved past-paper questions. The eight decks establish the current collection's boundaries; they do not establish that every announced exam topic has already been supplied.
 
 ## Topics announced but not yet supplied
 
-The introduction also announces randomized quicksort and selection, primality testing, min-cut, skip lists and treaps, dynamic programming, amortized and approximation methods, competitive analysis, and further parallel programming tools and patterns. These need additional decks before lecture-specific notes can be added.
+The introduction also announces selection/order statistics, primality testing, cryptosystems, skip lists and treaps, dynamic programming, amortized and approximation methods, competitive analysis, and further parallel programming tools and patterns. These need additional decks before lecture-specific notes can be added. Randomized quicksort and Karger/Karger–Stein min-cut are now covered by lectures 7 and 6 respectively; lecture 7 does not supply a selection algorithm.

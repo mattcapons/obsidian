@@ -36,6 +36,16 @@ The slides compare manual low-level vector coding, C/C++ compiler auto-vectoriza
 
 Source: [[lecture4b-ISPC.pdf#page=5|Architecture and approaches, pp. 5–8]].
 
+### From scalar instructions to a gang
+
+A scalar statement such as `y = x * x` operates on one value. Imagine a four-lane vector instruction whose inputs are $[1,2,3,4]$: it can produce $[1,4,9,16]$ with one issued multiplication instruction acting on four lanes. ISPC lets the source describe the per-instance calculation while the compiler arranges vector instructions and masks.
+
+This does not make an arbitrary four-step dependency chain four times faster. If one result is needed before the next can be computed, those operations remain sequential within each instance. The sine example obtains vector parallelism **across input values**; successive Taylor terms for one input still depend on earlier terms. More cores then provide a second opportunity to run multiple gangs at once.
+
+![[aapp-depth-ispc-simd.png|720]]
+
+*The lecture's scalar/vector comparison: a SIMD instruction applies the same operation to several lanes. This is different from launching several operating-system threads.* [[lecture4b-ISPC.pdf#page=6|Source slide 6]].
+
 ## Compilation and integration
 
 ISPC compiles its source into object code and can generate a header exposing exported functions. A C/C++ application includes the generated interface and links the object code with its own code. Task-based code additionally needs an appropriate task runtime.
@@ -47,6 +57,10 @@ This lets the application delegate computational kernels while retaining its sur
 *Compile the ISPC kernel and C/C++ application separately, then link their object files into one application.* [[lecture4b-ISPC.pdf#page=10|Source slide 10]].
 
 The deck links the [ISPC user guide](https://ispc.github.io/ispc.html) and [downloads](https://ispc.github.io/downloads.html). The user guide was consulted for the focused language clarifications below; examples in this note are study examples, not a compiled project.
+
+The generated header tells the C/C++ caller the exported function's interface; the object file contains its compiled implementation. Linking resolves that interface to executable code. A call passes array addresses and scalar parameters, so the caller and kernel must agree on data types, layout, lengths and who owns the memory. Declaring a function `export` exposes an entry point; it does not copy every input array automatically or create a multicore task schedule.
+
+A useful way to read the compilation picture is to follow one kernel: `.ispc` source becomes an object plus interface information; the C++ translation unit uses that interface; the linker combines the pieces. The task runtime is an additional dependency only when task operations are used. This explains the stages without assuming a particular installed compiler version or target flag.
 
 ## Gangs and program instances
 
@@ -74,6 +88,14 @@ The default for ordinary local scalar declarations is `varying`. A uniform input
 
 “Varying/private” describes per-instance values; it does not imply that all memory referenced by an instance is isolated. Instances can access shared array storage and can race if their writes collide.
 
+### Values, addresses, and ownership
+
+For a four-instance illustration, a uniform `size = 10` is one shared logical value. A varying index might have values $[0,1,2,3]$, and loading `vin[i]` then produces four input values. The array parameter may designate one common array even though different instances index different elements. “Uniform array parameter” does not mean all array entries contain the same number.
+
+Likewise, distinct varying indices must be justified. If the indices are $[0,1,1,3]$ and all active instances write `vout[i]`, two writes target element 1. Having separate varying local values does not make the destinations separate. In the lecture's `foreach` map, each iteration owns its output index, which supplies the required argument for noncolliding writes.
+
+A uniform loop counter is appropriate for the fixed Taylor term loop because every participating instance advances through the same term numbers. It would not describe independent iteration counts for pixels that escape at different times. Qualifiers express an invariant about values; they are not annotations to apply merely because one hopes for faster code.
+
 ### Masks and divergence
 
 **Supplementary language clarification:** a gang shares a program counter, while an execution mask identifies the active instances. A varying conditional can run both branches under different masks; varying loops continue until all participating instances finish. [Official ISPC execution model](https://ispc.github.io/ispc.html#control-flow-within-a-gang).
@@ -81,6 +103,16 @@ The default for ordinary local scalar declarations is `varying`. A uniform input
 For four lanes with inputs $[1,7,3,8]$ and condition `x > 5`, the true-branch mask is $[0,1,0,1]$. Only lanes 1 and 3 update their varying counters. A `uniform` counter would not represent four independent local counts.
 
 In a Mandelbrot gang where iteration counts are $[2,2,2,100]$, the long-running pixel keeps the loop going after the other three lanes become inactive. The pixels are independent, but their different control paths can reduce SIMD utilization.
+
+### A masked branch, step by step
+
+For inputs $[1,7,3,8]$, suppose the code says `if (x > 5) y = x*2; else y = x+1;`. The true mask activates lanes 1 and 3, writing 14 and 16 there. The false mask activates lanes 0 and 2, writing 2 and 4. After reconvergence, the gang has $y=[2,14,4,16]$.
+
+Both paths may require issued instructions, even though each logical instance takes only one path. An inactive lane does not “help” execute the other lane's work. As a simple utilization model, if each path costs one equal-cost vector arithmetic instruction, these two issued instructions contain eight lane slots but perform only four useful lane updates: 50% utilization of those arithmetic slots. Real instruction costs and compiler transformations can change the timing; the example isolates the effect of masks.
+
+![[aapp-depth-ispc-masks.png|720]]
+
+*Original four-lane branch trace. Each branch updates only its active lanes, then the results reconverge into one varying value.*
 
 ## The foreach statement
 
@@ -97,6 +129,14 @@ For `foreach (i = 0 ... 2)`, only indices 0 and 1 are written. Index 2 is not as
 A `foreach` over independent output cells naturally expresses a map. A two-dimensional domain can cover matrix rows and columns.
 
 Source: [[lecture4b-ISPC.pdf#page=19|foreach syntax]].
+
+### Handling a partial final group
+
+With ten elements and a four-instance gang, an illustrative contiguous schedule processes indices 0–3, then 4–7, then 8–9 with only two valid lanes. The last two lane positions must not read or write past the array. `foreach` provides the domain handling; this drawing is a possible schedule, not a promise that every target distributes all iteration spaces identically.
+
+The distinction between iteration index and `programIndex` matters here. The iteration index ranges over all ten elements; `programIndex` identifies one of the four instances and is reused as the gang processes more elements. Writing `vout[programIndex]` when the intended destination is `vout[i]` would repeatedly overwrite only the first four entries in such a schedule.
+
+For very small arrays, many lanes can be inactive even without branches. That and call overhead explain why exposing SIMD does not guarantee useful speedup for every input size.
 
 ## Example: approximating sine
 
@@ -155,6 +195,18 @@ This is a teaching approximation, not a replacement for a numerical library. Lar
 
 **Supplementary numerical check:** for $x=1$ and exactly three terms, the corrected kernel should approximate $1-1/6+1/120=101/120\approx0.8416667$. For $x=0$, every term is zero; for $x=-1$, the result is the negative of the value at $1$. These checks expose indexing and sign errors without treating a timing result as evidence of correctness.
 
+### Deriving the term update and its limitation
+
+Starting from $t_{j-1}=(-1)^{j-1}x^{2j-1}/(2j-1)!$, form the ratio to the next term:
+
+$$
+\frac{t_j}{t_{j-1}}=-\frac{x^2}{(2j)(2j+1)}.
+$$
+
+The next power adds two factors of $x$, the factorial adds the two successive integers, and the sign flips. This gives the update in the kernel directly and explains each part of the formula. At $x=1$, the first terms are $1,-1/6,1/120$; at $x=2$, they are $2,-8/6,32/120$, giving $14/15\approx0.933333$ after three terms.
+
+**Supplementary accuracy reasoning:** on $|x|\le1$, the alternating terms decrease in magnitude, so truncating after three terms has error at most $|x|^7/7!\le1/5040\approx0.0001984$ in exact arithmetic. This is a truncation bound, separate from floating-point rounding. Large $|x|$ does not satisfy the same simple decreasing-from-the-start argument; production sine functions use range reduction and more carefully designed approximations. The lecture kernel is useful for studying independent arithmetic work, but its domain and requested accuracy must be fixed before comparing implementations.
+
 ### Reading the timing screenshots
 
 The examples on pages 21 and 23 show C++ timings smaller than the corresponding ISPC timings in those particular runs. They do not establish that ISPC is always faster. Warm-up, optimization settings, vectorization, memory access, and implementation correctness all affect comparisons.
@@ -196,6 +248,14 @@ For input $[1,7,3,8,9,2,6,0]$ and threshold $5$, the final count is $4$. Every e
 
 Source: [[lecture4b-ISPC.pdf#page=26|Counting problem]] · [[lecture4b-ISPC.pdf#page=32|High-level reduction]].
 
+### Following local counts across groups
+
+For the eight-element threshold example and a four-instance contiguous schedule, the first group $[1,7,3,8]$ contributes local increments $[0,1,0,1]$. The second group $[9,2,6,0]$ contributes $[1,0,1,0]$. The varying counters finish as $[1,1,1,1]$, then the reduction returns the scalar 4.
+
+The varying `counter` is declared outside `foreach`, so each instance retains its running count across the iterations assigned to it. If it were reset at every group, earlier contributions would be lost. Each increment is local, avoiding a shared global counter with conflicting updates. The final reduction is where communication occurs deliberately.
+
+For a different valid assignment of iterations to instances, the individual local counts could differ while their sum remains 4. The correctness invariant is that the sum of local counters equals the number of matching elements processed so far, not that a particular lane must count a particular input subset.
+
 ### shuffle and extract
 
 - `shuffle(value, index)` obtains another instance's value, with source indices that may vary by instance.
@@ -211,6 +271,16 @@ The screenshot on page 33 shows overlapping timing ranges for the manual and bui
 
 Source: [[lecture4b-ISPC.pdf#page=25|Communication overview]] · [[lecture4b-ISPC.pdf#page=29|shuffle and extract, pp. 29–30]] · [[lecture4b-ISPC.pdf#page=31|Manual reduction]] · [[lecture4b-ISPC.pdf#page=33|Timings]].
 
+### What the manual shuffle reduction actually changes
+
+The page 31 code updates more lanes than just the group leaders. Starting from $[2,1,3,4]$, its first group size is 2 and source indices are $[1,1,3,3]$. The shuffled values are $[1,1,4,4]$, so counters become $[3,2,7,8]$. Only lanes 0 and 2 are now meaningful pair leaders. At group size 4, all lanes select lane 2's value 7, giving $[10,9,14,15]$. Only lane 0 is the leader for the complete group and holds the total 10.
+
+This explains why extracting lane 0 is correct while reducing **all four final counters** again would be wrong. The invariant is about the first lane of each group; other lanes are temporary values and need not describe disjoint sets. For this trace the shuffle sources are active and in range. A generalized manual routine must also establish those conditions under its masks. The built-in reduction avoids making the programmer maintain this particular leader invariant.
+
+![[aapp-depth-ispc-manual-reduction.png|720]]
+
+*The lecture marks the first instance of each group as the one with a valid partial result; shaded nonleaders should not be interpreted as additional independent totals.* [[lecture4b-ISPC.pdf#page=27|Source slide 27]].
+
 ## Tasks and multicore execution
 
 An ISPC task is a unit of work executed by a gang. A task function is declared with `task` and returns `void`.
@@ -224,6 +294,14 @@ A launching function implicitly waits before returning, as confirmed by the [off
 The runtime maps tasks to worker threads. Tasks are not guaranteed to correspond one-to-one to physical cores. The deck uses the example runtime `examples/common/tasksys.cpp` and mentions OpenMP, TBB, and pthreads as other approaches to multicore parallelism.
 
 Source: [[lecture4b-ISPC.pdf#page=36|Task model, pp. 36–37]] · [[lecture4b-ISPC.pdf#page=42|Multicore takeaway]].
+
+### Task granularity and completion
+
+Suppose eight equal row tasks run on a runtime with two worker threads. At most two workers execute tasks simultaneously; the remaining tasks wait to be scheduled. Each executing task uses a gang internally. The tasks may complete in a different order from their indices, but if they write disjoint rows the final matrix is unaffected by that order.
+
+Launching one task per scalar multiplication would expose many tasks but require coordination to combine products and incur large scheduling overhead. A row task groups substantial work and owns a clear output region. Conversely, one task for the entire matrix would offer only one unit of work to the multicore scheduler. Task granularity is the amount of useful work placed between scheduling events.
+
+A caller must not consume a task's output while the task can still be writing it. The `sync`/return guarantee supplies completion at the function boundary; it is not a mechanism that repairs conflicting writes among simultaneously executing tasks. This is the distinction between waiting for work to finish and proving that the work is race-free.
 
 ## Example: matrix multiplication with tasks
 
@@ -263,6 +341,12 @@ Page 41 illustrates broader CPU utilization with tasks. Utilization alone is not
 
 Source: [[lecture4b-ISPC.pdf#page=39|Gang-only implementation]] · [[lecture4b-ISPC.pdf#page=40|Task implementation]] · [[lecture4b-ISPC.pdf#page=41|Resource usage]].
 
+### Reading one task's memory accesses
+
+For row $i$ and four neighboring columns $j,j+1,j+2,j+3$, one iteration of the $k$ loop reads the same $A_{ik}$ but four adjacent entries $B_{k,j},\ldots,B_{k,j+3}$. Each lane accumulates a different $C$ entry. The next $k$ iteration advances to another row of $B$, while the partial sums stay local.
+
+This layout explains both the opportunity and the limit: adjacent lane accesses can become efficient vector loads, but repeatedly streaming the rows of $B$ for many output rows can still move considerable data. SIMD width is not a bound on total memory bandwidth, and assigning more row tasks does not make memory traffic free. The [official ISPC performance guide](https://ispc.github.io/perfguide.html#understanding-gather-and-scatter) discusses coherent accesses; this row-by-row trace explains that principle for the supplied kernel.
+
 ## Mandelbrot exercise
 
 For each complex parameter $c$, define
@@ -285,6 +369,23 @@ A renderer assigns each pixel a complex parameter and records an escape iteratio
 **Supplementary implementation reasoning:** nearby pixels may require very different iteration counts. Within a gang, this leads to inactive lanes waiting for longer-running lanes; across tasks, it can cause load imbalance. Use moderate-sized tiles and measure both computation time and load distribution. A finite maximum iteration count approximates the image and does not prove membership for every non-escaping sample.
 
 Source: [[lecture4b-ISPC.pdf#page=43|Exercise and set definition, pp. 43–44]] · [[lecture4b-ISPC.pdf#page=45|Rendering diagram]].
+
+### From complex arithmetic to a pixel loop
+
+Write $z=x+iy$ and $c=a+ib$. Expanding $z^2+c$ gives
+
+$$
+x_{\mathrm{next}}=x^2-y^2+a,\qquad
+y_{\mathrm{next}}=2xy+b.
+$$
+
+Both expressions must use the **old** $x,y$. Overwriting $x$ before computing the new $y$ changes the recurrence. A renderer maps a pixel column and row to $a,b$ in a chosen complex-plane rectangle, initializes $x=y=0$, then iterates until escape or its iteration budget. This connects the formula on slide 44 to the coordinate picture on slide 45.
+
+For the example escape counts $[2,2,2,100]$, equal-cost iteration arithmetic performs 106 useful lane-iterations while a four-lane gang spends up to $4\cdot100=400$ lane-iteration slots, about 26.5% utilization in that simplified model. This is not a claim about measured CPU efficiency; it isolates divergence. Tasks can spread tiles across cores, but uneven escape times within a gang remain a separate SIMD issue.
+
+![[aapp-depth-ispc-pixel-map.png|720]]
+
+*The slide maps a complex parameter to a pixel and colors it using the iteration count. Read the parameter $c$ as fixed for a pixel while $z$ changes through the recurrence.* [[lecture4b-ISPC.pdf#page=45|Source slide 45]].
 
 ## Reduction order and numerical results
 
@@ -314,6 +415,11 @@ These are original traces of the language ideas covered by the slides.
 
 > [!faq]- Worked solution
 > No. A task executes a gang's SPMD work using SIMD execution; the runtime schedules tasks on four workers. The task count, logical instance count, hardware vector width, and worker count are different quantities. Multiple tasks must be scheduled on each worker over time.
+
+**3. Check a manual reduction.** In the page 31 four-lane trace, why is the final vector $[10,9,14,15]$ compatible with a correct result of 10? Would summing it be valid?
+
+> [!faq]- Worked solution
+> Only each group's first lane is required to hold that group's correct sum. After the final stage there is one group, led by lane 0. The other entries contain overlapping/duplicated intermediate contributions. `extract(counter,0)` returns 10; summing the final vector would return 48 and double-count contributions.
 
 ## Revision questions
 
