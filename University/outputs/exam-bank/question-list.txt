@@ -1,0 +1,465 @@
+Questions: 464
+0 | 2022-01-14-1st 1 | Discuss why dynamic programming matter for Longest common subsequence algorithm.
+1 | 2022-01-14-1st 2 | Describe how Karger and Stein algorithm works. Discuss and compare the two algorithms’ complexity.
+2 | 2022-01-14-1st 3 | Explain the difference between Monte Carlo and Las Vegas Randomized based algorithms.
+3 | 2022-02-11-1st 1 | Describe how treap Union works.
+4 | 2022-02-11-1st 2 | Describe the Karger’s Min-Cut Algorithm. Is the Karger’s Min-Cut Algorithm a Monte Carlo randomization- based algorithm?
+5 | 2022-02-11-1st 3 | Discuss counting sort complexity. Why does counting sort matter in radix sort?
+6 | 2022-02-11-2nd-a 1A | OpenMP is an API dedicated to the acceleration of applications in distributed-memory environments: true or false?
+7 | 2022-02-11-2nd-a 1B | Describe the functionality of the private, shared, default Data Scope Attribute Clauses
+8 | 2022-02-11-2nd-a 1C | How can the search of an element inside an (unbalanced) binary tree be accelerated using OpenMP?
+9 | 2022-02-11-2nd-a 1D | The maximum number of threads that can be spawned in OpenMP depends on the underlying hardware architecture: true or false?
+10 | 2022-02-11-2nd-a 2A | List and describe the different kinds of parallelism according to the Flynn taxonomy, together with architectures implementing them when possible.
+11 | 2022-02-11-2nd-a 2B | It is not recommendable to mix parallelism technologies since doing so increases the complexity of the compiled binaries: true or false?
+12 | 2022-02-11-2nd-a 2C | Describe the map parallel pattern and at least one fusion optimization that can be applied to it.
+13 | 2022-02-11-2nd-a 3A | Briefly describe the hierarchy of memories of CUDA programming model
+14 | 2022-02-11-2nd-a 3B | Briefly describe which are the main issues in implementing a parallel application with CUDA.
+15 | 2022-02-11-2nd-a 3C | Concurrent CUDA Streams: operations within a given stream occur in order. True or false?
+16 | 2022-02-11-2nd-a 4A | How can a thread communicate the result of its computation after completing its routine?
+17 | 2022-02-11-2nd-a 4B | Can PThread be used to implement a fixed-depth parallel pipeline? How should the pipeline stages synchronize their execution?
+18 | 2022-02-11-2nd-b 1A | OpenMP is an API dedicated to the acceleration of applications in distributed-memory environments: true or false?
+19 | 2022-02-11-2nd-b 1B | Describe the functionality of the private, shared, default Data Scope Attribute Clauses
+20 | 2022-02-11-2nd-b 1C | How can the search of an element inside an (unbalanced) binary tree be accelerated using OpenMP?
+21 | 2022-02-11-2nd-b 1D | The maximum number of threads that can be spawned in OpenMP depends on the underlying hardware architecture: true or false?
+22 | 2022-02-11-2nd-b 2A | List and describe the different kinds of parallelism according to the Flynn taxonomy, together with architectures implementing them when possible.
+23 | 2022-02-11-2nd-b 2B | It is not recommendable to mix parallelism technologies since doing so increases the complexity of the compiled binaries: true or false?
+24 | 2022-02-11-2nd-b 2C | Describe the map parallel pattern and at least one fusion optimization that can be applied to it.
+25 | 2022-02-11-2nd-b 3A | Is the synchronization between processes explicit or implicit?
+26 | 2022-02-11-2nd-b 3B | Describe the behavior of MPI_Bcast.
+27 | 2022-02-11-2nd-b 3C | What are communicators? What is the advantage of defining multiple communicators in an MPI program?
+28 | 2022-02-11-2nd-b 4A | How can a thread communicate the result of its computation after completing its routine?
+29 | 2022-02-11-2nd-b 4B | Can PThread be used to implement a fixed-depth parallel pipeline? How should the pipeline stages synchronize their execution?
+30 | 2022-06-09-1st 1 | Describe how divide and conquer work with some examples and why master theorem method matter.
+31 | 2022-06-09-1st 2 | Describe how the randomized select-ith method work. Is it a Monte Carlo randomization-based algorithm?
+32 | 2022-06-09-1st 3 | Discuss how skip list insertion work? What about its worst vs average case complexity?
+33 | 2022-06-09-2nd-a 1A | Are there any compiler-related limitations to the use of OpenMP?
+34 | 2022-06-09-2nd-a 1B | What are Work-Sharing constructs in OpenMP? Describe their use and the conditions required for them to effectively parallelize a task.
+35 | 2022-06-09-2nd-a 1C | Describe how to parallelize the search of an element inside a list of unknown length using OpenMP.
+36 | 2022-06-09-2nd-a 1D | Is it possible to express nested parallelism in OpenMP? Is it generally a good practice?
+37 | 2022-06-09-2nd-a 2A | Is it possible to obtain the same low level implementation starting from different parallel programming models descriptions of the same parallel pattern?
+38 | 2022-06-09-2nd-a 2B | Parallel programming models using threads spawn a single process, therefore the program I/O correctness is always guaranteed: true or false?
+39 | 2022-06-09-2nd-a 2C | Describe the scan parallel pattern. Can it be implemented using different approaches with respect to the computation of intermediate values?
+40 | 2022-06-09-2nd-a 3A | Describe what is CUDA
+41 | 2022-06-09-2nd-a 3B | Briefly describe which are the main issues in implementing a parallel application with CUDA.
+42 | 2022-06-09-2nd-a 3C | How parallel threads are identified in a CUDA kernel?
+43 | 2022-06-09-2nd-a 4A | Does PThread use an explicit or implicit synchronization model? Describe common approaches to manage the access to critical sections.
+44 | 2022-06-09-2nd-a 4B | What are the possible approaches for managing the execution flow of different threads using PThreads?
+45 | 2022-06-09-2nd-b 1A | Are there any compiler-related limitations to the use of OpenMP?
+46 | 2022-06-09-2nd-b 1B | What are Work-Sharing constructs in OpenMP? Describe their use and the conditions required for them to effectively parallelize a task.
+47 | 2022-06-09-2nd-b 1C | Describe how to parallelize the search of an element inside a list of unknown length using OpenMP.
+48 | 2022-06-09-2nd-b 1D | Is it possible to express nested parallelism in OpenMP? Is it generally a good practice?
+49 | 2022-06-09-2nd-b 2A | Is it possible to obtain the same low level implementation starting from different parallel programming models descriptions of the same parallel pattern?
+50 | 2022-06-09-2nd-b 2B | Parallel programming models using threads spawn a single process, therefore the program I/O correctness is always guaranteed: true or false?
+51 | 2022-06-09-2nd-b 2C | Describe the scan parallel pattern. Can it be implemented using different approaches with respect to the computation of intermediate values?
+52 | 2022-06-09-2nd-b 3A | Which memory architectures are supported by MPI? Are there any differences with the other parallel programming models presented?
+53 | 2022-06-09-2nd-b 3B | Describe the behavior of MPI_Gather.
+54 | 2022-06-09-2nd-b 3C | Describe how to spread data across processes according to a user-defined distribution using MPI.
+55 | 2022-06-09-2nd-b 4A | Does PThread use an explicit or implicit synchronization model? Describe common approaches to manage the access to critical sections.
+56 | 2022-06-09-2nd-b 4B | What are the possible approaches for managing the execution flow of different threads using PThreads?
+57 | 2022-06-30-2nd-a 1A | Describe the multithreading paradigm used in OpenMP and the lifespan of threads with respect to tasks.
+58 | 2022-06-30-2nd-a 1B | How is variables visibility managed in OpenMP?
+59 | 2022-06-30-2nd-a 1C | What is the “omp sections” directive used for?
+60 | 2022-06-30-2nd-a 1D | Is it possible and/or mandatory to define barriers in OpenMP?
+61 | 2022-06-30-2nd-a 2A | Describe the workpile pattern, situations where it may be applied and possible implementations.
+62 | 2022-06-30-2nd-a 2B | Is the Quicksort algorithm easy to parallelize? Propose a high-level description of a possible parallelization and analyze its potential bottlenecks.
+63 | 2022-06-30-2nd-a 2C | Describe how to implement a map pattern with one of the parallel programming models presented in the course.
+64 | 2022-06-30-2nd-a 3A | Briefly describe which are the main disadvanteges in implementing a parallel application with CUDA with respect to OpenMP.
+65 | 2022-06-30-2nd-a 3B | Briefly describe the hierarchy of memories of CUDA programming model.
+66 | 2022-06-30-2nd-a 3C | Briefly describe how threads are grouped in CUDA.
+67 | 2022-06-30-2nd-a 4A | When a new thread is spawned and assigned a routine, is it possible to automatically pass some arguments to that routine?
+68 | 2022-06-30-2nd-a 4B | What is the difference between joinable and detached threads?
+69 | 2022-06-30-2nd-b 1A | Describe the multithreading paradigm used in OpenMP and the lifespan of threads with respect to tasks.
+70 | 2022-06-30-2nd-b 1B | How is variables visibility managed in OpenMP?
+71 | 2022-06-30-2nd-b 1C | What is the “omp sections” directive used for?
+72 | 2022-06-30-2nd-b 1D | Is it possible and/or mandatory to define barriers in OpenMP?
+73 | 2022-06-30-2nd-b 2A | Describe the workpile pattern, situations where it may be applied and possible implementations.
+74 | 2022-06-30-2nd-b 2B | Is the Quicksort algorithm easy to parallelize? Propose a high-level description of a possible parallelization and analyze its potential bottlenecks.
+75 | 2022-06-30-2nd-b 2C | Describe how to implement a map pattern with one of the parallel programming models presented in the course.
+76 | 2022-06-30-2nd-b 3A | Does MPI parallelize over thread or processes? What are the main differences between the two approaches?
+77 | 2022-06-30-2nd-b 3B | Describe the behavior of the MPI_Reduce routine.
+78 | 2022-06-30-2nd-b 3C | Are there any restrictions on the use of communication routines in MPI, particularly related to the use of other routines?
+79 | 2022-06-30-2nd-b 4A | When a new thread is spawned and assigned a routine, is it possible to automatically pass some arguments to that routine?
+80 | 2022-06-30-2nd-b 4B | What is the difference between joinable and detached threads?
+81 | 2022-09-07-1st 1 | Describe the Karger and Stein Min-Cut Algorithm. How is the complexity of this algorithm computed? Which is the randomization class the algorithm belongs to?
+82 | 2022-09-07-1st 2 | Discuss an example of dynamic programming based algorithm. Which are the key features of an algorithm for being classified as a dynamic programming algorithm?
+83 | 2022-09-07-1st 3 | Describe how Treap split/union works.
+84 | 2022-09-07-2nd-b 1A | What are the static and dynamic extents of the omp parallel directive?
+85 | 2022-09-07-2nd-b 1B | Is it possible for the programmer to control the distribution of parallel loop iterations across threads when using an omp for directive?
+86 | 2022-09-07-2nd-b 1C | What is the functionality of the omp_set_num_threads function? Are there other ways for achieving the same result?
+87 | 2022-09-07-2nd-b 1D | Is it possible to perform a reduction over a single variable using OpenMP?
+88 | 2022-09-07-2nd-b 2A | Is it possible to use multiple parallelization models in the same program? Would it benefit some hardware architectures in particular?
+89 | 2022-09-07-2nd-b 2B | Describe the scan parallel pattern. Can it be implemented using different approaches with respect to the computation of intermediate values?
+90 | 2022-09-07-2nd-b 2C | Which are the main differences between parallel programming models based on threads and those based on processes in terms of low-level information management and architectures that can benefit from them?
+91 | 2022-09-07-2nd-b 3A | Describe the processes synchronization model used by MPI.
+92 | 2022-09-07-2nd-b 3B | Describe the behavior of the MPI_Bcast routine.
+93 | 2022-09-07-2nd-b 3C | Describe the use of communicators in MPI and the advantages of defining multiple communicators in a program.
+94 | 2022-09-07-2nd-b 4A | What is the use of condition variables in PThreads?
+95 | 2022-09-07-2nd-b 4B | Is it possible to share work over a fixed size thread pool that is spawned once at the beginning of the program execution? What kind of parallel pattern can be implemented in this way?
+96 | 2022-11-08-1st 1A | Describe the main characteristics of a PRAM model. (2)
+97 | 2022-11-08-1st 1B | Define the speedup when a sequential code is accelerated with p processors. (1)
+98 | 2022-11-08-1st 1C | Please describe the differences between the Amdahl and the Gustafson laws. (1)
+99 | 2022-11-08-1st 2A | Describe the Longest Common Subsequence (LCS) algorithm. (2)
+100 | 2022-11-08-1st 2B | What kind of temporal or spatial complexity has LCS? (1)
+101 | 2022-11-08-1st 2C | LCS is classified as a dynamic programming algorithm. Why? (1)
+102 | 2022-11-08-1st 3A | Please discuss the difference between Online and Offline algorithms. (2)
+103 | 2022-11-08-1st 3B | Describe how Treap split/union works.? (2)
+104 | 2022-11-08-1st 4 | Consider a k-bit binary counter counting upwards from 0 using the INCREMENT procedure, implemented according to the following pseudocode: INCREMENT(A, k) 1 i = 0 2 while i < k and A[i] == 1 3 A[i] = 0 4 i = i + 1 5 if i < k 6 A[i] = 1 Provide a pseudocode implementation for the RESET procedure that returns the counter to its original state (all bits set to 0). Compute the amortized cost for both procedures for a sequence of n operations starting with n-1 INCREMENTs and ending with one RESET using one of the amortized analysis methods seen at lecture. You are allowed to modify the increment procedure and add additional variables to improve the amortized cost of the RESET procedure.
+105 | 2022-12-22-2nd 1A | Could you please summarize why manual parallelization is preferred to automatic parallelization? (1)
+106 | 2022-12-22-2nd 1B | Designing a «good» parallel algorithm by extracting all the available parallelism is not enough. True/False? Why?(1)
+107 | 2022-12-22-2nd 1C | Loop-carried dependences prevent loop parallelization. True/False? Why?(1)
+108 | 2022-12-22-2nd 1D | Is an output dependence a true dependence? True/False? Why? (1)
+109 | 2022-12-22-2nd 2A | Please define what a parallel reduction is: assumptions, complexity, example.(1)
+110 | 2022-12-22-2nd 2B | Please describe how a parallel pattern gather works. (1)
+111 | 2022-12-22-2nd 2C | Describe all the collision rules for a scatter pattern. (1)
+112 | 2022-12-22-2nd 2D | Describe how the pack parallel pattern could be parallelly implemented. (1)
+113 | 2022-12-22-2nd 3A | Using Pthreads, is it possible to synchronize the execution flow of multiple threads so that they will progress beyond a given point only after all threads have reached it? (1)
+114 | 2022-12-22-2nd 3B | What’s the use of the omp single directive? (1)
+115 | 2022-12-22-2nd 3C | How can we control the number of threads spawned by the omp parallel pragma? (2)
+116 | 2022-12-22-2nd 4A | Describe the functionality of the MPI_Gather subroutine (You can skip this question if you completed the second challenge) (2)
+117 | 2022-12-22-2nd 4B | How does MPI differ from Pthreads and OpenMP? (2)
+118 | 2023-01-17-1st 1A | Please describe the matrix multiply algorithm on PRAM (Pseudo code. Complexity). (1)
+119 | 2023-01-17-1st 1B | Please describe the type of Read/Write abilities a PRAM may have. (1)
+120 | 2023-01-17-1st 1C | The PRAM algorithm computing the prefix sum of a vector uses concurrent reads. True/False? Where? (1)
+121 | 2023-01-17-1st 1D | Gustafson says that the Amdahl law is wrong. True/False? Why? (1)
+122 | 2023-01-17-1st 2A | Describe the algorithm selecting the ith smallest of n elements (Pseudo code, complexity). (2)
+123 | 2023-01-17-1st 2B | Is there a Select ith smallest of n elements algorithm that runs in linear time in the worst case? (1)
+124 | 2023-01-17-1st 2C | In which class of randomized algorithms could the algorithm described in A be inserted? (1)
+125 | 2023-01-17-1st 3A | Please explain what the competitive analysis is meant for. (2)
+126 | 2023-01-17-1st 3B | Describe the Karger and Stein algorithm and its complexity. (2)
+127 | 2023-01-17-1st 4 | Consider a stack data structure storing elements of a given type, which can be assumed to be empty at the start time. Users can push one element on top of the stack using a PUSH operation, which has a constant cost of 1 and remove the top with a POP operation, which has a constant cost of 1. Compute the real cost of the MULTIPOP(k) operation that removes min{k,s} elements from the top of the stack where s is the number of elements in the stack. Determine the worst possible sequence of n operations on this stack and compute the amortized cost for the operations contained in the sequence using one of the methods seen during the course.
+128 | 2023-01-17-2nd 1A | What is meant by DOALLloop? Example? (1)
+129 | 2023-01-17-2nd 1B | Is the following code parallelizable? (1) for (i=10; i<100; i++) a[i-10] = a[i] + 100;
+130 | 2023-01-17-2nd 1C | Please describe the differences between flow, output and anti-dependencies. (2)
+131 | 2023-01-17-2nd 2A | Please describe the stencil pattern: assumptions, complexity, example. (1)
+132 | 2023-01-17-2nd 2B | Please describe the differences between Split and Bin parallel patterns. (1)
+133 | 2023-01-17-2nd 2C | Given an input collection of 100 values and an auxiliary array of 10, which parallel pattern between the gather and the scatter is producing an output collection of 10 values? (1)
+134 | 2023-01-17-2nd 2D | What is meant by separatinghyperplaneinarecurrenceparallelization? (1)
+135 | 2023-01-17-2nd 3A | Given an algorithm with the following structure: And the following values of work: W(Task1) = 2, W(Task2) = 1, W(Task3) = 3, W(Task4) = 2, W(Task5) = 1, W(Task6) = 2, W(Task7) = 5, W(Task8) = 1. Compute the Work and the Makespan of the algorithm. What is the minimum number of threads required to guarantee the maximum parallelism? (1) Provide a pseudocode implementation using OpenMP (2)
+136 | 2023-01-17-2nd 3B | What’s the use of the omp critical directive? (1)
+137 | 2023-01-17-2nd 4A | What are Communicators in MPI? Describe if it is possible to define custom communicators in a program at runtime, and why doing so would be useful. (You can skip this question if you completed the second challenge) (2)
+138 | 2023-01-17-2nd 4B | What are PThread condition variables and what is their use? (2)
+139 | 2023-02-14-1st 1A | Please define a PRAM. (1)
+140 | 2023-02-14-1st 1B | Please describe what “Common CRCW” means. (1)
+141 | 2023-02-14-1st 1C | Please define the speed-up of a parallel algorithm according to the PRAM model (1)
+142 | 2023-02-14-1st 1D | Please describe how Gustafson defines the speed-up. (1)
+143 | 2023-02-14-1st 2A | Please describe how the Divide and Conquer class of algorithms works. (2)
+144 | 2023-02-14-1st 2B | How the complexity of a Divide and Conquer algorithm can be computed? (1)
+145 | 2023-02-14-1st 2C | Please discuss the complexity of the “Powering a number” algorithm. (1)
+146 | 2023-02-14-1st 3A | Please explain what the memoization technique is meant for and where it matters. (2)
+147 | 2023-02-14-1st 3B | Describe the skip-list data structure, how the search is performed, and which complexity has. (2)
+148 | 2023-02-14-1st 4 | Consider a dynamic table data structure for storing a variable number of elements in memory. When created, the table has space for storing only one element, and pushing one element in the table has a constant cost. If the table is full, twice the size of the original table is allocated to a new table and all elements of the original table are copied in the new table. The cost for allocating one unit of memory is constant. Compute the real cost for inserting n elements into a new-allocated table (having an initial capacity for storing only one element) and determine the amortized cost for the allocating the same number of elements using one of the methods seen during the course.
+149 | 2023-02-14-2nd 1A | “Parallel execution must address control, data, and system dependences”. What is meant by “dependency” in this context? (1)
+150 | 2023-02-14-2nd 1B | Is the following code parallelizable? Are there better parallelizable solutions? (2) for (j=1; j<100; j++) for (i=0; i<100; i++) a[i][j] = f(a[i][j-1]);
+151 | 2023-02-14-2nd 1C | Please explain the differences between “loop-carried“ and “loop-independent”.(1)
+152 | 2023-02-14-2nd 2A | Please describe the map pattern: assumptions, complexity, example. (1)
+153 | 2023-02-14-2nd 2B | Please describe the differences between Zip and Unzip parallel patterns. (1)
+154 | 2023-02-14-2nd 2C | Describe all the collision rules for a scatter pattern. (1)
+155 | 2023-02-14-2nd 2D | What is meant by “permutationscatter”? (1)
+156 | 2023-02-14-2nd 3A | Is it possible to implement a pipeline paradigm using OpenMP? What parallel paradigm is adopted by default in OpenMP?(2)
+157 | 2023-02-14-2nd 3B | Is it possible to control the visibility of variables between different threads in OpenMP? In which ways? (2)
+158 | 2023-02-14-2nd 4A | Describe the functionality of the MPI_Reduce subroutine (You can skip this question if you completed the second challenge) (2)
+159 | 2023-02-14-2nd 4B | What is the difference between joinable and detached threads in PThread? Can detached threads’ execution be synchronized with other threads? (2)
+160 | 2023-06-19-1st 1A | Please define the different phases followed in a PRAM computation. (1)
+161 | 2023-06-19-1st 1B | Please describe what “Arbitrary CW” means. (1)
+162 | 2023-06-19-1st 1C | Please define the efficiency of a parallel algorithm according to the PRAM model (1)
+163 | 2023-06-19-1st 1D | Please compare the assumptions behind the Gustafson and the Amdahl laws. (1)
+164 | 2023-06-19-1st 2A | Please describe how Strassen’s algorithm works. (2)
+165 | 2023-06-19-1st 2B | Why is the Master Theorem method frequently used to evaluate the asymptotic complexity of a Divide and Conquer algorithm can be computed? (2)
+166 | 2023-06-19-1st 3A | Please explain why an algorithm could be classified as a Dynamic programming algorithm. (2) (You can skip this question if you completed the first challenge)
+167 | 2023-06-19-1st 3B | Describe the treap data structure, how the search is performed, and which complexity has. (2)
+168 | 2023-06-19-1st 4A | Please explain what aggregate amortized analysis is. (2)
+169 | 2023-06-19-1st 4B | Please explain why the amortized analysis matters for the analysis of the complexity of the Move to Front algorithm. (2)
+170 | 2023-06-19-2nd 1A | Is it possible to eliminate a flow dependency by modifying the program and ensuring that the program remains equivalent? (2)
+171 | 2023-06-19-2nd 1B | Is the following code parallelizable? Are there better parallelizable solutions? (2) for (i=0; i<100; i++) for (j=1; j<100; j++) a[i][j] = f(a[i][j-1]);
+172 | 2023-06-19-2nd 2A | Please describe the reduce pattern: assumptions, complexity, and example. (2)
+173 | 2023-06-19-2nd 2B | Please describe the differences between Gather and scatter parallel patterns. (1)
+174 | 2023-06-19-2nd 2C | What is meant by “mergescatter”? (1)
+175 | 2023-06-19-2nd 3A | Please describe what is meant by nested parallelism and how could be implemented in OpenMP?(2)
+176 | 2023-06-19-2nd 3B | What is the difference between static and dynamic schedule clauses of OpenMP? In which OpenMP directive is it used? (2)
+177 | 2023-06-19-2nd 4A | Describe the procedure MPI_Send (You can skip this question if you completed the second challenge) (2)
+178 | 2023-06-19-2nd 4B | What is it meant for the procedure pthread_barrier_wait? (2)
+179 | 2023-07-11-1st 1A | How the time complexity in a PRAM model is computed? (1)
+180 | 2023-07-11-1st 1B | How is the communication via shared memory performed in a PRAM model? (latency vs parallel accesses) (1)
+181 | 2023-07-11-1st 1C | Discuss the following sentence: “If a problem has no feasible/efficient solution on PRAM, it has no feasible/efficient solution for any parallel machine.” True or False? (1)
+182 | 2023-07-11-1st 1D | Define the “work” in a PRAM model. (1)
+183 | 2023-07-11-1st 2A | Please discuss how the complexity of the powering of a number algorithm can be computed. Please report also the complexity in terms of time and space. (2)
+184 | 2023-07-11-1st 2B | The best worst-case running time that we have seen for comparison sorting is O(nlg n). Can you explain why? (2)
+185 | 2023-07-11-1st 3A | Please explain how the disjoint set data structure works and which optimizations have been considered to reduce the complexity of the operations. (2) (You can skip this question if you completed the first challenge)
+186 | 2023-07-11-1st 3B | Describe the skip list data structure and how the union is performed, and which complexity has. (2)
+187 | 2023-07-11-1st 4A | Detail the Longest Common Subsequence algorithm: pseudo code and space and temporal complexity. (2)
+188 | 2023-07-11-1st 4B | What is meant by “accounting method”? At which class of algorithms could be applied? (2)
+189 | 2023-07-11-2nd 1A | DOALL loops have linear speedup even using the Amdahl law. Could you please write a short pseudo code showing an example of a DOALL loop? (2)
+190 | 2023-07-11-2nd 1B | Is the following code parallelizable? Are there better parallelizable solutions? (2) for (i=0; i<100; i++) for (j=0; j<91; j++) a[i][j+9] = f(a[i][j]);
+191 | 2023-07-11-2nd 2A | Please describe the stencil pattern: assumptions, complexity, and example. (2)
+192 | 2023-07-11-2nd 2B | Please describe how the Pack parallel pattern could be implemented. (1)
+193 | 2023-07-11-2nd 2C | What is meant by “permutationscatter”? (1)
+194 | 2023-07-11-2nd 3A | Please describe what is meant by pipelined parallelism and how could be implemented in OpenMP?(2)
+195 | 2023-07-11-2nd 3B | Please describe the work-sharing constructs in OpenMP. (2)
+196 | 2023-07-11-2nd 4A | Describe the functionality and the parameters meaning of the function MPI_Bcast (You can skip this question if you completed the second challenge) (2)
+197 | 2023-07-11-2nd 4B | Please shortly describe the main characteristic of the domain-specific language Halide. (2)
+198 | 2023-09-11-1st 1A | Which of the PRAM model’s assumptions help to compute the time complexity? (1)
+199 | 2023-09-11-1st 1B | Which of the assumptions of the PRAM model simplifies the communication between processor and memory? (1)
+200 | 2023-09-11-1st 1C | Please define when a write conflict occurs in a PRAM model. (1)
+201 | 2023-09-11-1st 1D | Define the “cost” in a PRAM model. (1)
+202 | 2023-09-11-1st 2A | Please discuss the cases the master theorem solves and under which assumption the theorem holds. Apply then to the binary search algorithm. Is the master theorem of any help in case we would like to estimate the spatial complexity of an algorithm? (2)
+203 | 2023-09-11-1st 2B | Please explain following theorem and why does not hold for the counting sort algorithm: Theorem: “Any decision tree that can sort nelements must have height W(nlg n)” (2)
+204 | 2023-09-11-1st 3A | Please explain which optimizations have been considered to reduce the complexity of the disjoint-set operations. (2) (You can skip this question if you completed the first challenge)
+205 | 2023-09-11-1st 3B | Describe the treap data structure and how the split is performed, and which complexity has. (2)
+206 | 2023-09-11-1st 4A | Detail the Move to Front algorithm. What approach is followed to estimate the temporal complexity of this class of algorithms? Which class of algorithms does it belongs to? (2)
+207 | 2023-09-11-1st 4B | What is meant by “potential method”? At which class of algorithms could be applied? Examples? (2)
+208 | 2023-09-11-2nd 1A | Could you please describe the statement/operation dependency and how and when it can be removed? (2)
+209 | 2023-09-11-2nd 1B | Under which condition the following code is parallelizable? In case the conditions hold, are there better parallelizable solutions? (2) for (i=0; i<100; i++) for (j=0; j<10; j++) a[i][j] = f(a[i][j]);
+210 | 2023-09-11-2nd 2A | Please describe the reduce pattern: assumptions, complexity, and example. (2)
+211 | 2023-09-11-2nd 2B | Please describe how the Unpack parallel pattern could be implemented. (2)
+212 | 2023-09-11-2nd 3A | Please describe what is meant by task parallelism (Parallel Task Graph) and how could be implemented in OpenMP?(2)
+213 | 2023-09-11-2nd 3B | Please describe the simd directive in OpenMP. (2)
+214 | 2023-09-11-2nd 4A | Describe the functionality and the parameters meaning of the function MPI_Gather(You can skip this question if you completed the second challenge) (2)
+215 | 2023-09-11-2nd 4B | Please briefly discuss what the term “schedule” means in the domain-specific language Halide. (2)
+216 | 2023-11-09-1st 1A | Explain why, in the PRAM model, the number of instructions executed is used as time complexity. (2)
+217 | 2023-11-09-1st 1B | Define the cost C when a sequential code is accelerated with p processors. (1)
+218 | 2023-11-09-1st 1C | What is it meant with a fixed time model? Is it referring to Gustafson or Amdahl’s law? (1)
+219 | 2023-11-09-1st 2A | Why the BDD data structure can be classified as an example of dynamic programming. (2)
+220 | 2023-11-09-1st 2B | What kind of spatial complexity has the longest common subsequence problem? (1). 
+221 | 2023-11-09-1st 2C | Why does spatial complexity matter for all dynamic programming algorithms? (1)
+222 | 2023-11-09-1st 3A | Please discuss the competitive analysis. For which class of algorithm does it matter? (2)
+223 | 2023-11-09-1st 3B | Describe how the search for skip-list data structure works. (2)
+224 | 2023-11-09-1st 4A | Please explain the following theorem and why does not hold for the counting sort algorithm: Theorem: “Any decision tree that can sort nelements must have a height of W(nlog n)” (2)
+225 | 2023-11-09-1st 4B | What is meant by “potential method”? To which class of algorithms could be applied? Examples? (2)
+226 | 2023-12-21-2nd 1A | Could you please write a short pseudo code showing an example of a DOALL loop in C? Which parallel pattern is directly connected to the DOALL loop? (2)
+227 | 2023-12-21-2nd 1B | Under what conditions can the following code be parallelized? If these conditions are met, is there a way to write the code for better parallelization? (2) for (i=1; i<100; i++) for (j=0; j<10; j++) a[i][j] = f(a[j][i-1]);
+228 | 2023-12-21-2nd 2A | Please describe the scan pattern: assumptions, complexity, and example. (2)
+229 | 2023-12-21-2nd 2B | Please describe how the Split parallel pattern could be implemented. (2)
+230 | 2023-12-21-2nd 3A | Describe the main advantages of OpenMP over Pthreads. (1)
+231 | 2023-12-21-2nd 3B | Consider the following task graph: Calculate work and parallelism. Is it a good idea to use 3 threads? (1) Write a corresponding OpenMP implementation. (2)
+232 | 2023-12-21-2nd 4A | Most of the point-to-point communication functions have a parameter named “tag”. Please, state its type, explain its usage and why we might need to use the “MPI_ANY_TAG” value. (1) 
+233 | 2023-12-21-2nd 4B | Explain when the MPI usage overlaps with OpenMP and when OpenMP cannot replace MPI. (3)
+234 | 2024-01-26-1st 1A | Please discuss the following sentence: “In a PRAM model, processors do not have private local memories”. True/False? (1)
+235 | 2024-01-26-1st 1B | Please define what is meant by “Efficiency” in a PRAM application. (1)
+236 | 2024-01-26-1st 1C | Please provide an example of a PRAM application relying on a Common CW policy. (1)
+237 | 2024-01-26-1st 1D | Please relate the strong scaling vs the weak scaling to the Amdahl vs Gustafson laws. (1)
+238 | 2024-01-26-1st 2A | Please describe how the partitioning work in the “Select the ith smallest of nelements” algorithm. How is it randomized? (2)
+239 | 2024-01-26-1st 2B | What kind of time complexity has the longest common subsequence problem (1) 
+240 | 2024-01-26-1st 2C | Which is the type/class of randomized algorithms used by the primality testing algorithms presented during the lectures? (1)
+241 | 2024-01-26-1st 3A | Please discuss the amortized analysis. For which class of algorithm does it matter? (2)
+242 | 2024-01-26-1st 3B | Please provide the implementation of the split operation for Treaps. What is the operation complexity? (2)
+243 | 2024-01-26-1st 4A | Please describe the difference between on-line and off-line algorithms. How is their complexity analyzed? (2)
+244 | 2024-01-26-1st 4B | Please explain the differences between “Computed table” and “Unique table” with BDDs. Why are they used? (2)
+245 | 2024-01-26-2nd 1A | Is it possible to eliminate a flow dependency by modifying the program and ensuring that the program remains equivalent? Is it the same with output dependency? Please show an example of what can be done. (2)
+246 | 2024-01-26-2nd 1B | Under what conditions can the following code be parallelized? If these conditions are met, is there a way to write the code for better parallelization? (2) for (i=1; i<100; i++) for (j=0; j<100; j++) c[j][i] += a[i]*b[j];
+247 | 2024-01-26-2nd 2A | Please describe the parallel gather pattern: assumptions, complexity, and example. (2)
+248 | 2024-01-26-2nd 2B | Please describe how the “Merge collision resolution” works. Is it related to the parallel gather pattern? (2)
+249 | 2024-01-26-2nd 3A | What is the difference between joinable and detached threads in Pthreads? (1)
+250 | 2024-01-26-2nd 3B | What is the difference between joining and waiting on a barrier in Pthreads? (1)
+251 | 2024-01-26-2nd 3C | Describe how each thread in the following diagram behaves at runtime as it encounters points marked with 1, representing pragma omp cancel, and with 2, representing pragma omp cancellation point. (2)
+252 | 2024-01-26-2nd 4A | What are the approaches that the receiver in point-to-point communications can use to allocate a suitable receiving buffer, i.e. allocate a suitable number of elements? (1) 
+253 | 2024-01-26-2nd 4B | Why are there multiple MPI implementations? (1)
+254 | 2024-01-26-2nd 4C | What are the main differences between collective and point-to-point functions when we focus on data exchange functions? (2)
+255 | 2024-02-16-1st 1A | Are PRAM architectures using explicit or implicit synchronizations? (1)
+256 | 2024-02-16-1st 1B | Please define what is meant by “Speed up” in a PRAM application. (1)
+257 | 2024-02-16-1st 1C | Please describe how prefix scan works when a PRAM architecture is considered. (1)
+258 | 2024-02-16-1st 1D | Is the Amdahl law a fixed-time model? (1)
+259 | 2024-02-16-1st 2A | Please define when Las Vegas and Monte Carlo algorithms are defined as efficient algorithms. (2)
+260 | 2024-02-16-1st 2B | What are the key properties that the auxiliary sorting algorithm used by the radix sort must have to achieve efficient and correct sorting? (1) 
+261 | 2024-02-16-1st 2C | Please describe the divide and conquer powering of a number algorithm. What complexity does it have? (1)
+262 | 2024-02-16-1st 3A | Please discuss how the longest common subsequence works. What about its complexity? (2)
+263 | 2024-02-16-1st 3B | Please provide the implementation of the union operation for Treaps. What is the operation complexity? (2)
+264 | 2024-02-16-1st 4A | What are the key differences between Karger vs Karger&Steing algorithms? (2)
+265 | 2024-02-16-1st 4B | What is meant by “accounting method”? To which class of algorithms could be applied? Examples? (2)
+266 | 2024-02-16-2nd-1 1A | Please describe the Parallel Data Management Patterns: Pipeline. Are flow dependencies preventing correct parallelization of pipeline parallel pattern when present? (2)
+267 | 2024-02-16-2nd-1 1B | Under what conditions can the following code be parallelized? If these conditions are met, is there a way to write the code for better parallelization? (2) for (i=1; i<100; i++) for (j=0; j<100; j++) b[i][j] += f(a[i][j]);
+268 | 2024-02-16-2nd-1 2A | Please describe the parallel scatter pattern: assumptions, complexity, and example. (2)
+269 | 2024-02-16-2nd-1 2B | Please describe how the Pack parallel pattern works. How is implemented? (2)
+270 | 2024-02-16-2nd-1 3A | Why is synchronization necessary when programming with the shared memory model? (1)
+271 | 2024-02-16-2nd-1 3B | Which Pthreads API call is needed to ensure that spawned threads can finish their execution after main() returns? (1)
+272 | 2024-02-16-2nd-1 3C | What is the difference between static and dynamic schedule of OpenMP for loops? (1)
+273 | 2024-02-16-2nd-1 3D | Describe what is the effect of the following Halide schedule: (1) gradient.split(x, x_outer, x_inner, 4); gradient.vectorize(x_inner);
+274 | 2024-02-16-2nd-1 4A | When is it possible that at least two MPI processes are stuck waiting for each other, without the possibility of continuing their execution? (1) 
+275 | 2024-02-16-2nd-1 4B | When in doubt about the behavior of an MPI function, why is it important to rely on the MPI standard instead of just trying how it works with your MPI implementation? (1)
+276 | 2024-02-16-2nd-1 4C | What is the relationship between i) MPI functions with blocking semantics, ii) MPI functions without blocking semantics, and iii) MPI + multithreading? (2) ù
+277 | 2024-06-26-1st-1 1A | Explain the factors that simplify the computation of space complexity in a PRAM application, giving them in order of priority. (1)
+278 | 2024-06-26-1st-1 1B | Please define what is meant by “Work” in a PRAM application. (1)
+279 | 2024-06-26-1st-1 1C | Please describe how matrix x vector works when a PRAM architecture is considered. (1)
+280 | 2024-06-26-1st-1 1D | Please describe an example of Common CRCW with a PRAM model. (1)
+281 | 2024-06-26-1st-1 2A | Please list the main differences between the Las Vegas and Monte Carlo algorithms. (2)
+282 | 2024-06-26-1st-1 2B | What are the key properties of the counting sort algorithm? (1)
+283 | 2024-06-26-1st-1 2C | Please list the condition under which the Master Theorem can be used to compute the complexity of an algorithm. (1) 
+284 | 2024-06-26-1st-1 3A | Please discuss the key properties of a Treap and of its search function. (2)
+285 | 2024-06-26-1st-1 3B | Please describe the key properties of the Karger & Stein algorithm. (2)
+286 | 2024-06-26-1st-1 4A | What is the Unique Table, and what is it used for in ROBDDs? Does it also have to do with the canonicity of ROBDD? (2)
+287 | 2024-06-26-1st-1 4B | Please describe the “move to front” heuristic (complexity included). Why did we use amortized analysis instead of the worst-case? (2)
+288 | 2024-06-26-2nd 1A | Please write a short pseudo-code showing how the map parallel pattern could be implemented in OpenMP. (2)
+289 | 2024-06-26-2nd 1B | Under what conditions can the following code be parallelized? If these conditions are met, is there a way to write the code for better parallelization? (2) for (i=1; i<100; i++) for (j=i; j<100; j++) b[i][j] += f(a[i][j]);
+290 | 2024-06-26-2nd 2A | Please describe the parallel reduce pattern: assumptions, complexity, and example. (2)
+291 | 2024-06-26-2nd 2B | Please describe how the Split parallel pattern works. How is it implemented? (2)
+292 | 2024-06-26-2nd 3A | What error will arise compiling the following code snippet? (1.5) #pragma omp parallel for private(x) reduction(+:sum) default(none) for (i=1;i<= num_steps; i++) { x = (i-0.5)*step; sum = sum + 4.0/(1.0+x*x); }
+293 | 2024-06-26-2nd 3B | What happens when a variable is declared as firstprivate in an OpenMP pragma? (1)
+294 | 2024-06-26-2nd 3C | Why is cancellation in OpenMP described as “best effort” cancellation? (1.5)
+295 | 2024-06-26-2nd 4A | Why should I use the MPI_Probe function? (1) 
+296 | 2024-06-26-2nd 4B | Provide an example(s) of how the MPI tag and rank can be used in a program (1)
+297 | 2024-06-26-2nd 4C | What are communicators in MPI? Why should I use more than one? (2)
+298 | 2024-07-24-1st 1A | Explain the factors that simplify the computation of time complexity in a PRAM application, giving them in order of priority. (1)
+299 | 2024-07-24-1st 1B | Please define what “Cost” means in a PRAM application. (1)
+300 | 2024-07-24-1st 1C | Please describe how matrix x matrix works when considering a PRAM architecture. (1)
+301 | 2024-07-24-1st 1D | Please describe what happens in a PRAM model when the number of threads exceeds the number of processors. (1)
+302 | 2024-07-24-1st 2A | Please discuss the cases the master theorem solves and under which assumption the theorem holds. Apply then to the powering algorithm. Is the master theorem of any help if we would like to estimate the spatial complexity of an algorithm? (2)
+303 | 2024-07-24-1st 2B | Please describe the “Select the i th smallest of n elements” algorithm and its key properties. How is it randomized? (1) 
+304 | 2024-07-24-1st 2C | To which class does the Move-To-Front Algorithm belong? How is its complexity evaluated? (1)
+305 | 2024-07-24-1st 3A | Please discuss how a Union is implemented in a Treap Data-Structure. How does the number of rotations impact the search for an element in a Treap? (2)
+306 | 2024-07-24-1st 3B | Describe how the insertion for skip-list data structure works. What about its complexity? (2)
+307 | 2024-07-24-1st 4A | Please discuss the key property of the longest common subsequence. In which class of algorithm can be inserted? Why? (2)
+308 | 2024-07-24-1st 4B | What is meant by “amortized analysis”? To which type of algorithms could be applied? Examples? (2)
+309 | 2024-07-24-2nd 1A | Please comment this sentence: “Design a «good» parallel algorithm by extracting all the available parallelism is not enough.” (1)
+310 | 2024-07-24-2nd 1B | Is it possible to eliminate an anti-dependency by modifying the program and ensuring that the program remains equivalent? Is it the same with output-dependency? Please show an example of what can be done in both cases. (1)
+311 | 2024-07-24-2nd 1C | Under what conditions can the following code be parallelized? If these conditions are met, is there a way to write the code for better parallelization? (2) for (i=0; i<100; i++) for (j=2; j<100; j++) a[i][j] = f(a[i][j]) + a[i][j-2];
+312 | 2024-07-24-2nd 2A | Please describe the parallel Split pattern: assumptions, complexity, and example. (2)
+313 | 2024-07-24-2nd 2B | Please describe how the Unzip parallel pattern works. How is it implemented (pseudo code required)? (2)
+314 | 2024-07-24-2nd 3A | Is it better to implement the program with 3 or 4 threads? (1)
+315 | 2024-07-24-2nd 3B | Write a corresponding OpenMP implementation. (2)
+316 | 2024-07-24-2nd 3C | If you could optimize one task bringing its work to 0 (maintaining the graph structure), which one would yield the best improvement in terms of parallel execution time? (1)
+317 | 2024-07-24-2nd 4A | Why should I use mpirun to execute my MPI application? (1) 
+318 | 2024-07-24-2nd 4B | Explain what the MPI_Comm_split function does and give an example of its usage, without implementation details such as the function signature. (1)
+319 | 2024-07-24-2nd 4C | Explain the blocking semantics in point-to-point communications and the problems it introduces in the program. (2)
+320 | 2024-09-05-1st 1A | In a PRAM, 𝑝𝐸𝑝(𝑛) is equal to the application speed-up? (1)
+321 | 2024-09-05-1st 1B | What happens to the PRAM model if we have a bounded number of processors smaller than the one required by the theoretical model? What happens to the speed-up if the application is a do-all kind of application and we have a bounded number of processors? (2)
+322 | 2024-09-05-1st 1C | Could you please discuss the following sentence? “Amdahl's law presupposes that the computing requirements will stay the same, given increased processing power. In other words, an analysis of the same data will take less time given more computing power“. Is it true or false? What does it mean? (1)
+323 | 2024-09-05-1st 2A | Please discuss the types of problems that the master theorem can solve and the assumptions under which the theorem holds. Apply the theorem to the matrix multiplication algorithm and explain why Strassen’s version is more efficient. (2)
+324 | 2024-09-05-1st 2B | Please describe the partitioning algorithm used by the quick sort and its key properties. How is it randomized? (1) 
+325 | 2024-09-05-1st 2C | To which class does the Longest Common Subsequence Algorithm belong? How is its complexity evaluated? (1)
+326 | 2024-09-05-1st 3A | Why does randomized Treap structure have a complexity on average similar to a balanced binary tree? Treap required all priorities to be pairwise distinct. How can this property be satisfied? (2)
+327 | 2024-09-05-1st 3B | Please discuss how a Split is implemented in a Treap Data-Structure. What happen in case the k element is in the initial Treap? (2)
+328 | 2024-09-05-1st 4A | Please discuss the competitive analysis. In which class of algorithm is used? Amortized analysis could be of some use; why? (2)
+329 | 2024-09-05-1st 4B | What is the Computed Table, and what is it used for in ROBDDs? Does it also have to do with the canonicity of ROBDD? (2)
+330 | 2024-09-05-2nd 1A | Please comment on this sentence: “Automatic parallelization cannot be used because it produces wrong solutions.”. True/false, partially true? (1)
+331 | 2024-09-05-2nd 1B | “A single instruction can manipulate different data at a time”. Please comment on the sentence and discuss which kind of parallelism it is referring to. (1)
+332 | 2024-09-05-2nd 1C | Which loop can be parallelized and under which conditions? Does the overhead of the runtime impact the parallelization of the loops? Which is the best way to parallelize this code on multi-core systems? (2) for (i=0; i<1000; i++) for (j=0; j<4; j++) a[i][j] = f(a[i][j]) + a[i][j];
+333 | 2024-09-05-2nd 2A | Please describe the parallel reduce pattern: assumptions, complexity, and example. (2)
+334 | 2024-09-05-2nd 2B | Please explain how the parallel shift pattern functions and provide its implementation (including pseudo-code). Also, please indicate its complexity. (2)
+335 | 2024-09-05-2nd 3A | Describe the method to qualitatively evaluate a parallel algorithm through its data flow graph. (1)
+336 | 2024-09-05-2nd 3B | Describe what is the effect of the following OpenMP directive: (2) #pragma omp for simd schedule(simd:static, 5)
+337 | 2024-09-05-2nd 3C | In Halide, it is good practice to schedule pipeline stages from the output to the input. Is this statement true or false? Explain. (1)
+338 | 2024-09-05-2nd 4A | Provide an example of when it is useful to use the MPI_Barrier function. (1) 
+339 | 2024-09-05-2nd 4B | What is the main difference between MPI and OpenMPI? (1)
+340 | 2024-09-05-2nd 4C | Since each MPI process has a different memory address space, how is it possible to have a deadlock? Also, make an example to explain how we can solve it. (2)
+341 | 2024-11-12-1st 1A | “In a PRAM model, synchronization primitives are not required when data is exchanged through the shared memory.” True/False? Why? (1)
+342 | 2024-11-12-1st 1B | Please show the formula defining the “Efficiency” in a PRAM model. (1)
+343 | 2024-11-12-1st 1C | Can you provide an example where the “work” done by a parallel PRAM program exceeds that of the sequential version of the same algorithm? (1)
+344 | 2024-11-12-1st 1D | What does it mean fixed-size model? Does it refer to Gustafson or Amdahl’s law? (1)
+345 | 2024-11-12-1st 2A | Please describe the ideas used to improve the Karger approach to solving the min-cut problem. What changed with respect to the asymptotic complexity with respect to the initial approach? (2)
+346 | 2024-11-12-1st 2B | Master Theorem method is an important tool for the Divide and Conquer class of algorithms. Why and under which assumptions the theorem could be applied? (1)
+347 | 2024-11-12-1st 2C | What is meant by the memoization technique, and in which class of algorithm does it matter? (1)
+348 | 2024-11-12-1st 3A | Please describe the differences between Las Vegas and Monte Carlo algorithms, even considering time complexity issues. (2)
+349 | 2024-11-12-1st 3B | Describe how the split for Treaps data structure works and discuss its complexity. (2)
+350 | 2024-11-12-1st 4A | Please explain what “Lower bound for comparison sorting” means and its implications. (1) 
+351 | 2024-11-12-1st 4B | Please show the pseudo-code of the partitioning algorithm used by Quicksort and report its variants, complexity, and usage in other algorithms. (2) 
+352 | 2024-11-12-1st 4C | Why is the Counting sort used as the auxiliary algorithm of the Radix sort? (1)
+353 | 2025-01-24-1st 1A | In a PRAM model, “all processors can access all memory cells in unit time. Could you please provide a detailed explanation of the implications of this assumption? (1)
+354 | 2025-01-24-1st 1B | Could you please elaborate on the conditions under which the following formula holds as an equality and when it holds as an inequality: SUp ≤ p?"
+355 | 2025-01-24-1st 1C | Could you please elaborate on what “weak scaling” means? To which law we have seen during the lectures is referring to? (1)
+356 | 2025-01-24-1st 1D | Please describe the speed-up when a fixed-size model is considered. (1)
+357 | 2025-01-24-1st 2A | Could you please describe how the Strassen algorithm improves matrix multiplication? Additionally, which class of algorithms does the Strassen approach belong to? (2)
+358 | 2025-01-24-1st 2B | "Why can BDD be considered an example of a data structure that exploits dynamic programming? How does asymptotic complexity change with memoization?" (2)
+359 | 2025-01-24-1st 3A | What are the key ideas of the basic Karger approach compared to previous approaches? Does it affect the worst-case complexity?" (2)
+360 | 2025-01-24-1st 3B | Describe how the search for Skip-list data structure works and discuss its complexity. (2)
+361 | 2025-01-24-1st 4A | Please discuss the complexity of the partitioning algorithm used by the quick sort. (1) 
+362 | 2025-01-24-1st 4B | Please discuss the different variants of the Select-ith algorithm. (2) 
+363 | 2025-01-24-1st 4C | Describe the ideas behind the primality test algorithm presented during the lectures. Which class of randomized approach does it belong to? (1)
+364 | 2025-01-24-2nd 1A | Please explain when a dependence can be classified as lexicallyforwarddependence. (1)
+365 | 2025-01-24-2nd 1B | What does PCAM Design Methodology mean? (1)
+366 | 2025-01-24-2nd 1C | Where and under what conditions can the following code be parallelized? Is there a way to write the code for better parallelization if these conditions are met? (2) for (i=0; i<100; i++) { for (j=1; j<100; j++) a[i][0] += f(a[i-5][j]); for (j=0; j<100; j++) b[i][j] += f(b[i][j]); }
+367 | 2025-01-24-2nd 2A | Please describe the parallel scan pattern, including assumptions, complexity, and examples. (2)
+368 | 2025-01-24-2nd 2B | Please discuss how the Zip parallel pattern works. How is it implemented (pseudo code required)? (2)
+369 | 2025-01-24-2nd 3A | What are the main differences between Pthreads and OpenMP? (1) Consider the following task graph:
+370 | 2025-01-24-2nd 3B | Calculate Span and Parallelism. If Tasks 0, 2 and 10 represent the thread management overhead, what is the maximum theoretical speedup over a sequential implementation? (1) 
+371 | 2025-01-24-2nd 3C | Write a corresponding OpenMP implementation. (2) 
+372 | 2025-01-24-2nd 4A | What is the role of the root parameter in the MPI_Gather function? How does it relate to the sending and receiving buffers? (1)
+373 | 2025-01-24-2nd 4B | When two MPI processes are running on two different computers, e.g. on two HPC nodes, is it possible that they could end up in a deadlock? (explain the answer) (1)
+374 | 2025-01-24-2nd 4C | What is an MPI communicator? How and why should I manipulate communicators? Please also provide an example where it is useful. (2)
+375 | 2025-02-14-1st 1A | What can be said about the time complexity of a PRAM-based application when the PRAM model has a bounded number of processors? (1)
+376 | 2025-02-14-1st 1B | How is the communication via shared memory performed in a PRAM model? (latency vs parallel accesses)
+377 | 2025-02-14-1st 1C | Could you please discuss the differences between “weak scaling” and “strong scaling”? To which laws we have seen during the lectures are referring to? (1)
+378 | 2025-02-14-1st 1D | Please define and discuss the speed-up when Gustafson’s law is considered. (1)
+379 | 2025-02-14-1st 2A | Could you please describe how the powering algorithm works? Additionally, which class of algorithms does it belong to? (2)
+380 | 2025-02-14-1st 2B | Please discuss the role of the computed table on BDD ITE operation. How does the ITE asymptotic complexity change with this table?" (2)
+381 | 2025-02-14-1st 3A | Could you explain which aspects of primality testing use randomization and how that process works? Additionally, would you classify it as a Las Vegas randomized algorithm? (2)
+382 | 2025-02-14-1st 3B | Describe how the split and the union work in a treap and discuss their complexity. (2)
+383 | 2025-02-14-1st 4A | Please discuss the lower bound of the comparison-based sort algorithms. (1) 
+384 | 2025-02-14-1st 4B | Please discuss the different variants of the amortized analysis. For what class of problems are they used? (2) 
+385 | 2025-02-14-1st 4C | Could you please list the characteristics of the counting sort algorithm that make it suitable for use in radix sort? (1)
+386 | 2025-02-14-2nd 1A | Please describe and show an example of Parallel Data Management Patterns: pipeline. (1)
+387 | 2025-02-14-2nd 1B | What dependencies can be eliminated by renaming the variables? (1)
+388 | 2025-02-14-2nd 1C | Where and under what conditions can the following code be parallelized? Is there a way to write the code for better parallelization if these conditions are met? Assume that a and b store integers. (2) for (i=3; i<100; i++) { for (j=1; j<100; j++) a[i][0] *= f(a[i][j]); for (j=0; j<100; j++) b[i-3][j] += f(b[i][j]); }
+389 | 2025-02-14-2nd 2A | Please describe the parallel Scatter pattern, including assumptions, PRAM-based complexity, and examples. (2)
+390 | 2025-02-14-2nd 2B | Please discuss how the Pack parallel pattern works. How is it implemented (pseudo code required and PRAM-based complexity)? (2)
+391 | 2025-02-14-2nd 3A | List similarities and differences between a single and a master region in OpenMP. (1)
+392 | 2025-02-14-2nd 3B | What happens when threads encounter a barrier in Pthreads? Is the same behavior achievable through joining? (1) 
+393 | 2025-02-14-2nd 3C | Describe how each thread in the following diagram behaves at runtime as it encounters points marked with 1, representing pragma omp cancel, and with 2, representing pragma omp cancellation point. (2) 
+394 | 2025-02-14-2nd 4A | What do I get from an MPI implementation, e.g. from OpenMPI? (1)
+395 | 2025-02-14-2nd 4B | Make an example where non-blocking semantics does not help with solving an MPI deadlock. (1)
+396 | 2025-02-14-2nd 4C | How MPI_Reduce work when the send and receive data are buffers with a single element? What happens when the buffers have more than one element? Describe how the result is computed. (2)
+397 | 2025-06-05-1st 1A | How does the PRAM model abstract away synchronization and communication, and what are the implications for algorithm design? (1)
+398 | 2025-06-05-1st 1B | How do the different types of concurrent write (CW) models affect algorithm design in PRAM? (1)
+399 | 2025-06-05-1st 1C | How does the matrix-vector multiplication example illustrate strong scaling, and what would change in a weak scaling scenario? (1)
+400 | 2025-06-05-1st 1D | Why does Amdahl’s Law suggest diminishing returns with increasing processors, and how does Gustafson’s Law counter this? (1)
+401 | 2025-06-05-1st 2A | In class, we studied two algorithms for minimum cut in a graph. Describe the behavior of both algorithms, including their algorithmic class and complexity. Based on the discussion held in class, explain why one might be preferable over the other. (2)
+402 | 2025-06-05-1st 2B | How do the unique table and computed table contribute to the efficiency and canonicity of BDDs?" (2)
+403 | 2025-06-05-1st 3A | Why does quicksort perform poorly in the worst case, and how can this be mitigated? Report the class of algorithms to which it belongs and its average-case complexity. According to the definition, is it an efficient algorithm? (2)
+404 | 2025-06-05-1st 3B | Describe how the insert for the Skip-list data structure works and discuss its complexity. (2)
+405 | 2025-06-05-1st 4A | Why is amortized analysis useful in algorithm design, especially for data structures? (1) 
+406 | 2025-06-05-1st 4B | Describe the Select-ith deterministic algorithm and its complexity. Why is dividing into groups of 5 critical for the deterministic Select-ith algorithm’s performance? (2) 
+407 | 2025-06-05-1st 4C | What does it mean if the potential difference ΔΦ is negative in the potential method? What about the sign of Φ. (1)
+408 | 2025-06-05-2nd 1A | How does the Fork-Join pattern differ from a barrier in parallel programming? (1)
+409 | 2025-06-05-2nd 1B | How does the Workpile pattern differ from a standard Map pattern? (1)
+410 | 2025-06-05-2nd 1C | Consider the following nested loop: for (j = 0; j < 100; j++) { for (i = 1; i < 100; i++) { a[i][j] = f(a[i-1][j]); } } Evaluate the cache-friendliness of this code. How does the memory layout of the array affect performance, and what changes could improve cache utilization? Is it still parallelizable? How? Justify your answer. (2)
+411 | 2025-06-05-2nd 2A | How can the map and reduce patterns be fused, and what is the benefit of doing so? (1)
+412 | 2025-06-05-2nd 2B | In the context of parallel scan, what is the difference between an inclusive and an exclusive scan? What about the complexity? (1)
+413 | 2025-06-05-2nd 2C | Please discuss how the Split parallel pattern works. How is it implemented (pseudo code required and PRAM-based complexity)? (2)
+414 | 2025-06-05-2nd 3A | It is always necessary to place an explicit barrier at the end of an OpenMP work sharing construct. Is this statement true or false? Explain. (1)
+415 | 2025-06-05-2nd 3B | List the factors that determine the number of threads in an OpenMP parallel region. (1) 
+416 | 2025-06-05-2nd 3C | Describe the effects of the following pragma. (2) 
+417 | 2025-06-05-2nd 4A | Modern HPC systems feature cores in the order of millions. Why can MPi help my application to use more cores than a plain OpenMP application?(1)
+418 | 2025-06-05-2nd 4B | Make an example where the program’s correct execution requires MPI_probe (1)
+419 | 2025-06-05-2nd 4C | MPI functions with non-blocking semantics, e.g. MPI_Irecv, and multi-threading programming, e.g. OpenMP, can be used to solve the same problem. What is the problem and how can the two approaches be used to solve it? (2)
+420 | 2025-07-04-1st 1A | What does it imply that each memory cell can hold an integer of unbounded size in a PRAM? (1)
+421 | 2025-07-04-1st 1B | Given an algorithm with T1(n)=n3 and Tp(n)=n3/p, analyze the speedup and efficiency. What can you conclude? (1)
+422 | 2025-07-04-1st 1C | Why is the prefix sum algorithm on PRAM more efficient than the basic sum algorithm, and what is the trade-off? (1)
+423 | 2025-07-04-1st 1D | How does Gustafson’s Law support the concept of weak scaling, and what is its implication for massively parallel systems? (1)
+424 | 2025-07-04-1st 2A | In class, we studied an algorithm that shows the main hallmarks of dynamic programming. Describe the algorithm and its complexity, and why it is classified as a good dynamic programming example. (2)
+425 | 2025-07-04-1st 2B | Please list the main differences, including the efficiency, between the Las Vegas and Monte Carlo algorithms. (2)
+426 | 2025-07-04-1st 3A | Describe an algorithm seen during the course lectures where the potential method has been used. (2)
+427 | 2025-07-04-1st 3B | Describe how the union and the split work in a treap and discuss its complexity. (2)
+428 | 2025-07-04-1st 4A | Please describe the partitioning algorithm used by the quick sort and its key properties. How is it randomized? (1) 
+429 | 2025-07-04-1st 4B | What are the differences between the randomized and deterministic algorithms for solving the Select-ith problem? (2) 
+430 | 2025-07-04-1st 4C | What are the characteristics of an algorithm that require the amortized analysis methods? (1)
+431 | 2025-07-04-2nd 1A | What is the difference between a true dependence and an anti-dependence? (1)
+432 | 2025-07-04-2nd 1B | What are the challenges of using a shared state in a Map function? (1)
+433 | 2025-07-04-2nd 1C | Consider the following nested loop: for (j = 0; j < 100; j++) { b[j] = f1(a[j]); } for (j = 99; j >= 0; j--) { a[j] = f2(b[j]); } Which loop can be parallelized and under which conditions (j is declared as an integer)? Is there a way to improve the code? Is the OpenMP nowait clause a possible option? Justify your answers. (2)
+434 | 2025-07-04-2nd 2A | Please describe the parallel reduce pattern: assumptions, PRAM complexity, and example. What about the work done? Is it different from the one done by the sequential algorithm? (2)
+435 | 2025-07-04-2nd 2B | Please discuss how the Unpack parallel pattern works. How is it implemented (pseudo code required and PRAM-based complexity)? (2)
+436 | 2025-07-04-2nd 3A | The input to a High-Level Synthesis tool is a Register-Transfer Level description of an accelerator. Is this statement true or false? Explain. (1) Consider the following task graph, where all tasks contain the same amount of Work:
+437 | 2025-07-04-2nd 3B | Indicate the critical path in the figure, and calculate the Parallelism. (1) 
+438 | 2025-07-04-2nd 3C | Write a corresponding OpenMP implementation, explaining your choice of work-sharing construct. (2) 
+439 | 2025-07-04-2nd 4A | Which software components do I get from an MPI implementation? (1)
+440 | 2025-07-04-2nd 4B | The following is the MPI_Recv signature: int MPI_Recv(void *buf, int count, MPI_Datatype datatype, int source, int tag, MPI_Comm comm, MPI_Status *status) What value should I provide to the count parameter? (1)
+441 | 2025-07-04-2nd 4C | Make an example where MPI_Comm_split is useful. Do not describe what the function does. Describe a scenario where it makes sense to use it, how you use it, and the reason you use it. (2)
+442 | 2025-09-05-1st 1A | What kind of synchronization does PRAM use? (1)
+443 | 2025-09-05-1st 1B | Which of the assumptions of the PRAM model simplifies the communication between the processor and the memory? (1)
+444 | 2025-09-05-1st 1C | Discuss the following sentence: “If a problem has no feasible/efficient solution on PRAM, it has no feasible/efficient solution for any parallel machine.” True or False? (1)
+445 | 2025-09-05-1st 1D | Please compare the assumptions behind the Gustafson and the Amdahl laws. (1)
+446 | 2025-09-05-1st 2A | Please describe how the Divide and Conquer class of algorithms works by using one of the algorithms presented in class. (2)
+447 | 2025-09-05-1st 2B | Please explain what the competitive analysis is meant for by using one of the examples presented during the course lectures. (2)
+448 | 2025-09-05-1st 3A | Please explain what the memoization technique is meant for and where it matters. (2)
+449 | 2025-09-05-1st 3B | Describe the Karger and Stein algorithm and its complexity. (2)
+450 | 2025-09-05-1st 4A | What is meant by “accounting method”? To which class of algorithms could be applied? Examples? (1) 
+451 | 2025-09-05-1st 4B | Describe the skip list data structure and how the search is performed, and what the complexity is. (2) 
+452 | 2025-09-05-1st 4C | Please explain what “Lower bound for comparison sorting” means and its implications. (1)
+453 | 2025-09-05-2nd 1A | Could you please summarize why manual parallelization is preferred to automatic parallelization? (1)
+454 | 2025-09-05-2nd 1B | Please describe the differences between flow, output, and anti-dependencies. (1)
+455 | 2025-09-05-2nd 1C | Consider the following nested loop: for (i=0; i<100; i++) { for (j=0; j<100; j++) b[i][j] += f(a[i][j]); for (j=99; j>=0; j++) a[i][j] += f(b[i][j]); } Which loop can be parallelized and under which conditions (i and j are declared as integers)? Is there a way to improve the code? Is the OpenMP nowait clause a possible option? Justify your answers. (2)
+456 | 2025-09-05-2nd 2A | Please describe the parallel gather pattern, including assumptions, PRAM-based complexity, and examples. (2)
+457 | 2025-09-05-2nd 2B | Please discuss how the Split parallel pattern works. How is it implemented (pseudo code required and PRAM-based complexity)? (2)
+458 | 2025-09-05-2nd 3A | What is the difference between a static and a dynamic schedule in the OpenMP for construct? (1)
+459 | 2025-09-05-2nd 3B | What happens when a variable is declared as firstprivate in an OpenMP pragma? (1) 
+460 | 2025-09-05-2nd 3C | Describe in detail the effects of the following OpenMP pragma. (2) 
+461 | 2025-09-05-2nd 4A | Why does MPI enable the usage of distributed architectures? (1)
+462 | 2025-09-05-2nd 4B | In which scenario does it make sense to use MPI_ANY_TAG in MPI_Probe? (1)
+463 | 2025-09-05-2nd 4C | What is the purpose of the function MPI_Reduce? When the input buffer in each MPI process has more than one value, what is the size and content of the output buffer? (2)

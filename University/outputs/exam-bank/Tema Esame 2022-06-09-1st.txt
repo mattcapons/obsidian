@@ -1,0 +1,53 @@
+             Politecnico di Milano
+        Dipartimento di Elettronica, Informazione e
+        Bioingegneria
+              prof.    Fabrizio Ferrandi
+
+
+
+Advanced Algorithms and Parallel Programming 1st part (Advanced
+   Algorithms)–June 9th 2022
+
+
+
+Polimi ID _______ _______________________
+
+
+Surname _______ __________________ Name  _____________________
+
+
+•   This is a closed-book examination. You cannot use computers, phones or laptops during the
+   exam.
+•  Paper will be provided, but you should bring and use writing instruments that yield marks dark
+   enough to be read easily. Erasable pens can be used.
+•   Total available time: 1h:00m.
+
+
+
+     Exercise 1   (6   points)  _________________________
+
+     Exercise 2   (5   points)  _________________________
+
+     Exercise 3   (5   points)  _________________________Exercise n. 1
+Describe how divide and conquer work with some examples and why master theorem method
+matter.
+
+
+
+
+
+Advanced Algorithms and Parallel Programming 1st part (Advanced Algorithms)–June 9th 2022                          page 2 of 4Exercise n. 2
+Describe how the randomized select-ith method work. Is it a Monte Carlo randomization-based algorithm?
+
+
+
+
+
+Advanced Algorithms and Parallel Programming 1st part (Advanced Algorithms)–June 9th 2022                          page 3 of 4Exercise n. 3
+Discuss how skip list insertion work? What about its worst vs average case complexity?
+
+
+
+
+
+Advanced Algorithms and Parallel Programming 1st part (Advanced Algorithms)–June 9th 2022                          page 4 of 4

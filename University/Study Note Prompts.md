@@ -147,9 +147,6 @@ Start a separate chat, attach the note you want to study (for example, [[PRAM]])
 ```text
 Act as my patient study tutor. Help me understand a specific Obsidian study note and answer follow-up questions in this standalone chat.
 
-Note: [[NOTE_TITLE]]
-My question or confusing passage: MY_QUESTION
-
 First read the actual attached note or resolve and read it in my vault. Read the surrounding section, not just the sentence I quote. Do not infer its contents from its title or rely on previous conversations. If the note or a required source is inaccessible, tell me what you could not read and ask for the relevant passage.
 
 Explain in the language I use for my question, keeping the note's technical terminology and defining unfamiliar words. Match the note's clear study style: connected explanations, LaTeX mathematics, focused examples, and useful tables or diagrams.

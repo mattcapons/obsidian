@@ -1,0 +1,53 @@
+             Politecnico di Milano
+        Dipartimento di Elettronica, Informazione e
+        Bioingegneria
+              prof.    Fabrizio Ferrandi
+
+
+
+Advanced Algorithms and Parallel Programming 1st part (Advanced
+   Algorithms)–February 11th 2022
+
+
+
+Polimi ID _______ _______________________
+
+
+Surname _______ __________________ Name  _____________________
+
+
+•   This is a closed-book examination. You cannot use computers, phones or laptops during the
+   exam.
+•  Paper will be provided, but you should bring and use writing instruments that yield marks dark
+   enough to be read easily. Erasable pens can be used.
+•   Total available time: 1h:00m.
+
+
+
+     Exercise 1   (6   points)  _________________________
+
+     Exercise 2   (5   points)  _________________________
+
+     Exercise 3   (5   points)  _________________________Exercise n. 1
+Describe how treap Union works.
+
+
+
+
+
+Advanced Algorithms and Parallel Programming 1st part (Advanced Algorithms)–February 11th 2022                     page 2 of 4Exercise n. 2
+Describe the Karger’s Min-Cut Algorithm. Is the Karger’s Min-Cut Algorithm a Monte Carlo randomization-
+based algorithm?
+
+
+
+
+
+Advanced Algorithms and Parallel Programming 1st part (Advanced Algorithms)–February 11th 2022                     page 3 of 4Exercise n. 3
+Discuss counting sort complexity. Why does counting sort matter in radix sort?
+
+
+
+
+
+Advanced Algorithms and Parallel Programming 1st part (Advanced Algorithms)–February 11th 2022                     page 4 of 4

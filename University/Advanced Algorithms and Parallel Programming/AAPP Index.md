@@ -60,3 +60,7 @@ The worked problems are original practice, not retrieved past-paper questions. T
 ## Topics announced but not yet supplied
 
 The introduction also announces selection/order statistics, primality testing, cryptosystems, skip lists and treaps, dynamic programming, amortized and approximation methods, competitive analysis, and further parallel programming tools and patterns. These need additional decks before lecture-specific notes can be added. Randomized quicksort and Karger/Karger–Stein min-cut are now covered by lectures 7 and 6 respectively; lecture 7 does not supply a selection algorithm.
+
+## Past exams
+
+[[Past Exam Question Bank]] — 422 unanswered questions grouped by topic, with original exam references, code, and diagrams.

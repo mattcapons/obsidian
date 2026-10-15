@@ -1,0 +1,14 @@
+{
+  "vaultId": "24919adc-c426-4d40-bb6f-13c48c937867",
+  "language": "auto",
+  "outputOptions": {
+    "warnCellMiB": 50,
+    "warnNotebookMiB": 200,
+    "hardLimit": false,
+    "autoDiscardOld": false,
+    "collapse": true,
+    "collapseHeight": 600,
+    "lazyImages": true,
+    "releaseHistoryOnClear": false
+  }
+}

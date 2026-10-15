@@ -1,0 +1,54 @@
+             Politecnico di Milano
+        Dipartimento di Elettronica, Informazione e
+        Bioingegneria
+              prof.    Fabrizio Ferrandi
+
+
+
+Advanced Algorithms and Parallel Programming 1st part (Advanced
+   Algorithms)–September 7th 2022
+
+
+
+Polimi ID _______ _______________________
+
+
+Surname _______ __________________ Name  _____________________
+
+
+•   This is a closed-book examination. You cannot use computers, phones or laptops during the
+   exam.
+•  Paper will be provided, but you should bring and use writing instruments that yield marks dark
+   enough to be read easily. Erasable pens can be used.
+•   Total available time: 1h:00m.
+
+
+
+     Exercise 1   (6   points)  _________________________
+
+     Exercise 2   (5   points)  _________________________
+
+     Exercise 3   (5   points)  _________________________Exercise n. 1
+Describe the Karger and  Stein Min-Cut Algorithm. How  is the complexity  of  this algorithm
+computed? Which is the randomization class the algorithm belongs to?
+
+
+
+
+
+Advanced Algorithms and Parallel Programming 1st part (Advanced Algorithms)–September 7th 2022                     page 2 of 4Exercise n. 2
+Discuss an example of dynamic programming based algorithm. Which are the key features of an
+algorithm for being classified as a dynamic programming algorithm?
+
+
+
+
+
+Advanced Algorithms and Parallel Programming 1st part (Advanced Algorithms)–September 7th 2022                     page 3 of 4Exercise n. 3
+Describe how Treap split/union works.
+
+
+
+
+
+Advanced Algorithms and Parallel Programming 1st part (Advanced Algorithms)–September 7th 2022                     page 4 of 4

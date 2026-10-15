@@ -1,0 +1,4178 @@
+[
+  {
+    "file": "Tema Esame 2022-01-14-1st.pdf",
+    "page": 2,
+    "ex": "1",
+    "sub": "",
+    "text": "Discuss why dynamic programming matter for Longest common subsequence algorithm.",
+    "context": "",
+    "n": 0
+  },
+  {
+    "file": "Tema Esame 2022-01-14-1st.pdf",
+    "page": 3,
+    "ex": "2",
+    "sub": "",
+    "text": "Describe how Karger and Stein algorithm works. Discuss and compare the two algorithms\u2019 complexity.",
+    "context": "",
+    "n": 1
+  },
+  {
+    "file": "Tema Esame 2022-01-14-1st.pdf",
+    "page": 4,
+    "ex": "3",
+    "sub": "",
+    "text": "Explain the difference between Monte Carlo and Las Vegas Randomized based algorithms.",
+    "context": "",
+    "n": 2
+  },
+  {
+    "file": "Tema Esame 2022-02-11-1st.pdf",
+    "page": 2,
+    "ex": "1",
+    "sub": "",
+    "text": "Describe how treap Union works.",
+    "context": "",
+    "n": 3
+  },
+  {
+    "file": "Tema Esame 2022-02-11-1st.pdf",
+    "page": 3,
+    "ex": "2",
+    "sub": "",
+    "text": "Describe the Karger\u2019s Min-Cut Algorithm. Is the Karger\u2019s Min-Cut Algorithm a Monte Carlo randomization-\nbased algorithm?",
+    "context": "",
+    "n": 4
+  },
+  {
+    "file": "Tema Esame 2022-02-11-1st.pdf",
+    "page": 4,
+    "ex": "3",
+    "sub": "",
+    "text": "Discuss counting sort complexity. Why does counting sort matter in radix sort?",
+    "context": "",
+    "n": 5
+  },
+  {
+    "file": "Tema Esame 2022-02-11-2nd-a.pdf",
+    "page": 2,
+    "ex": "1",
+    "sub": "A",
+    "text": "OpenMP is an API dedicated to the acceleration of applications in distributed-memory\n       environments: true or false?",
+    "context": "Answer the following questions about OpenMP and briefly explain (without explanation the answer will be considered invalid)",
+    "n": 6
+  },
+  {
+    "file": "Tema Esame 2022-02-11-2nd-a.pdf",
+    "page": 2,
+    "ex": "1",
+    "sub": "B",
+    "text": "Describe the functionality of the private, shared, default Data Scope Attribute Clauses",
+    "context": "Answer the following questions about OpenMP and briefly explain (without explanation the answer will be considered invalid)",
+    "n": 7
+  },
+  {
+    "file": "Tema Esame 2022-02-11-2nd-a.pdf",
+    "page": 2,
+    "ex": "1",
+    "sub": "C",
+    "text": "How can the search of an element inside an (unbalanced) binary tree be accelerated using\n      OpenMP?",
+    "context": "Answer the following questions about OpenMP and briefly explain (without explanation the answer will be considered invalid)",
+    "n": 8
+  },
+  {
+    "file": "Tema Esame 2022-02-11-2nd-a.pdf",
+    "page": 2,
+    "ex": "1",
+    "sub": "D",
+    "text": "The maximum number of threads that can be spawned in OpenMP depends on the\n       underlying hardware architecture: true or false?",
+    "context": "Answer the following questions about OpenMP and briefly explain (without explanation the answer will be considered invalid)",
+    "n": 9
+  },
+  {
+    "file": "Tema Esame 2022-02-11-2nd-a.pdf",
+    "page": 3,
+    "ex": "2",
+    "sub": "A",
+    "text": "List and describe the different kinds of parallelism according to the Flynn taxonomy,\n       together with architectures implementing them when possible.",
+    "context": "Answer the following questions about parallel algorithms and parallel programming and briefly explain (without explanation the answer will be considered invalid)",
+    "n": 10
+  },
+  {
+    "file": "Tema Esame 2022-02-11-2nd-a.pdf",
+    "page": 3,
+    "ex": "2",
+    "sub": "B",
+    "text": "It is not recommendable to mix parallelism technologies since doing so increases the\n       complexity of the compiled binaries: true or false?",
+    "context": "Answer the following questions about parallel algorithms and parallel programming and briefly explain (without explanation the answer will be considered invalid)",
+    "n": 11
+  },
+  {
+    "file": "Tema Esame 2022-02-11-2nd-a.pdf",
+    "page": 3,
+    "ex": "2",
+    "sub": "C",
+    "text": "Describe the map parallel pattern and at least one fusion optimization that can be applied\n       to it.",
+    "context": "Answer the following questions about parallel algorithms and parallel programming and briefly explain (without explanation the answer will be considered invalid)",
+    "n": 12
+  },
+  {
+    "file": "Tema Esame 2022-02-11-2nd-a.pdf",
+    "page": 4,
+    "ex": "3",
+    "sub": "A",
+    "text": "Briefly describe the hierarchy of memories of CUDA programming model",
+    "context": "Answer the following questions about CUDA and briefly explain (without explanation the answer will be considered invalid)",
+    "n": 13
+  },
+  {
+    "file": "Tema Esame 2022-02-11-2nd-a.pdf",
+    "page": 4,
+    "ex": "3",
+    "sub": "B",
+    "text": "Briefly describe which are the main issues in implementing a parallel application with\n      CUDA.",
+    "context": "Answer the following questions about CUDA and briefly explain (without explanation the answer will be considered invalid)",
+    "n": 14
+  },
+  {
+    "file": "Tema Esame 2022-02-11-2nd-a.pdf",
+    "page": 4,
+    "ex": "3",
+    "sub": "C",
+    "text": "Concurrent CUDA Streams: operations within a given stream occur in order. True or false?",
+    "context": "Answer the following questions about CUDA and briefly explain (without explanation the answer will be considered invalid)",
+    "n": 15
+  },
+  {
+    "file": "Tema Esame 2022-02-11-2nd-a.pdf",
+    "page": 5,
+    "ex": "4",
+    "sub": "A",
+    "text": "How can a thread communicate the result of its computation after completing its routine?",
+    "context": "Answer the following questions about PThread and briefly explain (without explanation the answer will be considered invalid)",
+    "n": 16
+  },
+  {
+    "file": "Tema Esame 2022-02-11-2nd-a.pdf",
+    "page": 5,
+    "ex": "4",
+    "sub": "B",
+    "text": "Can PThread be used to implement a fixed-depth parallel pipeline? How should the pipeline\n       stages synchronize their execution?",
+    "context": "Answer the following questions about PThread and briefly explain (without explanation the answer will be considered invalid)",
+    "n": 17
+  },
+  {
+    "file": "Tema Esame 2022-02-11-2nd-b.pdf",
+    "page": 2,
+    "ex": "1",
+    "sub": "A",
+    "text": "OpenMP is an API dedicated to the acceleration of applications in distributed-memory\n       environments: true or false?",
+    "context": "Answer the following questions about OpenMP and briefly explain (without explanation the answer will be considered invalid)",
+    "n": 18
+  },
+  {
+    "file": "Tema Esame 2022-02-11-2nd-b.pdf",
+    "page": 2,
+    "ex": "1",
+    "sub": "B",
+    "text": "Describe the functionality of the private, shared, default Data Scope Attribute Clauses",
+    "context": "Answer the following questions about OpenMP and briefly explain (without explanation the answer will be considered invalid)",
+    "n": 19
+  },
+  {
+    "file": "Tema Esame 2022-02-11-2nd-b.pdf",
+    "page": 2,
+    "ex": "1",
+    "sub": "C",
+    "text": "How can the search of an element inside an (unbalanced) binary tree be accelerated using\n      OpenMP?",
+    "context": "Answer the following questions about OpenMP and briefly explain (without explanation the answer will be considered invalid)",
+    "n": 20
+  },
+  {
+    "file": "Tema Esame 2022-02-11-2nd-b.pdf",
+    "page": 2,
+    "ex": "1",
+    "sub": "D",
+    "text": "The maximum number of threads that can be spawned in OpenMP depends on the\n       underlying hardware architecture: true or false?",
+    "context": "Answer the following questions about OpenMP and briefly explain (without explanation the answer will be considered invalid)",
+    "n": 21
+  },
+  {
+    "file": "Tema Esame 2022-02-11-2nd-b.pdf",
+    "page": 3,
+    "ex": "2",
+    "sub": "A",
+    "text": "List and describe the different kinds of parallelism according to the Flynn taxonomy,\n       together with architectures implementing them when possible.",
+    "context": "Answer the following questions about parallel algorithms and parallel programming and briefly explain (without explanation the answer will be considered invalid)",
+    "n": 22
+  },
+  {
+    "file": "Tema Esame 2022-02-11-2nd-b.pdf",
+    "page": 3,
+    "ex": "2",
+    "sub": "B",
+    "text": "It is not recommendable to mix parallelism technologies since doing so increases the\n       complexity of the compiled binaries: true or false?",
+    "context": "Answer the following questions about parallel algorithms and parallel programming and briefly explain (without explanation the answer will be considered invalid)",
+    "n": 23
+  },
+  {
+    "file": "Tema Esame 2022-02-11-2nd-b.pdf",
+    "page": 3,
+    "ex": "2",
+    "sub": "C",
+    "text": "Describe the map parallel pattern and at least one fusion optimization that can be applied\n       to it.",
+    "context": "Answer the following questions about parallel algorithms and parallel programming and briefly explain (without explanation the answer will be considered invalid)",
+    "n": 24
+  },
+  {
+    "file": "Tema Esame 2022-02-11-2nd-b.pdf",
+    "page": 4,
+    "ex": "3",
+    "sub": "A",
+    "text": "Is the synchronization between processes explicit or implicit?",
+    "context": "Answer the following questions about MPI and briefly explain (without explanation the answer will be considered invalid)",
+    "n": 25
+  },
+  {
+    "file": "Tema Esame 2022-02-11-2nd-b.pdf",
+    "page": 4,
+    "ex": "3",
+    "sub": "B",
+    "text": "Describe the behavior of MPI_Bcast.",
+    "context": "Answer the following questions about MPI and briefly explain (without explanation the answer will be considered invalid)",
+    "n": 26
+  },
+  {
+    "file": "Tema Esame 2022-02-11-2nd-b.pdf",
+    "page": 4,
+    "ex": "3",
+    "sub": "C",
+    "text": "What are communicators? What is the advantage of defining multiple communicators in an\n      MPI program?",
+    "context": "Answer the following questions about MPI and briefly explain (without explanation the answer will be considered invalid)",
+    "n": 27
+  },
+  {
+    "file": "Tema Esame 2022-02-11-2nd-b.pdf",
+    "page": 5,
+    "ex": "4",
+    "sub": "A",
+    "text": "How can a thread communicate the result of its computation after completing its routine?",
+    "context": "Answer the following questions about PThread and briefly explain (without explanation the answer will be considered invalid)",
+    "n": 28
+  },
+  {
+    "file": "Tema Esame 2022-02-11-2nd-b.pdf",
+    "page": 5,
+    "ex": "4",
+    "sub": "B",
+    "text": "Can PThread be used to implement a fixed-depth parallel pipeline? How should the pipeline\n       stages synchronize their execution?",
+    "context": "Answer the following questions about PThread and briefly explain (without explanation the answer will be considered invalid)",
+    "n": 29
+  },
+  {
+    "file": "Tema Esame 2022-06-09-1st.pdf",
+    "page": 2,
+    "ex": "1",
+    "sub": "",
+    "text": "Describe how divide and conquer work with some examples and why master theorem method\nmatter.",
+    "context": "",
+    "n": 30
+  },
+  {
+    "file": "Tema Esame 2022-06-09-1st.pdf",
+    "page": 3,
+    "ex": "2",
+    "sub": "",
+    "text": "Describe how the randomized select-ith method work. Is it a Monte Carlo randomization-based algorithm?",
+    "context": "",
+    "n": 31
+  },
+  {
+    "file": "Tema Esame 2022-06-09-1st.pdf",
+    "page": 4,
+    "ex": "3",
+    "sub": "",
+    "text": "Discuss how skip list insertion work? What about its worst vs average case complexity?",
+    "context": "",
+    "n": 32
+  },
+  {
+    "file": "Tema Esame 2022-06-09-2nd-a.pdf",
+    "page": 2,
+    "ex": "1",
+    "sub": "A",
+    "text": "Are there any compiler-related limitations to the use of OpenMP?",
+    "context": "Answer the following questions about OpenMP and briefly explain (without explanation the answer will be considered invalid)",
+    "n": 33
+  },
+  {
+    "file": "Tema Esame 2022-06-09-2nd-a.pdf",
+    "page": 2,
+    "ex": "1",
+    "sub": "B",
+    "text": "What are Work-Sharing constructs in OpenMP? Describe their use and the conditions\n       required for them to effectively parallelize a task.",
+    "context": "Answer the following questions about OpenMP and briefly explain (without explanation the answer will be considered invalid)",
+    "n": 34
+  },
+  {
+    "file": "Tema Esame 2022-06-09-2nd-a.pdf",
+    "page": 2,
+    "ex": "1",
+    "sub": "C",
+    "text": "Describe how to parallelize the search of an element inside a list of unknown length using\n      OpenMP.",
+    "context": "Answer the following questions about OpenMP and briefly explain (without explanation the answer will be considered invalid)",
+    "n": 35
+  },
+  {
+    "file": "Tema Esame 2022-06-09-2nd-a.pdf",
+    "page": 2,
+    "ex": "1",
+    "sub": "D",
+    "text": "Is it possible to express nested parallelism in OpenMP? Is it generally a good practice?",
+    "context": "Answer the following questions about OpenMP and briefly explain (without explanation the answer will be considered invalid)",
+    "n": 36
+  },
+  {
+    "file": "Tema Esame 2022-06-09-2nd-a.pdf",
+    "page": 3,
+    "ex": "2",
+    "sub": "A",
+    "text": "Is it possible to obtain the same low level implementation starting from different parallel\n      programming models descriptions of the same parallel pattern?",
+    "context": "Answer the following questions about parallel algorithms and parallel programming and briefly explain (without explanation the answer will be considered invalid)",
+    "n": 37
+  },
+  {
+    "file": "Tema Esame 2022-06-09-2nd-a.pdf",
+    "page": 3,
+    "ex": "2",
+    "sub": "B",
+    "text": "Parallel programming models using threads spawn a single process, therefore the program\n       I/O correctness is always guaranteed: true or false?",
+    "context": "Answer the following questions about parallel algorithms and parallel programming and briefly explain (without explanation the answer will be considered invalid)",
+    "n": 38
+  },
+  {
+    "file": "Tema Esame 2022-06-09-2nd-a.pdf",
+    "page": 3,
+    "ex": "2",
+    "sub": "C",
+    "text": "Describe the scan parallel pattern. Can it be implemented using different approaches with\n       respect to the computation of intermediate values?",
+    "context": "Answer the following questions about parallel algorithms and parallel programming and briefly explain (without explanation the answer will be considered invalid)",
+    "n": 39
+  },
+  {
+    "file": "Tema Esame 2022-06-09-2nd-a.pdf",
+    "page": 4,
+    "ex": "3",
+    "sub": "A",
+    "text": "Describe what is CUDA",
+    "context": "Answer the following questions about CUDA and briefly explain (without explanation the answer will be considered invalid)",
+    "n": 40
+  },
+  {
+    "file": "Tema Esame 2022-06-09-2nd-a.pdf",
+    "page": 4,
+    "ex": "3",
+    "sub": "B",
+    "text": "Briefly describe which are the main issues in implementing a parallel application with\n      CUDA.",
+    "context": "Answer the following questions about CUDA and briefly explain (without explanation the answer will be considered invalid)",
+    "n": 41
+  },
+  {
+    "file": "Tema Esame 2022-06-09-2nd-a.pdf",
+    "page": 4,
+    "ex": "3",
+    "sub": "C",
+    "text": "How parallel threads are identified in a CUDA kernel?",
+    "context": "Answer the following questions about CUDA and briefly explain (without explanation the answer will be considered invalid)",
+    "n": 42
+  },
+  {
+    "file": "Tema Esame 2022-06-09-2nd-a.pdf",
+    "page": 5,
+    "ex": "4",
+    "sub": "A",
+    "text": "Does PThread use an explicit or implicit synchronization model? Describe common\n      approaches to manage the access to critical sections.",
+    "context": "Answer the following questions about PThread and briefly explain (without explanation the answer will be considered invalid)",
+    "n": 43
+  },
+  {
+    "file": "Tema Esame 2022-06-09-2nd-a.pdf",
+    "page": 5,
+    "ex": "4",
+    "sub": "B",
+    "text": "What are the possible approaches for managing the execution flow of different threads\n       using PThreads?",
+    "context": "Answer the following questions about PThread and briefly explain (without explanation the answer will be considered invalid)",
+    "n": 44
+  },
+  {
+    "file": "Tema Esame 2022-06-09-2nd-b.pdf",
+    "page": 2,
+    "ex": "1",
+    "sub": "A",
+    "text": "Are there any compiler-related limitations to the use of OpenMP?",
+    "context": "Answer the following questions about OpenMP and briefly explain (without explanation the answer will be considered invalid)",
+    "n": 45
+  },
+  {
+    "file": "Tema Esame 2022-06-09-2nd-b.pdf",
+    "page": 2,
+    "ex": "1",
+    "sub": "B",
+    "text": "What are Work-Sharing constructs in OpenMP? Describe their use and the conditions\n       required for them to effectively parallelize a task.",
+    "context": "Answer the following questions about OpenMP and briefly explain (without explanation the answer will be considered invalid)",
+    "n": 46
+  },
+  {
+    "file": "Tema Esame 2022-06-09-2nd-b.pdf",
+    "page": 2,
+    "ex": "1",
+    "sub": "C",
+    "text": "Describe how to parallelize the search of an element inside a list of unknown length using\n      OpenMP.",
+    "context": "Answer the following questions about OpenMP and briefly explain (without explanation the answer will be considered invalid)",
+    "n": 47
+  },
+  {
+    "file": "Tema Esame 2022-06-09-2nd-b.pdf",
+    "page": 2,
+    "ex": "1",
+    "sub": "D",
+    "text": "Is it possible to express nested parallelism in OpenMP? Is it generally a good practice?",
+    "context": "Answer the following questions about OpenMP and briefly explain (without explanation the answer will be considered invalid)",
+    "n": 48
+  },
+  {
+    "file": "Tema Esame 2022-06-09-2nd-b.pdf",
+    "page": 3,
+    "ex": "2",
+    "sub": "A",
+    "text": "Is it possible to obtain the same low level implementation starting from different parallel\n      programming models descriptions of the same parallel pattern?",
+    "context": "Answer the following questions about parallel algorithms and parallel programming and briefly explain (without explanation the answer will be considered invalid)",
+    "n": 49
+  },
+  {
+    "file": "Tema Esame 2022-06-09-2nd-b.pdf",
+    "page": 3,
+    "ex": "2",
+    "sub": "B",
+    "text": "Parallel programming models using threads spawn a single process, therefore the program\n       I/O correctness is always guaranteed: true or false?",
+    "context": "Answer the following questions about parallel algorithms and parallel programming and briefly explain (without explanation the answer will be considered invalid)",
+    "n": 50
+  },
+  {
+    "file": "Tema Esame 2022-06-09-2nd-b.pdf",
+    "page": 3,
+    "ex": "2",
+    "sub": "C",
+    "text": "Describe the scan parallel pattern. Can it be implemented using different approaches with\n       respect to the computation of intermediate values?",
+    "context": "Answer the following questions about parallel algorithms and parallel programming and briefly explain (without explanation the answer will be considered invalid)",
+    "n": 51
+  },
+  {
+    "file": "Tema Esame 2022-06-09-2nd-b.pdf",
+    "page": 4,
+    "ex": "3",
+    "sub": "A",
+    "text": "Which memory architectures are supported by MPI? Are there any differences with the\n       other parallel programming models presented?",
+    "context": "Answer the following questions about MPI and briefly explain (without explanation the answer will be considered invalid)",
+    "n": 52
+  },
+  {
+    "file": "Tema Esame 2022-06-09-2nd-b.pdf",
+    "page": 4,
+    "ex": "3",
+    "sub": "B",
+    "text": "Describe the behavior of MPI_Gather.",
+    "context": "Answer the following questions about MPI and briefly explain (without explanation the answer will be considered invalid)",
+    "n": 53
+  },
+  {
+    "file": "Tema Esame 2022-06-09-2nd-b.pdf",
+    "page": 4,
+    "ex": "3",
+    "sub": "C",
+    "text": "Describe how to spread data across processes according to a user-defined distribution\n       using MPI.",
+    "context": "Answer the following questions about MPI and briefly explain (without explanation the answer will be considered invalid)",
+    "n": 54
+  },
+  {
+    "file": "Tema Esame 2022-06-09-2nd-b.pdf",
+    "page": 5,
+    "ex": "4",
+    "sub": "A",
+    "text": "Does PThread use an explicit or implicit synchronization model? Describe common\n      approaches to manage the access to critical sections.",
+    "context": "Answer the following questions about PThread and briefly explain (without explanation the answer will be considered invalid)",
+    "n": 55
+  },
+  {
+    "file": "Tema Esame 2022-06-09-2nd-b.pdf",
+    "page": 5,
+    "ex": "4",
+    "sub": "B",
+    "text": "What are the possible approaches for managing the execution flow of different threads\n       using PThreads?",
+    "context": "Answer the following questions about PThread and briefly explain (without explanation the answer will be considered invalid)",
+    "n": 56
+  },
+  {
+    "file": "Tema Esame 2022-06-30-2nd-a.pdf",
+    "page": 2,
+    "ex": "1",
+    "sub": "A",
+    "text": "Describe the multithreading paradigm used in OpenMP and the lifespan of threads with\n       respect to tasks.",
+    "context": "Answer the following questions about OpenMP and briefly explain (without explanation the answer will be considered invalid)",
+    "n": 57
+  },
+  {
+    "file": "Tema Esame 2022-06-30-2nd-a.pdf",
+    "page": 2,
+    "ex": "1",
+    "sub": "B",
+    "text": "How is variables visibility managed in OpenMP?",
+    "context": "Answer the following questions about OpenMP and briefly explain (without explanation the answer will be considered invalid)",
+    "n": 58
+  },
+  {
+    "file": "Tema Esame 2022-06-30-2nd-a.pdf",
+    "page": 2,
+    "ex": "1",
+    "sub": "C",
+    "text": "What is the \u201comp sections\u201d directive used for?",
+    "context": "Answer the following questions about OpenMP and briefly explain (without explanation the answer will be considered invalid)",
+    "n": 59
+  },
+  {
+    "file": "Tema Esame 2022-06-30-2nd-a.pdf",
+    "page": 2,
+    "ex": "1",
+    "sub": "D",
+    "text": "Is it possible and/or mandatory to define barriers in OpenMP?",
+    "context": "Answer the following questions about OpenMP and briefly explain (without explanation the answer will be considered invalid)",
+    "n": 60
+  },
+  {
+    "file": "Tema Esame 2022-06-30-2nd-a.pdf",
+    "page": 3,
+    "ex": "2",
+    "sub": "A",
+    "text": "Describe the workpile pattern, situations where it may be applied and possible\n       implementations.",
+    "context": "Answer the following questions about parallel algorithms and parallel programming and briefly explain (without explanation the answer will be considered invalid)",
+    "n": 61
+  },
+  {
+    "file": "Tema Esame 2022-06-30-2nd-a.pdf",
+    "page": 3,
+    "ex": "2",
+    "sub": "B",
+    "text": "Is the Quicksort algorithm easy to parallelize? Propose a high-level description of a possible\n        parallelization and analyze its potential bottlenecks.",
+    "context": "Answer the following questions about parallel algorithms and parallel programming and briefly explain (without explanation the answer will be considered invalid)",
+    "n": 62
+  },
+  {
+    "file": "Tema Esame 2022-06-30-2nd-a.pdf",
+    "page": 3,
+    "ex": "2",
+    "sub": "C",
+    "text": "Describe how to implement a map pattern with one of the parallel programming models\n       presented in the course.",
+    "context": "Answer the following questions about parallel algorithms and parallel programming and briefly explain (without explanation the answer will be considered invalid)",
+    "n": 63
+  },
+  {
+    "file": "Tema Esame 2022-06-30-2nd-a.pdf",
+    "page": 4,
+    "ex": "3",
+    "sub": "A",
+    "text": "Briefly describe which are the main disadvanteges in implementing a parallel application\n       with CUDA with respect to OpenMP.",
+    "context": "Answer the following questions about CUDA and briefly explain (without explanation the answer will be considered invalid)",
+    "n": 64
+  },
+  {
+    "file": "Tema Esame 2022-06-30-2nd-a.pdf",
+    "page": 4,
+    "ex": "3",
+    "sub": "B",
+    "text": "Briefly describe the hierarchy of memories of CUDA programming model.",
+    "context": "Answer the following questions about CUDA and briefly explain (without explanation the answer will be considered invalid)",
+    "n": 65
+  },
+  {
+    "file": "Tema Esame 2022-06-30-2nd-a.pdf",
+    "page": 4,
+    "ex": "3",
+    "sub": "C",
+    "text": "Briefly describe how threads are grouped in CUDA.",
+    "context": "Answer the following questions about CUDA and briefly explain (without explanation the answer will be considered invalid)",
+    "n": 66
+  },
+  {
+    "file": "Tema Esame 2022-06-30-2nd-a.pdf",
+    "page": 5,
+    "ex": "4",
+    "sub": "A",
+    "text": "When a new thread is spawned and assigned a routine, is it possible to automatically pass\n      some arguments to that routine?",
+    "context": "Answer the following questions about PThread and briefly explain (without explanation the answer will be considered invalid)",
+    "n": 67
+  },
+  {
+    "file": "Tema Esame 2022-06-30-2nd-a.pdf",
+    "page": 5,
+    "ex": "4",
+    "sub": "B",
+    "text": "What is the difference between joinable and detached threads?",
+    "context": "Answer the following questions about PThread and briefly explain (without explanation the answer will be considered invalid)",
+    "n": 68
+  },
+  {
+    "file": "Tema Esame 2022-06-30-2nd-b.pdf",
+    "page": 2,
+    "ex": "1",
+    "sub": "A",
+    "text": "Describe the multithreading paradigm used in OpenMP and the lifespan of threads with\n       respect to tasks.",
+    "context": "Answer the following questions about OpenMP and briefly explain (without explanation the answer will be considered invalid)",
+    "n": 69
+  },
+  {
+    "file": "Tema Esame 2022-06-30-2nd-b.pdf",
+    "page": 2,
+    "ex": "1",
+    "sub": "B",
+    "text": "How is variables visibility managed in OpenMP?",
+    "context": "Answer the following questions about OpenMP and briefly explain (without explanation the answer will be considered invalid)",
+    "n": 70
+  },
+  {
+    "file": "Tema Esame 2022-06-30-2nd-b.pdf",
+    "page": 2,
+    "ex": "1",
+    "sub": "C",
+    "text": "What is the \u201comp sections\u201d directive used for?",
+    "context": "Answer the following questions about OpenMP and briefly explain (without explanation the answer will be considered invalid)",
+    "n": 71
+  },
+  {
+    "file": "Tema Esame 2022-06-30-2nd-b.pdf",
+    "page": 2,
+    "ex": "1",
+    "sub": "D",
+    "text": "Is it possible and/or mandatory to define barriers in OpenMP?",
+    "context": "Answer the following questions about OpenMP and briefly explain (without explanation the answer will be considered invalid)",
+    "n": 72
+  },
+  {
+    "file": "Tema Esame 2022-06-30-2nd-b.pdf",
+    "page": 3,
+    "ex": "2",
+    "sub": "A",
+    "text": "Describe the workpile pattern, situations where it may be applied and possible\n       implementations.",
+    "context": "Answer the following questions about parallel algorithms and parallel programming and briefly explain (without explanation the answer will be considered invalid)",
+    "n": 73
+  },
+  {
+    "file": "Tema Esame 2022-06-30-2nd-b.pdf",
+    "page": 3,
+    "ex": "2",
+    "sub": "B",
+    "text": "Is the Quicksort algorithm easy to parallelize? Propose a high-level description of a possible\n        parallelization and analyze its potential bottlenecks.",
+    "context": "Answer the following questions about parallel algorithms and parallel programming and briefly explain (without explanation the answer will be considered invalid)",
+    "n": 74
+  },
+  {
+    "file": "Tema Esame 2022-06-30-2nd-b.pdf",
+    "page": 3,
+    "ex": "2",
+    "sub": "C",
+    "text": "Describe how to implement a map pattern with one of the parallel programming models\n       presented in the course.",
+    "context": "Answer the following questions about parallel algorithms and parallel programming and briefly explain (without explanation the answer will be considered invalid)",
+    "n": 75
+  },
+  {
+    "file": "Tema Esame 2022-06-30-2nd-b.pdf",
+    "page": 4,
+    "ex": "3",
+    "sub": "A",
+    "text": "Does MPI parallelize over thread or processes? What are the main differences between the\n      two approaches?",
+    "context": "Answer the following questions about MPI and briefly explain (without explanation the answer will be considered invalid)",
+    "n": 76
+  },
+  {
+    "file": "Tema Esame 2022-06-30-2nd-b.pdf",
+    "page": 4,
+    "ex": "3",
+    "sub": "B",
+    "text": "Describe the behavior of the MPI_Reduce routine.",
+    "context": "Answer the following questions about MPI and briefly explain (without explanation the answer will be considered invalid)",
+    "n": 77
+  },
+  {
+    "file": "Tema Esame 2022-06-30-2nd-b.pdf",
+    "page": 4,
+    "ex": "3",
+    "sub": "C",
+    "text": "Are there any restrictions on the use of communication routines in MPI, particularly related\n       to the use of other routines?",
+    "context": "Answer the following questions about MPI and briefly explain (without explanation the answer will be considered invalid)",
+    "n": 78
+  },
+  {
+    "file": "Tema Esame 2022-06-30-2nd-b.pdf",
+    "page": 5,
+    "ex": "4",
+    "sub": "A",
+    "text": "When a new thread is spawned and assigned a routine, is it possible to automatically pass\n      some arguments to that routine?",
+    "context": "Answer the following questions about PThread and briefly explain (without explanation the answer will be considered invalid)",
+    "n": 79
+  },
+  {
+    "file": "Tema Esame 2022-06-30-2nd-b.pdf",
+    "page": 5,
+    "ex": "4",
+    "sub": "B",
+    "text": "What is the difference between joinable and detached threads?",
+    "context": "Answer the following questions about PThread and briefly explain (without explanation the answer will be considered invalid)",
+    "n": 80
+  },
+  {
+    "file": "Tema Esame 2022-09-07-1st.pdf",
+    "page": 2,
+    "ex": "1",
+    "sub": "",
+    "text": "Describe the Karger and  Stein Min-Cut Algorithm. How  is the complexity  of  this algorithm\ncomputed? Which is the randomization class the algorithm belongs to?",
+    "context": "",
+    "n": 81
+  },
+  {
+    "file": "Tema Esame 2022-09-07-1st.pdf",
+    "page": 3,
+    "ex": "2",
+    "sub": "",
+    "text": "Discuss an example of dynamic programming based algorithm. Which are the key features of an\nalgorithm for being classified as a dynamic programming algorithm?",
+    "context": "",
+    "n": 82
+  },
+  {
+    "file": "Tema Esame 2022-09-07-1st.pdf",
+    "page": 4,
+    "ex": "3",
+    "sub": "",
+    "text": "Describe how Treap split/union works.",
+    "context": "",
+    "n": 83
+  },
+  {
+    "file": "Tema Esame 2022-09-07-2nd-b.pdf",
+    "page": 2,
+    "ex": "1",
+    "sub": "A",
+    "text": "What are the static and dynamic extents of the omp parallel directive?",
+    "context": "Answer the following questions about OpenMP and briefly explain (without explanation the answer will be considered invalid)",
+    "n": 84
+  },
+  {
+    "file": "Tema Esame 2022-09-07-2nd-b.pdf",
+    "page": 2,
+    "ex": "1",
+    "sub": "B",
+    "text": "Is it possible for the programmer to control the distribution of parallel loop iterations across\n       threads when using an omp for directive?",
+    "context": "Answer the following questions about OpenMP and briefly explain (without explanation the answer will be considered invalid)",
+    "n": 85
+  },
+  {
+    "file": "Tema Esame 2022-09-07-2nd-b.pdf",
+    "page": 2,
+    "ex": "1",
+    "sub": "C",
+    "text": "What is the functionality of the omp_set_num_threads function? Are there other ways for\n       achieving the same result?",
+    "context": "Answer the following questions about OpenMP and briefly explain (without explanation the answer will be considered invalid)",
+    "n": 86
+  },
+  {
+    "file": "Tema Esame 2022-09-07-2nd-b.pdf",
+    "page": 2,
+    "ex": "1",
+    "sub": "D",
+    "text": "Is it possible to perform a reduction over a single variable using OpenMP?",
+    "context": "Answer the following questions about OpenMP and briefly explain (without explanation the answer will be considered invalid)",
+    "n": 87
+  },
+  {
+    "file": "Tema Esame 2022-09-07-2nd-b.pdf",
+    "page": 3,
+    "ex": "2",
+    "sub": "A",
+    "text": "Is it possible to use multiple parallelization models in the same program? Would it benefit\n      some hardware architectures in particular?",
+    "context": "Answer the following questions about parallel algorithms and parallel programming and briefly explain (without explanation the answer will be considered invalid)",
+    "n": 88
+  },
+  {
+    "file": "Tema Esame 2022-09-07-2nd-b.pdf",
+    "page": 3,
+    "ex": "2",
+    "sub": "B",
+    "text": "Describe the scan parallel pattern. Can it be implemented using different approaches with\n       respect to the computation of intermediate values?",
+    "context": "Answer the following questions about parallel algorithms and parallel programming and briefly explain (without explanation the answer will be considered invalid)",
+    "n": 89
+  },
+  {
+    "file": "Tema Esame 2022-09-07-2nd-b.pdf",
+    "page": 3,
+    "ex": "2",
+    "sub": "C",
+    "text": "Which are the main differences between parallel programming models based on threads\n      and those based on processes in terms of low-level information management and\n        architectures that can benefit from them?",
+    "context": "Answer the following questions about parallel algorithms and parallel programming and briefly explain (without explanation the answer will be considered invalid)",
+    "n": 90
+  },
+  {
+    "file": "Tema Esame 2022-09-07-2nd-b.pdf",
+    "page": 4,
+    "ex": "3",
+    "sub": "A",
+    "text": "Describe the processes synchronization model used by MPI.",
+    "context": "Answer the following questions about MPI and briefly explain (without explanation the answer will be considered invalid)",
+    "n": 91
+  },
+  {
+    "file": "Tema Esame 2022-09-07-2nd-b.pdf",
+    "page": 4,
+    "ex": "3",
+    "sub": "B",
+    "text": "Describe the behavior of the MPI_Bcast routine.",
+    "context": "Answer the following questions about MPI and briefly explain (without explanation the answer will be considered invalid)",
+    "n": 92
+  },
+  {
+    "file": "Tema Esame 2022-09-07-2nd-b.pdf",
+    "page": 4,
+    "ex": "3",
+    "sub": "C",
+    "text": "Describe the use of communicators in MPI and the advantages of defining multiple\n      communicators in a program.",
+    "context": "Answer the following questions about MPI and briefly explain (without explanation the answer will be considered invalid)",
+    "n": 93
+  },
+  {
+    "file": "Tema Esame 2022-09-07-2nd-b.pdf",
+    "page": 5,
+    "ex": "4",
+    "sub": "A",
+    "text": "What is the use of condition variables in PThreads?",
+    "context": "Answer the following questions about PThread and briefly explain (without explanation the answer will be considered invalid)",
+    "n": 94
+  },
+  {
+    "file": "Tema Esame 2022-09-07-2nd-b.pdf",
+    "page": 5,
+    "ex": "4",
+    "sub": "B",
+    "text": "Is it possible to share work over a fixed size thread pool that is spawned once at the\n       beginning of the program execution? What kind of parallel pattern can be implemented in\n        this way?",
+    "context": "Answer the following questions about PThread and briefly explain (without explanation the answer will be considered invalid)",
+    "n": 95
+  },
+  {
+    "file": "Tema Esame 2022-11-08-1st.pdf",
+    "page": 2,
+    "ex": "1",
+    "sub": "A",
+    "text": "Describe the main characteristics of a PRAM model. (2)",
+    "context": "Answer the following questions about parallel application modeling and briefly explain (without an explanation, the answer will be considered invalid)",
+    "n": 96
+  },
+  {
+    "file": "Tema Esame 2022-11-08-1st.pdf",
+    "page": 2,
+    "ex": "1",
+    "sub": "B",
+    "text": "Define the speedup when a sequential code is accelerated with p processors. (1)",
+    "context": "Answer the following questions about parallel application modeling and briefly explain (without an explanation, the answer will be considered invalid)",
+    "n": 97
+  },
+  {
+    "file": "Tema Esame 2022-11-08-1st.pdf",
+    "page": 2,
+    "ex": "1",
+    "sub": "C",
+    "text": "Please describe the differences between the Amdahl and the Gustafson laws. (1)",
+    "context": "Answer the following questions about parallel application modeling and briefly explain (without an explanation, the answer will be considered invalid)",
+    "n": 98
+  },
+  {
+    "file": "Tema Esame 2022-11-08-1st.pdf",
+    "page": 3,
+    "ex": "2",
+    "sub": "A",
+    "text": "Describe the Longest Common Subsequence (LCS) algorithm. (2)",
+    "context": "Answer the following questions about dynamic programming algorithm and briefly explain (without an explanation, the answer will be considered invalid)",
+    "n": 99
+  },
+  {
+    "file": "Tema Esame 2022-11-08-1st.pdf",
+    "page": 3,
+    "ex": "2",
+    "sub": "B",
+    "text": "What kind of temporal or spatial complexity has LCS? (1)",
+    "context": "Answer the following questions about dynamic programming algorithm and briefly explain (without an explanation, the answer will be considered invalid)",
+    "n": 100
+  },
+  {
+    "file": "Tema Esame 2022-11-08-1st.pdf",
+    "page": 3,
+    "ex": "2",
+    "sub": "C",
+    "text": "LCS is classified as a dynamic programming algorithm. Why? (1)",
+    "context": "Answer the following questions about dynamic programming algorithm and briefly explain (without an explanation, the answer will be considered invalid)",
+    "n": 101
+  },
+  {
+    "file": "Tema Esame 2022-11-08-1st.pdf",
+    "page": 4,
+    "ex": "3",
+    "sub": "A",
+    "text": "Please discuss the difference between Online and Offline algorithms. (2)",
+    "context": "Answer the following questions about advanced algorithm and briefly explain (without an explanation, the answer will be considered invalid)",
+    "n": 102
+  },
+  {
+    "file": "Tema Esame 2022-11-08-1st.pdf",
+    "page": 4,
+    "ex": "3",
+    "sub": "B",
+    "text": "Describe how Treap split/union works.? (2)",
+    "context": "Answer the following questions about advanced algorithm and briefly explain (without an explanation, the answer will be considered invalid)",
+    "n": 103
+  },
+  {
+    "file": "Tema Esame 2022-11-08-1st.pdf",
+    "page": 5,
+    "ex": "4",
+    "sub": "",
+    "text": "Consider a  k-bit binary counter counting upwards from 0 using the INCREMENT procedure,\nimplemented according to the following pseudocode:\nINCREMENT(A, k)\n1 i = 0\n2 while i < k and A[i] == 1\n3   A[i] = 0\n4   i = i + 1\n5 if i < k\n6   A[i] = 1\nProvide a pseudocode implementation for the RESET procedure that returns the counter to its\noriginal state (all bits set to 0).\nCompute the amortized cost for both procedures for a sequence of n operations starting with n-1\nINCREMENTs and ending with one RESET using one of the amortized analysis methods seen at\nlecture.\nYou are allowed to modify the increment procedure and add additional variables to improve the\namortized cost of the RESET procedure.",
+    "context": "",
+    "n": 104
+  },
+  {
+    "file": "Tema Esame 2022-12-22-2nd.pdf",
+    "page": 2,
+    "ex": "1",
+    "sub": "A",
+    "text": "Could you please summarize why manual parallelization is preferred to automatic\n        parallelization? (1)",
+    "context": "Answer the following questions about Parallel Algorithms and Parallel Programming and briefly explain (without an explanation, the answer will be considered invalid)",
+    "n": 105
+  },
+  {
+    "file": "Tema Esame 2022-12-22-2nd.pdf",
+    "page": 2,
+    "ex": "1",
+    "sub": "B",
+    "text": "Designing a \u00abgood\u00bb parallel algorithm by extracting all the available parallelism is not\n      enough. True/False? Why?(1)",
+    "context": "Answer the following questions about Parallel Algorithms and Parallel Programming and briefly explain (without an explanation, the answer will be considered invalid)",
+    "n": 106
+  },
+  {
+    "file": "Tema Esame 2022-12-22-2nd.pdf",
+    "page": 2,
+    "ex": "1",
+    "sub": "C",
+    "text": "Loop-carried dependences prevent loop parallelization. True/False? Why?(1)",
+    "context": "Answer the following questions about Parallel Algorithms and Parallel Programming and briefly explain (without an explanation, the answer will be considered invalid)",
+    "n": 107
+  },
+  {
+    "file": "Tema Esame 2022-12-22-2nd.pdf",
+    "page": 2,
+    "ex": "1",
+    "sub": "D",
+    "text": "Is an output dependence a true dependence? True/False? Why? (1)",
+    "context": "Answer the following questions about Parallel Algorithms and Parallel Programming and briefly explain (without an explanation, the answer will be considered invalid)",
+    "n": 108
+  },
+  {
+    "file": "Tema Esame 2022-12-22-2nd.pdf",
+    "page": 3,
+    "ex": "2",
+    "sub": "A",
+    "text": "Please define what a parallel reduction is: assumptions, complexity, example.(1)",
+    "context": "Answer the following questions about parallel patterns and briefly explain (without an explanation, the answer will be considered invalid)",
+    "n": 109
+  },
+  {
+    "file": "Tema Esame 2022-12-22-2nd.pdf",
+    "page": 3,
+    "ex": "2",
+    "sub": "B",
+    "text": "Please describe how a parallel pattern gather works. (1)",
+    "context": "Answer the following questions about parallel patterns and briefly explain (without an explanation, the answer will be considered invalid)",
+    "n": 110
+  },
+  {
+    "file": "Tema Esame 2022-12-22-2nd.pdf",
+    "page": 3,
+    "ex": "2",
+    "sub": "C",
+    "text": "Describe all the collision rules for a scatter pattern. (1)",
+    "context": "Answer the following questions about parallel patterns and briefly explain (without an explanation, the answer will be considered invalid)",
+    "n": 111
+  },
+  {
+    "file": "Tema Esame 2022-12-22-2nd.pdf",
+    "page": 3,
+    "ex": "2",
+    "sub": "D",
+    "text": "Describe how the pack parallel pattern could be parallelly implemented. (1)",
+    "context": "Answer the following questions about parallel patterns and briefly explain (without an explanation, the answer will be considered invalid)",
+    "n": 112
+  },
+  {
+    "file": "Tema Esame 2022-12-22-2nd.pdf",
+    "page": 4,
+    "ex": "3",
+    "sub": "A",
+    "text": "Using Pthreads, is it possible to synchronize the execution flow of multiple threads so that\n       they will progress beyond a given point only after all threads have reached it? (1)",
+    "context": "Answer the following questions about pthreads and OpenMP and briefly explain (without an explanation, the answer will be considered invalid)",
+    "n": 113
+  },
+  {
+    "file": "Tema Esame 2022-12-22-2nd.pdf",
+    "page": 4,
+    "ex": "3",
+    "sub": "B",
+    "text": "What\u2019s the use of the omp single directive? (1)",
+    "context": "Answer the following questions about pthreads and OpenMP and briefly explain (without an explanation, the answer will be considered invalid)",
+    "n": 114
+  },
+  {
+    "file": "Tema Esame 2022-12-22-2nd.pdf",
+    "page": 4,
+    "ex": "3",
+    "sub": "C",
+    "text": "How can we control the number of threads spawned by the omp parallel pragma? (2)",
+    "context": "Answer the following questions about pthreads and OpenMP and briefly explain (without an explanation, the answer will be considered invalid)",
+    "n": 115
+  },
+  {
+    "file": "Tema Esame 2022-12-22-2nd.pdf",
+    "page": 5,
+    "ex": "4",
+    "sub": "A",
+    "text": "Describe the functionality of the MPI_Gather subroutine (You can skip this question if you\n       completed the second challenge) (2)",
+    "context": "",
+    "n": 116
+  },
+  {
+    "file": "Tema Esame 2022-12-22-2nd.pdf",
+    "page": 5,
+    "ex": "4",
+    "sub": "B",
+    "text": "How does MPI differ from Pthreads and OpenMP? (2)",
+    "context": "",
+    "n": 117
+  },
+  {
+    "file": "Tema Esame 2023-01-17-1st.pdf",
+    "page": 2,
+    "ex": "1",
+    "sub": "A",
+    "text": "Please describe the matrix multiply algorithm on PRAM (Pseudo code. Complexity). (1)",
+    "context": "Answer the following questions about parallel application modeling and briefly explain (without an explanation, the answer will be considered invalid)",
+    "n": 118
+  },
+  {
+    "file": "Tema Esame 2023-01-17-1st.pdf",
+    "page": 2,
+    "ex": "1",
+    "sub": "B",
+    "text": "Please describe the type of Read/Write abilities a PRAM may have. (1)",
+    "context": "Answer the following questions about parallel application modeling and briefly explain (without an explanation, the answer will be considered invalid)",
+    "n": 119
+  },
+  {
+    "file": "Tema Esame 2023-01-17-1st.pdf",
+    "page": 2,
+    "ex": "1",
+    "sub": "C",
+    "text": "The PRAM algorithm computing the prefix sum of a vector uses concurrent reads.\n       True/False? Where? (1)",
+    "context": "Answer the following questions about parallel application modeling and briefly explain (without an explanation, the answer will be considered invalid)",
+    "n": 120
+  },
+  {
+    "file": "Tema Esame 2023-01-17-1st.pdf",
+    "page": 2,
+    "ex": "1",
+    "sub": "D",
+    "text": "Gustafson says that the Amdahl law is wrong. True/False? Why? (1)",
+    "context": "Answer the following questions about parallel application modeling and briefly explain (without an explanation, the answer will be considered invalid)",
+    "n": 121
+  },
+  {
+    "file": "Tema Esame 2023-01-17-1st.pdf",
+    "page": 3,
+    "ex": "2",
+    "sub": "A",
+    "text": "Describe the algorithm selecting the ith smallest of n elements (Pseudo code, complexity).\n       (2)",
+    "context": "Answer the following questions about randomized algorithms and briefly explain (without an explanation, the answer will be considered invalid)",
+    "n": 122
+  },
+  {
+    "file": "Tema Esame 2023-01-17-1st.pdf",
+    "page": 3,
+    "ex": "2",
+    "sub": "B",
+    "text": "Is there a Select ith smallest of n elements algorithm that runs in linear time in the worst\n       case? (1)",
+    "context": "Answer the following questions about randomized algorithms and briefly explain (without an explanation, the answer will be considered invalid)",
+    "n": 123
+  },
+  {
+    "file": "Tema Esame 2023-01-17-1st.pdf",
+    "page": 3,
+    "ex": "2",
+    "sub": "C",
+    "text": "In which class of randomized algorithms could the algorithm described in A be inserted? (1)",
+    "context": "Answer the following questions about randomized algorithms and briefly explain (without an explanation, the answer will be considered invalid)",
+    "n": 124
+  },
+  {
+    "file": "Tema Esame 2023-01-17-1st.pdf",
+    "page": 4,
+    "ex": "3",
+    "sub": "A",
+    "text": "Please explain what the competitive analysis is meant for. (2)",
+    "context": "Answer the following questions about the advanced algorithm and briefly explain (without an explanation, the answer will be considered invalid)",
+    "n": 125
+  },
+  {
+    "file": "Tema Esame 2023-01-17-1st.pdf",
+    "page": 4,
+    "ex": "3",
+    "sub": "B",
+    "text": "Describe the Karger and Stein algorithm and its complexity. (2)",
+    "context": "Answer the following questions about the advanced algorithm and briefly explain (without an explanation, the answer will be considered invalid)",
+    "n": 126
+  },
+  {
+    "file": "Tema Esame 2023-01-17-1st.pdf",
+    "page": 5,
+    "ex": "4",
+    "sub": "",
+    "text": "Consider a stack data structure storing elements of a given type, which can be assumed to be\nempty at the start time.\nUsers can push one element on top of the stack using a PUSH operation, which has a constant\ncost of 1 and remove the top with a POP operation, which has a constant cost of 1.\nCompute the real cost of the MULTIPOP(k) operation that removes min{k,s} elements from the top\nof the stack where s is the number of elements in the stack.\n Determine the worst possible sequence of n operations on this stack and compute the amortized\ncost for the operations contained in the sequence using one of the methods seen during the\ncourse.",
+    "context": "",
+    "n": 127
+  },
+  {
+    "file": "Tema Esame 2023-01-17-2nd.pdf",
+    "page": 2,
+    "ex": "1",
+    "sub": "A",
+    "text": "What is meant by DOALLloop? Example? (1)",
+    "context": "Answer the following questions about Parallel Algorithms and Parallel Programming and briefly explain (without an explanation, the answer will be considered invalid)",
+    "n": 128
+  },
+  {
+    "file": "Tema Esame 2023-01-17-2nd.pdf",
+    "page": 2,
+    "ex": "1",
+    "sub": "B",
+    "text": "Is the following code parallelizable? (1)\n           for (i=10; i<100; i++)\n             a[i-10] = a[i] + 100;",
+    "context": "Answer the following questions about Parallel Algorithms and Parallel Programming and briefly explain (without an explanation, the answer will be considered invalid)",
+    "n": 129
+  },
+  {
+    "file": "Tema Esame 2023-01-17-2nd.pdf",
+    "page": 2,
+    "ex": "1",
+    "sub": "C",
+    "text": "Please describe the differences between flow, output and anti-dependencies. (2)",
+    "context": "Answer the following questions about Parallel Algorithms and Parallel Programming and briefly explain (without an explanation, the answer will be considered invalid)",
+    "n": 130
+  },
+  {
+    "file": "Tema Esame 2023-01-17-2nd.pdf",
+    "page": 3,
+    "ex": "2",
+    "sub": "A",
+    "text": "Please describe the stencil pattern: assumptions, complexity, example. (1)",
+    "context": "Answer the following questions about parallel patterns and briefly explain (without an explanation, the answer will be considered invalid)",
+    "n": 131
+  },
+  {
+    "file": "Tema Esame 2023-01-17-2nd.pdf",
+    "page": 3,
+    "ex": "2",
+    "sub": "B",
+    "text": "Please describe the differences between Split and Bin parallel patterns. (1)",
+    "context": "Answer the following questions about parallel patterns and briefly explain (without an explanation, the answer will be considered invalid)",
+    "n": 132
+  },
+  {
+    "file": "Tema Esame 2023-01-17-2nd.pdf",
+    "page": 3,
+    "ex": "2",
+    "sub": "C",
+    "text": "Given an input collection of 100 values and an auxiliary array of 10, which parallel pattern\n      between the gather and the scatter is producing an output collection of 10 values? (1)",
+    "context": "Answer the following questions about parallel patterns and briefly explain (without an explanation, the answer will be considered invalid)",
+    "n": 133
+  },
+  {
+    "file": "Tema Esame 2023-01-17-2nd.pdf",
+    "page": 3,
+    "ex": "2",
+    "sub": "D",
+    "text": "What is meant by separatinghyperplaneinarecurrenceparallelization? (1)",
+    "context": "Answer the following questions about parallel patterns and briefly explain (without an explanation, the answer will be considered invalid)",
+    "n": 134
+  },
+  {
+    "file": "Tema Esame 2023-01-17-2nd.pdf",
+    "page": 4,
+    "ex": "3",
+    "sub": "A",
+    "text": "Given an algorithm with the following structure:\nAnd the following values of work: W(Task1) = 2, W(Task2) = 1, W(Task3) = 3, W(Task4) = 2, W(Task5) = 1,\nW(Task6) = 2, W(Task7) = 5, W(Task8) = 1.\nCompute the Work and the Makespan of the algorithm. What is the minimum number of threads required to\nguarantee the maximum parallelism? (1)\nProvide a pseudocode implementation using OpenMP (2)",
+    "context": "Answer the following questions about OpenMP and briefly explain (without an explanation, the answer will be considered invalid)",
+    "n": 135
+  },
+  {
+    "file": "Tema Esame 2023-01-17-2nd.pdf",
+    "page": 4,
+    "ex": "3",
+    "sub": "B",
+    "text": "What\u2019s the use of the omp critical directive? (1)",
+    "context": "Answer the following questions about OpenMP and briefly explain (without an explanation, the answer will be considered invalid)",
+    "n": 136
+  },
+  {
+    "file": "Tema Esame 2023-01-17-2nd.pdf",
+    "page": 5,
+    "ex": "4",
+    "sub": "A",
+    "text": "What are Communicators in MPI? Describe if it is possible to define custom communicators in a\n       program at runtime, and why doing so would be useful. (You can skip this question if you\n       completed the second challenge) (2)",
+    "context": "",
+    "n": 137
+  },
+  {
+    "file": "Tema Esame 2023-01-17-2nd.pdf",
+    "page": 5,
+    "ex": "4",
+    "sub": "B",
+    "text": "What are PThread condition variables and what is their use? (2)",
+    "context": "",
+    "n": 138
+  },
+  {
+    "file": "Tema Esame 2023-02-14-1st.pdf",
+    "page": 2,
+    "ex": "1",
+    "sub": "A",
+    "text": "Please define a PRAM. (1)",
+    "context": "Answer the following questions about parallel application modeling and briefly explain (without an explanation, the answer will be considered invalid)",
+    "n": 139
+  },
+  {
+    "file": "Tema Esame 2023-02-14-1st.pdf",
+    "page": 2,
+    "ex": "1",
+    "sub": "B",
+    "text": "Please describe what \u201cCommon CRCW\u201d means. (1)",
+    "context": "Answer the following questions about parallel application modeling and briefly explain (without an explanation, the answer will be considered invalid)",
+    "n": 140
+  },
+  {
+    "file": "Tema Esame 2023-02-14-1st.pdf",
+    "page": 2,
+    "ex": "1",
+    "sub": "C",
+    "text": "Please define the speed-up of a parallel algorithm according to the PRAM model (1)",
+    "context": "Answer the following questions about parallel application modeling and briefly explain (without an explanation, the answer will be considered invalid)",
+    "n": 141
+  },
+  {
+    "file": "Tema Esame 2023-02-14-1st.pdf",
+    "page": 2,
+    "ex": "1",
+    "sub": "D",
+    "text": "Please describe how Gustafson defines the speed-up. (1)",
+    "context": "Answer the following questions about parallel application modeling and briefly explain (without an explanation, the answer will be considered invalid)",
+    "n": 142
+  },
+  {
+    "file": "Tema Esame 2023-02-14-1st.pdf",
+    "page": 3,
+    "ex": "2",
+    "sub": "A",
+    "text": "Please describe how the Divide and Conquer class of algorithms works. (2)",
+    "context": "Answer the following questions about algorithms and briefly explain (without an explanation, the answer will be considered invalid)",
+    "n": 143
+  },
+  {
+    "file": "Tema Esame 2023-02-14-1st.pdf",
+    "page": 3,
+    "ex": "2",
+    "sub": "B",
+    "text": "How the complexity of a Divide and Conquer algorithm can be computed? (1)",
+    "context": "Answer the following questions about algorithms and briefly explain (without an explanation, the answer will be considered invalid)",
+    "n": 144
+  },
+  {
+    "file": "Tema Esame 2023-02-14-1st.pdf",
+    "page": 3,
+    "ex": "2",
+    "sub": "C",
+    "text": "Please discuss the complexity of the \u201cPowering a number\u201d algorithm. (1)",
+    "context": "Answer the following questions about algorithms and briefly explain (without an explanation, the answer will be considered invalid)",
+    "n": 145
+  },
+  {
+    "file": "Tema Esame 2023-02-14-1st.pdf",
+    "page": 4,
+    "ex": "3",
+    "sub": "A",
+    "text": "Please explain what the memoization technique is meant for and where it matters. (2)",
+    "context": "Answer the following questions about the advanced algorithm and briefly explain (without an explanation, the answer will be considered invalid)",
+    "n": 146
+  },
+  {
+    "file": "Tema Esame 2023-02-14-1st.pdf",
+    "page": 4,
+    "ex": "3",
+    "sub": "B",
+    "text": "Describe the skip-list data structure, how the search is performed, and which complexity\n       has. (2)",
+    "context": "Answer the following questions about the advanced algorithm and briefly explain (without an explanation, the answer will be considered invalid)",
+    "n": 147
+  },
+  {
+    "file": "Tema Esame 2023-02-14-1st.pdf",
+    "page": 5,
+    "ex": "4",
+    "sub": "",
+    "text": "Consider a dynamic table data structure for storing a variable number of elements in memory.\nWhen created, the table has space for storing only one element, and pushing one element in the\ntable has a constant cost.\nIf the table is full, twice the size of the original table is allocated to a new table and all elements of\nthe original table are copied in the new table. The cost for allocating one unit of memory  is\nconstant.\nCompute the real cost for inserting n elements into a new-allocated table (having an  initial\ncapacity for storing only one element) and determine the amortized cost for the allocating the\nsame number of elements using one of the methods seen during the course.",
+    "context": "",
+    "n": 148
+  },
+  {
+    "file": "Tema Esame 2023-02-14-2nd.pdf",
+    "page": 2,
+    "ex": "1",
+    "sub": "A",
+    "text": "\u201cParallel execution must address control, data, and system dependences\u201d. What is meant\n      by \u201cdependency\u201d in this context? (1)",
+    "context": "Answer the following questions about Parallel Algorithms and Parallel Programming and briefly explain (without an explanation, the answer will be considered invalid)",
+    "n": 149
+  },
+  {
+    "file": "Tema Esame 2023-02-14-2nd.pdf",
+    "page": 2,
+    "ex": "1",
+    "sub": "B",
+    "text": "Is the following code parallelizable? Are there better parallelizable solutions? (2)\n           for (j=1; j<100; j++)\n                     for (i=0; i<100; i++)\n                           a[i][j] = f(a[i][j-1]);",
+    "context": "Answer the following questions about Parallel Algorithms and Parallel Programming and briefly explain (without an explanation, the answer will be considered invalid)",
+    "n": 150
+  },
+  {
+    "file": "Tema Esame 2023-02-14-2nd.pdf",
+    "page": 2,
+    "ex": "1",
+    "sub": "C",
+    "text": "Please explain the differences between \u201cloop-carried\u201c and \u201cloop-independent\u201d.(1)",
+    "context": "Answer the following questions about Parallel Algorithms and Parallel Programming and briefly explain (without an explanation, the answer will be considered invalid)",
+    "n": 151
+  },
+  {
+    "file": "Tema Esame 2023-02-14-2nd.pdf",
+    "page": 3,
+    "ex": "2",
+    "sub": "A",
+    "text": "Please describe the map pattern: assumptions, complexity, example. (1)",
+    "context": "Answer the following questions about parallel patterns and briefly explain (without an explanation, the answer will be considered invalid)",
+    "n": 152
+  },
+  {
+    "file": "Tema Esame 2023-02-14-2nd.pdf",
+    "page": 3,
+    "ex": "2",
+    "sub": "B",
+    "text": "Please describe the differences between Zip and Unzip parallel patterns. (1)",
+    "context": "Answer the following questions about parallel patterns and briefly explain (without an explanation, the answer will be considered invalid)",
+    "n": 153
+  },
+  {
+    "file": "Tema Esame 2023-02-14-2nd.pdf",
+    "page": 3,
+    "ex": "2",
+    "sub": "C",
+    "text": "Describe all the collision rules for a scatter pattern. (1)",
+    "context": "Answer the following questions about parallel patterns and briefly explain (without an explanation, the answer will be considered invalid)",
+    "n": 154
+  },
+  {
+    "file": "Tema Esame 2023-02-14-2nd.pdf",
+    "page": 3,
+    "ex": "2",
+    "sub": "D",
+    "text": "What is meant by \u201cpermutationscatter\u201d? (1)",
+    "context": "Answer the following questions about parallel patterns and briefly explain (without an explanation, the answer will be considered invalid)",
+    "n": 155
+  },
+  {
+    "file": "Tema Esame 2023-02-14-2nd.pdf",
+    "page": 4,
+    "ex": "3",
+    "sub": "A",
+    "text": "Is it possible to implement a pipeline paradigm using OpenMP? What parallel paradigm is\n      adopted by default in OpenMP?(2)",
+    "context": "Answer the following questions about OpenMP and briefly explain (without an explanation, the answer will be considered invalid)",
+    "n": 156
+  },
+  {
+    "file": "Tema Esame 2023-02-14-2nd.pdf",
+    "page": 4,
+    "ex": "3",
+    "sub": "B",
+    "text": "Is it possible to control the visibility of variables between different threads in OpenMP? In\n      which ways? (2)",
+    "context": "Answer the following questions about OpenMP and briefly explain (without an explanation, the answer will be considered invalid)",
+    "n": 157
+  },
+  {
+    "file": "Tema Esame 2023-02-14-2nd.pdf",
+    "page": 5,
+    "ex": "4",
+    "sub": "A",
+    "text": "Describe the functionality of the MPI_Reduce subroutine (You can skip this question if you\n      completed the second challenge) (2)",
+    "context": "Answer the following questions about MPI and PThreads and briefly explain (without explanation the answer will be considered invalid)",
+    "n": 158
+  },
+  {
+    "file": "Tema Esame 2023-02-14-2nd.pdf",
+    "page": 5,
+    "ex": "4",
+    "sub": "B",
+    "text": "What is the difference between joinable and detached threads in PThread? Can detached\n       threads\u2019 execution be synchronized with other threads? (2)",
+    "context": "Answer the following questions about MPI and PThreads and briefly explain (without explanation the answer will be considered invalid)",
+    "n": 159
+  },
+  {
+    "file": "Tema Esame 2023-06-19-1st.pdf",
+    "page": 2,
+    "ex": "1",
+    "sub": "A",
+    "text": "Please define the different phases followed in a PRAM computation. (1)",
+    "context": "Answer the following questions about parallel application modeling and briefly explain (without an explanation, the answer will be considered invalid)",
+    "n": 160
+  },
+  {
+    "file": "Tema Esame 2023-06-19-1st.pdf",
+    "page": 2,
+    "ex": "1",
+    "sub": "B",
+    "text": "Please describe what \u201cArbitrary CW\u201d means. (1)",
+    "context": "Answer the following questions about parallel application modeling and briefly explain (without an explanation, the answer will be considered invalid)",
+    "n": 161
+  },
+  {
+    "file": "Tema Esame 2023-06-19-1st.pdf",
+    "page": 2,
+    "ex": "1",
+    "sub": "C",
+    "text": "Please define the efficiency of a parallel algorithm according to the PRAM model (1)",
+    "context": "Answer the following questions about parallel application modeling and briefly explain (without an explanation, the answer will be considered invalid)",
+    "n": 162
+  },
+  {
+    "file": "Tema Esame 2023-06-19-1st.pdf",
+    "page": 2,
+    "ex": "1",
+    "sub": "D",
+    "text": "Please compare the assumptions behind the Gustafson and the Amdahl laws. (1)",
+    "context": "Answer the following questions about parallel application modeling and briefly explain (without an explanation, the answer will be considered invalid)",
+    "n": 163
+  },
+  {
+    "file": "Tema Esame 2023-06-19-1st.pdf",
+    "page": 3,
+    "ex": "2",
+    "sub": "A",
+    "text": "Please describe how Strassen\u2019s algorithm works. (2)",
+    "context": "Answer the following questions about algorithms and briefly explain (without an explanation, the answer will be considered invalid)",
+    "n": 164
+  },
+  {
+    "file": "Tema Esame 2023-06-19-1st.pdf",
+    "page": 3,
+    "ex": "2",
+    "sub": "B",
+    "text": "Why is the Master Theorem method frequently used to evaluate the asymptotic complexity\n       of a Divide and Conquer algorithm can be computed? (2)",
+    "context": "Answer the following questions about algorithms and briefly explain (without an explanation, the answer will be considered invalid)",
+    "n": 165
+  },
+  {
+    "file": "Tema Esame 2023-06-19-1st.pdf",
+    "page": 4,
+    "ex": "3",
+    "sub": "A",
+    "text": "Please explain why an algorithm could be classified as a Dynamic programming algorithm.\n       (2) (You can skip this question if you completed the first challenge)",
+    "context": "Answer the following questions about the advanced algorithm and briefly explain (without an explanation, the answer will be considered invalid)",
+    "n": 166
+  },
+  {
+    "file": "Tema Esame 2023-06-19-1st.pdf",
+    "page": 4,
+    "ex": "3",
+    "sub": "B",
+    "text": "Describe the treap data structure, how the search is performed, and which complexity has.\n       (2)",
+    "context": "Answer the following questions about the advanced algorithm and briefly explain (without an explanation, the answer will be considered invalid)",
+    "n": 167
+  },
+  {
+    "file": "Tema Esame 2023-06-19-1st.pdf",
+    "page": 5,
+    "ex": "4",
+    "sub": "A",
+    "text": "Please explain what aggregate amortized analysis is. (2)",
+    "context": "Answer the following questions about the amortized analysis and briefly explain (without an explanation, the answer will be considered invalid)",
+    "n": 168
+  },
+  {
+    "file": "Tema Esame 2023-06-19-1st.pdf",
+    "page": 5,
+    "ex": "4",
+    "sub": "B",
+    "text": "Please explain why the amortized analysis matters for the analysis of the complexity of the\n     Move to Front algorithm. (2)",
+    "context": "Answer the following questions about the amortized analysis and briefly explain (without an explanation, the answer will be considered invalid)",
+    "n": 169
+  },
+  {
+    "file": "Tema Esame 2023-06-19-2nd.pdf",
+    "page": 2,
+    "ex": "1",
+    "sub": "A",
+    "text": "Is it possible to eliminate a flow dependency by modifying the program and ensuring that\n       the program remains equivalent? (2)",
+    "context": "Answer the following questions about Parallel Algorithms and Parallel Programming and briefly explain (without an explanation, the answer will be considered invalid)",
+    "n": 170
+  },
+  {
+    "file": "Tema Esame 2023-06-19-2nd.pdf",
+    "page": 2,
+    "ex": "1",
+    "sub": "B",
+    "text": "Is the following code parallelizable? Are there better parallelizable solutions? (2)\n           for (i=0; i<100; i++)\n                      for (j=1; j<100; j++)\n                            a[i][j] = f(a[i][j-1]);",
+    "context": "Answer the following questions about Parallel Algorithms and Parallel Programming and briefly explain (without an explanation, the answer will be considered invalid)",
+    "n": 171
+  },
+  {
+    "file": "Tema Esame 2023-06-19-2nd.pdf",
+    "page": 3,
+    "ex": "2",
+    "sub": "A",
+    "text": "Please describe the reduce pattern: assumptions, complexity, and example. (2)",
+    "context": "Answer the following questions about parallel patterns and briefly explain (without an explanation, the answer will be considered invalid)",
+    "n": 172
+  },
+  {
+    "file": "Tema Esame 2023-06-19-2nd.pdf",
+    "page": 3,
+    "ex": "2",
+    "sub": "B",
+    "text": "Please describe the differences between Gather and scatter parallel patterns. (1)",
+    "context": "Answer the following questions about parallel patterns and briefly explain (without an explanation, the answer will be considered invalid)",
+    "n": 173
+  },
+  {
+    "file": "Tema Esame 2023-06-19-2nd.pdf",
+    "page": 3,
+    "ex": "2",
+    "sub": "C",
+    "text": "What is meant by \u201cmergescatter\u201d? (1)",
+    "context": "Answer the following questions about parallel patterns and briefly explain (without an explanation, the answer will be considered invalid)",
+    "n": 174
+  },
+  {
+    "file": "Tema Esame 2023-06-19-2nd.pdf",
+    "page": 4,
+    "ex": "3",
+    "sub": "A",
+    "text": "Please describe what is meant by nested parallelism and how could be implemented in\n      OpenMP?(2)",
+    "context": "Answer the following questions about OpenMP and briefly explain (without an explanation, the answer will be considered invalid)",
+    "n": 175
+  },
+  {
+    "file": "Tema Esame 2023-06-19-2nd.pdf",
+    "page": 4,
+    "ex": "3",
+    "sub": "B",
+    "text": "What is the difference between static and dynamic schedule clauses of OpenMP? In which\n     OpenMP directive is it used? (2)",
+    "context": "Answer the following questions about OpenMP and briefly explain (without an explanation, the answer will be considered invalid)",
+    "n": 176
+  },
+  {
+    "file": "Tema Esame 2023-06-19-2nd.pdf",
+    "page": 5,
+    "ex": "4",
+    "sub": "A",
+    "text": "Describe the procedure MPI_Send (You can skip this question if you completed the second\n       challenge) (2)",
+    "context": "Answer the following questions about MPI and PThreads and briefly explain (without explanation the answer will be considered invalid)",
+    "n": 177
+  },
+  {
+    "file": "Tema Esame 2023-06-19-2nd.pdf",
+    "page": 5,
+    "ex": "4",
+    "sub": "B",
+    "text": "What is it meant for the procedure pthread_barrier_wait? (2)",
+    "context": "Answer the following questions about MPI and PThreads and briefly explain (without explanation the answer will be considered invalid)",
+    "n": 178
+  },
+  {
+    "file": "Tema Esame 2023-07-11-1st.pdf",
+    "page": 2,
+    "ex": "1",
+    "sub": "A",
+    "text": "How the time complexity in a PRAM model is computed? (1)",
+    "context": "Answer the following questions about parallel application modeling and briefly explain (without an explanation, the answer will be considered invalid)",
+    "n": 179
+  },
+  {
+    "file": "Tema Esame 2023-07-11-1st.pdf",
+    "page": 2,
+    "ex": "1",
+    "sub": "B",
+    "text": "How is the communication via shared memory performed in a PRAM model? (latency vs\n        parallel accesses) (1)",
+    "context": "Answer the following questions about parallel application modeling and briefly explain (without an explanation, the answer will be considered invalid)",
+    "n": 180
+  },
+  {
+    "file": "Tema Esame 2023-07-11-1st.pdf",
+    "page": 2,
+    "ex": "1",
+    "sub": "C",
+    "text": "Discuss the following sentence: \u201cIf a problem has no feasible/efficient solution on PRAM, it\n      has no feasible/efficient solution for any parallel machine.\u201d True or False? (1)",
+    "context": "Answer the following questions about parallel application modeling and briefly explain (without an explanation, the answer will be considered invalid)",
+    "n": 181
+  },
+  {
+    "file": "Tema Esame 2023-07-11-1st.pdf",
+    "page": 2,
+    "ex": "1",
+    "sub": "D",
+    "text": "Define the \u201cwork\u201d in a PRAM model. (1)",
+    "context": "Answer the following questions about parallel application modeling and briefly explain (without an explanation, the answer will be considered invalid)",
+    "n": 182
+  },
+  {
+    "file": "Tema Esame 2023-07-11-1st.pdf",
+    "page": 3,
+    "ex": "2",
+    "sub": "A",
+    "text": "Please discuss how the complexity of the powering of a number algorithm can be\n      computed. Please report also the complexity in terms of time and space. (2)",
+    "context": "Answer the following questions about algorithms and briefly explain (without an explanation, the answer will be considered invalid)",
+    "n": 183
+  },
+  {
+    "file": "Tema Esame 2023-07-11-1st.pdf",
+    "page": 3,
+    "ex": "2",
+    "sub": "B",
+    "text": "The best worst-case running time that we have seen for comparison sorting is O(nlg n).\n      Can you explain why? (2)",
+    "context": "Answer the following questions about algorithms and briefly explain (without an explanation, the answer will be considered invalid)",
+    "n": 184
+  },
+  {
+    "file": "Tema Esame 2023-07-11-1st.pdf",
+    "page": 4,
+    "ex": "3",
+    "sub": "A",
+    "text": "Please explain how the disjoint set data structure works and which optimizations have been\n       considered to reduce the complexity of the operations. (2) (You can skip this question if\n      you completed the first challenge)",
+    "context": "Answer the following questions about the advanced algorithm and briefly explain (without an explanation, the answer will be considered invalid)",
+    "n": 185
+  },
+  {
+    "file": "Tema Esame 2023-07-11-1st.pdf",
+    "page": 4,
+    "ex": "3",
+    "sub": "B",
+    "text": "Describe the skip list data structure and how the union is performed, and which complexity\n       has. (2)",
+    "context": "Answer the following questions about the advanced algorithm and briefly explain (without an explanation, the answer will be considered invalid)",
+    "n": 186
+  },
+  {
+    "file": "Tema Esame 2023-07-11-1st.pdf",
+    "page": 5,
+    "ex": "4",
+    "sub": "A",
+    "text": "Detail the Longest Common Subsequence algorithm: pseudo code and space and temporal\n       complexity. (2)",
+    "context": "Answer the following questions about the amortized analysis and briefly explain (without an explanation, the answer will be considered invalid)",
+    "n": 187
+  },
+  {
+    "file": "Tema Esame 2023-07-11-1st.pdf",
+    "page": 5,
+    "ex": "4",
+    "sub": "B",
+    "text": "What is meant by \u201caccounting method\u201d? At which class of algorithms could be applied? (2)",
+    "context": "Answer the following questions about the amortized analysis and briefly explain (without an explanation, the answer will be considered invalid)",
+    "n": 188
+  },
+  {
+    "file": "Tema Esame 2023-07-11-2nd.pdf",
+    "page": 2,
+    "ex": "1",
+    "sub": "A",
+    "text": "DOALL loops have linear speedup even using the Amdahl law. Could you please write a\n       short pseudo code showing an example of a DOALL loop? (2)",
+    "context": "Answer the following questions about Parallel Algorithms and Parallel Programming and briefly explain (without an explanation, the answer will be considered invalid)",
+    "n": 189
+  },
+  {
+    "file": "Tema Esame 2023-07-11-2nd.pdf",
+    "page": 2,
+    "ex": "1",
+    "sub": "B",
+    "text": "Is the following code parallelizable? Are there better parallelizable solutions? (2)\n           for (i=0; i<100; i++)\n                     for (j=0; j<91; j++)\n                        a[i][j+9] = f(a[i][j]);",
+    "context": "Answer the following questions about Parallel Algorithms and Parallel Programming and briefly explain (without an explanation, the answer will be considered invalid)",
+    "n": 190
+  },
+  {
+    "file": "Tema Esame 2023-07-11-2nd.pdf",
+    "page": 3,
+    "ex": "2",
+    "sub": "A",
+    "text": "Please describe the stencil pattern: assumptions, complexity, and example. (2)",
+    "context": "Answer the following questions about parallel patterns and briefly explain (without an explanation, the answer will be considered invalid)",
+    "n": 191
+  },
+  {
+    "file": "Tema Esame 2023-07-11-2nd.pdf",
+    "page": 3,
+    "ex": "2",
+    "sub": "B",
+    "text": "Please describe how the Pack parallel pattern could be implemented. (1)",
+    "context": "Answer the following questions about parallel patterns and briefly explain (without an explanation, the answer will be considered invalid)",
+    "n": 192
+  },
+  {
+    "file": "Tema Esame 2023-07-11-2nd.pdf",
+    "page": 3,
+    "ex": "2",
+    "sub": "C",
+    "text": "What is meant by \u201cpermutationscatter\u201d? (1)",
+    "context": "Answer the following questions about parallel patterns and briefly explain (without an explanation, the answer will be considered invalid)",
+    "n": 193
+  },
+  {
+    "file": "Tema Esame 2023-07-11-2nd.pdf",
+    "page": 4,
+    "ex": "3",
+    "sub": "A",
+    "text": "Please describe what is meant by pipelined parallelism and how could be implemented in\n      OpenMP?(2)",
+    "context": "Answer the following questions about OpenMP and briefly explain (without an explanation, the answer will be considered invalid)",
+    "n": 194
+  },
+  {
+    "file": "Tema Esame 2023-07-11-2nd.pdf",
+    "page": 4,
+    "ex": "3",
+    "sub": "B",
+    "text": "Please describe the work-sharing constructs in OpenMP. (2)",
+    "context": "Answer the following questions about OpenMP and briefly explain (without an explanation, the answer will be considered invalid)",
+    "n": 195
+  },
+  {
+    "file": "Tema Esame 2023-07-11-2nd.pdf",
+    "page": 5,
+    "ex": "4",
+    "sub": "A",
+    "text": "Describe the functionality and the parameters meaning of the function MPI_Bcast (You can\n        skip this question if you completed the second challenge) (2)",
+    "context": "Answer the following questions about MPI and domain-specific languages and briefly explain (without explanation, the answer will be considered invalid)",
+    "n": 196
+  },
+  {
+    "file": "Tema Esame 2023-07-11-2nd.pdf",
+    "page": 5,
+    "ex": "4",
+    "sub": "B",
+    "text": "Please shortly describe the main characteristic of the domain-specific language Halide. (2)",
+    "context": "Answer the following questions about MPI and domain-specific languages and briefly explain (without explanation, the answer will be considered invalid)",
+    "n": 197
+  },
+  {
+    "file": "Tema Esame 2023-09-11-1st.pdf",
+    "page": 2,
+    "ex": "1",
+    "sub": "A",
+    "text": "Which of the PRAM model\u2019s assumptions help to compute the time complexity? (1)",
+    "context": "Answer the following questions about parallel application modeling and briefly explain (without an explanation, the answer will be considered invalid)",
+    "n": 198
+  },
+  {
+    "file": "Tema Esame 2023-09-11-1st.pdf",
+    "page": 2,
+    "ex": "1",
+    "sub": "B",
+    "text": "Which of the assumptions of the PRAM model simplifies the communication between\n       processor and memory? (1)",
+    "context": "Answer the following questions about parallel application modeling and briefly explain (without an explanation, the answer will be considered invalid)",
+    "n": 199
+  },
+  {
+    "file": "Tema Esame 2023-09-11-1st.pdf",
+    "page": 2,
+    "ex": "1",
+    "sub": "C",
+    "text": "Please define when a write conflict occurs in a PRAM model. (1)",
+    "context": "Answer the following questions about parallel application modeling and briefly explain (without an explanation, the answer will be considered invalid)",
+    "n": 200
+  },
+  {
+    "file": "Tema Esame 2023-09-11-1st.pdf",
+    "page": 2,
+    "ex": "1",
+    "sub": "D",
+    "text": "Define the \u201ccost\u201d in a PRAM model. (1)",
+    "context": "Answer the following questions about parallel application modeling and briefly explain (without an explanation, the answer will be considered invalid)",
+    "n": 201
+  },
+  {
+    "file": "Tema Esame 2023-09-11-1st.pdf",
+    "page": 3,
+    "ex": "2",
+    "sub": "A",
+    "text": "Please discuss the cases the master theorem solves and under which assumption the\n      theorem holds. Apply then to the binary search algorithm. Is the master theorem of any\n       help in case we would like to estimate the spatial complexity of an algorithm? (2)",
+    "context": "Answer the following questions about algorithms and briefly explain (without an explanation, the answer will be considered invalid)",
+    "n": 202
+  },
+  {
+    "file": "Tema Esame 2023-09-11-1st.pdf",
+    "page": 3,
+    "ex": "2",
+    "sub": "B",
+    "text": "Please explain following theorem and why does not hold for the counting sort algorithm:\n      Theorem: \u201cAny decision tree that can sort nelements must have height W(nlg n)\u201d (2)",
+    "context": "Answer the following questions about algorithms and briefly explain (without an explanation, the answer will be considered invalid)",
+    "n": 203
+  },
+  {
+    "file": "Tema Esame 2023-09-11-1st.pdf",
+    "page": 4,
+    "ex": "3",
+    "sub": "A",
+    "text": "Please explain which optimizations have been considered to reduce the complexity of the\n        disjoint-set operations. (2) (You can skip this question if you completed the first challenge)",
+    "context": "Answer the following questions about the advanced algorithm and briefly explain (without an explanation, the answer will be considered invalid)",
+    "n": 204
+  },
+  {
+    "file": "Tema Esame 2023-09-11-1st.pdf",
+    "page": 4,
+    "ex": "3",
+    "sub": "B",
+    "text": "Describe the treap data structure and how the split is performed, and which complexity\n       has. (2)",
+    "context": "Answer the following questions about the advanced algorithm and briefly explain (without an explanation, the answer will be considered invalid)",
+    "n": 205
+  },
+  {
+    "file": "Tema Esame 2023-09-11-1st.pdf",
+    "page": 5,
+    "ex": "4",
+    "sub": "A",
+    "text": "Detail the Move to Front algorithm. What approach is followed to estimate the temporal\n       complexity of this class of algorithms? Which class of algorithms does it belongs to? (2)",
+    "context": "Answer the following questions about the amortized analysis and briefly explain (without an explanation, the answer will be considered invalid)",
+    "n": 206
+  },
+  {
+    "file": "Tema Esame 2023-09-11-1st.pdf",
+    "page": 5,
+    "ex": "4",
+    "sub": "B",
+    "text": "What is meant by \u201cpotential method\u201d? At which class of algorithms could be applied?\n      Examples? (2)",
+    "context": "Answer the following questions about the amortized analysis and briefly explain (without an explanation, the answer will be considered invalid)",
+    "n": 207
+  },
+  {
+    "file": "Tema Esame 2023-09-11-2nd.pdf",
+    "page": 2,
+    "ex": "1",
+    "sub": "A",
+    "text": "Could you please describe the statement/operation dependency and how and when it can\n      be removed? (2)",
+    "context": "Answer the following questions about Parallel Algorithms and Parallel Programming and briefly explain (without an explanation, the answer will be considered invalid)",
+    "n": 208
+  },
+  {
+    "file": "Tema Esame 2023-09-11-2nd.pdf",
+    "page": 2,
+    "ex": "1",
+    "sub": "B",
+    "text": "Under which condition the following code is parallelizable? In case the conditions hold, are\n                                               there better parallelizable solutions? (2)\n           for (i=0; i<100; i++)\n                     for (j=0; j<10; j++)\n                           a[i][j] = f(a[i][j]);",
+    "context": "Answer the following questions about Parallel Algorithms and Parallel Programming and briefly explain (without an explanation, the answer will be considered invalid)",
+    "n": 209
+  },
+  {
+    "file": "Tema Esame 2023-09-11-2nd.pdf",
+    "page": 3,
+    "ex": "2",
+    "sub": "A",
+    "text": "Please describe the reduce pattern: assumptions, complexity, and example. (2)",
+    "context": "Answer the following questions about parallel patterns and briefly explain (without an explanation, the answer will be considered invalid)",
+    "n": 210
+  },
+  {
+    "file": "Tema Esame 2023-09-11-2nd.pdf",
+    "page": 3,
+    "ex": "2",
+    "sub": "B",
+    "text": "Please describe how the Unpack parallel pattern could be implemented. (2)",
+    "context": "Answer the following questions about parallel patterns and briefly explain (without an explanation, the answer will be considered invalid)",
+    "n": 211
+  },
+  {
+    "file": "Tema Esame 2023-09-11-2nd.pdf",
+    "page": 4,
+    "ex": "3",
+    "sub": "A",
+    "text": "Please describe what is meant by task parallelism (Parallel Task Graph) and how could be\n      implemented in OpenMP?(2)",
+    "context": "Answer the following questions about OpenMP and briefly explain (without an explanation, the answer will be considered invalid)",
+    "n": 212
+  },
+  {
+    "file": "Tema Esame 2023-09-11-2nd.pdf",
+    "page": 4,
+    "ex": "3",
+    "sub": "B",
+    "text": "Please describe the simd directive in OpenMP. (2)",
+    "context": "Answer the following questions about OpenMP and briefly explain (without an explanation, the answer will be considered invalid)",
+    "n": 213
+  },
+  {
+    "file": "Tema Esame 2023-09-11-2nd.pdf",
+    "page": 5,
+    "ex": "4",
+    "sub": "A",
+    "text": "Describe the functionality and the parameters meaning of the function MPI_Gather(You can\n        skip this question if you completed the second challenge) (2)",
+    "context": "Answer the following questions about MPI and domain-specific languages and briefly explain (without explanation, the answer will be considered invalid)",
+    "n": 214
+  },
+  {
+    "file": "Tema Esame 2023-09-11-2nd.pdf",
+    "page": 5,
+    "ex": "4",
+    "sub": "B",
+    "text": "Please briefly discuss what the term \u201cschedule\u201d means in the domain-specific language\n        Halide. (2)",
+    "context": "Answer the following questions about MPI and domain-specific languages and briefly explain (without explanation, the answer will be considered invalid)",
+    "n": 215
+  },
+  {
+    "file": "Tema Esame 2023-11-09-1st.pdf",
+    "page": 2,
+    "ex": "1",
+    "sub": "A",
+    "text": "Explain why, in the PRAM model, the number of instructions executed is used as time\n       complexity. (2)",
+    "context": "Answer the following questions about parallel application modeling and briefly explain (without an explanation, the answer will be considered invalid)",
+    "n": 216
+  },
+  {
+    "file": "Tema Esame 2023-11-09-1st.pdf",
+    "page": 2,
+    "ex": "1",
+    "sub": "B",
+    "text": "Define the cost C when a sequential code is accelerated with p processors. (1)",
+    "context": "Answer the following questions about parallel application modeling and briefly explain (without an explanation, the answer will be considered invalid)",
+    "n": 217
+  },
+  {
+    "file": "Tema Esame 2023-11-09-1st.pdf",
+    "page": 2,
+    "ex": "1",
+    "sub": "C",
+    "text": "What is it meant with a fixed time model? Is it referring to Gustafson or Amdahl\u2019s law? (1)",
+    "context": "Answer the following questions about parallel application modeling and briefly explain (without an explanation, the answer will be considered invalid)",
+    "n": 218
+  },
+  {
+    "file": "Tema Esame 2023-11-09-1st.pdf",
+    "page": 3,
+    "ex": "2",
+    "sub": "A",
+    "text": "Why the BDD data structure can be classified as an example of dynamic programming. (2)",
+    "context": "Answer the following questions about dynamic programming algorithms and briefly explain (without an explanation, the answer will be considered invalid)",
+    "n": 219
+  },
+  {
+    "file": "Tema Esame 2023-11-09-1st.pdf",
+    "page": 3,
+    "ex": "2",
+    "sub": "B",
+    "text": "What kind of spatial complexity has the longest common subsequence problem? (1). This\n      question can be skipped in case of a passed challenge.",
+    "context": "Answer the following questions about dynamic programming algorithms and briefly explain (without an explanation, the answer will be considered invalid)",
+    "n": 220
+  },
+  {
+    "file": "Tema Esame 2023-11-09-1st.pdf",
+    "page": 3,
+    "ex": "2",
+    "sub": "C",
+    "text": "Why does spatial complexity matter for all dynamic programming algorithms? (1)",
+    "context": "Answer the following questions about dynamic programming algorithms and briefly explain (without an explanation, the answer will be considered invalid)",
+    "n": 221
+  },
+  {
+    "file": "Tema Esame 2023-11-09-1st.pdf",
+    "page": 4,
+    "ex": "3",
+    "sub": "A",
+    "text": "Please discuss the competitive analysis. For which class of algorithm does it matter? (2)",
+    "context": "Answer the following questions about advanced algorithms and briefly explain (without an explanation, the answer will be considered invalid)",
+    "n": 222
+  },
+  {
+    "file": "Tema Esame 2023-11-09-1st.pdf",
+    "page": 4,
+    "ex": "3",
+    "sub": "B",
+    "text": "Describe how the search for skip-list data structure works. (2)",
+    "context": "Answer the following questions about advanced algorithms and briefly explain (without an explanation, the answer will be considered invalid)",
+    "n": 223
+  },
+  {
+    "file": "Tema Esame 2023-11-09-1st.pdf",
+    "page": 5,
+    "ex": "4",
+    "sub": "A",
+    "text": "Please explain the following theorem and why does not hold for the counting sort\n       algorithm:\n      Theorem: \u201cAny decision tree that can sort nelements must have a height of W(nlog n)\u201d\n       (2)",
+    "context": "Answer the following questions about the algorithm analysis and briefly explain (without an explanation, the answer will be considered invalid)",
+    "n": 224
+  },
+  {
+    "file": "Tema Esame 2023-11-09-1st.pdf",
+    "page": 5,
+    "ex": "4",
+    "sub": "B",
+    "text": "What is meant by \u201cpotential method\u201d? To which class of algorithms could be applied?\n      Examples? (2)",
+    "context": "Answer the following questions about the algorithm analysis and briefly explain (without an explanation, the answer will be considered invalid)",
+    "n": 225
+  },
+  {
+    "file": "Tema Esame 2023-12-21-2nd.pdf",
+    "page": 2,
+    "ex": "1",
+    "sub": "A",
+    "text": "Could you please write a short pseudo code showing an example of a DOALL loop in C?\n      Which parallel pattern is directly connected to the DOALL loop? (2)",
+    "context": "Answer the following questions about parallel application modeling and briefly explain (without an explanation, the answer will be considered invalid)",
+    "n": 226
+  },
+  {
+    "file": "Tema Esame 2023-12-21-2nd.pdf",
+    "page": 2,
+    "ex": "1",
+    "sub": "B",
+    "text": "Under what conditions can the following code be parallelized? If these conditions are met, is there\n       a way to write the code for better parallelization? (2)\n            for (i=1; i<100; i++)\n                      for (j=0; j<10; j++)\n                            a[i][j] = f(a[j][i-1]);",
+    "context": "Answer the following questions about parallel application modeling and briefly explain (without an explanation, the answer will be considered invalid)",
+    "n": 227
+  },
+  {
+    "file": "Tema Esame 2023-12-21-2nd.pdf",
+    "page": 3,
+    "ex": "2",
+    "sub": "A",
+    "text": "Please describe the scan pattern: assumptions, complexity, and example. (2)",
+    "context": "Answer the following questions about parallel patterns and briefly explain (without an explanation, the answer will be considered invalid)",
+    "n": 228
+  },
+  {
+    "file": "Tema Esame 2023-12-21-2nd.pdf",
+    "page": 3,
+    "ex": "2",
+    "sub": "B",
+    "text": "Please describe how the Split parallel pattern could be implemented. (2)",
+    "context": "Answer the following questions about parallel patterns and briefly explain (without an explanation, the answer will be considered invalid)",
+    "n": 229
+  },
+  {
+    "file": "Tema Esame 2023-12-21-2nd.pdf",
+    "page": 4,
+    "ex": "3",
+    "sub": "A",
+    "text": "Describe the main advantages of OpenMP over Pthreads. (1)",
+    "context": "Answer the following questions about shared memory parallel programming and briefly explain (without an explanation, the answer will be considered invalid)",
+    "n": 230
+  },
+  {
+    "file": "Tema Esame 2023-12-21-2nd.pdf",
+    "page": 4,
+    "ex": "3",
+    "sub": "B",
+    "text": "Consider the following task graph:\n       Calculate work and parallelism. Is it a good idea to use 3 threads? (1)\n       Write a corresponding OpenMP implementation. (2)",
+    "context": "Answer the following questions about shared memory parallel programming and briefly explain (without an explanation, the answer will be considered invalid)",
+    "n": 231
+  },
+  {
+    "file": "Tema Esame 2023-12-21-2nd.pdf",
+    "page": 5,
+    "ex": "4",
+    "sub": "A",
+    "text": "Most of the point-to-point communication functions have a parameter named \u201ctag\u201d. Please,\n        state its type, explain its usage and why we might need to use the \u201cMPI_ANY_TAG\u201d value.\n       (1) This question can be skipped if you passed the challenge.",
+    "context": "Answer the following questions about MPI and briefly explain (without an explanation, the answer will be considered invalid)",
+    "n": 232
+  },
+  {
+    "file": "Tema Esame 2023-12-21-2nd.pdf",
+    "page": 5,
+    "ex": "4",
+    "sub": "B",
+    "text": "Explain when the MPI usage overlaps with OpenMP and when OpenMP cannot replace MPI.\n       (3)",
+    "context": "Answer the following questions about MPI and briefly explain (without an explanation, the answer will be considered invalid)",
+    "n": 233
+  },
+  {
+    "file": "Tema Esame 2024-01-26-1st.pdf",
+    "page": 2,
+    "ex": "1",
+    "sub": "A",
+    "text": "Please discuss the following sentence: \u201cIn a PRAM model, processors do not have private\n        local memories\u201d. True/False? (1)",
+    "context": "Answer the following questions about parallel application modeling and briefly explain (without an explanation, the answer will be considered invalid)",
+    "n": 234
+  },
+  {
+    "file": "Tema Esame 2024-01-26-1st.pdf",
+    "page": 2,
+    "ex": "1",
+    "sub": "B",
+    "text": "Please define what is meant by \u201cEfficiency\u201d in a PRAM application. (1)",
+    "context": "Answer the following questions about parallel application modeling and briefly explain (without an explanation, the answer will be considered invalid)",
+    "n": 235
+  },
+  {
+    "file": "Tema Esame 2024-01-26-1st.pdf",
+    "page": 2,
+    "ex": "1",
+    "sub": "C",
+    "text": "Please provide an example of a PRAM application relying on a Common CW policy. (1)",
+    "context": "Answer the following questions about parallel application modeling and briefly explain (without an explanation, the answer will be considered invalid)",
+    "n": 236
+  },
+  {
+    "file": "Tema Esame 2024-01-26-1st.pdf",
+    "page": 2,
+    "ex": "1",
+    "sub": "D",
+    "text": "Please relate the strong scaling vs the weak scaling to the Amdahl vs Gustafson laws. (1)",
+    "context": "Answer the following questions about parallel application modeling and briefly explain (without an explanation, the answer will be considered invalid)",
+    "n": 237
+  },
+  {
+    "file": "Tema Esame 2024-01-26-1st.pdf",
+    "page": 3,
+    "ex": "2",
+    "sub": "A",
+    "text": "Please describe how the partitioning work in the \u201cSelect the ith smallest of nelements\u201d\n       algorithm. How is it randomized? (2)",
+    "context": "Answer the following questions about algorithms and briefly explain (without an explanation, the answer will be considered invalid)",
+    "n": 238
+  },
+  {
+    "file": "Tema Esame 2024-01-26-1st.pdf",
+    "page": 3,
+    "ex": "2",
+    "sub": "B",
+    "text": "What kind of time complexity has the longest common subsequence problem (1) This\n      question can be skipped in case of a passed challenge.",
+    "context": "Answer the following questions about algorithms and briefly explain (without an explanation, the answer will be considered invalid)",
+    "n": 239
+  },
+  {
+    "file": "Tema Esame 2024-01-26-1st.pdf",
+    "page": 3,
+    "ex": "2",
+    "sub": "C",
+    "text": "Which is the type/class of randomized algorithms used by the primality testing algorithms\n       presented during the lectures? (1)",
+    "context": "Answer the following questions about algorithms and briefly explain (without an explanation, the answer will be considered invalid)",
+    "n": 240
+  },
+  {
+    "file": "Tema Esame 2024-01-26-1st.pdf",
+    "page": 4,
+    "ex": "3",
+    "sub": "A",
+    "text": "Please discuss the amortized analysis. For which class of algorithm does it matter? (2)",
+    "context": "Answer the following questions about the advanced algorithm and briefly explain (without an explanation, the answer will be considered invalid)",
+    "n": 241
+  },
+  {
+    "file": "Tema Esame 2024-01-26-1st.pdf",
+    "page": 4,
+    "ex": "3",
+    "sub": "B",
+    "text": "Please provide the implementation of the split operation for Treaps. What is the operation\n       complexity? (2)",
+    "context": "Answer the following questions about the advanced algorithm and briefly explain (without an explanation, the answer will be considered invalid)",
+    "n": 242
+  },
+  {
+    "file": "Tema Esame 2024-01-26-1st.pdf",
+    "page": 5,
+    "ex": "4",
+    "sub": "A",
+    "text": "Please describe the difference between on-line and off-line algorithms. How is their\n       complexity analyzed? (2)",
+    "context": "Answer the following questions about the algorithm analysis and briefly explain (without an explanation, the answer will be considered invalid)",
+    "n": 243
+  },
+  {
+    "file": "Tema Esame 2024-01-26-1st.pdf",
+    "page": 5,
+    "ex": "4",
+    "sub": "B",
+    "text": "Please explain the differences between \u201cComputed table\u201d and \u201cUnique table\u201d with BDDs.\n     Why are they used? (2)",
+    "context": "Answer the following questions about the algorithm analysis and briefly explain (without an explanation, the answer will be considered invalid)",
+    "n": 244
+  },
+  {
+    "file": "Tema Esame 2024-01-26-2nd.pdf",
+    "page": 2,
+    "ex": "1",
+    "sub": "A",
+    "text": "Is it possible to eliminate a flow dependency by modifying the program and ensuring that\n       the program remains equivalent? Is it the same with output dependency? Please show an\n      example of what can be done. (2)",
+    "context": "Answer the following questions about parallel application modeling and briefly explain (without an explanation, the answer will be considered invalid)",
+    "n": 245
+  },
+  {
+    "file": "Tema Esame 2024-01-26-2nd.pdf",
+    "page": 2,
+    "ex": "1",
+    "sub": "B",
+    "text": "Under what conditions can the following code be parallelized? If these conditions are met,\n          is there a way to write the code for better parallelization? (2)\n            for (i=1; i<100; i++)\n                      for (j=0; j<100; j++)\n                             c[j][i] += a[i]*b[j];",
+    "context": "Answer the following questions about parallel application modeling and briefly explain (without an explanation, the answer will be considered invalid)",
+    "n": 246
+  },
+  {
+    "file": "Tema Esame 2024-01-26-2nd.pdf",
+    "page": 3,
+    "ex": "2",
+    "sub": "A",
+    "text": "Please describe the parallel gather pattern: assumptions, complexity, and example. (2)",
+    "context": "Answer the following questions about parallel patterns and briefly explain (without an explanation, the answer will be considered invalid)",
+    "n": 247
+  },
+  {
+    "file": "Tema Esame 2024-01-26-2nd.pdf",
+    "page": 3,
+    "ex": "2",
+    "sub": "B",
+    "text": "Please describe how the \u201cMerge collision resolution\u201d works. Is it related to the parallel\n       gather pattern? (2)",
+    "context": "Answer the following questions about parallel patterns and briefly explain (without an explanation, the answer will be considered invalid)",
+    "n": 248
+  },
+  {
+    "file": "Tema Esame 2024-01-26-2nd.pdf",
+    "page": 4,
+    "ex": "3",
+    "sub": "A",
+    "text": "What is the difference between joinable and detached threads in Pthreads? (1)",
+    "context": "Answer the following questions about shared memory parallel programming and briefly explain (without an explanation, the answer will be considered invalid)",
+    "n": 249
+  },
+  {
+    "file": "Tema Esame 2024-01-26-2nd.pdf",
+    "page": 4,
+    "ex": "3",
+    "sub": "B",
+    "text": "What is the difference between joining and waiting on a barrier in Pthreads? (1)",
+    "context": "Answer the following questions about shared memory parallel programming and briefly explain (without an explanation, the answer will be considered invalid)",
+    "n": 250
+  },
+  {
+    "file": "Tema Esame 2024-01-26-2nd.pdf",
+    "page": 4,
+    "ex": "3",
+    "sub": "C",
+    "text": "Describe how each thread in the following diagram behaves at runtime as it encounters\n       points marked with 1, representing pragma omp cancel, and with 2, representing\n     pragma omp cancellation point. (2)",
+    "context": "Answer the following questions about shared memory parallel programming and briefly explain (without an explanation, the answer will be considered invalid)",
+    "n": 251
+  },
+  {
+    "file": "Tema Esame 2024-01-26-2nd.pdf",
+    "page": 5,
+    "ex": "4",
+    "sub": "A",
+    "text": "What are the approaches that the receiver in point-to-point communications can use to\n        allocate a suitable receiving buffer, i.e. allocate a suitable number of elements? (1) This\n      question can be skipped if you passed the challenge.",
+    "context": "Answer the following questions about MPI and briefly explain (without an explanation, the answer will be considered invalid)",
+    "n": 252
+  },
+  {
+    "file": "Tema Esame 2024-01-26-2nd.pdf",
+    "page": 5,
+    "ex": "4",
+    "sub": "B",
+    "text": "Why are there multiple MPI implementations? (1)",
+    "context": "Answer the following questions about MPI and briefly explain (without an explanation, the answer will be considered invalid)",
+    "n": 253
+  },
+  {
+    "file": "Tema Esame 2024-01-26-2nd.pdf",
+    "page": 5,
+    "ex": "4",
+    "sub": "C",
+    "text": "What are the main differences between collective and point-to-point functions when we\n       focus on data exchange functions? (2)",
+    "context": "Answer the following questions about MPI and briefly explain (without an explanation, the answer will be considered invalid)",
+    "n": 254
+  },
+  {
+    "file": "Tema Esame 2024-02-16-1st.pdf",
+    "page": 2,
+    "ex": "1",
+    "sub": "A",
+    "text": "Are PRAM architectures using explicit or implicit synchronizations? (1)",
+    "context": "Answer the following questions about parallel application modeling and briefly explain (without an explanation, the answer will be considered invalid)",
+    "n": 255
+  },
+  {
+    "file": "Tema Esame 2024-02-16-1st.pdf",
+    "page": 2,
+    "ex": "1",
+    "sub": "B",
+    "text": "Please define what is meant by \u201cSpeed up\u201d in a PRAM application. (1)",
+    "context": "Answer the following questions about parallel application modeling and briefly explain (without an explanation, the answer will be considered invalid)",
+    "n": 256
+  },
+  {
+    "file": "Tema Esame 2024-02-16-1st.pdf",
+    "page": 2,
+    "ex": "1",
+    "sub": "C",
+    "text": "Please describe how prefix scan works when a PRAM architecture is considered. (1)",
+    "context": "Answer the following questions about parallel application modeling and briefly explain (without an explanation, the answer will be considered invalid)",
+    "n": 257
+  },
+  {
+    "file": "Tema Esame 2024-02-16-1st.pdf",
+    "page": 2,
+    "ex": "1",
+    "sub": "D",
+    "text": "Is the Amdahl law a fixed-time model? (1)",
+    "context": "Answer the following questions about parallel application modeling and briefly explain (without an explanation, the answer will be considered invalid)",
+    "n": 258
+  },
+  {
+    "file": "Tema Esame 2024-02-16-1st.pdf",
+    "page": 3,
+    "ex": "2",
+    "sub": "A",
+    "text": "Please define when Las Vegas and Monte Carlo algorithms are defined as efficient\n       algorithms. (2)",
+    "context": "Answer the following questions about algorithms and briefly explain (without an explanation, the answer will be considered invalid)",
+    "n": 259
+  },
+  {
+    "file": "Tema Esame 2024-02-16-1st.pdf",
+    "page": 3,
+    "ex": "2",
+    "sub": "B",
+    "text": "What are the key properties that the auxiliary sorting algorithm used by the radix sort must\n      have to achieve efficient and correct sorting? (1) This question can be skipped in case\n       of a passed challenge.",
+    "context": "Answer the following questions about algorithms and briefly explain (without an explanation, the answer will be considered invalid)",
+    "n": 260
+  },
+  {
+    "file": "Tema Esame 2024-02-16-1st.pdf",
+    "page": 3,
+    "ex": "2",
+    "sub": "C",
+    "text": "Please describe the divide and conquer powering of a number algorithm. What complexity\n      does it have? (1)",
+    "context": "Answer the following questions about algorithms and briefly explain (without an explanation, the answer will be considered invalid)",
+    "n": 261
+  },
+  {
+    "file": "Tema Esame 2024-02-16-1st.pdf",
+    "page": 4,
+    "ex": "3",
+    "sub": "A",
+    "text": "Please discuss how the longest common subsequence works. What about its complexity?\n       (2)",
+    "context": "Answer the following questions about the advanced algorithm and briefly explain (without an explanation, the answer will be considered invalid)",
+    "n": 262
+  },
+  {
+    "file": "Tema Esame 2024-02-16-1st.pdf",
+    "page": 4,
+    "ex": "3",
+    "sub": "B",
+    "text": "Please provide the implementation of the union operation for Treaps. What is the operation\n       complexity? (2)",
+    "context": "Answer the following questions about the advanced algorithm and briefly explain (without an explanation, the answer will be considered invalid)",
+    "n": 263
+  },
+  {
+    "file": "Tema Esame 2024-02-16-1st.pdf",
+    "page": 5,
+    "ex": "4",
+    "sub": "A",
+    "text": "What are the key differences between Karger vs Karger&Steing algorithms? (2)",
+    "context": "Answer the following questions about the algorithm analysis and briefly explain (without an explanation, the answer will be considered invalid)",
+    "n": 264
+  },
+  {
+    "file": "Tema Esame 2024-02-16-1st.pdf",
+    "page": 5,
+    "ex": "4",
+    "sub": "B",
+    "text": "What is meant by \u201caccounting method\u201d? To which class of algorithms could be applied?\n      Examples? (2)",
+    "context": "Answer the following questions about the algorithm analysis and briefly explain (without an explanation, the answer will be considered invalid)",
+    "n": 265
+  },
+  {
+    "file": "Tema Esame 2024-02-16-2nd-1.pdf",
+    "page": 2,
+    "ex": "1",
+    "sub": "A",
+    "text": "Please describe the Parallel Data Management Patterns: Pipeline.\n       Are flow dependencies preventing correct parallelization of pipeline parallel pattern when\n       present? (2)",
+    "context": "Answer the following questions about parallel application modeling and briefly explain (without an explanation, the answer will be considered invalid)",
+    "n": 266
+  },
+  {
+    "file": "Tema Esame 2024-02-16-2nd-1.pdf",
+    "page": 2,
+    "ex": "1",
+    "sub": "B",
+    "text": "Under what conditions can the following code be parallelized? If these conditions are met,\n          is there a way to write the code for better parallelization? (2)\n            for (i=1; i<100; i++)\n                      for (j=0; j<100; j++)\n                            b[i][j] += f(a[i][j]);",
+    "context": "Answer the following questions about parallel application modeling and briefly explain (without an explanation, the answer will be considered invalid)",
+    "n": 267
+  },
+  {
+    "file": "Tema Esame 2024-02-16-2nd-1.pdf",
+    "page": 3,
+    "ex": "2",
+    "sub": "A",
+    "text": "Please describe the parallel scatter pattern: assumptions, complexity, and example. (2)",
+    "context": "Answer the following questions about parallel patterns and briefly explain (without an explanation, the answer will be considered invalid)",
+    "n": 268
+  },
+  {
+    "file": "Tema Esame 2024-02-16-2nd-1.pdf",
+    "page": 3,
+    "ex": "2",
+    "sub": "B",
+    "text": "Please describe how the Pack parallel pattern works. How is implemented? (2)",
+    "context": "Answer the following questions about parallel patterns and briefly explain (without an explanation, the answer will be considered invalid)",
+    "n": 269
+  },
+  {
+    "file": "Tema Esame 2024-02-16-2nd-1.pdf",
+    "page": 4,
+    "ex": "3",
+    "sub": "A",
+    "text": "Why is synchronization necessary when programming with the shared memory model?\n        (1)",
+    "context": "Answer the following questions about shared memory parallel programming and briefly explain (without an explanation, the answer will be considered invalid)",
+    "n": 270
+  },
+  {
+    "file": "Tema Esame 2024-02-16-2nd-1.pdf",
+    "page": 4,
+    "ex": "3",
+    "sub": "B",
+    "text": "Which Pthreads API call is needed to ensure that spawned threads can finish their\n       execution after main() returns? (1)",
+    "context": "Answer the following questions about shared memory parallel programming and briefly explain (without an explanation, the answer will be considered invalid)",
+    "n": 271
+  },
+  {
+    "file": "Tema Esame 2024-02-16-2nd-1.pdf",
+    "page": 4,
+    "ex": "3",
+    "sub": "C",
+    "text": "What is the difference between static and dynamic schedule of OpenMP for loops? (1)",
+    "context": "Answer the following questions about shared memory parallel programming and briefly explain (without an explanation, the answer will be considered invalid)",
+    "n": 272
+  },
+  {
+    "file": "Tema Esame 2024-02-16-2nd-1.pdf",
+    "page": 4,
+    "ex": "3",
+    "sub": "D",
+    "text": "Describe what is the effect of the following Halide schedule: (1)\ngradient.split(x, x_outer, x_inner, 4);\ngradient.vectorize(x_inner);",
+    "context": "Answer the following questions about shared memory parallel programming and briefly explain (without an explanation, the answer will be considered invalid)",
+    "n": 273
+  },
+  {
+    "file": "Tema Esame 2024-02-16-2nd-1.pdf",
+    "page": 5,
+    "ex": "4",
+    "sub": "A",
+    "text": "When is it possible that at least two MPI processes are stuck waiting for each other,\n       without the possibility of continuing their execution? (1) This question can be skipped if\n     you passed the challenge.",
+    "context": "Answer the following questions about MPI and briefly explain (without an explanation, the answer will be considered invalid)",
+    "n": 274
+  },
+  {
+    "file": "Tema Esame 2024-02-16-2nd-1.pdf",
+    "page": 5,
+    "ex": "4",
+    "sub": "B",
+    "text": "When in doubt about the behavior of an MPI function, why is it important to rely on the\n      MPI standard instead of just trying how it works with your MPI implementation? (1)",
+    "context": "Answer the following questions about MPI and briefly explain (without an explanation, the answer will be considered invalid)",
+    "n": 275
+  },
+  {
+    "file": "Tema Esame 2024-02-16-2nd-1.pdf",
+    "page": 5,
+    "ex": "4",
+    "sub": "C",
+    "text": "What is the relationship between i) MPI functions with blocking semantics, ii) MPI\n       functions without blocking semantics, and iii) MPI + multithreading? (2)\n       \u00f9",
+    "context": "Answer the following questions about MPI and briefly explain (without an explanation, the answer will be considered invalid)",
+    "n": 276
+  },
+  {
+    "file": "Tema Esame 2024-06-26-1st-1.pdf",
+    "page": 2,
+    "ex": "1",
+    "sub": "A",
+    "text": "Explain the factors that simplify the computation of space complexity in a PRAM\n        application, giving them in order of priority. (1)",
+    "context": "Answer the following questions about parallel application modeling and briefly explain (without an explanation, the answer will be considered invalid)",
+    "n": 277
+  },
+  {
+    "file": "Tema Esame 2024-06-26-1st-1.pdf",
+    "page": 2,
+    "ex": "1",
+    "sub": "B",
+    "text": "Please define what is meant by \u201cWork\u201d in a PRAM application. (1)",
+    "context": "Answer the following questions about parallel application modeling and briefly explain (without an explanation, the answer will be considered invalid)",
+    "n": 278
+  },
+  {
+    "file": "Tema Esame 2024-06-26-1st-1.pdf",
+    "page": 2,
+    "ex": "1",
+    "sub": "C",
+    "text": "Please describe how matrix x vector works when a PRAM architecture is considered. (1)",
+    "context": "Answer the following questions about parallel application modeling and briefly explain (without an explanation, the answer will be considered invalid)",
+    "n": 279
+  },
+  {
+    "file": "Tema Esame 2024-06-26-1st-1.pdf",
+    "page": 2,
+    "ex": "1",
+    "sub": "D",
+    "text": "Please describe an example of Common CRCW with a PRAM model. (1)",
+    "context": "Answer the following questions about parallel application modeling and briefly explain (without an explanation, the answer will be considered invalid)",
+    "n": 280
+  },
+  {
+    "file": "Tema Esame 2024-06-26-1st-1.pdf",
+    "page": 3,
+    "ex": "2",
+    "sub": "A",
+    "text": "Please list the main differences between the Las Vegas and Monte Carlo algorithms. (2)",
+    "context": "Answer the following questions about algorithms and briefly explain (without an explanation, the answer will be considered invalid)",
+    "n": 281
+  },
+  {
+    "file": "Tema Esame 2024-06-26-1st-1.pdf",
+    "page": 3,
+    "ex": "2",
+    "sub": "B",
+    "text": "What are the key properties of the counting sort algorithm? (1)",
+    "context": "Answer the following questions about algorithms and briefly explain (without an explanation, the answer will be considered invalid)",
+    "n": 282
+  },
+  {
+    "file": "Tema Esame 2024-06-26-1st-1.pdf",
+    "page": 3,
+    "ex": "2",
+    "sub": "C",
+    "text": "Please list the condition under which the Master Theorem can be used to compute the\n       complexity of an algorithm. (1) This question can be skipped in case of a passed\n      challenge.",
+    "context": "Answer the following questions about algorithms and briefly explain (without an explanation, the answer will be considered invalid)",
+    "n": 283
+  },
+  {
+    "file": "Tema Esame 2024-06-26-1st-1.pdf",
+    "page": 4,
+    "ex": "3",
+    "sub": "A",
+    "text": "Please discuss the key properties of a Treap and of its search function. (2)",
+    "context": "Answer the following questions about the advanced algorithm and briefly explain (without an explanation, the answer will be considered invalid)",
+    "n": 284
+  },
+  {
+    "file": "Tema Esame 2024-06-26-1st-1.pdf",
+    "page": 4,
+    "ex": "3",
+    "sub": "B",
+    "text": "Please describe the key properties of the Karger & Stein algorithm. (2)",
+    "context": "Answer the following questions about the advanced algorithm and briefly explain (without an explanation, the answer will be considered invalid)",
+    "n": 285
+  },
+  {
+    "file": "Tema Esame 2024-06-26-1st-1.pdf",
+    "page": 5,
+    "ex": "4",
+    "sub": "A",
+    "text": "What is the Unique Table, and what is it used for in ROBDDs? Does it also have to do with\n       the canonicity of ROBDD? (2)",
+    "context": "Answer the following questions about the algorithm analysis and briefly explain (without an explanation, the answer will be considered invalid)",
+    "n": 286
+  },
+  {
+    "file": "Tema Esame 2024-06-26-1st-1.pdf",
+    "page": 5,
+    "ex": "4",
+    "sub": "B",
+    "text": "Please describe the \u201cmove to front\u201d heuristic (complexity included). Why did we use\n       amortized analysis instead of the worst-case? (2)",
+    "context": "Answer the following questions about the algorithm analysis and briefly explain (without an explanation, the answer will be considered invalid)",
+    "n": 287
+  },
+  {
+    "file": "Tema Esame 2024-06-26-2nd.pdf",
+    "page": 2,
+    "ex": "1",
+    "sub": "A",
+    "text": "Please write a short pseudo-code showing how the map parallel pattern could be\n      implemented in OpenMP. (2)",
+    "context": "Answer the following questions about parallel application modeling and briefly explain (without an explanation, the answer will be considered invalid)",
+    "n": 288
+  },
+  {
+    "file": "Tema Esame 2024-06-26-2nd.pdf",
+    "page": 2,
+    "ex": "1",
+    "sub": "B",
+    "text": "Under what conditions can the following code be parallelized? If these conditions are met,\n          is there a way to write the code for better parallelization? (2)\n            for (i=1; i<100; i++)\n                      for (j=i; j<100; j++)\n                            b[i][j] += f(a[i][j]);",
+    "context": "Answer the following questions about parallel application modeling and briefly explain (without an explanation, the answer will be considered invalid)",
+    "n": 289
+  },
+  {
+    "file": "Tema Esame 2024-06-26-2nd.pdf",
+    "page": 3,
+    "ex": "2",
+    "sub": "A",
+    "text": "Please describe the parallel reduce pattern: assumptions, complexity, and example. (2)",
+    "context": "Answer the following questions about parallel patterns and briefly explain (without an explanation, the answer will be considered invalid)",
+    "n": 290
+  },
+  {
+    "file": "Tema Esame 2024-06-26-2nd.pdf",
+    "page": 3,
+    "ex": "2",
+    "sub": "B",
+    "text": "Please describe how the Split parallel pattern works. How is it implemented? (2)",
+    "context": "Answer the following questions about parallel patterns and briefly explain (without an explanation, the answer will be considered invalid)",
+    "n": 291
+  },
+  {
+    "file": "Tema Esame 2024-06-26-2nd.pdf",
+    "page": 4,
+    "ex": "3",
+    "sub": "A",
+    "text": "What error will arise compiling the following code snippet? (1.5)\n#pragma omp parallel for private(x) reduction(+:sum) default(none)\nfor (i=1;i<= num_steps; i++)\n{\nx = (i-0.5)*step;\nsum = sum + 4.0/(1.0+x*x);\n}",
+    "context": "Answer the following questions about shared memory parallel programming and briefly explain (without an explanation, the answer will be considered invalid)",
+    "n": 292
+  },
+  {
+    "file": "Tema Esame 2024-06-26-2nd.pdf",
+    "page": 4,
+    "ex": "3",
+    "sub": "B",
+    "text": "What happens when a variable is declared as firstprivate in an OpenMP pragma? (1)",
+    "context": "Answer the following questions about shared memory parallel programming and briefly explain (without an explanation, the answer will be considered invalid)",
+    "n": 293
+  },
+  {
+    "file": "Tema Esame 2024-06-26-2nd.pdf",
+    "page": 4,
+    "ex": "3",
+    "sub": "C",
+    "text": "Why is cancellation in OpenMP described as \u201cbest effort\u201d cancellation? (1.5)",
+    "context": "Answer the following questions about shared memory parallel programming and briefly explain (without an explanation, the answer will be considered invalid)",
+    "n": 294
+  },
+  {
+    "file": "Tema Esame 2024-06-26-2nd.pdf",
+    "page": 5,
+    "ex": "4",
+    "sub": "A",
+    "text": "Why should I use the MPI_Probe function? (1) This question can be skipped if you\n      passed the challenge.",
+    "context": "Answer the following questions about MPI and briefly explain (without an explanation, the answer will be considered invalid)",
+    "n": 295
+  },
+  {
+    "file": "Tema Esame 2024-06-26-2nd.pdf",
+    "page": 5,
+    "ex": "4",
+    "sub": "B",
+    "text": "Provide an example(s) of how the MPI tag and rank can be used in a program (1)",
+    "context": "Answer the following questions about MPI and briefly explain (without an explanation, the answer will be considered invalid)",
+    "n": 296
+  },
+  {
+    "file": "Tema Esame 2024-06-26-2nd.pdf",
+    "page": 5,
+    "ex": "4",
+    "sub": "C",
+    "text": "What are communicators in MPI? Why should I use more than one? (2)",
+    "context": "Answer the following questions about MPI and briefly explain (without an explanation, the answer will be considered invalid)",
+    "n": 297
+  },
+  {
+    "file": "Tema Esame 2024-07-24-1st.pdf",
+    "page": 2,
+    "ex": "1",
+    "sub": "A",
+    "text": "Explain the factors that simplify the computation of time complexity in a PRAM application,\n       giving them in order of priority. (1)",
+    "context": "Answer the following questions about parallel application modeling and briefly explain (without an explanation, the answer will be considered invalid)",
+    "n": 298
+  },
+  {
+    "file": "Tema Esame 2024-07-24-1st.pdf",
+    "page": 2,
+    "ex": "1",
+    "sub": "B",
+    "text": "Please define what \u201cCost\u201d means in a PRAM application. (1)",
+    "context": "Answer the following questions about parallel application modeling and briefly explain (without an explanation, the answer will be considered invalid)",
+    "n": 299
+  },
+  {
+    "file": "Tema Esame 2024-07-24-1st.pdf",
+    "page": 2,
+    "ex": "1",
+    "sub": "C",
+    "text": "Please describe how matrix x matrix works when considering a PRAM architecture. (1)",
+    "context": "Answer the following questions about parallel application modeling and briefly explain (without an explanation, the answer will be considered invalid)",
+    "n": 300
+  },
+  {
+    "file": "Tema Esame 2024-07-24-1st.pdf",
+    "page": 2,
+    "ex": "1",
+    "sub": "D",
+    "text": "Please describe what happens in a PRAM model when the number of threads exceeds the\n      number of processors. (1)",
+    "context": "Answer the following questions about parallel application modeling and briefly explain (without an explanation, the answer will be considered invalid)",
+    "n": 301
+  },
+  {
+    "file": "Tema Esame 2024-07-24-1st.pdf",
+    "page": 3,
+    "ex": "2",
+    "sub": "A",
+    "text": "Please discuss the cases the master theorem solves and under which assumption the\n      theorem holds. Apply then to the powering algorithm. Is the master theorem of any help if\n     we would like to estimate the spatial complexity of an algorithm? (2)",
+    "context": "Answer the following questions about algorithms and briefly explain (without an explanation, the answer will be considered invalid)",
+    "n": 302
+  },
+  {
+    "file": "Tema Esame 2024-07-24-1st.pdf",
+    "page": 3,
+    "ex": "2",
+    "sub": "B",
+    "text": "Please describe the \u201cSelect the i th smallest of n elements\u201d algorithm and its key\n        properties. How is it randomized? (1) This question can be skipped in case of a\n      passed challenge.",
+    "context": "Answer the following questions about algorithms and briefly explain (without an explanation, the answer will be considered invalid)",
+    "n": 303
+  },
+  {
+    "file": "Tema Esame 2024-07-24-1st.pdf",
+    "page": 3,
+    "ex": "2",
+    "sub": "C",
+    "text": "To which class does the Move-To-Front Algorithm belong? How is its complexity evaluated?\n       (1)",
+    "context": "Answer the following questions about algorithms and briefly explain (without an explanation, the answer will be considered invalid)",
+    "n": 304
+  },
+  {
+    "file": "Tema Esame 2024-07-24-1st.pdf",
+    "page": 4,
+    "ex": "3",
+    "sub": "A",
+    "text": "Please discuss how a Union is implemented in a Treap Data-Structure. How does the\n      number of rotations impact the search for an element in a Treap? (2)",
+    "context": "Answer the following questions about the advanced algorithm and briefly explain (without an explanation, the answer will be considered invalid)",
+    "n": 305
+  },
+  {
+    "file": "Tema Esame 2024-07-24-1st.pdf",
+    "page": 4,
+    "ex": "3",
+    "sub": "B",
+    "text": "Describe how the insertion for skip-list data structure works. What about its complexity?\n       (2)",
+    "context": "Answer the following questions about the advanced algorithm and briefly explain (without an explanation, the answer will be considered invalid)",
+    "n": 306
+  },
+  {
+    "file": "Tema Esame 2024-07-24-1st.pdf",
+    "page": 5,
+    "ex": "4",
+    "sub": "A",
+    "text": "Please discuss the key property of the longest common subsequence. In which class of\n       algorithm can be inserted? Why? (2)",
+    "context": "Answer the following questions about the algorithm analysis and briefly explain (without an explanation, the answer will be considered invalid)",
+    "n": 307
+  },
+  {
+    "file": "Tema Esame 2024-07-24-1st.pdf",
+    "page": 5,
+    "ex": "4",
+    "sub": "B",
+    "text": "What is meant by \u201camortized analysis\u201d? To which type of algorithms could be applied?\n      Examples? (2)",
+    "context": "Answer the following questions about the algorithm analysis and briefly explain (without an explanation, the answer will be considered invalid)",
+    "n": 308
+  },
+  {
+    "file": "Tema Esame 2024-07-24-2nd.pdf",
+    "page": 2,
+    "ex": "1",
+    "sub": "A",
+    "text": "Please comment this sentence: \u201cDesign a \u00abgood\u00bb parallel algorithm by extracting all the\n        available parallelism is not enough.\u201d (1)",
+    "context": "Answer the following questions about parallel application modeling and briefly explain (without an explanation, the answer will be considered invalid)",
+    "n": 309
+  },
+  {
+    "file": "Tema Esame 2024-07-24-2nd.pdf",
+    "page": 2,
+    "ex": "1",
+    "sub": "B",
+    "text": "Is it possible to eliminate an anti-dependency by modifying the program and ensuring that\n       the program remains equivalent? Is it the same with output-dependency? Please show an\n      example of what can be done in both cases. (1)",
+    "context": "Answer the following questions about parallel application modeling and briefly explain (without an explanation, the answer will be considered invalid)",
+    "n": 310
+  },
+  {
+    "file": "Tema Esame 2024-07-24-2nd.pdf",
+    "page": 2,
+    "ex": "1",
+    "sub": "C",
+    "text": "Under what conditions can the following code be parallelized? If these conditions are met,\n          is there a way to write the code for better parallelization? (2)\n            for (i=0; i<100; i++)\n                      for (j=2; j<100; j++)\n                            a[i][j] = f(a[i][j]) + a[i][j-2];",
+    "context": "Answer the following questions about parallel application modeling and briefly explain (without an explanation, the answer will be considered invalid)",
+    "n": 311
+  },
+  {
+    "file": "Tema Esame 2024-07-24-2nd.pdf",
+    "page": 3,
+    "ex": "2",
+    "sub": "A",
+    "text": "Please describe the parallel Split pattern: assumptions, complexity, and example. (2)",
+    "context": "Answer the following questions about parallel patterns and briefly explain (without an explanation, the answer will be considered invalid)",
+    "n": 312
+  },
+  {
+    "file": "Tema Esame 2024-07-24-2nd.pdf",
+    "page": 3,
+    "ex": "2",
+    "sub": "B",
+    "text": "Please describe how the Unzip parallel pattern works. How is it implemented (pseudo code\n       required)? (2)",
+    "context": "Answer the following questions about parallel patterns and briefly explain (without an explanation, the answer will be considered invalid)",
+    "n": 313
+  },
+  {
+    "file": "Tema Esame 2024-07-24-2nd.pdf",
+    "page": 4,
+    "ex": "3",
+    "sub": "A",
+    "text": "Is it better to implement the program with 3 or 4 threads? (1)",
+    "context": "Answer the questions about the following task graph and briefly explain (without an explanation, the answer will be considered invalid) W(Task1) = 50, W(Task2) = 200, W(Task3) = 250, W(Task4) = 200, W(Task5) = 50, W(Task6) = 100, W(Task7) = 200, W(Task8) = 450, W(Task9) = 50",
+    "n": 314
+  },
+  {
+    "file": "Tema Esame 2024-07-24-2nd.pdf",
+    "page": 4,
+    "ex": "3",
+    "sub": "B",
+    "text": "Write a corresponding OpenMP implementation. (2)",
+    "context": "Answer the questions about the following task graph and briefly explain (without an explanation, the answer will be considered invalid) W(Task1) = 50, W(Task2) = 200, W(Task3) = 250, W(Task4) = 200, W(Task5) = 50, W(Task6) = 100, W(Task7) = 200, W(Task8) = 450, W(Task9) = 50",
+    "n": 315
+  },
+  {
+    "file": "Tema Esame 2024-07-24-2nd.pdf",
+    "page": 4,
+    "ex": "3",
+    "sub": "C",
+    "text": "If you could optimize one task bringing its work to 0 (maintaining the graph structure),\n      which one would yield the best improvement in terms of parallel execution time? (1)",
+    "context": "Answer the questions about the following task graph and briefly explain (without an explanation, the answer will be considered invalid) W(Task1) = 50, W(Task2) = 200, W(Task3) = 250, W(Task4) = 200, W(Task5) = 50, W(Task6) = 100, W(Task7) = 200, W(Task8) = 450, W(Task9) = 50",
+    "n": 316
+  },
+  {
+    "file": "Tema Esame 2024-07-24-2nd.pdf",
+    "page": 5,
+    "ex": "4",
+    "sub": "A",
+    "text": "Why should I use mpirun to execute my MPI application? (1) This question can be\n      skipped if you passed the challenge.",
+    "context": "Answer the following questions about MPI and briefly explain (without an explanation, the answer will be considered invalid)",
+    "n": 317
+  },
+  {
+    "file": "Tema Esame 2024-07-24-2nd.pdf",
+    "page": 5,
+    "ex": "4",
+    "sub": "B",
+    "text": "Explain what the MPI_Comm_split function does and give an example of its usage,\n       without implementation details such as the function signature. (1)",
+    "context": "Answer the following questions about MPI and briefly explain (without an explanation, the answer will be considered invalid)",
+    "n": 318
+  },
+  {
+    "file": "Tema Esame 2024-07-24-2nd.pdf",
+    "page": 5,
+    "ex": "4",
+    "sub": "C",
+    "text": "Explain the blocking semantics in point-to-point communications and the problems it\n       introduces in the program. (2)",
+    "context": "Answer the following questions about MPI and briefly explain (without an explanation, the answer will be considered invalid)",
+    "n": 319
+  },
+  {
+    "file": "Tema Esame 2024-09-05-1st.pdf",
+    "page": 2,
+    "ex": "1",
+    "sub": "A",
+    "text": "In a PRAM, \ud835\udc5d\ud835\udc38\ud835\udc5d(\ud835\udc5b) is equal to the application speed-up? (1)",
+    "context": "Answer the following questions about parallel application modeling and briefly explain (without an explanation, the answer will be considered invalid)",
+    "n": 320
+  },
+  {
+    "file": "Tema Esame 2024-09-05-1st.pdf",
+    "page": 2,
+    "ex": "1",
+    "sub": "B",
+    "text": "What happens to the PRAM model if we have a bounded number of processors smaller\n       than the one required by the theoretical model? What happens to the speed-up if the\n        application is a do-all kind of application and we have a bounded number of processors?\n       (2)",
+    "context": "Answer the following questions about parallel application modeling and briefly explain (without an explanation, the answer will be considered invalid)",
+    "n": 321
+  },
+  {
+    "file": "Tema Esame 2024-09-05-1st.pdf",
+    "page": 2,
+    "ex": "1",
+    "sub": "C",
+    "text": "Could you please discuss the following sentence? \u201cAmdahl's law presupposes that the\n      computing requirements will stay the same, given increased processing power. In other\n       words, an analysis of the same data will take less time given more computing power\u201c. Is it\n       true or false? What does it mean? (1)",
+    "context": "Answer the following questions about parallel application modeling and briefly explain (without an explanation, the answer will be considered invalid)",
+    "n": 322
+  },
+  {
+    "file": "Tema Esame 2024-09-05-1st.pdf",
+    "page": 3,
+    "ex": "2",
+    "sub": "A",
+    "text": "Please discuss the types of problems that the master theorem can solve and the\n       assumptions under which the theorem holds. Apply the theorem to the matrix\n        multiplication algorithm and explain why Strassen\u2019s version is more efficient. (2)",
+    "context": "Answer the following questions about algorithms and briefly explain (without an explanation, the answer will be considered invalid)",
+    "n": 323
+  },
+  {
+    "file": "Tema Esame 2024-09-05-1st.pdf",
+    "page": 3,
+    "ex": "2",
+    "sub": "B",
+    "text": "Please describe the partitioning algorithm used by the quick sort and its key properties.\n     How is it randomized? (1) This question can be skipped in case of a passed\n      challenge.",
+    "context": "Answer the following questions about algorithms and briefly explain (without an explanation, the answer will be considered invalid)",
+    "n": 324
+  },
+  {
+    "file": "Tema Esame 2024-09-05-1st.pdf",
+    "page": 3,
+    "ex": "2",
+    "sub": "C",
+    "text": "To which class does the Longest Common Subsequence Algorithm belong? How is its\n       complexity evaluated? (1)",
+    "context": "Answer the following questions about algorithms and briefly explain (without an explanation, the answer will be considered invalid)",
+    "n": 325
+  },
+  {
+    "file": "Tema Esame 2024-09-05-1st.pdf",
+    "page": 4,
+    "ex": "3",
+    "sub": "A",
+    "text": "Why does randomized Treap structure have a complexity on average similar to a balanced\n       binary tree? Treap required all priorities to be pairwise distinct. How can this property be\n        satisfied? (2)",
+    "context": "Answer the following questions about the advanced algorithm and briefly explain (without an explanation, the answer will be considered invalid)",
+    "n": 326
+  },
+  {
+    "file": "Tema Esame 2024-09-05-1st.pdf",
+    "page": 4,
+    "ex": "3",
+    "sub": "B",
+    "text": "Please discuss how a Split is implemented in a Treap Data-Structure. What happen in case\n       the k element is in the initial Treap? (2)",
+    "context": "Answer the following questions about the advanced algorithm and briefly explain (without an explanation, the answer will be considered invalid)",
+    "n": 327
+  },
+  {
+    "file": "Tema Esame 2024-09-05-1st.pdf",
+    "page": 5,
+    "ex": "4",
+    "sub": "A",
+    "text": "Please discuss the competitive analysis. In which class of algorithm is used? Amortized\n        analysis could be of some use; why? (2)",
+    "context": "Answer the following questions about the algorithm analysis and briefly explain (without an explanation, the answer will be considered invalid)",
+    "n": 328
+  },
+  {
+    "file": "Tema Esame 2024-09-05-1st.pdf",
+    "page": 5,
+    "ex": "4",
+    "sub": "B",
+    "text": "What is the Computed Table, and what is it used for in ROBDDs? Does it also have to do with the\n        canonicity of ROBDD? (2)",
+    "context": "Answer the following questions about the algorithm analysis and briefly explain (without an explanation, the answer will be considered invalid)",
+    "n": 329
+  },
+  {
+    "file": "Tema Esame 2024-09-05-2nd.pdf",
+    "page": 2,
+    "ex": "1",
+    "sub": "A",
+    "text": "Please comment on this sentence: \u201cAutomatic parallelization cannot be used because it\n       produces wrong solutions.\u201d. True/false, partially true? (1)",
+    "context": "Answer the following questions about parallel application modeling and briefly explain (without an explanation, the answer will be considered invalid)",
+    "n": 330
+  },
+  {
+    "file": "Tema Esame 2024-09-05-2nd.pdf",
+    "page": 2,
+    "ex": "1",
+    "sub": "B",
+    "text": "\u201cA single instruction can manipulate different data at a time\u201d. Please comment on the\n       sentence and discuss which kind of parallelism it is referring to. (1)",
+    "context": "Answer the following questions about parallel application modeling and briefly explain (without an explanation, the answer will be considered invalid)",
+    "n": 331
+  },
+  {
+    "file": "Tema Esame 2024-09-05-2nd.pdf",
+    "page": 2,
+    "ex": "1",
+    "sub": "C",
+    "text": "Which loop can be parallelized and under which conditions? Does the overhead of the\n       runtime impact the parallelization of the loops? Which is the best way to parallelize this\n      code on multi-core systems? (2)\n            for (i=0; i<1000; i++)\n                      for (j=0; j<4; j++)\n                            a[i][j] = f(a[i][j]) + a[i][j];",
+    "context": "Answer the following questions about parallel application modeling and briefly explain (without an explanation, the answer will be considered invalid)",
+    "n": 332
+  },
+  {
+    "file": "Tema Esame 2024-09-05-2nd.pdf",
+    "page": 3,
+    "ex": "2",
+    "sub": "A",
+    "text": "Please describe the parallel reduce pattern: assumptions, complexity, and example. (2)",
+    "context": "Answer the following questions about parallel patterns and briefly explain (without an explanation, the answer will be considered invalid)",
+    "n": 333
+  },
+  {
+    "file": "Tema Esame 2024-09-05-2nd.pdf",
+    "page": 3,
+    "ex": "2",
+    "sub": "B",
+    "text": "Please explain how the parallel shift pattern functions and provide its implementation\n        (including pseudo-code). Also, please indicate its complexity. (2)",
+    "context": "Answer the following questions about parallel patterns and briefly explain (without an explanation, the answer will be considered invalid)",
+    "n": 334
+  },
+  {
+    "file": "Tema Esame 2024-09-05-2nd.pdf",
+    "page": 4,
+    "ex": "3",
+    "sub": "A",
+    "text": "Describe the method to qualitatively evaluate a parallel algorithm through its data flow\n       graph. (1)",
+    "context": "Answer the questions about the shared memory parallel programming and briefly explain (without an explanation, the answer will be considered invalid)",
+    "n": 335
+  },
+  {
+    "file": "Tema Esame 2024-09-05-2nd.pdf",
+    "page": 4,
+    "ex": "3",
+    "sub": "B",
+    "text": "Describe what is the effect of the following OpenMP directive: (2)\n     #pragma omp for simd schedule(simd:static, 5)",
+    "context": "Answer the questions about the shared memory parallel programming and briefly explain (without an explanation, the answer will be considered invalid)",
+    "n": 336
+  },
+  {
+    "file": "Tema Esame 2024-09-05-2nd.pdf",
+    "page": 4,
+    "ex": "3",
+    "sub": "C",
+    "text": "In Halide, it is good practice to schedule pipeline stages from the output to the input. Is\n        this statement true or false? Explain. (1)",
+    "context": "Answer the questions about the shared memory parallel programming and briefly explain (without an explanation, the answer will be considered invalid)",
+    "n": 337
+  },
+  {
+    "file": "Tema Esame 2024-09-05-2nd.pdf",
+    "page": 5,
+    "ex": "4",
+    "sub": "A",
+    "text": "Provide an example of when it is useful to use the MPI_Barrier function. (1) This question\n      can be skipped if you passed the challenge.",
+    "context": "Answer the following questions about MPI and briefly explain (without an explanation, the answer will be considered invalid)",
+    "n": 338
+  },
+  {
+    "file": "Tema Esame 2024-09-05-2nd.pdf",
+    "page": 5,
+    "ex": "4",
+    "sub": "B",
+    "text": "What is the main difference between MPI and OpenMPI? (1)",
+    "context": "Answer the following questions about MPI and briefly explain (without an explanation, the answer will be considered invalid)",
+    "n": 339
+  },
+  {
+    "file": "Tema Esame 2024-09-05-2nd.pdf",
+    "page": 5,
+    "ex": "4",
+    "sub": "C",
+    "text": "Since each MPI process has a different memory address space, how is it possible to have a\n       deadlock? Also, make an example to explain how we can solve it. (2)",
+    "context": "Answer the following questions about MPI and briefly explain (without an explanation, the answer will be considered invalid)",
+    "n": 340
+  },
+  {
+    "file": "Tema Esame 2024-11-12-1st.pdf",
+    "page": 2,
+    "ex": "1",
+    "sub": "A",
+    "text": "\u201cIn a PRAM model, synchronization primitives are not required when data is exchanged\n       through the shared memory.\u201d True/False? Why? (1)",
+    "context": "Answer the following questions about parallel application modeling and ensure to provide a brief explanation. Remember, without an explanation, the answer will be considered invalid. Understanding the questions is crucial for your success in this exam.",
+    "n": 341
+  },
+  {
+    "file": "Tema Esame 2024-11-12-1st.pdf",
+    "page": 2,
+    "ex": "1",
+    "sub": "B",
+    "text": "Please show the formula defining the \u201cEfficiency\u201d in a PRAM model. (1)",
+    "context": "Answer the following questions about parallel application modeling and ensure to provide a brief explanation. Remember, without an explanation, the answer will be considered invalid. Understanding the questions is crucial for your success in this exam.",
+    "n": 342
+  },
+  {
+    "file": "Tema Esame 2024-11-12-1st.pdf",
+    "page": 2,
+    "ex": "1",
+    "sub": "C",
+    "text": "Can you provide an example where the \u201cwork\u201d done by a parallel PRAM program exceeds\n       that of the sequential version of the same algorithm? (1)",
+    "context": "Answer the following questions about parallel application modeling and ensure to provide a brief explanation. Remember, without an explanation, the answer will be considered invalid. Understanding the questions is crucial for your success in this exam.",
+    "n": 343
+  },
+  {
+    "file": "Tema Esame 2024-11-12-1st.pdf",
+    "page": 2,
+    "ex": "1",
+    "sub": "D",
+    "text": "What does it mean fixed-size model? Does it refer to Gustafson or Amdahl\u2019s law? (1)",
+    "context": "Answer the following questions about parallel application modeling and ensure to provide a brief explanation. Remember, without an explanation, the answer will be considered invalid. Understanding the questions is crucial for your success in this exam.",
+    "n": 344
+  },
+  {
+    "file": "Tema Esame 2024-11-12-1st.pdf",
+    "page": 3,
+    "ex": "2",
+    "sub": "A",
+    "text": "Please describe the ideas used to improve the Karger approach to solving the min-cut\n       problem. What changed with respect to the asymptotic complexity with respect to the\n          initial approach? (2)",
+    "context": "Answer the following questions about advanced algorithms algorithms and briefly explain (without an explanation, the answer will be considered invalid)",
+    "n": 345
+  },
+  {
+    "file": "Tema Esame 2024-11-12-1st.pdf",
+    "page": 3,
+    "ex": "2",
+    "sub": "B",
+    "text": "Master Theorem method is an important tool for the Divide and Conquer class of\n       algorithms. Why and under which assumptions the theorem could be applied? (1)",
+    "context": "Answer the following questions about advanced algorithms algorithms and briefly explain (without an explanation, the answer will be considered invalid)",
+    "n": 346
+  },
+  {
+    "file": "Tema Esame 2024-11-12-1st.pdf",
+    "page": 3,
+    "ex": "2",
+    "sub": "C",
+    "text": "What is meant by the memoization technique, and in which class of algorithm does it\n       matter? (1)",
+    "context": "Answer the following questions about advanced algorithms algorithms and briefly explain (without an explanation, the answer will be considered invalid)",
+    "n": 347
+  },
+  {
+    "file": "Tema Esame 2024-11-12-1st.pdf",
+    "page": 4,
+    "ex": "3",
+    "sub": "A",
+    "text": "Please describe the differences between Las Vegas and Monte Carlo algorithms, even\n       considering time complexity issues. (2)",
+    "context": "Answer the following questions about advanced algorithms and briefly explain (without an explanation, the answer will be considered invalid)",
+    "n": 348
+  },
+  {
+    "file": "Tema Esame 2024-11-12-1st.pdf",
+    "page": 4,
+    "ex": "3",
+    "sub": "B",
+    "text": "Describe how the split for Treaps data structure works and discuss its complexity. (2)",
+    "context": "Answer the following questions about advanced algorithms and briefly explain (without an explanation, the answer will be considered invalid)",
+    "n": 349
+  },
+  {
+    "file": "Tema Esame 2024-11-12-1st.pdf",
+    "page": 5,
+    "ex": "4",
+    "sub": "A",
+    "text": "Please explain what \u201cLower bound for comparison sorting\u201d means and its implications. (1)\n      This question can be skipped if you got 1 or 3 points in the first challenge.",
+    "context": "Answer the following questions about the algorithm analysis and briefly explain (without an explanation, the answer will be considered invalid)",
+    "n": 350
+  },
+  {
+    "file": "Tema Esame 2024-11-12-1st.pdf",
+    "page": 5,
+    "ex": "4",
+    "sub": "B",
+    "text": "Please show the pseudo-code of the partitioning algorithm used by Quicksort and report its\n        variants, complexity, and usage in other algorithms. (2) This question can be skipped if\n     you got 2 or 3 points in the first challenge.",
+    "context": "Answer the following questions about the algorithm analysis and briefly explain (without an explanation, the answer will be considered invalid)",
+    "n": 351
+  },
+  {
+    "file": "Tema Esame 2024-11-12-1st.pdf",
+    "page": 5,
+    "ex": "4",
+    "sub": "C",
+    "text": "Why is the Counting sort used as the auxiliary algorithm of the Radix sort? (1)",
+    "context": "Answer the following questions about the algorithm analysis and briefly explain (without an explanation, the answer will be considered invalid)",
+    "n": 352
+  },
+  {
+    "file": "Tema Esame 2025-01-24-1st.pdf",
+    "page": 2,
+    "ex": "1",
+    "sub": "A",
+    "text": "In a PRAM model, \u201call processors can access all memory cells in unit time. Could you\n       please provide a detailed explanation of the implications of this assumption? (1)",
+    "context": "Answer the following questions about parallel application modeling and ensure to provide a brief explanation. Remember, without a reason, the answer will be considered invalid. Understanding the questions is crucial for your success in this exam.",
+    "n": 353
+  },
+  {
+    "file": "Tema Esame 2025-01-24-1st.pdf",
+    "page": 2,
+    "ex": "1",
+    "sub": "B",
+    "text": "Could you please elaborate on the conditions under which the following formula holds as\n      an equality and when it holds as an inequality: SUp \u2264 p?\"",
+    "context": "Answer the following questions about parallel application modeling and ensure to provide a brief explanation. Remember, without a reason, the answer will be considered invalid. Understanding the questions is crucial for your success in this exam.",
+    "n": 354
+  },
+  {
+    "file": "Tema Esame 2025-01-24-1st.pdf",
+    "page": 2,
+    "ex": "1",
+    "sub": "C",
+    "text": "Could you please elaborate on what \u201cweak scaling\u201d means? To which law we have seen\n       during the lectures is referring to? (1)",
+    "context": "Answer the following questions about parallel application modeling and ensure to provide a brief explanation. Remember, without a reason, the answer will be considered invalid. Understanding the questions is crucial for your success in this exam.",
+    "n": 355
+  },
+  {
+    "file": "Tema Esame 2025-01-24-1st.pdf",
+    "page": 2,
+    "ex": "1",
+    "sub": "D",
+    "text": "Please describe the speed-up when a fixed-size model is considered. (1)",
+    "context": "Answer the following questions about parallel application modeling and ensure to provide a brief explanation. Remember, without a reason, the answer will be considered invalid. Understanding the questions is crucial for your success in this exam.",
+    "n": 356
+  },
+  {
+    "file": "Tema Esame 2025-01-24-1st.pdf",
+    "page": 3,
+    "ex": "2",
+    "sub": "A",
+    "text": "Could you please describe how the Strassen algorithm improves matrix multiplication?\n        Additionally, which class of algorithms does the Strassen approach belong to? (2)",
+    "context": "Answer the following questions about advanced algorithms algorithms and briefly explain (without an explanation, the answer will be considered invalid)",
+    "n": 357
+  },
+  {
+    "file": "Tema Esame 2025-01-24-1st.pdf",
+    "page": 3,
+    "ex": "2",
+    "sub": "B",
+    "text": "\"Why can BDD be considered an example of a data structure that exploits dynamic\n      programming? How does asymptotic complexity change with memoization?\" (2)",
+    "context": "Answer the following questions about advanced algorithms algorithms and briefly explain (without an explanation, the answer will be considered invalid)",
+    "n": 358
+  },
+  {
+    "file": "Tema Esame 2025-01-24-1st.pdf",
+    "page": 4,
+    "ex": "3",
+    "sub": "A",
+    "text": "What are the key ideas of the basic Karger approach compared to previous approaches?\n      Does it affect the worst-case complexity?\" (2)",
+    "context": "Answer the following questions about advanced algorithms and briefly explain (without an explanation, the answer will be considered invalid)",
+    "n": 359
+  },
+  {
+    "file": "Tema Esame 2025-01-24-1st.pdf",
+    "page": 4,
+    "ex": "3",
+    "sub": "B",
+    "text": "Describe how the search for Skip-list data structure works and discuss its complexity. (2)",
+    "context": "Answer the following questions about advanced algorithms and briefly explain (without an explanation, the answer will be considered invalid)",
+    "n": 360
+  },
+  {
+    "file": "Tema Esame 2025-01-24-1st.pdf",
+    "page": 5,
+    "ex": "4",
+    "sub": "A",
+    "text": "Please discuss the complexity of the partitioning algorithm used by the quick sort. (1) This\n      question can be skipped if you got 1 or 3 points in the first challenge.",
+    "context": "Answer the following questions about the algorithm analysis and briefly explain (without an explanation, the answer will be considered invalid)",
+    "n": 361
+  },
+  {
+    "file": "Tema Esame 2025-01-24-1st.pdf",
+    "page": 5,
+    "ex": "4",
+    "sub": "B",
+    "text": "Please discuss the different variants of the Select-ith algorithm. (2) This question can be\n      skipped if you got 2 or 3 points in the first challenge.",
+    "context": "Answer the following questions about the algorithm analysis and briefly explain (without an explanation, the answer will be considered invalid)",
+    "n": 362
+  },
+  {
+    "file": "Tema Esame 2025-01-24-1st.pdf",
+    "page": 5,
+    "ex": "4",
+    "sub": "C",
+    "text": "Describe the ideas behind the primality test algorithm presented during the lectures. Which\n        class of randomized approach does it belong to? (1)",
+    "context": "Answer the following questions about the algorithm analysis and briefly explain (without an explanation, the answer will be considered invalid)",
+    "n": 363
+  },
+  {
+    "file": "Tema Esame 2025-01-24-2nd.pdf",
+    "page": 1,
+    "ex": "1",
+    "sub": "A",
+    "text": "Please explain when a dependence can be classified as lexicallyforwarddependence. (1)",
+    "context": "",
+    "n": 364
+  },
+  {
+    "file": "Tema Esame 2025-01-24-2nd.pdf",
+    "page": 1,
+    "ex": "1",
+    "sub": "B",
+    "text": "What does PCAM Design Methodology mean? (1)",
+    "context": "",
+    "n": 365
+  },
+  {
+    "file": "Tema Esame 2025-01-24-2nd.pdf",
+    "page": 1,
+    "ex": "1",
+    "sub": "C",
+    "text": "Where and under what conditions can the following code be parallelized? Is there a way to\n       write the code for better parallelization if these conditions are met? (2)\n            for (i=0; i<100; i++) {\n                      for (j=1; j<100; j++)\n                         a[i][0] += f(a[i-5][j]);\n                      for (j=0; j<100; j++)\n                            b[i][j] += f(b[i][j]);\n          }",
+    "context": "",
+    "n": 366
+  },
+  {
+    "file": "Tema Esame 2025-01-24-2nd.pdf",
+    "page": 2,
+    "ex": "2",
+    "sub": "A",
+    "text": "Please describe the parallel scan pattern, including assumptions, complexity, and examples.\n       (2)",
+    "context": "",
+    "n": 367
+  },
+  {
+    "file": "Tema Esame 2025-01-24-2nd.pdf",
+    "page": 2,
+    "ex": "2",
+    "sub": "B",
+    "text": "Please discuss how the Zip parallel pattern works. How is it implemented (pseudo code\n       required)? (2)",
+    "context": "",
+    "n": 368
+  },
+  {
+    "file": "Tema Esame 2025-01-24-2nd.pdf",
+    "page": 3,
+    "ex": "3",
+    "sub": "A",
+    "text": "What are the main differences between Pthreads and OpenMP? (1)\n   Consider the following task graph:",
+    "context": "",
+    "n": 369
+  },
+  {
+    "file": "Tema Esame 2025-01-24-2nd.pdf",
+    "page": 3,
+    "ex": "3",
+    "sub": "B",
+    "text": "Calculate Span and Parallelism. If Tasks 0, 2 and 10 represent the thread management\n       overhead, what is the maximum theoretical speedup over a sequential implementation? (1)\n      This question can be skipped if you got 1 or 3 points in the second challenge.",
+    "context": "",
+    "n": 370
+  },
+  {
+    "file": "Tema Esame 2025-01-24-2nd.pdf",
+    "page": 3,
+    "ex": "3",
+    "sub": "C",
+    "text": "Write a corresponding OpenMP implementation. (2) This question can be skipped if\n     you got 2 or 3 points in the second challenge.",
+    "context": "",
+    "n": 371
+  },
+  {
+    "file": "Tema Esame 2025-01-24-2nd.pdf",
+    "page": 4,
+    "ex": "4",
+    "sub": "A",
+    "text": "What is the role of the root parameter in the MPI_Gather function? How does it relate to\n       the sending and receiving buffers? (1)",
+    "context": "",
+    "n": 372
+  },
+  {
+    "file": "Tema Esame 2025-01-24-2nd.pdf",
+    "page": 4,
+    "ex": "4",
+    "sub": "B",
+    "text": "When two MPI processes are running on two different computers, e.g. on two HPC nodes,\n          is it possible that they could end up in a deadlock? (explain the answer) (1)",
+    "context": "",
+    "n": 373
+  },
+  {
+    "file": "Tema Esame 2025-01-24-2nd.pdf",
+    "page": 4,
+    "ex": "4",
+    "sub": "C",
+    "text": "What is an MPI communicator? How and why should I manipulate communicators? Please\n        also provide an example where it is useful. (2)",
+    "context": "",
+    "n": 374
+  },
+  {
+    "file": "Tema Esame 2025-02-14-1st.pdf",
+    "page": 2,
+    "ex": "1",
+    "sub": "A",
+    "text": "What can be said about the time complexity of a PRAM-based application when the PRAM\n      model has a bounded number of processors? (1)",
+    "context": "Answer the following questions about parallel application modeling and ensure you provide a brief explanation. Remember, without a reason, the answer will be considered invalid. Understanding the questions is crucial for your success in this exam.",
+    "n": 375
+  },
+  {
+    "file": "Tema Esame 2025-02-14-1st.pdf",
+    "page": 2,
+    "ex": "1",
+    "sub": "B",
+    "text": "How is the communication via shared memory performed in a PRAM model? (latency vs\n        parallel accesses)",
+    "context": "Answer the following questions about parallel application modeling and ensure you provide a brief explanation. Remember, without a reason, the answer will be considered invalid. Understanding the questions is crucial for your success in this exam.",
+    "n": 376
+  },
+  {
+    "file": "Tema Esame 2025-02-14-1st.pdf",
+    "page": 2,
+    "ex": "1",
+    "sub": "C",
+    "text": "Could you please discuss the differences between \u201cweak scaling\u201d and \u201cstrong scaling\u201d? To\n      which laws we have seen during the lectures are referring to? (1)",
+    "context": "Answer the following questions about parallel application modeling and ensure you provide a brief explanation. Remember, without a reason, the answer will be considered invalid. Understanding the questions is crucial for your success in this exam.",
+    "n": 377
+  },
+  {
+    "file": "Tema Esame 2025-02-14-1st.pdf",
+    "page": 2,
+    "ex": "1",
+    "sub": "D",
+    "text": "Please define and discuss the speed-up when Gustafson\u2019s law is considered. (1)",
+    "context": "Answer the following questions about parallel application modeling and ensure you provide a brief explanation. Remember, without a reason, the answer will be considered invalid. Understanding the questions is crucial for your success in this exam.",
+    "n": 378
+  },
+  {
+    "file": "Tema Esame 2025-02-14-1st.pdf",
+    "page": 3,
+    "ex": "2",
+    "sub": "A",
+    "text": "Could you please describe how the powering algorithm works? Additionally, which class of\n       algorithms does it belong to? (2)",
+    "context": "Answer the following questions about advanced algorithms algorithms and briefly explain (without an explanation, the answer will be considered invalid)",
+    "n": 379
+  },
+  {
+    "file": "Tema Esame 2025-02-14-1st.pdf",
+    "page": 3,
+    "ex": "2",
+    "sub": "B",
+    "text": "Please discuss the role of the computed table on BDD ITE operation. How does the ITE\n       asymptotic complexity change with this table?\" (2)",
+    "context": "Answer the following questions about advanced algorithms algorithms and briefly explain (without an explanation, the answer will be considered invalid)",
+    "n": 380
+  },
+  {
+    "file": "Tema Esame 2025-02-14-1st.pdf",
+    "page": 4,
+    "ex": "3",
+    "sub": "A",
+    "text": "Could you explain which aspects of primality testing use randomization and how that\n       process works? Additionally, would you classify it as a Las Vegas randomized algorithm? (2)",
+    "context": "Answer the following questions about advanced algorithms and briefly explain (without an explanation, the answer will be considered invalid)",
+    "n": 381
+  },
+  {
+    "file": "Tema Esame 2025-02-14-1st.pdf",
+    "page": 4,
+    "ex": "3",
+    "sub": "B",
+    "text": "Describe how the split and the union work in a treap and discuss their complexity. (2)",
+    "context": "Answer the following questions about advanced algorithms and briefly explain (without an explanation, the answer will be considered invalid)",
+    "n": 382
+  },
+  {
+    "file": "Tema Esame 2025-02-14-1st.pdf",
+    "page": 5,
+    "ex": "4",
+    "sub": "A",
+    "text": "Please discuss the lower bound of the comparison-based sort algorithms. (1) This\n      question can be skipped if you got 1 or 3 points in the first challenge.",
+    "context": "Answer the following questions about the algorithm analysis and briefly explain (without an explanation, the answer will be considered invalid)",
+    "n": 383
+  },
+  {
+    "file": "Tema Esame 2025-02-14-1st.pdf",
+    "page": 5,
+    "ex": "4",
+    "sub": "B",
+    "text": "Please discuss the different variants of the amortized analysis. For what class of problems\n       are they used? (2) This question can be skipped if you got 2 or 3 points in the first\n      challenge.",
+    "context": "Answer the following questions about the algorithm analysis and briefly explain (without an explanation, the answer will be considered invalid)",
+    "n": 384
+  },
+  {
+    "file": "Tema Esame 2025-02-14-1st.pdf",
+    "page": 5,
+    "ex": "4",
+    "sub": "C",
+    "text": "Could you please list the characteristics of the counting sort algorithm that make it suitable\n        for use in radix sort? (1)",
+    "context": "Answer the following questions about the algorithm analysis and briefly explain (without an explanation, the answer will be considered invalid)",
+    "n": 385
+  },
+  {
+    "file": "Tema Esame 2025-02-14-2nd.pdf",
+    "page": 1,
+    "ex": "1",
+    "sub": "A",
+    "text": "Please describe and show an example of Parallel Data Management Patterns: pipeline. (1)",
+    "context": "",
+    "n": 386
+  },
+  {
+    "file": "Tema Esame 2025-02-14-2nd.pdf",
+    "page": 1,
+    "ex": "1",
+    "sub": "B",
+    "text": "What dependencies can be eliminated by renaming the variables? (1)",
+    "context": "",
+    "n": 387
+  },
+  {
+    "file": "Tema Esame 2025-02-14-2nd.pdf",
+    "page": 1,
+    "ex": "1",
+    "sub": "C",
+    "text": "Where and under what conditions can the following code be parallelized? Is there a way to\n       write the code for better parallelization if these conditions are met? Assume that a and b\n       store integers. (2)\n            for (i=3; i<100; i++) {\n                      for (j=1; j<100; j++)\n                         a[i][0] *= f(a[i][j]);\n                      for (j=0; j<100; j++)\n                          b[i-3][j] += f(b[i][j]);\n          }",
+    "context": "",
+    "n": 388
+  },
+  {
+    "file": "Tema Esame 2025-02-14-2nd.pdf",
+    "page": 2,
+    "ex": "2",
+    "sub": "A",
+    "text": "Please describe the parallel Scatter pattern, including assumptions, PRAM-based\n       complexity, and examples. (2)",
+    "context": "",
+    "n": 389
+  },
+  {
+    "file": "Tema Esame 2025-02-14-2nd.pdf",
+    "page": 2,
+    "ex": "2",
+    "sub": "B",
+    "text": "Please discuss how the Pack parallel pattern works. How is it implemented (pseudo code\n       required and PRAM-based complexity)? (2)",
+    "context": "",
+    "n": 390
+  },
+  {
+    "file": "Tema Esame 2025-02-14-2nd.pdf",
+    "page": 3,
+    "ex": "3",
+    "sub": "A",
+    "text": "List similarities and differences between a single and a master region in OpenMP. (1)",
+    "context": "",
+    "n": 391
+  },
+  {
+    "file": "Tema Esame 2025-02-14-2nd.pdf",
+    "page": 3,
+    "ex": "3",
+    "sub": "B",
+    "text": "What happens when threads encounter a barrier  in Pthreads?  Is the same behavior\n       achievable through joining? (1) This question can be skipped if you got 1 or 3 points\n       in the second challenge.",
+    "context": "",
+    "n": 392
+  },
+  {
+    "file": "Tema Esame 2025-02-14-2nd.pdf",
+    "page": 3,
+    "ex": "3",
+    "sub": "C",
+    "text": "Describe how each thread in the following diagram behaves at runtime as it encounters\n       points marked with 1, representing pragma omp cancel, and with 2, representing\n     pragma omp cancellation point. (2) This question can be skipped if you got 2\n      or 3 points in the second challenge.",
+    "context": "",
+    "n": 393
+  },
+  {
+    "file": "Tema Esame 2025-02-14-2nd.pdf",
+    "page": 4,
+    "ex": "4",
+    "sub": "A",
+    "text": "What do I get from an MPI implementation, e.g. from OpenMPI? (1)",
+    "context": "",
+    "n": 394
+  },
+  {
+    "file": "Tema Esame 2025-02-14-2nd.pdf",
+    "page": 4,
+    "ex": "4",
+    "sub": "B",
+    "text": "Make an example where non-blocking semantics does not help with solving an MPI\n       deadlock. (1)",
+    "context": "",
+    "n": 395
+  },
+  {
+    "file": "Tema Esame 2025-02-14-2nd.pdf",
+    "page": 4,
+    "ex": "4",
+    "sub": "C",
+    "text": "How MPI_Reduce work when the send and receive data are buffers with a single element?\n      What happens when the buffers have more than one element? Describe how the result is\n      computed. (2)",
+    "context": "",
+    "n": 396
+  },
+  {
+    "file": "Tema Esame 2025-06-05-1st.pdf",
+    "page": 2,
+    "ex": "1",
+    "sub": "A",
+    "text": "How does the PRAM model abstract away synchronization and communication, and what\n       are the implications for algorithm design? (1)",
+    "context": "Answer the following questions about parallel application modeling and ensure you provide a brief explanation. Remember, without a reason, the answer will be considered invalid.",
+    "n": 397
+  },
+  {
+    "file": "Tema Esame 2025-06-05-1st.pdf",
+    "page": 2,
+    "ex": "1",
+    "sub": "B",
+    "text": "How do the different types of concurrent write (CW) models affect algorithm design in\n     PRAM? (1)",
+    "context": "Answer the following questions about parallel application modeling and ensure you provide a brief explanation. Remember, without a reason, the answer will be considered invalid.",
+    "n": 398
+  },
+  {
+    "file": "Tema Esame 2025-06-05-1st.pdf",
+    "page": 2,
+    "ex": "1",
+    "sub": "C",
+    "text": "How does the matrix-vector multiplication example illustrate strong scaling, and what\n      would change in a weak scaling scenario? (1)",
+    "context": "Answer the following questions about parallel application modeling and ensure you provide a brief explanation. Remember, without a reason, the answer will be considered invalid.",
+    "n": 399
+  },
+  {
+    "file": "Tema Esame 2025-06-05-1st.pdf",
+    "page": 2,
+    "ex": "1",
+    "sub": "D",
+    "text": "Why does Amdahl\u2019s Law suggest diminishing returns with increasing processors, and how\n      does Gustafson\u2019s Law counter this? (1)",
+    "context": "Answer the following questions about parallel application modeling and ensure you provide a brief explanation. Remember, without a reason, the answer will be considered invalid.",
+    "n": 400
+  },
+  {
+    "file": "Tema Esame 2025-06-05-1st.pdf",
+    "page": 3,
+    "ex": "2",
+    "sub": "A",
+    "text": "In class, we studied two algorithms for minimum cut in a graph. Describe the behavior of\n       both algorithms, including their algorithmic class and complexity. Based on the discussion\n       held in class, explain why one might be preferable over the other. (2)",
+    "context": "Answer the following questions about advanced algorithms and briefly explain (without an explanation, the answer will be considered invalid)",
+    "n": 401
+  },
+  {
+    "file": "Tema Esame 2025-06-05-1st.pdf",
+    "page": 3,
+    "ex": "2",
+    "sub": "B",
+    "text": "How do the unique table and computed table contribute to the efficiency and canonicity of\n      BDDs?\" (2)",
+    "context": "Answer the following questions about advanced algorithms and briefly explain (without an explanation, the answer will be considered invalid)",
+    "n": 402
+  },
+  {
+    "file": "Tema Esame 2025-06-05-1st.pdf",
+    "page": 4,
+    "ex": "3",
+    "sub": "A",
+    "text": "Why does quicksort perform poorly in the worst case, and how can this be mitigated?\n       Report the class of algorithms to which it belongs and its average-case complexity.\n       According to the definition, is it an efficient algorithm? (2)",
+    "context": "Answer the following questions about advanced algorithms and briefly explain (without an explanation, the answer will be considered invalid)",
+    "n": 403
+  },
+  {
+    "file": "Tema Esame 2025-06-05-1st.pdf",
+    "page": 4,
+    "ex": "3",
+    "sub": "B",
+    "text": "Describe how the insert for the Skip-list data structure works and discuss its complexity.\n       (2)",
+    "context": "Answer the following questions about advanced algorithms and briefly explain (without an explanation, the answer will be considered invalid)",
+    "n": 404
+  },
+  {
+    "file": "Tema Esame 2025-06-05-1st.pdf",
+    "page": 5,
+    "ex": "4",
+    "sub": "A",
+    "text": "Why is amortized analysis useful in algorithm design, especially for data structures? (1)\n      This question can be skipped if you got 1 or 3 points in the first challenge.",
+    "context": "Answer the following questions about the algorithm analysis and briefly explain (without an explanation, the answer will be considered invalid)",
+    "n": 405
+  },
+  {
+    "file": "Tema Esame 2025-06-05-1st.pdf",
+    "page": 5,
+    "ex": "4",
+    "sub": "B",
+    "text": "Describe the Select-ith deterministic algorithm and its complexity. Why is dividing into\n       groups of 5 critical for the deterministic Select-ith algorithm\u2019s performance? (2) This\n      question can be skipped if you got 2 or 3 points in the first challenge.",
+    "context": "Answer the following questions about the algorithm analysis and briefly explain (without an explanation, the answer will be considered invalid)",
+    "n": 406
+  },
+  {
+    "file": "Tema Esame 2025-06-05-1st.pdf",
+    "page": 5,
+    "ex": "4",
+    "sub": "C",
+    "text": "What does it mean if the potential difference \u0394\u03a6 is negative in the potential method? What\n       about the sign of \u03a6. (1)",
+    "context": "Answer the following questions about the algorithm analysis and briefly explain (without an explanation, the answer will be considered invalid)",
+    "n": 407
+  },
+  {
+    "file": "Tema Esame 2025-06-05-2nd.pdf",
+    "page": 1,
+    "ex": "1",
+    "sub": "A",
+    "text": "How does the Fork-Join pattern differ from a barrier in parallel programming? (1)",
+    "context": "",
+    "n": 408
+  },
+  {
+    "file": "Tema Esame 2025-06-05-2nd.pdf",
+    "page": 1,
+    "ex": "1",
+    "sub": "B",
+    "text": "How does the Workpile pattern differ from a standard Map pattern? (1)",
+    "context": "",
+    "n": 409
+  },
+  {
+    "file": "Tema Esame 2025-06-05-2nd.pdf",
+    "page": 1,
+    "ex": "1",
+    "sub": "C",
+    "text": "Consider the following nested loop:\n        for (j = 0; j < 100; j++) {\n            for (i = 1; i < 100; i++) {\n                a[i][j] = f(a[i-1][j]);\n            }\n        }\n       Evaluate the cache-friendliness of this code. How does the memory layout of the array\n        affect performance, and what changes could improve cache utilization? Is it still\n        parallelizable? How? Justify your answer. (2)",
+    "context": "",
+    "n": 410
+  },
+  {
+    "file": "Tema Esame 2025-06-05-2nd.pdf",
+    "page": 2,
+    "ex": "2",
+    "sub": "A",
+    "text": "How can the map and reduce patterns be fused, and what is the benefit of doing so? (1)",
+    "context": "",
+    "n": 411
+  },
+  {
+    "file": "Tema Esame 2025-06-05-2nd.pdf",
+    "page": 2,
+    "ex": "2",
+    "sub": "B",
+    "text": "In the context of parallel scan, what is the difference between an inclusive and an\n       exclusive scan? What about the complexity? (1)",
+    "context": "",
+    "n": 412
+  },
+  {
+    "file": "Tema Esame 2025-06-05-2nd.pdf",
+    "page": 2,
+    "ex": "2",
+    "sub": "C",
+    "text": "Please discuss how the Split parallel pattern works. How is it implemented (pseudo code\n       required and PRAM-based complexity)? (2)",
+    "context": "",
+    "n": 413
+  },
+  {
+    "file": "Tema Esame 2025-06-05-2nd.pdf",
+    "page": 3,
+    "ex": "3",
+    "sub": "A",
+    "text": "It is always necessary to place an explicit barrier at the end of an OpenMP work sharing\n        construct. Is this statement true or false? Explain. (1)",
+    "context": "",
+    "n": 414
+  },
+  {
+    "file": "Tema Esame 2025-06-05-2nd.pdf",
+    "page": 3,
+    "ex": "3",
+    "sub": "B",
+    "text": "List the factors that determine the number of threads in an OpenMP parallel region. (1) This\n      question can be skipped if you got 1 or 3 points in the second challenge.",
+    "context": "",
+    "n": 415
+  },
+  {
+    "file": "Tema Esame 2025-06-05-2nd.pdf",
+    "page": 3,
+    "ex": "3",
+    "sub": "C",
+    "text": "Describe the effects of the following pragma. (2) This question can be skipped if you\n      got 2 or 3 points in the first challenge.\n#pragma omp task depend(in: status[i])",
+    "context": "",
+    "n": 416
+  },
+  {
+    "file": "Tema Esame 2025-06-05-2nd.pdf",
+    "page": 4,
+    "ex": "4",
+    "sub": "A",
+    "text": "Modern HPC systems feature cores in the order of millions. Why can MPi help my\n        application to use more cores than a plain OpenMP application?(1)",
+    "context": "",
+    "n": 417
+  },
+  {
+    "file": "Tema Esame 2025-06-05-2nd.pdf",
+    "page": 4,
+    "ex": "4",
+    "sub": "B",
+    "text": "Make an example where the program\u2019s correct execution requires MPI_probe (1)",
+    "context": "",
+    "n": 418
+  },
+  {
+    "file": "Tema Esame 2025-06-05-2nd.pdf",
+    "page": 4,
+    "ex": "4",
+    "sub": "C",
+    "text": "MPI functions with non-blocking semantics, e.g. MPI_Irecv, and multi-threading\n      programming, e.g. OpenMP, can be used to solve the same problem. What is the problem\n      and how can the two approaches be used to solve it? (2)",
+    "context": "",
+    "n": 419
+  },
+  {
+    "file": "Tema Esame 2025-07-04-1st.pdf",
+    "page": 2,
+    "ex": "1",
+    "sub": "A",
+    "text": "What does it imply that each memory cell can hold an integer of unbounded size in a\n     PRAM? (1)",
+    "context": "Answer the following questions about parallel application modeling and ensure you provide a brief explanation. Remember, without a reason, the answer will be considered invalid.",
+    "n": 420
+  },
+  {
+    "file": "Tema Esame 2025-07-04-1st.pdf",
+    "page": 2,
+    "ex": "1",
+    "sub": "B",
+    "text": "Given an algorithm with T1(n)=n3 and Tp(n)=n3/p, analyze the speedup and efficiency.\n      What can you conclude? (1)",
+    "context": "Answer the following questions about parallel application modeling and ensure you provide a brief explanation. Remember, without a reason, the answer will be considered invalid.",
+    "n": 421
+  },
+  {
+    "file": "Tema Esame 2025-07-04-1st.pdf",
+    "page": 2,
+    "ex": "1",
+    "sub": "C",
+    "text": "Why is the prefix sum algorithm on PRAM more efficient than the basic sum algorithm, and\n      what is the trade-off? (1)",
+    "context": "Answer the following questions about parallel application modeling and ensure you provide a brief explanation. Remember, without a reason, the answer will be considered invalid.",
+    "n": 422
+  },
+  {
+    "file": "Tema Esame 2025-07-04-1st.pdf",
+    "page": 2,
+    "ex": "1",
+    "sub": "D",
+    "text": "How does Gustafson\u2019s Law support the concept of weak scaling, and what is its implication\n        for massively parallel systems? (1)",
+    "context": "Answer the following questions about parallel application modeling and ensure you provide a brief explanation. Remember, without a reason, the answer will be considered invalid.",
+    "n": 423
+  },
+  {
+    "file": "Tema Esame 2025-07-04-1st.pdf",
+    "page": 3,
+    "ex": "2",
+    "sub": "A",
+    "text": "In class, we studied an algorithm that shows the main hallmarks of dynamic programming.\n       Describe the algorithm and its complexity, and why it is classified as a good dynamic\n      programming example. (2)",
+    "context": "Answer the following questions about advanced algorithms and briefly explain (without an explanation, the answer will be considered invalid)",
+    "n": 424
+  },
+  {
+    "file": "Tema Esame 2025-07-04-1st.pdf",
+    "page": 3,
+    "ex": "2",
+    "sub": "B",
+    "text": "Please list the main differences, including the efficiency, between the Las Vegas and Monte\n       Carlo algorithms. (2)",
+    "context": "Answer the following questions about advanced algorithms and briefly explain (without an explanation, the answer will be considered invalid)",
+    "n": 425
+  },
+  {
+    "file": "Tema Esame 2025-07-04-1st.pdf",
+    "page": 4,
+    "ex": "3",
+    "sub": "A",
+    "text": "Describe an algorithm seen during the course lectures where the potential method has\n      been used. (2)",
+    "context": "Answer the following questions about advanced algorithms and briefly explain (without an explanation, the answer will be considered invalid)",
+    "n": 426
+  },
+  {
+    "file": "Tema Esame 2025-07-04-1st.pdf",
+    "page": 4,
+    "ex": "3",
+    "sub": "B",
+    "text": "Describe how the union and the split work in a treap and discuss its complexity. (2)",
+    "context": "Answer the following questions about advanced algorithms and briefly explain (without an explanation, the answer will be considered invalid)",
+    "n": 427
+  },
+  {
+    "file": "Tema Esame 2025-07-04-1st.pdf",
+    "page": 5,
+    "ex": "4",
+    "sub": "A",
+    "text": "Please describe the partitioning algorithm used by the quick sort and its key properties.\n     How is it randomized? (1) This question can be skipped if you got 1 or 3 points in\n      the first challenge.",
+    "context": "Answer the following questions about the algorithm analysis and briefly explain (without an explanation, the answer will be considered invalid)",
+    "n": 428
+  },
+  {
+    "file": "Tema Esame 2025-07-04-1st.pdf",
+    "page": 5,
+    "ex": "4",
+    "sub": "B",
+    "text": "What are the differences between the randomized and deterministic algorithms for solving\n       the Select-ith problem? (2) This question can be skipped if you got 2 or 3 points in\n      the first challenge.",
+    "context": "Answer the following questions about the algorithm analysis and briefly explain (without an explanation, the answer will be considered invalid)",
+    "n": 429
+  },
+  {
+    "file": "Tema Esame 2025-07-04-1st.pdf",
+    "page": 5,
+    "ex": "4",
+    "sub": "C",
+    "text": "What are the characteristics of an algorithm that require the amortized analysis methods?\n       (1)",
+    "context": "Answer the following questions about the algorithm analysis and briefly explain (without an explanation, the answer will be considered invalid)",
+    "n": 430
+  },
+  {
+    "file": "Tema Esame 2025-07-04-2nd.pdf",
+    "page": 1,
+    "ex": "1",
+    "sub": "A",
+    "text": "What is the difference between a true dependence and an anti-dependence? (1)",
+    "context": "",
+    "n": 431
+  },
+  {
+    "file": "Tema Esame 2025-07-04-2nd.pdf",
+    "page": 1,
+    "ex": "1",
+    "sub": "B",
+    "text": "What are the challenges of using a shared state in a Map function? (1)",
+    "context": "",
+    "n": 432
+  },
+  {
+    "file": "Tema Esame 2025-07-04-2nd.pdf",
+    "page": 1,
+    "ex": "1",
+    "sub": "C",
+    "text": "Consider the following nested loop:\n        for (j = 0; j < 100; j++) {\n            b[j] = f1(a[j]);\n        }\n        for (j = 99; j >= 0; j--) {\n            a[j] = f2(b[j]);\n        }\n      Which loop can be parallelized and under which conditions (j is declared as an integer)? Is\n       there a way to improve the code? Is the OpenMP nowait clause a possible option? Justify\n       your answers. (2)",
+    "context": "",
+    "n": 433
+  },
+  {
+    "file": "Tema Esame 2025-07-04-2nd.pdf",
+    "page": 2,
+    "ex": "2",
+    "sub": "A",
+    "text": "Please describe the parallel reduce pattern: assumptions, PRAM complexity, and example.\n      What about the work done? Is it different from the one done by the sequential algorithm?\n       (2)",
+    "context": "",
+    "n": 434
+  },
+  {
+    "file": "Tema Esame 2025-07-04-2nd.pdf",
+    "page": 2,
+    "ex": "2",
+    "sub": "B",
+    "text": "Please discuss how the Unpack parallel pattern works. How is it implemented (pseudo code\n       required and PRAM-based complexity)? (2)",
+    "context": "",
+    "n": 435
+  },
+  {
+    "file": "Tema Esame 2025-07-04-2nd.pdf",
+    "page": 3,
+    "ex": "3",
+    "sub": "A",
+    "text": "The input to a High-Level Synthesis tool is a Register-Transfer Level description of an\n    accelerator. Is this statement true or false? Explain. (1)\nConsider the following task graph, where all tasks contain the same amount of Work:",
+    "context": "",
+    "n": 436
+  },
+  {
+    "file": "Tema Esame 2025-07-04-2nd.pdf",
+    "page": 3,
+    "ex": "3",
+    "sub": "B",
+    "text": "Indicate the critical path in the figure, and calculate the Parallelism. (1) This question can be\n   skipped if you got 1 or 3 points in the second challenge.",
+    "context": "",
+    "n": 437
+  },
+  {
+    "file": "Tema Esame 2025-07-04-2nd.pdf",
+    "page": 3,
+    "ex": "3",
+    "sub": "C",
+    "text": "Write a corresponding OpenMP implementation, explaining your choice of work-sharing\n    construct. (2) This question can be skipped if you got 2 or 3 points in the first\n   challenge.",
+    "context": "",
+    "n": 438
+  },
+  {
+    "file": "Tema Esame 2025-07-04-2nd.pdf",
+    "page": 4,
+    "ex": "4",
+    "sub": "A",
+    "text": "Which software components do I get from an MPI implementation? (1)",
+    "context": "",
+    "n": 439
+  },
+  {
+    "file": "Tema Esame 2025-07-04-2nd.pdf",
+    "page": 4,
+    "ex": "4",
+    "sub": "B",
+    "text": "The following is the MPI_Recv signature:\n      int MPI_Recv(void *buf, int count, MPI_Datatype datatype,\n                   int source, int tag, MPI_Comm comm, MPI_Status *status)\n      What value should I provide to the count parameter? (1)",
+    "context": "",
+    "n": 440
+  },
+  {
+    "file": "Tema Esame 2025-07-04-2nd.pdf",
+    "page": 4,
+    "ex": "4",
+    "sub": "C",
+    "text": "Make an example where MPI_Comm_split is useful. Do not describe what the function\n       does. Describe a scenario where it makes sense to use it, how you use it, and the reason\n      you use it. (2)",
+    "context": "",
+    "n": 441
+  },
+  {
+    "file": "Tema Esame 2025-09-05-1st.pdf",
+    "page": 2,
+    "ex": "1",
+    "sub": "A",
+    "text": "What kind of synchronization does PRAM use? (1)",
+    "context": "Answer the following questions about parallel application modeling and ensure you provide a brief explanation. Remember, without a reason, the answer will be considered invalid.",
+    "n": 442
+  },
+  {
+    "file": "Tema Esame 2025-09-05-1st.pdf",
+    "page": 2,
+    "ex": "1",
+    "sub": "B",
+    "text": "Which of the assumptions of the PRAM model simplifies the communication between the\n       processor and the memory? (1)",
+    "context": "Answer the following questions about parallel application modeling and ensure you provide a brief explanation. Remember, without a reason, the answer will be considered invalid.",
+    "n": 443
+  },
+  {
+    "file": "Tema Esame 2025-09-05-1st.pdf",
+    "page": 2,
+    "ex": "1",
+    "sub": "C",
+    "text": "Discuss the following sentence: \u201cIf a problem has no feasible/efficient solution on PRAM, it\n      has no feasible/efficient solution for any parallel machine.\u201d True or False? (1)",
+    "context": "Answer the following questions about parallel application modeling and ensure you provide a brief explanation. Remember, without a reason, the answer will be considered invalid.",
+    "n": 444
+  },
+  {
+    "file": "Tema Esame 2025-09-05-1st.pdf",
+    "page": 2,
+    "ex": "1",
+    "sub": "D",
+    "text": "Please compare the assumptions behind the Gustafson and the Amdahl laws. (1)",
+    "context": "Answer the following questions about parallel application modeling and ensure you provide a brief explanation. Remember, without a reason, the answer will be considered invalid.",
+    "n": 445
+  },
+  {
+    "file": "Tema Esame 2025-09-05-1st.pdf",
+    "page": 3,
+    "ex": "2",
+    "sub": "A",
+    "text": "Please describe how the Divide and Conquer class of algorithms works by using one of the\n       algorithms presented in class. (2)",
+    "context": "Answer the following questions about advanced algorithms and briefly explain (without an explanation, the answer will be considered invalid)",
+    "n": 446
+  },
+  {
+    "file": "Tema Esame 2025-09-05-1st.pdf",
+    "page": 3,
+    "ex": "2",
+    "sub": "B",
+    "text": "Please explain what the competitive analysis is meant for by using one of the examples\n       presented during the course lectures. (2)",
+    "context": "Answer the following questions about advanced algorithms and briefly explain (without an explanation, the answer will be considered invalid)",
+    "n": 447
+  },
+  {
+    "file": "Tema Esame 2025-09-05-1st.pdf",
+    "page": 4,
+    "ex": "3",
+    "sub": "A",
+    "text": "Please explain what the memoization technique is meant for and where it matters. (2)",
+    "context": "Answer the following questions about advanced algorithms and briefly explain (without an explanation, the answer will be considered invalid)",
+    "n": 448
+  },
+  {
+    "file": "Tema Esame 2025-09-05-1st.pdf",
+    "page": 4,
+    "ex": "3",
+    "sub": "B",
+    "text": "Describe the Karger and Stein algorithm and its complexity. (2)",
+    "context": "Answer the following questions about advanced algorithms and briefly explain (without an explanation, the answer will be considered invalid)",
+    "n": 449
+  },
+  {
+    "file": "Tema Esame 2025-09-05-1st.pdf",
+    "page": 5,
+    "ex": "4",
+    "sub": "A",
+    "text": "What is meant by \u201caccounting method\u201d? To which class of algorithms could be applied?\n      Examples? (1) This question can be skipped if you got 1 or 3 points in the first\n      challenge.",
+    "context": "Answer the following questions about the algorithm analysis and briefly explain (without an explanation, the answer will be considered invalid)",
+    "n": 450
+  },
+  {
+    "file": "Tema Esame 2025-09-05-1st.pdf",
+    "page": 5,
+    "ex": "4",
+    "sub": "B",
+    "text": "Describe the skip list data structure and how the search is performed, and what the\n       complexity is. (2) This question can be skipped if you got 2 or 3 points in the first\n      challenge.",
+    "context": "Answer the following questions about the algorithm analysis and briefly explain (without an explanation, the answer will be considered invalid)",
+    "n": 451
+  },
+  {
+    "file": "Tema Esame 2025-09-05-1st.pdf",
+    "page": 5,
+    "ex": "4",
+    "sub": "C",
+    "text": "Please explain what \u201cLower bound for comparison sorting\u201d means and its implications. (1)",
+    "context": "Answer the following questions about the algorithm analysis and briefly explain (without an explanation, the answer will be considered invalid)",
+    "n": 452
+  },
+  {
+    "file": "Tema Esame 2025-09-05-2nd.pdf",
+    "page": 1,
+    "ex": "1",
+    "sub": "A",
+    "text": "Could you please summarize why manual parallelization is preferred to automatic\n        parallelization? (1)",
+    "context": "",
+    "n": 453
+  },
+  {
+    "file": "Tema Esame 2025-09-05-2nd.pdf",
+    "page": 1,
+    "ex": "1",
+    "sub": "B",
+    "text": "Please describe the differences between flow, output, and anti-dependencies. (1)",
+    "context": "",
+    "n": 454
+  },
+  {
+    "file": "Tema Esame 2025-09-05-2nd.pdf",
+    "page": 1,
+    "ex": "1",
+    "sub": "C",
+    "text": "Consider the following nested loop:\n        for (i=0; i<100; i++) {\n          for (j=0; j<100; j++)\n            b[i][j] += f(a[i][j]);\n          for (j=99; j>=0; j++)\n            a[i][j] += f(b[i][j]);\n        }\n      Which loop can be parallelized and under which conditions (i and j are declared as\n       integers)? Is there a way to improve the code? Is the OpenMP nowait clause a possible\n       option? Justify your answers. (2)",
+    "context": "",
+    "n": 455
+  },
+  {
+    "file": "Tema Esame 2025-09-05-2nd.pdf",
+    "page": 2,
+    "ex": "2",
+    "sub": "A",
+    "text": "Please describe the parallel gather pattern, including assumptions, PRAM-based complexity,\n      and examples. (2)",
+    "context": "",
+    "n": 456
+  },
+  {
+    "file": "Tema Esame 2025-09-05-2nd.pdf",
+    "page": 2,
+    "ex": "2",
+    "sub": "B",
+    "text": "Please discuss how the Split parallel pattern works. How is it implemented (pseudo code\n       required and PRAM-based complexity)? (2)",
+    "context": "",
+    "n": 457
+  },
+  {
+    "file": "Tema Esame 2025-09-05-2nd.pdf",
+    "page": 3,
+    "ex": "3",
+    "sub": "A",
+    "text": "What is the difference between a static and a dynamic schedule in the OpenMP for construct?\n    (1)",
+    "context": "",
+    "n": 458
+  },
+  {
+    "file": "Tema Esame 2025-09-05-2nd.pdf",
+    "page": 3,
+    "ex": "3",
+    "sub": "B",
+    "text": "What happens when a variable is declared as firstprivate in an OpenMP pragma? (1) This\n   question can be skipped if you got 1 or 3 points in the second challenge.",
+    "context": "",
+    "n": 459
+  },
+  {
+    "file": "Tema Esame 2025-09-05-2nd.pdf",
+    "page": 3,
+    "ex": "3",
+    "sub": "C",
+    "text": "Describe in detail the effects of the following OpenMP pragma. (2) This question can be\n   skipped if you got 2 or 3 points in the second challenge.\n#pragma omp parallel for reduction(+:sum)",
+    "context": "",
+    "n": 460
+  },
+  {
+    "file": "Tema Esame 2025-09-05-2nd.pdf",
+    "page": 4,
+    "ex": "4",
+    "sub": "A",
+    "text": "Why does MPI enable the usage of distributed architectures? (1)",
+    "context": "",
+    "n": 461
+  },
+  {
+    "file": "Tema Esame 2025-09-05-2nd.pdf",
+    "page": 4,
+    "ex": "4",
+    "sub": "B",
+    "text": "In which scenario does it make sense to use MPI_ANY_TAG in MPI_Probe? (1)",
+    "context": "",
+    "n": 462
+  },
+  {
+    "file": "Tema Esame 2025-09-05-2nd.pdf",
+    "page": 4,
+    "ex": "4",
+    "sub": "C",
+    "text": "What is the purpose of the function MPI_Reduce? When the input buffer in each MPI\n       process has more than one value, what is the size and content of the output buffer? (2)",
+    "context": "",
+    "n": 463
+  }
+]
