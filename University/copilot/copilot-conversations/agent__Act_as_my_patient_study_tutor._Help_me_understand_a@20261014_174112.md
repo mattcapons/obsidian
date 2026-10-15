@@ -6,7 +6,7 @@ sessionId: "01a13b12-00c7-7280-a2e9-d9074bb30a67"
 topic: "PRAM help"
 agentLabel: "Act as my patient study tutor. Help me understand a specific…"
 lastAccessedAt: 1792089602767
-usage: '{"usedTokens":54754,"contextWindow":828400,"updatedAt":1792089753582}'
+usage: '{"usedTokens":70247,"contextWindow":828400,"updatedAt":1792096843824}'
 tags:
   - copilot-conversation
 ---
@@ -1251,5 +1251,293 @@ We can work through it in order, starting with the reduction demo you already un
 
 **ai**: I’ll check the vault’s Git changes, then commit and push them.
 The changes include the notebooks, past exams and question bank, plugin files, and study-chat updates. I’ll include all of them as requested.
+Committed and pushed all 145 files to `origin/master`.
 
+Commit: `43dda0c` — “Add AAPP notebooks, past exam question bank, and vault updates”
+
+The active chat transcript updated again afterward, so that latest change remains uncommitted.
 [Timestamp: 2026/10/15 20:42:17]
+
+**user**: Since the code is quite barebone can you explain what it does exactly
+[Timestamp: 2026/10/15 22:17:57]
+
+**ai**: Yes. **The notebook simulates PRAM execution, records what happens in each round, and lets you inspect that execution through interactive diagrams.** The C++ computes the states; Python draws them.
+
+The most important distinction is that **the C++ runs sequentially on your computer**. Its loops describe operations that would belong to the same parallel PRAM round. The notebook’s “time” is the number of simulated rounds, not the C++ program’s measured runtime.
+
+Let’s follow its structure.
+
+### 1. The first cell builds a small C++ program
+
+The cell starts with:
+
+```bash
+%%bash
+```
+
+This tells Jupyter to execute the cell as shell commands. It then writes the C++ source into `pram_lab.cpp` and compiles it:
+
+```bash
+g++ -std=c++17 -O2 pram_lab.cpp -o pram_lab
+```
+
+The resulting program, `pram_lab`, supports three modes:
+
+| Mode | Purpose |
+|---|---|
+| `reduction` | Simulate a tree sum |
+| `scan` | Simulate the block-doubling prefix sum |
+| `legality` | Check representative memory-access patterns |
+
+For example,
+
+```bash
+./pram_lab reduction 3 1 4 1 5 9 2 6
+```
+
+asks it to simulate reduction on those eight values.
+
+The program returns **JSON**, a structured text format containing arrays, values, and operation records. Python reads this information to build the diagrams.
+
+### 2. Reduction: construct one tree level at a time
+
+The essential C++ code is:
+
+```cpp
+vector<long long> cur = input;
+
+while (cur.size() > 1) {
+    vector<long long> nxt(cur.size() / 2);
+
+    for (size_t p = 0; p < nxt.size(); ++p) {
+        int l = 2 * (int)p;
+        int r = l + 1;
+
+        nxt[p] = cur[l] + cur[r];
+    }
+
+    cur = nxt;
+}
+```
+
+Here:
+
+- `cur` holds the current level’s values.
+- `nxt` holds the next level’s sums.
+- `p` identifies a simulated processor.
+- `l` and `r` are the indices of its two inputs.
+
+Indices start at **0**. Processor $P_p$ reads positions $2p$ and $2p+1$, then writes position $p$ in the next array.
+
+For the notebook’s default input:
+
+```text
+Input:     [3, 1, 4, 1, 5, 9, 2, 6]
+Round 1:   [4,    5,   14,    8]
+Round 2:   [9,         22]
+Round 3:   [31]
+```
+
+Each new value represents the sum of a larger disjoint group of original inputs. The final value therefore includes every input exactly once.
+
+Separate source and destination arrays make the dependencies explicit. Each source cell has one reader, and each destination has one writer, so this reduction schedule is **EREW**.
+
+For $n$ inputs, assuming $n$ is a power of two:
+
+$$
+D=\log_2 n,\qquad W=n-1.
+$$
+
+These are simulated addition levels and additions, respectively.
+
+### 3. Prefix sum: merge prefixes within increasingly large blocks
+
+The prefix-sum function is named `scan_block`. Its central code is:
+
+```cpp
+for (int half = 1; half < src.size(); half *= 2) {
+    int block_size = 2 * half;
+    vector<long long> dst = src;
+
+    for (int block_start = 0;
+         block_start < src.size();
+         block_start += block_size) {
+
+        int pivot = block_start + half - 1;
+        long long carry = src[pivot];
+
+        for (int j = block_start + half;
+             j < block_start + block_size && j < src.size();
+             ++j) {
+
+            dst[j] = src[j] + carry;
+        }
+    }
+
+    src.swap(dst);
+}
+```
+
+The idea is: **if both halves already contain their own prefixes, add the left half’s total to every prefix in the right half.**
+
+The variables describe that operation:
+
+| Variable | Meaning |
+|---|---|
+| `half` | Number of elements in either half |
+| `block_size` | Total block length, twice `half` |
+| `block_start` | First index of the current block |
+| `pivot` | Last index of its left half |
+| `carry` | Total of the left half |
+| `j` | A position in the right half |
+
+Let’s trace the complete execution.
+
+**Initially**, every element is a prefix of its own one-element block:
+
+```text
+[3] [1] [4] [1] [5] [9] [2] [6]
+```
+
+**Round 1: blocks of size 2.** Add each left element to its right neighbor:
+
+```text
+[3, 4] [4, 5] [5, 14] [2, 8]
+```
+
+For example, the second block becomes $[4,4+1]=[4,5]$.
+
+**Round 2: blocks of size 4.**
+
+In the first block, the left half’s total is 4:
+
+$$
+[3,4\mid4,5]
+\longrightarrow
+[3,4\mid4+4,5+4]
+=[3,4,8,9].
+$$
+
+In the second block, the left half’s total is 14:
+
+$$
+[5,14\mid2,8]
+\longrightarrow
+[5,14\mid2+14,8+14]
+=[5,14,16,22].
+$$
+
+The whole array is now:
+
+```text
+[3, 4, 8, 9] [5, 14, 16, 22]
+```
+
+**Round 3: one block of size 8.** The left half’s total is 9. Add it to every entry of the right half:
+
+$$
+[5,14,16,22]+9=[14,23,25,31].
+$$
+
+The final result is:
+
+```text
+[3, 4, 8, 9, 14, 23, 25, 31]
+```
+
+These are exactly the inclusive prefixes of the original input.
+
+The operation is correct because each right-half prefix is missing precisely the elements in the left half. Adding the left half’s total supplies those elements once.
+
+### 4. Where CREW and the complexity appear
+
+In the last round, four simulated processors read the **same pivot value**, 9:
+
+```text
+                    pivot = 9
+                 /     |     |     \
+                +5    +14   +16   +22
+                 ↓     ↓     ↓     ↓
+                14    23    25    31
+```
+
+Those are concurrent reads. Each processor writes to a different destination, so writes remain exclusive: **CREW**.
+
+Although the C++ saves the pivot in `carry` and uses it in a sequential loop, the simulated PRAM interpretation has the right-half processors reading that shared pivot.
+
+For power-of-two $n$, every round updates exactly half the array:
+
+$$
+\text{additions per round}=\frac n2.
+$$
+
+There are $\log_2n$ rounds, giving:
+
+$$
+W=\frac n2\log_2n=\Theta(n\log n).
+$$
+
+With enough processors to execute each round’s additions concurrently,
+
+$$
+T=\Theta(\log n).
+$$
+
+For eight inputs, that is **three rounds and twelve additions**. Compare reduction’s three rounds and seven additions.
+
+### 5. The remaining code records and displays this execution
+
+The `Op` structure records one simulated operation: its processor, input indices, output index, input values, and result.
+
+The functions then save these operations alongside the array states. Python uses those records to:
+
+- highlight the current reduction level;
+- show one processor’s reads, addition, and write;
+- highlight which original inputs contribute to a selected prefix;
+- display work per round.
+
+Finally, verification cells compare the scan output with `numpy.cumsum` and check the expected round and addition counts. The legality checker examines a representative access pattern; it is not a general verifier for arbitrary PRAM programs.
+
+You can focus first on `reduction` and `scan_block`. Most of the remaining code is bookkeeping and drawing.
+
+Optional check: in prefix-sum round 2, why do positions 2 and 3 both receive the value 4?
+[Timestamp: 2026/10/15 22:17:57]
+
+**user**: but are this parallelized or just to show the algorithm
+[Timestamp: 2026/10/15 22:40:08]
+
+**ai**: **They are simulations to show the algorithm; the C++ code is not actually parallelized.**
+
+For example:
+
+```cpp
+for (size_t p = 0; p < nxt.size(); ++p) {
+    nxt[p] = cur[2*p] + cur[2*p + 1];
+}
+```
+
+Your computer executes those iterations sequentially. The variable `p` represents a **simulated processor**, rather than creating one.
+
+For eight inputs, the first reduction level contains four additions:
+
+- **In the code:** those four additions execute one after another.
+- **In the PRAM model being illustrated:** four processors execute them concurrently in one addition round.
+
+Separate `cur` and `nxt` arrays preserve the round’s meaning: every operation reads the previous state, then the next state becomes available.
+
+Therefore, the displayed $\Theta(\log n)$ time describes **ideal PRAM execution with enough processors**, not the actual runtime of this sequential C++ program. Its reduction computation performs $n-1$ additions sequentially; recording and drawing the trace adds further overhead.
+
+Optional check: does naming a loop variable “processor” make its iterations run simultaneously?
+[Timestamp: 2026/10/15 22:40:08]
+
+**user**: i would need ispc as seen in the next lesson to do that
+[Timestamp: 2026/10/15 22:40:37]
+
+**ai**: Yes—**ISPC is one way to make those operations actually execute in parallel**, and that connects naturally to your next lesson.
+
+In this notebook, an ordinary C++ loop executes the additions sequentially. ISPC can express operations across multiple data elements using **SIMD**: one instruction operates on several values simultaneously. It also supports tasks for distributing work across CPU cores.
+
+The reduction still needs its dependency levels: you can parallelize independent additions **within a level**, but the next level must wait for their results.
+
+ISPC is not the only option—OpenMP, C++ threads, or GPU programming can also provide parallel execution—but it is the tool your course introduces next.
+[Timestamp: 2026/10/15 22:40:37]
