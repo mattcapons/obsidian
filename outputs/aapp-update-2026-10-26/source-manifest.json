@@ -1,0 +1,86 @@
+[
+  {
+    "source": "lecture1-Intro-Course2026-2027.pdf",
+    "sha256": "cbc5b0e85419a296ed8f541b15efdc10a4fbbf872158fb76c169500aa0d7a4db",
+    "pages": 12,
+    "text": "outputs/aapp-update-2026-10-26/lecture1-Intro-Course2026-2027.txt"
+  },
+  {
+    "source": "lecture10PrimalityTest.pdf",
+    "sha256": "c3c017fd35ec1fa597297bd3872c5905f421a9daf62a809c8492a60c050bedda",
+    "pages": 27,
+    "text": "outputs/aapp-update-2026-10-26/lecture10PrimalityTest.txt"
+  },
+  {
+    "source": "lecture11RandomDataStructures.pdf",
+    "sha256": "36276b6eaa48462988bf9722905b8452e8203accb6d28def208bb672f20d4fcc",
+    "pages": 50,
+    "text": "outputs/aapp-update-2026-10-26/lecture11RandomDataStructures.txt"
+  },
+  {
+    "source": "lecture2-AlgorithmAsRecipe.pdf",
+    "sha256": "fdffc1b9019ed970eadda01f2fa79757105317400beb6115a3217a146747e35b",
+    "pages": 23,
+    "text": "outputs/aapp-update-2026-10-26/lecture2-AlgorithmAsRecipe.txt"
+  },
+  {
+    "source": "lecture3-DandC.pdf",
+    "sha256": "cd5d3c5a5355456236397fde05e0b97e49923b2d2de24482f918103c98ebff3e",
+    "pages": 47,
+    "text": "outputs/aapp-update-2026-10-26/lecture3-DandC.txt"
+  },
+  {
+    "source": "lecture4-PRAM.pdf",
+    "sha256": "487c574dfa68dbf84b8282086c1ce2be827f9b3066ff780020d36ca99181399b",
+    "pages": 36,
+    "text": "outputs/aapp-update-2026-10-26/lecture4-PRAM.txt"
+  },
+  {
+    "source": "lecture4b-ISPC.pdf",
+    "sha256": "bb8174f6cef2edf0d9c03739cbef1b0cf210ab88223ac2cf5dbe3f701064b0b4",
+    "pages": 45,
+    "text": "outputs/aapp-update-2026-10-26/lecture4b-ISPC.txt"
+  },
+  {
+    "source": "lecture5-Randomization.pdf",
+    "sha256": "616d6de645ad213ee44a40a0029342e760b6b9e7e852aebc043283dd1b385665",
+    "pages": 27,
+    "text": "outputs/aapp-update-2026-10-26/lecture5-Randomization.txt"
+  },
+  {
+    "source": "lecture6-MinCut.pdf",
+    "sha256": "ca12b64251a6de0e63669432feb8d0cf05a3a1bb8eadd1fc9c3db0911f11f23a",
+    "pages": 24,
+    "text": "outputs/aapp-update-2026-10-26/lecture6-MinCut.txt"
+  },
+  {
+    "source": "lecture7-Sort.pdf",
+    "sha256": "c9c24973d1304f754ee850d59623fb1c0e3895908da1773938bec62f241dbc11",
+    "pages": 96,
+    "text": "outputs/aapp-update-2026-10-26/lecture7-Sort.txt"
+  },
+  {
+    "source": "lecture8-Select-ith.pdf",
+    "sha256": "05641bcccc89a040da4b30162298d292d4841902a6a72cbd96f7215e05e7fc2c",
+    "pages": 36,
+    "text": "outputs/aapp-update-2026-10-26/lecture8-Select-ith.txt"
+  },
+  {
+    "source": "lezione12DynamicProgramming.pdf",
+    "sha256": "6c80e80ff8ef6372922583770866e71b9121932db3bbe373531dc37fd091f3ee",
+    "pages": 34,
+    "text": "outputs/aapp-update-2026-10-26/lezione12DynamicProgramming.txt"
+  },
+  {
+    "source": "lezione13Dynamic ProgrammingBDD.pdf",
+    "sha256": "03b96d51d49da627677172503be004657e522b44e6ebc6477e90bdaff20fbe56",
+    "pages": 36,
+    "text": "outputs/aapp-update-2026-10-26/lezione13Dynamic ProgrammingBDD.txt"
+  },
+  {
+    "source": "lezione14AmortizedAnalysis.pdf",
+    "sha256": "3303255e49ba9a6c6992d77237c233168e1acbb408e3aaabfb942f830a48283a",
+    "pages": 44,
+    "text": "outputs/aapp-update-2026-10-26/lezione14AmortizedAnalysis.txt"
+  }
+]

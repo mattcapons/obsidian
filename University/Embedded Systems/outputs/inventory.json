@@ -1,0 +1,130 @@
+[
+  {
+    "source": "University/Embedded Systems/Slides/2 From processors to microcontrollers-20261026/Boot+of+a+system.pdf",
+    "group": "2 From processors to microcontrollers-20261026",
+    "stem": "Boot+of+a+system",
+    "pages": 34,
+    "sha256": "c1d29147c68d28225e40537eab4876cbab9905b8cecf4f735b2f3b014788ed19",
+    "text": "University/Embedded Systems/outputs/text/2 From processors to microcontrollers-20261026/Boot+of+a+system.txt"
+  },
+  {
+    "source": "University/Embedded Systems/Slides/2 From processors to microcontrollers-20261026/Microcontrollers.pdf",
+    "group": "2 From processors to microcontrollers-20261026",
+    "stem": "Microcontrollers",
+    "pages": 80,
+    "sha256": "c39e64cdb3af0e89cc464ea9c3d5bde4600e00a785320a2ff4882fbde24b56a4",
+    "text": "University/Embedded Systems/outputs/text/2 From processors to microcontrollers-20261026/Microcontrollers.txt"
+  },
+  {
+    "source": "University/Embedded Systems/Slides/2 From processors to microcontrollers-20261026/Microprocessor_short_en.pdf",
+    "group": "2 From processors to microcontrollers-20261026",
+    "stem": "Microprocessor_short_en",
+    "pages": 68,
+    "sha256": "2fffb80fd1c95684f8e61be4162e913041accfd88be8815105dcc01b3857abcd",
+    "text": "University/Embedded Systems/outputs/text/2 From processors to microcontrollers-20261026/Microprocessor_short_en.txt"
+  },
+  {
+    "source": "University/Embedded Systems/Slides/2 From processors to microcontrollers-20261026/More+on+Breakpoints+and+watchpoints.pdf",
+    "group": "2 From processors to microcontrollers-20261026",
+    "stem": "More+on+Breakpoints+and+watchpoints",
+    "pages": 2,
+    "sha256": "8a07d3c5337c2ecad6da6ff9caa9637e9bf91820c1e357fa2546d0cff6fb853f",
+    "text": "University/Embedded Systems/outputs/text/2 From processors to microcontrollers-20261026/More+on+Breakpoints+and+watchpoints.txt"
+  },
+  {
+    "source": "University/Embedded Systems/Slides/2 From processors to microcontrollers-20261026/Over+the+Air+Firmware+Update.pdf",
+    "group": "2 From processors to microcontrollers-20261026",
+    "stem": "Over+the+Air+Firmware+Update",
+    "pages": 38,
+    "sha256": "f7b76743493dc8563e3c92ee22507ec7eeb4e47627642a97c7b238ed44240209",
+    "text": "University/Embedded Systems/outputs/text/2 From processors to microcontrollers-20261026/Over+the+Air+Firmware+Update.txt"
+  },
+  {
+    "source": "University/Embedded Systems/Slides/2 From processors to microcontrollers-20261026/PLL+basics.pdf",
+    "group": "2 From processors to microcontrollers-20261026",
+    "stem": "PLL+basics",
+    "pages": 13,
+    "sha256": "206c99fc6bd9209bb4c6578eec31fc5fc09d14daea5e0580e2ee4133124db68d",
+    "text": "University/Embedded Systems/outputs/text/2 From processors to microcontrollers-20261026/PLL+basics.txt"
+  },
+  {
+    "source": "University/Embedded Systems/Slides/2 From processors to microcontrollers-20261026/Programmable+Timers+-+introduction.pdf",
+    "group": "2 From processors to microcontrollers-20261026",
+    "stem": "Programmable+Timers+-+introduction",
+    "pages": 14,
+    "sha256": "c9c409833fa16315f741fe3db901288e582a4d211f44e5937dd170bb29ad07d4",
+    "text": "University/Embedded Systems/outputs/text/2 From processors to microcontrollers-20261026/Programmable+Timers+-+introduction.txt"
+  },
+  {
+    "source": "University/Embedded Systems/Slides/2 From processors to microcontrollers-20261026/The+role+of+the+IDE.pdf",
+    "group": "2 From processors to microcontrollers-20261026",
+    "stem": "The+role+of+the+IDE",
+    "pages": 22,
+    "sha256": "7260abf81d9b14c6ecd18f7cf3c17ee9114ae9cacd6a6b693386e039dd01e891",
+    "text": "University/Embedded Systems/outputs/text/2 From processors to microcontrollers-20261026/The+role+of+the+IDE.txt"
+  },
+  {
+    "source": "University/Embedded Systems/Slides/2 From processors to microcontrollers-20261026/Watchdog+timers+general+introduction.pdf",
+    "group": "2 From processors to microcontrollers-20261026",
+    "stem": "Watchdog+timers+general+introduction",
+    "pages": 23,
+    "sha256": "efa4bd1c0f6b99fbf3f7fbc301a6f9f22d3140a22d0d158deea650526a2a3635",
+    "text": "University/Embedded Systems/outputs/text/2 From processors to microcontrollers-20261026/Watchdog+timers+general+introduction.txt"
+  },
+  {
+    "source": "University/Embedded Systems/Slides/3 Design of Hw Systems-20261026/2021 PCB based design.pdf",
+    "group": "3 Design of Hw Systems-20261026",
+    "stem": "2021 PCB based design",
+    "pages": 44,
+    "sha256": "b2f695dd42748b9aa1c583697bb72f31ca45d043b1991013e38cd670dedb9b28",
+    "text": "University/Embedded Systems/outputs/text/3 Design of Hw Systems-20261026/2021 PCB based design.txt"
+  },
+  {
+    "source": "University/Embedded Systems/Slides/3 Design of Hw Systems-20261026/2021 hardware technologies.pdf",
+    "group": "3 Design of Hw Systems-20261026",
+    "stem": "2021 hardware technologies",
+    "pages": 63,
+    "sha256": "768f700320195bc7659d21ce0d05ea4a3014fa9cf19678bc6504c90f08256863",
+    "text": "University/Embedded Systems/outputs/text/3 Design of Hw Systems-20261026/2021 hardware technologies.txt"
+  },
+  {
+    "source": "University/Embedded Systems/Slides/3 Design of Hw Systems-20261026/Boundary-Scan Tests for ICs and PCB Assemblies _ by Amos Kingatua _ Supplyframe _ Medium.pdf",
+    "group": "3 Design of Hw Systems-20261026",
+    "stem": "Boundary-Scan Tests for ICs and PCB Assemblies _ by Amos Kingatua _ Supplyframe _ Medium",
+    "pages": 9,
+    "sha256": "7506ea962fd623b2e3ff317ed7bcbc2504ad9017160fc3250ae644e53739cf1c",
+    "text": "University/Embedded Systems/outputs/text/3 Design of Hw Systems-20261026/Boundary-Scan Tests for ICs and PCB Assemblies _ by Amos Kingatua _ Supplyframe _ Medium.txt"
+  },
+  {
+    "source": "University/Embedded Systems/Slides/3 Design of Hw Systems-20261026/Case study FPGA vs ASIC.pdf",
+    "group": "3 Design of Hw Systems-20261026",
+    "stem": "Case study FPGA vs ASIC",
+    "pages": 36,
+    "sha256": "b54b3c7ef0d51baba539ac0e6df37ef13d5e135c0d9a22b8e10c2c0185a76978",
+    "text": "University/Embedded Systems/outputs/text/3 Design of Hw Systems-20261026/Case study FPGA vs ASIC.txt"
+  },
+  {
+    "source": "University/Embedded Systems/Slides/3 Design of Hw Systems-20261026/PCB Design with Altium - Eagle_WF_2019.pdf",
+    "group": "3 Design of Hw Systems-20261026",
+    "stem": "PCB Design with Altium - Eagle_WF_2019",
+    "pages": 74,
+    "sha256": "903a430ee55a5944c68d7242ad191668bfeb8999d2bd27d2ad1e82418e2a0e51",
+    "text": "University/Embedded Systems/outputs/text/3 Design of Hw Systems-20261026/PCB Design with Altium - Eagle_WF_2019.txt"
+  },
+  {
+    "source": "University/Embedded Systems/Slides/3 Design of Hw Systems-20261026/SOC, Distributes ESs, Prototyping platforms.pdf",
+    "group": "3 Design of Hw Systems-20261026",
+    "stem": "SOC, Distributes ESs, Prototyping platforms",
+    "pages": 49,
+    "sha256": "41e19d57f7a377b19e803ae46eec768358787806859a38a503cb83d1765976ed",
+    "text": "University/Embedded Systems/outputs/text/3 Design of Hw Systems-20261026/SOC, Distributes ESs, Prototyping platforms.txt"
+  },
+  {
+    "source": "University/Embedded Systems/Slides/3 Design of Hw Systems-20261026/Steps for IC manufacturing _ VLSI Tutorials _ Mepits.pdf",
+    "group": "3 Design of Hw Systems-20261026",
+    "stem": "Steps for IC manufacturing _ VLSI Tutorials _ Mepits",
+    "pages": 5,
+    "sha256": "74db9a6fbae672e1e0d8dec533c45ab4b68dfb0746484a84c312d04c22a8c5c1",
+    "text": "University/Embedded Systems/outputs/text/3 Design of Hw Systems-20261026/Steps for IC manufacturing _ VLSI Tutorials _ Mepits.txt"
+  }
+]

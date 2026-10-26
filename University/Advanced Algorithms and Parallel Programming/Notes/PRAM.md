@@ -454,7 +454,7 @@ If synchronization adds five seconds to this eight-processor run, time becomes 2
 
 ## Labs and performance reporting
 
-The deck proposes simulations of memory conflicts, reduction and prefix sum, scaling-law exploration, stencil scaling, and resource simulation. The notebook names in the slides are references; those notebook files were not supplied with the PDFs.
+The deck proposes simulations of memory conflicts, reduction and prefix sum, scaling-law exploration, stencil scaling, and resource simulation. Local files now include [[01_pram_reduction_prefix_sum.ipynb]], [[02_amdahl_gustafson_scaling.ipynb]], and [[03_strong_weak_scaling.ipynb]]. Their topic headings were inspected during the 2026-10-26 collection update, but their code and stored benchmark outputs were not independently executed or validated. Exact equivalence to the slides' original Colab links has not been established.
 
 A useful report includes the problem size, model, processor count, algorithm, timing procedure, baseline, $T_p$, speedup, efficiency, cost, work, and critical-path limitation. For real measurements, use repeated runs and compare medians rather than one observation.
 

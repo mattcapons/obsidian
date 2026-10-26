@@ -8,10 +8,11 @@ aliases:
 ---
 # Study Note Prompts
 
-Reusable prompts for turning course slides into Obsidian study notes, keeping them updated throughout the semester, and asking for explanations of material you do not yet understand.
+Reusable prompts for turning course slides into Obsidian study notes, annotating slides in their original order, keeping notes updated throughout the semester, and asking for explanations of material you do not yet understand.
 
 ## Quick access
 
+- [[#Annotate slides one at a time|Keep the slides and add brief comments]]
 - [[#Build and enhance a course collection|Start a new course collection]]
 - [[#Continue when new slides arrive|Update an existing collection]]
 - [[#Ask questions about a study note|Understand a note in a standalone chat]]
@@ -45,6 +46,76 @@ EXACT_SLIDES_FOLDER_PATH:
 Change the language or note depth when needed. If a course has explicit exam boundaries, add them to the prompt or supply the relevant syllabus and exam guidance.
 
 To reference these prompts in a future conversation, attach this note or mention [[Study Note Prompts]] and specify which workflow to use. An Obsidian heading link can also point directly to the relevant prompt.
+
+## Annotate slides one at a time
+
+Use this when the slides are already fairly complete and you want to study them directly, with brief explanations underneath. Each slide appears in full, in its original order. “One at a time” means processing and annotating each slide separately within the note; the agent should complete the deck without waiting for approval after each slide.
+
+```text
+Create Obsidian notes containing my original course slides, one slide at a time, with concise comments where they help me understand the material.
+
+Course: COURSE_NAME
+Course folder in my vault: EXACT_COURSE_FOLDER_PATH
+Slides folder: EXACT_SLIDES_FOLDER_PATH
+Language for annotations: English
+Style: The slides are the main study material; annotations fill specific gaps.
+
+Work directly in the specified course folder. Inspect the available decks, existing notes, and Course Workflow.md if present. Read existing notes before editing them and preserve my annotations, corrections, properties, and filenames. Follow any explicit syllabus or exam boundaries.
+
+1. Prepare one note per deck
+- Follow existing naming conventions and use the Notes folder. If no convention exists, use Notes/<deck title>.md.
+- At the top, link to the original deck and briefly identify the lecture topic.
+- Render every slide as a readable local PNG image, preserving the whole slide, its aspect ratio, equations, code, and diagrams. Store images in Attachments/<deck name>/ with stable, zero-padded names such as slide-001.png.
+- Embed the actual slide image in the note with Obsidian syntax. A link to the deck alone is insufficient.
+- If image rendering is unavailable, use PDF page embeds as a fallback and report that limitation. Never claim that images were generated if they were not.
+
+2. Process the deck slide by slide
+- Inspect each slide visually, using extracted text as an aid. Do not rely only on text extraction.
+- Include every slide exactly once in its original order, including title slides, exercises, references, and repeated slides. Do not merge slides into concept summaries or silently omit them.
+- Give each slide a heading with its physical PDF page number and title, for example: "## Slide 3 — Parallel computation". If the printed slide number differs, record it separately.
+- Place the slide image immediately below its heading and link to the corresponding source PDF page.
+- Put any annotation immediately below that slide, before the next heading.
+
+3. Add only useful annotations
+- Treat complete, clear slides as sufficient on their own. Leave them without commentary when nothing useful needs adding.
+- Usually add one short paragraph or a few bullets, roughly 30–100 words per slide that needs explanation. Use more only when a difficult step requires it.
+- Explain what the slide leaves implicit: intuition, an undefined symbol, an assumption, why a step follows, how to read a diagram, or a likely source of confusion.
+- For an algorithm or formula, add a small example, intermediate step, or complexity explanation only when it resolves a gap in that slide.
+- Do not transcribe the slide, paraphrase every bullet, repeat earlier annotations, or add generic filler such as "this slide introduces...".
+- Preserve the lecturer's terminology. Place your additions in a callout titled "Comment" so they are distinct from the original material.
+- Link to another slide or existing note when that avoids repeating an explanation.
+- For exercise slides, keep the problem visible; if adding a solution, put it in a separate collapsed "Worked solution" callout.
+- Do not add mandatory summaries, quizzes, exam-style exercises, or extended textbook sections.
+
+4. Handle uncertainties and sources
+- Check annotations against the slide and surrounding slides first.
+- Consult authoritative external sources only when needed to resolve a gap or verify a claim. Cite external explanations beside the relevant annotation.
+- Flag an apparent error or ambiguity explicitly, explaining the evidence rather than silently correcting the slide.
+- Identify unreadable content and incomplete processing honestly. Do not invent missing text, lecturer remarks, or exam requirements.
+
+5. Use this layout for each slide
+
+## Slide 3 — Slide title
+
+![[Attachments/DECK_NAME/slide-003.png]]
+
+Source: [[Slides/DECK_NAME.pdf#page=3|PDF page 3]]
+
+> [!note] Comment
+> A brief explanation of a specific point that benefits from clarification.
+
+Omit the Comment callout entirely when the slide is self-explanatory. Adapt link paths to the actual vault location and use unambiguous targets. For the fallback, replace the image with ![[Slides/DECK_NAME.pdf#page=3]]. Use LaTeX for mathematics in annotations.
+
+6. Verify and maintain
+- Check that the number and order of slide sections match the source page count, all image files exist, and source page links match their slide sections.
+- Check image quality and ensure the smallest text remains readable. Do not crop out slide content.
+- Link completed notes from the existing course index, or create a minimal index if needed.
+- Record the source deck, note path, image folder, annotation style, and outstanding issues in Course Workflow.md so later chats can continue this workflow.
+- On later runs, process new decks in the same style. For revised decks, compare against the prior source mapping, preserve my comments, and flag annotations whose source slide changed or disappeared. Do not attach old comments to different slides merely because page numbers shifted.
+- Keep this annotation workflow separate from existing expanded study notes; do not overwrite those notes to change their format unless I request it.
+
+Complete the file edits for the available decks without pausing after each slide. Briefly report the notes created or updated, slide coverage, and anything incomplete.
+```
 
 ## Build and enhance a course collection
 

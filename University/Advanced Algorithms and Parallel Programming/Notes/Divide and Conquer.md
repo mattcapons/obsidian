@@ -29,6 +29,8 @@ The supplied deck adapts these examples from [Demaine and Leiserson's MIT divide
 
 Later applications: [[Sorting#Recursion shape and running time]] contrasts balanced, unequal, and random partitions; [[Minimum Cut#Karger–Stein]] uses two recursive calls on graphs of roughly $n/\sqrt2$ vertices. Both require a progress/termination argument as well as a recurrence.
 
+[[Selection and Order Statistics]] follows one partition side and analyzes unequal subproblem sizes. [[Dynamic Programming and LCS]] develops the reuse of repeated states into memoization, and [[Binary Decision Diagrams]] applies that idea to operations on shared subfunctions.
+
 ## Merge sort as the template
 
 Merge sort divides an array into two halves, recursively sorts both, and performs a linear merge:
@@ -138,6 +140,8 @@ for growing positive $n$.
 > The bound counts arithmetic operations at unit cost, as in the slides. When exact integer values become very large, multiplication is not constant-time; bit complexity requires a separate analysis.
 
 Source: [[lecture3-DandC.pdf#page=17|Powering a number, pp. 17–19]].
+
+[[Primality Testing and Cryptosystems#Modular exponentiation with a witness check]] uses the same saved half-power, reducing after multiplication and checking for a nontrivial square root of 1. Its analysis distinguishes modular-operation counts from bit complexity.
 
 ### Following the calls and returns of POWER
 

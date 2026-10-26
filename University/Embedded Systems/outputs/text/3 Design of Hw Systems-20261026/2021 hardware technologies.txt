@@ -1,0 +1,896 @@
+ Embedded Systems
+
+Hardware Technologies for ICs
+
+        Prof. William Fornaciari
+      william.fornaciari@polimi.it
+Outline
+• Hardware Technologies for ICs
+    • (AS)IC
+         • Full custom
+         • Standard cell
+         • Gate array
+    • Programmable logic
+         • From ROMs to CPLDs
+         • FPGAs
+
+
+
+
+Embedded Systems V1.0             2
+Hardware Technologies for ICs
+Hardware
+• (‘50): planar technology
+    • Integration of Circuits, simultaneous design of replicas
+• Possible flavors
+    • COTS
+         • Components, frequently integrated, tailored for specific function and available (ready) on the
+           market. Not to be designed
+    • ASIC
+         • Circuits designed ad-hoc for a specific application for superior performance or for high
+           volume
+    • Programmable logic
+         • ICs making available to the designer a number of logic functions, memory and programmable
+           connections
+    • Microprocessors, microcontrollers
+         • Useful when the functions to be implemented are complex or not available as COTS
+
+
+Embedded Systems V1.0                                                                                   4
+             (AS) ICs
+
+Application Specific Integrated Circuits
+(AS)IC – a pill of history
+• 1958 Jean Hoerni (and others) invented the planar process
+    • In 1957 they founded Fairchild Semiconductor, today ST Microelectronics
+      (Italy)
+         • Others: Gordon Moore and Robert Noyce, in 1968 created Intel Corporation, Victor
+           Grinich, Eugene Kleiner, Sheldon Roberts and Jay Last co-founders of the so called
+           «Silicon Valley»
+• Planar technology is at the beginning of the digital era
+• First transistor and first integrated circuit (pictures)
+
+
+
+
+Embedded Systems V1.0                                                                           6
+(AS)IC
+• Basics on the planar process
+    • Use of a semiconductor (Ge, Si, GaAs) whose electro-magnetic
+      characteristics of some regions can be modified in a controlled way
+    • All the main components (transistors, diodes, resistors,
+      capacitances) can be realized using Silicon after a proper processing
+    • The connections among the components are made using metal
+      (aluminum in the past, now copper) or polysilicon
+
+
+
+
+Embedded Systems V1.0                                                    7
+(AS)IC
+• Basics on the planar process: elements
+    • Silicon n
+         • N-doping, i.e. with more free electrons w.r.t. silicon
+              • Diffusion and ion implantation
+    • Silicon p
+         • P-doping, i.e. with less electrons w.r.t. silicon
+    • Insulator
+         • SiO2, obtained by exposing the silicon to oxygen
+    • Conductor
+         • Deposition of ALUMINIUM (Al) or COPPER (Cu)
+
+Embedded Systems V1.0                                               8
+(AS)IC
+• Each of the elements is created during the planar process
+    • All the regions are created at the same time on the entire slice of
+      silicon
+         • Each step is also called masking, since it requires the creation of a
+           diffusion mask
+    • Each phase has the role to prepare the silicon so that the part of
+      the process considered (diffusion, oxidation, etc) takes place
+      selectively in specific regions
+
+
+
+Embedded Systems V1.0                                                              9
+(AS)IC
+• Main phases of the planar process (1) - Etching
+
+
+
+
+Embedded Systems V1.0                               10
+(AS)IC
+• Main phases of the planar process (2) - doping
+
+
+
+
+Embedded Systems V1.0                              11
+(AS)IC
+• Main phases of the planar process (3)
+
+
+
+
+Embedded Systems V1.0                     12
+(AS)IC
+• Interconnections
+    • It is not possible to separate the single networks (net)
+         • Use of separate layers interposed with dielectric
+              • metal layer or just called metal
+
+
+• The previous process is for BJT, not replace by CMOS
+    • Other steps with similar techniques
+
+
+
+
+Embedded Systems V1.0                                            13
+Complete view of the chain to produce a die
+
+
+
+
+Embedded Systems V1.0                         14
+Bonding and packaging
+• The bonding and packaging of an integrated chip provide connections to the outside world
+• Usually, an IC can be packaged individually or incorporated into a hybrid circuit
+• Packaging the circuit give it some mechanical and environmental stability
+• Additional tests are carried out for chip electrical and mechanical behaviors after it is packaged
+• The two common bonding techniques are thermocompression bonding and ultrasonic bonding
+
+
+
+
+Embedded Systems V1.0                                                                                  15
+Most ICs are bonded to small IC packages
+ • It is possible to attach chips directly to boards
+       • Method used extensively in low-cost consumer electronics
+ • Placing chips in packages enables independent testing of packaged
+   parts, and eases requirements on board pitch and P&P (pick-and-
+   place) equipment
+ • IC Packages- inexpensive plastic packages:
+       • <200 pins- packages with >1000 pins available(e.g. Xilinx FF1704: 1704-ball
+         flip-chip BGA)
+ • IC Packaging Materials- Plastic, ceramic, laminates (fiberglass,
+   epoxy resin), metalDMT 243
+
+
+            Pick and place
+
+Embedded Systems V1.0                                                                  16
+            Never-ending evolution of IC packages
+
+
+
+
+Embedded Systems V1.0                               17
+Full custom design of IC
+• By exploiting the CMOS process it is possible to flexibly realize
+  different configurations of transistors, in terms of size, positioning, etc
+• Such flexibility is the base of the full custom design
+    • Experienced designers
+    • Hand-made geometry
+    • Digital + Analog
+    • Transistor-level simulation
+    • High density
+    • Superior performance
+    • Long design times
+
+Embedded Systems V1.0                                                      18
+Use of regular structures
+• To reduce the complexity of a full custom design
+    • Standard cell: exploitation fo regular and fixed structures
+
+
+
+
+Embedded Systems V1.0                                               19
+Standard cells: higher abstraction of the design
+    • A cell is pre-optimized, the designer does not know the details
+               • Technology libraries of the different silicon vendor
+                    • 500-2000 types of cells to realize a wide range of functions: logic gates, complex
+                      combinatorial, flip-flops, memories, etc
+               • Information for the designer
+                    • Reference name
+                    • Functional model
+                    • Non functional properties (low power, low noise, high density, …)
+                    • Number, name and position of the pins
+                    • Axis of symmetry or flip
+                    • Angles or rotation of orientation
+    • Simplified back-end stage: all the cells have the same headroom
+        • Place and routing is simplified
+               • Routing, is based on a grid containing the path of the nets
+                    • Manhattan Geometry
+        • Static timing analysis is also simplified
+Embedded Systems V1.0                                                                                      20
+Standard cells
+
+
+
+
+                                   Routing
+
+
+
+
+                                             Cell
+                        I/O cell
+
+
+Embedded Systems V1.0                               21
+Use of regular structures
+• It is possible to realize generic circuits, using very regular structures
+    • gate array or sea of gates
+         • Pre-fabricated part of the active part of transistors, the contact are left disconnected.
+           Cells are transistor or NAND gates
+         • The designer has only to map the interconnections and the planar process is only the
+           phases to create metal layers
+    • Still a cell-based approach
+
+
+
+
+                                  Channel based                  Sea of gates
+Embedded Systems V1.0                                                                                  22
+Programmable and Reprogrammable
+         Technologies
+Programmable logic
+• Availability of a wide range of hw devices (gates, flip-flops, buffers, …)
+  where the designers can decide only how to connect, based on the
+  needs of the application
+• Types of programmable devices
+    • ROM, PLA, PAL
+    • GAL, CPLD
+    • FPGAs
+
+
+
+
+Embedded Systems V1.0                                                      24
+Programmable logic
+• Classification
+    • Programming modes
+         • One-Time Programmable - OTP
+              • Fuse, Antifuse
+         • Reprogrammable
+              • E2PROM, SRAM, Flash
+         • Reprogrammable & Reconfigurable
+              • SRAM, Flash
+    • Connections
+         • Global
+         • Local and distributed
+
+
+Embedded Systems V1.0                        25
+Programming
+• Fuse (OTP)
+    • Lines are always connected
+    • The programming burns (fuse) some connections to preserve only those that
+      are necessary
+    • Programming requires high voltage w.r.t. the power supply of the logic
+
+                        LINE1                      LINE1
+                                          FUSE                      FUSE
+                   PROGRAM                       PROGRAM
+
+                                LINE2                       LINE2
+
+                    LINE1               LINE2       LINE1           LINE2
+
+
+Embedded Systems V1.0                                                         26
+Programming
+• Antifuse (OTP)
+    • Lines are always disconnected
+    • Programming «creates» (antifuse) the connections needed
+    • Programming requires high voltage w.r.t. the power supply of the logic
+
+                          LINE1                            LINE1
+                                           ANTIFUSE                        ANTIFUSE
+                                   LINE2                           LINE2
+
+                          METAL2                           METAL2
+                        SiO2                             SiO2
+                    METAL1                             METAL1
+                      SiO2                               SiO2
+
+
+                          LINE1                LINE2        LINE1               LINE2
+
+
+
+Embedded Systems V1.0                                                                   27
+Programming modes
+    • E2PROM (Reprogrammable)
+         • Not disruptive connections among lines, which can be modified when the systems is not
+           in operation
+              • Programming consist in placing a charge in the floating gate of a transistor to create/destroy
+                the conductive channel
+
+                        FLOATING         PROGRAM                     FLOATING          PROGRAM
+                            GATE                                         GATE
+                                          GATE                                          GATE
+                                                                                       + + + + +
+                        LINE1                               LINE2    LINE1                                 LINE2
+                                SOURCE             DRAIN                      SOURCE               DRAIN
+                                                                    CHANNEL
+
+
+
+
+                             LINE1                  LINE2                     LINE1                   LINE2
+
+
+
+
+Embedded Systems V1.0                                                                                              28
+Programming modes
+• SRAM (Reprogrammable e Reconfigurable)
+    • Not disruptive connections among lines, which can be modified electrically
+         • Programming is storing a logic value (0 or 1) in a static RAM cell
+              • volatile
+         • Depending on the technology, it can happen
+              • When the system in not in operation (off line) (Reprogrammable)
+              • When the system is working (Reconfigurable)
+                             LINE1                             LINE1
+
+
+                           R/W                               R/W
+
+                             1                                 0
+
+                                         SRAM CELL                         SRAM CELL
+                                                     LINE2                             LINE2
+
+
+                                 LINE1           LINE2             LINE1           LINE2
+Embedded Systems V1.0                                                                          29
+Programming modes
+• Flash (Reprogrammable e Reconfigurable)
+    • The connections among lines can be activate/deactivate electrically and in a
+      not disruptive way
+         • Programming is storing 0 or 1 in a cell of a FLASH memory
+              • Not volatile
+
+
+
+
+Embedded Systems V1.0                                                                30
+Connections
+    • Global connection
+         • Can be shared by many components of the device
+              • Long delays
+              • Low flexibility: can be the output of only a logic element
+    • Local connection
+         • Shared by a few logic elements
+              • Reduced delay
+              • Several local lines can coexists inside the same device with different lengths
+                  • Routing flexible while complex
+
+    • Hierarchical connectivity
+
+
+Embedded Systems V1.0                                                                            31
+Connections
+
+
+
+
+Embedded Systems V1.0   32
+Connections
+• Other types
+    • Programmable Switch Matrix
+
+
+
+
+Embedded Systems V1.0              33
+Connections
+    • Global connections
+         • 2-level programmable logic devices
+              • Read-Only Memory (ROM/PROM)
+              • Programmable Logic Array (PAL)
+              • Programmable Array Logic (PLA)
+         • Advanced PAL and PLA
+         • Generic Array Logic (GAL)
+         • Complex Programmable Logic Devices (CPLD)
+
+    • Local and distributed connections (short and long)
+         • Field Programmable Gate Array (FPGA)
+
+Embedded Systems V1.0                                      34
+2-level programmable logic
+General structure
+• Conceived for generic functions: n inputs and m outputs
+     • fi = fi(x1, x2, ..., xn) con i={1, 2, ..., m}
+          • Possibility to create multi-level logic by exploiting feedback lines, or FSMs by adding
+            memory elements
+     • Elements
+          • Fixed number of in and out (see family of devices)
+          • AND plane - to create minterms
+          • OR plane – to select the minterms
+          • Buffers – to avoid fan-in and fan-out problems
+
+                           X1                                                     f1
+                           X2         Input    Piano      Piano     Output        f2
+                 Inputs                                                                Outputs
+                                     Buffers   AND         OR       Buffers
+                           Xn                                                     fm
+
+
+Embedded Systems V1.0                                                                                 36
+Main types
+    • Read-Only Memory (ROM/PROM)
+         • Fixed AND Plane
+              • Implements all the possible minterms (decoder)
+         • OR plane, permanent modification
+    • Programmable Logic Array (PLA)
+         • Programmable AND plane
+              • Implement only the necessary minterms
+         • Programmable OR plane
+    • Programmable Array Logic (PAL)
+         • Programmable AND plane
+              • Implement only the necessary minterms
+         • Fixed OR plane
+              • Constraint on the number of outputs
+Embedded Systems V1.0                                            37
+Read-Only Memory (ROM/PROM)
+ • Sum of products (SoP), multiple outputs (word size)
+
+                              X1        Address                           f1
+                              X2        decoder         Programmable      f2
+                    Address              -fixed              OR                word
+                              Xn          AND               plane         fm
+                                         plane -
+
+                                                                  ROM
+                                   00
+                                   00
+                                   0
+                                   11
+                    x1             0                               OR
+                    x2                                            Plane
+                    x3
+                                                                          Programmable
+                                   11                                     Connections
+                         Address   1
+                         Decoder
+
+                                           f1      f2   f3   f4
+Embedded Systems V1.0                                                                    38
+Programmable Logic Array (PLA)
+• PLA implements a 2-level sum of products
+                        X1                                   f1
+                        X2   Programmable   Programmable     f2
+                               AND plane      OR plane
+                        Xn                                   fm
+
+                         a       Ia                         PLA
+                                Ia’
+                         b       Ib
+                                Ib’                               Programmable
+                         c                                 Pian   Connections
+                                 Ic                         o
+                                Ic’
+                                                           AND
+
+                                      P1    P2   P3   P4
+                              Pian                                f1
+                               o
+                                                                  f2
+                               OR
+Embedded Systems V1.0                                                            39
+Programmable Array Logic (PAL)
+ • PAL implements a 2-level form, properly minimized
+      • PLA and PAL are used in the same application field
+                        X1                                            f1
+                        X2       Programmable         Fixed           f2
+                                   AND plane         OR plane
+                        Xn                                            fm
+
+                             a      Ia                          PAL
+                                   I!a
+                             b      Ib                                Programmable
+                                   I!b                                Connections
+                             c      Ic                          Pia
+                                                                no
+                                   I!c
+                                                                AN
+                                                                D     Fixed
+                                         P1     P2   P3   P4          Connections
+                                   Pia                                f1
+                                   no
+                                                                      f2
+                                   OR
+Embedded Systems V1.0                                                                40
+Multi-level programmable logic
+Multi-level logic
+        • Advanced PLA and PAL                      AND plan
+                                            Direct and with feedback   PLA
+
+          •    Feedback lines           A
+
+                                        B
+
+                                        C
+    A              v3 = !D +
+                   !C;                  D
+    B              V1 = !v3 + !B;
+                                        E
+    C              v4 = !E + !v3;
+    D              v2 = !C +
+                                                                       V2
+                   !A;              Y
+    E              Y = !v1 + !v2;                                      V3
+
+                                                                       V1
+                   Z = !v4 + !v1;   Z
+                                                                       V4
+
+                                                                             Y
+                                                                             Z
+
+
+                                                   OR plane
+
+        Embedded Systems V1.0                                                    42
+Advanced PLA and PAL
+• Presence of memory elements to implement FSMs
+
+                        AND plane
+                        Direct and                         Output cell
+                            with
+                         feedback    Piano OR
+
+
+                                                                                    fi
+          Primary
+          Inputs                                fi
+                                                     D Q                   Output
+                                                                           enable
+                                                      Q’         Output
+                                                                 select
+                        Feed-back
+                        Input            Clock
+                                                               Feed-back
+
+
+
+
+Embedded Systems V1.0                                                                    43
+Generic Array Logic (GAL)
+    • GAL generalized the structure of PAL/PLA
+         • The output cells OLMC or Output Logic Macro Cell, increase the flexibility of the design
+
+
+
+
+Embedded Systems V1.0                                                                                 44
+Complex Programmable Logic Devices
+• Complex Programmable Logic Devices – CPLD, are an evolution of
+  PLA, PAL and GAL
+    • Characteristics
+         • Global connections
+         • Logic grouped
+    • With respect to PAL, PLA and GAL
+         • Higher level of integration
+         • More complex cells
+         • Higher performance
+         • Structure more regular and easy to program
+
+
+
+Embedded Systems V1.0                                              45
+Complex Programmable Logic Devices
+• General architecture
+                                                                 CPLD
+                           interconnections   logic cells
+
+                                                            DQ
+                                                            Q’
+                                                            DQ
+                                                            Q’
+
+
+
+                  inputs                                                outputs
+
+
+
+
+                                                            DQ
+                                                            Q’
+
+Embedded Systems V1.0                                                             46
+Complex Programmable Logic Devices
+             • Example: logic cell of Xilinx XC9500
+                  Input (36)                 Set/Reset   Clock
+                                              Global     Global
+
+
+
+
+                                             Set
+
+                                                                       Output
+
+
+                                    SoP
+                                                                  FF
+                                 Allocator
+                                             Clock
+
+
+                                             Reset
+
+
+
+
+Embedded Systems V1.0                                                           47
+Field Programmable Gate Arrays
+
+             FPGA
+FPGA
+• FPGA - programmable device where an array of components
+  can be connected
+    • Logic components (gates, Flip-flop, Buffer…)
+         • Very complex
+              • Possibility to realize complex functionality at very high speed, even with low
+                resource utilization
+         • Low complexity
+              • Better resource exploitation, paid in terms of connectivity resources
+    • Connections local and distributed
+              • Short local lines
+                  • Delay and power consumption limited
+              • Flexibility. Inside a device several types of lines coexists
+Embedded Systems V1.0                                                                            49
+FPGA – main aspects
+• Compromise between flexibility and performance
+    • PLD ⇒ FPGA ⇐ MPGA
+• Balance between cost and performance
+         • FPGA vs. ASIC
+• Good for verification of complex systems before volume
+         • Fast prototyping…(it was actually the initial purpose)
+• Compromise between general purpose and custom attitude
+    • SW (GPP, DSP) ⇒ FPGA ⇐ HW (ASIC)
+
+
+
+Embedded Systems V1.0                                               50
+FPGA – other aspects
+• Possibility to modify dynamically the configuration aka the
+  application
+          • Hardware Multi-modal platform (off-line)
+               • Configuration are stored in a ROM and copied on a RAM before use
+          • Reconfigurable platform (on-line)
+               • The configurations (or part of them) are available in RAM and swapped or copied
+                 during operation
+• Comparison between technologies
+
+         Design time,
+         performance
+
+                             FPGA                 Standard cell              Full Custom
+                 Size
+
+
+Embedded Systems V1.0                                                                              51
+Comparisons
+
+                       FPGA         Gate array    Standard cell      Full custom
+    Densità        Basso          Medio          Medio            Alto
+    Flessibilità   bassa (alta)   Basso          Medio            Alto
+    Analogico      No             No             No               Si
+    Prestazioni    Basso          Medio          Alto             Molto alto
+    Tempo progetto Basso          Medio          Medio            Alto
+    Costo progetto Basso          Medio          Medio            Alto
+    Tools          Semplice       Complesso      Complesso        Molto complesso
+    Volume         Basso          Medio          Alto             Alto
+
+
+
+
+Embedded Systems V1.0                                                               52
+   FPGA
+  • Logic Block                             CLK       EC                S/R
+                                                                              Y
+       • Example of a CLB
+                         G1                                     S/R C
+                         G2
+                         G3   LUT4
+                         G4                                D    PRE
+                                                                              YQ
+                        DIN                                >
+                                                           EC   CLR
+                         H1          LUT3
+                                                  1
+
+                         F1                                D    PRE
+                         F2
+                              LUT4                                            XQ
+                         F3                                >
+                         F4
+                                                           EC   CLR
+
+
+
+                                                  1             S/R C
+
+                                                                              X
+Embedded Systems V1.0
+                                                                                   53
+FPGA – Design flow
+               Description                    Schematic, FSMs, logical expressions, HDLs
+
+
+                conversion                     Unified description of the design
+                                               It can include some optimizations
+
+ Description of the basic logic components
+
+
+
+           Technology mapping
+                                              Conversion of the base components into a list of logic cells.
+                                              The Mapping depends on the type of device employed
+           Netlist of logic cells             This procedure optimizes the circuit to reduce the area (total number of logic cells or to improve
+                                              the performance (timing)
+
+
+              Place & Route
+
+
+                                              Placement: assign the logic cells on a specific location on the FPGA
+   NO      Performance analysis
+            Functional analysis               Routing: Selections of the connection wires and their binding to the cells. Configuration of the
+                                              switch matrix (if present)
+               yes
+
+             Configure FPGA
+                                                   I/O        I/O        I/O        I/O        I/O        I/O
+
+                                             I/O                                                                I/O
+                                                         LC         LC         LC         LC         LC
+                                             I/O                                                                I/O
+                                                         LC         LC         LC         LC         LC
+                                             I/O                                                                I/O
+                                                         LC         LC         LC         LC         LC
+                                             I/O                                                                I/O
+
+
+                                                                                                                                                   54
+                                                         LC         LC         LC         LC         LC
+                                             I/O                                                                I/O
+
+                                                   I/O        I/O        I/O        I/O        I/O        I/O
+FPGA – Design flow, typical split
+                                    Realization
+
+                                                                  Timing Simulation
+               RTL Simulation        HDL code
+   FRONT-END
+
+
+
+
+                                                        Vincoli
+                                     Synthesis
+                                                       Cell libraries                          SDF file
+                                                                                        (Stadard Delay Format)
+                                 Netlist Gate-level
+
+
+                                   Place&Route
+   BACK-END
+
+
+
+
+                                      Netlist
+                                   Place&Route
+                                                               Static Timing Analysis
+
+
+                                Bit-stream generator
+
+
+
+
+For FPGAs, the overall desigh flow and in particular the back-end is much simpler than the ASICs one             55
+VIVADO integrated support of the design phases
+
+
+
+
+           • ccc
+
+
+
+
+                                                 56
+  CLB in Xilinx 7 Series - example
+• LUTs in 7 series FPGAs can be configured as either a 6-input LUT with one output, or as two 5-
+  input LUTs with separate outputs but common addresses or logic inputs
+• Each 5-input LUT output can optionally be registered in a flip-flop
+• Four such 6-input LUTs and their eight flip-flops as well as multiplexers and arithmetic carry logic
+  form a slice, and two slices form a CLB
+• Four flip-flops per slice (one per LUT) can optionally be configured as latches. In that case, the
+  remaining four flip-flops in that slice must remain unused
+• Approximately two-thirds of the slices are SLICEL logic slices and the rest are SLICEM, which can
+  also use their LUTs as distributed 64-bit RAM or as 32-bit shift registers (SRL32) or as two SRL16s
+• Modern synthesis tools take advantage of these highly efficient logic, arithmetic, and memory
+  features
+• “Expert” designers can also instantiate them
+
+
+
+                                                                                                         57
+  7 Series CLB main features
+• Columnar architecture
+    • Scales easily to higher densities
+    • More routing between CLBs
+• Only SLICEL and SLICEM
+   • All slices support carry logic
+• The number of CLBs and the ratio between CLBs and other device resources differentiates the 7
+  series families. Migration between the 7 series families does not require any design changes for
+  the CLBs
+• Device capacity is often measured in terms of logic cells, which are the logical equivalent of a
+  classic four-input LUT and a flip-flop
+• The 7 series FPGA CLB six-input LUT, abundant flip-flops and latches, carry logic, and the ability to
+  create distributed RAM or shift registers in the SLICEM, increase the effective capacity
+• The ratio between the number of logic cells and 6-input LUTs is 1.6:1.
+
+                                                                                             58
+Artix and Spartan, the popular ones
+
+
+
+
+                                      59
+No compromise: Virtex-7
+
+
+
+
+                          60
+ASMBL architecture
+• Xilinx created the Advanced Silicon Modular Block (ASMBL)
+  architecture to enable FPGA platforms with varying feature mixes
+  optimized for different application domains
+• Through this innovation Xilinx offers a greater selection of devices,
+  enabling customers to select the FPGA with the right mix of features
+  and capabilities for their specific design
+
+
+
+
+                                                                          61
+Simplified view of Virtex 7 series FPGA slice cell
+• Each SLICEM LUT can be configured as a look-up table, distributed RAM, or a shift
+  register. Every slice contains:
+• Four logic-function generators (or look-up tables)
+• Eight storage elements
+• Wide-function multiplexers
+• Carry logic
+•These elements are used by all slices to provide logic, arithmetic, and ROM functions. In
+addition, some slices support two additional functions: storing data using distributed RAM
+and shifting data with 32-bit registers
+• Slices that support these additional functions are called SLICEM; others are called SLICEL
+  (Figure 2-4)
+• SLICEM (Figure 2-3) represents a superset of elements and connections found in all
+  slices
+• Each CLB can contain two SLICEL or a SLICEL and a SLICEM
+
+
+                     62
+“Simplified” Virtex 7 series FPGA slice cells
+           Relax!... tools will do the configuration task for you
+
+
+
+
+                                                                    63
+

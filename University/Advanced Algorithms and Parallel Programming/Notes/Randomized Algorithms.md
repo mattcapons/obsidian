@@ -400,6 +400,8 @@ The unbounded routine has $\mathbb E[K]=2$. For a version stopped after at most 
 
 [[Minimum Cut]] applies Monte Carlo analysis: a returned cut is valid, but optimality can fail, and independent repetitions reduce that risk. Its contraction proof multiplies **conditional** probabilities along a run. [[Sorting#Randomized quicksort]] instead gives a Las Vegas example: random pivots change running time while preserving sorting correctness, and conditioning on pivot rank produces an expected-time recurrence.
 
+[[Selection and Order Statistics]] gives another Las Vegas application with one selected partition side. [[Primality Testing and Cryptosystems#Miller–Rabin form and one-sided error]] makes one-sided Monte Carlo error concrete: every prime passes, while a fixed composite may escape independently sampled witnesses. [[Randomized Data Structures#Search and harmonic path lengths]] reuses indicators and harmonic sums to analyze treaps. Compare these expectations with [[Amortized Analysis]], whose sequence bounds require no probability distribution.
+
 ## Takeaways
 
 - Always specify whether the expectation is over inputs or internal random choices.

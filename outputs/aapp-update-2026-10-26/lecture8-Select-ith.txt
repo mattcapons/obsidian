@@ -1,0 +1,480 @@
+095946- ADVANCED ALGORITHMS AND PARALLEL
+             PROGRAMMING
+
+
+
+
+                              Fabrizio Ferrandi
+                                a.a. 2026-2027
+-2-
+
+
+
+
+      Order Statistics
+
+             Randomized divide and conquer
+
+                     Analysis of expected time
+
+                            Worst-case linear-time order statistics
+
+                                   Analysis
+
+                                                                       September
+      Copyright © 2001-5 by Erik D. Demaine and Charles E. Leiserson
+                                                                         28, 2005
+-3-          Order Statistics
+Input: A set of n (distinct) numbers and an integer i, with 1≤ i ≤ n
+Output: The element with rank i x  A that is larger than exactly i-1
+other elements of A
+
+      • i = 1: minimum;
+      • i = n: maximum;
+      • i = (n+1)/2 or (n+1)/2: lower or upper median.
+      Naive algorithm: Sort and index i th element.
+
+      Worst-case running time = (n lg n) + (1)
+                               = (n lg n),
+      using merge sort or heapsort (not quicksort).
+-4-      How many comparison are needed to determine the
+         minimum (or maximum) of a set of n elements?
+
+
+
+      Minimum (A)
+       min  A[1]
+       for i  2 to length[A] do
+         if min > A[i] then
+            min  A[i]
+       return min
+
+
+
+      An upper bound of n-1 comparison can be obtained
+      A dual algorithm for the maximum exist with the same complexity
+-5-         Lower bound is still n-1
+            comparisons
+Observing that every element excet the winner must lose at least one
+comparison, we conclude that n-1 comparisons are necessary to
+dermine the minimum
+
+
+
+         The Algorithm is optimal w.r.t. the number of comparisons
+         performed
+-6-        Simultaneous minimum and
+           maximum
+How many comparisons are necessary to determine both minimum
+and maximum
+
+              MinMax (A)
+               if length[A] odd then
+                   max  min  A[1], i  2
+               else
+                   if A[1] < A[2] then
+                      min  A[1], max  A[2], i  3
+                   else
+                      min  A[2], max  A[1], i  3
+-7-
+
+       while i  length[A] do
+          if A[i] < A[i+1] then
+           if min > A[i] then min  A[i]
+           if max < A[i+1] then max  A[i+1]
+          else
+           if min > A[i+1] then min  A[i+1]
+           if max < A[i] then max  A[i]
+          i  i+2
+       return min,max
+      3(n-1)/2 = 3n/2 comparisons if n is odd
+      1+3(n-2)/2 = 3(n/2)-2 comparisons if n even
+      In general we need less than 3n/2 comparisons
+-8-     Selection in linear time
+
+      Select the i th smallest of n elements (the element with rank i).
+      Two versions:
+      • Randomized divide-and-conquer algorithm (linear in
+        average)
+      • Deterministic version (derandomization – linear in the
+        worst case)
+-9-         Randomized divide-and-
+            conquer algorithm
+      RAND-SELECT(A, p, q, i) ⊳ i th smallest of A[ p . . q]
+        if p = q then return A[ p]
+        r  RAND-PARTITION(A, p, q)
+        kr–p+1                 ⊳ k = rank(A[r])
+        if i = k then return A[ r]
+        if i < k
+           then return RAND-SELECT( A, p, r – 1, i )
+           else return RAND-SELECT( A, r + 1, q, i – k )
+                      k
+                     A[r]                 A[r]
+              p                r                     q
+- 10 -         Example
+         Select the i = 7th smallest:
+
+                 6      10     13       5     8      3      2        11   i=7
+              pivot
+
+         Partition:
+
+                 2       5      3       6     8     13      10       11   k=4
+
+
+                      Select the 7 – 4 = 3rd smallest recursively.
+- 11 -        Intuition for analysis
+ (All our analyses today assume that all elements are distinct.)
+
+
+ Lucky:
+    T(n) = T(9n/10) + (n)                       log     1
+                                               n 10/ 9 = n0 =1
+         = (n)                                CASE 3
+ Unlucky:
+    T(n) = T(n – 1) + (n)                     arithmetic series
+         = (n2)
+    Worse than sorting!
+- 12 -         Analysis of expected time
+  The analysis follows that of randomized quicksort, but it’s a little
+  different.
+
+  Let T(n) = the random variable for the running time
+  of RAND-SELECT on an input of size n, assuming
+  random numbers are independent.
+  For k = 0, 1, …, n–1, define the indicator random
+  variable
+       Xk =    1 if PARTITION generates a k : n–k–1 split,
+               0 otherwise.
+- 13 -            Analysis (continued)
+         To obtain an upper bound, assume that the i th element always falls
+         in the larger side of the partition:
+
+
+                          T(max{0, n–1}) + (n) if 0 : n–1 split,
+         T(n) =           T(max{1, n–2}) + (n) if 1 : n–2 split,
+                             
+                          T(max{n–1, 0}) + (n) if n–1 : 0 split,
+                    𝑛−1
+
+                  = ෍ 𝑋𝑘 𝑇(max{ 𝑘, 𝑛 − 𝑘 − 1}) + Θ(𝑛)
+                    𝑘=0
+                                                                      .
+- 14 -   Calculating expectation
+                     𝑛−1
+
+         𝐸[𝑇(𝑛)] = 𝐸 ෍ 𝑋𝑘 𝑇(max{ 𝑘, 𝑛 − 𝑘 − 1}) + Θ(𝑛)
+                     𝑘=0
+
+
+
+          Take expectations of both sides.
+- 15 -   Calculating expectation
+                     𝑛−1
+
+         𝐸[𝑇(𝑛)] = 𝐸 ෍ 𝑋𝑘 𝑇(max{ 𝑘, 𝑛 − 𝑘 − 1}) + Θ(𝑛)
+                     𝑘=0
+                  𝑛−1
+
+                = ෍ 𝐸 𝑋𝑘 𝑇(max{ 𝑘, 𝑛 − 𝑘 − 1}) + Θ(𝑛)
+                  𝑘=0
+
+
+          Linearity of expectation.
+- 16 -      Calculating expectation
+                     𝑛−1
+
+         𝐸[𝑇(𝑛)] = 𝐸 ෍ 𝑋𝑘 𝑇(max{ 𝑘, 𝑛 − 𝑘 − 1}) + Θ(𝑛)
+                     𝑘=0
+                  𝑛−1
+
+                = ෍ 𝐸 𝑋𝑘 𝑇(max{ 𝑘, 𝑛 − 𝑘 − 1}) + Θ(𝑛)
+                  𝑘=0
+                  𝑛−1
+
+                = ෍ 𝐸 𝑋𝑘 ⋅ 𝐸 𝑇(max{ 𝑘, 𝑛 − 𝑘 − 1}) + Θ(𝑛)
+                  𝑘=0
+
+
+
+
+         Independence of Xk from other random choices.
+- 17 -      Calculating expectation
+                     𝑛−1
+
+         𝐸[𝑇(𝑛)] = 𝐸 ෍ 𝑋𝑘 𝑇(max{ 𝑘, 𝑛 − 𝑘 − 1}) + Θ(𝑛)
+                     𝑘=0
+                  𝑛−1
+
+                = ෍ 𝐸 𝑋𝑘 𝑇(max{ 𝑘, 𝑛 − 𝑘 − 1}) + Θ(𝑛)
+                  𝑘=0
+                  𝑛−1
+
+                = ෍ 𝐸 𝑋𝑘 ⋅ 𝐸 𝑇(max{ 𝑘, 𝑛 − 𝑘 − 1}) + Θ(𝑛)
+                  𝑘=0
+                    𝑛−1                          𝑛−1
+                 1                           1
+                = ෍ 𝐸 𝑇(max{ 𝑘, 𝑛 − 𝑘 − 1}) + ෍ Θ(𝑛)
+                 𝑛                           𝑛
+                    𝑘=0                          𝑘=0
+
+
+
+
+         Linearity of expectation; E[Xk] = 1/n .
+- 18 -      Calculating expectation
+                      𝑛−1
+
+         𝐸[𝑇(𝑛)] = 𝐸 ෍ 𝑋𝑘 𝑇(max{ 𝑘, 𝑛 − 𝑘 − 1}) + Θ(𝑛)
+                       𝑘=0
+                    𝑛−1
+
+                = ෍ 𝐸 𝑋𝑘 𝑇(max{ 𝑘, 𝑛 − 𝑘 − 1}) + Θ(𝑛)
+                    𝑘=0
+                    𝑛−1
+
+                = ෍ 𝐸 𝑋𝑘 ⋅ 𝐸 𝑇(max{ 𝑘, 𝑛 − 𝑘 − 1}) + Θ(𝑛)
+                    𝑘=0
+                      𝑛−1                        𝑛−1
+                 1                           1
+                = ෍ 𝐸 𝑇(max{ 𝑘, 𝑛 − 𝑘 − 1}) + ෍ Θ(𝑛)
+                 𝑛                           𝑛
+                     𝑘=0                         𝑘=0
+                      𝑛−1
+                    2
+                ≤     ෍ 𝐸 𝑇(𝑘) + Θ(𝑛)
+                    𝑛
+                     𝑘= 𝑛/2                        Upper terms appear
+                                                   twice.
+- 19 -     Hairy recurrence
+         (But not quite as hairy as the quicksort one.)
+                                   𝑛−1
+                               2
+                     𝐸[𝑇(𝑛)] =   ෍ 𝐸 𝑇(𝑘) + Θ(𝑛)
+                               𝑛
+                               𝑘= 𝑛/2
+
+
+
+
+         Prove: E[T(n)]  c n for constant c > 0 .
+
+         • The constant c can be chosen large enough so
+           that E[T(n)]  c n for the base cases.
+                             𝑛−1
+                                         3 2
+                             ෍ 𝑘≤          𝑛
+         Use fact:          𝑘= 𝑛/2
+                                         8         (exercise).
+- 20 -   Substitution method
+                        𝑛−1
+                      2
+           𝐸 𝑇(𝑛) ≤     ෍ 𝑐𝑘 + Θ(𝑛)
+                      𝑛
+                       𝑘= 𝑛/2
+
+
+
+
+         Substitute inductive hypothesis.
+- 21 -   Substitution method
+                           𝑛−1
+                         2
+           𝐸 𝑇(𝑛) ≤        ෍ 𝑐𝑘 + Θ(𝑛)
+                         𝑛
+                          𝑘= 𝑛/2
+                         2𝑐 3 2
+                     ≤       𝑛 + Θ(𝑛)
+                         𝑛 8
+
+
+
+
+         Use fact.
+- 22 -     Substitution method
+                        𝑛−1
+                      2
+           𝐸 𝑇(𝑛) ≤     ෍ 𝑐𝑘 + Θ(𝑛)
+                      𝑛
+                       𝑘= 𝑛/2
+                    2𝑐 3 2
+                  ≤      𝑛 + Θ(𝑛)
+                    𝑛 8
+                         𝑐𝑛
+                  = 𝑐𝑛 −    − Θ(𝑛)
+                          4
+
+
+
+
+         Express as desired – residual.
+- 23 -     Substitution method
+                        𝑛−1
+                      2
+           𝐸 𝑇(𝑛) ≤     ෍ 𝑐𝑘 + Θ(𝑛)
+                      𝑛
+                       𝑘= 𝑛/2
+                    2𝑐 3 2
+                  ≤      𝑛 + Θ(𝑛)
+                    𝑛 8
+                         𝑐𝑛
+                  = 𝑐𝑛 −    − Θ(𝑛)
+                          4
+                  ≤ 𝑐𝑛
+
+
+
+
+                                ,
+
+         if c is chosen large enough so that cn/4
+         dominates the (n).
+- 24 -        Summary of randomized order-
+              statistic selection
+           • Works fast: linear expected time.
+           • Excellent algorithm in practice.
+           • But, the worst case is very bad: (n2).
+         Q. Is there an algorithm that runs in linear
+            time in the worst case?
+         A. Yes, due to Blum, Floyd, Pratt, Rivest, and
+            Tarjan [1973].
+          IDEA: Generate a good pivot recursively.
+- 25 -      Worst-case linear-time order
+            statistics
+   SELECT(i, n)
+   1. Divide the n elements into groups of 5. Find the
+      median of each 5-element group by rote.
+   2. Recursively SELECT the median x of the n/5
+      group medians to be the pivot.
+   3. Partition around the pivot x. Let k = rank(x).
+   4. if i = k then return x
+      elseif i < k                                       Same as
+          then recursively SELECT the i th smallest      RAND-
+              element in the lower part                  SELECT
+          else recursively SELECT the (i–k)th
+                smallest element in the upper part
+- 26 -   Choosing the pivot
+- 27 -      Choosing the pivot
+
+
+
+
+   1. Divide the n elements into groups of 5.
+- 28 -      Choosing the pivot
+
+
+
+
+   1. Divide the n elements into groups of 5. Find the   lesser
+      median of each 5-element group by rote.
+
+                                                         greater
+- 29 -      Choosing the pivot
+
+
+
+                         x
+
+
+
+
+   1. Divide the n elements into groups of 5. Find the   lesser
+      median of each 5-element group by rote.
+   2. Recursively SELECT the median x of the  n/5
+      group medians to be the pivot.                     greater
+- 30 -      Analysis
+
+
+
+                         x
+
+
+
+
+   At least half the group medians are  x, which is at   lesser
+   least   n/5 /2 =  n/10 group medians.
+
+                                                          greater
+- 31 -      Analysis (Assume all elements are distinct.)
+
+
+
+                         x
+
+
+
+
+   At least half the group medians are  x, which is at   lesser
+   least   n/5 /2 =  n/10 group medians.
+   • Therefore, at least 3  n/10 elements are  x.
+                                                          greater
+- 32 -      Analysis (Assume all elements are distinct.)
+
+
+
+                         x
+
+
+
+
+   At least half the group medians are  x, which is   lesser
+   at least   n/5 /2 =  n/10 group medians.
+   • Therefore, at least 3  n/10 elements are  x.
+   • Similarly, at least 3  n/10 elements are  x.   greater
+- 33 -         Minor simplification
+         • For n  50, we have 3  n/10  n/4.
+         • Therefore, for n  50 the recursive call to
+           SELECT in Step 4 is executed recursively on
+            3n/4 elements.
+         • Thus, the recurrence for running time can
+           assume that Step 4 takes time T(3n/4) in the
+           worst case.
+         • For n < 50, we know that the worst-case
+           time is T(n) = (1).
+- 34 -          Developing the recurrence
+         T(n)    SELECT(i, n)
+         (n)    1. Divide the n elements into groups of 5. Find the
+                    median of each 5-element group by rote.
+                 2. Recursively SELECT the median x of the n/5
+     T(n/5)
+                    group medians to be the pivot.
+      (n)       3. Partition around the pivot x. Let k = rank(x).
+                 4. if i = k then return x
+                    elseif i < k
+   T(3n/4)              then recursively SELECT the i th smallest
+                            element in the lower part
+                        else recursively SELECT the (i–k)th
+                              smallest element in the upper part
+- 35 -          Solving the recurrence
+                             1       3
+                  𝑇(𝑛) = 𝑇     𝑛 + 𝑇 𝑛 + Θ(𝑛)
+                             5       4
+
+
+                                          1      3
+     Substitution:                 𝑇(𝑛) ≤ 𝑐𝑛 + 𝑐𝑛 + Θ(𝑛)
+                                          5      4
+     T(n)  cn                          =
+                                          19
+                                          20
+                                             𝑐𝑛 + Θ(𝑛)
+                                                 1
+                                        = 𝑐𝑛 −     𝑐𝑛 − Θ(𝑛)
+                                                20
+                                        ≤ 𝑐𝑛
+
+                                                 ,
+
+         if c is chosen large enough to handle both the (n)
+         and the initial conditions.
+- 36 -           Conclusions
+         • Since the work at each level of recursion is a
+           constant fraction (19/20) smaller, the work
+           per level is a geometric series dominated by
+           the linear work at the root.
+         • In practice, this algorithm runs slowly,
+           because the constant in front of n is large.
+         • The randomized algorithm is far more
+           practical.
+         Exercise: Why not divide into groups of 3?
+

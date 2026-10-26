@@ -1,0 +1,833 @@
+Advanced Algorithms and Parallel Programming
+
+
+
+
+PRAM
+architectures · algorithms · performance evaluation
+
+
+
+
+academic year 2026-2027
+ Where we are going
+ From the abstract model to concrete decisions about how many processors to use
+
+
+
+
+                  1                               2                               3                                4                       5
+
+               Model                      Memory rules                        Patterns                     Performance                 Scaling
+          RAM → PRAM: what we            EREW, CREW, CRCW:              Map, reduce, prefix-sum,          work, cost, speedup,    Strong vs weak scaling
+            idealize and why.            which algorithms are               matrix multiply.                   efficiency.       with measurable recipes.
+                                                legal.
+
+
+
+
+   Guiding idea: PRAM is not real hardware; it is a language for reasoning about the limits and patterns of parallelism.
+
+
+ROADMAP                                                                                                                                        AAPP · PRAM
+ Why start from a model?
+ A good model separates algorithmic ideas from machine details
+
+
+
+
+                Without a model                                                        With PRAM
+                    different caches                                                  parallel time Tₚ(n)
+                    different network                                                    work W(n)
+                   different scheduler                                                memory conflicts
+                      different input                                                 reusable patterns
+
+
+
+
+          Right question: “how much of the computation can run in parallel if memory were not the bottleneck?”
+
+
+
+MODEL                                                                                                            AAPP · PRAM
+  RAM → PRAM: the abstraction in detail
+  PRAM keeps the RAM unit-cost idea, but replicates the processor and makes communication happen through shared memory.
+
+
+
+                 RAM: sequential model                                        PRAM: parallel model
+                                                                                                                                         One PRAM round
+      •    One processor with a program counter and           •   Processors P₀, P₁, …, Pₚ₋₁ are identical; each knows its own id          read X or A
+           registers.                                             i.                                                                 1
+
+      •    Memory is an unbounded array of cells; each cell   •   Each processor has private registers/local variables.
+           stores one word/integer.
+                                                                                                                                     2     compute locally
+      •    Basic instructions: load/store, arithmetic,        •   Input X[·], output Y[·], and shared memory A[·] are globally
+           comparison, branch.                                    addressable.
+      •    Each instruction costs one time step.              •   All active processors execute rounds in lock-step; processors
+                                                                  may be idle.                                                       3     write Y or A
+      •    T₁(n) = number of executed instructions; space =   •   Communication is only by reading/writing shared memory.
+           used memory cells.
+                                                                                                                                     4     barrier
+
+
+
+
+                                                                                                                                          The memory-conflict rule
+                                                                                                                                     (EREW/CREW/CRCW) decides whether
+                               local registers                                                                                      same-cell simultaneous reads/writes are
+                CPU                                                   P0           P1          P2          Pₚ₋₁
+                                                                                                                                                     legal.
+
+                                                                                                                                     Idealization: unit-time shared-memory
+                           memory A[1..]                                            shared memory A[1..]                               access ignores cache, bandwidth,
+                                                                                                                                      network latency, and synchronization
+                                                                                                                                                    overhead.
+
+
+
+          Key takeaway: RAM defines the sequential cost baseline T₁; PRAM defines parallel time Tₚ as synchronous rounds under explicit memory-access rules.
+
+
+DEFINITIONS                                                                                                                                                              AAPP · PRAM
+ A PRAM round is a global barrier
+ All processors execute the same sequence of phases in lock-step
+
+
+
+
+          read input / shared                         local compute                                write output / shared                       barrier → next round
+    1                                           2                                           3                                            4
+
+
+
+
+                                                                  Example: A[i] = B[i−1] + 1
+               Each processor reads a neighbor and writes its own cell in the same round. We must know whether two processors read/write the same cell.
+
+
+
+
+   Motivation: counting rounds gives a clear measure of parallel time Tₚ(n).
+
+
+ROUNDS                                                                                                                                                        AAPP · PRAM
+ Memory conflicts: what is legal?
+ Read the acronym as [read rule][write rule]: CREW = Concurrent Read + Exclusive Write.
+
+
+           Model                             Simultaneous reads                                     Simultaneous writes                                          Typical use
+
+           EREW                              distinct addresses only                                distinct addresses only                                no same-round sharing
+
+
+           CREW                                 same address OK                                     distinct addresses only                              broadcast x in matrix-vector
+
+
+           CRCW                                 same address OK                                 same address OK, with a rule                             global OR, priority minimum
+
+
+
+
+   Acronym decoder                    First letter controls reads; second letter controls writes.
+
+                         CREW                                                               EW conflict                                                 common CRCW
+               Concurrent                                         Exclusive                                           Read                                             Write
+         C twosame
+                processors read the same x
+                   address allowed
+                                                          E                                                  R
+                                                                              two processors write the same cell
+                                                                  distinct addresses only                             rule applies to reads
+                                                                                                                                                               W
+                                                                                                                                                legal if everyone writes the same value
+                                                                                                                                                                       rule applies to writes
+
+
+
+
+          EREW     = Exclusive Read + Exclusive Write                  CREW     = Concurrent Read + Exclusive Write                      CRCW     = Concurrent Read + Concurrent Write
+
+
+
+
+MEMORY                                                                                                                                                                                          AAPP · PRAM
+         Concurrent Write (CW)
+• What value gets written finally?
+  – Priority CW: processors have priority based on which
+    value is decided, the highest priority is allowed to
+    complete WRITE
+  – Common CW: all processors are allowed to complete
+    WRITE iff all the values to be written are equal. Any
+    algorithm for this model has to make sure that this
+    condition is satisfied. If not, the algorithm is illegal
+    and the machine state will be undefined.
+  – Arbitrary/Random CW: one randomly chosen
+    processor is allowed to complete WRITE
+
+                                                               AAPP · PRAM
+ Metrics: “faster” is not enough
+ Separate time, total work, and wasted resources
+
+
+
+              Sₚ(n) = T*(n) / Tₚ(n)                                   Eₚ(n) = T1(n) / p Tₚ(n)                                     Cost = p · Tₚ(n)
+       Speedup: how many times faster than the                 Efficiency: useful fraction of the available           PRAM cost: allocated processors × rounds.
+              best sequential version.                                      compute power.                                  Cost-optimal means Θ(T₁).
+
+
+
+
+                                                                        Rule of thumb
+                   A parallel algorithm is convincing if it reduces Tₚ without exploding work or cost. Many idle processors are wasted resources.
+
+
+
+
+   From now on, every example should include: algorithm, memory model, Tₚ, speedup, efficiency.
+
+
+PERFORMANCE                                                                                                                                                  AAPP · PRAM
+PRAM Performance
+Definitions
+Questions → definitions → decisions
+
+
+
+
+      Parallel Random Access Machine (PRAM)
+
+                                              1
+ Q1    What should be the baseline?
+                                                           Application: summing n values
+Motivating question
+If a parallel code beats my first serial                        T*                                         Θ(n)
+implementation, is the algorithm truly good?
+                                                                T₁                                         Θ(n log n)
+
+Definition in use
+T*(n): time of the best sequential algorithm for input
+size n.
+T₁(n): time of this PRAM algorithm using one
+processor.                                                 If the one-processor version is Θ(n log n), using T₁ as
+Usually T*(n) ≤ T₁(n): a parallel algorithm may do extra   the baseline hides the extra work.
+bookkeeping.
+
+                                                           Decision: compare to the best known
+                                                           sequential algorithm first; then analyze the
+       Use T*(n), not a weak serial                        parallel implementation.
+                baseline.
+
+
+
+                                                                                                                     AAPP · PRAM
+ Q2    How much faster is the parallel run?
+                                                         Application: matrix-vector multiply
+Motivating question
+After adding p processors, how do I measure                  1                                       80 ms
+the time-to-solution gain?
+                                                             2                                       42 ms
+
+
+Definition in use                                            4                                       22 ms
+Tₚ(n): time to solve the same problem on p processors.
+Speedup Sₚ(n) compares the best sequential time with         8                                       11 ms
+the parallel time.
+Ideal strong scaling gives Sₚ ≈ p.
+
+
+
+                                                              With p = 8: S₈ = 80 / 11 ≈ 7.3×
+           Sₚ(n) = T*(n) / Tₚ(n)
+                                                         Use speedup to answer: “How much sooner do I get
+                                                                           the result?”
+
+
+
+
+                                                                                                             AAPP · PRAM
+ Q3    Are the processors doing useful work?
+                                                   Application: same code, different p
+Motivating question
+A run is faster, but did we waste many                              p = 8, S₈ = 7.3 ⇒ E₈ ≈ 91%
+processors on overhead or idle time?
+                                                        P1    P2      P3    P4    P5    P6    P7    P8
+
+
+
+
+Definition in use
+Efficiency Eₚ(n) is speedup per processor.                      p = 32, S₃₂ = 14 ⇒ E₃₂ ≈ 44%
+When T*(n) ≈ T₁(n), Eₚ = Sₚ / p.
+Eₚ ≤ 1: perfect efficiency means every processor        P1    P2      P3    P4    P5    P6    P7    P8
+
+contributes ideally.
+                                                        P9    P10     P11   P12   P13   P14   P15   P16
+
+
+
+                                                       P17    P18     P19   P20   P21   P22   P23   P24
+
+
+
+                                                       P25    P26     P27   P28   P29   P30   P31   P32
+
+        Eₚ(n) = T1(n) / (p · Tₚ(n))
+                                                   Classroom heuristic: if efficiency collapses early, inspect
+                                                   communication, load balance, memory bandwidth, and serial
+                                                   sections before adding more processors.
+
+
+                                                                                                                 AAPP · PRAM
+ Q4    What is the resource cost?
+                                                     Application: choose by deadline and
+Motivating question                                  budget
+The run is faster, but did it consume more total      p             Tₚ      Sₚ      Eₚ          Cₚ
+processor-time than the sequential solution?
+                                                      1            80 ms   1.0×    100%         80
+
+
+                                                      8            11 ms   7.3×     91%         88
+Definition in use
+Cost Cₚ(n) is processors × time.                     32        5.7 ms      14×      44%         182
+A faster run can be more expensive if it uses many
+processors inefficiently.
+Cost is the PRAM analogue of a compute budget.
+                                                                                                      Decision: use p =
+                                                                                                      32 only when the
+                                                                                                      deadline justifies
+                                                                                                      the extra cost.
+
+
+              Cₚ(n) = p · Tₚ(n)                           8 × 11                     32 × 5.7
+
+
+
+                                                                    Area ≈ processor-time
+
+
+
+                                                                                                                      AAPP · PRAM
+        Sum of a vector
+The PRAM algorithm
+// Sum vector A(*)
+Begin
+     B(i) := A(i)                     h=3
+     For h=1:log(n)
+        if 𝑖 ≤ 𝑛/2ℎ then              h=2
+             B(i) = B(2i-1) + B(2i)
+End                                   h=1
+// B(1) holds the sum                       a1   a2   a3   a4   a5   a6   a7   a8
+
+
+
+
+                                                                                    AAPP · PRAM
+ Q5    Did the parallel algorithm create extra work?
+Motivating question                                   Application: reduction of n numbers
+A PRAM schedule may reserve many
+processors. Which operations are actually
+performed?
+
+Definition in use
+Work W(n): total number of basic operations
+performed by all processors.
+A parallel algorithm is work-efficient when W(n) =
+O(T*(n)).
+Cost Cₚ counts reserved processor-time; work counts
+real operations.
+
+
+                                                                 Useful additions: n − 1 ⇒ W = Θ(n)
+                W(n) ≤ Cₚ(n)
+                                                      But if we reserve p = n processors for log n rounds, C = Θ(n log
+                                                      n). Chunk first, then reduce, to keep cost near Θ(n).
+
+
+
+
+                                                                                                                         AAPP · PRAM
+ Q6    What is the best time imaginable?
+                                                       Application: tree reduction
+Motivating question
+If processors were unlimited, what part of the
+computation still has to happen in sequence?
+
+
+Definition in use
+T∞(n): shortest runtime on any number of processors.
+It is the critical path: dependencies that cannot be
+parallelized away.
+This gives an upper bound on speedup.
+
+
+
+                                                       For n = 2²⁰ values:
+
+          Sₚ(n) ≤ T₁(n) / T∞(n)                        T₁ ≈ 1,048,576 operations
+                                                       T∞ ≈ log₂(n) = 20 steps
+                                                       maximum speedup ≈ 52,429×
+
+
+
+                                                                                     AAPP · PRAM
+ Q7    When should I stop adding processors?
+                                                        Actionable example: fixed-size run
+Motivating question
+                                                        speedup
+Which definition turns scaling curves into an                                                            ideal
+
+actionable decision?
+                                                                                              measured
+
+
+
+
+Definition in use
+Use speedup, efficiency, cost, and T∞ together.
+Adding processors is useful only while time decreases
+enough to justify extra processor-time.
+Past the critical-path limit, efficiency must fall.                                            processors P
+
+
+
+
+                                                                  p     Sₚ     Eₚ
+
+                                                                  8     7.3×   91%   Decision: if your target is Eₚ ≥
+                                                                                     50%, stop around p = 32 in this
+  Stop when ΔT is small or Eₚ is                                  16    12×    75%   run; p = 64 is faster but less
+                                                                                     efficient.
+         below target.                                            32    20×    63%
+
+                                                                  64    28×    44%
+
+                                                                  128   34×    27%
+
+
+
+                                                                                                                        AAPP · PRAM
+ Q8     How should I report PRAM performance?
+                                                       A clean reporting template
+Motivating question
+Which quantities make a scaling result                         Field                         Example
+reproducible and interpretable?
+                                                            Problem size                   n = 2²⁰ values
+
+
+                                                            PRAM model                  CREW, tree reduction
+Definition in use
+                                                              Baseline                      T*(n) = Θ(n)
+Report the model and the experiment before the
+formula.                                                       Timing                   median Tₚ over 5 runs
+Then report T*, Tₚ, Sₚ, Eₚ, Cₚ, W, and the T∞ limit.
+This separates algorithmic parallelism from                    Metrics                      Sₚ, Eₚ, Cₚ, W
+
+measurement artifacts.
+                                                                Limit                       T∞ = Θ(log n)
+
+
+
+
+       Minimal report = setup +                        Colab exercise idea: implement a reduction, record Tₚ for p ∈
+                                                       {1,2,4,8,16}, and compute Sₚ, Eₚ, and Cₚ in a small table.
+       timings + interpretation                        COLAB = PRAM_definitions_QA_Colab_EN.ipynb
+
+
+
+
+                                                                                                                       AAPP · PRAM
+EXAMPLES
+
+
+           AAPP · PRAM
+ Pattern 1 · Map: matrix-vector multiply
+ Each processor computes an independent block of rows
+
+
+
+    y=Ax
+                                                                                               Why is it embarrassingly parallel?
+                                                                P0          y0
+                                                                                                Each yᵢ depends on one row of A and on all of x,
+                                                                                                  but not on other yⱼ. Therefore no reductions
+                                                                                                        across processors are needed.
+                                                                P1          y1
+                                                                                                                Model: CREW
+
+
+                                                                P2          y2
+
+
+
+           A split by rows     x read by all
+
+
+
+
+   Actionable: to decompose a problem, look for independent outputs before thinking about synchronization.
+
+
+PATTERNS                                                                                                                                           AAPP · PRAM
+ Pattern 2 · Reduce: tree sum
+ From n elements to 1 result in log₂(n) rounds if you have enough processors
+
+
+
+     Why reduction matters                                                            Reduction tree
+                                                    a0           a1            a2    a3           a4     a5          a6               a7
+       Reduction is the primitive that                                                                            round 0: 8 values
+      turns a global dependency into a
+      sequence of local combinations.
+
+           Examples: sum, max, OR, dot
+            product, convergence tests.                                                                           round 1: 4 sums
+
+
+
+
+                                                                                                                  round 2: 2 sums
+
+
+
+
+                                                                                                                  round 3: final result
+                                                                                            Σ
+
+                                                         Tₚ = Θ(log n) with p≈n     Active work = Θ(n)        Cost pT = Θ(n log n)
+
+
+
+
+PATTERNS                                                                                                                                   AAPP · PRAM
+ Reduce when p ≪ n: chunk + tree
+ The practical version does not assign one processor to every element
+
+
+
+
+                                  Algorithm                                               Actionable decision
+                      1. each Pᵢ sums n/p local elements                 Add processors while the n/p term dominates log p. When log p
+                  2. the p partial sums are reduced in a tree                becomes comparable to local work, efficiency drops.
+                           3. P₀ writes the final result
+                                                                                           Rule of thumb: p log₂p ≲ n
+                               Tₚ(n) = Θ(n/p + log p)
+
+
+
+
+                           n                                    safe p                                why
+
+                          10⁶                                   ≤ 65k                       p log p stays well below n
+
+                          10⁴                                   ≤ 512                 visible reduction overhead beyond this
+
+                          10²                                    ≤ 16                problem too small for much parallelism
+
+
+
+
+ACTIONABLE                                                                                                                               AAPP · PRAM
+ Pattern 3 · Prefix sum
+ Not just a sum: compute Sᵢ = a₁+⋯+aᵢ for every i
+
+
+                                         s1 s2 s3 s4 s5 s6 s7 s8
+
+                                                                 CR
+
+                                              CR                                     CR
+
+                                         a1 a 2 a3 a4 a5 a6 a7 a8
+
+                                                            PRAM algorithm: Depth Θ(log n).
+
+                                                                        Concrete uses
+                                       array compaction · stream compaction · partitioning for sorting · BFS · graph algorithms
+
+
+
+
+PATTERNS                                                                                                                          AAPP · PRAM
+ PRAM is strong, and that is why it is useful
+ An algorithm that is slow even on PRAM is unlikely to become fast on real hardware
+
+
+
+
+                                   Natural                                                                         Simple
+             p processors can perform at most p operations per round.                          enables clean correctness and complexity proofs.
+
+
+
+
+                                    Strong                                                             Theoretical benchmark
+                     unit-time access to all memory: ignores                          if it does not scale in the ideal model, hardware alone is not enough.
+                         network/cache/synchronization.
+
+
+
+
+   Use PRAM as the first question: “is there enough parallelism?” Then use the real system to ask “how much does communication cost?”
+
+
+MOTIVATION                                                                                                                                               AAPP · PRAM
+ PRAM scalability lemmas
+ What happens when the ideal PRAM uses more processors or memory than we actually have?
+
+
+                   The problem                             Lemma 1 · fewer processors                       Lemma 2 · fewer memory cells
+            PRAM algorithms often assume an
+       unbounded supply of processors and shared                If an algorithm runs on p PRAM             If the PRAM algorithm uses m shared cells, then
+       memory cells. The lemmas show that this is           processors for t rounds, then p′ < p real          m′ < m cells can simulate it by partitioning
+           not magic: excess resources can be               processors can simulate it by batching               memory into segments and serializing
+                                                                       virtual processors.                                     accesses.
+        simulated, but time increases predictably.
+
+
+                                                                    T′ = O(t · p / p′)                                T′ = O(t · m / m′)
+                                                              same shared memory, fewer processors                     with max(p,m′) processors
+
+
+
+                                                            Interpretation: one real processor time-        Interpretation: each simulated read/write may
+                                                             slices about p/p′ virtual processors in         need a sweep over m/m′ memory segments.
+                                                                       each PRAM round.
+
+
+
+
+                             Takeaway: PRAM scalability can be reasoned about as a resource/time trade-off before implementation.
+
+
+PRAM SCALABILITY                                                                                                                                          AAPP · PRAM
+ Using the lemmas: an actionable checklist
+ Convert an ideal PRAM cost into a back-of-the-envelope execution plan
+
+
+
+                                   Checklist                                                          Example: simulate an ideal PRAM run
+                   Start from the ideal bound
+          1
+                   p virtual processors, m shared cells, t PRAM rounds                          Ideal                    Available                Estimate
+                                                                                              algorithm                  machine
+                   Map to the target machine                                                      p = 1024              p′ = 64 workers      processor overhead ≈
+          2                                                                                  t = 1,000 rounds          m′ = 100,000 cells            16×
+                   p′ physical workers, m′ fast/shared cells
+                                                                                            m = 1,000,000 cells                               memory overhead ≈
+                                                                                                                                                     10×
+
+                   Estimate simulation overhead
+          3
+                   processor factor p/p′ and memory factor m/m′                           Processor batching
+                                                                                                                                                16 batches / round
+
+
+                   Decide if the model is still useful
+          4                                                                               Memory segmentation
+                   keep overhead within the experiment budget
+                                                                                                                                            10 sweeps / access phase
+
+
+
+
+                                                          Colab 04 lets students change p, p′, m, m′ and see the overhead curves.
+
+
+PRAM SCALABILITY                                                                                                                                                       AAPP · PRAM
+SCALING
+
+
+
+
+Strong and weak scaling
+Two different questions, two different experiments, two different
+decisions
+ Strong vs weak scaling: the one-line difference
+ Do not compare plots unless the experiment fixes the same quantity
+
+
+
+
+                             Strong scaling                                            Weak scaling
+                             fixed N, increasing P                                    fixed N/P, increasing P
+
+               Question: how much do I reduce time-to-solution?       Question: can I solve larger problems in the same time?
+
+                             Metrics: Tₚ(N), Sₚ, Eₚ                                  Metrics: Tₚ(P·n₀), Eweak
+
+                           Guiding theory: Amdahl                                   Guiding theory: Gustafson
+
+
+
+
+   Strong = finish sooner. Weak = do more in the same time.
+
+
+SCALING                                                                                                                         AAPP · PRAM
+ Strong scaling: benchmark recipe
+ Example: 2D stencil on a 4096×4096 grid for 100 steps, fixed N
+
+
+
+                                  Recipe                                           relative
+                                                                                     time
+                           1. Choose N large but fixed
+                               2. Run P = 1, 2, 4, 8, …
+                               3. Record median(Tₚ)
+                       4. Compute S = T₁/Tₚ and E = S/P
+                       5. If E < 60–70%, stop or diagnose
+
+
+
+
+                                                                                              1       2       4       8       16       32      64      12   P
+                                                                                                                                                        8
+
+
+
+
+                                                                                                                  Reading the plot
+                                                                                              The plateau means adding processors no longer reduces time:
+                                                                                                change the algorithm, decomposition, or communication.
+
+
+   Decision: not “use all cores,” but “use cores while time decreases and efficiency remains acceptable.”
+
+
+STRONG SCALING                                                                                                                                              AAPP · PRAM
+ Weak scaling: benchmark recipe
+ Example: each processor keeps a local 1024×1024 grid
+
+
+
+                                    Recipe                                       relative
+                                                                                   time
+                                 1. Fix local work n₀
+                                    2. Set N = P·n₀
+                                3. Measure Tₚ(P·n₀)
+                             4. Eweak = T₁(n₀)/Tₚ(P·n₀)
+               5. Diagnose growth: halo, I/O, global synchronizations
+
+
+
+
+                                                                                            1    2        4        8       16       32       64       12     P
+                                                                                                                                                       8
+
+
+
+
+                                                                                                              Reading the plot
+                                                                                       A nearly flat curve is good: the system absorbs the problem growth.
+                                                                                          The slope measures communication and coordination cost.
+
+
+   Decision: increase P when you want more resolution, more data, or more scenarios within the same time budget.
+
+
+WEAK SCALING                                                                                                                                                 AAPP · PRAM
+ Amdahl vs Gustafson: no contradiction
+ The experiment invariant changes
+
+
+
+                                      Amdahl: S(P)=1/(s+(1−s)/P)                                             Gustafson: S(P)=s+(1−s)P
+           Fixed-size / strong scaling. If the serial fraction s is nonzero, speedup has a   Fixed-time / weak scaling. The parallel part grows with P, so scaled
+                                                ceiling.                                                    speedup can remain almost linear.
+
+
+                                                                                                                                 Gustafson
+
+
+
+
+                                                                                                                                   Amdahl
+
+
+
+
+    Ref.: Amdahl, 1967; Gustafson, 1988.
+
+
+
+SCALING LAWS                                                                                                                                                        AAPP · PRAM
+The relationship between problem size, number of processors, and time to
+solution can be visualized as a three-dimensional surface.
+
+
+
+
+                                                              Processors32
+
+
+                                                                             AAPP · PRAM
+Strong scaling is concerned with a slice
+  of the scaling surface at a particular
+              problem size.
+
+
+
+
+                                 Processors
+                                              AAPP · PRAM
+Weak scaling is concerned with a slice of the scaling
+surface where the work per task is constant.
+
+
+
+
+                                           Processors
+                                                        AAPP · PRAM
+ Three mini Colab labs to make the concepts executable
+ The notebooks are designed to be uploaded to Google Colab and edited by students
+
+
+
+                                                                                                                     Labs
+                                                                                                  01 · PRAM access + reduce + prefix-sum
+                                                                                           simulate EREW/CREW/CRCW conflicts; measure T, S, E
+
+                                                                                                            02 · Amdahl vs Gustafson
+                                                                                             slider for serial fraction and strong/weak comparison
+
+                                                                                                       03 · Stencil strong/weak scaling
+                                                                                               halo-exchange model and benchmark decisions
+
+
+
+
+                                                                     Classroom use
+                                        10 min demo + 15 min guided exercise + 5 min discussion of the generated plots.
+
+
+
+
+COLAB                                                                                                                                                AAPP · PRAM
+ Takeaways
+ What students should retain
+
+
+          1    PRAM is a model, not a machine
+
+
+          2    EREW/CREW/CRCW rules motivate the algorithms
+
+
+          3    Map/reduce/prefix-sum are reusable patterns
+
+
+          4    Speedup without efficiency can be waste
+
+
+          5    Strong and weak scaling answer different decisions
+
+
+
+
+                                                                      Main sources
+                               Vishkin PRAM notes · JaJa, Introduction to Parallel Algorithms · Amdahl (1967) · Gustafson (1988)
+
+CONCLUSIONS                                                                                                                        AAPP · PRAM
+

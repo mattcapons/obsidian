@@ -1,0 +1,479 @@
+095946- ADVANCED ALGORITHMS AND
+     PARALLEL PROGRAMMING
+
+
+
+
+          Fabrizio Ferrandi
+           a.a. 2021-2022
+❑ Dynamic Programming
+• Longest common subsequence
+
+• Optimal substructure
+
+• Overlapping subproblems
+
+
+
+
+                         -2-
+           Dynamic Programming
+
+❑ The term dynamic programming was originally used in
+  the 1940s by Richard Bellman to describe the process of
+  solving problems where one needs to find the best
+  decisions one after another.
+❑ The word dynamic was chosen by Bellman to capture the
+
+  time-varying aspect of the problems, and because it
+  sounded impressive.
+❑  The word programming referred to the use of the
+  method to find an optimal program, in the sense of a
+  military schedule for training or logistics.
+    –   This usage is the same as that in the phrases linear programming
+        and mathematical programming, a synonym for mathematical
+        optimization.
+                                    -3-
+                Dynamic programming
+
+     Design technique, like divide-and-conquer.
+
+Example: Longest Common Subsequence (LCS)
+• Given two sequences x[1 . . m] and y[1 . . n], find a
+  longest subsequence common to them both.
+
+
+
+
+  November 7, 2005               L15.4     Copyright © 2001-5 by Erik D. Demaine and
+                                                                 Charles E. Leiserson
+                Dynamic programming
+
+     Design technique, like divide-and-conquer.
+
+Example: Longest Common Subsequence (LCS)
+• Given two sequences x[1 . . m] and y[1 . . n], find a
+  longest subsequence common to them both.
+             “a” not “the”
+
+
+
+
+  November 7, 2005               L15.5     Copyright © 2001-5 by Erik D. Demaine and
+                                                                 Charles E. Leiserson
+                   Dynamic programming
+
+        Design technique, like divide-and-conquer.
+
+Example: Longest Common Subsequence (LCS)
+• Given two sequences x[1 . . m] and y[1 . . n], find a
+  longest subsequence common to them both.
+                “a” not “the”
+x:      A           B    C      B     D      A          B
+
+
+y:      B           D    C      A     B      A
+
+
+
+     November 7, 2005               L15.6     Copyright © 2001-5 by Erik D. Demaine and
+                                                                    Charles E. Leiserson
+                   Dynamic programming
+
+        Design technique, like divide-and-conquer.
+
+Example: Longest Common Subsequence (LCS)
+• Given two sequences x[1 . . m] and y[1 . . n], find a
+  longest subsequence common to them both.
+                “a” not “the”
+x:      A           B    C      B     D      A          B
+                                                                     BCBA =
+                                                                     LCS(x, y)
+y:      B           D    C      A     B      A
+                                            functional notation, but
+                                            not a function
+     November 7, 2005               L15.7     Copyright © 2001-5 by Erik D. Demaine and
+                                                                    Charles E. Leiserson
+              Brute-force LCS algorithm
+
+  Check every subsequence of x[1 . . m] to see if it is also a
+  subsequence of y[1 . . n].
+
+
+
+
+November 7, 2005                L15.8       Copyright © 2001-5 by Erik D. Demaine and
+                                                                  Charles E. Leiserson
+              Brute-force LCS algorithm
+
+  Check every subsequence of x[1 . . m] to see if it is also a
+  subsequence of y[1 . . n].
+
+  Analysis
+  • Checking = O(n) time per subsequence.
+  • 2m subsequences of x (each bit-vector of length m
+    determines a distinct subsequence of x).
+
+
+
+  Worst-case running time = O(n2m)
+                        = exponential time.
+November 7, 2005                L15.9       Copyright © 2001-5 by Erik D. Demaine and
+                                                                  Charles E. Leiserson
+              Towards a better algorithm
+Simplification:
+1. Look at the length of a longest-common
+   subsequence.
+2. Extend the algorithm to find the LCS itself.
+
+
+
+
+November 7, 2005              L15.10   Copyright © 2001-5 by Erik D. Demaine and
+                                                             Charles E. Leiserson
+              Towards a better algorithm
+Simplification:
+1. Look at the length of a longest-common
+   subsequence.
+2. Extend the algorithm to find the LCS itself.
+Notation: Denote the length of a sequence s by | s |.
+
+
+
+
+November 7, 2005               L15.11      Copyright © 2001-5 by Erik D. Demaine and
+                                                                 Charles E. Leiserson
+              Towards a better algorithm
+Simplification:
+1. Look at the length of a longest-common
+   subsequence.
+2. Extend the algorithm to find the LCS itself.
+Notation: Denote the length of a sequence s by | s |.
+
+
+Strategy: Consider prefixes of x and y.
+• Define c[i, j] = | LCS(x[1 . . i], y[1 . . j]) |.
+• Then, c[m, n] = | LCS(x, y) |.
+November 7, 2005               L15.12      Copyright © 2001-5 by Erik D. Demaine and
+                                                                 Charles E. Leiserson
+                Recursive formulation
+Theorem.
+                     c[i–1, j–1] + 1           if x[i] = y[j],
+  c[i, j] =
+                     max{c[i–1, j], c[i, j–1]} otherwise.
+
+
+
+
+  November 7, 2005                 L15.13   Copyright © 2001-5 by Erik D. Demaine and
+                                                                  Charles E. Leiserson
+                 Recursive formulation
+Theorem.
+                          c[i–1, j–1] + 1           if x[i] = y[j],
+  c[i, j] =
+                          max{c[i–1, j], c[i, j–1]} otherwise.
+Proof. Case x[i] = y[ j]:
+                1     2             i                                          m
+        x:                                           
+                1     2                 =       j                n
+        y:                                           
+
+
+
+
+   November 7, 2005                         L15.14   Copyright © 2001-5 by Erik D. Demaine and
+                                                                           Charles E. Leiserson
+                  Recursive formulation
+
+Theorem.
+                           c[i–1, j–1] + 1           if x[i] = y[j],
+   c[i, j] =
+                           max{c[i–1, j], c[i, j–1]} otherwise.
+Proof. Case x[i] = y[ j]:
+                 1     2             i                                          m
+         x:                                           
+                 1     2                 =       j                n
+         y:                                           
+
+Let z[1 . . k] = LCS(x[1 . . i], y[1 . . j]), where c[i, j] = k. Then, z[k] = x[i],
+or else z could be extended. Thus, z[1 . . k–1] is CS of x[1 . . i–1] and y[1
+. . j–1].
+    November 7, 2005                         L15.15   Copyright © 2001-5 by Erik D. Demaine and
+                                                                            Charles E. Leiserson
+                Proof (continued)
+
+Claim: z[1 . . k–1] = LCS(x[1 . . i–1], y[1 . . j–1]).
+  Suppose w is a longer CS of x[1 . . i–1] and y[1 . .
+  j–1], that is, | w | > k–1. Then, cut and paste: w ||
+  z[k] (w concatenated with z[k]) is a common
+  subsequence of x[1 . . i] and y[1 . . j] with | w ||
+  z[k] | > k. Contradiction, proving the claim.
+
+
+
+
+  November 7, 2005              L15.16   Copyright © 2001-5 by Erik D. Demaine and
+                                                               Charles E. Leiserson
+                Proof (continued)
+
+Claim: z[1 . . k–1] = LCS(x[1 . . i–1], y[1 . . j–1]).
+  Suppose w is a longer CS of x[1 . . i–1] and y[1 . .
+  j–1], that is, | w | > k–1. Then, cut and paste: w ||
+  z[k] (w concatenated with z[k]) is a common
+  subsequence of x[1 . . i] and y[1 . . j] with | w ||
+  z[k] | > k. Contradiction, proving the claim.
+Thus, c[i–1, j–1] = k–1, which implies that c[i, j] = c[i–1, j–1] + 1.
+Other cases are similar.
+
+
+
+  November 7, 2005                 L15.17      Copyright © 2001-5 by Erik D. Demaine and
+                                                                     Charles E. Leiserson
+              Dynamic-programming hallmark #1
+
+
+
+
+               Optimal substructure
+               An optimal solution to a problem (instance)
+               contains optimal solutions to subproblems.
+
+
+
+
+November 7, 2005                    L15.18     Copyright © 2001-5 by Erik D. Demaine and
+                                                                     Charles E. Leiserson
+              Dynamic-programming hallmark #1
+
+
+
+
+               Optimal substructure
+               An optimal solution to a problem (instance)
+               contains optimal solutions to subproblems.
+
+
+
+
+      If z = LCS(x, y), then any prefix of z is an LCS of a
+      prefix of x and a prefix of y.
+
+
+November 7, 2005                    L15.19     Copyright © 2001-5 by Erik D. Demaine and
+                                                                     Charles E. Leiserson
+              Recursive algorithm for LCS
+
+   LCS(x, y, i, j) // ignoring base cases
+     if x[i] = y[ j]
+         then c[i, j]  LCS(x, y, i–1, j–1) + 1
+         else c[i, j]  max{ LCS(x, y, i–1, j),
+                             LCS(x, y, i, j–1)}
+     return c[i, j]
+
+
+
+
+November 7, 2005               L15.20   Copyright © 2001-5 by Erik D. Demaine and
+                                                              Charles E. Leiserson
+              Recursive algorithm for LCS
+
+   LCS(x, y, i, j) // ignoring base cases
+     if x[i] = y[ j]
+         then c[i, j]  LCS(x, y, i–1, j–1) + 1
+         else c[i, j]  max{ LCS(x, y, i–1, j),
+                             LCS(x, y, i, j–1)}
+     return c[i, j]
+   Worse case: x[i]  y[ j], in which case the algorithm
+   evaluates two subproblems, each with only one parameter
+   decremented.
+
+November 7, 2005               L15.21   Copyright © 2001-5 by Erik D. Demaine and
+                                                              Charles E. Leiserson
+                 Recursion tree
+m = 7, n = 6:                                 7,6
+
+
+                      6,6                                                7,5
+
+
+       5,6                        6,5                     6,5                            7,4
+
+ 4,6         5,5            5,5         6,4         5,5         6,4              6,4             7,3
+
+
+
+
+   November 7, 2005                            L15.22           Copyright © 2001-5 by Erik D. Demaine and
+                                                                                      Charles E. Leiserson
+                 Recursion tree
+m = 7, n = 6:                                 7,6
+
+
+                      6,6                                                7,5
+
+                                                                                                       m+n
+       5,6                        6,5                     6,5                            7,4
+
+ 4,6         5,5            5,5         6,4         5,5         6,4              6,4             7,3
+
+
+
+  Height = m + n  work potentially exponential.
+
+   November 7, 2005                            L15.23           Copyright © 2001-5 by Erik D. Demaine and
+                                                                                      Charles E. Leiserson
+                 Recursion tree
+m = 7, n = 6:                                 7,6
+
+
+                      6,6         same                                   7,5
+                                  subproblem
+                                                                                                       m+n
+       5,6                        6,5                     6,5                            7,4
+
+ 4,6         5,5            5,5         6,4         5,5         6,4              6,4             7,3
+
+
+
+  Height = m + n  work potentially exponential.                                                             ,
+  but we’re solving subproblems already solved!
+   November 7, 2005                            L15.24           Copyright © 2001-5 by Erik D. Demaine and
+                                                                                      Charles E. Leiserson
+              Dynamic-programming hallmark #2
+
+
+
+             Overlapping subproblems
+             A recursive solution contains a “small” number
+             of distinct subproblems repeated many times.
+
+
+
+
+November 7, 2005                  L15.25     Copyright © 2001-5 by Erik D. Demaine and
+                                                                   Charles E. Leiserson
+              Dynamic-programming hallmark #2
+
+
+
+             Overlapping subproblems
+             A recursive solution contains a “small” number
+             of distinct subproblems repeated many times.
+
+
+
+
+  The number of distinct LCS subproblems for two strings of
+  lengths m and n is only m n.
+
+
+
+November 7, 2005                  L15.26     Copyright © 2001-5 by Erik D. Demaine and
+                                                                   Charles E. Leiserson
+               Memoization algorithm
+Memoization: After computing a solution to a subproblem, store
+it in a table. Subsequent calls check the table to avoid redoing
+work.
+
+
+
+
+ November 7, 2005              L15.27    Copyright © 2001-5 by Erik D. Demaine and
+                                                               Charles E. Leiserson
+               Memoization algorithm
+Memoization: After computing a solution to a subproblem, store
+it in a table. Subsequent calls check the table to avoid redoing
+work.
+
+LCS(x, y, i, j)
+  if c[i, j] = NIL
+      then if x[i] = y[j]
+           then c[i, j]  LCS(x, y, i–1, j–1) + 1                       same as
+           else c[i, j]  max{ LCS(x, y, i–1, j),                       before
+                               LCS(x, y, i, j–1)}
+
+
+ November 7, 2005              L15.28    Copyright © 2001-5 by Erik D. Demaine and
+                                                               Charles E. Leiserson
+               Memoization algorithm
+Memoization: After computing a solution to a subproblem, store
+it in a table. Subsequent calls check the table to avoid redoing
+work.
+
+LCS(x, y, i, j)
+  if c[i, j] = NIL
+      then if x[i] = y[j]
+           then c[i, j]  LCS(x, y, i–1, j–1) + 1                       same as
+           else c[i, j]  max{ LCS(x, y, i–1, j),                       before
+                               LCS(x, y, i, j–1)}
+Time = (m n) = constant work per table entry.
+Space = (m n).
+ November 7, 2005              L15.29    Copyright © 2001-5 by Erik D. Demaine and
+                                                               Charles E. Leiserson
+                 Dynamic-programming algorithm
+
+IDEA:                               A      B    C         B        D         A        B
+Compute the table
+bottom-up.                    0     0      0   0         0        0         0        0
+                          B   0     0      1   1         1        1         1        1
+                          D   0     0      1   1         1        2         2        2
+                          C   0     0      1   2         2        2         2        2
+                          A   0     1      1   2         2        2         3        3
+                          B   0     1      2   2         3        3         3        4
+                          A   0     1      2   2         3        3         4        4
+   November 7, 2005               L15.30       Copyright © 2001-5 by Erik D. Demaine and
+                                                                     Charles E. Leiserson
+                 Dynamic-programming algorithm
+
+IDEA:                               A      B    C         B        D         A        B
+Compute the table
+bottom-up.                    0     0      0   0         0        0         0        0
+                          B   0     0      1   1         1        1         1        1
+Time = (m n).
+                          D   0     0      1   1         1        2         2        2
+                          C   0     0      1   2         2        2         2        2
+                          A   0     1      1   2         2        2         3        3
+                          B   0     1      2   2         3        3         3        4
+                          A   0     1      2   2         3        3         4        4
+   November 7, 2005               L15.31       Copyright © 2001-5 by Erik D. Demaine and
+                                                                     Charles E. Leiserson
+                 Dynamic-programming algorithm
+
+IDEA:                               A      B    C         B        D         A        B
+Compute the table
+bottom-up.                    0     0      0   0         0        0         0        0
+                          B   0     0      1   1         1        1         1        1
+Time = (m n).
+                          D   0     0      1   1         1        2         2        2
+Reconstruct LCS by
+tracing backwards.        C   0     0      1   2         2        2         2        2
+                          A   0     1      1   2         2        2         3        3
+                          B   0     1      2   2         3        3         3        4
+                          A   0     1      2   2         3        3         4        4
+   November 7, 2005               L15.32       Copyright © 2001-5 by Erik D. Demaine and
+                                                                     Charles E. Leiserson
+                 Dynamic-programming algorithm
+
+IDEA:                               A      B    C         B        D         A        B
+Compute the table
+bottom-up.                    0     0      0   0         0        0         0        0
+                          B   0     0      1   1         1        1         1        1
+Time = (m n).
+                          D   0     0      1   1         1        2         2        2
+Reconstruct LCS by
+tracing backwards.        C   0     0      1   2         2        2         2        2
+                          A   0     1      1   2         2        2         3        3
+Space = (m n).           B   0     1      2   2         3        3         3        4
+Exercise: O(min{m,
+n}).                      A   0     1      2   2         3        3         4        4
+   November 7, 2005               L15.33       Copyright © 2001-5 by Erik D. Demaine and
+                                                                     Charles E. Leiserson
+       Acknowledge
+
+Based on Introduction to Algorithms CLRS
+
+
+
+
+                           - 34 -
+

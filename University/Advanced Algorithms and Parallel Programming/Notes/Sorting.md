@@ -7,7 +7,7 @@ source: "[[lecture7-Sort.pdf]]"
 ---
 # Sorting
 
-[[AAPP Index|Course index]] · Previous: [[Minimum Cut]] · Prerequisites: [[Algorithm as recipes]] · [[Divide and Conquer]] · [[Randomized Algorithms]]
+[[AAPP Index|Course index]] · Previous: [[Minimum Cut]] · Next: [[Selection and Order Statistics]] · Prerequisites: [[Algorithm as recipes]] · [[Divide and Conquer]] · [[Randomized Algorithms]]
 
 ## Overview
 
@@ -40,6 +40,8 @@ QUICKSORT(A, p, r)
 ```
 
 Call `QUICKSORT(A, 1, n)`. A subarray of zero or one element is already sorted.
+
+[[Selection and Order Statistics#Randomized selection]] reuses this partition but follows only the side containing a requested rank. Its expected linear time solves a different task from sorting the full array, so it does not contradict the comparison-sorting lower bound below.
 
 ### Partition invariant and correctness
 

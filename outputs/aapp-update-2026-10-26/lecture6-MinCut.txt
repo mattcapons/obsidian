@@ -1,0 +1,347 @@
+095946- ADVANCED ALGORITHMS AND PARALLEL
+             PROGRAMMING
+
+
+
+
+              Fabrizio Ferrandi
+                a.a. 2026-2027
+KARGER’S MIN-CUT ALGORITHM
+Karger’s Min-Cut Algorithm
+
+
+
+
+                             -2-
+-3-
+KARGER’S MIN-CUT ALGORITHM
+Let G = (V, E) be a connected undirected graph. Let n = |V |, m = |E|.
+For S ⊂ V , the set δ(S) = {(u, v) ∈ E : u ∈ S, v ∈ S’ } is a cut since their
+removal from G disconnects G into more than one component.
+Goal: Find the cut of minimum size.
+                      a            v 2'
+                 v1
+                                                     S={v1, v2, …}
+                                                     δ(S) ={(v1 , v2’), (v2 , v1’)}
+                          v2         v1'                                     a        b
+                               b
+
+
+
+
+                                                                                          -4-
+MINIMUM ST-CUT PROBLEM
+Closely related is the minimum st-cut problem.
+In this problem, for specified vertices s and t we restrict attention to cuts δ(S)
+where s ∈ S, t  S.
+Traditionally, the min-cut problem was solved by solving
+ n − 1 min-st-cut problems.
+
+In the min-st-cut problem we are given as input two vertices s and t, our aim is to
+find the set S where s ∈ S and t  S which minimizes the size of the cut (S, S’),
+i.e., |δ(S)|.
+The size of the min-st-cut is equal to
+ the value of the max-st-flow (equivalent by linear programming duality).
+
+The fastest algorithm for solving max-st-flow runs
+ in O(nm log(n2 /m)) time [1]
+   all n − 1 max-st-flow computations can be done simultaneously with the same time bounds [2].
+
+
+
+                                                                                                   -5-
+KARGER’S APPROACH
+A clever algorithm to solve the min-cut problem (without the st-condition)
+without using any max-flow computations is due to Karger [3] based on a
+randomized approach.
+A refinement of Karger’s algorithm, due to Karger and Stein [4] is also
+faster than the approach based on max-st-flow computations. We will
+present Karger’s algorithm, followed by the refinement.
+
+
+
+
+                                                                             -6-
+MULTIEDGES
+The algorithm will start initially with a simple graph as input, and then it will
+need to consider multigraphs
+In a multigraph there are possibly multiple edges between a pair of vertices
+We do not have edges of the form (v, v) in our multigraphs
+ we refer to these types of edges as “self-loops”
+                    5
+                                  1
+
+
+
+          4
+
+                                             3
+                   2
+
+
+                                                                                    -7-
+CONTRACT EDGES
+the effect of contracting edge e = (1,2) is
+             5                                    5
+                         1
+
+
+
+     4
+                                              4
+
+                                  3                     3
+            2
+                                                  1,2
+
+
+
+
+                                                            -8-
+CONTRACT EDGES DEFINITION
+Let G = (V, E) be a multigraph without self loops. For e = {u, v} ∈ E, the
+contraction with respect to e, denoted G/e, is formed by:
+ Replace vertices u and v with a new vertex, w
+ Replace all edges (u, x) or (v, x) with an edge (w, x)
+ Remove self-loops to w. G/e is a multigraph
+
+
+
+
+The key observation is that if we contract an edge (u, v) then we preserve those cuts
+where u and v are both in S or both in S’. Observation 1:
+    Let e = (u, v) ∈ E. There is a one-to-one correspondence between cuts in G which do not
+    contain any edge (u, v), and cuts in G/e. In fact, for S ⊂ V such that u, v ∈ S, δG (S) =
+    δG/e (S) (with w substituted for u and v).
+
+
+                                                                                        -9-
+Karger’s randomized contraction algorithm
+The algorithm is intentionally simple: random choices carry the proof.
+
+
+         1
+                                                                              3                               4
+      Pick a                                       2
+                                                                         Remove self-                    Stop at two
+     random                                    Contract it
+                                                                            loops                        supernodes
+       edge
+
+
+
+
+     procedure karger(G):                                                The two final supernodes encode a partition
+       while |V| > 2:                                                    of the original vertex set. Parallel edges
+         choose e ∈ E uniformly at random                                between them count the cut size.
+         G ← G / e
+       return the remaining edges as the cut
+One visual run
+Each frame chooses one red edge and contracts it.
+
+
+
+
+              start                                 contract {1,2}               contract {4,5}   Contract {123, 45}
+
+
+
+
+                                                                two supernodes
+    In this run, the algorithm avoids the true cut edges until the end. The remaining two red parallel edges
+    are the output cut.
+
+
+
+
+                                                                                                                       - 11 -
+DOES THIS ALGORITHM ALWAYS FIND A MIN-
+CUT?
+
+
+
+
+                                         - 12 -
+PROOF (1)
+Denote the edges we contract in the algorithm as {e1 , e2 , … , en−2 }
+The algorithms succeeds if none of the contracted edges are in δ(S). To
+upper bound the probability that the algorithm succeeds in the first
+contraction, i.e., that e1  δ(S) we need to lower bound the number of edges
+in the input graph G in terms of k.
+ Note, the minimum degree is at least k in G, otherwise we have a cut of size smaller than k
+  since we can disconnect the vertex from the rest of the graph by removing all edges incident
+  to it.
+
+This implies that the original input graph G has at least nk/2 edges.
+
+
+
+
+                                                                                                 - 13 -
+PROOF (2)
+By Observation 1, since every cut in an intermediate multigraph corresponds
+to a cut of the original graph, we have
+Observation 2
+ The minimum degree in all of the intermediate multigraphs is at least k. Otherwise, the edges
+  incident the (meta)vertex with degree smaller than k would correspond to a cut of size < k in
+  the original graph
+
+After j contractions, the multigraph, denote as Gj , contains n − j vertices
+since we lose one vertex per contraction. Then, Observation 2 implies that Gj
+has at least (n − j)k/2 edges.
+
+
+
+
+                                                                                                  - 14 -
+PROOF (3)
+
+
+
+            probability of
+            their intersection
+
+
+
+
+                        - 15 -
+REPEATING THE ALGORITHM
+❑ In order to boost the probability of success,
+        we simply run the algorithm 𝑙 𝑛2
+❑ The probability that at least one run succeeds is at least
+                 𝑙 𝑛
+                   2
+             1
+1− 1− 𝑛                ≥ 1 − 𝑒 −𝑙
+             2
+
+❑ Setting l = c log n we have an error probability ≤ 1/𝑛𝑐
+❑ It's easy to implement Karger's algorithm so that one run takes O(𝑛2 ) time.
+ ▪ we have an 𝑂(𝑛4 log 𝑛) time randomized algorithm with error probability 1/poly(n).
+
+
+
+
+                                                                                        - 16 -
+FASTER VERSION BY KARGER AND STEIN [4]
+
+
+
+
+                                         - 17 -
+IMPROVED ALGORITHM
+
+
+
+
+                     - 18 -
+PSEUDO CODE
+procedure contract(G=(V,E), t):
+
+  while |V| > t
+
+      choose e\in E uniformly at random
+
+      G = G/e
+
+  return G
+
+procedure fastmincut(G= (V,E)):
+
+  if |V| < 6:
+
+      return mincut(V)
+
+  else:
+
+      t= ceil( 1 + |V|/√2)
+
+      G1 =   contract(G, t)
+
+      G2 =   contract(G, t)
+
+      return min {fastmincut(G1), fastmincut(G_2)}
+
+
+
+                                                     - 19 -
+Karger–Stein: recursion in one picture
+The key change is where we stop contracting. Instead of going directly to 2 vertices, contract down to t and branch.
+                                          This preserves the target min-cut with constant probability along each partial
+          t = ⌈1 + n / √2⌉                contraction; the two branches give independent chances to keep it alive.
+
+
+                                                                    G
+                                                                  size n
+
+
+
+                              contract(G, t)                                                   contract(G, t)
+                                   G₁                                                               G₂
+
+
+
+
+               recurse                             recurse                       recurse                            recurse
+
+                 ...                                 ...                          ...                                 ...
+
+                                                return the smaller cut among all leaves
+
+
+
+
+                                                                                                                              - 20 -
+COMPUTE THE RUNNING TIME
+                       straightforward to solve, e.g.,
+                       the Master theorem applies
+
+
+
+
+                               Total complexity: O(n2 log3 n)
+                                                         - 21 -
+COROLLARY OF KARGER’S ORIGINAL
+ALGORITHM
+Any graph has at most O(n2 ) minimum cuts
+
+
+This follows from Lemma 1 since that holds for any specified minimum cut
+
+
+Note, we can also enumerate all of these cuts by the above algorithm.
+
+
+
+
+                                                                           - 22 -
+REFERENCES
+
+[1] A. V. Goldberg and R. E. Tarjan. A new approach to the maximum-flow
+problem. J. Assoc. Comput. Mach., 35(4):921–940, 1988.
+[2] J. Hao and J. B. Orlin. A faster algorithm for finding the minimum cut in a
+graph. In Proceedings of the Third Annual ACM-SIAM Symposium on
+Discrete Algorithms (Orlando, FL, 1992), pages 165–174, New York, 1992.
+ACM.
+[3] D. R. Karger. Global min-cuts in RNC, and other ramifications of a simple
+min-cut algorithm. In Proceedings of the Fourth Annual ACM-SIAM
+Symposium on Discrete Algorithms (Austin, TX, 1993), pages 21–30, New
+York, 1993. ACM.
+[4] D. R. Karger and C. Stein. A new approach to the minimum cut problem.
+J. ACM, 43(4):601–640, 1996.
+
+                                                                                  - 23 -
+ACKNOWLEDGE
+Based on scribe notes first prepared by Tom Hayes at the University of
+Chicago in the winter quarter, 2003 and then elaborated by Eric Vigoda -
+Georgia Institute of Technology Last updated for 7530 - Randomized
+Algorithms, Spring 2010.
+and on
+Book: Randomized Algorithms, by R. Motwani and P. Raghavan Cambridge
+University Press, 1995. 492 pages. ISBN: 0-521-47465-5.
+
+
+
+
+                                                                           - 24 -
+

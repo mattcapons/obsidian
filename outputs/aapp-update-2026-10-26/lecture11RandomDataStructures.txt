@@ -1,0 +1,739 @@
+095946- ADVANCED ALGORITHMS AND
+     PARALLEL PROGRAMMING
+
+
+
+
+          Fabrizio Ferrandi
+           a.a. 2025-2026
+❑   Randomized data structures
+    –   Random Treaps
+    –   Skip Lists
+
+
+
+
+                            -2-
+           Dictionaries
+
+❑   A dictionary is a collection of elements each of which
+    has a unique search key
+    –   Uniqueness criteria may be relaxed (multiset)
+    –   (i.e. do not force uniqueness)
+❑ Keep track of current members, with periodic insertions
+  and deletions into the set
+❑ Examples
+
+    –   Membership in a club, course records
+    –   Symbol table (contains duplicates)
+    –   Language dictionary (WordSmith, Webster, WordNet)
+❑   Similar to database
+
+
+
+                                   -3-
+               Course Records
+Dictionary
+
+
+Member   key    student name    hw1
+Record   123     Stan Smith     49         ...
+                                                 Satelite data
+         124    Sue Margolin    56         ...
+         125     Billie King    34         ...
+                  ...
+
+
+
+
+         167     Roy Miller     39         ...
+
+                                     -4-
+         The dictionary problem
+
+❑   Given: Universe (U,<) of keys with a total order
+
+❑ Goal: Maintain set S ⊆ U under the following operations
+❑ Search(x,S): Is x ∈ S?
+
+❑ Insert(x,S): Insert x into S if not already in S.
+
+❑ Delete(x,S): Delete x from S.
+
+
+
+
+                              -5-
+          Extended set of operations
+
+❑   Minimum(S): Return smallest key
+
+❑   Maximum(S): Return largest key
+
+❑   List(S): Output elements of S in increasing order by key
+
+❑   Union(S1,S2): Merge S1 and S2
+        Condition: ∀ x1 ∈ S1 , x2 ∈ S2: x1 < x2
+
+❑   Split(S,x,S1,S2): Split S into S1 and S2.
+         ∀ x1 ∈ S1 , x2 ∈ S2: x1 ≤ x and x < x2
+
+                                 -6-
+          How to Implement a Dictionary?
+
+❑   Sequences / Arrays
+    –   ordered
+    –   unordered
+❑ Binary Search Trees
+❑ AVL tree
+
+❑ Splay tree
+
+
+
+
+❑ Random Treaps
+❑ Skip lists
+
+
+
+
+                          -7-
+         Random Treaps
+
+❑ treaps achieve essentially the same time bounds
+❑ they do not require any explicit balance information
+
+❑ the expected number of rotations performed is small for
+
+  each operation
+❑ simple to implement
+
+
+
+
+❑   Skip lists similar benefits but alternative randomized
+    data structure
+
+
+
+
+                               -8-
+            Approach for randomized search trees
+
+❑   If n elements are inserted in random order into a binary
+    search tree, the expected depth is 1.39 log n
+
+❑   Goal:
+    –   the search tree has the structure that would result if elements
+        were inserted in the order of their priorities (property 1)
+
+
+❑   Idea:
+    –   Each element x is assigned a priority chosen uniformly at random
+                                  prio(x) ∈ R
+
+
+
+                                    -9-
+              Treaps: tree + heap
+
+❑   Definition: A treap is a binary tree
+
+❑   Each node contains one element x with key(x) ∈ U and prio(x) ∈ R
+
+❑   The following properties hold:
+     –   Search tree property
+          •   For each element x:
+          •   elements y in the left subtree of x satisfy: key(y) < key(x)
+          •   elements y in the right subtree of x satisfy : key(y) > key(x)
+     –   Heap property
+          •   For all elements x,y:
+                – If y is a child of x, then prio(y) > prio(x).
+                – All priorities are pairwise distinct.
+
+
+
+
+                                                  - 10 -
+               Example
+
+key        a    b c     d e f g
+Priority   3    7   4   1   5   2 6            d
+                                               1
+
+                    a                                  f
+                    3                                  2
+
+                                c                  e       g
+                                4                  5       6
+
+
+                    b
+                    7
+                                      - 11 -
+         Treap uniqueness
+
+❑   Lemma: For elements x1, ... , xn with key(xi) and
+    prio(xi), there exists a unique treap.
+
+
+
+
+                              - 12 -
+         Treap structure
+
+❑   the search tree has the structure that would result if
+    elements were inserted in the order of their priorities
+
+
+
+
+                              - 13 -
+         Search for an element: key
+
+b?                   d
+                     1
+
+     a                                f
+                                      2
+     3
+
+               c               e          g
+               4               5          6
+
+
+     b
+     7
+
+                          - 14 -
+       Search for element with key k
+
+1 v := root;
+2 while v ≠ nil do
+3   case key(v) = k : stop; “element found”
+(successful search)
+4     key(v) < k : v:= RightChild(v);
+5     key(v) > k : v:= LeftChild(v);
+6   endcase;
+7 endwhile;
+8 “element not found” (unsuccessful search)
+
+Running time: O(# elements on the search path)
+                           - 15 -
+         Analysis of the ‘Search’ operation
+
+Let T be a treap with elements x1, …, xn       xi has i-th smallest key
+
+
+                                                 H n = k =11 / k
+                                                           n
+n-th Harmonic number:
+
+                                                 Hn = ln n + O(1)
+Lemma:
+1. Successful search: The expected number of nodes on the path to xm
+is Hm + Hn-m+1 – 1.
+
+2. Unsuccessful search : Let m be the number of keys that are smaller
+than the search key k. The expected number of nodes on the search
+path is Hm + Hn-m.
+
+
+                                  - 16 -
+       Inserting a new element x
+
+1. Choose prio(x).
+2. Search for the position of x in the tree.
+
+
+
+3. Insert x as a leaf.
+4. Restore the heap property.
+   while prio(parent(x)) > prio(x) do
+     if x is left child then RotateRight(parent(x))
+     else RotateLeft(parent(x));
+     endif
+   endwhile;
+
+
+
+                         - 17 -
+         Insert an element
+
+h?                   d
+                     1
+
+     a                                f
+                                      2
+     3
+
+               c                  e       g
+               4                  5       6
+
+
+     b
+     7
+
+                             - 18 -
+       Inserting a new element x
+
+1. Choose prio(x).
+2. Search for the position of x in the tree.
+
+
+
+3. Insert x as a leaf.
+4. Restore the heap property.
+   while prio(parent(x)) > prio(x) do
+     if x is left child then RotateRight(parent(x))
+     else RotateLeft(parent(x));
+     endif
+   endwhile;
+
+
+
+                         - 19 -
+          Rotations
+
+              6                                 2
+                  b       RotateRight           a
+      2
+                          RotateLeft                        6
+          a                             8               b
+
+                      C                     A
+8                 9
+                                                        9
+    A         B                                     B       C
+
+❑   The rotations maintain the search tree property and
+    restore the heap property.
+
+                              - 20 -
+      Deleting an element x
+
+1.Find x in the tree.
+2. while x is not a leaf do
+      u := child with smaller priority;
+      if u is left child then RotateRight(x))
+      else RotateLeft(x);
+      endif;
+   endwhile;
+3. Delete x;
+
+
+
+
+                      - 21 -
+         Delete an element
+
+b?                  d
+f?                  1
+
+     a                            f
+                                  2
+     3
+
+              c               e       g
+              4               5       6
+
+
+     b
+     7
+
+                         - 22 -
+    Rotations
+
+            f/2
+            b               RotateRight       a
+
+                            RotateLeft
+e/5 a                 g/6                             b
+
+                  C                       A
+
+
+A       B                                         B       C
+
+
+
+
+                                - 23 -
+          Analysis of ‘Insert’ and ‘Delete’ operations
+
+Lemma: The expected running time of insert and delete operations is
+O(log n). The expected number of rotations is 2.
+
+Proof: Analysis of insert (delete is the inverse operation)
+# rotations = depth of x after being inserted as a leaf (1)
+              - depth of x after the rotations (2)
+Let x = xm .
+(2) Expected depth is Hm + Hn-m+1 – 1.
+(1) Expected depth is Hm-1 + Hn-m + 1.
+    The tree contains n-1 elements, m-1 of them being smaller.
+
+# rotations = Hm-1 + Hn-m + 1 – (Hm + Hn-m+1 – 1) < 2
+
+
+                                     - 24 -
+        Extended set of operations
+
+n = number of elements in treap T.
+❑ Minimum(T): Return the smallest key. O(log n)
+
+❑ Maximum(T): Return the largest key. O(log n)
+
+❑ List(T): Output elements of S in increasing order. O(n)
+
+❑ Union(T1,T2): Merge T1 and T2.
+
+       Condition: ∀ x1 ∈ T1 , x2 ∈ T2: key(x1) < key(x2)
+❑ Split(T,k,T1,T2): Split T into T1 and T2.
+
+       ∀ x1 ∈ T1 , x2 ∈ T2: key(x1) ≤ k and k < key(x2)
+
+
+
+
+                            - 25 -
+         The ‘Split’ operation
+
+Split(T,k,T1,T2): Split T into T1 and T2.
+       ∀ x1 ∈ T1 , x2 ∈ T2: key(x1) ≤ k and k < key(x2)
+W.l.o.g. key k is not in T.
+Otherwise delete the element with key k and re-insert it
+into T1 after the split operation.
+
+1. Generate a new element x with key(x)=k and prio(x)=-∞.
+2. Insert x into T.
+3. Delete the new root. The left subtree is T1, the right subtree is T2.
+
+
+
+
+                                   - 26 -
+         The ‘Union’ operation
+
+Union(T1,T2): Merge T1 and T2.
+      Condition: ∀ x1 ∈ T1 , x2 ∈ T2: key(x1) < key(x2)
+
+1. Determine key k with key(x1) < k < key(x2)
+        for all x1 ∈ T1and x2 ∈ T2.
+2. Generate element x with key(x)=k and prio(x) = -∞.
+3. Generate treap T with root x, left subtree T1 and right subtree T2.
+4. Delete x from T.
+
+
+
+
+                                   - 27 -
+         Analysis
+
+❑   Lemma: The expected running time of the operations
+    Union and Split is O(log n).
+
+
+
+
+                            - 28 -
+          Implementation
+
+❑   Priorities from [0,1)
+
+❑ Priorities are used only when two elements are
+  compared to find out which of them has the higher
+  priority.
+❑ In case of equality, extend both priorities by bits chosen
+
+  uniformly at random until two corresponding bits differ.
+
+    p1 = 0,010111001                  p1 = 0,010111001011
+    p2 = 0,010111001                  p2 = 0,010111001010
+
+
+
+                             - 29 -
+           Skip lists
+
+❑   Simple randomized dynamic search structure
+    –   Invented by William Pugh in 1989
+    –   Easy to implement
+❑   Maintains a dynamic set of n elements in
+    O(lg n) time per operation in expectation and with high
+    probability
+    –   Strong guarantee on tail of distribution of T(n)
+    –   O(lg n) “almost always”
+              One linked list
+
+     Start from simplest data structure:
+       (sorted) linked list
+
+     ❑ Searches take Θ(n) time in worst case
+     ❑ How can we speed up searches?
+
+
+
+
+14       23      34     42      50         59   66   72   79
+              Two linked lists
+
+     Suppose we had two sorted linked lists
+       (on subsets of the elements)
+
+     ❑ Each element can appear in one or both lists
+     ❑ How can we speed up searches?
+
+
+
+
+14       23      34     42       50    59     66      72   79
+             Two linked lists as a subway
+
+     IDEA: Express and local subway lines
+       (à la New York City 7th Avenue Line)
+     ❑ Express line connects a few of the stations
+
+     ❑ Local line connects all stations
+
+     ❑ Links between lines at common stations
+
+
+
+
+14              34      42                           72
+
+
+14      23      34      42      50      59     66    72   79
+             Searching in two linked lists
+
+     SEARCH(x):
+     ❑ Walk right in top linked list (L1)
+
+       until going right would go too far
+     ❑ Walk down to bottom linked list (L2)
+
+     ❑ Walk right in L2 until element found (or not)
+
+
+
+
+14              34      42                             72
+
+
+14      23      34      42      50      59      66     72   79
+             Searching in two linked lists
+
+     EXAMPLE: SEARCH(59)
+
+
+
+
+                                                  Too far:
+                                                  59 < 72
+
+14              34     42                            72
+
+
+14      23      34     42     50     59      66      72      79
+             Design of two linked lists
+     QUESTION: Which nodes should be in L1?
+     ❑ In a subway, the “popular stations”
+
+     ❑ Here we care about worst-case performance
+
+     ❑ Best approach: Evenly space the nodes in L1
+
+     ❑ But how many nodes should be in L1?
+
+
+
+
+14              34     42                            72
+
+
+14      23      34     42      50     59      66     72   79
+             Analysis of two linked lists
+     ANALYSIS:
+     ❑ Search cost is roughly                   L2
+     ❑ Minimized (up to
+                                     L1 +
+       constant factors) when terms are equal
+                                                L1
+
+             2
+        L1 = L2 = n  L1 = n
+14               34    42                            72
+
+
+14      23       34    42      50     59        66   72   79
+                Analysis of two linked lists
+     ANALYSIS:
+                    ,
+          L1 =                 L2 = n
+     ❑
+                    n
+     ❑   Search cost is roughly
+                          L2                  n
+                   L1 +           =        n+    =2 n
+                          L1                   n
+14                        42                      66              n
+
+14        23       34     42          50     59   66    72   79
+
+            n                          n                 n
+               More linked lists
+
+     What if we had more sorted linked lists?
+     ❑ 2 sorted lists  2  n
+     ❑ 3 sorted lists 
+                        3 n
+                           3
+
+     ❑ k sorted lists 
+                        k k n
+                                        lg n
+     ❑   lg n sorted lists  lg n             n = 2 lg n
+14                       42                      66              n
+
+14        23      34     42        50   59       66   72    79
+
+           n                        n                  n
+              lg n linked lists
+     lg n sorted linked lists are like a binary tree
+
+
+14                                                           79
+
+
+14                                50                         79
+
+
+14               34               50               66        79
+
+
+14       23      34      42       50      59       66   72   79
+             Searching in lg n linked lists
+     EXAMPLE: SEARCH(72)
+
+
+14                                                      79
+
+
+14                            50                        79
+
+
+14              34            50              66        79
+
+
+14      23      34     42     50      59      66   72   79
+            Skip lists
+
+   Ideal skip list is this lg n linked list structure
+   Skip list data structure maintains roughly this structure subject
+     to updates (insert/delete)
+14                                                            79
+
+
+14                            50                             79
+
+
+14             34             50              66             79
+
+
+14     23      34        42   50      59      66     72      79
+          INSERT(x)
+
+To insert an element x into a skip list:
+❑ SEARCH(x) to see where x fits in bottom list
+
+❑ Always insert into bottom list
+
+
+
+INVARIANT: Bottom list contains all elements
+
+❑   Insert into some of the lists above…
+
+QUESTION: To which other lists should we add x?
+           INSERT(x)
+QUESTION: To which other lists should we add x?
+IDEA: Flip a (fair) coin; if HEADS,
+       promote x to next level up and flip again
+❑ Probability of promotion to next level = 1/2
+
+❑ On average:
+
+   –   1/2 of the elements promoted 0 levels
+   –   1/4 of the elements promoted 1 level
+   –   1/8 of the elements promoted 2 levels
+   –   etc.                                        Approx.
+                                                   balanced?
+         Example of skip list
+
+EXERCISE: Try building a skip list from scratch
+  by repeated insertion using a real coin
+
+Small change:
+❑ Add special −∞
+                              −∞                        50
+  value to every list
+   can search with
+  the same algorithm          −∞              34        50
+
+
+                              −∞      23      34   42   50
+          Skip lists
+
+A skip list is the result of insertions (and deletions) from an
+   initially empty structure (containing just −∞)
+❑ INSERT(x) uses random coin flips to decide promotion level
+
+❑ DELETE(x) removes x from all lists containing it
+          Skip lists
+
+A skip list is the result of insertions (and deletions) from an
+   initially empty structure (containing just −∞)
+❑ INSERT(x) uses random coin flips to decide promotion level
+
+❑ DELETE(x) removes x from all lists containing it
+
+How good are skip lists? (speed/balance)
+❑ INTUITIVELY: Pretty good on average
+
+❑ CLAIM: Really, really good, almost always
+          With-high-probability
+          theorem
+THEOREM: With high probability, every search
+           in an n-element skip list costs O(lg n)
+              With-high-probability
+              theorem
+THEOREM: With high probability, every search
+               in a skip list costs O(lg n)
+❑ INFORMALLY: Event E occurs with high probability (w.h.p.)
+
+  if, for any α ≥ 1, there is an appropriate choice of constants
+  for which
+  E occurs with probability at least 1 − O(1/nα)
+    –   In fact, constant in O(lg n) depends on α
+❑   FORMALLY: Parameterized event Eα occurs
+    with high probability if, for any α ≥ 1, there is an appropriate
+    choice of constants for which
+    Eα occurs with probability at least 1 − cα/nα
+       Acknowledge
+
+❑ Based on Randomized Algorithms, by R. Motwani and P.
+  Raghavan.
+❑ Based on Lectures of Prof. Dr. Th. Ottmann and of Prof.
+
+  Dr. Susanne Albers: http://electures.informatik.uni-
+  freiburg.de/portal/web/guest
+❑ Based on Lectures of Prof. Rada Mihalcea Univ. of North
+
+  Texas
+
+
+
+
+                           - 50 -
+

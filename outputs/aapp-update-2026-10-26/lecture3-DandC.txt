@@ -1,0 +1,514 @@
+095946- ADVANCED ALGORITHMS AND PARALLEL
+             PROGRAMMING
+
+
+
+                   Fabrizio Ferrandi
+                     a.a. 2026-2027
+THE DIVIDE-AND-CONQUER DESIGN
+PARADIGM
+                                                 ▪ Divide the problem
+                                                   (instance) into
+                                                   subproblems.
+                                                 ▪ Conquer the
+                                                   subproblems by
+                                                   solving them
+                                                   recursively.
+                                                 ▪ Combine subproblem
+                                                   solutions.
+
+ Guiding question: how much non-recursive work happens at each recursion level?   -2-
+DIVIDE AND CONQUER
+ BINARY SEARCH
+ POWERING A NUMBER
+ MATRIX MULTIPLICATION
+ STRASSEN’S ALGORITHM
+ VLSI TREE LAYOUT
+MERGE SORT
+ 1. Divide: Trivial.
+ 2. Conquer: Recursively sort 2 subarrays.
+ 3. Combine: Linear-time merge.
+
+
+
+
+                                             -4-
+MERGE SORT
+ 1. Divide: Trivial.
+ 2. Conquer: Recursively sort 2 subarrays.
+ 3. Combine: Linear-time merge.
+            T(n) = 2 T(n/2) + (n)
+
+
+ # subproblems                       work dividing
+                                     and combining
+            subproblem size
+                                                     -5-
+MASTER THEOREM (REPRISE)
+                 T(n) = a T(n/b) + f (n)
+
+CASE 1: f (n) = O(nlogba – ), constant  > 0
+    T(n) = (nlogba) .
+CASE 2: f (n) = (nlogba lgkn), constant k  0
+    T(n) = (nlogba lgk+1n) .
+CASE 3: f (n) = (nlogba +  ), constant  > 0, and regularity
+condition
+    T(n) = ( f (n)) .
+
+
+
+
+                                                                 -6-
+MASTER THEOREM (REPRISE)
+                  T(n) = a T(n/b) + f (n)
+
+ CASE 1: f (n) = O(nlogba – ), constant  > 0
+     T(n) = (nlogba) .
+ CASE 2: f (n) = (nlogba lgkn), constant k  0
+     T(n) = (nlogba lgk+1n) .
+ CASE 3: f (n) = (nlogba +  ), constant  > 0, and regularity
+ condition
+     T(n) = ( f (n)) .
+
+
+Merge sort: a = 2, b = 2  nlogba = nlog22 = n
+   CASE 2 (k = 0)  T(n) = (n lg n) .
+                                                                  -7-
+BINARY SEARCH
+ Find an element in a sorted array:
+ 1. Divide: Check middle element.
+ 2. Conquer: Recursively search 1 subarray.
+ 3. Combine: Trivial.
+
+
+
+
+                                              -8-
+BINARY SEARCH
+ Find an element in a sorted array:
+ 1. Divide: Check middle element.
+ 2. Conquer: Recursively search 1 subarray.
+ 3. Combine: Trivial.
+ Example: Find 9
+      3     5      7   8     9    12   15
+
+                                              -9-
+BINARY SEARCH
+ Find an element in a sorted array:
+ 1. Divide: Check middle element.
+ 2. Conquer: Recursively search 1 subarray.
+ 3. Combine: Trivial.
+ Example: Find 9
+      3     5      7   8     9    12   15
+
+                                              - 10 -
+BINARY SEARCH
+ Find an element in a sorted array:
+ 1. Divide: Check middle element.
+ 2. Conquer: Recursively search 1 subarray.
+ 3. Combine: Trivial.
+ Example: Find 9
+      3     5      7   8     9    12   15
+
+                                              - 11 -
+BINARY SEARCH
+ Find an element in a sorted array:
+ 1. Divide: Check middle element.
+ 2. Conquer: Recursively search 1 subarray.
+ 3. Combine: Trivial.
+ Example: Find 9
+      3     5      7   8     9    12   15
+
+                                              - 12 -
+BINARY SEARCH
+ Find an element in a sorted array:
+ 1. Divide: Check middle element.
+ 2. Conquer: Recursively search 1 subarray.
+ 3. Combine: Trivial.
+ Example: Find 9
+      3     5      7   8     9    12   15
+
+                                              - 13 -
+BINARY SEARCH
+ Find an element in a sorted array:
+ 1. Divide: Check middle element.
+ 2. Conquer: Recursively search 1 subarray.
+ 3. Combine: Trivial.
+ Example: Find 9
+      3     5      7   8     9    12   15
+
+                                              - 14 -
+RECURRENCE FOR BINARY SEARCH
+           T(n) = 1 T(n/2) + (1)
+
+
+# subproblems                       work dividing
+                                    and combining
+           subproblem size
+
+
+
+
+                                                    - 15 -
+RECURRENCE FOR BINARY SEARCH
+           T(n) = 1 T(n/2) + (1)
+
+
+# subproblems                       work dividing
+                                    and combining
+           subproblem size
+
+   nlogba = nlog21 = n0 = 1  CASE 2 (k = 0)
+       T(n) = (lg n) .
+
+                                                    - 16 -
+ POWERING A NUMBER
+Problem: Compute a n, where n  N.
+Naive algorithm: (n).
+
+
+
+
+                                     - 17 -
+ POWERING A NUMBER
+Problem: Compute a n, where n  N.
+Naive algorithm: (n).
+
+Divide-and-conquer algorithm:
+                 a n/2  a n/2               if n is even;
+       an =
+                 a (n–1)/2  a (n–1)/2  a   if n is odd.
+
+
+
+
+                                                             - 18 -
+ POWERING A NUMBER
+Problem: Compute a n, where n  N.
+Naive algorithm: (n).
+
+Divide-and-conquer algorithm:
+                 a n/2  a n/2               if n is even;
+       an =
+                 a (n–1)/2  a (n–1)/2  a   if n is odd.
+
+
+     T(n) = T(n/2) + (1)  T(n) = (lg n) .
+
+                                                             - 19 -
+MATRIX MULTIPLICATION
+Input:  A = [aij], B = [bij].
+                                         i, j = 1, 2,… , n.
+Output: C = [cij] = A B.
+  𝑐11   𝑐12   ⋯ 𝑐1𝑛   𝑎11   𝑎12   ⋯ 𝑎1𝑛   𝑏11   𝑏12   ⋯ 𝑏1𝑛
+  𝑐21   𝑐22   ⋯ 𝑐2𝑛   𝑎21   𝑎22   ⋯ 𝑎2𝑛   𝑏21   𝑏22   ⋯ 𝑏2𝑛
+   ⋮     ⋮    ⋱  ⋮  =  ⋮     ⋮    ⋱  ⋮  ⋅
+                                           ⋮     ⋮    ⋱  ⋮
+  𝑐𝑛1   𝑐𝑛2   ⋯ 𝑐𝑛𝑛   𝑎𝑛1   𝑎𝑛2   ⋯ 𝑎𝑛𝑛   𝑏𝑛1   𝑏𝑛2   ⋯ 𝑏𝑛𝑛
+
+
+
+                             𝑛
+
+                     𝑐𝑖𝑗 = ෍ 𝑎𝑖𝑘 ⋅ 𝑏𝑘𝑗
+                            𝑘=1
+                                                              - 20 -
+STANDARD ALGORITHM
+   for i  1 to n
+      do for j  1 to n
+              do cij  0
+                  for k  1 to n
+                      do cij  cij + aik bkj
+
+
+
+
+                                                - 21 -
+STANDARD ALGORITHM
+   for i  1 to n
+      do for j  1 to n
+              do cij  0
+                  for k  1 to n
+                      do cij  cij + aik bkj
+
+
+   Running time = (n3)
+
+                                                - 22 -
+  DIVIDE-AND-CONQUER ALGORITHM
+IDEA:
+nn matrix = 22 matrix of (n/2)(n/2) submatrices:
+                𝑟       𝑠   𝑎   𝑏   𝑒   𝑓
+                          =       ⋅
+                𝑡       𝑢   𝑐   𝑑   𝑔   ℎ
+
+                    C     =     A      B
+r = ae + bg
+s = af + bh      8 mults of (n/2)(n/2) submatrices
+t = ce + dg      4 adds of (n/2)(n/2) submatrices
+u = cf + dh
+                                                      - 23 -
+  DIVIDE-AND-CONQUER ALGORITHM
+IDEA:
+nn matrix = 22 matrix of (n/2)(n/2) submatrices:
+               r s a b e f 
+                    =     
+                           
+               t u c d g h 
+
+                  C = A  B
+r = ae + bg     recursive
+s = af + bh      8 mults of (n/2)(n/2) submatrices
+                  ^
+t = ce + dg      4 adds of (n/2)(n/2) submatrices
+u = cf + dh
+                                                      - 24 -
+ANALYSIS OF D&C ALGORITHM
+           T(n) = 8 T(n/2) + (n2)
+
+
+# submatrices                        work adding
+                                     submatrices
+           submatrix size
+
+
+
+
+                                                   - 25 -
+ANALYSIS OF D&C ALGORITHM
+           T(n) = 8 T(n/2) + (n2)
+
+
+# submatrices                        work adding
+                                     submatrices
+           submatrix size
+
+ nlogba = nlog28 = n3  CASE 1  T(n) = (n3).
+
+
+
+                                                   - 26 -
+ANALYSIS OF D&C ALGORITHM
+           T(n) = 8 T(n/2) + (n2)
+
+
+# submatrices                        work adding
+                                     submatrices
+           submatrix size
+
+ nlogba = nlog28 = n3  CASE 1  T(n) = (n3).
+
+      No better than the ordinary algorithm.
+
+                                                   - 27 -
+   STRASSEN’S IDEA
+• Multiply 22 matrices with only 7 recursive mults.
+
+
+
+
+                                                       - 28 -
+   STRASSEN’S IDEA
+• Multiply 22 matrices with only 7 recursive mults.
+   P1 = a  ( f – h)
+   P2 = (a + b)  h
+   P3 = (c + d)  e
+   P4 = d  (g – e)
+   P5 = (a + d)  (e + h)
+   P6 = (b – d)  (g + h)
+   P7 = (a – c)  (e + f )
+
+                                                       - 29 -
+   STRASSEN’S IDEA
+• Multiply 22 matrices with only 7 recursive mults.
+   P1 = a  ( f – h)         r = P5 + P4 – P2 + P6
+   P2 = (a + b)  h          s = P1 + P2
+   P3 = (c + d)  e          t = P3 + P4
+   P4 = d  (g – e)          u = P5 + P1 – P3 – P7
+   P5 = (a + d)  (e + h)
+   P6 = (b – d)  (g + h)
+   P7 = (a – c)  (e + f )
+
+                                                       - 30 -
+   STRASSEN’S IDEA
+• Multiply 22 matrices with only 7 recursive mults.
+   P1 = a  ( f – h)         r = P5 + P4 – P2 + P6
+   P2 = (a + b)  h          s = P1 + P2
+   P3 = (c + d)  e          t = P3 + P4
+   P4 = d  (g – e)          u = P5 + P1 – P3 – P7
+   P5 = (a + d)  (e + h)
+   P6 = (b – d)  (g + h)    7 mults, 18 adds/subs.
+                             Note: No reliance on
+   P7 = (a – c)  (e + f )   commutativity of mult!
+
+                                                       - 31 -
+   STRASSEN’S IDEA
+• Multiply 22 matrices with only 7 recursive mults.
+   P1 = a  ( f – h)         r = P5 + P4 – P2 + P6
+   P2 = (a + b)  h            = (a + d) (e + h)
+   P3 = (c + d)  e              + d (g – e) – (a + b) h
+   P4 = d  (g – e)              + (b – d) (g + h)
+   P5 = (a + d)  (e + h)      = ae + ah + de + dh
+   P6 = (b – d)  (g + h)        + dg –de – ah – bh
+   P7 = (a – c)  (e + f )       + bg + bh – dg – dh
+                               = ae + bg
+                                                           - 32 -
+STRASSEN’S ALGORITHM
+ 1. Divide: Partition A and B into (n/2)(n/2)
+    submatrices. Form terms to be multiplied
+    using + and – .
+ 2. Conquer: Perform 7 multiplications of
+    (n/2)(n/2) submatrices recursively.
+ 3. Combine: Form C using + and – on
+    (n/2)(n/2) submatrices.
+
+
+
+                                                 - 33 -
+STRASSEN’S ALGORITHM
+ 1. Divide: Partition A and B into (n/2)(n/2)
+    submatrices. Form terms to be multiplied
+    using + and – .
+ 2. Conquer: Perform 7 multiplications of
+    (n/2)(n/2) submatrices recursively.
+ 3. Combine: Form C using + and – on
+    (n/2)(n/2) submatrices.
+           T(n) = 7 T(n/2) + (n2)
+
+                                                 - 34 -
+ANALYSIS OF STRASSEN
+         T(n) = 7 T(n/2) + (n2)
+
+
+
+
+                                   - 35 -
+ANALYSIS OF STRASSEN
+             T(n) = 7 T(n/2) + (n2)
+
+nlogba = nlog27  n2.81  CASE 1  T(n) = (nlg 7).
+
+
+
+
+                                                      - 36 -
+    ANALYSIS OF STRASSEN
+                     T(n) = 7 T(n/2) + (n2)
+
+   nlogba = nlog27  n2.81  CASE 1  T(n) = (nlg 7).
+The number 2.81 may not seem much smaller than 3, but because the
+difference is in the exponent, the impact on running time is significant. In
+fact, Strassen’s algorithm beats the ordinary algorithm on today’s machines
+for n  32 or so.
+
+
+
+
+                                                                          - 37 -
+    ANALYSIS OF STRASSEN
+                     T(n) = 7 T(n/2) + (n2)
+
+   nlogba = nlog27  n2.81  CASE 1  T(n) = (nlg 7).
+The number 2.81 may not seem much smaller than 3, but because the
+difference is in the exponent, the impact on running time is significant. In
+fact, Strassen’s algorithm beats the ordinary algorithm on today’s machines
+for n  32 or so.
+
+
+
+
+Best to date (of theoretical interest only): (n2.376).
+                                                                          - 38 -
+VLSI LAYOUT
+Problem: Embed a complete binary tree with n
+leaves in a grid using minimal area.
+
+
+
+
+                                               - 39 -
+VLSI LAYOUT
+Problem: Embed a complete binary tree with n
+leaves in a grid using minimal area.
+
+
+
+
+                                               - 40 -
+ VLSI LAYOUT
+  Problem: Embed a complete binary tree with n
+  leaves in a grid using minimal area.
+
+
+
+
+H(n)   = H(n/2) + (1)
+       = (lg n)
+
+
+                                                 - 41 -
+ VLSI LAYOUT
+  Problem: Embed a complete binary tree with n
+  leaves in a grid using minimal area.
+
+
+
+
+H(n)   = H(n/2) + (1)   W(n)   = 2 W(n/2) + (1)
+       = (lg n)                = (n)
+
+
+                                                    - 42 -
+ VLSI LAYOUT
+  Problem: Embed a complete binary tree with n
+  leaves in a grid using minimal area.
+
+
+
+
+H(n)   = H(n/2) + (1)        W(n)   = 2 W(n/2) + (1)
+       = (lg n)                     = (n)
+                     Area = (n lg n)
+                                                         - 43 -
+H-TREE EMBEDDING
+      L(n)
+
+
+
+
+                   - 44 -
+H-TREE EMBEDDING
+       L(n)
+
+
+
+
+ L(n/4) (1) L(n/4)
+                      - 45 -
+H-TREE EMBEDDING
+        L(n)
+
+                      L(n)   = 2 L(n/4) + (1)
+                             = ( 𝑛 )
+
+
+
+
+                      Area = (n)
+
+
+ L(n/4) (1) L(n/4)
+                                                 - 46 -
+    CONCLUSION
+    • Divide and conquer is just one of several
+      powerful techniques for algorithm design.
+    • Divide-and-conquer algorithms can be analyzed
+      using recurrences and the master method (so
+      practice this math).
+    • The divide-and-conquer strategy often leads to
+      efficient algorithms.
+
+
+Material adapted from Erik D. Demaine                  - 47 -
+and Charles E. Leiserson slides
+

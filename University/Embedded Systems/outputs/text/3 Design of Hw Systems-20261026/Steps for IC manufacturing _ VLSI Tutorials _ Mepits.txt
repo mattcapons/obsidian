@@ -1,0 +1,245 @@
+  12/9/2018                                                      Steps for IC manufacturing | VLSI Tutorials | Mepits
+
+Home (/index.php/site/index) / Tutorials (/tutorials) / VLSI (/index.php/site/tutorial/cat/559) / Steps for IC
+manufacturing
+
+Steps for IC manufacturing
+ 29 June 2015 ()         VLSI (/index.php/site/tutorial/cat/559)           Comments
+
+
+
+ 0 likes      0 Follow      0 Shares
+
+
+
+   Tutorial by(/index.php/site/viewPro
+                                                 le/id/678)
+   Sumi Mathew
+
+ (/index.php/site/viewPro le/id/678)
+
+
+  Tags                                                                                                                                   
+
+
+
+  Sections
+
+   How to manufacture an IC?
+
+
+
+
+How to manufacture an IC?
+Integrated Circuit (IC)
+An Integrated Circuit (IC) is also called as chip or microchip. It is a semiconductor wafer in which millions of components are
+fabricated. The active and passive components such as resistors, diodes, transistors etc and external connections are usually
+fabricated in on extremely tiny single chip of silicon. All circuit components and interconnections are formed on single thin
+wafer (substrate) is called monolithic IC. IC is very small in size. It require microscope to see connections between
+components. The steps to fabricate IC chips is similar to the steps required to fabricate transistors, diodes etc. In IC chips, the
+fabrication of circuit elements such as transistors (https://www.mepits.com/tutorial/25/Transistors/Bipolar-Junction-
+Transistor---NPN-Transistor,-PNP-Transistor), diodes                    (https://www.mepits.com/tutorial/17/Diodes/Diodes--Electronic-
+Component-For-DIY-Projects), capacitors (https://www.mepits.com/tutorial/66/Capacitors/Fixed-Capacitors) etc. and their
+interconnections are done at same time. It has so many advantages such as extremely small size, small weight, low cost, low
+power consumption, .high processing speed, easy replacement, etc. IC is the principal component in all electronic devices. IC
+(https://www.mepits.com/tutorial/169/Programmable-Devices/Application-Speciﬁc-Integrated-Circuit)can function as
+ampliﬁer   (https://www.mepits.com/tutorial/92/Electronic-Circuits/Ampliﬁers), oscillator
+(https://www.mepits.com/tutorial/124/Electronic-Circuits/Oscillators), timer (https://www.mepits.com/tutorial/127/Electronic-
+Circuits/Astable-and-Monostable-Multivibrator-Using-555-Timer-IC), counter, computer memory
+(https://www.mepits.com/tutorial/261/Latest-Technologies/Emerging-Memory-Technologies)
+
+
+(https://www.mepits.com/tutorial/261/Latest-Technologies/Emerging-Memory-Technologies)etc.
+
+
+Steps for IC fabrication
+
+  https://www.mepits.com/tutorial/384/vlsi/steps-for-ic-manufacturing                                                                    1/5
+  12/9/2018                                                      Steps for IC manufacturing | VLSI Tutorials | Mepits
+
+
+
+
+The manufacturing of Integrated Circuits (IC) consists of following steps. The steps includes 8-20 patterned layers created
+into the substrate to form the complete integrated circuit. The electrically active regions are created due to this layering in and
+on the surface of wafer. Hundreds of integrated circuits can be made on a single thin silicon. Then it is cut into individual IC
+chips.
+
+
+Step 1
+Wafer production
+
+
+
+
+The ﬁrst step is wafer production. The wafer is a round slice of semiconductor material such as silicon. Silicon is preferred due
+to its characteristics. It is more suitable for manufacturing IC. It is the base or substrate for entire chip. First puriﬁed
+polycrystalline silicon is created from the sand. Then it is heated to produce molten liquid. A small piece of solid silicon is
+dipped on the molten liquid. Then the solid silicon (seed) is slowly pulled from the melt. The liquid cools to form single crystal
+ingot. A thin round wafer of silicon is cut using wafer slicer. Wafer slicer is a precise cutting machine and each slice having
+thickness about .01 to .025inches. When wafer is sliced, the surface will be damaged. It can be smoothening by polishing.
+After polishing the wafer, it must thoroughly clean and dried. The wafers are cleaned using high purity low particle chemicals
+.The silicon wafers are exposed to ultra pure oxygen.
+
+
+Epitaxial growth
+
+
+
+
+It means the growing of single silicon crystal upon original silicon substrate. A uniform layer of silicon dioxide is formed on the
+surface of wafer.
+
+
+Step 2
+Masking
+  https://www.mepits.com/tutorial/384/vlsi/steps-for-ic-manufacturing                                                             2/5
+To12/9/2018                                     Steps forarea,
+   protect some area of wafer when working on another     IC manufacturing
+                                                               a process| called
+                                                                           VLSI Tutorials | Mepits
+                                                                                  photolithography is used. The process of
+
+
+photolithography includes masking with a photographic mask and photo etching. A photoresist ﬁlm is applied on the wafer.
+The wafer is aligned to a mask using photo aligner. Then it is exposed to ultraviolet light through mask. Before that the wafer
+must be aligned with the mask. Generally, there are automatic tools for alignment purpose.
+
+
+Step 3
+Etching
+
+
+
+
+It removes material selectively from the surface of wafer to create patterns. The pattern is deﬁned by etching mask. The parts
+of material are protected by this etching mask. Either wet (chemical) or dry (physical) etching can be used to remove the
+unmasked material. To perform etching in all directions at same time, isotropic etching will be used. Anisotropic etching is
+faster in one direction. Wet etching is isotropic, but the etching time control is difﬁcult. Wet etching uses liquid solvents for
+removing materials. It is not suited to transfer pattern with submicron feature size. It does not damage the material. Dry
+etching uses gases to remove materials. It is strongly anisotropic. But it is less selective. It is suited to transfer pattern having
+small size. The remaining photo resist is ﬁnally removed using additional chemicals or plasma. Then the wafer is inspected to
+make sure that the image is transferred from mask to the top layer of wafer.
+
+
+Step 4
+Doping
+
+
+
+
+To alter the electrical character of silicon, atom with one less electron than silicon such as boron and atom with one electron
+greater then silicon such as phosphorous are introduced into the area. The P-type (boron) and N-type (phosphorous) are
+created to reflect their conducting characteristics. Diffusion is deﬁned as the movement of impurity atoms in semiconductor
+material at high temperature.
+
+
+Atomic diffusion
+
+
+
+
+In this method p and n regions are created by adding dopants into the wafer. The wafers are placed in an oven which is made
+up of quartz and it is surrounded with heating elements. Then the wafers are heated at a temperature of about 1500-2200°F.
+The inert gas carries the dopant chemical. The dopant and gas is passed through the wafers and ﬁnally the dopant will get
+deposited on the wafer. This method can only be used for large areas. For small areas it will be difﬁcult and it may not be
+accurate.
+
+
+Ion implantation
+
+
+
+
+This is also a method used for adding dopants. In this method, dopant gas such as phosphine or boron trichloride will be
+ionized ﬁrst. Then it provides a beam of high energy dopant ions to the speciﬁed regions of wafer. It will penetrate the wafer.
+The depth of the penetration depends on the energy of the beam. By altering the beam energy, it is possible to control the
+depth of penetration of dopants into the wafer. The beam current and time of exposure is used to control the amount of
+dopant. This method is slower than atomic diffusion process. It does not require masking and this process is very precise.
+First it points the wafer that where it is needed and shoot the dopants to the place where it is required.
+
+
+  https://www.mepits.com/tutorial/384/vlsi/steps-for-ic-manufacturing                                                            3/5
+Step     5
+ 12/9/2018                                                       Steps for IC manufacturing | VLSI Tutorials | Mepits
+
+
+Metallization
+
+
+
+
+It is used to create contact with silicon and to make interconnections on chip. A thin layer of aluminum is deposited over the
+whole wafer. Aluminium is selected because it is a good conductor, has good mechanical bond with silicon, forms low
+resistance contact and it can be applied and patterned with single deposition and etching process.
+
+
+Making successive layers: - The process such as masking, etching, doping will be repeated for each successive layers until all
+integrated chips are completed. Between the components, silicon dioxide is used as insulator. This process is called chemical
+vapor deposition. To make contact pads, aluminum is deposited. The fabrication includes more than three layers separated
+by dielectric layers. For electrical and physical isolation a layer of solid dielectric is surrounded in each component which
+provides isolation. It is possible to fabricate PNP and NPN transistor in the same silicon substrate. To avoid damage and
+contamination of circuit, ﬁnal dielectric layer (passivation) is deposited. After that, the individual IC will be tested for electrical
+function. Check the functionality of each chip on wafer. Those chips are not passed in the test will be rejected.
+
+
+Assembly and packaging
+
+
+
+
+Each of the wafers contains hundreds of chips. These chips are separated and packaged by a method called scribing and
+cleaving. The wafer is similar to a piece of glass. A diamond saw cut the wafer into single chips. The diamond tipped tool is
+used to cut the lines through the rectangular grid which separates the individual chips. The chips that are failed in electrical
+test are discarded. Before packaging, remaining chips are observed under microscope. The good chip is then mounted into a
+package. Thin wire is connected using ultrasonic bonding. It is then encapsulated for protection. Before delivered to customer,
+the chip is tested again. There are three conﬁgurations available for packaging. They are metal can package, ceramic flat
+package and dual in line package. For military applications, the chip is assembled in ceramic packages. The complete
+integrated circuits are sealed in anti static plastic bags.
+
+
+
+
+ User Review (0)
+
+   Please login to add review (/site/login)
+
+
+
+ Related Items
+
+                              Motor Driver (/tutorial/379/electrical/Motor Driver )
+                              Tutorial
+                              Motor Drives Motor drives are circuits used to run a motor. In other words, they are commonly …
+                              More details (/tutorial/379/electrical/Motor Driver )
+
+
+
+
+  https://www.mepits.com/tutorial/384/vlsi/steps-for-ic-manufacturing                                                              4/5
+  12/9/2018                                                      Steps for IC manufacturing | VLSI Tutorials | Mepits
+                              System on Chip (/tutorial/421/vlsi/System on Chip)
+                              Tutorial
+                              SoC acronym for system on chip is an IC which integrates all the components into a single chip. …
+                              More details (/tutorial/421/vlsi/System on Chip)
+
+
+
+
+Links
+About Us (/index.php/static/aboutus)                   Terms and Conditions                                    Contact Us (/site/contactUs)
+Privacy Policy                                         (/index.php/static/terms)                               FAQ (/site/faq)
+(/index.php/static/privacy)                            Feedback (/site/feedback)
+Contact Us
+Phone :  +918129818284, +918129818325
+Email :  info@mepits.com, (mailto:info@mepits.com)  mepitsmail@gmail.com (mailto:mepitsmail@gmail.com)
+
+
+  ()  ()  ()  ()  ()
+Copyright © 2018 Mepits - Designed By Digiora ()
+
+
+
+
+  https://www.mepits.com/tutorial/384/vlsi/steps-for-ic-manufacturing                                                                         5/5
+

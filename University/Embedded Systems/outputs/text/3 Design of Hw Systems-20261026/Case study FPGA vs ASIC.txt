@@ -1,0 +1,860 @@
+Re-engineering of an Embedded System: A Case Study
+
+ASIC vs FPGA-COTS tradeoffs
+             Feasibility of designing a single chip
+                       for Telecom Application - Case study
+
+
+
+     prof-. William Fornaciari
+     Politecnico di Milano
+     Dipartimento di Elettronica e Informazione
+     william.fornaciari@polimi.it
+
+
+
+
+   ©2020 Prof. William Fornaciari - Politecnico di Milano
+Project goal: feasibility analysis for a reengineering
+
+   •   Rationale
+        – It exists a system running and with a certain market
+        – The system is based on COTS+FPGA and it can be improved to
+             • Reduce cost
+             • Increase performance
+             • Become the base for a family of similar applications
+   •   The open issues
+        – Which is the best technology given a medium-size market
+        – How to deal with ASIC development and short time to market
+        – The customer company is not familiar with ASIC development
+        – The feasibility study must be carried out in 1 month and finally
+           discussed with some technical management
+   •   This study is prior any real implementation activity, it is a feasibility
+       study to understand the viability of a single chip solution
+
+
+
+
+              ©2020 Prof. William Fornaciari - Politecnico di Milano
+       Structure of the study
+
+
+1. Analysis of the design/application requirements
+   •   Identification of criticalities, project size and constraints
+2. Proposed Design Flow
+3. Selection and interaction with the foundry
+4. Proposed design plan
+5. Wrap-up
+   •   Selection of candidates
+   •   Overall cost estimation
+   •   Tradeoffs
+
+
+
+
+        ©2020 Prof. William Fornaciari - Politecnico di Milano
+         The application
+
+
+• Re-engineering of a pre-distortion apparatus for UMTS
+  base station
+• Mix of Digital/Analog blocks, the main modules are
+   – RX/TX Mux/Demux
+   – RX BB Processing
+   – TX BB Processing and Filtering
+   – TX Clipping and Distortion
+   – ADC/DAC Converters
+• Critical part is the design of TX Clipping and Distortion
+   – 100 fast 10-bit mulitipliers, RAM, ROM and FIR filtering
+
+
+
+        ©2020 Prof. William Fornaciari - Politecnico di Milano
+        The Application
+
+
+• Clock
+  – The design has four clock signals (base freq 3.84MHz),
+    plus a 100KHz driving quasi-static ADCs
+
+       D UA L ADC           TX BB
+    1 0bit / 38. 4M Hz       filter                                                 D UA L ADC
+                                                   clip pin g       distortion   1 0bit / 38. 4M Hz
+                             TX BB
+                          p roc essing
+
+                                                                                    D UA L ADC
+          m ux                                                                   1 0bit / 38. 4M Hz
+         d em ux                                              RX BB
+                                                           p roc essing
+                                                                                    D UA L ADC
+                                                                                 1 0bit / 38. 4M Hz
+
+
+
+                                                          q uasi-static             D UA L DAC
+        d eco de                                           AD C/DA C             1 4bit/15 3. 6M Hz
+
+
+
+
+            ©2020 Prof. William Fornaciari - Politecnico di Milano
+         The Application
+
+
+
+• Interface with analog signals
+   – 4 dual ADC @ 38.4 MSPs, 10 bit, 1 dual 14-bit DAC
+     @153.6 MSps
+• Algorithmic portion
+   – Use of a number of RAMs, ROMs and FIFOs
+      • RAM 4 banks 61,440 bit                            7.5 Kbyte
+      • ROM 6 banks 1,290,752 bit                         179.5 Kbyte
+      • FIFO 1 bank 16 x 1,024 bit                        2.5 Kbyte
+
+
+
+
+          ©2020 Prof. William Fornaciari - Politecnico di Milano
+       Current implementation
+
+
+• Use of 6 COTS for AD/DA conversion and 2 Virtex
+  FPGA hardware
+   – one for filtering, clipping and distortion on the TX channel
+   – one for RX channel and mux/demux
+
+        D UA L ADC                                                             D UA L DAC
+     1 0bit / 38. 4M Hz                                                     1 4bit / 38. 4M Hz
+
+
+        D UA L ADC                                        Xilinx VII-P ro
+     1 0bit / 38. 4M Hz                                         #2
+
+                             Xilinx VII-P ro
+        D UA L ADC                 #1
+     1 0bit / 38. 4M Hz
+
+
+        D UA L ADC
+     1 0bit / 38. 4M Hz
+                                                           q uasi-static
+                                                            AD C/DA C
+
+
+
+
+            ©2020 Prof. William Fornaciari - Politecnico di Milano
+      Current Implementation
+
+
+• Overall complexity 4 Millions of Xilinx eq. gates
+  (including RAMs and ROM)
+• Use of 103 18x18 bit embedded multipliers, cost approx
+  of 200K-300K ASIC gates
+• Summary
+   – Digital components:
+     2.5 millions of ASIC gates
+   – Analog components:
+     1 dual 14-bit DAC
+     4 dual 10-bit ADC
+     2 quasi static DAC/ADC
+
+
+
+
+       ©2020 Prof. William Fornaciari - Politecnico di Milano
+         Problem: High Pinout
+
+
+• Drawbacks
+   – High area occupation on the PCB, with EMC and noise
+     immunity problems
+   – High complexity of PCB routing, requiring several metal
+     layers
+   – Mounting problems during PCB manufacturing
+• Possible solution
+   – Integrate all logic and A/D interfaces on a SINGLE CHIP
+
+
+
+
+           ©2020 Prof. William Fornaciari - Politecnico di Milano
+     Proposed implementation
+
+
+• The single chip encompasses also clock manager,
+  JTAG and probes)
+
+
+
+
+       ©2020 Prof. William Fornaciari - Politecnico di Milano
+     Implementation: details omitted
+
+
+• Clock
+  – Alternatives to generate clock frequencies and constraints
+    on SNR
+  – Spurious frequencies vs PLL organization
+• JTAG and probes
+  – In addition of a standard JTAG interface, 20 multiplexed
+    probe signals
+  – JTAG controller can either be designed from scratch or
+    imported from standard cell libraries, when available in the
+    foundry design kit
+
+
+
+
+       ©2020 Prof. William Fornaciari - Politecnico di Milano
+          Implementation
+
+
+
+• A/D converters - techniques:
+   – Delta-sigma
+   – Flash
+   – Folding/Interpolation/
+     Subranging
+   – Pipeline
+   – Successive Approximation
+   – Integrating
+• Note that
+   – FLASH suffer of poor SNR
+   – Delta-sigma high resolution but low speed
+   – High speed is paid in terms of power consumption (the picture
+     refers to a constant power consumption)
+
+
+            ©2020 Prof. William Fornaciari - Politecnico di Milano
+     Implementation
+
+
+• High-speed ADCs
+  – 10-bit resolution and 38.4 MHz clock. Typically pipeline
+    implementation
+  – Drawback : latency between the input signal and the
+    output digital signal. In the present design, it is not
+    relevant since it can be compensated in the digital section
+• Low-speed ADCs
+  – 5-channel 8-bit quasi-static converters
+  – Successive approximation or a delta-sigma ADC
+    converter
+
+
+
+
+       ©2020 Prof. William Fornaciari - Politecnico di Milano
+     Implementation
+
+
+• High-speed DACs
+  – Require 14-bit resolution and 153.6-MHz clock.
+• Low-speed DACs
+  – 6-channel 12-bit quasi-static converters.
+  – No special requirements have been specified, any low
+    power realization is fine
+
+
+
+
+      ©2020 Prof. William Fornaciari - Politecnico di Milano
+                 Pinout and packaging
+
+•   At least, a pair of power supp./ground pins should be used every 8 I/O digital pins
+•   The analog part of the design includes 8 high-speed A/D converters and 2 high-
+    speed D/A
+     – The overall power consumption of the converters is estimated to be about 1 W
+       from a 3.3-V
+     – To reduce the current drained from each analog power supply and to reduce the
+       effect of switching noise, at least 30 analog power/ground pins should be used
+•   The overall number of pins must account for
+     –   104 I/O digital signals, 31 I/O analog signals
+     –   30 digital supply/ground pins, 30 analog supply/ground pins
+     –   4 external clocks for ADCs and DACs
+     –   5 pins for JTAG TAP, 6 pins for 20 multiplexed probe signals for testing
+•   The overall pin count is 210 (estimates)
+     – The design should thus fit on 256 QFP/PGA package.
+     – The positioning of the pins is not currently fixed since a redesign of the PCB
+       hosting the chip will be necessary
+     – In a mixed-signal design, the analog and the digital section have to be properly
+       isolated
+     – The floorplan of the ASIC should avoid crossing of digital interconnections over
+       the analog circuits
+     – Substrate contact rings should be used to improve isolation
+                   ©2020 Prof. William Fornaciari - Politecnico di Milano
+         Main goals of the implementation
+
+•   Integration
+     – The chip must integrate both the analog and the digital portion of the
+        design, possibly independent of the silicon vendor
+     – The project constitutes a test vehicle for the realization of a family of
+        components
+•   Technology
+     – The design must fit on a single digital/analog chip manufactured in
+        0.25µm or 0.18µm, depending on area and performance estimates
+     – Technologies below 0.18µm have not been considered for cost
+        reasons
+     – A dual gate oxide process which provides a supply voltage of 3.3V is
+        mandatory for the implementation of the A/D, D/A converters
+•   Cost
+     – The cost of the single-chip device (NRE, samples, masks and volume
+        production) must be convenient with respect to the current
+        implementation
+
+
+
+
+           ©2020 Prof. William Fornaciari - Politecnico di Milano
+                        Design Flow
+
+•   Front-end                                                                                                         fu n ctio n al           Mo d elsim
+                                                                                            R T VHDL
+     –   Is the set of processes that transform the RT-                                                               sim u latio n        (Men to r G rap h ics)
+         VHDL model first into a gate-level technology-                                lo g ic
+         independent netlist (logic synthesis) and then                           syn th esis
+         into a technology-dependent netlist (mapping                                 Desig n Co m p iler
+         and library binding)                                                           (Syn o p sys)
+
+     –   The output of the front-end portion of the flow is    syn th esys
+         thus a netlist with technology-dependent                lib rary
+                                                                                     G ate-Level VHDL
+         instances                                                              (tech n o lo g y in d ep en d en t)
+
+•   Back-end                                                                         m ap p in g
+                                                                               o p tim izatio n
+                                                                                                                                                        sim u latio n
+                                                                                                                                                          lib rary
+     –   Is the set of processes that transform a
+         technological netlist into all the geometrical         d esig n              Desig n Co m p iler
+                                                              co n strain ts            (Syn o p sys)
+         information needed for mask construction                                                                       tim in g
+     –   This phase can be completely outsourced to                                   G ate-Level VHDL
+                                                                                                                      sim u latio n
+                                                                                                                                               Mo d elsim
+         either silicon vendors or design services                                     (tech n o lo g ical)                                (Men to r G rap h ics)
+
+•   Equipements and tools (examples)                                           static tim in g
+                                                                                    an alysis
+     –   Workstations/OS             5K
+     –   Design Compiler             70K                                                  Prim eTim e
+                                                                                          (Syn o p sys)
+     –   Prime Time                  30K                                                                                                                  Fro n t-en d
+
+     –   VHDL Simulator              Available                                                                                                             Back -en d
+
+                                                                d esig n                                                               sim u latio n
+                                                                                        sig n -o ff VHDL
+                                                              co n strain ts                                                             resu lts
+     –   Total cost = 110K$ (just to start !)
+
+
+
+
+                           ©2020 Prof. William Fornaciari - Politecnico di Milano
+                       Design activities of the front-end
+
+•   Initial design review
+      – To transfer the necessary knowledge to the designers.
+•   IP cells analysis
+      – Analysis of the characteristics of the analog IP cells (PLLs, ADCs/DACs) against the digital design specifications.
+•   VHDL code analysis
+      – Study the VHDL code of the current implementation, to define coding style rules and to identify the portions of the
+           current VHDL implementation that will need significant redesign
+•   VHDL code modification
+      – Based on the previous analysis, the identified portions of VHDL code will be modified according to the proper set of
+           design rules
+•   Functional simulation
+      – Using the available test-benches and simulation data, single blocks as well as the complete design will be simulated at
+           functional (RT) level and the results compared with the previous implementation
+•   Synthesis & optimization
+      – The renewed code is synthesized and optimized against the given timing constraints. The output of this phase will be
+           not only the synthesized gate-level VHDL but also the synthesis scripts necessary to achieve such a result
+•   Simulation & STA
+      – The resulting netlist is simulated and analyzed in detail to verify its functionality and to check its compliance with timing
+           constraints
+•   Analog/digital mixed simulation
+      – A mixed simulation run of a small portion of the design at the analog/digital interface should also be performed. The
+           main purpose of this phase is to guarantee the correct synchronization between converters and FIFOs
+•   VHDL sign-off
+      – A final design review will be dedicated to discuss all necessary details before VHDL sign-off
+
+•   COST
+     – Project management and design cost ~200k$ (compare this value with tools/equipement cost)
+
+
+                          ©2020 Prof. William Fornaciari - Politecnico di Milano
+       Which silicon technology?
+
+
+• Preliminary analysis
+   – Estimating the area of the resulting device since this
+     parameter influences both costs and possible performance
+     limitations
+   – The overall complexity of the design is approximately around
+     2.5 millions of ASIC gates
+   – Average gate densities for different technologies
+
+  Technology      Gate density                     Core Vdd       Pads Vdd
+  0.25 µm         35 kgates/mm2                    2.5 V          3.3 V
+  0.18 µm         70 kgates /mm2                   1.8 V          3.3 V
+  0.13 µm         150 kgates /mm2                  1.2 V          3.3 V
+
+
+
+
+         ©2020 Prof. William Fornaciari - Politecnico di Milano
+       Estimated size
+
+
+• Digital core
+   – Table below reports the estimated area of the digital core, the
+     analog IPs and the pads for all three technologies
+   – 0.13 not considered in first implementation due to high cost
+   – 0.18 and 0.25 are feasible in terms of performance and are
+     affordable in terms of NRE and manufacturing costs
+
+
+Technology   Digital               Analog & ESD          RAM/ROM   Die size
+0.25 µm      80 mm2                25 mm2                4 mm2     ~ 11x10 mm2
+0.18 µm      36 mm2                18 mm2                3 mm2     ~ 8x7 mm2
+0.13 µm      25 mm2                15 mm2                2 mm2     ~ 7x6 mm2
+
+
+
+
+         ©2020 Prof. William Fornaciari - Politecnico di Milano
+Other Steps/Cost to achieve a running prototype
+•   FE-NRE
+     –   NRE cost for the front-end design flow. This phase goes from the RT-level VHDL to the technology
+         netlist and design constraints
+•   BE-NRE
+     –   NRE cost for the back-end design flow. This phase consists in floorplanning, place & route,
+         parasitic extraction and post-layout simulation and leads to design tape-out. The players involved
+         are design services either provided by the foundry itself or third-party design centers.
+•   ATPG & TEST
+     –   NRE costs for test pattern generation and testing. This phase is actually part of the back-end flow
+         but it has been considered separately since some foundries charge extra costs.
+•   MASKS
+     –   Cost for mask production. This phase consists in producing the masks for chip manufacturing and
+         is performed by the silicon foundry. Two types of masks are available from foundries:
+           •   Single-Project Wafer (SPW). The masks are built both for prototype production and for volume
+               production. The advantage is that there is no need of new masks for volume production and that
+               SPW manufacturing runs are scheduled more closely (approximately once a week). The main
+               disadvantage lays in much higher costs.
+           •   Multi-Project Wafer (MPW). The masks are built only for prototype production and have limited cost.
+               The disadvantage is that samples are manufactured on MPW that have looser schedules (once a
+               month or less) and a new set of masks must be built for volume production at much higher costs.
+•   MANUFACTURING
+     –   Cost for silicon manufacturing. The only player involved in this phase is the silicon foundry. There
+         are two different figures to consider: the cost for prototype samples and the costs for volume
+         production
+     –   While for the former case costs are available and often already accounted for in the MPW mask
+         cost, in the latter case foundries require a stronger commitment of the customer to prepare
+         commercial offers. It is worth noting that in this last case, the manufacturing cost itself is generally
+         not critical with respect to SPW mask cost. Volume production costs are not reported in the
+         following
+
+                    ©2020 Prof. William Fornaciari - Politecnico di Milano
+                Foundry selection
+
+
+      • Multiple candidates can be contacted, detailed analysis can be
+        done max on 2-3 possible suppliers
+      • FOUNDRY A
+         – Availability of a rich cell library, including some A/D
+           converters, for no additional cost
+Manufacturing   Technology         Time            Cost      Notes
+                  0.25µm             5w        30,000 $      20-30 samples
+MPW
+                  0.18µm             8w        50,000 $      20-30 samples
+                  0.25µm           2-3 w      200,000 $      100 samples
+SPW
+                  0.18µm           2-3 w      300,000 $      100 samples
+
+
+  Phase            Player          Time            Cost    Notes
+  BE-NRE             F-A           8-9 w      100,000 $
+  IP                 F-A                            0$     Comprised in the cell library
+  ATPG & TEST       F-A,           2-3 w            0$
+                  Designers                                Comprised in the BE-NRE cost
+  Total                                      100,000 $
+
+
+
+                 ©2020 Prof. William Fornaciari - Politecnico di Milano
+          Foundry selection
+
+
+ • Foundry – B
+    – Availability of IP cells is a critical factor
+Phase                 Player           Time            Cost      Notes
+BE-NRE                  F-B           8-10 w      225,000 $
+IP                      F-B                        40,000 $      Estimated cost for analog components
+ATPG & TEST             F-B            2-3 w      250,000 $
+Total                                            515,000 $
+
+
+Manufacturing     Technology          Time             Cost     Notes
+                    0.25µm          10-12 w       150,000 $     25,000 $/slot (5x5 mm), 6 slots, 30
+                                                                samples
+MPW                  0.18µm         10-12 w       200,000 $     50,000 $/slot (5x5 mm), 4 slots, 30
+                                                                samples
+                     0.13µm         10-12 w       160,000 $     80,000 $/slot (5x5 mm), 2 slots, 30
+                                                                samples
+                     0.25µm          16-18w        80,000 $     100 samples
+SPW                  0.18µm          16-18w       300,000 $     100 samples
+                     0.13µm          16-18w            N/A      100 samples
+
+
+
+
+              ©2020 Prof. William Fornaciari - Politecnico di Milano
+                     Proposed design plan
+
+•   Preliminary schedule from the kick-off to prototype to be evaluated in field
+•   Activities and actors
+     – [A] Specification definition
+                • First 6 weeks will be devoted to refine the specifications
+     – [B] Kick-off
+                • During these two weeks, the specifications and system requirements will be
+                  frozen and the plan/scheduling of the overall design will be defined.
+     – [C] Preliminary design
+                • The goal of this half-quarter is to obtain a simulatable overall design. This
+                  includes porting/redesign of Xilinx and other IP blocks and adding all new
+                  requested functionalities
+     – [D] Preliminary synthesis
+                • During this 2-weeks stage a complete synthesis will be carried out, down to
+                  produce a sign-off gate-level simulation. The output includes the netlist, the
+                  simulation results, the timing constraints and the synthesis script that will be
+                  passed to the foundry.
+       week 0                       10                    20                30            40       50
+     activity        A        B          C        D   E          F                G   H        L   M
+    Customer
+    Designers
+    Foundry
+                 Refined Analysis
+                         ©2020 Prof. William Fornaciari - Politecnico di Milano
+                     Proposed design plan
+•   [E] Floorplan
+      – One or two weeks of tight interaction will lead to the floorplan of the design to be implemented.
+          This activity requires the cooperation of all actors
+•   [F] Layout-I
+      – The foundry/design service will run a place&route session to obtain more reliable data concerning
+          area and static timings. The output will be a backannotated netlist for accurate timing analysis. An
+          average duration for such activities is 6-8 weeks.
+•   [G] Testing and design improvements (Layout-II)
+      – The entire system functionality will be reconsidered and possibly tuned/fixed according to a new
+          set of simulations based on the data coming from the first synthesis. A new annotated netlist will
+          be produced as well as the generation of the testing vectors (ATPG) and testing. The estimated
+          time for this stage is about 1.5 months.
+•   [H] Joint system simulation
+      – Up to 3 weeks of tight cooperation between the design team and the foundry people are allotted,
+          to solve every possible final problem before to commit the final sign-off enabling the (expensive)
+          generation of the masks.
+•   [L] Mask generation & manufacturing
+      – Such activity is under the foundry responsibility and depends on the chosen technology as
+          reported above.
+•   [M] On board test
+      – Carried out by the customer using the board they will design to host the new chip.
+
+
+            week 0                      10                 20              30              40             50
+          activity       A        B          C     D   E        F               G     H         L        M
+       Customer
+       Designers
+       Foundry
+                     Refined Analysis
+
+
+                       ©2020 Prof. William Fornaciari - Politecnico di Milano
+              Selection of candidate foundries
+
+     •   Impact of some crucial factors
+          – Number, heterogeneity and localization of the potential
+            partners. A limited number of partners will simplify the
+            management and reduce the possible risks
+          – Technologies: at present only 0.18µm and 0.25µm have been
+            considered. All the selected design services and foundries
+            provide flows/manufacturing of such technologies
+          – Location of the design center and the foundry: closer facilities
+            simplifies design review and enables a tighter cooperation not
+            only for critical situations but, in general for a better design
+            implementation
+
+                                   Timing         Cost           Risk      Management
+Number of project actors        Very Negative Very Negative Very Negative Very Negative
+Technology (0.18/0.25 µm)          Neutral       Similar       Neutral        Similar
+Foundry not local                 Negative       Neutral    Neutr/Negative   Negative
+Design not local                Very Negative   Negative       Neutral     Very Negative
+
+
+                ©2020 Prof. William Fornaciari - Politecnico di Milano
+Cost analysis: COTS + FPGA (current)
+
+   •     Cost of FPGAs and COTS decreases
+
+
+                   Y1         Y2          Y3      Y4        Y5       Average 3Y         Average 5Y
+  FPGA            85 $       78 $        70 $    63 $      57 $          78 $               71 $
+  COTS            58 $       55 $        52 $    49 $      46 $          55 $               52 $
+
+   •     Overall cost for 3Ys and 5 Ys
+
+                        FPGA                    COTS                PCB                  Total
+  3 Year               2 x 78 $                 55 $                36 $                 247 $
+  5 Year               2 x 71 $                 52 $                36 $                 230 $
+
+   •     Above costs as conservatives
+          – Obtained for 10.000 boards, discount can be envisioned for more, event this value is limited (COTS
+              and FPGA are mature technologies)
+   •     PCB complexity
+          – The high number of components and the high number of pins require the usage of a 10-layer PCB
+              and a considerable amount of area on the PCB itself
+          – Changing to a single-chip implementation would reduce the number of necessary layers from 10 to
+              6 and would significantly reduce the area of the PCB design with an estimated saving of
+              approximately 12 $
+
+
+
+
+                   ©2020 Prof. William Fornaciari - Politecnico di Milano
+    Cost analysis: Single CHIP implementation
+
+•    Single-chip implementation will
+     replace all the discrete analog
+     and digital components with a
+     single device                                                          Foundry - A    Foundry - B
+                                                            Tools             109,000 $      109,000 $
+•    This choice greatly simplifies the                Front-End              200,000 $      200,000 $
+     PCB design and complexity                          Back-end              100,000 $      225,000 $
+     eliminating the additional 36 $                      IP cells                  0$        40,000 $
+     cost considered in the previous                 ATPG & Test                    0$       250,000 $
+     section                                          MPW Masks                50,000 $      300,000 $
+                                                         Samples                    0$             0$
+•    Foundry-A already includes                       SPW Masks               300,000 $            0$
+     (50,000 $) a sample run of                             Total            759,000 $    1,124,000 $
+     approximately 30-50 pieces, that
+     is a significant advantage in terms
+     system verification and of risk
+     management
+
+
+
+
+                   ©2020 Prof. William Fornaciari - Politecnico di Milano
+            Cost-Volume analysis
+
+•     Assumption: range of cost for silicon and testing 30 - 60$/cm2
+•     Data only for 0.18µm, where die area is 60 cm2
+•     Silicon foundry A (upper) is always better than foundry – B (bottom)
+
+                              Total (M$)                                    1 pc ($)
+                     2
+     Pieces 30$/cm       40$/cm2 50$/cm2     60$/cm   2
+                                                          30$/cm   2
+                                                                       40$/cm2 50$/cm2 60$/cm2
+     30000    1.30         1.48       1.66     1.84         43.3         49.3      55.3  61.3
+     60000    1.84         2.20       2.56     2.92         30.7         36.7      42.7  48.7
+     90000    2.38         2.92       3.46     4.00         26.4         32.4      38.4  44.4
+    120000    2.92         3.64       4.36     5.08         24.3         30.3      36.3  42.3
+    150000    3.46         4.36       5.26     6.16         23.1         29.1      35.1  41.1
+    180000    4.00         5.08       6.16     7.24         22.2         28.2      34.2  40.2
+    210000    4.54         5.80       7.06     8.32         21.6         27.6      33.6  39.6
+    240000    5.08         6.52       7.96     9.40         21.2         27.2      33.2  39.2
+
+
+
+
+              ©2020 Prof. William Fornaciari - Politecnico di Milano
+                  Foundry A - Breakeven
+
+• Overall cost of ASIC (foundry A): Best and worst case compared to
+  COTS+FPGA (conservative scenario, 230$) for different volumes
+• Single-chip becomes convenient over the current implementation
+  when the # of systems is ~ 4,000
+• Cost of silicon does not significantly change the break-even point
+                 1.8
+                                  FPGA & COTS
+                 1.6              ASIC min
+                                  ASIC max
+                 1.4
+
+                 1.2
+     Cost (M$)
+
+
+
+
+                 1.0
+
+                 0.8
+
+                 0.6
+
+                 0.4
+
+                 0.2
+
+                 0.0
+                       0          1000      2000      3000       4000      5000     6000   7000   8000
+
+                                                              # Systems
+
+
+                           ©2020 Prof. William Fornaciari - Politecnico di Milano
+                          ASIC vs COTS+FPGA savings
+
+
+• Once the break-even has been achieved, the single-
+  chip solution guarantees significant savings
+               20.0
+
+               18.0
+                               3 Years
+                               5 Years
+               16.0
+
+               14.0
+
+               12.0
+ Saving (M$)
+
+
+
+
+               10.0
+
+                8.0
+
+                6.0
+
+                4.0
+
+                2.0
+
+                0.0
+                      0            5000          10000         15000           20000   25000   30000
+
+                                                            # Systems / Year
+
+
+
+                           ©2020 Prof. William Fornaciari - Politecnico di Milano
+       Summary of Results
+
+
+• Design: Customer and Design Center will cooperate until design
+  specification is frozen
+• Tools: Customer should acquire the necessary EDA tools
+• Front-end: Design Center is in charge of design and project
+  management
+• Back-end: Foundry A under the supervision of Design Center
+• Verification: Customers and Design Center designers will jointly
+  verify the design produced by Foundry A.
+• Samples: Foundry A. Design Center and project manager are
+  responsible for the interaction
+• Volume: Customer will directly contract all the economic issues
+  related to volume production directly with Foundry A
+
+
+
+         ©2020 Prof. William Fornaciari - Politecnico di Milano
+             Summary of results
+
+•   The cost of the integrated solution is much more convenient than that of the present
+    implementation, even in the worst case of highest NRE costs and lowest volumes
+•   The fraction of the cost of one chip related to NRE and samples is, on average, 35%
+    while that related to silicon manufacturing is 65%
+•   The NRE fraction becomes as low as 15% for foundry A with a production of
+    250,000 chips. Such estimates conservatively assume that the cost of silicon
+    manufacturing remains unchanged in the next 5 year, and no pressure on the silicon
+    supplier is applied
+•   No dependence on FPGAs and COTSs component vendors and increased control
+    over manufacturing technology advances
+•   Availability of local and worldwide support for design and manufacturing activities
+•   The proposed solution /foundry A) includes the realization of a set of ~30/50
+    samples at a very limited cost (approximately 50,000 $). This allows a finer on-field
+    testing of the device before to commit volume production
+•   Improved performance and more controllable scalability with respect to technology
+    changes. This might potentially allow Customer to create a chip-set and/or a product
+    family to sell as a component to new customers
+•   Improved reliability of the complete system due to the reduced complexity of the
+    PCB (40% smaller, 10 to 6 layers) and the reduced # of components (~15 to 1)
+•   GO/not GO decision can be taken with the here presented information
+     –   Be aware of the “not invented here” syndrome…
+
+
+                ©2020 Prof. William Fornaciari - Politecnico di Milano
+                   Towards a refined feasibility study
+
+• According to the analysis, ASIC solution has turned out to be
+  technically feasible and economically convenient with respect to the
+  current implementation
+• The initial level of commitment of customer, has rendered difficult to
+  access accurate commercial information for design and manufacturing,
+  especially for volume
+• In this phase there is a lack of more detailed data on characteristics of
+  the analog IP cores
+• Not clear the portability of existing VHDL code
+• To reduce risks, a second Refined Feasibility Study is strongly
+  recommended. Such task might run parallel to the first 6/8 weeks
+  foreseen for specification freezing and design kick-off
+          week 0                    10                 20               30           40       50
+        activity     A        B          C     D   E        F                G   H        L   M
+        Customer
+        Designers
+       Foundry
+                 Refined Analysis
+
+                     ©2020 Prof. William Fornaciari - Politecnico di Milano
+             Some issues for the refined analysis
+•   Legal issues
+•   VHDL analysis
+     –   Customer will disclose to the Design Center team a significant part of the VHDL code currently available
+         to allow for an accurate analysis. This should result in a more accurate assessment of the design time
+         and a more precise estimate of the complexity (area, timing criticalities, power consumption, etc) of the
+         final device
+•   Fast design
+     –   A fast run of synthesis, optimization, floor-planning and place & route on sample technologies (Xilinx,
+         sample ASIC 0.18µm technology) might be necessary to better estimate the complexity of the design,
+         synthesis and simulation run-times
+•   IP Analysis
+     –   A more accurate analysis of the available IP cells and their characteristics will lead to definite design
+         decisions with respect to integration of certain components on the single-chip
+•   ASIC costs
+     –   Precise cost and cost trends evaluations concerning NRE and especially volume production will be
+         provided by Des. Center . This includes masks, silicon, diffusion, testing and packaging cost
+•   FPGA&COTS costs
+     –   An accurate cost analysis of the current implementation will be performed by design center in order to
+         evaluate the convenience of the ASIC solution over the current one. Such costs include FPGA, AD/DA
+         converters, PLL and PCB manufacturing and mounting
+•   Design Plan
+     –   According to the refined estimates, a detailed design plan will be prepared by Des. Center. Such a plan
+         will clearly indicate time frames, foreseen efforts on both DC end Customer sides, deadlines and costs.
+         The detailed plan and the overall cost estimates will support the final discussion
+•   At the end of the 6-8 weeks analysis, a second report summarizing all the details that will be acquired
+    and providing more accurate technological and economical estimates
+     –   Risk reduction, most relevant costs are still undo-able
+
+                     ©2020 Prof. William Fornaciari - Politecnico di Milano
+       Concluding Remarks
+
+• It is important a deep analysis of the system characteristics
+• Take into account all the possible costs of the realization
+• The projects feasibility is depending not only on economic
+  issues
+• Take decision incrementally and smoothly
+• Involve all the stakeholders in the decisions
+• ASIC cost is different from FPGA+COTS?
+• Design cost is not only composed of personnel
+• It is necessary a project manager
+• The costs evolve over the time
+• Improve is mandatory, not a choice
+
+
+
+
+         ©2020 Prof. William Fornaciari - Politecnico di Milano
+

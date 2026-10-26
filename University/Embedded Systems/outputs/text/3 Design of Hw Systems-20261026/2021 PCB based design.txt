@@ -1,0 +1,632 @@
+  Embedded Systems
+
+Achitectures and Design Styles
+ (part 1 – PCB based design)
+
+        Prof. William Fornaciari
+       Politecnico di Milano, DEIB
+       William.fornaciari@polimi.it
+                                      1
+                                       Outline
+• Architectures and approaches to the design
+   – Printed Circuit Board
+       •   Components
+       •   Support
+       •   Mounting
+       •   Design
+   – System-on-Chip
+       • Design
+            – Design for testability
+   – Distributed Embedded Systems
+       • Application fields
+       • Wireless sensor networks
+       • Design
+   – Platforms for prototyping
+       • Types of systems
+       • Design
+
+                                                 2
+Architectures and approaches to
+           the design
+
+
+
+
+                                  3
+           Architecture and design
+• Select the architecture is the most important step
+   – Quality and cost are affected significantly, even the feasibility
+
+   – Phases of the development, in general
+       • Collection of specifications and requirements
+       • Definition of the system architecture (Hw, or Hw/Sw)
+       • Partitioning of Hw, Sw and communication
+       • Implementation of the Hw, Sw and communication sections
+       • Production
+
+
+   – Depending on the type and complexity of the system, different
+     development models can be considered (e.g., waterfall, V-
+     shape, Spiral)
+
+                                                                         4
+          Architecture and design
+• Well known problem to face with
+   – The cost of redesign increases during the development of the
+     product, dramatically
+   – Sometime the choice is driven by the attitude to the risk
+• The intrinsic heterogeneity of the embedded systems
+  and the broad range of constraints, makes hard
+  identifying a «good» architecture
+   – There is no standard methodologies to this purpose, frequently
+     the previous experience is the only valid option
+      • Empirical methods, quantitative evaluation, similarity with other
+        projects, virtual prototyping, …
+
+
+
+                                                                            5
+       Hardware Architectures
+
+– Printed Circuit Boards (PCB)
+
+– System-on-chip (SoC)
+
+– Distributed Embedded Systems
+
+
+
+
+                                 6
+             Printed Circuit Board
+• Components with small form factor assembled on a
+  plastic support
+• New technologies
+   – Flexible electronics
+   – Electronics on paper
+
+
+
+
+                                                     7
+                Flexible electronics
+• Flexible Electronics: generally refers to a class of electronic
+  devices built on conformable or stretchable substrates, usually
+  plastic, but also metal foil, paper and flex glass
+• Flexible Hybrid Electronics (FHE): printed electronics combined
+  with silicon-based integrated (active) circuits on a conformable
+  substrate. Examples of key active components from Si CMOS
+  processes include microcontrollers, digital signal processors, high
+  density memories and RF chips
+
+
+
+
+                Hybrid Electronics                       Flexible Battery
+
+                                                                            8
+                  Flxible electronics
+• Organic Electronics: a field of material science concerning the
+  design, synthesis, characterization, and application of organic small
+  molecules or polymers that show desirable electronic properties
+  such as conductivity. Some freely substitute this term with plastic
+  electronics
+• Plastic Electronics: generally refers to a class of electronic devices
+  built on plastic (polymer) substrates, as opposed to silicon or glass
+• Printed Electronics: functional electronics fabricated by laying
+  conductive lines using one of several printing methods, including:
+  screen, ink jet, gravure, flexography and others. Often confused with
+  printed circuit boards, which also often use printing methods to
+  connect discrete active and passive components
+
+
+
+                                                                       9
+            System-on-chip (SoC)
+• The entire systems integrated in a single chip
+   – Something remains outside mounted in a small PCB
+       • Connectors, antennas, slots for flash memory, …mounted on a
+         small PCB
+   – The design differs from that of the PCB, since the integration
+     scale offer more possibilities to scale up
+       • SoC
+       • MPSoC
+       • MCM and Hybrid microcircuits
+       • NoC
+
+
+
+
+                                                                       10
+   Networked Embedded Systems
+• Interactive systems with wired or wireless connections
+   – Notable example: WSNs
+      • Tiny sensor nodes, with limited computing capabilities and wireless
+        connection
+          – Extreme case: near zero computing
+
+      • Automotive: basically wired connectivity among the native functions
+        of the car. Entertainment could be wireless
+
+      • Domotics: wired+wireless, telemedicine, smart home
+          – Long life of devices, cost of the infrastructure
+
+
+
+
+                                                                          11
+          Architecture and design
+• In any case, note that:
+   – Prototyping/evaluation boards are crucial to develop embedded
+     systems of a certain complexity
+   – Frequently they integrate FPGAs, DSPs, or both and several
+     peripherals.
+      • Fast development of complex and complete applications
+      • Mitigation of the problems related to integration and interfacing;
+        focus of the effort on the application (if the software in bundle is
+        working well …)
+                                        Example (around 50 €):
+                                        Xplained Microchip, CPU AVR
+                                        ATXMEGAA3BU-XPLD
+                                        •Microcontroller ATxmega256A3BU
+                                        •QTouch® button
+                                        •Analog sensors
+                                        •3 mechanical buttons
+                                        •2 LEDs                                12
+                                        •4 Expansion pins
+Printed Circuit Board
+
+
+
+
+                        13
+              Printed Circuit Board
+• PCB-based systems employ off-the-shelf components
+  (COTS), with different types of packages, or tailored for
+  specific application classes
+   – COTS – based design
+       • Term frequently used when the system is largely using COTS
+         mounted on a PCB
+       • Each component is typically associated to basic functionalities
+• Usually, any embedded systems is using -even a small-
+  PCB
+   – Only when the form factor is critical
+     other solutions could be adopted
+
+
+                                                                           14
+            Printed Circuit Board
+• Components
+  – The first step of a PCB-based design is the choice of the COTS
+     • The most common types of components are
+         – Passive
+               » Connectors, socket, dip-switch, buttons, LED, resistors, capacitors, coils,…
+         – Power Supply
+               » Each subsystems must the properly powered, a specific power distribution
+                 must be created
+         – Converters and filters
+               » To interface the «analog» external world, it is necessary to use filters, ADC,
+                 DAC, amplifiers, oscillators and, sometime, power stages
+         – …
+
+
+
+
+                                                                                            15
+          Printed Circuit Board
+• Components
+       – Electro-optical components
+           » To interface electro-magnetic signals from optical signals, e.g. opto-
+             isolators, foto-diodes, laser diodes, infrared sensors
+       – RF components
+           » Antennas, amplifiers, mod/demod stages
+       – Display
+           » 7-digit display, LCD display, alphanumeric display, LCD B/W or color, touch-
+             screen, …
+       – Sensors
+           » Conversion in Voltage/Current (or resistance) of physical parameters
+       – Digital components
+           » In most of the ESs, the data processing is digital (Hw or Sw)
+           » Wide range of components, from dedicated ICs, programmable logic,
+             microprocessors, microcontrollers, etc
+
+
+
+
+                                                                                      16
+             Printed Circuit Board
+• Components and packaging
+  – Frequently, there are alternative packages for a component, with
+    different levels of protections, size and cost
+      • Main characteristics of a package
+          – Mounting
+               » Through-Hole (TH), Surface Mounted (SMD)
+               » Mixed solutions are possible
+          – Positioning of the pins
+                 In-Line: SIP, DIP, PDIP; Small-Outline: SOJ, SOP, TSOP
+                 Quad Surface Mount (CC, QFP); Grid Array (PGA, BGA)
+          – Material of the package
+               » Most of them are plastic, or ceramic, sometime metal (at a cost!!!)
+
+
+
+
+                                                                                       17
+    Why through-hole is still there?
+• Through-hole connection to the PCB is mechanically stronger than
+  most surface-mount connections
+• Through-hole components are best used for high reliability
+   – While surface-mount devices (SMDs) are secured only by solder on the
+     surface of the board, through-hole component leads run through the
+     board, allowing the components to withstand more environmental stress
+   – Through-hole is commonly used in military, automobile, and aerospace
+     products that may experience extreme accelerations, collisions, or high
+     temperatures
+• Manual prototype assembly or component-level repair is more
+  difficult for SMDs. SMDs cannot be used directly with breadboards
+• SMD solder connections may be damaged by potting compounds
+  going through thermal cycling
+• SMDs are unsuitable for large, high power, or high voltage parts,
+  such as in power circuitry
+                                                                          18
+            Printed Circuit Board
+• Components
+  – Depending on the positioning of the components and of the
+    mounting techniques and number of pin, there are packages with
+    different characteristics
+     • Main parameters to be considered
+         – Effectiveness
+             » Ratio between the area of the die and that of the package
+         – Pin-count
+             » Number of pins (8-2000)
+         – Pitch
+             » Space between pins (2.5-0.6 mm)
+         – Thermal conductivity (resistance)
+             » Capability to transfer the generated heath from the die to the package
+               (°C/W)
+
+
+
+                                                                                        19
+              Printed Circuit Board
+• Physical support
+   – Consist of three main components
+      • Conductor
+      • Insulator
+      • Glue (still insulator)
+
+
+
+
+                                        20
+            Printed Circuit Board
+• Support
+  – Conductive layer
+     • Copper
+     • Use for wires and interconnection, ground planes, contact pads
+       where to weld the components
+     • In multi-layer boards, typically 4-8 layers for supply/ground and 6-10
+       for wires
+
+
+
+
+                                                                           21
+            Printed Circuit Board
+• Support
+  – Insulator
+     • Double goal
+         – to prevent electrical short circuits among wires
+         – to provide mechanical support for mounting of the components
+     • Most used material: Fiberglass Epoxy Resins, FR-2 and FR-4
+     • In some cases, it can be used Kevlar or Kapton to realize flexible
+       supports
+
+
+
+
+                                                                            22
+            Printed Circuit Board
+• Support
+  – Adhesive (glue)
+     • Dielectric layers containing the wirings, are joined using
+       adhesive materials (fiberglass impregnated of epoxy resin)
+       called pre-peg
+         – Pre-preg layers, at room temperature, are not adhesive solid
+           foils. At high temperature and pressure, they become more fluid
+           and adhesive, while maintaining the property to be insulators
+         – Going back to room temperature, at normal pressure, the epoxy
+           resin become solid again, with the desired mechanical,
+           chemical and electrical properties
+
+
+
+
+                                                                        23
+             Printed Circuit Board
+• A board is a stack of layers of insulator, where their
+  faces host the wires, separated by layers of pre-peg.
+• The industrial process to realize a PCB is quite complex
+  and encompasses a sequence of phases
+• The starting point is a file (Gerber, Excellon, ecc…) that
+  is the output of the design using a CAD program
+• Three versions of Gerber formats are available:
+   – Gerber X2 - the newest Gerber format with stackup data and
+     attributes contained
+   – RS-274-X - an expanded version of Gerber format and it has
+     been widely applied
+   – RS-274-D - the oldest version of Gerber format which is being
+     gradually replaced by RS-274-X                                24
+                                Footprints
+• Design libraries are available for most parts
+• New footprints can be added manually
+• Often footprints can be downloaded from the part vendor or from
+  Topline (http://www.toplinedummy.com)
+• There are IPC design guidelines (IPC-SM-782 at http://www.ipc.org)
+  and Jedec component definitions (http://www.jedec.org)
+• In prototypes, you’re most concerned with fitting the part on the
+  board properly, but in real products we consider joint geometry for
+  manufacturing yield and product reliability
+•   (footprint = pad dimensions and land patterns)
+
+
+
+
+                                                                        25
+                            Gerber
+• Gerber format file describes design requirement of each
+  image of a circuit board and it can be applied for both
+  bare board fabrication and PCB assembly
+   – When it comes to bare board fabrication, Gerber format is
+     called for by both standard photoplotters and other
+     manufacturing equipment desiring image data like legend
+     printers, direct imagers or AOI (Automated/Automatic Optical
+     Inspection) equipment etc. put it simply, Gerber format files have
+     to be depended from beginning to the end of PCB fabrication
+     process
+   – When it comes to PCB assembly, a stencil layer is included in
+     Gerber format and component locations are regulated as well,
+     which will be regarded as significant reference data for SMT
+     (Surface Mount Technology) assembly, thru-hole assembly and
+     mix of them                                                      26
+Information to provide when ordering
+                PCBs
+1. Quantity and lead time
+2. X-Y dimensions/boards per panel, number of sides with components
+3. Board material, thickness (4 layer boards usually 0.062”) and tolerances
+4. Layer count and copper weight for layers:
+   -½ oz or 1oz copper on outer layers (less copper means shorter etch times)
+   - 1 oz copper on inner layers (carry more current for ground/power planes)
+5. Metallization (SnPb/HASL, organic, Cu-Ni-Au, immersion Sn or Ag or Au)
+6. Minimum line and space width (< 0.008” costs more)
+7. Hole count, min hole dim and finish (holes < 0.015” cost more)
+8. Surface mount pad count and minimum pad pitch
+9. Silkscreen and solder mask (usually green LPI)
+10.Electrical testing requirements (need netlist for electrical test)
+11.Gerber data (always create a README file)
+
+                                                                                27
+              Printed Circuit Board
+• Steps to realize a PCB
+   – Realization of the dielectric supports
+   – Realization of the wires
+       • It is used a foto-sensitive resin (photoresist) that, when exposed to
+         the light, become resistant to acids. In such a way, the not protected
+         areas could be removed, exposing and creating the wires
+   – Assembly of layers
+       • The payers created by means of a photolithographic process and
+         stacked and alternated to pre-peg foils. A heated press finalizes this
+         step
+   – Drilling (via)
+   – Fabrication of the external layers
+   – Finishing
+
+                                                                             28
+Printed Circuit Board
+
+
+
+
+                        29
+            Printed Circuit Board
+• Final result
+
+
+
+
+                                    30
+              Printed Circuit Board
+• After the realization of the board it is necessary an
+  electrical testing (bare-board testing) to verify if the
+  contact points ad connected or isolated
+   – Simplest way: check the resistance among a pair of points
+       • bed-of-nails
+       • flying-probe
+       • X-Ray inspection
+           – Image recognition
+
+
+• Board-testing is a slow, costly and crucial step
+   – Frequently part of the (non functional) design is devoted to
+     support debug and testing
+
+
+                                                                    31
+             Printed Circuit Board
+• Mounting
+  – For small boards and limited volumes (e.g., prototypes), the
+    mounting is carried out manually
+  – For volume and/or high complexity, specific equipment is used
+     • Usually who develop PCBs is only in charge of the design, the
+       fabrication of the board and the mounting is outsourced
+         – Manual positioning is critical in terms of accuracy
+              » For packages like SIP or DIP, the pitch allows a manual welding.
+              » For QFP, PGA or BGA, manual operation is impossible
+
+
+
+
+                                                                                   32
+                     Assembly
+Surface mount assembly process steps
+• Solder paste printing or dispensing
+• Component placement
+• Reflow
+• Inspection
+• Rework/backload
+• Cleaning
+
+
+
+                                        33
+               Paste and printing
+• Solder paste has tiny metal spheres of the alloy mixed
+  with flux, solvents, and thixotropic materials
+• Methods of applying solder paste:
+   – Stencil printing
+   – Syringe dispensing
+• Most influential step affecting yield
+
+
+
+
+                                                           34
+                         Reflow
+• Once parts have
+  been placed on the
+  solder paste bricks,
+  the entire board is
+  placed in an oven
+  and taken through a
+  temperature profile
+   – Linear oven
+   – Multi-stage oven
+
+
+
+
+                                  35
+           Other steps after reflow
+• Inspection/Test
+   – Look for wrong/misplaced components and poor solder joints
+• Rework/Backload
+   – Fix problems and add parts that can’t survive the high
+     temperature of the reflow oven
+• Cleaning
+   – Wash to remove flux residues
+
+
+
+
+                                                                  36
+             Do it by yourself
+     (large components/large pitch)
+• Dispense (usually SnPb solder paste)
+  – Use a robust paste with a wide process window
+     – Alpha WS609(if you can clean the board or don’t care about long term
+       reliability)
+     – Kester R244 if you can’t clean
+
+• Hand place components with tweezers
+  – don’t let paste dry out
+  – don’t push down too hard
+  – always use ESD protection
+• Hot plate (or hot air solder system)
+  – only needs to be molten (~200C) for 60-90s
+• Clean, if necessary
+                                                                              37
+            Printed Circuit Board
+• Result after the mounting
+
+
+
+
+                                    38
+              Advantages of SMT
+•   smaller parts
+•   denser layout
+•   cheaper pcbs (no holes to drill)
+•   improved shock and vibration characteristics
+•   improved frequency response
+•   easier to shield from   EMI / RFI
+•   easier to automate manufacturing
+
+
+
+
+                                                   39
+           Disadvantages of SMT
+• more heat generated
+• small clearance makes cleaning difficult
+• visual inspection difficult
+• good joint formation important for mechanical reliability
+  of assembly
+• harder to hand assemble
+• greater number of different materials to match CTE’s
+
+
+
+
+                                                              40
+              Printed Circuit Board
+• PCB design is affected by the typical problems of the
+  design of complex and heterogeneous systems
+   – A board can integrate a processor, with some software to be
+     developed
+   – It is important to organized the groups in order to work in parallel
+     till the final phases of integration and system verification
+   – An important step is the partitioning of the functionalities not only
+     in terms of hw and sw, but also w.r.t. respect to the single
+     devices
+       • Precise identification of the input and output signals of each
+         components and mapping of the logical signals onto the physical
+         pins of the chip (pinout)
+
+
+
+                                                                           41
+              Printed Circuit Board
+• PCB design criteria
+   – The partitioning is not only driven by the functionalities
+       • Number of signals necessary to connect two different chips
+           – The number of pins leads to complex boards, rising the cost
+       • Bandwidth of the signals
+           – When operating at high frequency it is better (if possible) to keep the
+             sections that need to communicate on a single chip
+       • Delays of signals
+           – Length and width of wires are characterized by time constants much
+             higher than those of signals flowing internally to the chip
+   – After identifying the system partitions and the pin-out, the
+     designers and the board developers can work in parallel
+
+
+
+
+                                                                                       42
+             Printed Circuit Board
+• The problem of testing
+   – Boundary scan testing
+      • Methodology that uses a scan chain of cells (Flip-Flops) and
+        multiplexers, that encompasses all the pins of all (or part of) the
+        devices mounted on a board
+          – Normal operation. The registers of the scan chain are connected to the
+            actual I/O of the systems
+          – Test mode. The registers are connected to realize a shift register (scan
+            chain), that allows to carry the desired logic vale on a specific pin or,
+            dually, to read a logic value and to expose it externally
+
+          – The same approach is used at the level of logic blocks, for the testing
+            of the SoC
+
+
+
+
+                                                                                      43
+            Printed Circuit Board
+• Boundary scan testing at board level
+
+
+
+
+                                         44
+

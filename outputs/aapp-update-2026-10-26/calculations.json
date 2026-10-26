@@ -1,0 +1,9 @@
+{
+  "selection": "Partition/rank trace, exact odd/even sums through n=1000, discard threshold through n=10000 passed.",
+  "primality_and_RSA": "Fermat/root examples, checked-power versus standard strong tests for every base of odd n<300, quarter bound, both RSA instances on every message, and error budgets passed.",
+  "treaps": "Successful/unsuccessful path formulas verified over all priority orders through n=7; actual insertion rotations match exact expectation for every rank at n=7.",
+  "LCS": "Both small tables, all 56 cells of the lecture table, and exact all-mismatch call counts through 10x10 passed.",
+  "BDD": "All 16 assignments of the supplied ITE example, complement identities, composition/reduction example, and 3-versus-5-node ordering example passed.",
+  "amortized": "Exact copy/write and allocation-inclusive costs, both potentials, first-operation exceptions, and telescoping balances verified through 10000 appends.",
+  "skip_list": "64/8=8 expected level-4 keys, union bound 64/4096=1/64, and geometric expected height 2 checked analytically in note."
+}

@@ -1,0 +1,1049 @@
+    PCB Design through Altium Designer & Eagle
+William Fornaciari
+08/2018
+PCB Design Workflow
+                                                                             Project
+                                                                          requirements
+ Project requiements: definition of the characteristics of the
+  project and of the board (dimensions, number of layers...).
+                                                                           Design PCB
+ Design PCB schematic: design your PCB schematic                          schematic
+ Place and Route: placement of components and tracking of
+  interconnections.                                                      Place and Route
+ Layout: complete geometric / mechanical description of the
+  board.
+                                                                             Layout
+ 3D PCB: rendering and viewing PCB board in 3D.
+ Gerber/Excellon: describes the geometry and characteristics of
+  copper interconnections for each board layer, while Drill File (in      Design Rule
+                                                                          Check (DRC)
+  format Excellon) describes all the characteristics of the Vias to be
+  drilled on the board. These files are supplied to PCB
+                                                                             3D PCB
+  manufacturer.
+ Fabrication /Assembly: Gerber and Excellon files are supplied to
+  the PCB house that deals with the manufacture and assembly of          Gerber/Excellon
+  the PCB board.
+                                                                         Fabrication and
+                                                                            Assembly
+
+
+
+
+                                                                                           2
+Altium Designer PCB Design
+ Altium Designer is one of the most popular of the high end PCB design software packages
+  on the market today. It is developed and marketed by Altium Limited. Including a
+  schematic, PCB module, and an auto-router and differential pair routing features, it
+  supports track length tuning and 3D modeling.
+
+ It includes tools for all circuit design tasks: from schematic and HDL design capture,
+  circuit simulation, signal integrity analysis, PCB design, and FPGA-based embedded
+  system design and development. In addition, the Altium Designer environment can be
+  customized to meet a wide variety of users' requirements.
+
+
+
+
+                                                                                            3
+Altium Designer PCB Design
+The Altium Designer environment consists of two main elements:
+ The main document editing area.
+ The Workspace Panels. There are a number of panels , that by default some are docked on the left side of the
+   application, some are available in pop-out mode on the right side, some are floating, and others are hidden.
+
+
+
+
+                                                                                                                  4
+The Design
+The design that will be creating for the schematic and then designed for a printed circuit
+board (PCB), is a simple astable multivibrator. We will refer to this schematic for the PCB
+design.
+
+
+
+
+                                                                                              5
+Creating a New PCB Project
+ Select File » New Project » PCB Project from the menus.
+ Select File » Save Project from the menus to open the Windows Save As dialog. Use
+  the dialog to navigate to a suitable location, and enter the name Multivibrator in the
+  File Name field.
+
+
+
+
+                                                                                           6
+Adding a Schematic to the Project
+ Right-click on the project filename in the Projects panel, and select Add New to Project
+  » Schematic. A blank schematic sheet named Sheet1.SchDoc will open in the design
+  window
+ To save the new schematic sheet, select File » Save As. Type the name Multivibrator in
+  the File Name field and click Save.
+ Since you have added a schematic to the project, the project file has changed too. Right-
+  click on the project filename in the Projects panel, and select Save Project.
+
+
+
+
+                                                                                              7
+Setting the Document Options : Sheet Size, Snap & Visible Grid
+ Set the sheet size to A4, this is done in the Page
+  Options section.
+ Confirm that both the Snap and Visible Grids are set to
+  100mil.
+ Save the schematic by selecting File »
+  Save (shortcut: F, S).
+
+
+
+
+                                                                 8
+Components and Libraries in Altium Designer
+ Altium Designer components can be:
+  – created in and placed from local libraries, or
+  – placed directly from the Altium Content Vault, a globally accessible component
+     storage system that contains thousands of components, each with a symbol,
+     footprint, component parameters and links to suppliers.
+
+ Schematic Library: Schematic component symbols are created in schematic libraries
+  (*.SchLib), stored locally.
+
+ PCB Library: PCB footprints (models) are stored in PCB libraries (*.PcbLib),stored locally. It
+  includes Pads, Overlay Component, Glue Dots etc.
+
+ Altium Content Vault: The Altium Content Vault is much more than a library. Components are
+  stored in the cloud, accessible from anywhere. It includes: symbol, footprints, component
+  parameters, and links to suppliers.
+
+
+
+
+                                                                                                   9
+Accessing Components
+ The two panels that are used to access components are shown below.
+
+
+
+
+                                                                       10
+Making Libraries Available to Access the Components
+ The libraries that are available include:
+  – Libraries in the current project - if a library is part of the project, then the components in it are
+    automatically available for placement within that project.
+  – Installed libraries - these are libraries that have been installed in Altium Designer, their
+    components are available for use in any open project.
+
+
+
+
+                                                                                                            11
+Finding a Component in Libraries
+ Search for the component using the Libraries Search dialog. You can search across:
+  – installed libraries (Available libraries)
+  – libraries on the hard drive (Libraries on path).
+ Select components and click Place 2N3904 (or double clicking or click & drag) bar to
+  remove it onto the schematic paper. Set them to any direction based on your needs.
+
+
+
+
+                                                                              FOOTPRINT
+
+                                                                                          12
+Multivibrator Parts
+ The next step is to search the Altium Content Vault for the following components to use
+  in the Multivibrator circuit.
+
+              DESIGNATOR               DESCRIPTION            LIB. COMPONENT NAME
+
+
+                Q1, Q2            NPN transistor (BC547 or      CMP‐1048‐01437‐1
+                                         2N3904)
+
+                 R1, R2            100K resistor, 5%, 0805      CMP‐1013‐00122‐1
+
+
+                 R3, R4             1K resistor, 5%, 0805       CMP‐1013‐00074‐1
+
+
+                 C1, C2           22nF capacitor, 10%, 16V,     CMP‐1036‐04042‐1
+                                           0805
+
+                  P1               2‐pin header, thruhole       CMP‐1024‐00327‐1
+
+
+
+
+                                                                                            13
+Placing Components on the Schematic
+ To EDIT component properties: before placing the
+  part on the schematic you can edit its properties,
+  which can be done for any object floating on the        VISIBLE
+  cursor. For example, while the transistor is still
+  floating on the cursor, press the Tab key to open the
+  interactive Properties panel.
+ Set the Designator to Q1, and the Comment to be
+  Visible.
+ Placement Tips:
+  – Spacebar to rotate
+  – X to flip (X-axis), Y to flip (Y-axis).
+
+
+
+
+                                                                    14
+Placing Components on the Schematic
+ Once you have placed the components, the schematic should look like the image below.
+
+
+
+
+                                                                                         15
+Wiring
+ Click the button on the Active Bar Place » Wire
+ Click the Left Mouse Button or press Enter to
+  anchor the first wire point.
+ Position the cursor over e.g. the base of Q1
+  and then click or press Enter to connect the
+  wire to the base of Q1.
+ When you have finished placing all the
+  wires, right-click or press ESC to exit
+  placement mode.
+
+
+
+
+                                                    16
+Wiring
+ After wiring the schematic should look like the image below.
+
+
+
+
+                                                                 17
+Nets and Net Labels
+ Each set of component pins that you have connected to each other now form what is
+  referred to as a net. For example, one net includes the base of Q1, one pin of R1 and one
+  pin of C1.
+ Click the    button (Place » Net Label). A net label will appear floating on the cursor.
+ To edit the net label before it is placed, press Tab key to open the Properties panel.
+ Type 12V in the Net field, then click the Pause button ( ) to
+  return to object placement.
+ Place the net label over a wire (upper wire on the schematic).
+ Press Tab and type GND in the Net Name field and press
+   Enter to return to object placement mode.
+ Place the label on lower wire on the schematic.
+ Right-click or press ESC to exit net
+   label placement mode.
+
+
+
+
+                                                                                              18
+Check For Errors
+Compiling the Project to Check for Errors
+ To compile the project and check for errors, select Project » Compile PCB Project
+  Multivibrator.PrjPcb. Use the Messages panel to locate and resolve design warnings
+  and errors - double-click on a warning/error to cross probe to that object, in case of any
+  error.
+ Once fixed error, it will be necessary to recompile the project (Project » Recompile PCB
+  Project Multivibrator.PrjPcb)
+
+
+
+
+                                                                                           19
+Creating a New PCB
+ Before you transfer the design from the Schematic Editor to the PCB Editor, you need to
+  create the blank PCB, then name and save it as part of the project.
+
+
+
+
+                                                                                            20
+Creating a New PCB
+ A new PCB can be added to the project via the Projects panel right-click menu, select
+  the Add New to Project » PCB .
+
+
+
+
+ The PCB will appear as a Source Document in the Project, as shown above. Right-
+  click on the PCB icon in the Projects panel to select the Save As command, naming
+  it Multivibrator.
+ Adding the PCB has changed the project, so save the project too (right-click on the
+  project filename in the Projects panel, and select Save Project).
+
+                                                                                          21
+Configuring the Board Origin
+Setting the Origin and the Grid
+ There are two origins used in the software, the Absolute Origin, which is the lower left of
+  the workspace, and the user-definable Relative Origin, which is used to determine the
+  current workspace location. Before setting the origin, Keep zooming in to the lower left
+  of the current board shape until you can easily see the grid - to do this position, the
+  cursor over the lower-left corner of the board shape and press PgUp until both the
+  Coarse and Fine grids are visible, as shown in the images below.
+ To set the Relative Origin, select Edit » Origin » Set, position the cursor over the bottom
+  left corner of the board shape, then left click to locate it.
+
+
+
+
+                                                                                                22
+Configuring the Board Grid
+ The next step is to select a suitable snap grid: for this tutorial it will be using a Metric grid.
+  A coarse 5mm grid will be suitable for component placement, press Ctrl+Shift+Gto open
+  the Snap Grid dialog and enter 5mm, then click OK to close the dialog.
+
+
+
+
+                                                                                                   23
+Configuring the Board Shape
+Redefining the Board Shape
+ To manipulate the size you need to be able to see the edges of the board,
+  use Ctrl+WheelRoll to zoom out a bit more, or press PgDn.
+ The next step is to change the board shape. To do this select View » Board Planning
+  Mode to change (shortcut: 1). The display will
+  change,the board area will now be shown in green.
+ To edit select Design » Edit Board Shape from the menu.
+
+ The resize cursor is shown, use the location information
+  on the Status bar to help you resize
+  the board to 30mm x 30mm.
+
+
+
+
+                                                                                        24
+Transferring the Design to PCB Layout
+ Select Design » Update PCB Document Multivibrator.PcbDoc from the Schematic editor menus.
+ Click on Validate Changes (1). If all changes are validated, a green tick will appear next to each
+  change in the Status list. If the changes are not validated, close the dialog, check
+  the Messages panel and resolve any errors.
+ If all changes are validated, click on Execute Changes (2) to send the changes to the PCB editor.
+ When completed, the target PCB opens with the Engineering Change Order dialog open on top of it,
+  and the Done column entries will be ticked.
+ Click to Close the dialog and complete the transfer process.
+
+
+
+
+                                1         2
+                                                                                                       25
+Transferring the Design to PCB Layout
+ When completed, the components are placed outside the board shape and the nets are
+  created.
+
+
+
+
+                                                                                       26
+Configuring the Layer Visibility
+ Open the View Configuration panel.
+ In the Layers and Colors tab, confirm that the Top Layer
+  and Bottom Layer signal layers are visible.
+ Note that this panel is where you control the display of
+  the mask layers, the silkscreen layers and the system
+  layers, such as DRC and grids.
+
+
+
+
+ Switch to the View Options tab.
+ Confirm that the Pad Nets and
+  Pad Numbers options are enabled.
+
+
+
+
+                                                             27
+Physical Layers and the Layer Stack Manager
+ The properties of the physical layers are defined in the Layer Stack Manager.
+ The Layer Stack Manager dialog is used to:
+  –   Add / remove signal and power plane layers.
+  –   Add / remove dielectric layers.
+  –   Change the order of the layers.
+  –   Configure the Material type for the physical layers.
+  –   Set the layer Thickness, Dielectric Material and Dielectric Constant.
+
+
+
+
+                                   double-click in the cell to show the
+                                   dropdown or edit the value.
+
+
+
+                                                                                  28
+Routing Width Design Rules : Signal Nets
+ With the PCB as the active document, open the PCB Rules and Constraints Editor.
+ Each rules category is displayed under the Design Rules ->Routing->Width to display the currently
+  defined width rules.
+ The right hand side of the dialog displays the settings for that rule, including: the rule's Where the
+  First Object Matches in the top section with the rule's Constraints below that.
+ Since this rule is to target the majority of nets in the design (the signal nets), confirm that the Where
+  the First Object Matches setting is set to All. An additional rule will be added to target the power
+  nets.
+ Edit the Min Width, Preferred Width & Max Width values, setting them to 0.25mm.
+ Click Apply to save it
+  and keep the dialog open.
+
+
+
+
+                                                                                                          29
+Routing Width Design Rules : Power Nets
+ The next step is to add another design rule to specify the routing width for the
+  power nets.
+ With the existing Width rule selected in the Design Rules -> right-click and
+  select New Rule to add a new Width constraint rule.
+ A new rule named Width_1 appears. Click on the new rule and enter the name
+  Width_Power in the field.
+ Click the Query Builder button to open the Query Builder, the configure it to
+  target objects: InNet('12V’) OR InNet('GND’) and the OK.
+ The last step is to edit the Min Width / Preferred Width / Max Width values
+  0.25 / 0.5 / 0.5 to allow power net routing widths in the range 0.25mm to
+  0.5mm, as shown below.
+ Click Apply to save the rules and keep the dialog open.
+
+
+
+
+                                                                                     30
+Defining the Electrical Clearance Constraint
+ The next step is to define how close electrical objects that belong to different nets, can
+  be to each other.
+ Expand the Electrical category in the tree of Design Rules, then expand the Clearance
+  rule-type.
+ This requirement is handled by the Electrical Clearance Constraint, for the tutorial a
+  clearance of 0.25mm between all objects is suitable.
+ In the Constraints region of the dialog, set the Minimum Clearance to 0.25mm, as shown
+  in the image above.
+ Click Apply to save the rule and
+  keep the dialog open.
+
+
+
+
+                                                                                           31
+Defining the Routing Via Style
+ Expand the Design Rule tree and select the default RoutingVias design rule.
+ For this tutorial edit the rule settings to Via Diameter = 1mm and a Via Hole Size =
+  0.6mm. Set all fields (Min, Max, Preferred) to the same size.
+ Click OK to close the PCB Rules and Constraints Editor.
+ Save the PCB file.
+
+
+
+
+                                                                                         32
+Position and Placement
+Positioning Components
+ Now we can position the components in suitable locations on the board.
+ To move a component, either:
+ Click-and-Hold the left mouse button on the component, move it to the required
+  location, rotate it with the Spacebar, then release the mouse button to place it; or
+ Run the Edit » Move » Component command, then single click to pick up a component,
+  move it to the required location, rotate if required, then click once to place it. When
+  finished, right-click to
+  drop out of the Move Component
+  command.
+
+
+
+
+                                                                                            33
+Position and Placement
+ It is also possible to align the components.
+  To do this:
+ Holding the Shift key, click on each of the four
+   resistors to select them.
+
+
+
+ Then Right-click on any of the selected
+  components and choose Align » Align to open the
+  Align Objects dialog.
+
+
+
+
+ Select Space Equally in the Horizontal
+  section and Bottom in the Vertical section,
+  then click OK to apply these changes.
+  The four resistors are now aligned and
+  equally spaced.
+
+
+                                                     34
+Interactively Routing the Board
+Preparing for Interactive Routing
+ Before starting to route, it is important to
+  configure the Interactive Routing options
+  found in the PCB Editor - Interactive
+  Routing page of the Preferences dialog.
+ Set the Routing Conflict Resolution Current
+  Mode to Stop at First Obstacle.
+ In the Interactive Routing Options section of
+  the page, confirm that the Automatically
+  Terminate Routing and the Automatically
+  Remove Loops options are enabled.
+ Confirm that the Interactive Routing Width /
+  Via Size Sources options are both set to Rule
+  Preferred.
+
+
+
+
+                                                  35
+Time to Route
+ Check which layers are currently visible by looking at the Layer Tabs at the bottom of the
+  workspace.
+ press Shift+S to toggle to in and out of single layer mode.
+ Interactive routing is launched by clicking the Route button , or selecting the routing
+  command, Route » Interactive Routing (shortcut: Ctrl+W).
+ Left-Click or press Enter to anchor the first point of the track.
+ Manually route by Left-Clicking to commit track segments, press Backspace to cancel
+  the last-placed segment.
+
+
+
+
+                                                                                           36
+Time to Route
+ Rather than routing all the way to the target pad, you can also press Ctrl+Left Click to
+  use the Auto-Complete function and immediately route the entire connection.
+ Save the design when you are finished routing.
+
+
+
+
+                                                                                             37
+Active Route: Automated Interactive Router
+ Another approach to routing the nets on your board is to use ActiveRoute, Altium's automated
+  interactive router.
+ What does that mean? It means you select the connection or connections to route, choose the layer,
+  and run ActiveRoute. ActiveRoute has efficient multi-net routing algorithms, these are applied to the
+  specific nets or connections that you have selected.
+ ActiveRoute has been developed for dense boards using high pin count components, to help
+  accelerate what can be a difficult and time-consuming routing process.
+ For example:
+ In the list of nets in the panel, click on the 12V net name.
+ In the PCB ActiveRoute panel, enable the Top Layer.
+ Click the ActiveRoute button at the top of the panel, the 12V net will be routed.
+
+
+
+
+                                                                                                      38
+Design Rule Check (DRC)
+ Select » View Configuration (shortcut: L) and confirm that the DRC Error visibility
+  option is enabled, so that DRC error markers are displayed.
+ Confirm that the Online DRC
+  (Design Rule Checking)
+  system is enabled.
+
+
+
+
+ PCB Editor – General ->Preferences->PCB Editor -> DRC Violations Display.
+ Right-click in the Display area of the PCB Editor - DRC Violations Display page and
+  select Show Violation Details - Used, then right-click again and select Show Violation
+  Overlay – Used.
+ You are now ready to check the design for errors.
+
+                                                                                           39
+Configuring the Rule Checker
+ Run the Tools » Design Rule Check
+ Specific rules -> Rules to Check
+ For most rule types there are checkboxes for Online and Batch: Click to enable/disable
+  the rules
+  as required.
+
+
+ The online DRC feature
+  will monitor the enabled
+  rules as you work and
+  immediately highlight
+  any detected design
+  violations.
+
+
+
+
+ To run DRC click on
+  Run Design Rule Check
+
+                                                                                           40
+Running a Design Rule Check (DRC)
+ The Messages panel will appear, listing all detected errors.
+ Example :
+  Design Rule Verification Report
+
+
+
+
+                                                                 41
+PCB in 3D
+   A powerful feature of Altium Designer is the ability to view your board as a 3D object.
+   To switch to 3D, View » 3D Layout Mode (shortcut: 3)
+   You can choose to Show 3D bodies, or hide them.
+   To display the components in 3D, each component needs to have a suitable 3D model
+    included in its footprint.
+
+
+
+
+                                                                                              42
+Output Documentation
+Documentation Outputs:
+ PCB Prints - configure any number or printouts (pages), with any arrangement of layers
+  and display of primitives, use this to create printed outputs such as assembly drawings.
+ PCB 3D Prints - views of the board from a three-dimensional view perspective.
+ Schematic Prints - schematic drawings used in the design.
+Fabrication Outputs:
+ Composite Drill Drawings - drill positions and sizes (using symbols) for the board in one
+  drawing.
+ Gerber Files - creates manufacturing information in Gerber format.
+ NC Drill Files - creates manufacturing information for use by numerically controlled
+  drilling machines.
+ Power-Plane Prints - creates internal and split plane drawings.
+ Solder/Paste Mask Prints - creates solder mask and paste mask drawings.
+ Test Point Report - creates test point output for the design in a variety of formats.
+
+
+
+
+                                                                                          43
+Output Documentation
+Assembly Outputs:
+ Assembly Drawings - component positions and orientations for each side of the board.
+ Pick and Place Files - used by robotic component placement machinery to place
+  components onto the board.
+Netlist Outputs
+ Netlists - describe the logical connectivity between components in the design.
+
+ Bill of Materials BOM - creates a list of parts and quantities (BOM), in various formats,
+  required to manufacture the board.
+ Component Cross Reference Report - creates a list of components, based on the
+  schematic drawing in the design.
+ Electrical Rules Check - formatted report of the results of running an Electrical Rules
+  Check.
+
+
+
+
+                                                                                              44
+Generating Output
+ Via an Output Job file - the settings for each output type are stored in an Output Job
+  file, a dedicated output settings document, which supports all possible output types.
+ An Output Job file allows you to configure each output type, configure their output
+  naming, format and output location. Output Job files can also be copied from one
+  project to another.
+
+
+
+
+                                                                                           45
+Generating Output: Gerber
+ In the Projects panel, right click on the project name >> Add New to Project >> Output
+  Job File. A new OutJob will be opened and added to the project.
+ Save the OutJob and name it Multivibrator.
+ To add a new Gerber output, click on Add New Fabrication Output, and select Gerber »
+  PCB Document. If there are multiple PCBs in the project you will need to select the
+  specific board.
+ The Gerber output has
+  been added,it will be
+  configurate shortly.
+
+
+
+
+                                                                                           46
+Configuring Gerber generation
+
+ In the OutJob, double-click on the Gerber
+  Files output, the Gerber Setup dialog will open,
+  as shown in the image above.
+
+ set the Units to Millimeters in the General tab.
+  Set the Format to 4:3.
+  (NC drill file must be configured to use the
+  same Units and Format).
+
+ Switch to the Layers tab, then click the Plot
+  Layers button and select Used On.
+ Click on Advanced and Confirm that
+  the Position on Film option is set to Reference
+  to relative origin.
+
+
+
+
+                                                     47
+Configuring Gerber generation
+ Click on the Advanced tab of the dialog. Confirm that the Position on Film option is set
+  to Reference to relative origin.
+ Click OK to accept the other default settings
+  and close the Gerber Setup.
+
+
+
+
+                                                                                             48
+Configuring Gerber generation
+ Once configured the Gerber, the next step is to configure their naming and output location:
+  map them to an Output Container. Select Folder Structure.
+ Click the circle button for the Gerber Files in the Enabled column of the Outputs to map this
+  output to the selected container, as shown below.
+
+
+
+
+ Click the Advanced button at the bottom of the Folder Structure settings dialog and enabled
+  the Gerber Output in the list of CAMtastic Auto-Load Options. Click OK to close the dialog.
+ To generate the Gerber files, click the Generate Content link in the Container region of the
+  OutJob.
+ The files will be generated and opened in the integrated CAM editor, which can be used for
+  final checking of CAM files before you release them to manufacture. Close the CAM file
+  without saving it.
+
+                                                                                                  49
+PCB Design: Eagle
+
+
+
+
+                    50
+What’s EAGLE?
+EAGLE is one of many EDA available on the market. It was developed by CadSoft Computer
+GmbH in 1998 (thirty years ago) but it was acquired by Autodesk Inc. in 2016.
+Eagle is available with different license models:
+
+ Premium, which gives you the maximum number of schematic sheets (999), layers (16)
+  and PCB size (4 m2) for 65$/month
+ Students’ and educators’ version, which has the same characteristic but for free;
+ Standard, which gives you 99 schematic sheets, 4 layers and PCB size (160 cm2) for
+  15$/month
+ The free version, which gives you 2 schematic sheets, 2 layers and PCB size (80 cm2).
+
+
+
+
+                                                                                          51
+Overview – Control panel
+
+
+
+
+When you first open Eagle, you will see this screen known as the control
+panel. It consists of various trees:
+ Documentation Tree: Here you can find all the manuals and setup
+  information.
+ Eagle’s Libraries: There are several hundred libraries by default.
+ Design Rules: These rules guarantee that your file is manufacturable
+  (usually provided by the board house).
+ User Language Program and Scripts: A mix of C with some extentions
+  that allow users to script eagle to perform import and exports of
+  different file formats.
+ CAM Jobs: The mechanism Eagle uses to generate manufacturing data
+ Projects: Contains the Eagle folder and the Examples folder.
+
+                                                                           52
+New Project
+ To create a new project, you just right click on “Projects” » “New Project.”
+ It is possible to add a description to the project by right clicking and then clicking
+  “edit description.”
+ The first thing to do in a new project is to create a new schematic by right clicking
+  on the folder and then clicking “Schematic”
+
+
+
+
+                                                                                           53
+Libraries
+The picture shows the basic layout of the schematic editor. Adding components is very
+easy and it can be done by using the add command.
+If the component you are looking for is not avaiable, you can just add new libraries by
+downloading the .lbr file and adding it to the Library folder in the Eagle installation
+folder.
+Then open the tab “Library” » “Use” and add the new .lbr file.
+
+
+
+
+                                                                                      54
+Schematic
+ When the component is selected, a drawing of the part floats on the mouse cursor. It can be
+  rotated by right clicking and it can be placed by left clicking.
+ The characteristics of the components can be modified by right clicking on the component and
+  pressing “edit properties.”
+ With the move button pressed, components can be moved into the correct position.
+ You can use single connections or busses. Single connection is easy and only requires clicking
+  on the pin that you want to connect and dragging the wire to the other pin.
+ Pay attention to the notes that appear if one wire cross another. The notes indicate that there
+  is a connection between two wires.
+
+
+
+
+                                                                                                55
+Spice Simulation
+A new function just added to Eagle is the Spice Simulation. All the spice functions are
+available in the toolbar at the top of the screen.
+Voltage probes can be added by simply clicking the button and then selecting the point
+where you want to put it. There are also phase probes.
+Through the simulation command, you can manage the simulation setup, as well as
+view the results. The netlist tab shows a spice netlist for current design.
+After clicking the simulate button, it will immediately jump to a plot of the simulation.
+
+
+
+
+                                                                                        56
+Hierarchy
+Implementing hierarchy allows you to subtract from the complexity and shows the
+design described in simple blocks. This simplifies the division of labor, since blocks can
+be assingned to different engineers, and makes the design easier to read and to
+understand.
+To create a Hierarchy:
+1. Go over the module icon, create a module, and give it a name.
+2. Place as many blocks as you want / need.
+3. Add IO through the ports command and give them names.
+4. A pin can be set to be an input, an output, or both
+
+
+
+
+                                                                                         57
+Checking the schematic and creating the board
+To check the schematic, simply click the ERC (electric rule check), to view all the errors
+and warnings related to the design.
+Once the schematic design is completed, generating a board is simple and it: just click
+the generate board icon. If you have not already generated a board, Eagle will ask you
+to confirm your decision.
+
+
+
+
+                                                                                         58
+Design Link
+ Design Link allows you to look parts up
+ Click on “Design link” » “Schematic” Eagle will look for the parts in the schematic in
+  the New York database and help you find the components you can use to assemble
+  your circuit board.
+ With this feature, you have an idea of how mauch the PCB costs.
+
+
+
+
+                                                                                       59
+Placing and routing
+Once the board is generated, all the components are placed on the left side of the
+screen. The rectangle on the right represents the limits of the work area.
+Moving components is done simply by using the move command.
+If a component has to be placed on the bottom, it can be done by mirroring it: Just
+click the scroll wheel.
+All the yellow wires are the connections defined in the schematic. The goal is using the
+route command to convert them into copper wire. Whenever you left click, you create
+a new segment of wire, pressing the scroll wheel allows to move the wire on the
+bottom layers using a via. The diameter of the via can be easily set in the option panel
+on the top of the screen.
+
+
+
+
+                                                                                           60
+Power ang GND planes
+By using the polygon tool you just have to draw a rectagle as big as your board. Once
+you’ve done that you can give the rectangle a name with the Name tool. If you, for
+example, renominate it GND it’ll be connected with everything else that’s ground. To
+see the result the ratsnets button must be clicked, Eagle will recalculate everything in
+the board and and the airline labeled GND get’s connected to enything that’s ground
+
+
+
+
+                                                                                           61
+Layers
+With the layers button, you can select the layers you want to see on the schematic.
+The most important layers are usually:
+ Top: Defines the top copper layers. This is where you want to have connections
+  among various components and where each of the components’ pads are.
+ Bottom: Defines all the copper on the bottom.
+ Pads and Vias: Shows connections between layers.
+ Unrouted: Shows the yellow wire that represents the connection that you have to
+  make.
+ Dimension: Indicates the size of the board.
+
+
+
+
+                                                                                      62
+Autorouting
+EAGLE comes with an Autorouter command. It can calculate a number of routing jobs
+with different settings for the board. Once you have the parts where you want them
+click the ratsnest button and it will draw new lines defining where everything is
+connected and that should make it easier to start drawing a connection on your own.
+After processing the routing variants the results can be evaluated in order to choose
+the best one.
+
+
+
+
+                                                                                        63
+Autorouting
+There are different ways that Eagle* can be used to make connections between
+components. You can use Eagle autorouter or you can do the routing manually.
+By clicking “Start,” the autorouter will bring up a few options, defining the layers it’s
+allowed to use and how it will priotize each one. The other tabs list the optimizations
+you can work with to get the best writing (wiring?)* possible. In the end, different
+solutions will be available and described by percentage of optimization and number of
+vias.
+
+
+
+
+                                                                                        64
+Design Rule Check (DRC)
+Design Rule Check refers to the capabilities of the PCB manufacturing house and
+checks if the board fits its parameters.
+By clicking the DRC button and pressing «load» , Eagle allows you to upload* DRC files
+that can be downloaded from the PCB supplier website.
+If you dont have a DRC file, you can select the parameters manually, navigating
+through the tabs and configuring the specifics the project must have.
+
+
+
+
+                                                                                         65
+Adjust Board Design
+By using a user language program, accessible by clicking the ULP button, you can
+automatically adjust your board design.
+For example, with the command “Renumber” you can renumber things in the order of
+the more* (You can reoder things…?) making it easier to find the parts that you want
+in large boards. After pressing “Renumber” all the compontents will be renumbered
+by going down from top left.
+
+
+
+
+                                                                                       66
+Fusion 360
+Autodesk made it possible to integrate Eagle and Fusion 360. To do so, it is necessary
+to map 3D models of the components to archieve a more realistic model in fusion. The
+library used for the project must be turned in a managed library.
+Managed libraries are the way that Eagle and Fusion use to communicate with each
+other. To do this, you must select the library of your project, click on the tab «Libray» -
+> «Create a Managed Library» -> «Create».
+
+
+
+
+                                                                                          67
+Fusion 360
+Then, you have to go into the schematic of the board to do a library update and select
+the new library. You will have a distinction between packages and footprints in the
+components information. If the 3D model is not available, the program will give the
+compontent a block representation. You can update it, if you have a step file of the
+package, by clicking “Upload STEP.”
+
+
+
+
+                                                                                         68
+Fusion 360
+Once you have updated the library with all the mapped components for the 3D
+packages, you just have to click the button «Fusion sync» and «Create a new Fusion
+design», then select your project name and click «OK». When the pushing operation is
+done, you can switch over to fusion and update the project (or open it, if it wasnt
+opened yet) and see the fully mapped design with all the components.
+
+
+
+
+                                                                                       69
+CAM Processor
+The CAM Processor allows you to create the data you need to manufacture your PCB. It
+can produce data for drill stations, photo plotters. You can find the button in the top
+left part of the screen. In this window, you can select all the layers from within Eagle
+and how those layers from Eagle translate into layers for Gerber files.
+Every tab represents a different Gerber file that to be generated.
+
+
+
+
+                                                                                       70
+CAM Processor
+There is also a tab for the drill file which specifies where the board fabrication house has to
+drill holes for your vias or through-hole components or for actually installing the board.
+Each tab has a number of actual layers from Eagle that have been specified to be added to
+the copper Gerber file. For example, the top copper Gerber file will have the top layer, pads,
+vias and dimensions.
+You can easily adapt the CAM Processor to your specific output device from the Output
+Device button. Then, the extension of the file will be modified based on your choice.
+Once you checked everything, clicking “Process Job” will print all the apertures and
+generate output Gerber files in the folder of your project.
+
+
+
+
+                                                                                                  71
+Design Completed
+ Once completed the design, PCB layout and the output documentation, after all these
+  output documentation is provided to a PCB house that fabricate and some, assemble the
+  PCB boards too.
+
+
+
+
+            Board review                            Fabbrication and Assembly
+
+
+
+
+                                                                                      72
+Conclusions: Altium vs Eagle
+1. A high-quality 3D visualization that allows for 2.    Copper pouring
+   routing using 3D.                                3.   Different types of outputs for used to
+2. The automatic appearance of net names on the          manufacture data.
+   pads of the printed circuit board editor.        4.   Features and techniques that allow for routing
+3. An outstandingly advanced filtering which             at advanced levels.
+   simplifies selection and modification of what a 5.    Backward and forward annotations between
+   user wants.                                           printed circuit boards and schematic.
+4. A simplified design constraints creation         6.   Users have the option of defining certain things
+   procedure that has an in built helper.                such as the clearance, nets and width of wires
+5. Manufacturing and Generation of the output            among others.
+   file are superior.
+6. A good number of hot keys and shortcuts that
+   allow efficiency in PCB design.
+7. Its design system operates offline and can still
+   function without a license.
+8. The adds-on for export and import used in
+   other programs and formats are quite decent.
+9. Its project tree is simple and allows user drag-
+   n-drop files to desired locations.
+
+
+1. An auto-router
+                                                                                                        73
+Web-based references
+ https://www.altium.com/documentation/18.0/display/ADES/From+Idea+to+Manufa
+  cture+-+Driving+a+PCB+Design+through+Altium+Designer
+ https://autodesk.com/products/eagle/overview
+ https://en.wikipedia.org/wiki/EAGLE_(program)
+ https://learn.sparkfun.com/tutorials/how-to-install-and-setup-eagle
+ https://youtube.com/watch?v=1AXwjZoyNno
+ https://youtube.com/watch?v=CCTs0mNXY24
+ https://youtube.com/watch?v=oId-h6AeXXE
+ https://medium.com/@warrenC2017/eagle-vs-altium-what-is-the-features-and-
+  differences-961793629145
+
+
+
+
+                                                                           74
+

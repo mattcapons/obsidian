@@ -1,0 +1,276 @@
+                To make Medium work, we log user data. By using Medium, you agree to
+                our Privacy Policy, including cookie policy.
+
+
+
+
+Boundary-Scan Tests for ICs and PCB
+Assemblies
+       Amos Kingatua     Follow
+
+       Dec 9, 2019 · 8 min read
+
+
+
+
+                                        Boundary-scan usage: Image
+
+
+When it comes to testing a circuit assembly, you can test with simulation and you can
+test in-circuit. A boundary scan test is something else entirely, allowing you to test the
+state of individual traces while the circuit is active.
+
+A boundary-scan test is a technique of checking ICs and interconnects on PCBs. It
+follows a testing architecture and procedures defined by the Joint Test Action Group
+(JTAG) under the IEEE 1149.1 standard.
+The boundary-scan test (BST) or JTAG, enables testing of complex ICs and boards where
+               To make Medium work, we log user data. By using Medium, you agree to
+physical access of pins is difficult or impossible when using other methods. Instead of
+               our Privacy Policy, including cookie policy.
+probing of each pin mechanically, the BST relies on a four-wire hardware interface to
+send and receive specific test signals into the integrated circuits and boards under test.
+
+Unlike other testing methods that require expensive test equipment, the boundary scan
+technique relies on logic and uses minimal testing tools and is less costly and more
+effective. Also, the technique does not require a lot of physical access and will perform
+comprehensive testing as long as the circuit is designed according to the JTAG standard.
+
+This test methodology, which was developed in the 80s for the Intel 80486
+microprocessor, is today a standard technique that manufacturers and professionals use
+to program, debug and test almost all embedded devices and systems. Most
+semiconductor manufacturers are adding the test logic required to verify the chip
+functionality into the IC itself. This makes it easier to check and find defects in complex
+integrated circuits such as the FPGAs, CPLDs, DSPs and others without using the
+physical test probes.
+
+Limitation of common test methods on complex and densely
+populated circuits
+Today, the PCB market is shifting towards smaller footprints, high component densities,
+complex components, more functionalities, and shorter product life cycles.
+Manufacturers are increasingly using multilayer boards, ball-grid arrays (BGAs),
+surface-mount technology (SMT), multi-chip modules (MCMs), systems-in-package
+(SIPs), smaller PCB traces, increased IC pin-count, fine pitch components, and other
+technologies. All of these make it significantly more difficult to test the circuit during
+operation.
+
+Despite the increased functions and complexity, manufacturers are under increased
+pleasure to release products faster to survive in the competitive world. With such trends
+and demands, PCB development and testing have become a challenge.
+
+The above technologies make it difficult to access the pins hence limiting the
+effectiveness of the in-circuit tests (ICT), automatic test equipment (ATE) testing and
+other techniques that rely on mechanical probing. In particular, lack of direct access to
+pins, solder joints, and test points makes it difficult to perform some functional tests on
+the large and complex ICs and PCBs.
+Although there are several test methods, manufacturers may settle on a combination of
+techniques thatTohelp
+                  make Medium work, we log user data. By using Medium, you agree to
+                      them achieve comprehensive coverage at the right budget.
+               our Privacy Policy, including cookie policy.
+
+Out of the main test methods, the JTAG boundary-scan tests provide the best coverage of
+the PCOLA/SOQ/FAM defect-spectrum. Consequently, it reduces the need for additional
+structural testing methods and may even eliminate them depending on the PCB.
+
+
+
+
+     Boundary-scan test coverage of the PCOLA/SOQ/FAM defect spectrum: Image Electronicdesign
+
+
+Boundary-scan architecture and how it works
+The IEEE-1149.1 standard defines the boundary scan logic of JTAG compliant ICs. A
+typical JTAG ready IC comprises of boundary-scan cells, also known as logic cells placed
+between the chip’s logic system and the signal pins or balls. Each cell has its specific role
+— most are either input or output only, but some are bidirectional.
+
+Usually, the cells are added at the chip’s boundary — between the IC’s core logic and the
+I/O pins or boundary hence the name boundary- scan. This establishes a serial test data
+path running through the entire IC. While in test mode, the cells control the status of the
+output pin while reading that of the input pin, hence enabling the testing of the IC and
+board interconnections. The cells usually appear transparent during the normal mode.
+
+For a component to comply with the boundary scan JTAG standard, it must include;
+
+ 1. A boundary-scan cell for each I/O pin.
+
+ 2. The scan path where all boundary cells are serially connected
+
+ 3. A four or five-wire Test Access Port (TAP) interface and controller to handle the
+    boundary scan signals. The fifth wire is optional to provide for the reset signal).
+
+ 4. Four or five additional pins for the JTAG signals.
+ 5. External Boundary Scan Description Language (BSDL) files provided by the
+    componentTovendor.
+                make Medium work, we log user data. By using Medium, you agree to
+                       These describe the boundary scan behaviors, package
+                 our Privacy Policy, including cookie policy.
+    information, and capabilities for a particular component, implementation process,
+    instructions, scan-cells available, design warnings, etc.
+
+
+
+
+                              A basic boundary-scan compliant IC: Image Xjtag
+
+
+Test Access Port (TAP) Controller
+A JTAG compliant IC has a Test Access Port (TAP) controller that comprises of the four
+signals and the logic that connects and controls them. The JTAG chip has four
+mandatory wires or pins and an optional fifth one for a reset signal. The required pins
+and roles are;
+
+    TDI- serial input pin for the instructions, test, and programming data
+    TDO- serial out pin for the instructions, test, and programming data
+                To make Medium work, we log user data. By using Medium, you agree to
+    TMS- inputour
+               forPrivacy Policy, including
+                   the signal               cookie policy.
+                                   that manages      the TAP controller state machine.
+
+    TCK — clock signal input pin for the boundary scan circuitry
+
+    TRST- reset signal (optional)
+
+The TAP controller comprises of a 16-state finite state machine. These states are
+controlled by the test clock (TCK) and test modes select (TMS) signals. The JTAG
+interface provides a means to connect the external tools to the inbuilt TAP controller.
+
+How Boundary scan testing works
+In a typical boundary scan test, the tester sends diagnostic signals to the device’s TDI
+input pin. The boundary-scan cells captures the signals and serially shifts them through
+the core logic which also scans them. The output is then serially shifted out of the core
+through the TDO pin.
+
+
+
+
+                           IEEE Std. 1149.1 Boundary-Scan Testing: Image Intel
+
+
+The last step involves comparing the output with the expected result and consequently
+identifying if there are the shorts, opens, missing devices, dead components, internal
+defects within components, etc.
+
+Usually, the boundary scan technique enables engineers to configure the cells in two
+main testing modes. This includes the internal testing mode to check the logic inside the
+chip while the external mode tests the interconnects between the ICs on the PCB.
+               To make Medium work, we log user data. By using Medium, you agree to
+               our Privacy Policy, including cookie policy.
+
+
+
+
+                                 Interconnect test example: image Coleris
+
+
+Designing a PCB for Boundary Scan Test
+Besides the internal testing of ICs, designers can add boundary scan capability on the
+board level. Designing for boundary-scan tests has many benefits, especially for boards
+used in harsh environments, equipment that requires field repair, when there is a need
+to identify failure points to address for redesign purposes, etc. Generally, it is a good
+strategy when designing for testability.
+
+Such a design begins by selecting IEEE 1149.1 or JTAG compliant devices and placing a
+test bus connector at an accessible location. For example, for card PCB, a good strategy is
+to route the test bus signals to the edge connector and assign them to spare pins.
+
+In a PCB that uses many compliant devices, these are daisy-chained together. The output
+from one chip becomes the input to the next, and so on. The test signal is applied to the
+first IC on the chain while the output appears on the last device. Such an arrangement
+helps to verify the continuity of the connections between the various components’ pins.
+                To make Medium work, we log user data. By using Medium, you agree to
+                our Privacy Policy, including cookie policy.
+
+
+
+
+                              JTAG testing of multiple devices: Image Corelis
+
+
+The boundary scan logic has a BYPASS mode that testers can use to shorten the chain
+and test time. Also, a dedicated JTAG bridge provides the ability to selectively configure
+the scan chain with multiple assemblies or components.
+
+Benefits of boundary-scan testing
+Benefits of the boundary scan include, but not limited to;
+
+    Ability to test ICs and PCBs and with limited or no access to the internal connections
+    and pins.
+
+    Reducing the PCB testing efforts, costs and time without compromising on quality.
+    Also, it offers reusable test patterns, better test coverage, and shorter time-to-
+    market.
+
+    Provides a low cost debugging and in-circuit programming of the CPLDs, serial
+    EEPROMs, Flash, on-chip memory, etc.
+
+    Reduces the risk of physically damaging the PCB, pins or creating shorts with the
+    mechanical probes.
+
+    Integrating the JTAG cells at the board level improves production and field testing
+    while eliminating the need for other costly testing procedures and equipment.
+               To make Medium work, we log user data. By using Medium, you agree to
+Drawbacks our
+          of Privacy
+              boundary          scancookie
+                     Policy, including testpolicy.
+                                            technology
+Despite the benefits, the boundary scan technique has some drawbacks such as
+requiring additional silicon for the boundary scan circuitry, extra pins, and more power
+consumption. Also, it requires more design efforts and devices may suffer from
+performance degradation.
+
+While a boundary scan is useful in testing or reprogramming ICs and PCBs, criminals
+can use it to hack connected devices such as the IoT. Criminals can launch physical
+attacks by using the JTAG interface as a backdoor entry to access and exploit the
+devices. Consequently, the criminals can compromise data, cause a malfunction or stop
+the equipment.
+
+Boundary-scan tools
+With the increasing acceptance of the boundary scan as the main method for testing
+interconnects and performing in-system programming, various hardware and software
+companies have developed a wide range of tools. Today, there are several mature JTAG
+hardware and software tools in the market.
+
+Typical boundary scan or JTAG tools are;
+
+   Corelis — ScanPlusTPG
+
+   Teradyne — Victory
+
+   Acculogic — ScanManager
+
+   Goepel Electronic — System Cascon
+
+   Asset InterTech — ScanWorks
+
+   Intellitech — Eclipse Test Development Environment
+
+   Flynn Systems — onTAP.
+
+Conclusion
+Boundary-scan testing is a cost-effective and faster IC and PCB testing technique with
+wider coverage compared to other methods. The JTAG boundary-scan technique, which
+relies on industry-standard, IEEE 1149.1, provides a better, easy, and low-cost testing
+solution for PCBs with limited access to components pins and board-level circuitry.
+     It has many applications, including testing, debugging and programming a wide range
+                      To make Medium work, we log user data. By using Medium, you agree to
+     of today’s complex ICs and PCBs. This is applicable throughout the entire lifecycle of the
+                      our Privacy Policy, including cookie policy.
+     PCBs, which is during the design, production and in the field, hence providing
+     significant savings in product development, support time and costs.
+
+
+
+      Pcb Testing    Boundary Scan Test       Jtag     Test Interconnects   In Circuit Test Probes
+
+
+
+
+About Write Help Legal
+
+
+
+Get the Medium app
+

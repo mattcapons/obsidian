@@ -1,0 +1,489 @@
+  Randomized
+  Algorithms                                                     coin
+
+                                                                         pivot
+   Introduction to randomization techniques and analysis
+                                                                                 order
+
+                                                                                         trial
+
+
+
+
+                                                                        random
+                                                                        choices
+   ADVANCED ALGORITHMS AND PARALLEL PROGRAMMING
+   Fabrizio Ferrandi · a.a. 2026–2027
+   Material adapted from Eric Torng, Michigan State University
+
+
+
+
+Randomized Algorithms                                                                            1
+Two ways randomness enters the analysis
+
+  Probabilistic / average-case analysis                      Randomized algorithm
+
+  The algorithm is deterministic.                            The input may be fixed.
+  We assume a probability distribution over inputs.          The algorithm makes random choices during
+                                                             execution.
+
+
+
+
+                   input distribution is assumed                   randomness is under our control
+
+
+
+               Main distinction: passive randomness in the model vs active randomness in the algorithm.
+
+
+Randomized Algorithms                                                                                     2
+Probabilistic (average-case) analysis
+
+                        For a fixed input, the deterministic algorithm always behaves the same way.
+
+   1 · Assume                                 2 · Analyze                        3 · Check caveats
+   Choose a probability distribution          Compute the expected quantity of   Some inputs may still be much
+   for the inputs.                            interest over that distribution.   worse. A wrong distribution can be
+                                                                                 misleading.
+
+
+
+
+                                    Average over inputs, not over runs
+
+
+
+Randomized Algorithms                                                                                                 3
+Randomized algorithm
+
+                  For a fixed input, the algorithm may behave differently because of random choices.
+
+     Typical randomization techniques                          Key guarantees
+     • Randomly permute candidate order                        Works well with high probability on every input.
+     • Randomly select a pivot                                 May fail on any fixed input, but only with low
+     • Randomly choose among deterministic strategies          probability.
+
+
+
+
+                        fixed input     →        coin tosses          →         different executions
+
+
+
+
+Randomized Algorithms                                                                                             4
+Key analysis tools
+
+   Indicator variables                Linearity of expectation   Recurrence relations
+
+   Use Xᵢ to isolate one elementary   If X = Y + Z, then         Capture expected behavior
+   event.                             E[X] = E[Y] + E[Z].        recursively, especially for
+   Usually X = X₁ + X₂ + ⋯ + Xₙ.      This does not require      randomized divide-and-conquer
+                                      independence.              algorithms.
+
+
+
+
+                        Break a random variable into small yes/no events.
+
+
+Randomized Algorithms                                                                            5
+Part I
+
+
+
+The Hiring Problem
+A small example that shows how indicator variables simplify randomized
+analysis.
+
+
+
+
+                                                                         6
+Hiring problem: setup
+
+                            Goal: hire the best applicant seen so far, but each hire is expensive.
+
+
+          day 1         →   day 2   →    day 3   →    day 4   →     day 5    →   day n
+
+
+
+
+         Rule                                                     Question
+         When a new applicant is better than the current          How many expensive hire/fire operations
+         employee, fire the current employee and hire the         should we expect?
+         new applicant.
+
+
+
+
+Randomized Algorithms                                                                                       7
+Worst case: increasing quality order
+
+                            Each applicant is better than everyone seen before.
+
+
+                                                             7
+
+                                                    6
+
+                                            5
+
+
+
+                            3
+                                    4
+                                                                      Cost = n hires
+                        2
+
+                1                                                 The algorithm hires every applicant
+                                                                               in turn.
+
+
+
+
+Randomized Algorithms                                                                                   8
+Best case: the best applicant arrives first
+
+                                                The first hire is never replaced.
+
+
+
+                best    candidate   candidate        candidate    candidate   candidate   candidate
+
+
+
+
+                                                     Cost = 1 hire
+
+
+
+Randomized Algorithms                                                                                 9
+Average cost: what distribution?
+
+     Input representation                  Number of inputs                    Common assumption
+     An input is an ordering of the n      There are n! possible               Every ordering is equally likely.
+     applicants.                                                               Other distributions are possible.
+                                           orderings.
+
+
+
+
+                            Average cost = expected number of hires
+
+                                  The rest of the analysis computes this expectation.
+
+
+
+
+Randomized Algorithms                                                                                              10
+Model the sample space
+
+
+       Ω = all n! applicant sequences                 Pr[s] = 1 / n! for each sequence s
+
+
+                                           Random variable
+
+
+
+                        X(s) = number of applicants hired for sequence s
+
+
+                                    Question: what is E[X]?
+
+
+Randomized Algorithms                                                                      11
+Use indicator variables
+
+                        Instead of counting all hires directly, track each applicant separately.
+
+
+
+                               Xᵢ = 1 if applicant i is hired; 0 otherwise
+
+
+
+                  1        0          0           1          0           0          1            0
+
+
+                             Each indicator is simple; their sum is the total number of hires.
+
+
+
+
+Randomized Algorithms                                                                                12
+Why indicators help
+
+
+                        X = X₁ + X₂ + ⋯ + Xₙ                            E[Xᵢ] = Pr[Xᵢ = 1]
+
+
+      Interpretation                                         Strategy
+
+      Xᵢ = 1 exactly when applicant i is better than all     Compute Pr[Xᵢ = 1] for each i, then add the
+      previous i − 1 applicants.                             probabilities.
+
+
+
+
+                              Linearity of expectation lets us add expectations directly.
+
+
+
+Randomized Algorithms                                                                                      13
+Example: n = 4, i = 3
+
+                    Question: in what fraction of all inputs is the 3rd applicant better than the first 2?
+
+                                                                                     1234      2134       3124   4123
+                                pos 1               pos 2               pos 3
+                                                                                     1243      2143       3142   4132
+                                                                                     1324      2314       3214   4213
+                                any                 any
+                                                                      largest        1342      2341       3241   4231
+                                                                      of first 3
+                                                                                     1423      2413       3412   4312
+                                                                                     1432      2431       3421   4321
+                        Among the first 3 positions, the maximum is equally likely to be in any one of them.
+
+
+
+                                                            8 / 24 = 1 / 3
+
+
+Randomized Algorithms                                                                                             14
+General probability
+
+              For the first i applicants, the best of them is equally likely to appear in any of the i positions.
+
+
+
+           position 1         position 2        position 3        position 4         position 5        position i
+
+
+
+
+                                                 Pr[Xᵢ = 1] = 1 / i
+                             Applicant i is hired only when the best-so-far appears at position i.
+
+
+
+Randomized Algorithms                                                                                               15
+Expected number of hires
+
+
+                   E[X] = E[Σᵢ Xᵢ]         =           Σᵢ E[Xᵢ]          =              Σᵢ Pr[Xᵢ = 1]
+
+
+
+
+                                          = Σᵢ 1/i = Hₙ ≤ ln n + 1
+
+
+                              Result
+
+                              The average number of hires grows logarithmically, not linearly.
+
+
+
+
+Randomized Algorithms                                                                                   16
+The key lesson
+
+           Average cost is much smaller than the worst case — but only if applicant order is random.
+
+                            n
+                                                                  If order is unreliable
+
+                                                                  Do not rely on the headhunter.
+                                                                  Randomly permute the applicant
+                                                                  list yourself.
+                                               ln n
+
+
+
+                        Worst case            Average
+
+
+
+
+Randomized Algorithms                                                                                  17
+From passive to active randomization
+
+
+    Passive probabilistic analysis                               Active randomized algorithm
+
+    Assume inputs follow a distribution.                         Create the distribution yourself by taking
+    Risk: the real input distribution may differ.                random action, such as permuting the input.
+
+
+
+
+                        Analyze expected behavior on the worst possible
+                                            input.
+                                     The same input can lead to many possible executions.
+
+
+Randomized Algorithms                                                                                          18
+Randomize the candidate list
+
+     Algorithm                                 Guarantee
+
+     1. Get the complete candidate list.       Expected number of hirings/firings is O(log
+     2. Randomly permute the list.             n), regardless of the original input order.
+     3. Interview in that random order.
+
+
+
+
+                 Randomness moves from the input model into the algorithm.
+
+
+
+Randomized Algorithms                                                                        19
+Part II
+
+
+
+Las Vegas and Monte Carlo
+Two common ways to trade time, correctness, and probability.
+
+
+
+
+                                                               20
+Two families of randomized algorithms
+
+
+     Las Vegas                                    Monte Carlo
+
+     Always returns the correct answer.           Runs within a bounded time.
+     Randomness affects the running time.         Randomness can affect correctness.
+
+
+
+
+                   Example intuition: randomized sorting vs. randomized min-cut
+
+
+
+Randomized Algorithms                                                                  21
+Monte Carlo error types
+
+                             For decision problems, the answer is YES or NO.
+
+      One-sided error                                 Two-sided error
+
+      The algorithm has zero probability of error     There is a non-zero probability of error
+      for at least one possible output.               when the algorithm outputs either YES or
+                                                      NO.
+
+
+
+
+                        We bound the probability of an incorrect output.
+
+
+
+Randomized Algorithms                                                                            22
+Which type is better?
+
+                         It depends on the application and the cost of being wrong.
+
+     Las Vegas                                          Monte Carlo
+
+     Error probability is 0.                            Running time is bounded.
+     Efficient if expected running time is              Efficient if worst-case running time is
+     polynomial.                                        polynomial and error probability is bounded.
+
+
+
+
+              If an incorrect answer is catastrophic, error probability matters more
+                                            than speed.
+
+
+
+Randomized Algorithms                                                                                  23
+Efficiency
+
+                        A Las Vegas algorithm is an efficient Las Vegas
+                        algorithm if on any input its expected running time is
+                        bounded by a polynomial function of the input size
+
+
+
+
+                        A Monte Carlo algorithm is an efficient Monte Carlo
+                        algorithm if on any input its worst-case running time is
+                        bounded by a polynomial function of the input size
+
+
+
+
+Randomized Algorithms                                                              23
+Example: find character 'a'
+
+                              Input: an array of n elements, half 'a' and half 'b'.
+
+
+
+
+                 a      b    b        a        b        a        a         b          a   b
+
+
+
+
+                                          Output: find any 'a'
+
+                            We compare a Las Vegas version and a Monte Carlo version.
+
+
+
+Randomized Algorithms                                                                         24
+Las Vegas version
+
+                                 Repeat until an 'a' is found.
+
+                                                       Guarantee
+
+                                                       Always succeeds.
+      findingA_LV(A, n)
+      repeat                                           Running time is random, but E[trials] =
+          choose a random index j in {1, …,            2 because Pr['a'] = 1/2.
+      n}
+      until A[j] = 'a'
+      return j
+
+
+                                                             Expected time: O(1)
+
+
+
+
+Randomized Algorithms                                                                            25
+Monte Carlo version
+
+                            Limit the number of random trials to k.
+
+                                                       Guarantee
+
+                                                       Runtime is bounded by k trials.
+      findingA_MC(A, n, k)
+      for t = 1 to k                                   It may fail if all k samples are 'b'.
+          choose a random index j in {1, …,
+      n}
+          if A[j] = 'a' then return j
+      return FAIL
+                                                                Pr[fail] = (1/2)^k
+
+                                                            Pr[find 'a'] = 1 − (1/2)^k
+
+
+
+Randomized Algorithms                                                                          26
+

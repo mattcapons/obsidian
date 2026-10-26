@@ -1,0 +1,143 @@
+{
+  "date": "2026-10-26",
+  "decks": [
+    {
+      "source": "University/Embedded Systems/Slides/2 From processors to microcontrollers-20261026/Boot+of+a+system.pdf",
+      "note": "University/Embedded Systems/Notes/2 From processors to microcontrollers-20261026/Boot of a system.md",
+      "pages": 34,
+      "sections": 34,
+      "images": 34,
+      "comment_callouts": 11
+    },
+    {
+      "source": "University/Embedded Systems/Slides/2 From processors to microcontrollers-20261026/Microcontrollers.pdf",
+      "note": "University/Embedded Systems/Notes/2 From processors to microcontrollers-20261026/Microcontrollers.md",
+      "pages": 80,
+      "sections": 80,
+      "images": 80,
+      "comment_callouts": 15
+    },
+    {
+      "source": "University/Embedded Systems/Slides/2 From processors to microcontrollers-20261026/Microprocessor_short_en.pdf",
+      "note": "University/Embedded Systems/Notes/2 From processors to microcontrollers-20261026/Microprocessors.md",
+      "pages": 68,
+      "sections": 68,
+      "images": 68,
+      "comment_callouts": 12
+    },
+    {
+      "source": "University/Embedded Systems/Slides/2 From processors to microcontrollers-20261026/More+on+Breakpoints+and+watchpoints.pdf",
+      "note": "University/Embedded Systems/Notes/2 From processors to microcontrollers-20261026/More on Breakpoints and watchpoints.md",
+      "pages": 2,
+      "sections": 2,
+      "images": 2,
+      "comment_callouts": 1
+    },
+    {
+      "source": "University/Embedded Systems/Slides/2 From processors to microcontrollers-20261026/Over+the+Air+Firmware+Update.pdf",
+      "note": "University/Embedded Systems/Notes/2 From processors to microcontrollers-20261026/Over the Air Firmware Update.md",
+      "pages": 38,
+      "sections": 38,
+      "images": 38,
+      "comment_callouts": 9
+    },
+    {
+      "source": "University/Embedded Systems/Slides/2 From processors to microcontrollers-20261026/PLL+basics.pdf",
+      "note": "University/Embedded Systems/Notes/2 From processors to microcontrollers-20261026/PLL basics.md",
+      "pages": 13,
+      "sections": 13,
+      "images": 13,
+      "comment_callouts": 3
+    },
+    {
+      "source": "University/Embedded Systems/Slides/2 From processors to microcontrollers-20261026/Programmable+Timers+-+introduction.pdf",
+      "note": "University/Embedded Systems/Notes/2 From processors to microcontrollers-20261026/Programmable Timers - introduction.md",
+      "pages": 14,
+      "sections": 14,
+      "images": 14,
+      "comment_callouts": 4
+    },
+    {
+      "source": "University/Embedded Systems/Slides/2 From processors to microcontrollers-20261026/The+role+of+the+IDE.pdf",
+      "note": "University/Embedded Systems/Notes/2 From processors to microcontrollers-20261026/The role of the IDE.md",
+      "pages": 22,
+      "sections": 22,
+      "images": 22,
+      "comment_callouts": 3
+    },
+    {
+      "source": "University/Embedded Systems/Slides/2 From processors to microcontrollers-20261026/Watchdog+timers+general+introduction.pdf",
+      "note": "University/Embedded Systems/Notes/2 From processors to microcontrollers-20261026/Watchdog timers general introduction.md",
+      "pages": 23,
+      "sections": 23,
+      "images": 23,
+      "comment_callouts": 5
+    },
+    {
+      "source": "University/Embedded Systems/Slides/3 Design of Hw Systems-20261026/2021 PCB based design.pdf",
+      "note": "University/Embedded Systems/Notes/3 Design of Hw Systems-20261026/2021 PCB based design.md",
+      "pages": 44,
+      "sections": 44,
+      "images": 44,
+      "comment_callouts": 8
+    },
+    {
+      "source": "University/Embedded Systems/Slides/3 Design of Hw Systems-20261026/2021 hardware technologies.pdf",
+      "note": "University/Embedded Systems/Notes/3 Design of Hw Systems-20261026/2021 hardware technologies.md",
+      "pages": 63,
+      "sections": 63,
+      "images": 63,
+      "comment_callouts": 11
+    },
+    {
+      "source": "University/Embedded Systems/Slides/3 Design of Hw Systems-20261026/Boundary-Scan Tests for ICs and PCB Assemblies _ by Amos Kingatua _ Supplyframe _ Medium.pdf",
+      "note": "University/Embedded Systems/Notes/3 Design of Hw Systems-20261026/Boundary-Scan Tests for ICs and PCB Assemblies.md",
+      "pages": 9,
+      "sections": 9,
+      "images": 9,
+      "comment_callouts": 3
+    },
+    {
+      "source": "University/Embedded Systems/Slides/3 Design of Hw Systems-20261026/Case study FPGA vs ASIC.pdf",
+      "note": "University/Embedded Systems/Notes/3 Design of Hw Systems-20261026/Case study FPGA vs ASIC.md",
+      "pages": 36,
+      "sections": 36,
+      "images": 36,
+      "comment_callouts": 8
+    },
+    {
+      "source": "University/Embedded Systems/Slides/3 Design of Hw Systems-20261026/PCB Design with Altium - Eagle_WF_2019.pdf",
+      "note": "University/Embedded Systems/Notes/3 Design of Hw Systems-20261026/PCB Design with Altium - Eagle_WF_2019.md",
+      "pages": 74,
+      "sections": 74,
+      "images": 74,
+      "comment_callouts": 9
+    },
+    {
+      "source": "University/Embedded Systems/Slides/3 Design of Hw Systems-20261026/SOC, Distributes ESs, Prototyping platforms.pdf",
+      "note": "University/Embedded Systems/Notes/3 Design of Hw Systems-20261026/SOC, Distributes ESs, Prototyping platforms.md",
+      "pages": 49,
+      "sections": 49,
+      "images": 49,
+      "comment_callouts": 9
+    },
+    {
+      "source": "University/Embedded Systems/Slides/3 Design of Hw Systems-20261026/Steps for IC manufacturing _ VLSI Tutorials _ Mepits.pdf",
+      "note": "University/Embedded Systems/Notes/3 Design of Hw Systems-20261026/Steps for IC manufacturing.md",
+      "pages": 5,
+      "sections": 5,
+      "images": 5,
+      "comment_callouts": 2
+    }
+  ],
+  "errors": [],
+  "notes": 16,
+  "pdf_pages": 574,
+  "unique_images": 574,
+  "checked_vault_links": 1267,
+  "comment_callouts": 113,
+  "optional_archive_pdf_count_not_processed": 12,
+  "png_longest_edge": 3200,
+  "render_box": "MediaBox",
+  "passed": true
+}

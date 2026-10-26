@@ -1,0 +1,595 @@
+095946- ADVANCED ALGORITHMS
+ AND PARALLEL PROGRAMMING
+
+
+                  Fabrizio Ferrandi
+                   a.a. 2023-2024
+❑ Amortized Analysis
+• Dynamic tables
+
+• Aggregate method
+
+• Accounting method
+
+• Potential method
+
+
+
+
+                       -2-
+        How large should a hash table be?
+
+Goal: Make the table as small as possible, but large enough so
+that it won’t overflow (or otherwise become inefficient).
+
+
+Problem: What if we don’t know the proper size in advance?
+
+
+Solution: Dynamic tables.
+IDEA: Whenever the table overflows, “grow” it by allocating (via
+malloc or new) a new, larger table. Move all items from the old
+table into the new one, and free the storage for the old table.
+
+
+                                -3-
+      Example of a dynamic table
+
+
+1. INSERT              1
+2. INSERT           overflow
+
+
+
+
+                       -4-
+      Example of a dynamic table
+
+
+1. INSERT                      1
+2. INSERT           overflow
+
+
+
+
+                       -5-
+      Example of a dynamic table
+
+
+1. INSERT                    1
+2. INSERT                    2
+
+
+
+
+                      -6-
+      Example of a dynamic table
+
+
+1. INSERT                      1
+2. INSERT                      2
+3. INSERT                   overflow
+
+
+
+
+                      -7-
+      Example of a dynamic table
+
+
+1. INSERT                              1
+2. INSERT                              2
+3. INSERT                   overflow
+
+
+
+
+                      -8-
+      Example of a dynamic table
+
+
+1. INSERT                          1
+2. INSERT                          2
+3. INSERT
+
+
+
+
+                      -9-
+      Example of a dynamic table
+
+
+1. INSERT                          1
+2. INSERT                          2
+3. INSERT                          3
+4. INSERT                          4
+
+
+
+
+                      - 10 -
+      Example of a dynamic table
+
+
+1. INSERT                             1
+2. INSERT                             2
+3. INSERT                             3
+4. INSERT                             4
+5. INSERT                          overflow
+
+
+
+
+                      - 11 -
+      Example of a dynamic table
+
+
+1. INSERT                                     1
+2. INSERT                                     2
+3. INSERT                                     3
+4. INSERT                                     4
+5. INSERT                          overflow
+
+
+
+
+                      - 12 -
+      Example of a dynamic table
+
+
+1. INSERT                          1
+2. INSERT                          2
+3. INSERT                          3
+4. INSERT                          4
+5. INSERT
+
+
+
+
+                      - 13 -
+      Example of a dynamic table
+
+
+1. INSERT                          1
+2. INSERT                          2
+3. INSERT                          3
+4. INSERT                          4
+5. INSERT                          5
+6. INSERT                          6
+7. INSERT                          7
+
+
+
+
+                      - 14 -
+      Worst-case analysis
+
+Consider a sequence of n insertions. The worst-case time
+to execute one insertion is (n). Therefore, the worst-case
+time for n insertions is n · (n) = (n2).
+
+
+
+WRONG! In fact, the worst-case cost for n insertions is
+only (n) ≪ (n2).
+
+Let’s see why.
+
+
+
+                            - 15 -
+        Tighter analysis
+
+  Let ci = the cost of the i th insertion
+         =    i if i – 1 is an exact power of 2,
+              1 otherwise.
+
+    i   1   2   3    4     5        6   7   8   9   10
+sizei   1   2   4    4     8        8   8   8   16 16
+   ci   1   2   3    1     5        1   1   1   9   1
+
+
+
+                           - 16 -
+        Tighter analysis
+
+  Let ci = the cost of the i th insertion
+         =    i if i – 1 is an exact power of 2,
+              1 otherwise.
+
+    i   1   2   3    4     5        6   7   8   9   10
+sizei   1   2   4    4     8        8   8   8   16 16
+        1   1   1    1     1        1   1   1   1   1
+   ci
+            1   2          4                    8
+
+
+                           - 17 -
+        Tighter analysis (continued)
+                                         𝑛
+       Cost of n insertions            = ෍ 𝑐𝑖
+                                         𝑖=1
+                                               lg(𝑛−1)
+
+                                       ≤𝑛+      ෍        2𝑗
+                                                𝑗=0
+                                       ≤ 3𝑛
+                                       = Θ(𝑛)
+
+                                                .
+
+Thus, the average cost of each dynamic-table operation is
+(n)/n = (1).
+
+                              - 18 -
+        Amortized analysis
+An amortized analysis is any strategy for analyzing a
+sequence of operations to show that the average cost per
+operation is small, even though a single operation within
+the sequence might be expensive.
+
+
+
+Even though we’re taking averages, however, probability is not
+involved!
+
+• An amortized analysis guarantees the average
+  performance of each operation in the worst
+  case.
+                              - 19 -
+          Types of amortized analyses
+
+Three common amortization arguments:
+• the aggregate method,
+• the accounting method,
+• the potential method.
+We’ve just seen an aggregate analysis.
+
+The aggregate method, though simple, lacks the precision of the
+other two methods. In particular, the accounting and potential
+methods allow a specific amortized cost to be allocated to each
+operation.
+
+
+                                - 20 -
+          Accounting method
+
+• Charge i th operation a fictitious amortized cost ĉi, where
+  $1 pays for 1 unit of work (i.e., time).
+• This fee is consumed to perform the operation.
+• Any amount not immediately consumed is stored in the
+  bank for use by subsequent operations.
+• The bank balance must not go negative! We must ensure
+  that
+                         𝑛             𝑛
+
+                        ෍ 𝑐𝑖 ≤ ෍ 𝑐𝑖Ƹ
+                        𝑖=1       𝑖=1
+  for all n.
+• Thus, the total amortized costs provide an upper bound
+  on the total true costs.
+                              - 21 -
+        Accounting analysis of dynamic
+        tables
+Charge an amortized cost of ĉi = $3 for the i th insertion.
+
+
+• $1 pays for the immediate insertion.
+• $2 is stored for later table doubling.
+When the table doubles, $1 pays to move a recent item, and $1
+pays to move an old item.
+
+Example:
+
+  $0 $0 $0 $0 $2 $2 $2 $2 overflow
+
+
+                               - 22 -
+        Accounting analysis of dynamic
+        tables
+Charge an amortized cost of ĉi = $3 for the i th insertion.
+
+
+• $1 pays for the immediate insertion.
+• $2 is stored for later table doubling.
+When the table doubles, $1 pays to move a recent item, and $1
+pays to move an old item.
+
+Example:
+
+                                        overflow
+
+  $0 $0 $0 $0 $0 $0 $0 $0
+                               - 23 -
+        Accounting analysis of dynamic
+        tables
+Charge an amortized cost of ĉi = $3 for the i th insertion.
+
+
+• $1 pays for the immediate insertion.
+• $2 is stored for later table doubling.
+When the table doubles, $1 pays to move a recent item, and $1
+pays to move an old item.
+
+Example:
+
+
+
+
+  $0 $0 $0 $0 $0 $0 $0 $0 $2 $2 $2
+                               - 24 -
+            Accounting analysis (continued)
+
+Key invariant: Bank balance never drops below 0. Thus, the sum of
+the amortized costs provides an upper bound on the sum of the true
+costs.
+
+      i     1    2     3    4     5         6   7   8   9      10
+  sizei     1    2     4    4     8         8   8   8   16 16
+     ci     1    2     3    1     5         1   1   1   9      1
+     ĉi     2    3     3    3     3         3   3   3   3      3
+banki       1* 2       2    4     2         4   6   8   2      4
+
+*Okay, so I lied. The first operation costs only $2, not $3.
+                                   - 25 -
+       Potential method
+
+IDEA: View the bank account as the potential energy (à la
+physics) of the dynamic set.
+
+Framework:
+• Start with an initial data structure D0.
+• Operation i transforms Di–1 to Di.
+• The cost of operation i is ci.
+• Define a potential function  : {Di} → R,
+  such that (D0 ) = 0 and (Di )  0 for all i.
+• The amortized cost ĉi with respect to  is
+  defined to be ĉi = ci + (Di) – (Di–1).
+                             - 26 -
+     Understanding potentials
+
+         ĉi = ci + (Di) – (Di–1)
+
+
+              potential difference i
+
+
+• If i > 0, then ĉi > ci. Operation i stores
+  work in the data structure for later use.
+• If i < 0, then ĉi < ci. The data structure
+  delivers up stored work to help pay for
+  operation i.
+
+                         - 27 -
+         The amortized costs bound the true costs
+
+The total amortized cost of n operations is
+              𝑛       𝑛
+
+             ෍ 𝑐𝑖Ƹ = ෍ 𝑐𝑖 + Φ(𝐷𝑖 ) − Φ(𝐷𝑖−1 )
+             𝑖=1     𝑖=1
+
+            Summing both sides.
+
+
+
+
+                                 - 28 -
+         The amortized costs bound the true costs
+
+The total amortized cost of n operations is
+              𝑛       𝑛
+
+             ෍ 𝑐𝑖Ƹ = ෍ 𝑐𝑖 + Φ(𝐷𝑖 ) − Φ(𝐷𝑖−1 )
+             𝑖=1     𝑖=1
+                      𝑛
+
+                   = ෍ 𝑐𝑖 + Φ(𝐷𝑛 ) − Φ(𝐷0 )
+                     𝑖=1
+
+
+
+                      The series telescopes.
+
+
+
+                                 - 29 -
+         The amortized costs bound the true costs
+
+The total amortized cost of n operations is
+              𝑛       𝑛
+
+             ෍ 𝑐𝑖Ƹ = ෍ 𝑐𝑖 + Φ(𝐷𝑖 ) − Φ(𝐷𝑖−1 )
+             𝑖=1     𝑖=1
+                      𝑛
+
+                   = ෍ 𝑐𝑖 + Φ(𝐷𝑛 ) − Φ(𝐷0 )
+                     𝑖=1
+                      𝑛
+
+                   ≥ ෍ 𝑐𝑖
+                     𝑖=1
+                                   since (Dn)  0 and
+                                    (D0 ) = 0.
+
+                                 - 30 -
+             Potential analysis of table doubling
+
+Define the potential of the table after the ith insertion by (Di) =
+2i – 2lg i. (Assume that 2lg 0 = 0.)
+
+
+Note:
+• (D0 ) = 0,
+• (Di)  0 for all i.
+
+Example:
+
+     •   •   •    •      •   •              = 2·6 – 23 = 4
+
+ ( $0 $0 $0 $0 $2 $2                       accounting method   )
+                                  - 31 -
+           Calculation of amortized costs
+
+The amortized cost of the i th insertion is
+
+     ĉi = ci + (Di) – (Di–1)
+
+
+
+
+                                  - 32 -
+            Calculation of amortized costs
+
+The amortized cost of the i th insertion is
+
+     ĉi = ci + (Di) – (Di–1)
+
+
+        =
+              i if i – 1 is an exact power of 2,
+              1 otherwise;
+              (          ) (
+            + 2i – 2lg i – 2(i –1) – 2lg (i–1)   )
+
+
+
+                                    - 33 -
+            Calculation of amortized costs
+
+The amortized cost of the i th insertion is
+
+     ĉi = ci + (Di) – (Di–1)
+
+
+        =
+              i if i – 1 is an exact power of 2,
+              1 otherwise;
+              (             ) (
+            + 2i – 2lg i – 2(i –1) – 2lg (i–1)     )
+        =
+              i if i – 1 is an exact power of 2,
+              1 otherwise;
+            + 2 – 2lg i + 2lg (i–1)            .
+                                          - 34 -
+            Calculation
+Case 1: i – 1 is an exact power of 2.
+                 ĉi = i + 2 – 2lg i + 2lg (i–1)
+
+
+
+
+                                        - 35 -
+            Calculation
+Case 1: i – 1 is an exact power of 2.
+                 ĉi = i + 2 – 2lg i + 2lg (i–1)
+                    = i + 2 – 2(i – 1) + (i – 1)
+
+
+
+
+                                       - 36 -
+            Calculation
+Case 1: i – 1 is an exact power of 2.
+                 ĉi = i + 2 – 2lg i + 2lg (i–1)
+                    = i + 2 – 2(i – 1) + (i – 1)
+                    = i + 2 – 2i + 2 + i – 1
+
+
+
+
+                                       - 37 -
+            Calculation
+Case 1: i – 1 is an exact power of 2.
+                 ĉi = i + 2 – 2lg i + 2lg (i–1)
+                    = i + 2 – 2(i – 1) + (i – 1)
+                    = i + 2 – 2i + 2 + i – 1
+                    =3
+
+
+
+
+                                       - 38 -
+            Calculation
+Case 1: i – 1 is an exact power of 2.
+                 ĉi = i + 2 – 2lg i + 2lg (i–1)
+                    = i + 2 – 2(i – 1) + (i – 1)
+                    = i + 2 – 2i + 2 + i – 1
+                    =3
+
+Case 2: i – 1 is not an exact power of 2.
+                 ĉi = 1 + 2 – 2lg i + 2lg (i–1)
+
+
+
+
+                                       - 39 -
+            Calculation
+Case 1: i – 1 is an exact power of 2.
+                 ĉi = i + 2 – 2lg i + 2lg (i–1)
+                    = i + 2 – 2(i – 1) + (i – 1)
+                    = i + 2 – 2i + 2 + i – 1
+                    =3
+
+Case 2: i – 1 is not an exact power of 2.
+                 ĉi = 1 + 2 – 2lg i + 2lg (i–1)
+                    =3                 (since 2lg i = 2lg (i–1) )
+
+
+
+
+                                       - 40 -
+            Calculation
+Case 1: i – 1 is an exact power of 2.
+                 ĉi = i + 2 – 2lg i + 2lg (i–1)
+                    = i + 2 – 2(i – 1) + (i – 1)
+                    = i + 2 – 2i + 2 + i – 1
+                    =3
+
+Case 2: i – 1 is not an exact power of 2.
+                 ĉi = 1 + 2 – 2lg i + 2lg (i–1)
+                    =3
+Therefore, n insertions cost (n) in the worst case.
+
+
+
+                                       - 41 -
+            Calculation
+Case 1: i – 1 is an exact power of 2.
+                 ĉi = i + 2 – 2lg i + 2lg (i–1)
+                    = i + 2 – 2(i – 1) + (i – 1)
+                    = i + 2 – 2i + 2 + i – 1
+                    =3
+
+Case 2: i – 1 is not an exact power of 2.
+                 ĉi = 1 + 2 – 2lg i + 2lg (i–1)
+                    =3
+Therefore, n insertions cost (n) in the worst case.
+Exercise: Fix the bug in this analysis to show that the amortized cost
+of the first insertion is only 2.
+                                       - 42 -
+        Conclusions
+
+• Amortized costs can provide a clean abstraction
+  of data-structure performance.
+• Any of the analysis methods can be used when an
+  amortized analysis is called for, but each method
+  has some situations where it is arguably the
+  simplest or most precise.
+• Different schemes may work for assigning
+  amortized costs in the accounting method, or
+  potentials in the potential method, sometimes
+  yielding radically different bounds.
+                        - 43 -
+       Acknowledge
+
+❑ Based on Introduction to Algorithms CLRS
+❑ Material adapted from Erik D. Demaine and Charles E.
+
+  Leiserson slides
+
+
+
+
+                           - 44 -
+

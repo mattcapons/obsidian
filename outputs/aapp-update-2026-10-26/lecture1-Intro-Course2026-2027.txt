@@ -1,0 +1,189 @@
+095946 ADVANCED ALGORITHMS AND
+     PARALLEL PROGRAMMING
+
+               Fabrizio Ferrandi
+                 a.a. 2026-2027
+             • This course deals with advanced topics in algorithm design
+                and parallel programming.
+
+
+
+             • The course is structured in two parts. The first part focuses
+                on general methods and algorithms that are not usually
+                covered by the course “Algoritmi e Principi dell’Informatica”,
+
+   COURSE       such as, randomization, amortization, approximation
+                algorithms, string searching/matching, etc.
+
+OBJECTIVES
+             • The second part deals with parallel programming:
+                Automatic vs. Manual Parallelization, Parallelizing
+                Compilers, Parallel Patterns, Partitioning (domain vs
+                functional decomposition), Communication (cost, latency,
+                bandwidth, visibility, synchronization, etc.), Data
+                Dependencies and Tools/languages such as OpenMP and
+                MPI (no more on CUDA).
+
+
+                                                                           -2-
+                     COURSE LEARNING OUTCOME:
+                       LIFELONG LEARNING SKILLS
+• Students will understand how a complex algorithm, possibly
+  parallel, have to be analyzed, designed and assessed. They
+  will play with real problems understanding where pitfall may
+  come when you move from a theoretic formulation down to a
+  real implementation taking into account existing tools and real
+  architectures.
+
+
+
+
+                                                                    -3-
+PART I-A - GENERAL METHODS AND
+ALGORITHMS
+
+                        Randomized algorithms:
+Course Objectives and    Las Vegas and Monte      Hiring Problem and
+     Introduction          Carlo algorithms.      Generating Random
+                        Analyzing Randomized          Permutations
+                              algorithms.
+
+
+
+Randomized Quicksort.      Order Statistics,       Primality test. Fast
+ Worst-case analysis.    Randomized divide-      exponentiation. Secret
+Average-case analysis   and-conquer algorithm    key and cryptosystems
+
+
+
+                                                                     -4-
+PART I-B - GENERAL METHODS AND
+ALGORITHMS
+
+   Karger’s Min-Cut                               Dynamic Programming:
+  Algorithm. Faster      Randomized data               Memoization.
+version by Karger and   structures: Skip Lists,    Examples of Dynamic
+         Stein                 Treaps               Programming: String
+                                                    Matching, BDDs, etc.
+
+
+ Amortized Analysis:
+    Dynamic tables,        Approximate            Competitive Analysis
+ Aggregate method,         programming             Self-organizing lists
+Accounting method and                             Move-to-front heuristic
+   Potential method.
+
+
+                                                                      -5-
+PART II - ON PARALLELIZATION
+
+• Design of Parallel Algorithms - Parallel Algorithms and Parallel Programming.
+• Parallel Machine Model
+• Introducing parallel patterns: Reduce, Split, Compact / Expand and Parallel Prefix Sum.
+• More on parallel patterns: Segmented Scan, Sort, Map-reduce, Kernel Fusion.
+• Tools and languages for parallel programming: Posix Threads, OpenMP, Message
+  Passing Interface.
+• Comparison of Parallel Programming Technologies.
+• Optimizing parallel performance.
+• Halide: high-performance image and array processing code.
+
+                                                                                       -6-
+               Operations          Basic data
+                Research            structures
+PREVIOUS
+KNOWLEDGE
+
+
+             Computational      C/C++ knowledge
+            Complexity theory      could help
+
+
+
+
+                                                  -7-
+                                                       AAPP TEACHING MATERIAL
+
+•   Introduction to Algorithms, T. Cormen, C. Leiserson, R. Rivest and C. Stein,
+    MIT Press, Cambridge; 3rd edition (20 Aug 2009) ISBN-10: 0262533057, ISBN-13: 978-0262533058
+
+•   Randomized Algorithms, Rajeev Motwani, Prabhakar Raghavan.
+    Cambridge University Press (August 25, 1995) ISBN-10: 0521474655, ISBN-13: 978-0521474658
+
+•   Michael McCool, James Reinders, Arch Robison, Structured Parallel Programming: Patterns for Efficient
+    Computation, Editore: Morgan Kaufmann, Anno edizione: 2012, ISBN: 0124159931 http://parallelbook.com/
+
+•   An Introduction to Parallel Programming, Peter Pacheco,
+    Publisher: Morgan Kaufmann; 1 edition (January 21, 2011), ISBN-10: 0123742609, ISBN-13: 978-0123742605
+
+•
+•   Parallel programming online material link
+
+•   Additional material is available on the WeBeep platform of Politecnico di Milano (access restricted to course
+    participants): https://webeep.polimi.it
+
+
+
+
+                                                                                                                    -8-
+EXAM HOW
+
+• Evaluation is based on a written exam
+• Exam content
+    • The solution of some problems
+         based on the practical application
+         of the course concepts and
+         techniques
+      • Open answers to some questions on
+         the course concepts and techniques
+• After each written test, the teacher can
+   complement the assessment procedure
+   with an oral examination
+
+
+
+
+                                              -9-
+CONTINUOUS ASSESSMENT
+
+• Continuous assessment will be implemented through two intermediate tests: one as a mid-term test and one at the
+   end of the semester: Nov. 5 – Dec 17.
+• All students are admitted to the second test, regardless of the outcome of the first one
+• The achieved results will be valid till the end of the academic year or till a student ask to repeat the given part
+• Each intermediate test contributed to the final grade with 16 points
+• The exam is considered passed if, in both parts, the students get a grade not less than 7, and the sum of the two
+   grades is greater or equal to 18
+• 30 cum laude is assigned if students get a sum of grades greater than 30
+• If either the first or the second test has a grade less than 7 or the total is less than 18, the student has to take the
+   written test on one of the following dates according to the schedule provided by the School's Academic Calendar
+• The student may use one of the valid partial results on the next exam dates. In this case, a customized written exam
+   version will be provided to the student for the parts not yet valid
+
+
+                                                                                                                        - 10 -
+INNOVATIVE-LEARNING CLASSROOM
+ACTIVITIES
+• Participation in innovative-learning classroom activities will be
+ assessed and will contribute to the final evaluation grade. In
+ particular, in case of valid grades, some questions of the
+ written exam could be skipped.
+
+
+
+
+                                                                  - 11 -
+                                                                           LECTURERS
+
+• Fabrizio Ferrandi
+    • Dipartimento di Elettronica, Informazione e Bioingegneria, first floor,
+    • phone. 02 2399 3479,
+    • e-mail fabrizio.ferrandi@polimi.it,
+    • Home page Ferrandi: http://ferrandi.faculty.polimi.it/
+    • Send an e-mail to get in touch with me
+• Davide Gadioli
+    • Dipartimento di Elettronica, Informazione e Bioingegneria,
+    • e-mail davide.gladioli@polimi.it,
+    • Send an e-mail to get in touch with him
+
+
+                                                                                  - 12 -
+

@@ -1,0 +1,190 @@
+      Phase-Locked Loop (PLL)
+           basic concepts
+           AA 2020-2021
+              Prof. William Fornaciari
+                Politecnico di Milano
+Dip. di Elettronica, Informazione e Bioingegneria
+            william.fornaciari@polimi.it
+
+               © prof. William Fornaciari
+                                               What is a PLL?
+ A phase-locked loop (PLL) is an electronic circuit that
+  consists of a phase detector, a low-pass filter, and a
+  voltage-controlled oscillator (VCO) connected in a loop
+ The closed-loop operation of the circuit is to maintain the
+  VCO frequency locked to that of the input signal
+  frequency
+
+
+
+
+                               2                    © prof. William Fornaciari
+                        Common applications of PLLs
+
+
+   Frequency synthesizers that provide multiples of a
+    reference signal frequency
+
+ FM demodulation networks for FM operation with excellent
+  linearity between the input signal frequency and the PLL
+  output voltage
+ Demodulation of the two data transmission or carrier
+  frequencies in digital-data transmission used in frequency-
+  shift keying (FSK) operation.
+ Wide variety of areas including modems, telemetry
+  receivers and transmitters, tone decoders, AM detectors,
+  and tracking filters, embedded systems, computing
+
+                              3                   © prof. William Fornaciari
+                                                 Basic operations
+   Capture and Lock operation
+    – Within a capture-and-lock frequency range, the dc voltage will drive
+      the VCO frequency to match that of the input
+    – While the loop is trying to achieve lock, the output of the phase
+      comparator contains frequency components at the sum and
+      difference of the signals compared
+    – A low-pass filter passes only the lower frequency component of the
+      signal, so that the loop can obtain lock between input and VCO
+      signals
+
+
+
+
+                                    4                       © prof. William Fornaciari
+                                               Basic operations
+   Lock operation
+    – Input signal frequency is the same as that from the VCO
+    – Best operation is obtained if the VCO center frequency fo is set
+      with the dc bias voltage midway in its linear operating range
+    – The amplifier allows this adjustment in dc voltage from that
+      obtained as output of the filter circuit
+    – When the loop is in lock, the two signals to the comparator are of
+      the same frequency, although not necessarily in phase
+    – A fixed phase difference between the two signals to the comparator
+      results in a fixed dc voltage to the VCO
+    – Changes in the input signal frequency then result in change in the
+      dc voltage to the VCO
+
+
+
+
+                                   5                       © prof. William Fornaciari
+                                       Basic operations
+ Owing to the limited operating range of the VCO and the
+  feedback connection of the PLL circuit, there are two
+  important frequency bands specified for a PLL
+ The capture range of a PLL is the frequency range
+  centered about the VCO free-running frequency fo over
+  which the loop can acquire lock with the input signal
+ Once the PLL has achieved capture, it can maintain lock
+  with the input signal over a somewhat wider frequency
+  range called the lock range
+
+
+
+
+                             6                  © prof. William Fornaciari
+                                          PLL main applications
+   Clock multiplier/Clock Generator
+    – Input: Fixed frequency clock
+    – Output: Multiple of input clock frequency/Multiple of clock
+      outputs
+   Frequency synthesizer (Fractional-N, Integer-N)
+    – Input: Fixed frequency clock
+    – Output: Clock signal with arbitrary frequency
+   Clock and data recovery
+    – Input: Data signal (from a serial link)
+    – Output: Digital data as well as clock signal with phase detector is
+      different than other applications
+   FM demodulation
+    – Input: Radio signal
+    – Output: Demodulated signal
+
+                                     7                        © prof. William Fornaciari
+                                    Frequency synthesis
+
+ A frequency divider is inserted between the VCO output
+  and the phase comparator so that the loop signal to the
+  comparator is at frequency fo and the VCO output is Nfo
+ This output is a multiple of the input frequency as long as
+  the loop is in lock
+
+
+
+
+                               8                   © prof. William Fornaciari
+                                       Frequency Synthesis
+   Example using a 565 PLL as frequency multiplier and a 7490
+    counter as divider
+
+
+
+
+                                  9                    © prof. William Fornaciari
+                                          Integer-N Synthesizer
+   The resolution of the output frequency is determined by the
+    reference frequency applied to the phase detector
+     – Step size or frequency resolution - the smallest frequency increment
+       possible
+   To obtain a stable low frequency source is not easy,
+    because a quartz crystal oscillating in kHz region is quite
+    bulky and not practical
+     – A sensible approach is to take a good stable crystal-based high
+       frequency source and an integer-N synthesizer to divide it down
+
+
+
+
+    Fin                                                             Fout=Fin*N/R
+
+
+
+
+                                     10                      © prof. William Fornaciari
+                    Programmable Phase-Locked Loop
+                                    Clock Generator
+   The FS7140/FS7145 is a monolithic CMOS clock
+    generator/regenerator IC. Via the I2C−bus interface, the
+    FS7140/45 can be adapted to many clock generation
+    requirements. The length of the reference and feedback
+    dividers, their fine granularity and the flexibility of the post
+    divider make the FS7140/45 a very flexible stand alone PLL
+    clock generator
+
+
+
+
+                                 11                    © prof. William Fornaciari
+                    What to remember for our purposes
+   PLLs allows to generate a new frequency with a formula
+    like Fout=Fref*(N/R)
+    – N and R can be selected by the ES designer, not all of them are
+      valid, there are some steps and constraints
+ The stability of the referece freq. can be that of a XTAL
+ Multiple frequencies can be obtained from the same XTAL
+  in a programmable way
+    – Creation of clock domains
+    – Variable speed based on variable computing needs
+   Use of prescalers
+    – To extend the upper frequency range of a frequency synthesizer but
+      still allowing the synthesis of lower frequencies
+ In MCUs usually the clock frequency is fixed at design time
+ High-end embedded systems tends to allow modifing
+  dynamically the frequency to save power and for thermal
+                                   12                      © prof. William Fornaciari
+                      Integer-N Frequency Synthesizers
+                                       with Prescalers
+   Four-modulus prescalers
+    – To extend the upper frequency range of a frequency synthesizer but
+      still allows the synthesis of lower frequencies. The solution is the
+      four-modulus prescaler
+    – The four-modulus prescaler is a logical extension of the dual-
+      modulus prescaler. It offers four different scaling factors, and two
+      control signals are required to select one of the four available
+      scaling factors
+
+
+
+
+                                    13                      © prof. William Fornaciari
+

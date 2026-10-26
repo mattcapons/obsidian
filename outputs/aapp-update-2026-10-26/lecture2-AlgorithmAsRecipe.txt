@@ -1,0 +1,530 @@
+Algorithms
+as Recipes
+Visual review: complexity, sorting, and
+recurrences
+
+        with C++ mini-labs
+
+
+
+
+ Fabrizio Ferrandi · Academic year 2023–2024
+
+Advanced Algorithms and Parallel Programming · Review   01
+REVIEW GOAL
+
+
+
+Make the key ideas quick to recall
+
+
+         One idea per slide: less text, more structure.
+
+         Guiding questions: what grows? where is the bottleneck?
+                                                                                      2
+         Colab examples: count operations, measure time, visualize                estimate
+         curves.
+                                                                         1                    3
+                                                                     understand              test
+
+
+
+
+Advanced Algorithms and Parallel Programming · Review                                          02
+DEFINITION
+
+
+
+An algorithm is a finite procedure
+
+                                                                                  Remember
+
+                                                                                 It terminates in a finite
+                  INPUT                                   STEPS        OUTPUT    number of steps
+                                                                                 It is described
+                  values                                well-defined    result   independently of the
+                                                                                 machine
+                                                                                 It can be compared with
+                                                                                 other algorithms
+
+
+
+
+Advanced Algorithms and Parallel Programming · Review                                                  03
+CARBONARA ANALOGY
+
+
+
+Larger input, longer time
+                                                        10 people                   100 people
+
+     2 people
+
+
+
+
+            T(n) grows with n                            more helpers ≠ always faster      the bottleneck remains
+
+
+
+
+    Guiding question: which part of the recipe can be parallelized?
+
+
+Advanced Algorithms and Parallel Programming · Review                                                               04
+PROBLEM
+
+
+
+
+                                                        Shortest path
+
+                                                         Input: graph + source + destination
+
+                                                         Output: minimum-weight path
+
+                                                         Questions: does it exist? how much
+                                                         does it cost? can it be parallelized?
+
+
+
+
+                                                           mini-lab: C++ / Dijkstra
+
+
+
+
+Advanced Algorithms and Parallel Programming · Review                                            05
+WHY STUDY PERFORMANCE
+
+Performance = the boundary between feasible
+and impossible
+
+                                                                      shared
+             scalability                                guarantees              resources
+                                                                     language
+
+
+
+
+     It is not the only criterion: correctness, maintainability, and simplicity still
+     matter.
+     Analysis lets us reason without benchmarking every possible machine.
+
+
+
+
+Advanced Algorithms and Parallel Programming · Review                                       06
+SORTING PROBLEM
+
+
+
+The problem of sorting
+
+     Input                                                          Output
+
+         8             2              4             9   3   6         2       3       4       6       8    9
+
+
+                        sequence ⟨a₁, a₂, …, aₙ⟩                          permutation ⟨a′₁, a′₂, …, a′ₙ⟩
+
+
+    Correctness condition                                       Algorithmic question
+
+          the output is ordered                                   which procedure sorts it?
+          the output contains exactly the input
+                                                                  how many operations does it need?
+          values
+                                                                  how does the cost grow with n?
+
+Advanced Algorithms and Parallel Programming · Review                                                          07
+INSERTION SORT
+
+
+
+Idea: keep a prefix sorted
+
+
+          2              4               8              9   3     6   for j = 2..n:
+                                                                        key = A[j]
+                                                                        shift right elements > key
+      sorted prefix                                         key         insert key in the gap
+
+
+
+
+           Great for small n or nearly sorted data
+
+           Worst case: decreasing sequence
+
+           Complexity: Θ(n²) in the worst case
+
+
+Advanced Algorithms and Parallel Programming · Review                                                08
+C++ MINI-LAB 1
+
+
+
+Measure insertion sort: comparisons and moves
+Use the separate Colab notebook (C++) and change n / distribution.
+
+
+                                                                        Experiment
+
+       pair<long long,long long> insertion_count(vector<int> A){
+         long long comp = 0, shifts = 0;
+         for (int j = 1; j < (int)A.size(); ++j){
+            int key = A[j], i = j - 1;
+                                                                        sorted array
+            while (i >= 0 && (++comp, A[i] > key)){
+              A[i+1] = A[i]; shifts++; i--;
+            }
+            A[i+1] = key;
+                                                                        random array
+         }
+         return {comp, shifts};
+       }                                                                reverse array
+
+                                                                     Expected result: the reverse case
+                                                                     grows roughly like n²/2.
+                                                                     Compile in Colab with g++ and vary n / input type.
+
+
+
+Advanced Algorithms and Parallel Programming · Review                                                                     09
+RUNNING TIME
+
+
+
+Running time depends on the input
+
+
+                                                        Average case        Worst case
+              Best case
+                                                        input from a    guarantee for every
+         most favorable input
+                                                         distribution         input
+
+
+
+
+     Algorithm analysis often uses the worst case: it is a robust promise.
+
+
+
+
+Advanced Algorithms and Parallel Programming · Review                                         10
+ASYMPTOTIC ANALYSIS
+
+
+
+Look at growth, not machine details
+
+
+                     3n³ + 90n² − 5n + 6046
+
+                                  becomes
+
+
+
+                                    Θ(n³)
+
+
+         Ignore multiplicative constants
+
+         Drop lower-order terms
+
+         Compare what happens as n → ∞
+
+Advanced Algorithms and Parallel Programming · Review   11
+ASYMPTOTIC NOTATION
+
+
+
+Three symbols not to confuse
+
+
+                  O(g(n))                                  Ω(g(n))       Θ(g(n))
+                upper bound                             lower bound   tight bound
+
+
+
+
+     Rule of thumb
+
+     If f(n) is both O(g(n)) and Ω(g(n)), then f(n) is Θ(g(n)).
+
+
+
+
+Advanced Algorithms and Parallel Programming · Review                               12
+STRICT NOTATIONS
+
+
+
+o and ω are strict comparisons
+
+
+
+                                  O/Ω≈≤/≥               o/ω≈</>
+
+
+
+                                          2n² = o(n³)   n³ = ω(n²)
+
+
+
+
+Advanced Algorithms and Parallel Programming · Review                13
+MERGE SORT
+
+
+
+Divide, solve, combine
+
+                                                         left
+                A[1..n]                                                     merge
+                                                        + right
+
+
+
+
+           MERGE-SORT(A)                                          Two subproblems of size n/2
+            if n == 1: return
+            sort(left half)                                       Merge cost: Θ(n)
+            sort(right half)
+            merge(sorted halves)
+                                                                  Result: Θ(n log n)
+
+
+
+Advanced Algorithms and Parallel Programming · Review                                           14
+RECURSION TREE
+
+
+
+
+T(n) = 2T(n/2) + cn
+
+
+
+
+               cost per level: cn                       number of levels: lg n   total: Θ(n lg n)
+
+
+
+
+Advanced Algorithms and Parallel Programming · Review                                               15
+COMPARISON
+
+
+
+As n grows, n log n beats n²
+
+     1000000
+
+
+                                                                                            Insertion sort: simple, fast for
+      100000
+                                                                                            small inputs.
+        10000
+                                                                                            Merge sort: more scalable for
+                                                                                            large inputs.
+         1000                                                                     n log n   In practice: test the crossover
+                                                                                  n²
+                                                                                            on real data.
+          100
+
+
+
+
+           10
+
+
+
+
+             1
+                       10              30               100   300   1000   3000
+
+
+
+
+Advanced Algorithms and Parallel Programming · Review                                                                          16
+C++ MINI-LAB 2
+
+
+
+Benchmark: insertion vs merge sort
+Goal: see the crossover where the winner changes.
+
+
+
+
+       double bench(function<void(vector<int>&)> f, int n, int reps=5){
+         vector<int> base(n); iota(base.begin(), base.end(), 0);
+         double total = 0;
+         for(int r=0; r<reps; r++){
+           shuffle(base.begin(), base.end(), mt19937(r+7));
+           auto A = base; auto t0 = chrono::high_resolution_clock::now();
+           f(A); auto t1 = chrono::high_resolution_clock::now();
+           total += chrono::duration<double, milli>(t1-t0).count();
+         }
+         return total / reps;
+       }
+
+                                                                                Discussion: why can hidden
+                                                                              constants change the winner for
+                                                                                         small n?
+
+                                                                            Colab flow: write file → g++ → run → compare
+                                                                            timings.
+
+
+
+Advanced Algorithms and Parallel Programming · Review                                                                      17
+RECURRENCES
+
+
+
+Two practical ways to solve them
+
+
+         Substitution method                            Master method
+
+             general                                     fast
+
+             requires a good guess                       only for T(n)=aT(n/b)+f(n)
+
+             great for proofs                            does not cover all cases
+
+
+
+
+Advanced Algorithms and Parallel Programming · Review                                 18
+MASTER THEOREM
+
+A recipe for many divide-and-conquer
+recurrences                                                                                         regularity condition
+                                                                                                    a f (n/b)  c f (n)
+                                                                                                    for some constant c < 1
+                                                            a≥1                                        f(n)
+                                                                                b>1
+                 T(n) = aT(n/b) + f(n)                   number of
+                                                                            shrink factor
+                                                                                                   work outside
+                                                        subproblems                                 recursion
+
+
+
+     Step 1              Compute the reference term                      n^(log_b a)
+
+
+     Step 2              Compare f(n) with that term                  smaller | similar | larger
+
+
+                                                                      The theorem gives an asymptotic
+     Step 3              Choose Case 1, 2, or 3                                 tight bound.
+
+
+
+
+Advanced Algorithms and Parallel Programming · Review                                                                  19
+MASTER THEOREM
+
+
+
+Three common cases
+     Compare f(n) with n^(log_b a)
+
+
+
+
+                          Case 1                                                                         Case 3
+                                                                      Case 2
+              f(n) is polynomially smaller                                                    f(n) is polynomially larger
+                                                             f(n) has the same order
+                                                                                                f(n) = Ω(n^(log_b a + ε))
+                  f(n) = O(n^(log_b a − ε))                f(n) = Θ(n^(log_b a) log^k n)
+                                                                                             regularity condition required
+
+                     T(n) = Θ(n^(log_b a))               T(n) = Θ(n^(log_b a) log^(k+1) n)
+                                                                                                     T(n) = Θ(f(n))
+
+
+
+
+     Warning
+                                    The theorem is powerful, but it does not cover every recurrence. Boundary
+                                    cases need another method.
+
+
+Advanced Algorithms and Parallel Programming · Review                                                                        20
+MASTER THEOREM
+
+
+
+Worked examples from the lecture
+    All examples use T(n) = 4T(n/2) + f(n). Therefore a = 4, b = 2, and n^(log_b a) = n².
+
+
+                   f(n) = n                                  f(n) = n²         f(n) = n³       f(n) = n² / log n
+                                                                                              No direct case
+                   Case 1                                    Case 2            Case 3       Master theorem does
+                 T(n) = Θ(n²)                           T(n) = Θ(n² log n)   T(n) = Θ(n³)         not apply
+
+
+
+
+    How to solve these quickly
+
+          compute n^(log_b a) first
+          compare only the dominant growth rate
+          check regularity in Case 3
+          do not force the theorem when no case matches
+Advanced Algorithms and Parallel Programming · Review                                                              21
+C++ MINI-LAB 3
+
+
+
+Recurrences and shortest paths in C++
+
+                                                                   using State = pair<int,int>;
+       long long T(long long n){                                   priority_queue<State, vector<State>, greater<State>> pq;
+         if (n <= 1) return 1;                                     dist[s] = 0; pq.push({0, s});
+         return 2*T(n/2) + n;                                      while (!pq.empty()){
+       }                                                             auto [d,u] = pq.top(); pq.pop();
+       for (int k = 1; k <= 10; ++k){                                for (auto [v,w] : adj[u]) if (d + w < dist[v]){
+         long long n = 1LL << k;                                        dist[v] = d + w; parent[v] = u;
+         cout << n << " " << T(n) << " " << n*k << endl;                pq.push({dist[v], v});
+       }                                                             }
+                                                                   }
+
+
+
+
+     Questions for students
+
+          Does T(n)/(n log₂ n) approach a constant?
+          How does Dijkstra scale on sparse graphs?
+          Which relaxations could run in parallel, and what still stays sequential?
+Advanced Algorithms and Parallel Programming · Review                                                                         22
+TAKEAWAY
+
+
+
+
+In 5 sentences
+     Algorithm                                input → finite steps → output
+
+     Complexity                               studies how T(n) grows
+
+     Notations                                O above, Ω below, Θ tight
+
+     Sorting                                  insertion Θ(n²), merge Θ(n log n)
+
+     Recurrences                              trees, substitution, Master Theorem
+
+
+     Final exercise: choose an algorithm, define T(n), predict the curve, then verify in Colab.
+Advanced Algorithms and Parallel Programming · Review                                             23
+

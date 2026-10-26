@@ -1,0 +1,1309 @@
+095946- ADVANCED ALGORITHMS AND PARALLEL
+             PROGRAMMING
+
+
+
+
+              Fabrizio Ferrandi
+                a.a. 2021-2022
+Q U IC K SORT
+   D IV ID E A N D C ON QU E R
+   PA RT IT ION IN G
+   WOR S T- C AS E A NA LY S IS
+   IN T U IT ION
+   R A N D OMIZ ED QU IC K S ORT
+   A NA LY S IS
+Material adapted from Erik D. Demaine and Charles E. Leiserson slides
+
+
+
+
+                                                                        -3-
+ QUICKSORT
+• Proposed by C.A.R. Hoare in 1962.
+• Divide-and-conquer algorithm.
+• Sorts “in place” (like insertion sort, but not like
+  merge sort).
+• Very practical (with tuning).
+
+
+
+
+                                                        -4-
+ DIVIDE AND CONQUER
+Quicksort an n-element array:
+1. Divide: Partition the array into two subarrays
+   around a pivot x such that elements in lower
+   subarray  x  elements in upper subarray.
+               x            x                 x
+2. Conquer: Recursively sort the two subarrays.
+3. Combine: Trivial.
+   Key: Linear-time partitioning subroutine.
+
+                                                    -5-
+ PARTITIONING SUBROUTINE
+PARTITION(A, p, q) ⊳ A[ p . . q]
+  x  A[ p]        ⊳ pivot = A[ p]
+  ip                                  Running time = O(n)
+                                       for n elements.
+  for j  p + 1 to q
+     do if A[ j]  x
+            then i  i + 1
+                   exchange A[i]  A[ j]
+  exchange A[ p]  A[i]
+  return i
+Invariant:      x     x           x           ?
+               p            i              j         q
+
+                                                         -6-
+EXAMPLE OF PARTITIONING
+    6   10   13   5   8   3   2   11
+    i   j
+
+
+
+
+                                       -7-
+EXAMPLE OF PARTITIONING
+    6   10   13   5   8   3   2   11
+    i        j
+
+
+
+
+                                       -8-
+EXAMPLE OF PARTITIONING
+    6   10   13   5   8   3   2   11
+    i             j
+
+
+
+
+                                       -9-
+EXAMPLE OF PARTITIONING
+    6   10   13   5    8   3   2   11
+
+    6   5    13   10   8   3   2   11
+        i         j
+
+
+
+
+                                        - 10 -
+EXAMPLE OF PARTITIONING
+    6   10   13   5    8   3   2   11
+
+    6   5    13   10   8   3   2   11
+        i              j
+
+
+
+
+                                        - 11 -
+EXAMPLE OF PARTITIONING
+    6   10   13   5    8   3   2   11
+
+    6   5    13   10   8   3   2   11
+        i                  j
+
+
+
+
+                                        - 12 -
+EXAMPLE OF PARTITIONING
+    6   10   13   5    8   3    2   11
+
+    6   5    13   10   8   3    2   11
+
+    6   5    3    10   8   13   2   11
+             i             j
+
+
+
+
+                                         - 13 -
+EXAMPLE OF PARTITIONING
+    6   10   13   5    8   3    2   11
+
+    6   5    13   10   8   3    2   11
+
+    6   5    3    10   8   13   2   11
+             i                  j
+
+
+
+
+                                         - 14 -
+EXAMPLE OF PARTITIONING
+    6   10   13   5    8   3    2    11
+
+    6   5    13   10   8   3    2    11
+
+    6   5    3    10   8   13   2    11
+
+    6   5    3    2    8   13   10   11
+                  i             j
+
+
+
+                                          - 15 -
+EXAMPLE OF PARTITIONING
+    6   10   13   5    8   3    2    11
+
+    6   5    13   10   8   3    2    11
+
+    6   5    3    10   8   13   2    11
+
+    6   5    3    2    8   13   10   11
+                  i                  j
+
+
+
+                                          - 16 -
+EXAMPLE OF PARTITIONING
+    6   10   13   5    8   3    2    11
+
+    6   5    13   10   8   3    2    11
+
+    6   5    3    10   8   13   2    11
+
+    6   5    3    2    8   13   10   11
+                  i                       j
+
+
+
+                                              - 17 -
+EXAMPLE OF PARTITIONING
+    6   10   13   5    8   3    2    11
+
+    6   5    13   10   8   3    2    11
+
+    6   5    3    10   8   13   2    11
+
+    6   5    3    2    8   13   10   11
+
+    2   5    3    6    8   13   10   11
+                  i
+                                          - 18 -
+PSEUDOCODE FOR QUICKSORT
+    QUICKSORT(A, p, r)
+      if p < r
+          then q  PARTITION(A, p, r)
+             QUICKSORT(A, p, q–1)
+             QUICKSORT(A, q+1, r)
+
+     Initial call: QUICKSORT(A, 1, n)
+
+
+
+
+                                        - 19 -
+ANALYSIS OF QUICKSORT
+  • Assume all input elements are distinct.
+  • In practice, there are better partitioning
+    algorithms for when duplicate input
+    elements may exist.
+  • Let T(n) = worst-case running time on an
+    array of n elements.
+
+
+
+                                                 - 20 -
+WORST-CASE OF QUICKSORT
+• Input sorted or reverse sorted.
+• Partition around min or max element.
+• One side of partition always has no elements.
+          𝑇(𝑛) = 𝑇(0) + 𝑇(𝑛 − 1) + Θ(𝑛)
+               = Θ(1) + 𝑇(𝑛 − 1) + Θ(𝑛)
+               = 𝑇(𝑛 − 1) + Θ(𝑛)
+               = Θ(𝑛2 )
+                             (arithmetic series)
+
+
+
+                                                   - 21 -
+WORST-CASE  RECURSION       TREE
+        T(n) = T(0) + T(n–1) + cn
+
+
+
+
+                                    - 22 -
+WORST-CASE  RECURSION       TREE
+        T(n) = T(0) + T(n–1) + cn
+
+      T(n)
+
+
+
+
+                                    - 23 -
+WORST-CASE  RECURSION       TREE
+        T(n) = T(0) + T(n–1) + cn
+
+         cn
+  T(0)        T(n–1)
+
+
+
+
+                                    - 24 -
+WORST-CASE  RECURSION       TREE
+        T(n) = T(0) + T(n–1) + cn
+
+         cn
+  T(0)        c(n–1)
+
+         T(0)      T(n–2)
+
+
+
+
+                                    - 25 -
+WORST-CASE  RECURSION       TREE
+        T(n) = T(0) + T(n–1) + cn
+
+         cn
+  T(0)        c(n–1)
+
+         T(0)      c(n–2)
+
+                 T(0)
+                            
+                                (1)
+
+
+                                       - 26 -
+WORST-CASE  RECURSION       TREE
+        T(n) = T(0) + T(n–1) + cn
+
+         cn                       𝑛
+
+                                Θ ෍ 𝑘 = Θ 𝑛2
+  T(0)        c(n–1)              𝑘=1
+
+
+
+         T(0)      c(n–2)
+
+                 T(0)
+                            
+                                  (1)
+
+
+                                               - 27 -
+ WORST-CASE  RECURSION       TREE
+         T(n) = T(0) + T(n–1) + cn
+
+             cn                       𝑛
+
+                                    Θ ෍ 𝑘 = Θ 𝑛2
+      (1)        c(n–1)              𝑘=1
+
+
+
+             (1)      c(n–2)
+h=n
+                                             T(n) = (n) + (n2)
+                     (1)
+                                                 = (n2)
+
+                                      (1)
+
+
+                                                             - 28 -
+  BEST-CASE ANALYSIS
+            (For intuition only!)
+If we’re lucky, PARTITION splits the array evenly:
+    T(n)    = 2T(n/2) + (n)
+            = (n lg n)             (same as merge sort)
+
+
+                                       1       9
+What if the split is always                :   ?
+                                       10 10
+              1       9
+    𝑇(𝑛) = 𝑇    𝑛 +𝑇    𝑛 + Θ(𝑛)
+             10      10
+
+What is the solution to this recurrence?
+
+                                                           - 29 -
+ANALYSIS OF “ALMOST-BEST” CASE
+            T(n)
+
+
+
+
+                                 - 30 -
+ANALYSIS OF “ALMOST-BEST” CASE
+                𝑐𝑛
+
+         1               9
+     𝑇      𝑛        𝑇      𝑛
+         10              10
+
+
+
+
+                                 - 31 -
+ANALYSIS OF “ALMOST-BEST” CASE
+                             𝑐𝑛
+
+             1                                9
+                𝑐𝑛                               𝑐𝑛
+             10                               10
+
+
+      1               9                9              81
+ 𝑇       𝑛     𝑇         𝑛        𝑇       𝑛      𝑇        𝑛
+     100             100              100             100
+
+
+
+
+                                                              - 32 -
+ANALYSIS OF “ALMOST-BEST” CASE
+                          𝑐𝑛                                        𝑐𝑛
+
+            1                               9
+               𝑐𝑛                             𝑐𝑛
+            10                             10                       𝑐𝑛
+                                                      log10/9n
+    1           9                  9               81
+       𝑐𝑛          𝑐𝑛                 𝑐𝑛               𝑐𝑛           𝑐𝑛
+   100         100                100              100
+
+
+
+
+                                                                   …
+(1)                O(n) leaves
+
+                                                            (1)
+
+
+                                                                   - 33 -
+ ANALYSIS OF “ALMOST-BEST” CASE
+                            𝑐𝑛                                                     𝑐𝑛
+
+              1                              9
+                 𝑐𝑛                             𝑐𝑛
+              10                                                                   𝑐𝑛
+log10n                                       10
+                                                        log10/9n
+      1           9                  9               81
+         𝑐𝑛          𝑐𝑛                 𝑐𝑛               𝑐𝑛                        𝑐𝑛
+     100         100                100              100
+
+
+
+
+                                                                                 …
+ (1)                 O(n) leaves
+
+                                                               (1)
+  (n lg n)
+  Lucky!               cn log10n                             T(n)  cn log10/9n + (n)
+                                                                                  - 34 -
+MORE INTUITION
+ Suppose we alternate lucky, unlucky, lucky,
+ unlucky, lucky, ….
+   L(n) = 2U(n/2) + (n) lucky
+   U(n) = L(n – 1) + (n) unlucky
+ Solving:
+   L(n) = 2(L(n/2 – 1) + (n/2)) + (n)
+        = 2L(n/2 – 1) + (n)
+        = (n lg n)      Lucky!
+ How can we make sure we are usually lucky?
+RANDOMIZED QUICKSORT
+ IDEA: Partition around a random element.
+ • Running time is independent of the input
+   order.
+ • No assumptions need to be made about the
+   input distribution.
+ • No specific input elicits the worst-case
+   behavior.
+ • The worst case is determined only by the
+   output of a random-number generator.
+                                              - 36 -
+  RANDOMIZED QUICKSORT ANALYSIS
+Let T(n) = the random variable for the running time
+of randomized quicksort on an input of size n,
+assuming random numbers are independent.
+For k = 0, 1, …, n–1, define the indicator random
+variable
+Xk =      1 if PARTITION generates a k : n–k–1 split,
+          0 otherwise.
+E[Xk] = Pr{Xk = 1} = 1/n, since all splits are equally likely, assuming
+elements are distinct.
+
+                                                                      - 37 -
+ANALYSIS (CONTINUED)
+               T(0) + T(n–1) + (n) if 0 : n–1 split,
+               T(1) + T(n–2) + (n) if 1 : n–2 split,
+T(n) =            
+               T(n–1) + T(0) + (n) if n–1 : 0 split,
+
+
+         𝑛−1
+
+    = ෍ 𝑋𝑘 𝑇(𝑘) + 𝑇(𝑛 − 𝑘 − 1) + Θ(𝑛)
+         𝑘=0
+
+
+
+
+                                                        - 38 -
+CALCULATING EXPECTATION
+             𝑛−1
+
+ 𝐸[𝑇(𝑛)] = 𝐸 ෍ 𝑋𝑘 𝑇(𝑘) + 𝑇(𝑛 − 𝑘 − 1) + Θ(𝑛)
+             𝑘=0
+
+
+
+ Take expectations of both sides.
+
+
+
+
+                                               - 39 -
+CALCULATING EXPECTATION
+             𝑛−1
+
+ 𝐸[𝑇(𝑛)] = 𝐸 ෍ 𝑋𝑘 𝑇(𝑘) + 𝑇(𝑛 − 𝑘 − 1) + Θ(𝑛)
+             𝑘=0
+          𝑛−1
+
+        = ෍ 𝐸 𝑋𝑘 𝑇(𝑘) + 𝑇(𝑛 − 𝑘 − 1) + Θ(𝑛)
+          𝑘=0
+
+
+ Linearity of expectation.
+
+
+
+
+                                               - 40 -
+CALCULATING EXPECTATION
+             𝑛−1
+
+ 𝐸[𝑇(𝑛)] = 𝐸 ෍ 𝑋𝑘 𝑇(𝑘) + 𝑇(𝑛 − 𝑘 − 1) + Θ(𝑛)
+             𝑘=0
+          𝑛−1
+
+        = ෍ 𝐸 𝑋𝑘 𝑇(𝑘) + 𝑇(𝑛 − 𝑘 − 1) + Θ(𝑛)
+          𝑘=0
+          𝑛−1
+
+        = ෍ 𝐸 𝑋𝑘 ⋅ 𝐸 𝑇(𝑘) + 𝑇(𝑛 − 𝑘 − 1) + Θ(𝑛)
+          𝑘=0
+
+
+
+
+ Independence of Xk from other random choices.
+
+
+
+
+                                                  - 41 -
+CALCULATING EXPECTATION
+             𝑛−1
+
+ 𝐸[𝑇(𝑛)] = 𝐸 ෍ 𝑋𝑘 𝑇(𝑘) + 𝑇(𝑛 − 𝑘 − 1) + Θ(𝑛)
+             𝑘=0
+          𝑛−1
+
+        = ෍ 𝐸 𝑋𝑘 𝑇(𝑘) + 𝑇(𝑛 − 𝑘 − 1) + Θ(𝑛)
+          𝑘=0
+          𝑛−1
+
+        = ෍ 𝐸 𝑋𝑘 ⋅ 𝐸 𝑇(𝑘) + 𝑇(𝑛 − 𝑘 − 1) + Θ(𝑛)
+          𝑘=0
+            𝑛−1           𝑛−1                     𝑛−1
+         1          1                  1
+        = ෍ 𝐸 𝑇(𝑘) + ෍ 𝐸 𝑇(𝑛 − 𝑘 − 1) + ෍ Θ(𝑛)
+         𝑛          𝑛                  𝑛
+            𝑘=0           𝑘=0                     𝑘=0
+
+
+
+
+ Linearity of expectation; E[Xk] = 1/n .
+
+                                                        - 42 -
+CALCULATING EXPECTATION
+              𝑛−1
+
+ 𝐸[𝑇(𝑛)] = 𝐸 ෍ 𝑋𝑘 𝑇(𝑘) + 𝑇(𝑛 − 𝑘 − 1) + Θ(𝑛)
+               𝑘=0
+            𝑛−1
+
+        = ෍ 𝐸 𝑋𝑘 𝑇(𝑘) + 𝑇(𝑛 − 𝑘 − 1) + Θ(𝑛)
+            𝑘=0
+            𝑛−1
+
+        = ෍ 𝐸 𝑋𝑘 ⋅ 𝐸 𝑇(𝑘) + 𝑇(𝑛 − 𝑘 − 1) + Θ(𝑛)
+            𝑘=0
+              𝑛−1         𝑛−1                     𝑛−1
+         1          1                  1
+        = ෍ 𝐸 𝑇(𝑘) + ෍ 𝐸 𝑇(𝑛 − 𝑘 − 1) + ෍ Θ(𝑛)
+         𝑛          𝑛                  𝑛
+             𝑘=0          𝑘=0                     𝑘=0
+             𝑛−1
+            2
+        =     ෍ 𝐸 𝑇(𝑘) + Θ(𝑛)
+            𝑛
+             𝑘=1
+                                          Summations have
+                                          identical terms.
+                                                             - 43 -
+  HAIRY RECURRENCE     𝑛−1
+                     2
+            𝐸[𝑇(𝑛)] = ෍ 𝐸 𝑇(𝑘) + Θ(𝑛)
+                     𝑛
+                       𝑘=2
+
+
+
+(The k = 0, 1 terms can be absorbed in the (n).)
+
+Prove: E[T(n)]  a n lg n for constant a > 0 .
+• Choose a large enough so that a n lg n dominates
+  E[T(n)] for sufficiently small n  2.
+                𝑛−1
+                             1 2       1
+Use fact:       ෍ 𝑘 lg 𝑘 ≤     𝑛 lg 𝑛 − 𝑛2          (exercise).
+                             2         8
+                𝑘=2
+
+
+
+                                                                  - 44 -
+SUBSTITUTION METHOD
+               𝑛−1
+             2
+     𝐸 𝑇(𝑛) ≤ ෍ 𝑎𝑘 lg 𝑘 + Θ(𝑛)
+             𝑛
+               𝑘=2
+
+
+
+
+    Substitute inductive hypothesis.
+
+
+
+
+                                       - 45 -
+SUBSTITUTION METHOD
+                 𝑛−1
+             2
+     𝐸 𝑇(𝑛) ≤ ෍ 𝑎𝑘 lg 𝑘 + Θ(𝑛)
+             𝑛
+                 𝑘=2
+                2𝑎 1 2      1
+            ≤       𝑛 lg 𝑛 − 𝑛2 + Θ(𝑛)
+                𝑛 2         8
+
+
+
+
+    Use fact.
+
+
+
+
+                                         - 46 -
+SUBSTITUTION METHOD
+                𝑛−1
+             2
+     𝐸 𝑇(𝑛) ≤ ෍ 𝑎𝑘 lg 𝑘 + Θ(𝑛)
+             𝑛
+                𝑘=2
+              2𝑎 1 2         1
+            ≤        𝑛 lg 𝑛 − 𝑛2 + Θ(𝑛)
+              𝑛 2            8
+                         𝑎𝑛
+            = 𝑎𝑛 lg 𝑛 −     − Θ(𝑛)
+                          4
+
+
+
+
+    Express as desired – residual.
+
+
+
+                                          - 47 -
+SUBSTITUTION METHOD
+                𝑛−1
+             2
+     𝐸 𝑇(𝑛) ≤ ෍ 𝑎𝑘 lg 𝑘 + Θ(𝑛)
+             𝑛
+                𝑘=2
+              2𝑎 1 2         1
+            =        𝑛 lg 𝑛 − 𝑛2 + Θ(𝑛)
+              𝑛 2            8
+                         𝑎𝑛
+            = 𝑎𝑛 lg 𝑛 −     − Θ(𝑛)
+                          4
+            ≤ 𝑎𝑛 lg 𝑛
+
+
+
+
+     if a is chosen large enough so that an/4 dominates
+     the (n).
+
+
+
+                                                          - 48 -
+QUICKSORT IN PRACTICE
+ • Quicksort is a great general-purpose sorting
+   algorithm.
+ • Quicksort is typically over twice as fast as
+   merge sort.
+ • Quicksort can benefit substantially from
+   code tuning.
+ • Quicksort behaves well even with caching
+   and virtual memory.
+
+                                                  - 49 -
+SORTING LOWER BOUNDS
+ DECISION TREES
+ LINEAR-TIME SORTING
+ COUNTING SORT
+ RADIX SORT
+ APPENDIX: PUNCHED CARDS
+  HOW FAST CAN WE SORT?
+All the sorting algorithms we have seen so far are comparison sorts:
+only use comparisons to determine the relative order of elements.
+
+
+• E.g., insertion sort, merge sort, quicksort,
+  heapsort.
+The best worst-case running time that we’ve seen for comparison
+sorting is O(n lg n) .
+
+           Is O(n lg n) the best we can do?
+
+Decision trees can help us answer this question.
+
+                                                                   - 51 -
+    DECISION-TREE EXAMPLE
+Sort a1, a2, …, an
+                                         1:2
+
+                             2:3                     1:3
+
+                       123         1:3         213         2:3
+
+                             132         312         231         321
+
+
+Each internal node is labeled i:j for i, j  {1, 2,…, n}.
+• The left subtree shows subsequent comparisons if ai  aj.
+• The right subtree shows subsequent comparisons if ai  aj.
+                                                                   - 52 -
+    DECISION-TREE EXAMPLE
+Sort a1, a2, a3 =  9, 4, 6 
+                                           1:2    94
+                               2:3                      1:3
+
+                       123           1:3         213          2:3
+
+                               132         312         231          321
+
+
+Each internal node is labeled i:j for i, j  {1, 2,…, n}.
+• The left subtree shows subsequent comparisons if ai  aj.
+• The right subtree shows subsequent comparisons if ai  aj.
+                                                                      - 53 -
+    DECISION-TREE EXAMPLE
+Sort a1, a2, a3 =  9, 4, 6 
+                                           1:2
+
+                               2:3                     1:3   96
+                       123           1:3         213         2:3
+
+                               132         312         231         321
+
+
+Each internal node is labeled i:j for i, j  {1, 2,…, n}.
+• The left subtree shows subsequent comparisons if ai  aj.
+• The right subtree shows subsequent comparisons if ai  aj.
+                                                                     - 54 -
+    DECISION-TREE EXAMPLE
+Sort a1, a2, a3 =  9, 4, 6 
+                                           1:2
+
+                               2:3                     1:3
+
+                       123           1:3         213         2:3
+                                                       46
+                               132         312         231         321
+
+
+Each internal node is labeled i:j for i, j  {1, 2,…, n}.
+• The left subtree shows subsequent comparisons if ai  aj.
+• The right subtree shows subsequent comparisons if ai  aj.
+                                                                     - 55 -
+    DECISION-TREE EXAMPLE
+Sort a1, a2, a3 =  9, 4, 6 
+                                           1:2
+
+                               2:3                     1:3
+
+                       123           1:3         213         2:3
+
+                               132         312         231         321
+                                                   469
+Each leaf contains a permutation (), (),…, (n) to
+indicate that the ordering a(1)  a(2)    a(n) has been
+established.
+                                                                     - 56 -
+DECISION-TREE MODEL
+A decision tree can model the execution of any comparison sort:
+
+ • One tree for each input size n.
+ • View the algorithm as splitting whenever it
+   compares two elements.
+ • The tree contains the comparisons along all
+   possible instruction traces.
+ • The running time of the algorithm = the
+   length of the path taken.
+ • Worst-case running time = height of tree.
+                                                                  - 57 -
+       LOWER BOUND FOR DECISION-TREE SORTING
+Theorem. Any decision tree that can sort n elements must have
+height (n lg n) .
+
+Proof. The tree must contain  n! leaves, since there are n! possible
+permutations. A height-h binary tree has  2h leaves. Thus, n!  2h .
+
+
+
+ h  lg(n!)                   (lg is mono. increasing)
+     lg ((n/e)n)              (Stirling’s formula)
+    = n lg n – n lg e
+    = (n lg n) .
+                                                                   - 58 -
+ LOWER BOUND FOR COMPARISON SORTING
+Corollary. Heapsort and merge sort are asymptotically optimal
+comparison sorting algorithms.
+
+
+
+
+                                                                - 59 -
+    SORTING IN LINEAR TIME
+Counting sort: No comparisons between elements.
+
+• Input: A[1 . . n], where A[ j]{1, 2, …, k} .
+• Output: B[1 . . n], sorted.
+• Auxiliary storage: C[1 . . k] .
+
+
+
+
+                                                  - 60 -
+  COUNTING SORT
+for i  1 to k
+   do C[i]  0
+for j  1 to n
+   do C[A[ j]]  C[A[ j]] + 1   ⊳ C[i] = |{key = i}|
+for i  2 to k
+   do C[i]  C[i] + C[i–1]      ⊳ C[i] = |{key  i}|
+for j  n downto 1
+   do B[C[A[ j]]]  A[ j]
+      C[A[ j]]  C[A[ j]] – 1
+                                                       - 61 -
+     COUNTING-SORT EXAMPLE
+       1       2       3       4       5        1   2   3   4
+A: 4       1       3       4       3       C:
+
+
+
+B:
+
+
+
+
+                                                                - 62 -
+     LOOP 1
+       1       2       3       4       5          1       2       3       4
+A: 4       1       3       4       3       C: 0       0       0       0
+
+
+
+B:
+
+
+
+for i  1 to k
+   do C[i]  0
+
+                                                                              - 63 -
+     LOOP 2
+       1       2       3       4       5          1       2       3       4
+A: 4       1       3       4       3       C: 0       0       0       1
+
+
+
+B:
+
+
+
+for j  1 to n
+   do C[A[ j]]  C[A[ j]] + 1              ⊳ C[i] = |{key = i}|
+
+                                                                              - 64 -
+     LOOP 2
+       1       2       3       4       5          1       2       3       4
+A: 4       1       3       4       3       C: 1       0       0       1
+
+
+
+B:
+
+
+
+for j  1 to n
+   do C[A[ j]]  C[A[ j]] + 1              ⊳ C[i] = |{key = i}|
+
+                                                                              - 65 -
+     LOOP 2
+       1       2       3       4       5          1       2       3       4
+A: 4       1       3       4       3       C: 1       0       1       1
+
+
+
+B:
+
+
+
+for j  1 to n
+   do C[A[ j]]  C[A[ j]] + 1              ⊳ C[i] = |{key = i}|
+
+                                                                              - 66 -
+     LOOP 2
+       1       2       3       4       5          1       2       3       4
+A: 4       1       3       4       3       C: 1       0       1       2
+
+
+
+B:
+
+
+
+for j  1 to n
+   do C[A[ j]]  C[A[ j]] + 1              ⊳ C[i] = |{key = i}|
+
+                                                                              - 67 -
+     LOOP 2
+       1       2       3       4       5          1       2       3       4
+A: 4       1       3       4       3       C: 1       0       2       2
+
+
+
+B:
+
+
+
+for j  1 to n
+   do C[A[ j]]  C[A[ j]] + 1              ⊳ C[i] = |{key = i}|
+
+                                                                              - 68 -
+     LOOP 3
+       1       2       3       4       5           1       2       3       4
+A: 4       1       3       4       3       C: 1        0       2       2
+
+
+
+B:                                         C': 1       1       2       2
+
+
+
+for i  2 to k
+   do C[i]  C[i] + C[i–1]                 ⊳ C[i] = |{key  i}|
+
+                                                                               - 69 -
+     LOOP 3
+       1       2       3       4       5           1       2       3       4
+A: 4       1       3       4       3       C: 1        0       2       2
+
+
+
+B:                                         C': 1       1       3       2
+
+
+
+for i  2 to k
+   do C[i]  C[i] + C[i–1]                 ⊳ C[i] = |{key  i}|
+
+                                                                               - 70 -
+     LOOP 3
+       1       2       3       4       5           1       2       3       4
+A: 4       1       3       4       3       C: 1        0       2       2
+
+
+
+B:                                         C': 1       1       3       5
+
+
+
+for i  2 to k
+   do C[i]  C[i] + C[i–1]                 ⊳ C[i] = |{key  i}|
+
+                                                                               - 71 -
+     LOOP 4
+       1       2       3       4       5           1       2       3       4
+A: 4       1       3       4       3       C: 1        1       3       5
+
+
+
+B:                 3                       C': 1       1       2       5
+
+
+for j  n downto 1
+   do B[C[A[ j]]]  A[ j]
+      C[A[ j]]  C[A[ j]] – 1
+                                                                               - 72 -
+     LOOP 4
+       1       2       3       4       5           1       2       3       4
+A: 4       1       3       4       3       C: 1        1       2       5
+
+
+
+B:                 3               4       C': 1       1       2       4
+
+
+for j  n downto 1
+   do B[C[A[ j]]]  A[ j]
+      C[A[ j]]  C[A[ j]] – 1
+                                                                               - 73 -
+     LOOP 4
+       1       2       3       4       5           1       2       3       4
+A: 4       1       3       4       3       C: 1        1       2       4
+
+
+
+B:         3       3               4       C': 1       1       1       4
+
+
+for j  n downto 1
+   do B[C[A[ j]]]  A[ j]
+      C[A[ j]]  C[A[ j]] – 1
+                                                                               - 74 -
+  LOOP 4
+       1       2       3       4       5           1       2       3       4
+A: 4       1       3       4       3       C: 1        1       1       4
+
+
+
+B: 1       3       3               4       C': 0       1       1       4
+
+
+for j  n downto 1
+   do B[C[A[ j]]]  A[ j]
+      C[A[ j]]  C[A[ j]] – 1
+                                                                               - 75 -
+  LOOP 4
+       1       2       3       4       5           1       2       3       4
+A: 4       1       3       4       3       C: 0        1       1       4
+
+
+
+B: 1       3       3       4       4       C': 0       1       1       3
+
+
+for j  n downto 1
+   do B[C[A[ j]]]  A[ j]
+      C[A[ j]]  C[A[ j]] – 1
+                                                                               - 76 -
+ANALYSIS
+    (k)     for i  1 to k
+                do C[i]  0
+    (n)     for j  1 to n
+                do C[A[ j]]  C[A[ j]] + 1
+    (k)     for i  2 to k
+                do C[i]  C[i] + C[i–1]
+             for j  n downto 1
+    (n)        do B[C[A[ j]]]  A[ j]
+                    C[A[ j]]  C[A[ j]] – 1
+  (n + k)
+
+                                              - 77 -
+RUNNING TIME
+If k = O(n), then counting sort takes (n) time.
+• But, sorting takes (n lg n) time!
+• Where’s the fallacy?
+Answer:
+• Comparison sorting takes (n lg n) time.
+• Counting sort is not a comparison sort.
+• In fact, not a single comparison between
+  elements occurs!
+                                                   - 78 -
+STABLE SORTING
+   Counting sort is a stable sort: it preserves the input order
+   among equal elements.
+
+
+              A: 4       1      3     4      3
+
+
+
+              B: 1       3      3     4      4
+
+Exercise: What other sorts have this property?
+
+
+                                                                  - 79 -
+RADIX SORT
+• Origin: Herman Hollerith’s card-sorting
+  machine for the 1890 U.S. Census. (See
+  Appendix .)
+             Appendix: geometric series
+
+
+
+
+• Digit-by-digit sort.
+• Hollerith’s original (bad) idea: sort on most-
+  significant digit first.
+• Good idea: Sort on least-significant digit first
+  with auxiliary stable sort.
+
+                                                     - 80 -
+OPERATION OF RADIX SORT
+   329     720      720   329
+   457     355      329   355
+   657     436      436   436
+   839     457      839   457
+   436     657      355   657
+   720     329      457   720
+   355     839      657   839
+
+
+
+                                - 81 -
+  CORRECTNESS OF RADIX SORT
+Induction on digit position         720   329
+• Assume that the numbers are       329   355
+  sorted by their low-order t – 1
+                                    436   436
+  digits.
+                                    839   457
+• Sort on digit t                   355   657
+                                    457   720
+                                    657   839
+
+
+
+                                                - 82 -
+  CORRECTNESS OF RADIX SORT
+Induction on digit position             720   329
+• Assume that the numbers are           329   355
+  sorted by their low-order t – 1
+                                        436   436
+  digits.
+                                        839   457
+• Sort on digit t                       355   657
+   ▪ Two numbers that differ in digit
+     t are correctly sorted.            457   720
+                                        657   839
+
+
+
+                                                    - 83 -
+  CORRECTNESS OF RADIX SORT
+Induction on digit position           720     329
+• Assume that the numbers are         329     355
+  sorted by their low-order t – 1
+                                      436     436
+  digits.
+                                      839     457
+• Sort on digit t                     355     657
+   ▪ Two numbers that differ in digit
+     t are correctly sorted.          457     720
+
+   ▪ Two numbers equal in digit t are 6 5 7   839
+     put in the same order as the
+     input  correct order.
+                                                    - 84 -
+  ANALYSIS OF RADIX SORT
+• Assume counting sort is the auxiliary stable sort.
+• Sort n computer words of b bits each.
+• Each word can be viewed as having b/r base-2r
+  digits.                   8     8     8     8
+Example: 32-bit word
+
+ r = 8  b/r = 4 passes of counting sort on base-
+ 28 digits; or r = 16  b/r = 2 passes of counting
+ sort on base-216 digits.
+        How many passes should we make?
+                                                       - 85 -
+  ANALYSIS (CONTINUED)
+  Recall: Counting sort takes (n + k) time to sort n numbers in the
+  range from 0 to k – 1.
+If each b-bit word is broken into r-bit pieces, each pass of counting
+sort takes (n + 2r) time. Since there are b/r passes, we have
+
+
+
+                            (    ).
+                           b    r
+                    T(n )=
+                       ,b    n+2
+                           r      
+Choose r to minimize T(n, b):
+• Increasing r means fewer passes, but as r >
+  lg n,
+     > the time grows exponentially.
+                                                                        - 86 -
+    CHOOSING r                         𝑏
+                           𝑇(𝑛, 𝑏) = Θ   𝑛 + 2𝑟
+                                       𝑟
+
+
+Minimize T(n, b) by differentiating and setting to 0.
+
+Or, just observe that we don’t want 2r > n,> and there’s no harm
+asymptotically in choosing r as large as possible subject to this
+constraint.
+
+Choosing r = lg n implies T(n, b) = (b n/lg n) .
+
+• For numbers in the range from 0 to n d – 1, we have b
+  = d lg n  radix sort runs in (d n) time.
+                                                                    - 87 -
+   CONCLUSIONS
+In practice, radix sort is fast for large inputs, as well as simple to code
+and maintain.
+
+Example (32-bit numbers):
+• At most 3 passes when sorting  2000 numbers.
+• Merge sort and quicksort do at least lg 2000 = 11
+  passes.
+Downside: Unlike quicksort, radix sort displays little locality of
+reference, and thus a well-tuned quicksort fares better on modern
+processors, which feature steep memory hierarchies.
+
+
+
+                                                                         - 88 -
+APPENDIX: PUNCHED-CARD TECHNOLOGY
+  • Herman Hollerith (1860-1929)
+  • Punched cards
+  • Hollerith’s tabulating system
+  • Operation of the sorter
+  • Origin of radix sort
+  • “Modern” IBM card
+  • Web resources on punched-card technology
+
+
+                                               Return to last
+                                               slide viewed.
+
+
+                                                            - 89 -
+   HERMAN HOLLERITH
+   (1860-1929)
+• The 1880 U.S. Census took almost
+  10 years to process.
+• While a lecturer at MIT, Hollerith
+  prototyped punched-card technology.
+• His machines, including a “card sorter,” allowed the
+  1890 census total to be reported in 6 weeks.
+• He founded the Tabulating Machine Company in 1911,
+  which merged with other companies in 1924 to form
+  International Business Machines.
+                                                  - 90 -
+PUNCHED CARDS
+ • Punched card = data record.
+ • Hole = value.
+ • Algorithm = machine + human operator.
+
+
+                                    Replica of punch
+                                    card from the 1900
+                                    U.S. census.
+                                    [Howells 2000]
+
+
+
+
+                                                 - 91 -
+HOLLERITH’S          Figure from
+TABULATING SYSTEM    [Howells 2000].
+
+
+
+•Pantograph card
+ punch
+•Hand-press reader
+•Dial counters
+•Sorting box
+                               - 92 -
+      OPERATION OF THE SORTER
+• An operator inserts a card into the
+  press.
+• Pins on the press reach through the
+  punched holes to make electrical
+  contact with mercury-filled cups
+  beneath the card.
+• Whenever a particular digit value is
+  punched, the lid of the
+  corresponding sorting bin lifts.
+• The operator deposits the card into Hollerith Tabulator, Pantograph, Press, and Sorter
+  the bin and closes the lid.
+• When all cards have been processed, the front panel is opened, and the
+  cards are collected in order, yielding one pass of a stable sort.
+                                                                                      - 93 -
+  ORIGIN OF RADIX SORT
+Hollerith’s original 1889 patent alludes to a most-
+significant-digit-first radix sort:
+ “The most complicated combinations can readily be counted
+ with comparatively few counters or relays by first assorting the
+ cards according to the first items entering into the combinations,
+ then reassorting each group according to the second item
+ entering into the combination, and so on, and finally counting
+ on a few counters the last item of the combination for each
+ group of cards.”
+Least-significant-digit-first radix sort seems to be a
+folk invention originated by machine operators.
+                                                               - 94 -
+  “MODERN” IBM CARD
+• One character per column.
+
+
+                                                 Produced by the
+                                                 WWW Virtual
+                                                 Punch-Card
+                                                 Server.
+
+
+
+
+  So, that’s why text windows have 80 columns!
+
+                                                         - 95 -
+WEB RESOURCES ON PUNCHED-CARD
+TECHNOLOGY
+• Doug Jones’s punched card index
+• Biography of Herman Hollerith
+• The 1890 U.S. Census
+• Early history of IBM
+• Pictures of Hollerith’s inventions
+• Hollerith’s patent application (borrowed from Gordon Bell’s
+  CyberMuseum)
+• Impact of punched cards on U.S. history
+
+
+
+
+                                                                - 96 -
+

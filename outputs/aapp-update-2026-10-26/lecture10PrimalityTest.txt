@@ -1,0 +1,412 @@
+095946- ADVANCED ALGORITHMS AND PARALLEL
+              PROGRAMMING
+
+               Fabrizio Ferrandi
+                a.a. 2026-2027
+          Primality test
+
+Definition:
+An integer p  2 is prime iff (a | p → a = 1 or a = p).
+
+Algorithm: deterministic primality test (naive)
+Input: integer n  2
+Output: answer to the question: Is n prime?
+   if n = 2 then return true
+   if n even then return false
+   for i = 1 to  n/2 do
+         if 2i + 1 divides n
+         then return false
+   return true
+
+Complexity: (n)
+                                    -2-
+          Primality test
+
+  Goal:
+  Randomized method
+  • Polynomial time complexity (in the length of the input)
+  • If answer is “not prime”, then n is not prime
+  • If answer is “prime”, then the probability that n is not
+    prime is at most p>0, n is composite
+
+  k iterations: probability that n is not prime is at most pk
+
+
+Example of one-sided error Monte Carlo Algorithm: false-biased
+
+                                -3-
+         Primality test
+
+Observation:
+Each odd prime number p divides 2p-1 – 1.            from Fermat
+
+Examples: p = 17, 216 – 1 = 65535 = 17 * 3855
+           p = 23, 222 – 1 = 4194303 = 23 * 182361
+
+Simple primality test:
+1 Calculate z = 2n-1 mod n
+2 if z = 1
+3 then n is possibly prime
+4   else n is composite
+
+Advantage: This only takes polynomial time
+
+
+                                  -4-
+       Simple primality test
+
+Definition:
+A natural number n>=2 is a base-2 pseudoprime if n is
+  composite and
+                         2n-1 mod n = 1.
+
+
+
+
+Example: n = 11 * 31 = 341
+
+         2340 mod 341 = 1
+
+                             -5-
+         Randomized primality test
+
+Theorem: (Fermat‘s little theorem)
+If p prime and 0 < a < p, then
+                ap-1 mod p = 1.
+
+
+
+Definition:
+n is pseudoprime to base a, if n not prime and
+                         an-1 mod n = 1.
+
+Example: n = 341, a = 3
+         3340 mod 341 = 56  1
+
+
+
+                                  -6-
+        Randomized primality test
+
+Algorithm: Randomized primality test 1
+
+1 Randomly choose a  [2, n-1]
+2 Calculate an-1 mod n
+3 if an-1 mod n = 1
+4    then n is possibly prime
+5    else n is composite
+
+
+
+Prob(n is not prim, but an-1 mod n = 1 ) ?
+
+                             -7-
+       Carmichael numbers
+
+Problem: Carmichael numbers
+
+Definition: A number n>=2 is a Carmichael number if n is
+  composite and for any a with GCD(a, n) = 1 we have
+              an-1 mod n = 1
+
+
+
+Example:
+Smallest Carmichael number: 561 = 3 * 11 * 17
+
+
+
+                            -8-
+          Randomized primality test 2
+
+Theorem:
+If p prime and 0 < a < p, then the only solutions to the equation
+                a2 mod p = 1
+are a = 1 and a = p – 1.
+
+Definition:
+a is called non-trivial square root of 1 mod n, if
+                 a2 mod n = 1 and a  1, n – 1.
+
+Example: n = 35
+         62 mod 35 = 1
+
+
+
+                                    -9-
+         Fast exponentiation
+
+Idea:
+During the computation of an-1 (0 < a < n randomly chosen),
+  test whether there is a non-trivial square root mod n.
+
+Method for the computation of an:
+
+Case 1: [n is even]
+  an = an/2 * an/2
+
+Case 2: [n is odd]
+  an = a(n-1)/2 * a(n-1)/2 * a
+                                 - 10 -
+         Fast exponentiation
+
+Example:
+ a62 = (a31)2
+ a31 = (a15)2 * a
+ a15 = (a7)2 * a
+ a7 = (a3)2 * a
+ a3 = (a)2 * a
+
+
+
+
+Complexity: O(log n)
+
+                          - 11 -
+       Fast exponentiation
+
+boolean isProbablyPrime;
+
+power(int a, int p, int n) {
+    /* computes ap mod n and checks during the
+       computation whether there is an x with
+       x2 mod n = 1 and x  1, n-1 */
+
+    if (p == 0) return 1;
+    x = power(a, p/2, n)
+    result = (x * x) % n;
+
+
+
+
+                            - 12 -
+       Fast exponentiation
+
+/* check whether x2 mod n = 1 and x  1, n-1 */
+   if (result == 1 && x != 1 && x != n –1 )
+       isProbablyPrime = false;
+
+    if (p % 2 == 1)
+        result = (a * result) % n;
+
+    return result;
+}
+
+
+
+
+                         - 13 -
+       Randomized primality test 2
+
+primalityTest(int n) {
+    /* executes the randomized primality test for a
+  chosen at random*/
+
+    a = random(2, n-1);
+
+    isProbablyPrime = true;
+
+    result = power(a, n-1, n);
+
+    if (result != 1 || !isProbablyPrime)
+         return false;
+    else
+         return true;
+}
+
+                          - 14 -
+        Randomized primality test 2
+
+Theorem:
+
+If n is composite, there are at most
+
+                          (n-9)/4
+
+integers 0 < a < n, for which the algorithm primalityTest
+   fails.
+
+
+
+
+                             - 15 -
+         Application
+
+❑   Public-Key Cryptosystems
+
+
+
+
+                               - 16 -
+          Secret key cryptosystems
+
+Traditional encryption of messages with secret keys
+Disadvantages:
+1.  The key k has to be exchanged between A and B before the transmission of
+    the message.
+2.  For messages between n parties n(n-1)/2 keys are required.
+
+
+
+
+Advantage:
+Encryption and decryption can be computed very efficiently.
+
+                                     - 17 -
+        Electronic security services
+
+❑ Guarantees:
+❑ • Confidentiality of the transmission
+
+❑ • Integrity of the data
+
+❑ • Authenticity of the sender
+
+❑ • Liability of the transmission
+
+
+
+
+                            - 18 -
+          Public-key cryptosystems
+
+Diffie and Hellman (1976)
+
+Idea: Each participant A has two keys:
+
+1.   a public key PA accessible to every other participant
+
+2.   a private (or: secret) key SA only known to A.
+
+
+
+
+                               - 19 -
+          Public-key cryptosystems
+
+D = set of all legal messages,
+    e.g. the set of all bit strings of finite length
+
+
+                     PA , S A : D → D
+
+Three conditions:
+1. PA and SA can be computed efficiently
+2. SA(PA(M)) = M and PA(SA(M)) = M
+    (PA, SA are inverse functions)
+3. SA is not computable from PA (with realistic effort)
+
+
+                                     - 20 -
+            Encryption in a public-key system
+
+A sends a message M to B.
+
+
+Dear Bob,               #*k- + ;}?,            Dear Bob,
+I just                  @-) #$<9               I just
+checked                 {o7::-&$3              checked
+the new                 (-##!]?8               the new
+...                     ...                    ...
+
+
+
+
+                                      - 21 -
+       Encryption in a public-key system
+
+1. A accesses B’s public key PB (from a public directory or
+  directly from B).
+
+2. A computes the encrypted message C = PB(M) and sends
+  C to B.
+
+3. After B has received message C, B decrypts the message
+  with his own private key SB: M = SB(C)
+
+
+
+
+                            - 22 -
+         Generating a digital signature
+
+A sends a digitally signed message M´ to B:
+
+1. A computes the digital signature σ for M´ with her/his own private
+   key:
+                       σ = SA(M´)
+
+2. A sends the pair (M´,σ) to B.
+
+3. After receiving (M´,σ), B checks the digital signature:
+                        PA(σ) = M´
+
+Anybody is able to check σ using PA (e.g. for bank checks).
+
+
+
+                                     - 23 -
+           RSA cryptosystems
+
+R. Rivest, A. Shamir, L. Adleman
+
+Generating the public and private keys:
+
+1. Randomly select two primes p and q of similar size,
+   each with l+1 bits (l ≥ 500).
+
+2. Let n = p·q
+
+3. Let e be an integer that does not divide (p - 1)·(q - 1).
+
+   i.e. e relatively prime to (p - 1)·(q - 1) -> GCD(e, (p - 1)·(q - 1) ≡ 1
+
+4. Calculate d = e-1 mod (p - 1)(q - 1)
+
+   i.e.:                 d · e ≡ 1 mod (p - 1)(q - 1)
+                                    - 24 -
+        RSA cryptosystems
+
+5. Publish P = (e, n) as public key
+
+6. Keep S = (d, n) as private key
+
+Divide message (represented in binary) in blocks of size 2·l.
+Interpret each block M as a binary number: 0 ≤ M < 22·l
+
+       P(M) = Me mod n                 S(C) = Cd mod n
+
+
+
+
+                              - 25 -
+         Multiplicative inverse
+
+Algorithm: extended-Euclid
+Input: Two integers a and b where b  0
+Output: gcd(a,b) and two integers x and y with
+           xa + yb = gcd(a,b)
+   if b = 0 then return (a, 1, 0);
+   (d, x’, y’) := extended-Euclid(b, a mod b);
+   x := y’; y := x’ – a/b y’;
+   return (d, x, y);
+
+Application: a=(p-1)(q-1) b=e
+Integers x and y with
+      x(p-1)(q-1) + ye = gcd((p-1)(q-1),e) = 1
+
+                                  - 26 -
+       Acknowledge
+
+❑ Based on Randomized Algorithms, by R. Motwani and P.
+  Raghavan.
+❑ Based on Lectures of Prof. Dr. Th. Ottmann and of Prof.
+
+  Dr. Susanne Albers: http://electures.informatik.uni-
+  freiburg.de/portal/web/guest
+
+
+
+
+                           - 27 -
+
