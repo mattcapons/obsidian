@@ -3,17 +3,19 @@ tags:
   - aapp
   - exam-practice
   - question-bank
-status: unanswered
+status: in-progress
 created: 2026-10-15
 ---
 # AAPP — Past Exam Question Bank
 
 [[AAPP Index|Course index]]
 
-Questions collected from the supplied 2022–2026 exams, grouped by subject for revision and future reference answers. **No answers or newly generated questions are included.**
+Questions collected from the supplied 2022–2026 exams, grouped by subject for revision and practice. Original prompts are preserved, with your attempts and review feedback beneath the questions you have worked on.
 
 > [!info] How to use this bank
-> Each entry has a stable question ID and an original exam/page reference. Answer with reasoning: the exams repeatedly state that an unsupported answer is invalid. Keep the ID when adding a future answer or requesting similar practice. Points in parentheses are the original marks where available.
+> Each entry has a stable question ID and an original exam/page reference. Write beneath **My answer**, replacing the placeholder with your reasoning, calculations, or code. The exams repeatedly state that an unsupported answer is invalid. Points in parentheses are the original marks where available.
+>
+> When ready, ask: “Correct my answer to AAPP-01-001” or “Review the answers I have filled in under PRAM model and memory rules.” Feedback will go in the collapsed **Feedback** callout beneath your answer, preserving your attempt. Unanswered questions should remain blank.
 
 ## Contents
 
@@ -52,8 +54,8 @@ Questions collected from the supplied 2022–2026 exams, grouped by subject for 
 - Wording, claims to discuss, and apparent source errors are left as questions, not corrected into answers. In particular, check the bounds and increment in the September 2025 loop exactly as printed.
 - Links to existing notes indicate related study material, not a guarantee that every question is already covered. Topics without a dedicated note remain included.
 
-> [!warning] Future answer pass
-> Use the course notes and source PDFs to answer each ID when requested. Preserve assumptions and distinguish expected, worst-case, and amortized bounds. Where material is still missing, mark the answer as pending rather than inventing a course-specific explanation.
+> [!warning] Future review pass
+> When correction is requested, review the specified attempts using the course notes and source PDFs. Preserve the original answers and add feedback separately: identify what is correct, explain errors or omissions, and provide a corrected answer. Preserve assumptions and distinguish expected, worst-case, and amortized bounds. Where material is still missing, mark feedback as pending rather than inventing a course-specific explanation. Do not fill in unanswered questions unless explicitly requested.
 
 ## PRAM model and memory rules
 
@@ -67,6 +69,19 @@ Source: [[Tema Esame 2022-11-08-1st.pdf#page=2|2022-11-08-1st · Exercise 1A · 
 
 ^aapp-01-001
 
+**My answer**
+
+A PRAM model stand for  Parallel Random Access Machine. It is an extension of the RAM model, with the addition of multiple compute units. It is based on a cycle based behavior, where there are 4 states: Read, Compute, Write, Barrier. All units are syncronized to be in the same state and cycle togheter. This way  we can avoid many data conflicts that would arise. There are still some so we have different combination of Concurrent or Exclusive  behavior for the Read and the Write. 
+
+> [!note]- Feedback
+> **Reviewed: 2026-10-27.**
+>
+> **Assessment: mostly correct; add the memory assumptions.** Your definition and phase sequence are sound. Synchronization fixes the ordering of phases, but the algorithm must still satisfy the access rules.
+>
+> **Suggested exam answer:** PRAM means Parallel Random Access Machine. It extends RAM to $p$ identical processors, each with private registers and a processor ID, communicating through a globally addressable shared memory. Processors execute synchronous rounds: read, compute locally, write, and synchronize before the next round. Basic operations and permitted shared-memory accesses take constant time; realistic communication and synchronization overheads are abstracted away. EREW, CREW, and CRCW specify which simultaneous accesses to the same cell are legal.
+>
+> **Study:** [[PRAM#RAM and PRAM execution]]; [[lecture4-PRAM.pdf#page=4|lecture slides 4–6]]. The shared-memory and unit-time assumptions are also described by [Blelloch and Maggs, §25.2.1](https://www.cs.cmu.edu/~guyb/papers/BM10.pdf#page=3).
+
 ### AAPP-01-002
 
 Please describe the type of Read/Write abilities a PRAM may have. (1)
@@ -74,6 +89,19 @@ Please describe the type of Read/Write abilities a PRAM may have. (1)
 Source: [[Tema Esame 2023-01-17-1st.pdf#page=2|2023-01-17-1st · Exercise 1B · p. 2]]
 
 ^aapp-01-002
+
+**My answer**
+
+A PRAM model has multiple compute units and each one has to read or write at the same time. So there are no real read/write conflicts, but just read/read and write/write. In order to regulate those we can choose EREW, CREW, CRCW. CREW is most used because the read can happen concurrently which usually does not cause problems, while the write can't happen concurrently on the same element, but it can on 2 different elements. CRCW introduces new choices because we can choose different ways to select which of the concurrent writers can win, for example random or priority based.
+
+> [!note]- Feedback
+> **Reviewed: 2026-10-27.**
+>
+> **Assessment: mostly correct; define the acronyms explicitly.** Your explanation that exclusive writes still permit parallel writes to different cells is correct. All processors follow the same phases, but a processor may be idle. “CREW is most used” is unnecessary here. Arbitrary selection and random selection should be distinguished.
+>
+> **Suggested exam answer:** The rules concern access to the **same shared-memory cell in the same phase**. EREW means Exclusive Read, Exclusive Write: at most one reader and at most one writer per cell. CREW means Concurrent Read, Exclusive Write: several processors may read a cell, but at most one may write it. CRCW means Concurrent Read, Concurrent Write: both are permitted, with a specified write rule such as common, arbitrary, or priority. Concurrent access to distinct cells is permitted in all three models.
+>
+> **Study:** [[PRAM#Memory-access rules]]; [[lecture4-PRAM.pdf#page=6|slide 6]]. See also [Middelburg, classification of PRAMs, printed p. 564](https://pure.uva.nl/ws/files/228009805/Imperative_Process_Algebra_and_Models_of_Parallel_Computation.pdf#page=38).
 
 ### AAPP-01-003
 
@@ -83,6 +111,19 @@ Source: [[Tema Esame 2023-02-14-1st.pdf#page=2|2023-02-14-1st · Exercise 1A · 
 
 ^aapp-01-003
 
+**My answer**
+
+PRAM stands for Parallel Random Access Machine. It is an extension of the RAM model, but with multiple compute units.
+
+> [!note]- Feedback
+> **Reviewed: 2026-10-27.**
+>
+> **Assessment: correct starting point, but incomplete as a definition.** Add shared memory, private registers, synchronous execution, and the unit-time assumption.
+>
+> **Suggested exam answer:** A Parallel Random Access Machine is an idealized shared-memory parallel computer consisting of multiple RAM processors with private registers. They execute synchronously and communicate by reading and writing shared memory. Basic operations and permitted memory accesses take unit time, under a specified memory-access policy.
+>
+> **Study:** [[PRAM#RAM and PRAM execution]]; [[lecture4-PRAM.pdf#page=4|slide 4]]; [Blelloch and Maggs, §25.2.1](https://www.cs.cmu.edu/~guyb/papers/BM10.pdf#page=3).
+
 ### AAPP-01-004
 
 Please describe what “Common CRCW” means. (1)
@@ -90,6 +131,19 @@ Please describe what “Common CRCW” means. (1)
 Source: [[Tema Esame 2023-02-14-1st.pdf#page=2|2023-02-14-1st · Exercise 1B · p. 2]]
 
 ^aapp-01-004
+
+**My answer**
+
+In CRCW the writes can be concurrent on the same element, but it need a strategy to handle them. The common strategy is that all writes on the same element must be the same, so if a writer is different than the others an error is raised.
+
+> [!note]- Feedback
+> **Reviewed: 2026-10-27.**
+>
+> **Assessment: the central rule is correct; change “an error is raised.”** The model does not guarantee a runtime exception. An algorithm that proposes different values in a common-write phase violates the model; the slides call its state undefined.
+>
+> **Suggested exam answer:** Common CRCW permits concurrent reads and concurrent writes to the same memory cell, provided that all simultaneous writers to that cell propose the same value. The algorithm must guarantee this condition. Conflicting values make that step illegal under common CRCW.
+>
+> **Study:** [[PRAM#CRCW write rules]]; [[lecture4-PRAM.pdf#page=7|slide 7]]; [Karp and Ramachandran, §2.1, printed p. 873](https://www.cs.cmu.edu/~guyb/paralg/papers/KarpRamachandran90.pdf#page=4).
 
 ### AAPP-01-005
 
@@ -99,6 +153,21 @@ Source: [[Tema Esame 2023-06-19-1st.pdf#page=2|2023-06-19-1st · Exercise 1A · 
 
 ^aapp-01-005
 
+**My answer**
+
+There are 4 different phases in a PRAM computation. Read, all units read the data they need, this is usually concurrent but it can be exclusive too. Compute, they utilize the data to obtain a result, each locally. Write, every unit writes their result, it can be concurrent or exclusive. Barrier, halts the units until all are ready to allow synchronization.
+
+> [!note]- Feedback
+> **Reviewed: 2026-10-27.**
+>
+> **Assessment: correct for the course presentation.** You identified all four phases and their purposes. Specify that synchronization is implicit in the ideal PRAM model; it does not require a programmed barrier with realistic waiting overhead.
+>
+> **Suggested exam answer:** Each synchronous round consists of: (1) read the required shared-memory/input value into private registers; (2) perform a basic local computation; (3) write the result to shared memory/output, obeying the memory-access rule; and (4) synchronize before starting the next round. Processors may be idle in a phase.
+>
+> **Convention:** The course lists the barrier as a fourth phase. Textbooks often describe three read–compute–write phases with synchronization implicit. These describe the same ordering, rather than different algorithms.
+>
+> **Study:** [[PRAM#RAM and PRAM execution]]; [[lecture4-PRAM.pdf#page=5|slide 5]]; [Blelloch, Dhulipala and Sun, §8.1](https://www.cs.cmu.edu/~guyb/paralg/paralg/parallel.pdf#page=52).
+
 ### AAPP-01-006
 
 Please describe what “Arbitrary CW” means. (1)
@@ -106,6 +175,19 @@ Please describe what “Arbitrary CW” means. (1)
 Source: [[Tema Esame 2023-06-19-1st.pdf#page=2|2023-06-19-1st · Exercise 1B · p. 2]]
 
 ^aapp-01-006
+
+**My answer**
+
+When the writes are concurrent in PRAM there is a need for a strategy on how to handle them. The arbitrary strategy means that there is no guarantee on which succeeds but is just who writes last. It is used when the result is not critical and can vary.
+
+> [!note]- Feedback
+> **Reviewed: 2026-10-27.**
+>
+> **Assessment: partly correct; remove “who writes last” and “the result is not critical.”** You correctly say the winner is unspecified. However, the model defines simultaneous writes, with no chronological last writer. Correctness must hold for every permitted winner.
+>
+> **Suggested exam answer:** Under arbitrary concurrent write, when several processors write to the same cell in one phase, exactly one contender succeeds, with no guarantee about which. The algorithm must produce a correct result regardless of that choice. “Arbitrary” does not imply any probability distribution; a random-write rule would specify one.
+>
+> **Course wording:** [[lecture4-PRAM.pdf#page=7|Slide 7]] groups “Arbitrary/Random” together and says a randomly chosen writer succeeds. For the exam, state that one unspecified contender succeeds, then mention the slide's terminology if needed. The precise distinction is already explained in [[PRAM#CRCW write rules]] and supported by [Karp and Ramachandran, §2.1](https://www.cs.cmu.edu/~guyb/paralg/papers/KarpRamachandran90.pdf#page=4).
 
 ### AAPP-01-007
 
@@ -115,6 +197,21 @@ Source: [[Tema Esame 2023-07-11-1st.pdf#page=2|2023-07-11-1st · Exercise 1A · 
 
 ^aapp-01-007
 
+**My answer**
+
+First there is the time complexity T* of the best sequential algorithm with the same function. Then there is the T1 which is the parallel algorithm but run on a single processor and then Tn which is on n processors.
+
+> [!note]- Feedback
+> **Reviewed: 2026-10-27.**
+>
+> **Assessment: relevant notation, but it does not answer how time is counted.** Your $T^*$ and $T_1$ distinction is useful for performance comparisons. Use $T_p(n)$, with $n$ for input size and $p$ for processor count, to avoid confusing these quantities.
+>
+> **Suggested exam answer:** For a fixed input size $n$ and processor count $p$, parallel time $T_p(n)$ is the number of synchronous constant-time steps/rounds until the algorithm finishes. Operations performed simultaneously count as one time step, not one step per processor. Analyze the dependent sequence of rounds, including loops and inactive periods; total operations across processors measure work instead.
+>
+> **Example:** A tree reduction of $n$ inputs has $\Theta(\log n)$ parallel time with enough processors, while performing $\Theta(n)$ total work.
+>
+> **Study:** [[PRAM#RAM and PRAM execution]]; [[PRAM#Performance quantities]]; [[lecture4-PRAM.pdf#page=5|slide 5]]; [Blelloch, Dhulipala and Sun, §8.1](https://www.cs.cmu.edu/~guyb/paralg/paralg/parallel.pdf#page=52).
+
 ### AAPP-01-008
 
 How is the communication via shared memory performed in a PRAM model? (latency vs parallel accesses) (1)
@@ -122,6 +219,23 @@ How is the communication via shared memory performed in a PRAM model? (latency v
 Source: [[Tema Esame 2023-07-11-1st.pdf#page=2|2023-07-11-1st · Exercise 1B · p. 2]]
 
 ^aapp-01-008
+
+**My answer**
+
+I don't know
+
+> [!note]- Feedback
+> **Reviewed: 2026-10-27.**
+>
+> **Assessment: no answer supplied; reference answer below.**
+>
+> **Suggested exam answer:** Processors communicate indirectly: one writes a value into a shared-memory cell and another reads it in a subsequent read phase. Each permitted access has unit latency, independent of processor or address. All processors may perform permitted accesses in parallel without an extra bandwidth or network-contention penalty. Accesses to the same cell must still obey EREW/CREW/CRCW rules.
+>
+> **Timing example:** If $P_0$ writes 7 to $A$ during round $r$, $P_1$ can read that new value in round $r+1$. The read phase of round $r$ happens before that write.
+>
+> **Meaning of the idealization:** “No communication overhead” removes additional hardware delays; a read or write still occupies a model step. It does not mean that dependent communication can happen instantaneously within the same read phase.
+>
+> **Study:** [[PRAM#RAM and PRAM execution]]; [[lecture4-PRAM.pdf#page=4|slides 4–5]]. The bandwidth and latency idealization is discussed explicitly by [Culler et al., *LogP*, §6.1](https://www.cs.cornell.edu/tve/papers-ucb/ppopp93.pdf#page=18).
 
 ### AAPP-01-009
 
@@ -132,6 +246,21 @@ Source: [[Tema Esame 2025-09-05-1st.pdf#page=2|2025-09-05-1st · Exercise 1C · 
 
 ^aapp-01-009
 
+**My answer**
+
+I don't know
+
+> [!note]- Feedback
+> **Reviewed: 2026-10-27.**
+>
+> **Assessment: no answer supplied; the intended answer is True, under the usual model comparison.**
+>
+> **Suggested exam answer:** PRAM is an optimistic model: it gives processors unit-time access to shared memory and removes realistic communication and synchronization overheads. If a problem is proven to have no efficient solution even in an appropriately powerful PRAM model, conventional parallel machines with comparable computational operations and resources cannot overcome that lower bound merely through their architecture. They must also contend with costs that PRAM ignores.
+>
+> **Qualification:** The comparison must use compatible processor counts, operations, and memory rules. A bound for a restricted EREW model alone need not apply unchanged to CRCW. Also, “no efficient solution exists” is stronger than “we have not found one.” The reverse implication fails: an efficient PRAM algorithm may perform poorly on real hardware.
+>
+> **Study and source:** [[PRAM#Overview]]; [[lecture4-PRAM.pdf#page=3|slide 3]]. [Pavel Tvrdik's university lecture, “PRAM model”](https://pages.cs.wisc.edu/~tvrdik/2/html/Section2.html) explicitly presents the exam's statement as a reason to use PRAM as a benchmark. The qualifications above explain the intended comparison; the available exam PDF contains no marking key.
+
 ### AAPP-01-010
 
 Which of the PRAM model’s assumptions help to compute the time complexity? (1)
@@ -139,6 +268,21 @@ Which of the PRAM model’s assumptions help to compute the time complexity? (1)
 Source: [[Tema Esame 2023-09-11-1st.pdf#page=2|2023-09-11-1st · Exercise 1A · p. 2]]
 
 ^aapp-01-010
+
+**My answer**
+
+That work is split evenly among all processors.
+
+> [!note]- Feedback
+> **Reviewed: 2026-10-27.**
+>
+> **Assessment: incorrect; equal work distribution is not a PRAM assumption.** Work assignment is a property of the algorithm and schedule. Dependencies can leave processors idle even on an ideal PRAM.
+>
+> **Suggested exam answer:** The main assumptions are that basic instructions and permitted memory accesses take constant/unit time, and that processors execute synchronously in lock-step. Communication and synchronization have no additional hardware overhead. Therefore elapsed parallel time can be measured by counting synchronous steps until completion.
+>
+> **Counterexample to your answer:** Near the end of a tree reduction, only one addition remains. The other processors are idle, but the computation is still a valid PRAM computation.
+>
+> **Study:** [[PRAM#RAM and PRAM execution]]; [[PRAM#Reading a processor-time diagram]]; [[lecture4-PRAM.pdf#page=4|slides 4–5]].
 
 ### AAPP-01-011
 
@@ -148,6 +292,19 @@ Source: [[Tema Esame 2023-09-11-1st.pdf#page=2|2023-09-11-1st · Exercise 1B · 
 
 ^aapp-01-011
 
+**My answer**
+
+I don't know
+
+> [!note]- Feedback
+> **Reviewed: 2026-10-27.**
+>
+> **Assessment: no answer supplied; reference answer below.**
+>
+> **Suggested exam answer:** Every processor can access any shared-memory cell in unit time, independent of the address or the number of other permitted simultaneous accesses. The model therefore abstracts away interconnection topology, cache effects, bandwidth limitations, and additional communication latency. Same-cell accesses must still satisfy the selected memory-access rules.
+>
+> **Study:** [[PRAM#RAM and PRAM execution]]; [[lecture4-PRAM.pdf#page=4|slide 4]]; [Culler et al., *LogP*, §6.1](https://www.cs.cornell.edu/tve/papers-ucb/ppopp93.pdf#page=18).
+
 ### AAPP-01-012
 
 Please define when a write conflict occurs in a PRAM model. (1)
@@ -155,6 +312,19 @@ Please define when a write conflict occurs in a PRAM model. (1)
 Source: [[Tema Esame 2023-09-11-1st.pdf#page=2|2023-09-11-1st · Exercise 1C · p. 2]]
 
 ^aapp-01-012
+
+**My answer**
+
+Either when the write is exclusive and 2 units want to write the same element in the same cycle. Otherwise if the write is concurrent and the strategy is common all results must be the same for a single element, so if 2 writes differ there is a write conflict.
+
+> [!note]- Feedback
+> **Reviewed: 2026-10-27.**
+>
+> **Assessment: partly correct; separate the conflict from the rule that handles it.** Your examples identify illegal exclusive writes and an illegal common-write case. However, two processors targeting one shared cell in the same write phase already constitute write contention, even if their values agree. A CRCW policy specifies how such simultaneous writes are handled.
+>
+> **Suggested exam answer:** A write conflict occurs when two or more processors attempt to write to the same shared-memory cell in the same write phase. Exclusive-write models prohibit this, even for equal values. CRCW permits it under its specified rule: common requires all values to agree, arbitrary lets one unspecified writer succeed, and priority selects the writer with highest priority. Writes to distinct cells do not conflict.
+>
+> **Study:** [[PRAM#Deciding legality from addresses]]; [[PRAM#CRCW write rules]]; [[lecture4-PRAM.pdf#page=6|slides 6–7]].
 
 ### AAPP-01-013
 
@@ -164,6 +334,21 @@ Source: [[Tema Esame 2023-11-09-1st.pdf#page=2|2023-11-09-1st · Exercise 1A · 
 
 ^aapp-01-013
 
+**My answer**
+
+Because PRAM follows a strict cycle based behavior, where each instruction is constant time and all processors are synchronized. So the abstraction allows to consider a cycle or step as a constant time for all processor at the same time and the time is simplified as the total number of cycles. 
+
+> [!note]- Feedback
+> **Reviewed: 2026-10-28.**
+>
+> **Assessment: correct.** You identify both reasons: constant-time operations and synchronized execution. Your conclusion that time is the number of cycles is the essential point.
+>
+> **Suggested exam answer:** PRAM assumes unit-time basic instructions and permitted memory accesses, with processors executing synchronous steps. Therefore elapsed parallel time is proportional to the number of sequential steps/rounds until completion. Instructions executed simultaneously on different processors do not add to elapsed time; summing those operations measures work instead.
+>
+> **Wording to keep precise:** “Number of instructions” here means the length of the parallel execution in steps, rather than the total instruction count over all processors. For example, eight processors each performing one operation per step for five steps give time 5 and work 40 in that simplified counting model.
+>
+> **Study:** [[PRAM#RAM and PRAM execution]]; [[PRAM#Work versus cost]]; [[lecture4-PRAM.pdf#page=4|slides 4–5]]. See also [the IIT Delhi course reading, “PRAM Computation Time,” printed p. 74](https://www.cse.iitd.ac.in/~rijurekha/col730_2022/kumar_chapter3.pdf#page=10).
+
 ### AAPP-01-014
 
 Please discuss the following sentence: “In a PRAM model, processors do not have private local memories”. True/False? (1)
@@ -171,6 +356,21 @@ Please discuss the following sentence: “In a PRAM model, processors do not hav
 Source: [[Tema Esame 2024-01-26-1st.pdf#page=2|2024-01-26-1st · Exercise 1A · p. 2]]
 
 ^aapp-01-014
+
+**My answer**
+
+This is false. There is a shared access memory, but each processor has also its own private registers used to load values from memory and record intermediate results.
+
+> [!note]- Feedback
+> **Reviewed: 2026-10-28.**
+>
+> **Assessment: correct.** Your explanation gives the reason the statement is false: shared memory coexists with private processor state.
+>
+> **Suggested exam answer:** False. Each PRAM processor has its own private registers/local storage, used for operands and intermediate results, as well as access to shared memory. Other processors cannot directly access its private registers; communication occurs through shared-memory reads and writes.
+>
+> **Example:** Two processors can both have a local register named `sum` without a conflict. A conflict depends on accessing the same shared cell.
+>
+> **Study:** [[PRAM#RAM and PRAM execution]]; [[PRAM#What a synchronous round actually guarantees]]; [[lecture4-PRAM.pdf#page=4|slide 4]].
 
 ### AAPP-01-015
 
@@ -180,6 +380,28 @@ Source: [[Tema Esame 2024-01-26-1st.pdf#page=2|2024-01-26-1st · Exercise 1C · 
 
 ^aapp-01-015
 
+**My answer**
+
+For the common policy all resulting writes must report the same value. This is used for security application where the computation is repeated multiple time in parallel by different physical units and the result must be the same. This prevents an attacker from disturbing the behavior of a single unit. 
+
+> [!note]- Feedback
+> **Reviewed: 2026-10-28.**
+>
+> **Assessment: the common-write rule is correct, but the security example does not establish a valid application.** Common CW requires agreement; it does not compare results, perform majority voting, or guarantee protection against a malicious processor. If one processor proposes a different value to the same cell, that step violates the common-write rule.
+>
+> **Suggested exam answer — Boolean OR:** Given $n$ Boolean inputs, initialize a shared flag to 0 in a separate step. Assign one processor to each input. A processor whose input is 1 writes 1 to the flag; a processor whose input is 0 does nothing. All concurrent writes therefore agree, so common CRCW permits them. The final flag is 1 exactly when at least one input is 1. With $n$ processors this takes a constant number of rounds.
+>
+> ```text
+> flag = 0                         // separate initialization
+> in parallel for i = 0, ..., n-1:
+>     if A[i] == 1:
+>         flag = 1
+> ```
+>
+> **Why the condition matters:** Letting zero-input processors write 0 in that same write phase would violate common CW when inputs contain both 0 and 1.
+>
+> **Study:** [[PRAM#A useful CRCW example: Boolean OR]]; [[PRAM#CRCW write rules]]; [[lecture4-PRAM.pdf#page=6|slides 6–7]].
+
 ### AAPP-01-016
 
 Are PRAM architectures using explicit or implicit synchronizations? (1)
@@ -187,6 +409,21 @@ Are PRAM architectures using explicit or implicit synchronizations? (1)
 Source: [[Tema Esame 2024-02-16-1st.pdf#page=2|2024-02-16-1st · Exercise 1A · p. 2]]
 
 ^aapp-01-016
+
+**My answer**
+
+It is implicit, but i am not sure what it means.
+
+> [!note]- Feedback
+> **Reviewed: 2026-10-28.**
+>
+> **Assessment: correct choice; the explanation was missing.**
+>
+> **Suggested exam answer:** Standard PRAM uses implicit synchronization. Processors advance through read, local-computation, and write phases in lock-step, and the next round starts only after the current round is complete. The model supplies this ordering automatically, so the algorithm does not need explicit barrier or lock calls to synchronize rounds, and no extra synchronization overhead is charged.
+>
+> **Meaning of “implicit”:** The synchronization is built into the execution rules. The barrier drawn on the lecture slide represents this guarantee; it does not mean that a programmer must implement a costly barrier. Processors may still be inactive, and the algorithm must obey data dependencies and memory-access rules.
+>
+> **Study:** [[PRAM#What a synchronous round actually guarantees]]; [[lecture4-PRAM.pdf#page=5|slide 5]]; [the IIT Delhi course reading on synchrony and PRAM time, printed p. 74](https://www.cse.iitd.ac.in/~rijurekha/col730_2022/kumar_chapter3.pdf#page=10).
 
 ### AAPP-01-017
 
@@ -196,6 +433,24 @@ Source: [[Tema Esame 2024-06-26-1st.pdf#page=2|2024-06-26-1st · Exercise 1A · 
 
 ^aapp-01-017
 
+**My answer**
+
+The shared access memory has unitary cells and the access is constant as well as infinite bandwidth.
+
+> [!note]- Feedback
+> **Reviewed: 2026-10-28.**
+>
+> **Assessment: mostly incorrect; you have described access time rather than storage usage.** Thinking in cells is relevant, but constant access time and unlimited bandwidth simplify time analysis. They do not determine how much memory an algorithm needs.
+>
+> **Suggested exam answer, ordered by relevance to space accounting:**
+>
+> 1. **Unit storage per value:** in the unbounded-integer, unit-cost variant, one cell holds one integer regardless of its bit length. Space is counted in cells, without expanding each integer into bits.
+> 2. **Uniform, unbounded addressable memory:** count the shared cells actually used/accessed by the algorithm; the model supplies as many as needed, without hardware capacity or memory-layout bookkeeping costs. Unlimited available memory does not mean the algorithm's space usage is infinite.
+>
+> **Counting convention:** The shared-space convention counts shared cells. If total storage is requested, also include processor-local storage; for example, $m$ shared cells plus a fixed positive number of registers on each of $p$ processors uses $\Theta(m+p)$ total cells. State the convention rather than silently excluding private memory.
+>
+> **Limit of the available evidence:** [[lecture4-PRAM.pdf#page=4|Slide 4]] supports counting used cells, and [Tvrdik's lecture, “RAM model” and “PRAM model”](https://pages.cs.wisc.edu/~tvrdik/2/html/Section2.html) explicitly states the unbounded-integer and shared-space conventions. Neither supplies an official ranking for this exam question. The ordering above is a reasoned explanation, not a verified marking scheme. Related note: [[PRAM#RAM and PRAM execution]].
+
 ### AAPP-01-018
 
 Please describe an example of Common CRCW with a PRAM model. (1)
@@ -203,6 +458,28 @@ Please describe an example of Common CRCW with a PRAM model. (1)
 Source: [[Tema Esame 2024-06-26-1st.pdf#page=2|2024-06-26-1st · Exercise 1D · p. 2]]
 
 ^aapp-01-018
+
+**My answer**
+
+Same answer as before. Maybe give me a different example here.
+
+> [!note]- Feedback
+> **Reviewed: 2026-10-28.**
+>
+> **Assessment: referring back to the security example does not supply a valid example. Here is a different application, as requested.**
+>
+> **Suggested exam answer — test whether an array is sorted:** Initialize a shared flag `sorted` to 1 in a separate step. Assign processor $P_i$ to adjacent elements $A[i]$ and $A[i+1]$. If $A[i]>A[i+1]$, it writes 0 to the flag; otherwise it does nothing. All simultaneous writes propose 0, satisfying common CW. Concurrent reads of shared adjacent elements are allowed by the CR part of CRCW.
+>
+> ```text
+> sorted = 1                       // separate initialization
+> in parallel for i = 0, ..., n-2:
+>     if A[i] > A[i+1]:
+>         sorted = 0
+> ```
+>
+> **Why it works:** A nondecreasing array has no adjacent inversion, so the flag stays 1. Otherwise at least one processor writes 0. For $[4,2,3,1]$, processors $P_0$ and $P_2$ both write 0 legally. Processors whose comparisons pass must not write 1 in the same phase. With $n-1$ processors, the test takes a constant number of rounds and $\Theta(n)$ work for $n\ge2$.
+>
+> **Study and attribution:** [[PRAM#CRCW write rules]]; [[lecture4-PRAM.pdf#page=6|slides 6–7]]. This worked sortedness example applies the Boolean-AND construction in [John E. Savage, *Models of Computation*, §7.9.2, proof of Theorem 7.9.2](https://cs.brown.edu/people/jsavage/book/pdfs/ModelsOfComputation_Chapter7.pdf#page=34): initialize to 1 and let only failing conditions write 0.
 
 ### AAPP-01-019
 
@@ -212,6 +489,27 @@ Source: [[Tema Esame 2024-07-24-1st.pdf#page=2|2024-07-24-1st · Exercise 1A · 
 
 ^aapp-01-019
 
+**My answer**
+
+The processor instructions  are unitary time and the memory accesses are too with no limitation in bandwidth and latency. The model also follows a cycle based behavior with all processor synchronized, so that can be considered a fixed time step.
+
+> [!note]- Feedback
+> **Reviewed: 2026-10-28.**
+>
+> **Assessment: substantially correct; make the requested ordering explicit and refine the latency wording.** You identified the relevant assumptions. A memory access still takes a unit step; the idealization removes additional hardware latency and bandwidth costs.
+>
+> **Suggested exam answer:** A defensible order is:
+>
+> 1. **Unit-time basic instructions:** each permitted basic computation has constant cost.
+> 2. **Unit-time shared-memory access:** every processor can access any cell in constant time, with no extra bandwidth/contention penalty for accesses allowed by the chosen model.
+> 3. **Synchronous execution:** processors advance in lock-step, with implicit synchronization and no additional synchronization overhead.
+>
+> Together these assumptions let us count parallel steps to obtain $T_p(n)$. They do not imply evenly distributed work or remove algorithmic dependencies.
+>
+> **About the ranking:** The available slides state these assumptions but do not give an official priority order. The ordering above follows their role in fixing operation costs and then counting global steps.
+>
+> **Study:** [[PRAM#RAM and PRAM execution]]; [[lecture4-PRAM.pdf#page=4|slides 4–5]]. The parallel unit-time memory-access assumption is also described by [Blelloch and Maggs, §25.2.1](https://www.cs.cmu.edu/~guyb/papers/BM10.pdf#page=4).
+
 ### AAPP-01-020
 
 Please describe what happens in a PRAM model when the number of threads exceeds the number of processors. (1)
@@ -219,6 +517,21 @@ Please describe what happens in a PRAM model when the number of threads exceeds 
 Source: [[Tema Esame 2024-07-24-1st.pdf#page=2|2024-07-24-1st · Exercise 1D · p. 2]]
 
 ^aapp-01-020
+
+**My answer**
+
+It can use chunking, so a first phase where more instructions are executed locally and then a more parallel phase. Otherwise there are virtual processor that can appear to the model like enough for the task, but the workload is divided among less processor so each does the work of more than 1 virtual processor.
+
+> [!note]- Feedback
+> **Reviewed: 2026-10-28.**
+>
+> **Assessment: mostly correct; your virtual-processor explanation is the general answer.** Chunking can help redesign particular algorithms, such as a reduction, but a local phase followed by a parallel phase is not required for every PRAM computation.
+>
+> **Suggested exam answer:** When there are more logical threads/virtual processors than physical processors, each physical processor simulates several virtual processors by time-sharing their work and retaining their separate local states. The simulation batches each original round while preserving read–compute–write ordering and the original memory-conflict policy. If $q$ virtual processors take $t$ rounds, then $p<q$ processors can simulate them in $O(t\lceil q/p\rceil)$ time with the same shared-memory assumptions. Fewer processors increase execution time; they do not create extra physical parallelism.
+>
+> **Example:** Ten virtual processors on three physical processors require four batches per primitive phase. Preserve the virtual reads before committing writes that could change what later batches read; completing an entire round for one batch before reading for the next can change the result.
+>
+> **Study:** [[PRAM#Simulating limited resources]]; [[PRAM#Why processor batching must preserve phases]]; [[lecture4-PRAM.pdf#page=25|slides 25–26]].
 
 ### AAPP-01-021
 
@@ -228,6 +541,13 @@ Source: [[Tema Esame 2024-11-12-1st.pdf#page=2|2024-11-12-1st · Exercise 1A · 
 
 ^aapp-01-021
 
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
+
 ### AAPP-01-022
 
 In a PRAM model, “all processors can access all memory cells in unit time. Could you please provide a detailed explanation of the implications of this assumption? (1)
@@ -235,6 +555,13 @@ In a PRAM model, “all processors can access all memory cells in unit time. Cou
 Source: [[Tema Esame 2025-01-24-1st.pdf#page=2|2025-01-24-1st · Exercise 1A · p. 2]]
 
 ^aapp-01-022
+
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
 
 ### AAPP-01-023
 
@@ -245,6 +572,13 @@ Source: [[Tema Esame 2026-6-29-1st.pdf#page=2|2026-6-29-1st · Exercise 1A · p.
 
 ^aapp-01-023
 
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
+
 ### AAPP-01-024
 
 How is the communication via shared memory performed in a PRAM model? (latency vs parallel accesses)
@@ -253,6 +587,13 @@ Source: [[Tema Esame 2025-02-14-1st.pdf#page=2|2025-02-14-1st · Exercise 1B · 
 
 ^aapp-01-024
 
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
+
 ### AAPP-01-025
 
 How does the PRAM model abstract away synchronization and communication, and what are the implications for algorithm design? (1)
@@ -260,6 +601,13 @@ How does the PRAM model abstract away synchronization and communication, and wha
 Source: [[Tema Esame 2025-06-05-1st.pdf#page=2|2025-06-05-1st · Exercise 1A · p. 2]]
 
 ^aapp-01-025
+
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
 
 ### AAPP-01-026
 
@@ -270,6 +618,13 @@ Source: [[Tema Esame 2026-6-29-1st.pdf#page=2|2026-6-29-1st · Exercise 1C · p.
 
 ^aapp-01-026
 
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
+
 ### AAPP-01-027
 
 What does it imply that each memory cell can hold an integer of unbounded size in a PRAM? (1)
@@ -278,6 +633,13 @@ Source: [[Tema Esame 2025-07-04-1st.pdf#page=2|2025-07-04-1st · Exercise 1A · 
 Source: [[Tema Esame 2026-9-10-1st.pdf#page=2|2026-9-10-1st · Exercise 1A · p. 2]]
 
 ^aapp-01-027
+
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
 
 ### AAPP-01-028
 
@@ -288,6 +650,13 @@ Source: [[Tema Esame 2026-1-22-1st.pdf#page=2|2026-1-22-1st · Exercise 1A · p.
 
 ^aapp-01-028
 
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
+
 ### AAPP-01-029
 
 Which of the assumptions of the PRAM model simplifies the communication between the processor and the memory? (1)
@@ -295,6 +664,13 @@ Which of the assumptions of the PRAM model simplifies the communication between 
 Source: [[Tema Esame 2025-09-05-1st.pdf#page=2|2025-09-05-1st · Exercise 1B · p. 2]]
 
 ^aapp-01-029
+
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
 
 ### AAPP-01-030
 
@@ -304,6 +680,13 @@ Source: [[Tema Esame 2025-11-06-1st.pdf#page=2|2025-11-06-1st · Exercise 1A · 
 
 ^aapp-01-030
 
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
+
 ### AAPP-01-031
 
 If the PRAM model is a theoretical model, why does it matter in real problem analysis? (1)
@@ -311,6 +694,13 @@ If the PRAM model is a theoretical model, why does it matter in real problem ana
 Source: [[Tema Esame 2026-1-22-1st.pdf#page=2|2026-1-22-1st · Exercise 1B · p. 2]]
 
 ^aapp-01-031
+
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
 
 ### AAPP-01-032
 
@@ -320,6 +710,13 @@ Source: [[Tema Esame 2026-2-09-1st.pdf#page=2|2026-2-09-1st · Exercise 1B · p.
 
 ^aapp-01-032
 
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
+
 ### AAPP-01-033
 
 Suppose you have a PRAM algorithm that heavily relies on random access to many distinct shared cells per step. Based on the lemma about the scaling of the performance of a PRAM with reduced memory footprint, would you expect it to degrade more (or less) than an algorithm that mostly reuses a small working set? Motivate the answer. (1)
@@ -327,6 +724,13 @@ Suppose you have a PRAM algorithm that heavily relies on random access to many d
 Source: [[Tema Esame 2026-2-09-1st.pdf#page=2|2026-2-09-1st · Exercise 1C · p. 2]]
 
 ^aapp-01-033
+
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
 
 ### AAPP-01-034
 
@@ -336,6 +740,13 @@ Source: [[Tema Esame 2026-6-11-1st.pdf#page=2|2026-6-11-1st · Exercise 1A · p.
 
 ^aapp-01-034
 
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
+
 ### AAPP-01-035
 
 Discuss the possible conflicts that may arise during memory access in the PRAM model. (1)
@@ -344,6 +755,13 @@ Source: [[Tema Esame 2026-6-11-1st.pdf#page=2|2026-6-11-1st · Exercise 1B · p.
 
 ^aapp-01-035
 
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
+
 ### AAPP-01-036
 
 Explain how shared memory is modeled in PRAM and how this affects complexity analysis. (1)
@@ -351,6 +769,13 @@ Explain how shared memory is modeled in PRAM and how this affects complexity ana
 Source: [[Tema Esame 2026-6-11-1st.pdf#page=2|2026-6-11-1st · Exercise 1C · p. 2]]
 
 ^aapp-01-036
+
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
 
 ## Parallel performance and scaling
 
@@ -364,6 +789,13 @@ Source: [[Tema Esame 2022-11-08-1st.pdf#page=2|2022-11-08-1st · Exercise 1B · 
 
 ^aapp-02-001
 
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
+
 ### AAPP-02-002
 
 Please describe the differences between the Amdahl and the Gustafson laws. (1)
@@ -371,6 +803,13 @@ Please describe the differences between the Amdahl and the Gustafson laws. (1)
 Source: [[Tema Esame 2022-11-08-1st.pdf#page=2|2022-11-08-1st · Exercise 1C · p. 2]]
 
 ^aapp-02-002
+
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
 
 ### AAPP-02-003
 
@@ -380,6 +819,13 @@ Source: [[Tema Esame 2023-01-17-1st.pdf#page=2|2023-01-17-1st · Exercise 1D · 
 
 ^aapp-02-003
 
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
+
 ### AAPP-02-004
 
 Please define the speed-up of a parallel algorithm according to the PRAM model (1)
@@ -387,6 +833,13 @@ Please define the speed-up of a parallel algorithm according to the PRAM model (
 Source: [[Tema Esame 2023-02-14-1st.pdf#page=2|2023-02-14-1st · Exercise 1C · p. 2]]
 
 ^aapp-02-004
+
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
 
 ### AAPP-02-005
 
@@ -396,6 +849,13 @@ Source: [[Tema Esame 2023-02-14-1st.pdf#page=2|2023-02-14-1st · Exercise 1D · 
 
 ^aapp-02-005
 
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
+
 ### AAPP-02-006
 
 Please define the efficiency of a parallel algorithm according to the PRAM model (1)
@@ -403,6 +863,13 @@ Please define the efficiency of a parallel algorithm according to the PRAM model
 Source: [[Tema Esame 2023-06-19-1st.pdf#page=2|2023-06-19-1st · Exercise 1C · p. 2]]
 
 ^aapp-02-006
+
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
 
 ### AAPP-02-007
 
@@ -413,6 +880,13 @@ Source: [[Tema Esame 2025-09-05-1st.pdf#page=2|2025-09-05-1st · Exercise 1D · 
 
 ^aapp-02-007
 
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
+
 ### AAPP-02-008
 
 Define the “work” in a PRAM model. (1)
@@ -420,6 +894,13 @@ Define the “work” in a PRAM model. (1)
 Source: [[Tema Esame 2023-07-11-1st.pdf#page=2|2023-07-11-1st · Exercise 1D · p. 2]]
 
 ^aapp-02-008
+
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
 
 ### AAPP-02-009
 
@@ -429,6 +910,13 @@ Source: [[Tema Esame 2023-09-11-1st.pdf#page=2|2023-09-11-1st · Exercise 1D · 
 
 ^aapp-02-009
 
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
+
 ### AAPP-02-010
 
 Define the cost C when a sequential code is accelerated with p processors. (1)
@@ -436,6 +924,13 @@ Define the cost C when a sequential code is accelerated with p processors. (1)
 Source: [[Tema Esame 2023-11-09-1st.pdf#page=2|2023-11-09-1st · Exercise 1B · p. 2]]
 
 ^aapp-02-010
+
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
 
 ### AAPP-02-011
 
@@ -445,6 +940,13 @@ Source: [[Tema Esame 2023-11-09-1st.pdf#page=2|2023-11-09-1st · Exercise 1C · 
 
 ^aapp-02-011
 
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
+
 ### AAPP-02-012
 
 Please define what is meant by “Efficiency” in a PRAM application. (1)
@@ -452,6 +954,13 @@ Please define what is meant by “Efficiency” in a PRAM application. (1)
 Source: [[Tema Esame 2024-01-26-1st.pdf#page=2|2024-01-26-1st · Exercise 1B · p. 2]]
 
 ^aapp-02-012
+
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
 
 ### AAPP-02-013
 
@@ -461,6 +970,13 @@ Source: [[Tema Esame 2024-01-26-1st.pdf#page=2|2024-01-26-1st · Exercise 1D · 
 
 ^aapp-02-013
 
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
+
 ### AAPP-02-014
 
 Please define what is meant by “Speed up” in a PRAM application. (1)
@@ -469,6 +985,13 @@ Source: [[Tema Esame 2024-02-16-1st.pdf#page=2|2024-02-16-1st · Exercise 1B · 
 
 ^aapp-02-014
 
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
+
 ### AAPP-02-015
 
 Is the Amdahl law a fixed-time model? (1)
@@ -476,6 +999,13 @@ Is the Amdahl law a fixed-time model? (1)
 Source: [[Tema Esame 2024-02-16-1st.pdf#page=2|2024-02-16-1st · Exercise 1D · p. 2]]
 
 ^aapp-02-015
+
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
 
 ### AAPP-02-016
 
@@ -486,6 +1016,13 @@ Source: [[Tema Esame 2026-6-29-1st.pdf#page=2|2026-6-29-1st · Exercise 1B · p.
 
 ^aapp-02-016
 
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
+
 ### AAPP-02-017
 
 Please define what “Cost” means in a PRAM application. (1)
@@ -493,6 +1030,13 @@ Please define what “Cost” means in a PRAM application. (1)
 Source: [[Tema Esame 2024-07-24-1st.pdf#page=2|2024-07-24-1st · Exercise 1B · p. 2]]
 
 ^aapp-02-017
+
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
 
 ### AAPP-02-018
 
@@ -502,6 +1046,13 @@ Source: [[Tema Esame 2024-09-05-1st.pdf#page=2|2024-09-05-1st · Exercise 1A · 
 
 ^aapp-02-018
 
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
+
 ### AAPP-02-019
 
 What happens to the PRAM model if we have a bounded number of processors smaller than the one required by the theoretical model? What happens to the speed-up if the application is a do-all kind of application and we have a bounded number of processors? (2)
@@ -509,6 +1060,13 @@ What happens to the PRAM model if we have a bounded number of processors smaller
 Source: [[Tema Esame 2024-09-05-1st.pdf#page=2|2024-09-05-1st · Exercise 1B · p. 2]]
 
 ^aapp-02-019
+
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
 
 ### AAPP-02-020
 
@@ -518,6 +1076,13 @@ Source: [[Tema Esame 2024-09-05-1st.pdf#page=2|2024-09-05-1st · Exercise 1C · 
 
 ^aapp-02-020
 
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
+
 ### AAPP-02-021
 
 Please show the formula defining the “Efficiency” in a PRAM model. (1)
@@ -525,6 +1090,13 @@ Please show the formula defining the “Efficiency” in a PRAM model. (1)
 Source: [[Tema Esame 2024-11-12-1st.pdf#page=2|2024-11-12-1st · Exercise 1B · p. 2]]
 
 ^aapp-02-021
+
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
 
 ### AAPP-02-022
 
@@ -534,6 +1106,13 @@ Source: [[Tema Esame 2024-11-12-1st.pdf#page=2|2024-11-12-1st · Exercise 1C · 
 
 ^aapp-02-022
 
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
+
 ### AAPP-02-023
 
 What does it mean fixed-size model? Does it refer to Gustafson or Amdahl’s law? (1)
@@ -541,6 +1120,13 @@ What does it mean fixed-size model? Does it refer to Gustafson or Amdahl’s law
 Source: [[Tema Esame 2024-11-12-1st.pdf#page=2|2024-11-12-1st · Exercise 1D · p. 2]]
 
 ^aapp-02-023
+
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
 
 ### AAPP-02-024
 
@@ -550,6 +1136,13 @@ Source: [[Tema Esame 2025-01-24-1st.pdf#page=2|2025-01-24-1st · Exercise 1B · 
 
 ^aapp-02-024
 
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
+
 ### AAPP-02-025
 
 Could you please elaborate on what “weak scaling” means? To which law we have seen during the lectures is referring to? (1)
@@ -557,6 +1150,13 @@ Could you please elaborate on what “weak scaling” means? To which law we hav
 Source: [[Tema Esame 2025-01-24-1st.pdf#page=2|2025-01-24-1st · Exercise 1C · p. 2]]
 
 ^aapp-02-025
+
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
 
 ### AAPP-02-026
 
@@ -566,6 +1166,13 @@ Source: [[Tema Esame 2025-01-24-1st.pdf#page=2|2025-01-24-1st · Exercise 1D · 
 
 ^aapp-02-026
 
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
+
 ### AAPP-02-027
 
 Could you please discuss the differences between “weak scaling” and “strong scaling”? To which laws we have seen during the lectures are referring to? (1)
@@ -573,6 +1180,13 @@ Could you please discuss the differences between “weak scaling” and “stron
 Source: [[Tema Esame 2025-02-14-1st.pdf#page=2|2025-02-14-1st · Exercise 1C · p. 2]]
 
 ^aapp-02-027
+
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
 
 ### AAPP-02-028
 
@@ -582,6 +1196,13 @@ Source: [[Tema Esame 2025-02-14-1st.pdf#page=2|2025-02-14-1st · Exercise 1D · 
 
 ^aapp-02-028
 
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
+
 ### AAPP-02-029
 
 How does the matrix-vector multiplication example illustrate strong scaling, and what would change in a weak scaling scenario? (1)
@@ -589,6 +1210,13 @@ How does the matrix-vector multiplication example illustrate strong scaling, and
 Source: [[Tema Esame 2025-06-05-1st.pdf#page=2|2025-06-05-1st · Exercise 1C · p. 2]]
 
 ^aapp-02-029
+
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
 
 ### AAPP-02-030
 
@@ -598,6 +1226,13 @@ Source: [[Tema Esame 2025-06-05-1st.pdf#page=2|2025-06-05-1st · Exercise 1D · 
 
 ^aapp-02-030
 
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
+
 ### AAPP-02-031
 
 Given an algorithm with $T_1(n)=n^3$ and $T_p(n)=n^3/p$, analyze the speedup and efficiency. What can you conclude? (1)
@@ -605,6 +1240,13 @@ Given an algorithm with $T_1(n)=n^3$ and $T_p(n)=n^3/p$, analyze the speedup and
 Source: [[Tema Esame 2025-07-04-1st.pdf#page=2|2025-07-04-1st · Exercise 1B · p. 2]]
 
 ^aapp-02-031
+
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
 
 ### AAPP-02-032
 
@@ -614,6 +1256,13 @@ Source: [[Tema Esame 2025-07-04-1st.pdf#page=2|2025-07-04-1st · Exercise 1D · 
 
 ^aapp-02-032
 
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
+
 ### AAPP-02-033
 
 Assuming $T^*(n)=T_1(n)$, what kind of relation do you have between the efficiency and the speedup of a PRAM-based application? (1)
@@ -621,6 +1270,13 @@ Assuming $T^*(n)=T_1(n)$, what kind of relation do you have between the efficien
 Source: [[Tema Esame 2025-11-06-1st.pdf#page=2|2025-11-06-1st · Exercise 1B · p. 2]]
 
 ^aapp-02-033
+
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
 
 ### AAPP-02-034
 
@@ -630,6 +1286,13 @@ Source: [[Tema Esame 2025-11-06-1st.pdf#page=2|2025-11-06-1st · Exercise 1D · 
 
 ^aapp-02-034
 
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
+
 ### AAPP-02-035
 
 Please outline the key aspects of Gustafson's law and how it relates to scalability. (1)
@@ -637,6 +1300,13 @@ Please outline the key aspects of Gustafson's law and how it relates to scalabil
 Source: [[Tema Esame 2026-1-22-1st.pdf#page=2|2026-1-22-1st · Exercise 1D · p. 2]]
 
 ^aapp-02-035
+
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
 
 ### AAPP-02-036
 
@@ -646,6 +1316,13 @@ Source: [[Tema Esame 2026-2-09-1st.pdf#page=2|2026-2-09-1st · Exercise 1A · p.
 
 ^aapp-02-036
 
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
+
 ### AAPP-02-037
 
 You observe near-linear speedup when increasing processors. Is this evidence supporting Amdahl’s model or Gustafson’s model? Explain why. (1)
@@ -653,6 +1330,13 @@ You observe near-linear speedup when increasing processors. Is this evidence sup
 Source: [[Tema Esame 2026-2-09-1st.pdf#page=2|2026-2-09-1st · Exercise 1D · p. 2]]
 
 ^aapp-02-037
+
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
 
 ### AAPP-02-038
 
@@ -662,6 +1346,13 @@ Source: [[Tema Esame 2026-6-11-1st.pdf#page=2|2026-6-11-1st · Exercise 1D · p.
 
 ^aapp-02-038
 
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
+
 ### AAPP-02-039
 
 Please describe how Amdahl and Gustafson define the speed-up. (1)
@@ -669,6 +1360,13 @@ Please describe how Amdahl and Gustafson define the speed-up. (1)
 Source: [[Tema Esame 2026-6-29-1st.pdf#page=2|2026-6-29-1st · Exercise 1D · p. 2]]
 
 ^aapp-02-039
+
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
 
 ### AAPP-02-040
 
@@ -678,6 +1376,13 @@ Source: [[Tema Esame 2026-9-10-1st.pdf#page=2|2026-9-10-1st · Exercise 1B · p.
 
 ^aapp-02-040
 
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
+
 ### AAPP-02-041
 
 Please outline the key aspects of weak scalability (1)
@@ -685,6 +1390,13 @@ Please outline the key aspects of weak scalability (1)
 Source: [[Tema Esame 2026-9-10-1st.pdf#page=2|2026-9-10-1st · Exercise 1D · p. 2]]
 
 ^aapp-02-041
+
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
 
 ## PRAM algorithms
 
@@ -698,6 +1410,13 @@ Source: [[Tema Esame 2023-01-17-1st.pdf#page=2|2023-01-17-1st · Exercise 1A · 
 
 ^aapp-03-001
 
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
+
 ### AAPP-03-002
 
 The PRAM algorithm computing the prefix sum of a vector uses concurrent reads. True/False? Where? (1)
@@ -705,6 +1424,13 @@ The PRAM algorithm computing the prefix sum of a vector uses concurrent reads. T
 Source: [[Tema Esame 2023-01-17-1st.pdf#page=2|2023-01-17-1st · Exercise 1C · p. 2]]
 
 ^aapp-03-002
+
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
 
 ### AAPP-03-003
 
@@ -714,6 +1440,13 @@ Source: [[Tema Esame 2024-02-16-1st.pdf#page=2|2024-02-16-1st · Exercise 1C · 
 
 ^aapp-03-003
 
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
+
 ### AAPP-03-004
 
 Please describe how matrix x vector works when a PRAM architecture is considered. (1)
@@ -721,6 +1454,13 @@ Please describe how matrix x vector works when a PRAM architecture is considered
 Source: [[Tema Esame 2024-06-26-1st.pdf#page=2|2024-06-26-1st · Exercise 1C · p. 2]]
 
 ^aapp-03-004
+
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
 
 ### AAPP-03-005
 
@@ -730,6 +1470,13 @@ Source: [[Tema Esame 2024-07-24-1st.pdf#page=2|2024-07-24-1st · Exercise 1C · 
 
 ^aapp-03-005
 
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
+
 ### AAPP-03-006
 
 Why is the prefix sum algorithm on PRAM more efficient than the basic sum algorithm, and what is the trade-off? (1)
@@ -737,6 +1484,13 @@ Why is the prefix sum algorithm on PRAM more efficient than the basic sum algori
 Source: [[Tema Esame 2025-07-04-1st.pdf#page=2|2025-07-04-1st · Exercise 1C · p. 2]]
 
 ^aapp-03-006
+
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
 
 ### AAPP-03-007
 
@@ -746,6 +1500,13 @@ Source: [[Tema Esame 2025-11-06-1st.pdf#page=2|2025-11-06-1st · Exercise 1C · 
 
 ^aapp-03-007
 
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
+
 ### AAPP-03-008
 
 During the lectures, we discuss how to compute the sum of a collection of integer values in a PRAM model. Could you discuss the conclusions we reached regarding the problem's complexity? (1)
@@ -754,6 +1515,13 @@ Source: [[Tema Esame 2026-1-22-1st.pdf#page=2|2026-1-22-1st · Exercise 1C · p.
 
 ^aapp-03-008
 
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
+
 ### AAPP-03-009
 
 Please discuss what type of PRAM memory accesses are performed in the vector sum PRAM algorithm. (1)
@@ -761,6 +1529,13 @@ Please discuss what type of PRAM memory accesses are performed in the vector sum
 Source: [[Tema Esame 2026-9-10-1st.pdf#page=2|2026-9-10-1st · Exercise 1C · p. 2]]
 
 ^aapp-03-009
+
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
 
 ## Divide and conquer and recurrences
 
@@ -774,6 +1549,13 @@ Source: [[Tema Esame 2022-06-09-1st.pdf#page=2|2022-06-09-1st · Exercise 1 · p
 
 ^aapp-04-001
 
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
+
 ### AAPP-04-002
 
 Please describe how the Divide and Conquer class of algorithms works. (2)
@@ -782,6 +1564,13 @@ Source: [[Tema Esame 2023-02-14-1st.pdf#page=3|2023-02-14-1st · Exercise 2A · 
 
 ^aapp-04-002
 
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
+
 ### AAPP-04-003
 
 How the complexity of a Divide and Conquer algorithm can be computed? (1)
@@ -789,6 +1578,13 @@ How the complexity of a Divide and Conquer algorithm can be computed? (1)
 Source: [[Tema Esame 2023-02-14-1st.pdf#page=3|2023-02-14-1st · Exercise 2B · p. 3]]
 
 ^aapp-04-003
+
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
 
 ### AAPP-04-004
 
@@ -799,6 +1595,13 @@ Source: [[Tema Esame 2026-6-29-1st.pdf#page=3|2026-6-29-1st · Exercise 2B · p.
 
 ^aapp-04-004
 
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
+
 ### AAPP-04-005
 
 Please describe how Strassen’s algorithm works. (2)
@@ -806,6 +1609,13 @@ Please describe how Strassen’s algorithm works. (2)
 Source: [[Tema Esame 2023-06-19-1st.pdf#page=3|2023-06-19-1st · Exercise 2A · p. 3]]
 
 ^aapp-04-005
+
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
 
 ### AAPP-04-006
 
@@ -815,6 +1625,13 @@ Source: [[Tema Esame 2023-06-19-1st.pdf#page=3|2023-06-19-1st · Exercise 2B · 
 
 ^aapp-04-006
 
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
+
 ### AAPP-04-007
 
 Please discuss how the complexity of the powering of a number algorithm can be computed. Please report also the complexity in terms of time and space. (2)
@@ -822,6 +1639,13 @@ Please discuss how the complexity of the powering of a number algorithm can be c
 Source: [[Tema Esame 2023-07-11-1st.pdf#page=3|2023-07-11-1st · Exercise 2A · p. 3]]
 
 ^aapp-04-007
+
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
 
 ### AAPP-04-008
 
@@ -831,6 +1655,13 @@ Source: [[Tema Esame 2023-09-11-1st.pdf#page=3|2023-09-11-1st · Exercise 2A · 
 
 ^aapp-04-008
 
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
+
 ### AAPP-04-009
 
 Please describe the divide and conquer powering of a number algorithm. What complexity does it have? (1)
@@ -838,6 +1669,13 @@ Please describe the divide and conquer powering of a number algorithm. What comp
 Source: [[Tema Esame 2024-02-16-1st.pdf#page=3|2024-02-16-1st · Exercise 2C · p. 3]]
 
 ^aapp-04-009
+
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
 
 ### AAPP-04-010
 
@@ -847,6 +1685,13 @@ Source: [[Tema Esame 2024-06-26-1st.pdf#page=3|2024-06-26-1st · Exercise 2C · 
 
 ^aapp-04-010
 
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
+
 ### AAPP-04-011
 
 Please discuss the cases the master theorem solves and under which assumption the theorem holds. Apply then to the powering algorithm. Is the master theorem of any help if we would like to estimate the spatial complexity of an algorithm? (2)
@@ -854,6 +1699,13 @@ Please discuss the cases the master theorem solves and under which assumption th
 Source: [[Tema Esame 2024-07-24-1st.pdf#page=3|2024-07-24-1st · Exercise 2A · p. 3]]
 
 ^aapp-04-011
+
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
 
 ### AAPP-04-012
 
@@ -863,6 +1715,13 @@ Source: [[Tema Esame 2024-09-05-1st.pdf#page=3|2024-09-05-1st · Exercise 2A · 
 
 ^aapp-04-012
 
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
+
 ### AAPP-04-013
 
 Master Theorem method is an important tool for the Divide and Conquer class of algorithms. Why and under which assumptions the theorem could be applied? (1)
@@ -870,6 +1729,13 @@ Master Theorem method is an important tool for the Divide and Conquer class of a
 Source: [[Tema Esame 2024-11-12-1st.pdf#page=3|2024-11-12-1st · Exercise 2B · p. 3]]
 
 ^aapp-04-013
+
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
 
 ### AAPP-04-014
 
@@ -879,6 +1745,13 @@ Source: [[Tema Esame 2025-01-24-1st.pdf#page=3|2025-01-24-1st · Exercise 2A · 
 
 ^aapp-04-014
 
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
+
 ### AAPP-04-015
 
 Could you please describe how the powering algorithm works? Additionally, which class of algorithms does it belong to? (2)
@@ -886,6 +1759,13 @@ Could you please describe how the powering algorithm works? Additionally, which 
 Source: [[Tema Esame 2025-02-14-1st.pdf#page=3|2025-02-14-1st · Exercise 2A · p. 3]]
 
 ^aapp-04-015
+
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
 
 ### AAPP-04-016
 
@@ -895,6 +1775,13 @@ Source: [[Tema Esame 2025-09-05-1st.pdf#page=3|2025-09-05-1st · Exercise 2A · 
 
 ^aapp-04-016
 
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
+
 ### AAPP-04-017
 
 Please explain how powering of a number works and how, with the Master Theorem method, you can compute its asymptotic complexity. (1)
@@ -902,6 +1789,13 @@ Please explain how powering of a number works and how, with the Master Theorem m
 Source: [[Tema Esame 2025-11-06-1st.pdf#page=3|2025-11-06-1st · Exercise 2B · p. 3]]
 
 ^aapp-04-017
+
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
 
 ### AAPP-04-018
 
@@ -911,6 +1805,13 @@ Source: [[Tema Esame 2026-6-11-1st.pdf#page=5|2026-6-11-1st · Exercise 3B · p.
 
 ^aapp-04-018
 
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
+
 ### AAPP-04-019
 
 Describe one Divide and Conquer example discussed during the lectures and explain why the Master Theorem is useful for analyzing this class of algorithms. (1)
@@ -918,6 +1819,13 @@ Describe one Divide and Conquer example discussed during the lectures and explai
 Source: [[Tema Esame 2026-9-10-1st.pdf#page=3|2026-9-10-1st · Exercise 2B · p. 3]]
 
 ^aapp-04-019
+
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
 
 ## Randomized algorithm classes
 
@@ -931,6 +1839,13 @@ Source: [[Tema Esame 2022-01-14-1st.pdf#page=4|2022-01-14-1st · Exercise 3 · p
 
 ^aapp-05-001
 
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
+
 ### AAPP-05-002
 
 Please define when Las Vegas and Monte Carlo algorithms are defined as efficient algorithms. (2)
@@ -938,6 +1853,13 @@ Please define when Las Vegas and Monte Carlo algorithms are defined as efficient
 Source: [[Tema Esame 2024-02-16-1st.pdf#page=3|2024-02-16-1st · Exercise 2A · p. 3]]
 
 ^aapp-05-002
+
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
 
 ### AAPP-05-003
 
@@ -947,6 +1869,13 @@ Source: [[Tema Esame 2024-06-26-1st.pdf#page=3|2024-06-26-1st · Exercise 2A · 
 
 ^aapp-05-003
 
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
+
 ### AAPP-05-004
 
 Please describe the differences between Las Vegas and Monte Carlo algorithms, even considering time complexity issues. (2)
@@ -954,6 +1883,13 @@ Please describe the differences between Las Vegas and Monte Carlo algorithms, ev
 Source: [[Tema Esame 2024-11-12-1st.pdf#page=4|2024-11-12-1st · Exercise 3A · p. 4]]
 
 ^aapp-05-004
+
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
 
 ### AAPP-05-005
 
@@ -963,6 +1899,13 @@ Source: [[Tema Esame 2025-07-04-1st.pdf#page=3|2025-07-04-1st · Exercise 2B · 
 
 ^aapp-05-005
 
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
+
 ### AAPP-05-006
 
 Could you outline the main differences between Las Vegas and Monte Carlo algorithms, especially in terms of efficiency, and give examples of each? (1)
@@ -970,6 +1913,13 @@ Could you outline the main differences between Las Vegas and Monte Carlo algorit
 Source: [[Tema Esame 2026-1-22-1st.pdf#page=5|2026-1-22-1st · Exercise 3A · p. 5]]
 
 ^aapp-05-006
+
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
 
 ### AAPP-05-007
 
@@ -979,6 +1929,13 @@ Source: [[Tema Esame 2026-6-29-1st.pdf#page=4|2026-6-29-1st · Exercise 2C · p.
 
 ^aapp-05-007
 
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
+
 ### AAPP-05-008
 
 Why can randomization be useful in a data structure even when the required answer must always be correct? Give one example. (1)
@@ -987,6 +1944,13 @@ Source: [[Tema Esame 2026-9-10-1st.pdf#page=5|2026-9-10-1st · Exercise 3A · p.
 
 ^aapp-05-008
 
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
+
 ### AAPP-05-009
 
 Randomization can simplify balancing and give good expected performance while preserving correctness. True/False? Example? (2)
@@ -994,6 +1958,13 @@ Randomization can simplify balancing and give good expected performance while pr
 Source: [[Tema Esame 2026-9-10-1st.pdf#page=6|2026-9-10-1st · Exercise 3C · p. 6]]
 
 ^aapp-05-009
+
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
 
 ## Minimum cut
 
@@ -1007,6 +1978,13 @@ Source: [[Tema Esame 2022-01-14-1st.pdf#page=3|2022-01-14-1st · Exercise 2 · p
 
 ^aapp-06-001
 
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
+
 ### AAPP-06-002
 
 Describe the Karger’s Min-Cut Algorithm. Is the Karger’s Min-Cut Algorithm a Monte Carlo randomization- based algorithm?
@@ -1015,6 +1993,13 @@ Source: [[Tema Esame 2022-02-11-1st.pdf#page=3|2022-02-11-1st · Exercise 2 · p
 
 ^aapp-06-002
 
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
+
 ### AAPP-06-003
 
 Describe the Karger and Stein Min-Cut Algorithm. How is the complexity of this algorithm computed? Which is the randomization class the algorithm belongs to?
@@ -1022,6 +2007,13 @@ Describe the Karger and Stein Min-Cut Algorithm. How is the complexity of this a
 Source: [[Tema Esame 2022-09-07-1st.pdf#page=2|2022-09-07-1st · Exercise 1 · p. 2]]
 
 ^aapp-06-003
+
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
 
 ### AAPP-06-004
 
@@ -1032,6 +2024,13 @@ Source: [[Tema Esame 2025-09-05-1st.pdf#page=4|2025-09-05-1st · Exercise 3B · 
 
 ^aapp-06-004
 
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
+
 ### AAPP-06-005
 
 What are the key differences between Karger vs Karger&Steing algorithms? (2)
@@ -1039,6 +2038,13 @@ What are the key differences between Karger vs Karger&Steing algorithms? (2)
 Source: [[Tema Esame 2024-02-16-1st.pdf#page=5|2024-02-16-1st · Exercise 4A · p. 5]]
 
 ^aapp-06-005
+
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
 
 ### AAPP-06-006
 
@@ -1048,6 +2054,13 @@ Source: [[Tema Esame 2024-06-26-1st.pdf#page=4|2024-06-26-1st · Exercise 3B · 
 
 ^aapp-06-006
 
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
+
 ### AAPP-06-007
 
 Please describe the ideas used to improve the Karger approach to solving the min-cut problem. What changed with respect to the asymptotic complexity with respect to the initial approach? (2)
@@ -1055,6 +2068,13 @@ Please describe the ideas used to improve the Karger approach to solving the min
 Source: [[Tema Esame 2024-11-12-1st.pdf#page=3|2024-11-12-1st · Exercise 2A · p. 3]]
 
 ^aapp-06-007
+
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
 
 ### AAPP-06-008
 
@@ -1064,6 +2084,13 @@ Source: [[Tema Esame 2025-01-24-1st.pdf#page=4|2025-01-24-1st · Exercise 3A · 
 
 ^aapp-06-008
 
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
+
 ### AAPP-06-009
 
 In class, we studied two algorithms for minimum cut in a graph. Describe the behavior of both algorithms, including their algorithmic class and complexity. Based on the discussion held in class, explain why one might be preferable over the other. (2)
@@ -1071,6 +2098,13 @@ In class, we studied two algorithms for minimum cut in a graph. Describe the beh
 Source: [[Tema Esame 2025-06-05-1st.pdf#page=3|2025-06-05-1st · Exercise 2A · p. 3]]
 
 ^aapp-06-009
+
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
 
 ### AAPP-06-010
 
@@ -1080,6 +2114,13 @@ Source: [[Tema Esame 2025-11-06-1st.pdf#page=7|2025-11-06-1st · Exercise 4A · 
 
 ^aapp-06-010
 
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
+
 ### AAPP-06-011
 
 Karger’s min-cut algorithm contracts uniformly random edges until only two supernodes remain and outputs the cut defined by them. In a few sentences, explain (i) what can cause a single run to return a non-minimum cut, and (ii) why and how running the same algorithm many times changes the reliability of the result. (2)
@@ -1088,6 +2129,13 @@ Source: [[Tema Esame 2026-2-09-1st.pdf#page=6|2026-2-09-1st · Exercise 3C · p.
 
 ^aapp-06-011
 
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
+
 ### AAPP-06-012
 
 Please describe the key properties of the Karger & Stein algorithm. How is the complexity analyzed? (2)
@@ -1095,6 +2143,13 @@ Please describe the key properties of the Karger & Stein algorithm. How is the c
 Source: [[Tema Esame 2026-6-29-1st.pdf#page=3|2026-6-29-1st · Exercise 2A · p. 3]]
 
 ^aapp-06-012
+
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
 
 ## Sorting and partitioning
 
@@ -1108,6 +2163,13 @@ Source: [[Tema Esame 2022-02-11-1st.pdf#page=4|2022-02-11-1st · Exercise 3 · p
 
 ^aapp-07-001
 
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
+
 ### AAPP-07-002
 
 The best worst-case running time that we have seen for comparison sorting is O(nlg n). Can you explain why? (2)
@@ -1115,6 +2177,13 @@ The best worst-case running time that we have seen for comparison sorting is O(n
 Source: [[Tema Esame 2023-07-11-1st.pdf#page=3|2023-07-11-1st · Exercise 2B · p. 3]]
 
 ^aapp-07-002
+
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
 
 ### AAPP-07-003
 
@@ -1124,6 +2193,13 @@ Source: [[Tema Esame 2023-09-11-1st.pdf#page=3|2023-09-11-1st · Exercise 2B · 
 
 ^aapp-07-003
 
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
+
 ### AAPP-07-004
 
 Please explain the following theorem and why does not hold for the counting sort algorithm: Theorem: “Any decision tree that can sort n elements must have a height of W(nlog n)” (2)
@@ -1131,6 +2207,13 @@ Please explain the following theorem and why does not hold for the counting sort
 Source: [[Tema Esame 2023-11-09-1st.pdf#page=5|2023-11-09-1st · Exercise 4A · p. 5]]
 
 ^aapp-07-004
+
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
 
 ### AAPP-07-005
 
@@ -1140,6 +2223,13 @@ Source: [[Tema Esame 2024-02-16-1st.pdf#page=3|2024-02-16-1st · Exercise 2B · 
 
 ^aapp-07-005
 
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
+
 ### AAPP-07-006
 
 What are the key properties of the counting sort algorithm? (1)
@@ -1147,6 +2237,13 @@ What are the key properties of the counting sort algorithm? (1)
 Source: [[Tema Esame 2024-06-26-1st.pdf#page=3|2024-06-26-1st · Exercise 2B · p. 3]]
 
 ^aapp-07-006
+
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
 
 ### AAPP-07-007
 
@@ -1156,6 +2253,13 @@ Source: [[Tema Esame 2024-09-05-1st.pdf#page=3|2024-09-05-1st · Exercise 2B · 
 Source: [[Tema Esame 2025-07-04-1st.pdf#page=5|2025-07-04-1st · Exercise 4A · p. 5]]
 
 ^aapp-07-007
+
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
 
 ### AAPP-07-008
 
@@ -1167,6 +2271,13 @@ Source: [[Tema Esame 2026-6-11-1st.pdf#page=4|2026-6-11-1st · Exercise 2C · p.
 
 ^aapp-07-008
 
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
+
 ### AAPP-07-009
 
 Please show the pseudo-code of the partitioning algorithm used by Quicksort and report its variants, complexity, and usage in other algorithms. (2)
@@ -1174,6 +2285,13 @@ Please show the pseudo-code of the partitioning algorithm used by Quicksort and 
 Source: [[Tema Esame 2024-11-12-1st.pdf#page=5|2024-11-12-1st · Exercise 4B · p. 5]]
 
 ^aapp-07-009
+
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
 
 ### AAPP-07-010
 
@@ -1183,6 +2301,13 @@ Source: [[Tema Esame 2024-11-12-1st.pdf#page=5|2024-11-12-1st · Exercise 4C · 
 
 ^aapp-07-010
 
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
+
 ### AAPP-07-011
 
 Please discuss the complexity of the partitioning algorithm used by the quick sort. (1)
@@ -1190,6 +2315,13 @@ Please discuss the complexity of the partitioning algorithm used by the quick so
 Source: [[Tema Esame 2025-01-24-1st.pdf#page=5|2025-01-24-1st · Exercise 4A · p. 5]]
 
 ^aapp-07-011
+
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
 
 ### AAPP-07-012
 
@@ -1199,6 +2331,13 @@ Source: [[Tema Esame 2025-02-14-1st.pdf#page=5|2025-02-14-1st · Exercise 4A · 
 
 ^aapp-07-012
 
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
+
 ### AAPP-07-013
 
 Could you please list the characteristics of the counting sort algorithm that make it suitable for use in radix sort? (1)
@@ -1206,6 +2345,13 @@ Could you please list the characteristics of the counting sort algorithm that ma
 Source: [[Tema Esame 2025-02-14-1st.pdf#page=5|2025-02-14-1st · Exercise 4C · p. 5]]
 
 ^aapp-07-013
+
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
 
 ### AAPP-07-014
 
@@ -1215,6 +2361,13 @@ Source: [[Tema Esame 2025-06-05-1st.pdf#page=4|2025-06-05-1st · Exercise 3A · 
 
 ^aapp-07-014
 
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
+
 ### AAPP-07-015
 
 Please discuss why, for many algorithms we have discussed during the lectures, the complexity of the best sorting algorithm is bounded by $O(n\lg n)$. (2)
@@ -1222,6 +2375,13 @@ Please discuss why, for many algorithms we have discussed during the lectures, t
 Source: [[Tema Esame 2026-1-22-1st.pdf#page=3|2026-1-22-1st · Exercise 2A · p. 3]]
 
 ^aapp-07-015
+
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
 
 ### AAPP-07-016
 
@@ -1231,6 +2391,13 @@ Source: [[Tema Esame 2026-1-22-1st.pdf#page=3|2026-1-22-1st · Exercise 2B · p.
 
 ^aapp-07-016
 
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
+
 ### AAPP-07-017
 
 Explain when the quick sort algorithm falls in the best case or in the worst case recurrence. (1)
@@ -1238,6 +2405,13 @@ Explain when the quick sort algorithm falls in the best case or in the worst cas
 Source: [[Tema Esame 2026-2-09-1st.pdf#page=3|2026-2-09-1st · Exercise 2B · p. 3]]
 
 ^aapp-07-017
+
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
 
 ### AAPP-07-018
 
@@ -1247,6 +2421,13 @@ Source: [[Tema Esame 2026-6-11-1st.pdf#page=3|2026-6-11-1st · Exercise 2B · p.
 
 ^aapp-07-018
 
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
+
 ### AAPP-07-019
 
 For randomized Quicksort, explain how the expected running time is obtained from the recurrence induced by a random pivot. Discuss why the worst case remains quadratic. (2)
@@ -1255,6 +2436,13 @@ Source: [[Tema Esame 2026-9-10-1st.pdf#page=3|2026-9-10-1st · Exercise 2A · p.
 
 ^aapp-07-019
 
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
+
 ### AAPP-07-020
 
 What does it mean for a sorting algorithm to be stable, and why is stability important in Radix Sort? (1)
@@ -1262,6 +2450,13 @@ What does it mean for a sorting algorithm to be stable, and why is stability imp
 Source: [[Tema Esame 2026-9-10-1st.pdf#page=5|2026-9-10-1st · Exercise 3B · p. 5]]
 
 ^aapp-07-020
+
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
 
 ## Selection and order statistics
 
@@ -1275,6 +2470,13 @@ Source: [[Tema Esame 2022-06-09-1st.pdf#page=3|2022-06-09-1st · Exercise 2 · p
 
 ^aapp-08-001
 
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
+
 ### AAPP-08-002
 
 Describe the algorithm selecting the ith smallest of n elements (Pseudo code, complexity). (2)
@@ -1282,6 +2484,13 @@ Describe the algorithm selecting the ith smallest of n elements (Pseudo code, co
 Source: [[Tema Esame 2023-01-17-1st.pdf#page=3|2023-01-17-1st · Exercise 2A · p. 3]]
 
 ^aapp-08-002
+
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
 
 ### AAPP-08-003
 
@@ -1291,6 +2500,13 @@ Source: [[Tema Esame 2023-01-17-1st.pdf#page=3|2023-01-17-1st · Exercise 2B · 
 
 ^aapp-08-003
 
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
+
 ### AAPP-08-004
 
 Context: Exercise 2A asks for the algorithm selecting the ith smallest of n elements (pseudocode and complexity). In which class of randomized algorithms could the algorithm described in A be inserted? (1)
@@ -1298,6 +2514,13 @@ Context: Exercise 2A asks for the algorithm selecting the ith smallest of n elem
 Source: [[Tema Esame 2023-01-17-1st.pdf#page=3|2023-01-17-1st · Exercise 2C · p. 3]]
 
 ^aapp-08-004
+
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
 
 ### AAPP-08-005
 
@@ -1307,6 +2530,13 @@ Source: [[Tema Esame 2024-01-26-1st.pdf#page=3|2024-01-26-1st · Exercise 2A · 
 
 ^aapp-08-005
 
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
+
 ### AAPP-08-006
 
 Please describe the “Select the i th smallest of n elements” algorithm and its key properties. How is it randomized? (1)
@@ -1314,6 +2544,13 @@ Please describe the “Select the i th smallest of n elements” algorithm and i
 Source: [[Tema Esame 2024-07-24-1st.pdf#page=3|2024-07-24-1st · Exercise 2B · p. 3]]
 
 ^aapp-08-006
+
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
 
 ### AAPP-08-007
 
@@ -1323,6 +2560,13 @@ Source: [[Tema Esame 2025-01-24-1st.pdf#page=5|2025-01-24-1st · Exercise 4B · 
 
 ^aapp-08-007
 
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
+
 ### AAPP-08-008
 
 Describe the Select-ith deterministic algorithm and its complexity. Why is dividing into groups of 5 critical for the deterministic Select-ith algorithm’s performance? (2)
@@ -1330,6 +2574,13 @@ Describe the Select-ith deterministic algorithm and its complexity. Why is divid
 Source: [[Tema Esame 2025-06-05-1st.pdf#page=5|2025-06-05-1st · Exercise 4B · p. 5]]
 
 ^aapp-08-008
+
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
 
 ### AAPP-08-009
 
@@ -1339,6 +2590,13 @@ Source: [[Tema Esame 2025-07-04-1st.pdf#page=5|2025-07-04-1st · Exercise 4B · 
 
 ^aapp-08-009
 
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
+
 ### AAPP-08-010
 
 Please explain how the “Select the i th smallest of n elements” can be solved (pseudo code required) and what kind of complexity we may expect from the reported solutions. (2)
@@ -1346,6 +2604,13 @@ Please explain how the “Select the i th smallest of n elements” can be solve
 Source: [[Tema Esame 2025-11-06-1st.pdf#page=3|2025-11-06-1st · Exercise 2A · p. 3]]
 
 ^aapp-08-010
+
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
 
 ### AAPP-08-011
 
@@ -1355,6 +2620,13 @@ Source: [[Tema Esame 2026-2-09-1st.pdf#page=3|2026-2-09-1st · Exercise 2A · p.
 
 ^aapp-08-011
 
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
+
 ### AAPP-08-012
 
 What are the differences between the randomized and deterministic algorithms for solving the Select-ith problem (pseudo code required)? (1)
@@ -1362,6 +2634,13 @@ What are the differences between the randomized and deterministic algorithms for
 Source: [[Tema Esame 2026-6-29-1st.pdf#page=5|2026-6-29-1st · Exercise 3B · p. 5]]
 
 ^aapp-08-012
+
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
 
 ## Primality testing
 
@@ -1375,6 +2654,13 @@ Source: [[Tema Esame 2024-01-26-1st.pdf#page=3|2024-01-26-1st · Exercise 2C · 
 
 ^aapp-09-001
 
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
+
 ### AAPP-09-002
 
 Describe the ideas behind the primality test algorithm presented during the lectures. Which class of randomized approach does it belong to? (1)
@@ -1382,6 +2668,13 @@ Describe the ideas behind the primality test algorithm presented during the lect
 Source: [[Tema Esame 2025-01-24-1st.pdf#page=5|2025-01-24-1st · Exercise 4C · p. 5]]
 
 ^aapp-09-002
+
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
 
 ### AAPP-09-003
 
@@ -1392,6 +2685,13 @@ Source: [[Tema Esame 2026-6-29-1st.pdf#page=7|2026-6-29-1st · Exercise 4B · p.
 
 ^aapp-09-003
 
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
+
 ### AAPP-09-004
 
 Please describe how the primality test, presented during the lectures, works, and specify which class of randomization it belongs to. (2)
@@ -1399,6 +2699,13 @@ Please describe how the primality test, presented during the lectures, works, an
 Source: [[Tema Esame 2025-11-06-1st.pdf#page=7|2025-11-06-1st · Exercise 4B · p. 7]]
 
 ^aapp-09-004
+
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
 
 ### AAPP-09-005
 
@@ -1408,6 +2715,13 @@ Source: [[Tema Esame 2026-1-22-1st.pdf#page=7|2026-1-22-1st · Exercise 4A · p.
 
 ^aapp-09-005
 
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
+
 ### AAPP-09-006
 
 Describe the randomized primality testing algorithm presented in class, including its randomized-algorithm classification. (2)
@@ -1416,6 +2730,13 @@ Source: [[Tema Esame 2026-6-11-1st.pdf#page=6|2026-6-11-1st · Exercise 3C · p.
 
 ^aapp-09-006
 
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
+
 ### AAPP-09-007
 
 Describe the ideas behind the primality test algorithm presented during the lectures. Which class of randomized approach does it belong to? (2)
@@ -1423,6 +2744,13 @@ Describe the ideas behind the primality test algorithm presented during the lect
 Source: [[Tema Esame 2026-9-10-1st.pdf#page=7|2026-9-10-1st · Exercise 4A · p. 7]]
 
 ^aapp-09-007
+
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
 
 ## Dynamic programming and LCS
 
@@ -1436,6 +2764,13 @@ Source: [[Tema Esame 2022-01-14-1st.pdf#page=2|2022-01-14-1st · Exercise 1 · p
 
 ^aapp-10-001
 
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
+
 ### AAPP-10-002
 
 Discuss an example of dynamic programming based algorithm. Which are the key features of an algorithm for being classified as a dynamic programming algorithm?
@@ -1443,6 +2778,13 @@ Discuss an example of dynamic programming based algorithm. Which are the key fea
 Source: [[Tema Esame 2022-09-07-1st.pdf#page=3|2022-09-07-1st · Exercise 2 · p. 3]]
 
 ^aapp-10-002
+
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
 
 ### AAPP-10-003
 
@@ -1452,6 +2794,13 @@ Source: [[Tema Esame 2022-11-08-1st.pdf#page=3|2022-11-08-1st · Exercise 2A · 
 
 ^aapp-10-003
 
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
+
 ### AAPP-10-004
 
 What kind of temporal or spatial complexity has LCS? (1)
@@ -1459,6 +2808,13 @@ What kind of temporal or spatial complexity has LCS? (1)
 Source: [[Tema Esame 2022-11-08-1st.pdf#page=3|2022-11-08-1st · Exercise 2B · p. 3]]
 
 ^aapp-10-004
+
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
 
 ### AAPP-10-005
 
@@ -1468,6 +2824,13 @@ Source: [[Tema Esame 2022-11-08-1st.pdf#page=3|2022-11-08-1st · Exercise 2C · 
 
 ^aapp-10-005
 
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
+
 ### AAPP-10-006
 
 Please explain why an algorithm could be classified as a Dynamic programming algorithm. (2)
@@ -1475,6 +2838,13 @@ Please explain why an algorithm could be classified as a Dynamic programming alg
 Source: [[Tema Esame 2023-06-19-1st.pdf#page=4|2023-06-19-1st · Exercise 3A · p. 4]]
 
 ^aapp-10-006
+
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
 
 ### AAPP-10-007
 
@@ -1484,6 +2854,13 @@ Source: [[Tema Esame 2023-07-11-1st.pdf#page=5|2023-07-11-1st · Exercise 4A · 
 
 ^aapp-10-007
 
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
+
 ### AAPP-10-008
 
 What kind of spatial complexity has the longest common subsequence problem? (1).
@@ -1491,6 +2868,13 @@ What kind of spatial complexity has the longest common subsequence problem? (1).
 Source: [[Tema Esame 2023-11-09-1st.pdf#page=3|2023-11-09-1st · Exercise 2B · p. 3]]
 
 ^aapp-10-008
+
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
 
 ### AAPP-10-009
 
@@ -1500,6 +2884,13 @@ Source: [[Tema Esame 2023-11-09-1st.pdf#page=3|2023-11-09-1st · Exercise 2C · 
 
 ^aapp-10-009
 
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
+
 ### AAPP-10-010
 
 What kind of time complexity has the longest common subsequence problem (1)
@@ -1507,6 +2898,13 @@ What kind of time complexity has the longest common subsequence problem (1)
 Source: [[Tema Esame 2024-01-26-1st.pdf#page=3|2024-01-26-1st · Exercise 2B · p. 3]]
 
 ^aapp-10-010
+
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
 
 ### AAPP-10-011
 
@@ -1516,6 +2914,13 @@ Source: [[Tema Esame 2024-02-16-1st.pdf#page=4|2024-02-16-1st · Exercise 3A · 
 
 ^aapp-10-011
 
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
+
 ### AAPP-10-012
 
 Please discuss the key property of the longest common subsequence. In which class of algorithm can be inserted? Why? (2)
@@ -1523,6 +2928,13 @@ Please discuss the key property of the longest common subsequence. In which clas
 Source: [[Tema Esame 2024-07-24-1st.pdf#page=5|2024-07-24-1st · Exercise 4A · p. 5]]
 
 ^aapp-10-012
+
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
 
 ### AAPP-10-013
 
@@ -1532,6 +2944,13 @@ Source: [[Tema Esame 2024-09-05-1st.pdf#page=3|2024-09-05-1st · Exercise 2C · 
 
 ^aapp-10-013
 
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
+
 ### AAPP-10-014
 
 In class, we studied an algorithm that shows the main hallmarks of dynamic programming. Describe the algorithm and its complexity, and why it is classified as a good dynamic programming example. (2)
@@ -1539,6 +2958,13 @@ In class, we studied an algorithm that shows the main hallmarks of dynamic progr
 Source: [[Tema Esame 2025-07-04-1st.pdf#page=3|2025-07-04-1st · Exercise 2A · p. 3]]
 
 ^aapp-10-014
+
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
 
 ### AAPP-10-015
 
@@ -1548,6 +2974,13 @@ Source: [[Tema Esame 2025-11-06-1st.pdf#page=6|2025-11-06-1st · Exercise 3C · 
 
 ^aapp-10-015
 
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
+
 ### AAPP-10-016
 
 Please describe a problem that is typically solved by a divide‑and‑conquer strategy, yet also admits a dynamic‑programming formulation. In your explanation, highlight how memoization is employed. (2)
@@ -1555,6 +2988,13 @@ Please describe a problem that is typically solved by a divide‑and‑conquer s
 Source: [[Tema Esame 2026-1-22-1st.pdf#page=6|2026-1-22-1st · Exercise 3C · p. 6]]
 
 ^aapp-10-016
+
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
 
 ### AAPP-10-017
 
@@ -1564,6 +3004,13 @@ Source: [[Tema Esame 2026-2-09-1st.pdf#page=5|2026-2-09-1st · Exercise 3A · p.
 
 ^aapp-10-017
 
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
+
 ### AAPP-10-018
 
 Detail the Longest Common Subsequence algorithm: pseudo code, space, and temporal complexity. (2)
@@ -1572,6 +3019,13 @@ Source: [[Tema Esame 2026-6-11-1st.pdf#page=7|2026-6-11-1st · Exercise 4A · p.
 
 ^aapp-10-018
 
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
+
 ### AAPP-10-019
 
 What is memoization, and why is it useful in Dynamic Programming? Give an example of a repeated subproblem for which memoization avoids recomputation. (1)
@@ -1579,6 +3033,13 @@ What is memoization, and why is it useful in Dynamic Programming? Give an exampl
 Source: [[Tema Esame 2026-9-10-1st.pdf#page=4|2026-9-10-1st · Exercise 2C · p. 4]]
 
 ^aapp-10-019
+
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
 
 ## BDDs and memoization
 
@@ -1593,6 +3054,13 @@ Source: [[Tema Esame 2025-09-05-1st.pdf#page=4|2025-09-05-1st · Exercise 3A · 
 
 ^aapp-11-001
 
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
+
 ### AAPP-11-002
 
 Why the BDD data structure can be classified as an example of dynamic programming. (2)
@@ -1600,6 +3068,13 @@ Why the BDD data structure can be classified as an example of dynamic programmin
 Source: [[Tema Esame 2023-11-09-1st.pdf#page=3|2023-11-09-1st · Exercise 2A · p. 3]]
 
 ^aapp-11-002
+
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
 
 ### AAPP-11-003
 
@@ -1609,6 +3084,13 @@ Source: [[Tema Esame 2024-01-26-1st.pdf#page=5|2024-01-26-1st · Exercise 4B · 
 
 ^aapp-11-003
 
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
+
 ### AAPP-11-004
 
 What is the Unique Table, and what is it used for in ROBDDs? Does it also have to do with the canonicity of ROBDD? (2)
@@ -1616,6 +3098,13 @@ What is the Unique Table, and what is it used for in ROBDDs? Does it also have t
 Source: [[Tema Esame 2024-06-26-1st.pdf#page=5|2024-06-26-1st · Exercise 4A · p. 5]]
 
 ^aapp-11-004
+
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
 
 ### AAPP-11-005
 
@@ -1625,6 +3114,13 @@ Source: [[Tema Esame 2024-09-05-1st.pdf#page=5|2024-09-05-1st · Exercise 4B · 
 
 ^aapp-11-005
 
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
+
 ### AAPP-11-006
 
 What is meant by the memoization technique, and in which class of algorithm does it matter? (1)
@@ -1632,6 +3128,13 @@ What is meant by the memoization technique, and in which class of algorithm does
 Source: [[Tema Esame 2024-11-12-1st.pdf#page=3|2024-11-12-1st · Exercise 2C · p. 3]]
 
 ^aapp-11-006
+
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
 
 ### AAPP-11-007
 
@@ -1641,6 +3144,13 @@ Source: [[Tema Esame 2025-01-24-1st.pdf#page=3|2025-01-24-1st · Exercise 2B · 
 
 ^aapp-11-007
 
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
+
 ### AAPP-11-008
 
 Please discuss the role of the computed table on BDD ITE operation. How does the ITE asymptotic complexity change with this table?" (2)
@@ -1648,6 +3158,13 @@ Please discuss the role of the computed table on BDD ITE operation. How does the
 Source: [[Tema Esame 2025-02-14-1st.pdf#page=3|2025-02-14-1st · Exercise 2B · p. 3]]
 
 ^aapp-11-008
+
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
 
 ### AAPP-11-009
 
@@ -1657,6 +3174,13 @@ Source: [[Tema Esame 2025-06-05-1st.pdf#page=3|2025-06-05-1st · Exercise 2B · 
 
 ^aapp-11-009
 
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
+
 ### AAPP-11-010
 
 Why do we mention the BDD computed tables as an example of Dynamic programming? Please provide a pseudo-code example of its usage. (2)
@@ -1664,6 +3188,13 @@ Why do we mention the BDD computed tables as an example of Dynamic programming? 
 Source: [[Tema Esame 2025-11-06-1st.pdf#page=5|2025-11-06-1st · Exercise 3A · p. 5]]
 
 ^aapp-11-010
+
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
 
 ### AAPP-11-011
 
@@ -1673,6 +3204,13 @@ Source: [[Tema Esame 2026-2-09-1st.pdf#page=7|2026-2-09-1st · Exercise 4A · p.
 
 ^aapp-11-011
 
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
+
 ### AAPP-11-012
 
 Please explain the differences between the computed table and the unique table in the context of BDDs. Which one is more closely related to dynamic programming algorithms? (2)
@@ -1680,6 +3218,13 @@ Please explain the differences between the computed table and the unique table i
 Source: [[Tema Esame 2026-6-29-1st.pdf#page=7|2026-6-29-1st · Exercise 4A · p. 7]]
 
 ^aapp-11-012
+
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
 
 ## Treaps
 
@@ -1693,6 +3238,13 @@ Source: [[Tema Esame 2022-02-11-1st.pdf#page=2|2022-02-11-1st · Exercise 1 · p
 
 ^aapp-12-001
 
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
+
 ### AAPP-12-002
 
 Describe how Treap split/union works.
@@ -1700,6 +3252,13 @@ Describe how Treap split/union works.
 Source: [[Tema Esame 2022-09-07-1st.pdf#page=4|2022-09-07-1st · Exercise 3 · p. 4]]
 
 ^aapp-12-002
+
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
 
 ### AAPP-12-003
 
@@ -1709,6 +3268,13 @@ Source: [[Tema Esame 2022-11-08-1st.pdf#page=4|2022-11-08-1st · Exercise 3B · 
 
 ^aapp-12-003
 
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
+
 ### AAPP-12-004
 
 Describe the treap data structure, how the search is performed, and which complexity has. (2)
@@ -1716,6 +3282,13 @@ Describe the treap data structure, how the search is performed, and which comple
 Source: [[Tema Esame 2023-06-19-1st.pdf#page=4|2023-06-19-1st · Exercise 3B · p. 4]]
 
 ^aapp-12-004
+
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
 
 ### AAPP-12-005
 
@@ -1725,6 +3298,13 @@ Source: [[Tema Esame 2023-09-11-1st.pdf#page=4|2023-09-11-1st · Exercise 3B · 
 
 ^aapp-12-005
 
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
+
 ### AAPP-12-006
 
 Please provide the implementation of the split operation for Treaps. What is the operation complexity? (2)
@@ -1732,6 +3312,13 @@ Please provide the implementation of the split operation for Treaps. What is the
 Source: [[Tema Esame 2024-01-26-1st.pdf#page=4|2024-01-26-1st · Exercise 3B · p. 4]]
 
 ^aapp-12-006
+
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
 
 ### AAPP-12-007
 
@@ -1741,6 +3328,13 @@ Source: [[Tema Esame 2024-02-16-1st.pdf#page=4|2024-02-16-1st · Exercise 3B · 
 
 ^aapp-12-007
 
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
+
 ### AAPP-12-008
 
 Please discuss the key properties of a Treap and of its search function. (2)
@@ -1748,6 +3342,13 @@ Please discuss the key properties of a Treap and of its search function. (2)
 Source: [[Tema Esame 2024-06-26-1st.pdf#page=4|2024-06-26-1st · Exercise 3A · p. 4]]
 
 ^aapp-12-008
+
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
 
 ### AAPP-12-009
 
@@ -1757,6 +3358,13 @@ Source: [[Tema Esame 2024-07-24-1st.pdf#page=4|2024-07-24-1st · Exercise 3A · 
 
 ^aapp-12-009
 
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
+
 ### AAPP-12-010
 
 Why does randomized Treap structure have a complexity on average similar to a balanced binary tree? Treap required all priorities to be pairwise distinct. How can this property be satisfied? (2)
@@ -1764,6 +3372,13 @@ Why does randomized Treap structure have a complexity on average similar to a ba
 Source: [[Tema Esame 2024-09-05-1st.pdf#page=4|2024-09-05-1st · Exercise 3A · p. 4]]
 
 ^aapp-12-010
+
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
 
 ### AAPP-12-011
 
@@ -1773,6 +3388,13 @@ Source: [[Tema Esame 2024-09-05-1st.pdf#page=4|2024-09-05-1st · Exercise 3B · 
 
 ^aapp-12-011
 
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
+
 ### AAPP-12-012
 
 Describe how the split for Treaps data structure works and discuss its complexity. (2)
@@ -1780,6 +3402,13 @@ Describe how the split for Treaps data structure works and discuss its complexit
 Source: [[Tema Esame 2024-11-12-1st.pdf#page=4|2024-11-12-1st · Exercise 3B · p. 4]]
 
 ^aapp-12-012
+
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
 
 ### AAPP-12-013
 
@@ -1789,6 +3418,13 @@ Source: [[Tema Esame 2025-02-14-1st.pdf#page=4|2025-02-14-1st · Exercise 3B · 
 
 ^aapp-12-013
 
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
+
 ### AAPP-12-014
 
 Describe how the union and the split work in a treap and discuss its complexity. (2)
@@ -1796,6 +3432,13 @@ Describe how the union and the split work in a treap and discuss its complexity.
 Source: [[Tema Esame 2025-07-04-1st.pdf#page=4|2025-07-04-1st · Exercise 3B · p. 4]]
 
 ^aapp-12-014
+
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
 
 ### AAPP-12-015
 
@@ -1805,6 +3448,13 @@ Source: [[Tema Esame 2025-11-06-1st.pdf#page=4|2025-11-06-1st · Exercise 2C · 
 
 ^aapp-12-015
 
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
+
 ### AAPP-12-016
 
 Describe how the split for Treaps data structure works and discuss its complexity. (1)
@@ -1812,6 +3462,13 @@ Describe how the split for Treaps data structure works and discuss its complexit
 Source: [[Tema Esame 2026-1-22-1st.pdf#page=4|2026-1-22-1st · Exercise 2C · p. 4]]
 
 ^aapp-12-016
+
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
 
 ### AAPP-12-017
 
@@ -1821,6 +3478,13 @@ Source: [[Tema Esame 2026-2-09-1st.pdf#page=5|2026-2-09-1st · Exercise 3B · p.
 
 ^aapp-12-017
 
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
+
 ### AAPP-12-018
 
 Please describe how the treap split works. (1)
@@ -1829,6 +3493,13 @@ Source: [[Tema Esame 2026-6-11-1st.pdf#page=5|2026-6-11-1st · Exercise 3A · p.
 
 ^aapp-12-018
 
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
+
 ### AAPP-12-019
 
 Please describe how the treap union works. (1)
@@ -1836,6 +3507,13 @@ Please describe how the treap union works. (1)
 Source: [[Tema Esame 2026-6-29-1st.pdf#page=5|2026-6-29-1st · Exercise 3A · p. 5]]
 
 ^aapp-12-019
+
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
 
 ## Skip lists
 
@@ -1849,6 +3527,13 @@ Source: [[Tema Esame 2022-06-09-1st.pdf#page=4|2022-06-09-1st · Exercise 3 · p
 
 ^aapp-13-001
 
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
+
 ### AAPP-13-002
 
 Describe the skip-list data structure, how the search is performed, and which complexity has. (2)
@@ -1856,6 +3541,13 @@ Describe the skip-list data structure, how the search is performed, and which co
 Source: [[Tema Esame 2023-02-14-1st.pdf#page=4|2023-02-14-1st · Exercise 3B · p. 4]]
 
 ^aapp-13-002
+
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
 
 ### AAPP-13-003
 
@@ -1865,6 +3557,13 @@ Source: [[Tema Esame 2023-07-11-1st.pdf#page=4|2023-07-11-1st · Exercise 3B · 
 
 ^aapp-13-003
 
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
+
 ### AAPP-13-004
 
 Describe how the search for skip-list data structure works. (2)
@@ -1872,6 +3571,13 @@ Describe how the search for skip-list data structure works. (2)
 Source: [[Tema Esame 2023-11-09-1st.pdf#page=4|2023-11-09-1st · Exercise 3B · p. 4]]
 
 ^aapp-13-004
+
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
 
 ### AAPP-13-005
 
@@ -1881,6 +3587,13 @@ Source: [[Tema Esame 2024-07-24-1st.pdf#page=4|2024-07-24-1st · Exercise 3B · 
 
 ^aapp-13-005
 
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
+
 ### AAPP-13-006
 
 Describe how the search for Skip-list data structure works and discuss its complexity. (2)
@@ -1888,6 +3601,13 @@ Describe how the search for Skip-list data structure works and discuss its compl
 Source: [[Tema Esame 2025-01-24-1st.pdf#page=4|2025-01-24-1st · Exercise 3B · p. 4]]
 
 ^aapp-13-006
+
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
 
 ### AAPP-13-007
 
@@ -1897,6 +3617,13 @@ Source: [[Tema Esame 2025-06-05-1st.pdf#page=4|2025-06-05-1st · Exercise 3B · 
 
 ^aapp-13-007
 
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
+
 ### AAPP-13-008
 
 Describe the skip list data structure and how the search is performed, and what the complexity is. (2)
@@ -1905,6 +3632,13 @@ Source: [[Tema Esame 2025-09-05-1st.pdf#page=5|2025-09-05-1st · Exercise 4B · 
 
 ^aapp-13-008
 
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
+
 ### AAPP-13-009
 
 Describe how the insert for the skip-list data structure works and discuss its complexity. (1)
@@ -1912,6 +3646,13 @@ Describe how the insert for the skip-list data structure works and discuss its c
 Source: [[Tema Esame 2026-2-09-1st.pdf#page=4|2026-2-09-1st · Exercise 2C · p. 4]]
 
 ^aapp-13-009
+
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
 
 ## Disjoint sets
 
@@ -1925,6 +3666,13 @@ Source: [[Tema Esame 2023-07-11-1st.pdf#page=4|2023-07-11-1st · Exercise 3A · 
 
 ^aapp-14-001
 
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
+
 ### AAPP-14-002
 
 Please explain which optimizations have been considered to reduce the complexity of the disjoint-set operations. (2)
@@ -1932,6 +3680,13 @@ Please explain which optimizations have been considered to reduce the complexity
 Source: [[Tema Esame 2023-09-11-1st.pdf#page=4|2023-09-11-1st · Exercise 3A · p. 4]]
 
 ^aapp-14-002
+
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
 
 ## Amortized analysis
 
@@ -1957,6 +3712,13 @@ Source: [[Tema Esame 2022-11-08-1st.pdf#page=5|2022-11-08-1st · Exercise 4 · p
 
 ^aapp-15-001
 
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
+
 ### AAPP-15-002
 
 Consider a stack data structure storing elements of a given type, which can be assumed to be empty at the start time. Users can push one element on top of the stack using a PUSH operation, which has a constant cost of 1 and remove the top with a POP operation, which has a constant cost of 1. Compute the real cost of the MULTIPOP(k) operation that removes min{k,s} elements from the top of the stack where s is the number of elements in the stack. Determine the worst possible sequence of n operations on this stack and compute the amortized cost for the operations contained in the sequence using one of the methods seen during the course.
@@ -1964,6 +3726,13 @@ Consider a stack data structure storing elements of a given type, which can be a
 Source: [[Tema Esame 2023-01-17-1st.pdf#page=5|2023-01-17-1st · Exercise 4 · p. 5]]
 
 ^aapp-15-002
+
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
 
 ### AAPP-15-003
 
@@ -1973,6 +3742,13 @@ Source: [[Tema Esame 2023-02-14-1st.pdf#page=5|2023-02-14-1st · Exercise 4 · p
 
 ^aapp-15-003
 
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
+
 ### AAPP-15-004
 
 Please explain what aggregate amortized analysis is. (2)
@@ -1980,6 +3756,13 @@ Please explain what aggregate amortized analysis is. (2)
 Source: [[Tema Esame 2023-06-19-1st.pdf#page=5|2023-06-19-1st · Exercise 4A · p. 5]]
 
 ^aapp-15-004
+
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
 
 ### AAPP-15-005
 
@@ -1989,6 +3772,13 @@ Source: [[Tema Esame 2023-07-11-1st.pdf#page=5|2023-07-11-1st · Exercise 4B · 
 
 ^aapp-15-005
 
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
+
 ### AAPP-15-006
 
 What is meant by “potential method”? At which class of algorithms could be applied? Examples? (2)
@@ -1996,6 +3786,13 @@ What is meant by “potential method”? At which class of algorithms could be a
 Source: [[Tema Esame 2023-09-11-1st.pdf#page=5|2023-09-11-1st · Exercise 4B · p. 5]]
 
 ^aapp-15-006
+
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
 
 ### AAPP-15-007
 
@@ -2005,6 +3802,13 @@ Source: [[Tema Esame 2023-11-09-1st.pdf#page=5|2023-11-09-1st · Exercise 4B · 
 
 ^aapp-15-007
 
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
+
 ### AAPP-15-008
 
 Please discuss the amortized analysis. For which class of algorithm does it matter? (2)
@@ -2012,6 +3816,13 @@ Please discuss the amortized analysis. For which class of algorithm does it matt
 Source: [[Tema Esame 2024-01-26-1st.pdf#page=4|2024-01-26-1st · Exercise 3A · p. 4]]
 
 ^aapp-15-008
+
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
 
 ### AAPP-15-009
 
@@ -2021,6 +3832,13 @@ Source: [[Tema Esame 2024-02-16-1st.pdf#page=5|2024-02-16-1st · Exercise 4B · 
 
 ^aapp-15-009
 
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
+
 ### AAPP-15-010
 
 What is meant by “amortized analysis”? To which type of algorithms could be applied? Examples? (2)
@@ -2028,6 +3846,13 @@ What is meant by “amortized analysis”? To which type of algorithms could be 
 Source: [[Tema Esame 2024-07-24-1st.pdf#page=5|2024-07-24-1st · Exercise 4B · p. 5]]
 
 ^aapp-15-010
+
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
 
 ### AAPP-15-011
 
@@ -2037,6 +3862,13 @@ Source: [[Tema Esame 2025-02-14-1st.pdf#page=5|2025-02-14-1st · Exercise 4B · 
 
 ^aapp-15-011
 
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
+
 ### AAPP-15-012
 
 Why is amortized analysis useful in algorithm design, especially for data structures? (1)
@@ -2044,6 +3876,13 @@ Why is amortized analysis useful in algorithm design, especially for data struct
 Source: [[Tema Esame 2025-06-05-1st.pdf#page=5|2025-06-05-1st · Exercise 4A · p. 5]]
 
 ^aapp-15-012
+
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
 
 ### AAPP-15-013
 
@@ -2053,6 +3892,13 @@ Source: [[Tema Esame 2025-06-05-1st.pdf#page=5|2025-06-05-1st · Exercise 4C · 
 
 ^aapp-15-013
 
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
+
 ### AAPP-15-014
 
 Describe an algorithm seen during the course lectures where the potential method has been used. (2)
@@ -2060,6 +3906,13 @@ Describe an algorithm seen during the course lectures where the potential method
 Source: [[Tema Esame 2025-07-04-1st.pdf#page=4|2025-07-04-1st · Exercise 3A · p. 4]]
 
 ^aapp-15-014
+
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
 
 ### AAPP-15-015
 
@@ -2069,6 +3922,13 @@ Source: [[Tema Esame 2025-07-04-1st.pdf#page=5|2025-07-04-1st · Exercise 4C · 
 
 ^aapp-15-015
 
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
+
 ### AAPP-15-016
 
 What is meant by “accounting method”? To which class of algorithms could be applied? Examples? (1)
@@ -2076,6 +3936,13 @@ What is meant by “accounting method”? To which class of algorithms could be 
 Source: [[Tema Esame 2025-09-05-1st.pdf#page=5|2025-09-05-1st · Exercise 4A · p. 5]]
 
 ^aapp-15-016
+
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
 
 ### AAPP-15-017
 
@@ -2085,6 +3952,13 @@ Source: [[Tema Esame 2026-1-22-1st.pdf#page=7|2026-1-22-1st · Exercise 4B · p.
 
 ^aapp-15-017
 
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
+
 ### AAPP-15-018
 
 Describe amortized analysis and discuss one algorithm or data structure where this analysis is appropriate. (2)
@@ -2093,6 +3967,13 @@ Source: [[Tema Esame 2026-6-11-1st.pdf#page=3|2026-6-11-1st · Exercise 2A · p.
 
 ^aapp-15-018
 
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
+
 ### AAPP-15-019
 
 Describe the potential method of amortized analysis and apply it conceptually to a dynamic array that doubles when full. (2)
@@ -2100,6 +3981,13 @@ Describe the potential method of amortized analysis and apply it conceptually to
 Source: [[Tema Esame 2026-9-10-1st.pdf#page=7|2026-9-10-1st · Exercise 4B · p. 7]]
 
 ^aapp-15-019
+
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
 
 ## Online algorithms and competitive analysis
 
@@ -2113,6 +4001,13 @@ Source: [[Tema Esame 2022-11-08-1st.pdf#page=4|2022-11-08-1st · Exercise 3A · 
 
 ^aapp-16-001
 
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
+
 ### AAPP-16-002
 
 Please explain what the competitive analysis is meant for. (2)
@@ -2120,6 +4015,13 @@ Please explain what the competitive analysis is meant for. (2)
 Source: [[Tema Esame 2023-01-17-1st.pdf#page=4|2023-01-17-1st · Exercise 3A · p. 4]]
 
 ^aapp-16-002
+
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
 
 ### AAPP-16-003
 
@@ -2129,6 +4031,13 @@ Source: [[Tema Esame 2023-06-19-1st.pdf#page=5|2023-06-19-1st · Exercise 4B · 
 
 ^aapp-16-003
 
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
+
 ### AAPP-16-004
 
 Detail the Move to Front algorithm. What approach is followed to estimate the temporal complexity of this class of algorithms? Which class of algorithms does it belongs to? (2)
@@ -2136,6 +4045,13 @@ Detail the Move to Front algorithm. What approach is followed to estimate the te
 Source: [[Tema Esame 2023-09-11-1st.pdf#page=5|2023-09-11-1st · Exercise 4A · p. 5]]
 
 ^aapp-16-004
+
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
 
 ### AAPP-16-005
 
@@ -2145,6 +4061,13 @@ Source: [[Tema Esame 2023-11-09-1st.pdf#page=4|2023-11-09-1st · Exercise 3A · 
 
 ^aapp-16-005
 
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
+
 ### AAPP-16-006
 
 Please describe the difference between on-line and off-line algorithms. How is their complexity analyzed? (2)
@@ -2152,6 +4075,13 @@ Please describe the difference between on-line and off-line algorithms. How is t
 Source: [[Tema Esame 2024-01-26-1st.pdf#page=5|2024-01-26-1st · Exercise 4A · p. 5]]
 
 ^aapp-16-006
+
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
 
 ### AAPP-16-007
 
@@ -2161,6 +4091,13 @@ Source: [[Tema Esame 2024-06-26-1st.pdf#page=5|2024-06-26-1st · Exercise 4B · 
 
 ^aapp-16-007
 
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
+
 ### AAPP-16-008
 
 To which class does the Move-To-Front Algorithm belong? How is its complexity evaluated? (1)
@@ -2168,6 +4105,13 @@ To which class does the Move-To-Front Algorithm belong? How is its complexity ev
 Source: [[Tema Esame 2024-07-24-1st.pdf#page=3|2024-07-24-1st · Exercise 2C · p. 3]]
 
 ^aapp-16-008
+
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
 
 ### AAPP-16-009
 
@@ -2177,6 +4121,13 @@ Source: [[Tema Esame 2024-09-05-1st.pdf#page=5|2024-09-05-1st · Exercise 4A · 
 
 ^aapp-16-009
 
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
+
 ### AAPP-16-010
 
 Please explain what the competitive analysis is meant for by using one of the examples presented during the course lectures. (2)
@@ -2184,6 +4135,13 @@ Please explain what the competitive analysis is meant for by using one of the ex
 Source: [[Tema Esame 2025-09-05-1st.pdf#page=3|2025-09-05-1st · Exercise 2B · p. 3]]
 
 ^aapp-16-010
+
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
 
 ### AAPP-16-011
 
@@ -2193,6 +4151,13 @@ Source: [[Tema Esame 2025-11-06-1st.pdf#page=5|2025-11-06-1st · Exercise 3B · 
 
 ^aapp-16-011
 
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
+
 ### AAPP-16-012
 
 Please describe an example of an online problem and how its complexity could be analyzed. (1)
@@ -2200,6 +4165,13 @@ Please describe an example of an online problem and how its complexity could be 
 Source: [[Tema Esame 2026-1-22-1st.pdf#page=5|2026-1-22-1st · Exercise 3B · p. 5]]
 
 ^aapp-16-012
+
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
 
 ### AAPP-16-013
 
@@ -2209,6 +4181,13 @@ Source: [[Tema Esame 2026-2-09-1st.pdf#page=7|2026-2-09-1st · Exercise 4B · p.
 
 ^aapp-16-013
 
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
+
 ### AAPP-16-014
 
 Discuss self-organizing lists, including one heuristic presented in class and the method used to analyze its performance. (2)
@@ -2217,6 +4196,13 @@ Source: [[Tema Esame 2026-6-11-1st.pdf#page=7|2026-6-11-1st · Exercise 4B · p.
 
 ^aapp-16-014
 
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
+
 ### AAPP-16-015
 
 Please describe the difference between online and offline algorithms. How is their complexity analyzed? (2)
@@ -2224,6 +4210,13 @@ Please describe the difference between online and offline algorithms. How is the
 Source: [[Tema Esame 2026-6-29-1st.pdf#page=6|2026-6-29-1st · Exercise 3C · p. 6]]
 
 ^aapp-16-015
+
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
 
 ## Parallel design and architectures
 
@@ -2238,6 +4231,13 @@ Source: [[Tema Esame 2022-02-11-2nd-b.pdf#page=3|2022-02-11-2nd-b · Exercise 2A
 
 ^aapp-17-001
 
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
+
 ### AAPP-17-002
 
 It is not recommendable to mix parallelism technologies since doing so increases the complexity of the compiled binaries: true or false?
@@ -2246,6 +4246,13 @@ Source: [[Tema Esame 2022-02-11-2nd-a.pdf#page=3|2022-02-11-2nd-a · Exercise 2B
 Source: [[Tema Esame 2022-02-11-2nd-b.pdf#page=3|2022-02-11-2nd-b · Exercise 2B · p. 3]]
 
 ^aapp-17-002
+
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
 
 ### AAPP-17-003
 
@@ -2256,6 +4263,13 @@ Source: [[Tema Esame 2022-06-09-2nd-b.pdf#page=3|2022-06-09-2nd-b · Exercise 2A
 
 ^aapp-17-003
 
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
+
 ### AAPP-17-004
 
 Parallel programming models using threads spawn a single process, therefore the program I/O correctness is always guaranteed: true or false?
@@ -2265,6 +4279,13 @@ Source: [[Tema Esame 2022-06-09-2nd-b.pdf#page=3|2022-06-09-2nd-b · Exercise 2B
 
 ^aapp-17-004
 
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
+
 ### AAPP-17-005
 
 Is it possible to use multiple parallelization models in the same program? Would it benefit some hardware architectures in particular?
@@ -2273,6 +4294,13 @@ Source: [[Tema Esame 2022-09-07-2nd-b.pdf#page=3|2022-09-07-2nd-b · Exercise 2A
 
 ^aapp-17-005
 
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
+
 ### AAPP-17-006
 
 Which are the main differences between parallel programming models based on threads and those based on processes in terms of low-level information management and architectures that can benefit from them?
@@ -2280,6 +4308,13 @@ Which are the main differences between parallel programming models based on thre
 Source: [[Tema Esame 2022-09-07-2nd-b.pdf#page=3|2022-09-07-2nd-b · Exercise 2C · p. 3]]
 
 ^aapp-17-006
+
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
 
 ### AAPP-17-007
 
@@ -2290,6 +4325,13 @@ Source: [[Tema Esame 2025-09-05-2nd.pdf#page=1|2025-09-05-2nd · Exercise 1A · 
 
 ^aapp-17-007
 
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
+
 ### AAPP-17-008
 
 Designing a «good» parallel algorithm by extracting all the available parallelism is not enough. True/False? Why?(1)
@@ -2297,6 +4339,13 @@ Designing a «good» parallel algorithm by extracting all the available parallel
 Source: [[Tema Esame 2022-12-22-2nd.pdf#page=2|2022-12-22-2nd · Exercise 1B · p. 2]]
 
 ^aapp-17-008
+
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
 
 ### AAPP-17-009
 
@@ -2306,6 +4355,13 @@ Source: [[Tema Esame 2024-07-24-2nd.pdf#page=2|2024-07-24-2nd · Exercise 1A · 
 
 ^aapp-17-009
 
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
+
 ### AAPP-17-010
 
 Please comment on this sentence: “Automatic parallelization cannot be used because it produces wrong solutions.”. True/false, partially true? (1)
@@ -2313,6 +4369,13 @@ Please comment on this sentence: “Automatic parallelization cannot be used bec
 Source: [[Tema Esame 2024-09-05-2nd.pdf#page=2|2024-09-05-2nd · Exercise 1A · p. 2]]
 
 ^aapp-17-010
+
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
 
 ### AAPP-17-011
 
@@ -2322,6 +4385,13 @@ Source: [[Tema Esame 2024-09-05-2nd.pdf#page=2|2024-09-05-2nd · Exercise 1B · 
 
 ^aapp-17-011
 
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
+
 ### AAPP-17-012
 
 What does PCAM Design Methodology mean? (1)
@@ -2329,6 +4399,13 @@ What does PCAM Design Methodology mean? (1)
 Source: [[Tema Esame 2025-01-24-2nd.pdf#page=1|2025-01-24-2nd · Exercise 1B · p. 1]]
 
 ^aapp-17-012
+
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
 
 ### AAPP-17-013
 
@@ -2338,6 +4415,13 @@ Source: [[Tema Esame 2025-12-18-2nd.pdf#page=1|2025-12-18-2nd · Exercise 1B · 
 
 ^aapp-17-013
 
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
+
 ### AAPP-17-014
 
 Could you please explain what the aim of agglomeration is in the PCAM design methodology? (1)
@@ -2346,6 +4430,13 @@ Source: [[Tema Esame 2026-1-22-2nd.pdf#page=1|2026-1-22-2nd · Exercise 1B · p.
 
 ^aapp-17-014
 
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
+
 ### AAPP-17-015
 
 Please explain what is meant by AoS and SoA, and in which cases you would use one or the other. (1)
@@ -2353,6 +4444,13 @@ Please explain what is meant by AoS and SoA, and in which cases you would use on
 Source: [[Tema Esame 2026-2-09-2nd.pdf#page=1|2026-2-09-2nd · Exercise 1B · p. 1]]
 
 ^aapp-17-015
+
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
 
 ### AAPP-17-016
 
@@ -2366,6 +4464,13 @@ Source: [[Tema Esame 2026-6-11-2nd.pdf#page=4|2026-6-11-2nd · Exercise 3A · p.
 
 ^aapp-17-016
 
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
+
 ## Dependences and loop parallelization
 
 *No dedicated study note is currently available for this topic.*
@@ -2378,6 +4483,13 @@ Source: [[Tema Esame 2022-12-22-2nd.pdf#page=2|2022-12-22-2nd · Exercise 1C · 
 
 ^aapp-18-001
 
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
+
 ### AAPP-18-002
 
 Is an output dependence a true dependence? True/False? Why? (1)
@@ -2386,6 +4498,13 @@ Source: [[Tema Esame 2022-12-22-2nd.pdf#page=2|2022-12-22-2nd · Exercise 1D · 
 
 ^aapp-18-002
 
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
+
 ### AAPP-18-003
 
 What is meant by DOALL loop? Example? (1)
@@ -2393,6 +4512,13 @@ What is meant by DOALL loop? Example? (1)
 Source: [[Tema Esame 2023-01-17-2nd.pdf#page=2|2023-01-17-2nd · Exercise 1A · p. 2]]
 
 ^aapp-18-003
+
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
 
 ### AAPP-18-004
 
@@ -2407,6 +4533,13 @@ Source: [[Tema Esame 2023-01-17-2nd.pdf#page=2|2023-01-17-2nd · Exercise 1B · 
 
 ^aapp-18-004
 
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
+
 ### AAPP-18-005
 
 Please describe the differences between flow, output and anti-dependencies. (2)
@@ -2415,6 +4548,13 @@ Source: [[Tema Esame 2023-01-17-2nd.pdf#page=2|2023-01-17-2nd · Exercise 1C · 
 
 ^aapp-18-005
 
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
+
 ### AAPP-18-006
 
 “Parallel execution must address control, data, and system dependences”. What is meant by “dependency” in this context? (1)
@@ -2422,6 +4562,13 @@ Source: [[Tema Esame 2023-01-17-2nd.pdf#page=2|2023-01-17-2nd · Exercise 1C · 
 Source: [[Tema Esame 2023-02-14-2nd.pdf#page=2|2023-02-14-2nd · Exercise 1A · p. 2]]
 
 ^aapp-18-006
+
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
 
 ### AAPP-18-007
 
@@ -2437,6 +4584,13 @@ Source: [[Tema Esame 2023-02-14-2nd.pdf#page=2|2023-02-14-2nd · Exercise 1B · 
 
 ^aapp-18-007
 
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
+
 ### AAPP-18-008
 
 Please explain the differences between “loop-carried“ and “loop-independent”.(1)
@@ -2445,6 +4599,13 @@ Source: [[Tema Esame 2023-02-14-2nd.pdf#page=2|2023-02-14-2nd · Exercise 1C · 
 
 ^aapp-18-008
 
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
+
 ### AAPP-18-009
 
 Is it possible to eliminate a flow dependency by modifying the program and ensuring that the program remains equivalent? (2)
@@ -2452,6 +4613,13 @@ Is it possible to eliminate a flow dependency by modifying the program and ensur
 Source: [[Tema Esame 2023-06-19-2nd.pdf#page=2|2023-06-19-2nd · Exercise 1A · p. 2]]
 
 ^aapp-18-009
+
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
 
 ### AAPP-18-010
 
@@ -2467,6 +4635,13 @@ Source: [[Tema Esame 2023-06-19-2nd.pdf#page=2|2023-06-19-2nd · Exercise 1B · 
 
 ^aapp-18-010
 
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
+
 ### AAPP-18-011
 
 DOALL loops have linear speedup even using the Amdahl law. Could you please write a short pseudo code showing an example of a DOALL loop? (2)
@@ -2474,6 +4649,13 @@ DOALL loops have linear speedup even using the Amdahl law. Could you please writ
 Source: [[Tema Esame 2023-07-11-2nd.pdf#page=2|2023-07-11-2nd · Exercise 1A · p. 2]]
 
 ^aapp-18-011
+
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
 
 ### AAPP-18-012
 
@@ -2489,6 +4671,13 @@ Source: [[Tema Esame 2023-07-11-2nd.pdf#page=2|2023-07-11-2nd · Exercise 1B · 
 
 ^aapp-18-012
 
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
+
 ### AAPP-18-013
 
 Could you please describe the statement/operation dependency and how and when it can be removed? (2)
@@ -2496,6 +4685,13 @@ Could you please describe the statement/operation dependency and how and when it
 Source: [[Tema Esame 2023-09-11-2nd.pdf#page=2|2023-09-11-2nd · Exercise 1A · p. 2]]
 
 ^aapp-18-013
+
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
 
 ### AAPP-18-014
 
@@ -2511,6 +4707,13 @@ Source: [[Tema Esame 2023-09-11-2nd.pdf#page=2|2023-09-11-2nd · Exercise 1B · 
 
 ^aapp-18-014
 
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
+
 ### AAPP-18-015
 
 Could you please write a short pseudo code showing an example of a DOALL loop in C? Which parallel pattern is directly connected to the DOALL loop? (2)
@@ -2518,6 +4721,13 @@ Could you please write a short pseudo code showing an example of a DOALL loop in
 Source: [[Tema Esame 2023-12-21-2nd.pdf#page=2|2023-12-21-2nd · Exercise 1A · p. 2]]
 
 ^aapp-18-015
+
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
 
 ### AAPP-18-016
 
@@ -2533,6 +4743,13 @@ Source: [[Tema Esame 2023-12-21-2nd.pdf#page=2|2023-12-21-2nd · Exercise 1B · 
 
 ^aapp-18-016
 
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
+
 ### AAPP-18-017
 
 Is it possible to eliminate a flow dependency by modifying the program and ensuring that the program remains equivalent? Is it the same with output dependency? Please show an example of what can be done. (2)
@@ -2540,6 +4757,13 @@ Is it possible to eliminate a flow dependency by modifying the program and ensur
 Source: [[Tema Esame 2024-01-26-2nd.pdf#page=2|2024-01-26-2nd · Exercise 1A · p. 2]]
 
 ^aapp-18-017
+
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
 
 ### AAPP-18-018
 
@@ -2555,6 +4779,13 @@ Source: [[Tema Esame 2024-01-26-2nd.pdf#page=2|2024-01-26-2nd · Exercise 1B · 
 
 ^aapp-18-018
 
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
+
 ### AAPP-18-019
 
 Please describe the Parallel Data Management Patterns: Pipeline. Are flow dependencies preventing correct parallelization of pipeline parallel pattern when present? (2)
@@ -2562,6 +4793,13 @@ Please describe the Parallel Data Management Patterns: Pipeline. Are flow depend
 Source: [[Tema Esame 2024-02-16-2nd.pdf#page=2|2024-02-16-2nd · Exercise 1A · p. 2]]
 
 ^aapp-18-019
+
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
 
 ### AAPP-18-020
 
@@ -2577,6 +4815,13 @@ Source: [[Tema Esame 2024-02-16-2nd.pdf#page=2|2024-02-16-2nd · Exercise 1B · 
 
 ^aapp-18-020
 
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
+
 ### AAPP-18-021
 
 Under what conditions can the following code be parallelized? If these conditions are met, is there a way to write the code for better parallelization? (2)
@@ -2591,6 +4836,13 @@ Source: [[Tema Esame 2024-06-26-2nd.pdf#page=2|2024-06-26-2nd · Exercise 1B · 
 
 ^aapp-18-021
 
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
+
 ### AAPP-18-022
 
 Is it possible to eliminate an anti-dependency by modifying the program and ensuring that the program remains equivalent? Is it the same with output-dependency? Please show an example of what can be done in both cases. (1)
@@ -2598,6 +4850,13 @@ Is it possible to eliminate an anti-dependency by modifying the program and ensu
 Source: [[Tema Esame 2024-07-24-2nd.pdf#page=2|2024-07-24-2nd · Exercise 1B · p. 2]]
 
 ^aapp-18-022
+
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
 
 ### AAPP-18-023
 
@@ -2613,6 +4872,13 @@ Source: [[Tema Esame 2024-07-24-2nd.pdf#page=2|2024-07-24-2nd · Exercise 1C · 
 
 ^aapp-18-023
 
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
+
 ### AAPP-18-024
 
 Which loop can be parallelized and under which conditions? Does the overhead of the runtime impact the parallelization of the loops? Which is the best way to parallelize this code on multi-core systems? (2)
@@ -2627,6 +4893,13 @@ Source: [[Tema Esame 2024-09-05-2nd.pdf#page=2|2024-09-05-2nd · Exercise 1C · 
 
 ^aapp-18-024
 
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
+
 ### AAPP-18-025
 
 Please explain when a dependence can be classified as lexically forward dependence. (1)
@@ -2634,6 +4907,13 @@ Please explain when a dependence can be classified as lexically forward dependen
 Source: [[Tema Esame 2025-01-24-2nd.pdf#page=1|2025-01-24-2nd · Exercise 1A · p. 1]]
 
 ^aapp-18-025
+
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
 
 ### AAPP-18-026
 
@@ -2652,6 +4932,13 @@ Source: [[Tema Esame 2025-01-24-2nd.pdf#page=1|2025-01-24-2nd · Exercise 1C · 
 
 ^aapp-18-026
 
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
+
 ### AAPP-18-027
 
 What dependencies can be eliminated by renaming the variables? (1)
@@ -2659,6 +4946,13 @@ What dependencies can be eliminated by renaming the variables? (1)
 Source: [[Tema Esame 2025-02-14-2nd.pdf#page=1|2025-02-14-2nd · Exercise 1B · p. 1]]
 
 ^aapp-18-027
+
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
 
 ### AAPP-18-028
 
@@ -2676,6 +4970,13 @@ Where and under what conditions can the following code be parallelized? Is there
 Source: [[Tema Esame 2025-02-14-2nd.pdf#page=1|2025-02-14-2nd · Exercise 1C · p. 1]]
 
 ^aapp-18-028
+
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
 
 ### AAPP-18-029
 
@@ -2695,6 +4996,13 @@ Source: [[Tema Esame 2025-06-05-2nd.pdf#page=1|2025-06-05-2nd · Exercise 1C · 
 
 ^aapp-18-029
 
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
+
 ### AAPP-18-030
 
 What is the difference between a true dependence and an anti-dependence? (1)
@@ -2702,6 +5010,13 @@ What is the difference between a true dependence and an anti-dependence? (1)
 Source: [[Tema Esame 2025-07-04-2nd.pdf#page=1|2025-07-04-2nd · Exercise 1A · p. 1]]
 
 ^aapp-18-030
+
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
 
 ### AAPP-18-031
 
@@ -2722,6 +5037,13 @@ Source: [[Tema Esame 2025-07-04-2nd.pdf#page=1|2025-07-04-2nd · Exercise 1C · 
 
 ^aapp-18-031
 
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
+
 ### AAPP-18-032
 
 Please describe the differences between flow, output, and anti-dependencies. (1)
@@ -2729,6 +5051,13 @@ Please describe the differences between flow, output, and anti-dependencies. (1)
 Source: [[Tema Esame 2025-09-05-2nd.pdf#page=1|2025-09-05-2nd · Exercise 1B · p. 1]]
 
 ^aapp-18-032
+
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
 
 ### AAPP-18-033
 
@@ -2748,6 +5077,13 @@ Which loop can be parallelized and under which conditions (i and j are declared 
 Source: [[Tema Esame 2025-09-05-2nd.pdf#page=1|2025-09-05-2nd · Exercise 1C · p. 1]]
 
 ^aapp-18-033
+
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
 
 ### AAPP-18-034
 
@@ -2771,6 +5107,13 @@ Source: [[Tema Esame 2025-12-18-2nd.pdf#page=2|2025-12-18-2nd · Exercise 1C · 
 
 ^aapp-18-034
 
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
+
 ### AAPP-18-035
 
 What is meant by Loop-carried dependency? Please provide an example with a short code snippet that demonstrates a loop-carried dependency that cannot be parallelized. (1)
@@ -2778,6 +5121,13 @@ What is meant by Loop-carried dependency? Please provide an example with a short
 Source: [[Tema Esame 2026-1-22-2nd.pdf#page=1|2026-1-22-2nd · Exercise 1A · p. 1]]
 
 ^aapp-18-035
+
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
 
 ### AAPP-18-036
 
@@ -2802,6 +5152,13 @@ Source: [[Tema Esame 2026-1-22-2nd.pdf#page=2|2026-1-22-2nd · Exercise 1C · p.
 
 ^aapp-18-036
 
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
+
 ### AAPP-18-037
 
 Given the following C-based code:
@@ -2824,6 +5181,13 @@ Source: [[Tema Esame 2026-2-09-2nd.pdf#page=2|2026-2-09-2nd · Exercise 1C · p.
 
 ^aapp-18-037
 
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
+
 ### AAPP-18-038
 
 Please provide a practical example of instruction dependency that prevents parallelization and an example that does not prevent parallelization. (1)
@@ -2831,6 +5195,13 @@ Please provide a practical example of instruction dependency that prevents paral
 Source: [[Tema Esame 2026-6-11-2nd.pdf#page=1|2026-6-11-2nd · Exercise 1B · p. 1]]
 
 ^aapp-18-038
+
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
 
 ### AAPP-18-039
 
@@ -2857,6 +5228,13 @@ Source: [[Tema Esame 2026-6-11-2nd.pdf#page=2|2026-6-11-2nd · Exercise 1C · p.
 
 ^aapp-18-039
 
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
+
 ### AAPP-18-040
 
 Please provide a practical example of a loop carry dependency that cannot be parallelizable. (1)
@@ -2864,6 +5242,13 @@ Please provide a practical example of a loop carry dependency that cannot be par
 Source: [[Tema Esame 2026-6-29-2nd.pdf#page=1|2026-6-29-2nd · Exercise 1B · p. 1]]
 
 ^aapp-18-040
+
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
 
 ### AAPP-18-041
 
@@ -2890,6 +5275,13 @@ Source: [[Tema Esame 2026-6-29-2nd.pdf#page=2|2026-6-29-2nd · Exercise 1C · p.
 
 ^aapp-18-041
 
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
+
 ### AAPP-18-042
 
 Given the following C-based code:
@@ -2911,6 +5303,13 @@ Source: [[Tema Esame 2026-9-10-2nd.pdf#page=2|2026-9-10-2nd · Exercise 1C · p.
 
 ^aapp-18-042
 
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
+
 ## Parallel patterns
 
 Related notes: [[PRAM]] (introductory patterns only).
@@ -2924,6 +5323,13 @@ Source: [[Tema Esame 2022-02-11-2nd-b.pdf#page=3|2022-02-11-2nd-b · Exercise 2C
 
 ^aapp-19-001
 
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
+
 ### AAPP-19-002
 
 Describe the scan parallel pattern. Can it be implemented using different approaches with respect to the computation of intermediate values?
@@ -2934,6 +5340,13 @@ Source: [[Tema Esame 2022-09-07-2nd-b.pdf#page=3|2022-09-07-2nd-b · Exercise 2B
 
 ^aapp-19-002
 
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
+
 ### AAPP-19-003
 
 Describe the workpile pattern, situations where it may be applied and possible implementations.
@@ -2942,6 +5355,13 @@ Source: [[Tema Esame 2022-06-30-2nd-a.pdf#page=3|2022-06-30-2nd-a · Exercise 2A
 Source: [[Tema Esame 2022-06-30-2nd-b.pdf#page=3|2022-06-30-2nd-b · Exercise 2A · p. 3]]
 
 ^aapp-19-003
+
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
 
 ### AAPP-19-004
 
@@ -2952,6 +5372,13 @@ Source: [[Tema Esame 2022-06-30-2nd-b.pdf#page=3|2022-06-30-2nd-b · Exercise 2B
 
 ^aapp-19-004
 
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
+
 ### AAPP-19-005
 
 Describe how to implement a map pattern with one of the parallel programming models presented in the course.
@@ -2961,6 +5388,13 @@ Source: [[Tema Esame 2022-06-30-2nd-b.pdf#page=3|2022-06-30-2nd-b · Exercise 2C
 
 ^aapp-19-005
 
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
+
 ### AAPP-19-006
 
 Please define what a parallel reduction is: assumptions, complexity, example.(1)
@@ -2969,6 +5403,13 @@ Source: [[Tema Esame 2022-12-22-2nd.pdf#page=3|2022-12-22-2nd · Exercise 2A · 
 
 ^aapp-19-006
 
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
+
 ### AAPP-19-007
 
 Please describe how a parallel pattern gather works. (1)
@@ -2976,6 +5417,13 @@ Please describe how a parallel pattern gather works. (1)
 Source: [[Tema Esame 2022-12-22-2nd.pdf#page=3|2022-12-22-2nd · Exercise 2B · p. 3]]
 
 ^aapp-19-007
+
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
 
 ### AAPP-19-008
 
@@ -2986,6 +5434,13 @@ Source: [[Tema Esame 2023-02-14-2nd.pdf#page=3|2023-02-14-2nd · Exercise 2C · 
 
 ^aapp-19-008
 
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
+
 ### AAPP-19-009
 
 Describe how the pack parallel pattern could be parallelly implemented. (1)
@@ -2993,6 +5448,13 @@ Describe how the pack parallel pattern could be parallelly implemented. (1)
 Source: [[Tema Esame 2022-12-22-2nd.pdf#page=3|2022-12-22-2nd · Exercise 2D · p. 3]]
 
 ^aapp-19-009
+
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
 
 ### AAPP-19-010
 
@@ -3002,6 +5464,13 @@ Source: [[Tema Esame 2023-01-17-2nd.pdf#page=3|2023-01-17-2nd · Exercise 2A · 
 
 ^aapp-19-010
 
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
+
 ### AAPP-19-011
 
 Please describe the differences between Split and Bin parallel patterns. (1)
@@ -3009,6 +5478,13 @@ Please describe the differences between Split and Bin parallel patterns. (1)
 Source: [[Tema Esame 2023-01-17-2nd.pdf#page=3|2023-01-17-2nd · Exercise 2B · p. 3]]
 
 ^aapp-19-011
+
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
 
 ### AAPP-19-012
 
@@ -3018,6 +5494,13 @@ Source: [[Tema Esame 2023-01-17-2nd.pdf#page=3|2023-01-17-2nd · Exercise 2C · 
 
 ^aapp-19-012
 
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
+
 ### AAPP-19-013
 
 What is meant by separating hyperplane in a recurrence parallelization? (1)
@@ -3025,6 +5508,13 @@ What is meant by separating hyperplane in a recurrence parallelization? (1)
 Source: [[Tema Esame 2023-01-17-2nd.pdf#page=3|2023-01-17-2nd · Exercise 2D · p. 3]]
 
 ^aapp-19-013
+
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
 
 ### AAPP-19-014
 
@@ -3034,6 +5524,13 @@ Source: [[Tema Esame 2023-02-14-2nd.pdf#page=3|2023-02-14-2nd · Exercise 2A · 
 
 ^aapp-19-014
 
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
+
 ### AAPP-19-015
 
 Please describe the differences between Zip and Unzip parallel patterns. (1)
@@ -3041,6 +5538,13 @@ Please describe the differences between Zip and Unzip parallel patterns. (1)
 Source: [[Tema Esame 2023-02-14-2nd.pdf#page=3|2023-02-14-2nd · Exercise 2B · p. 3]]
 
 ^aapp-19-015
+
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
 
 ### AAPP-19-016
 
@@ -3051,6 +5555,13 @@ Source: [[Tema Esame 2023-07-11-2nd.pdf#page=3|2023-07-11-2nd · Exercise 2C · 
 
 ^aapp-19-016
 
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
+
 ### AAPP-19-017
 
 Is it possible to implement a pipeline paradigm using OpenMP? What parallel paradigm is adopted by default in OpenMP?(2)
@@ -3058,6 +5569,13 @@ Is it possible to implement a pipeline paradigm using OpenMP? What parallel para
 Source: [[Tema Esame 2023-02-14-2nd.pdf#page=4|2023-02-14-2nd · Exercise 3A · p. 4]]
 
 ^aapp-19-017
+
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
 
 ### AAPP-19-018
 
@@ -3068,6 +5586,13 @@ Source: [[Tema Esame 2023-09-11-2nd.pdf#page=3|2023-09-11-2nd · Exercise 2A · 
 
 ^aapp-19-018
 
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
+
 ### AAPP-19-019
 
 Please describe the differences between Gather and scatter parallel patterns. (1)
@@ -3075,6 +5600,13 @@ Please describe the differences between Gather and scatter parallel patterns. (1
 Source: [[Tema Esame 2023-06-19-2nd.pdf#page=3|2023-06-19-2nd · Exercise 2B · p. 3]]
 
 ^aapp-19-019
+
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
 
 ### AAPP-19-020
 
@@ -3084,6 +5616,13 @@ Source: [[Tema Esame 2023-06-19-2nd.pdf#page=3|2023-06-19-2nd · Exercise 2C · 
 
 ^aapp-19-020
 
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
+
 ### AAPP-19-021
 
 Please describe the stencil pattern: assumptions, complexity, and example. (2)
@@ -3091,6 +5630,13 @@ Please describe the stencil pattern: assumptions, complexity, and example. (2)
 Source: [[Tema Esame 2023-07-11-2nd.pdf#page=3|2023-07-11-2nd · Exercise 2A · p. 3]]
 
 ^aapp-19-021
+
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
 
 ### AAPP-19-022
 
@@ -3100,6 +5646,13 @@ Source: [[Tema Esame 2023-07-11-2nd.pdf#page=3|2023-07-11-2nd · Exercise 2B · 
 
 ^aapp-19-022
 
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
+
 ### AAPP-19-023
 
 Please describe what is meant by pipelined parallelism and how could be implemented in OpenMP?(2)
@@ -3107,6 +5660,13 @@ Please describe what is meant by pipelined parallelism and how could be implemen
 Source: [[Tema Esame 2023-07-11-2nd.pdf#page=4|2023-07-11-2nd · Exercise 3A · p. 4]]
 
 ^aapp-19-023
+
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
 
 ### AAPP-19-024
 
@@ -3116,6 +5676,13 @@ Source: [[Tema Esame 2023-09-11-2nd.pdf#page=3|2023-09-11-2nd · Exercise 2B · 
 
 ^aapp-19-024
 
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
+
 ### AAPP-19-025
 
 Please describe the scan pattern: assumptions, complexity, and example. (2)
@@ -3123,6 +5690,13 @@ Please describe the scan pattern: assumptions, complexity, and example. (2)
 Source: [[Tema Esame 2023-12-21-2nd.pdf#page=3|2023-12-21-2nd · Exercise 2A · p. 3]]
 
 ^aapp-19-025
+
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
 
 ### AAPP-19-026
 
@@ -3132,6 +5706,13 @@ Source: [[Tema Esame 2023-12-21-2nd.pdf#page=3|2023-12-21-2nd · Exercise 2B · 
 
 ^aapp-19-026
 
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
+
 ### AAPP-19-027
 
 Please describe the parallel gather pattern: assumptions, complexity, and example. (2)
@@ -3139,6 +5720,13 @@ Please describe the parallel gather pattern: assumptions, complexity, and exampl
 Source: [[Tema Esame 2024-01-26-2nd.pdf#page=3|2024-01-26-2nd · Exercise 2A · p. 3]]
 
 ^aapp-19-027
+
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
 
 ### AAPP-19-028
 
@@ -3148,6 +5736,13 @@ Source: [[Tema Esame 2024-01-26-2nd.pdf#page=3|2024-01-26-2nd · Exercise 2B · 
 
 ^aapp-19-028
 
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
+
 ### AAPP-19-029
 
 Please describe the parallel scatter pattern: assumptions, complexity, and example. (2)
@@ -3156,6 +5751,13 @@ Source: [[Tema Esame 2024-02-16-2nd.pdf#page=3|2024-02-16-2nd · Exercise 2A · 
 
 ^aapp-19-029
 
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
+
 ### AAPP-19-030
 
 Please describe how the Pack parallel pattern works. How is implemented? (2)
@@ -3163,6 +5765,13 @@ Please describe how the Pack parallel pattern works. How is implemented? (2)
 Source: [[Tema Esame 2024-02-16-2nd.pdf#page=3|2024-02-16-2nd · Exercise 2B · p. 3]]
 
 ^aapp-19-030
+
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
 
 ### AAPP-19-031
 
@@ -3173,6 +5782,13 @@ Source: [[Tema Esame 2024-09-05-2nd.pdf#page=3|2024-09-05-2nd · Exercise 2A · 
 
 ^aapp-19-031
 
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
+
 ### AAPP-19-032
 
 Please describe how the Split parallel pattern works. How is it implemented? (2)
@@ -3180,6 +5796,13 @@ Please describe how the Split parallel pattern works. How is it implemented? (2)
 Source: [[Tema Esame 2024-06-26-2nd.pdf#page=3|2024-06-26-2nd · Exercise 2B · p. 3]]
 
 ^aapp-19-032
+
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
 
 ### AAPP-19-033
 
@@ -3189,6 +5812,13 @@ Source: [[Tema Esame 2024-07-24-2nd.pdf#page=3|2024-07-24-2nd · Exercise 2A · 
 
 ^aapp-19-033
 
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
+
 ### AAPP-19-034
 
 Please describe how the Unzip parallel pattern works. How is it implemented (pseudo code required)? (2)
@@ -3196,6 +5826,13 @@ Please describe how the Unzip parallel pattern works. How is it implemented (pse
 Source: [[Tema Esame 2024-07-24-2nd.pdf#page=3|2024-07-24-2nd · Exercise 2B · p. 3]]
 
 ^aapp-19-034
+
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
 
 ### AAPP-19-035
 
@@ -3205,6 +5842,13 @@ Source: [[Tema Esame 2024-09-05-2nd.pdf#page=3|2024-09-05-2nd · Exercise 2B · 
 
 ^aapp-19-035
 
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
+
 ### AAPP-19-036
 
 Please describe the parallel scan pattern, including assumptions, complexity, and examples. (2)
@@ -3212,6 +5856,13 @@ Please describe the parallel scan pattern, including assumptions, complexity, an
 Source: [[Tema Esame 2025-01-24-2nd.pdf#page=2|2025-01-24-2nd · Exercise 2A · p. 2]]
 
 ^aapp-19-036
+
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
 
 ### AAPP-19-037
 
@@ -3221,6 +5872,13 @@ Source: [[Tema Esame 2025-01-24-2nd.pdf#page=2|2025-01-24-2nd · Exercise 2B · 
 
 ^aapp-19-037
 
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
+
 ### AAPP-19-038
 
 Please describe and show an example of Parallel Data Management Patterns: pipeline. (1)
@@ -3228,6 +5886,13 @@ Please describe and show an example of Parallel Data Management Patterns: pipeli
 Source: [[Tema Esame 2025-02-14-2nd.pdf#page=1|2025-02-14-2nd · Exercise 1A · p. 1]]
 
 ^aapp-19-038
+
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
 
 ### AAPP-19-039
 
@@ -3237,6 +5902,13 @@ Source: [[Tema Esame 2025-02-14-2nd.pdf#page=2|2025-02-14-2nd · Exercise 2A · 
 
 ^aapp-19-039
 
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
+
 ### AAPP-19-040
 
 Please discuss how the Pack parallel pattern works. How is it implemented (pseudo code required and PRAM-based complexity)? (2)
@@ -3244,6 +5916,13 @@ Please discuss how the Pack parallel pattern works. How is it implemented (pseud
 Source: [[Tema Esame 2025-02-14-2nd.pdf#page=2|2025-02-14-2nd · Exercise 2B · p. 2]]
 
 ^aapp-19-040
+
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
 
 ### AAPP-19-041
 
@@ -3253,6 +5932,13 @@ Source: [[Tema Esame 2025-06-05-2nd.pdf#page=1|2025-06-05-2nd · Exercise 1A · 
 
 ^aapp-19-041
 
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
+
 ### AAPP-19-042
 
 How does the Workpile pattern differ from a standard Map pattern? (1)
@@ -3260,6 +5946,13 @@ How does the Workpile pattern differ from a standard Map pattern? (1)
 Source: [[Tema Esame 2025-06-05-2nd.pdf#page=1|2025-06-05-2nd · Exercise 1B · p. 1]]
 
 ^aapp-19-042
+
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
 
 ### AAPP-19-043
 
@@ -3269,6 +5962,13 @@ Source: [[Tema Esame 2025-06-05-2nd.pdf#page=2|2025-06-05-2nd · Exercise 2A · 
 
 ^aapp-19-043
 
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
+
 ### AAPP-19-044
 
 In the context of parallel scan, what is the difference between an inclusive and an exclusive scan? What about the complexity? (1)
@@ -3276,6 +5976,13 @@ In the context of parallel scan, what is the difference between an inclusive and
 Source: [[Tema Esame 2025-06-05-2nd.pdf#page=2|2025-06-05-2nd · Exercise 2B · p. 2]]
 
 ^aapp-19-044
+
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
 
 ### AAPP-19-045
 
@@ -3286,6 +5993,13 @@ Source: [[Tema Esame 2025-09-05-2nd.pdf#page=2|2025-09-05-2nd · Exercise 2B · 
 
 ^aapp-19-045
 
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
+
 ### AAPP-19-046
 
 What are the challenges of using a shared state in a Map function? (1)
@@ -3293,6 +6007,13 @@ What are the challenges of using a shared state in a Map function? (1)
 Source: [[Tema Esame 2025-07-04-2nd.pdf#page=1|2025-07-04-2nd · Exercise 1B · p. 1]]
 
 ^aapp-19-046
+
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
 
 ### AAPP-19-047
 
@@ -3302,6 +6023,13 @@ Source: [[Tema Esame 2025-07-04-2nd.pdf#page=2|2025-07-04-2nd · Exercise 2A · 
 
 ^aapp-19-047
 
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
+
 ### AAPP-19-048
 
 Please discuss how the Unpack parallel pattern works. How is it implemented (pseudo code required and PRAM-based complexity)? (2)
@@ -3309,6 +6037,13 @@ Please discuss how the Unpack parallel pattern works. How is it implemented (pse
 Source: [[Tema Esame 2025-07-04-2nd.pdf#page=2|2025-07-04-2nd · Exercise 2B · p. 2]]
 
 ^aapp-19-048
+
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
 
 ### AAPP-19-049
 
@@ -3318,6 +6053,13 @@ Source: [[Tema Esame 2025-09-05-2nd.pdf#page=2|2025-09-05-2nd · Exercise 2A · 
 
 ^aapp-19-049
 
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
+
 ### AAPP-19-050
 
 What kind of problems may create a parallel scatter pattern? Please discuss and provide examples. (1)
@@ -3325,6 +6067,13 @@ What kind of problems may create a parallel scatter pattern? Please discuss and 
 Source: [[Tema Esame 2025-12-18-2nd.pdf#page=1|2025-12-18-2nd · Exercise 1A · p. 1]]
 
 ^aapp-19-050
+
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
 
 ### AAPP-19-051
 
@@ -3334,6 +6083,13 @@ Source: [[Tema Esame 2025-12-18-2nd.pdf#page=3|2025-12-18-2nd · Exercise 2A · 
 
 ^aapp-19-051
 
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
+
 ### AAPP-19-052
 
 Please describe how the Pack parallel pattern works. How is it implemented (pseudo code required)? (2)
@@ -3341,6 +6097,13 @@ Please describe how the Pack parallel pattern works. How is it implemented (pseu
 Source: [[Tema Esame 2025-12-18-2nd.pdf#page=3|2025-12-18-2nd · Exercise 2B · p. 3]]
 
 ^aapp-19-052
+
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
 
 ### AAPP-19-053
 
@@ -3350,6 +6113,13 @@ Source: [[Tema Esame 2026-1-22-2nd.pdf#page=3|2026-1-22-2nd · Exercise 2A · p.
 
 ^aapp-19-053
 
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
+
 ### AAPP-19-054
 
 Please describe how the Split parallel pattern works and its performance considering a PRAM model. How is it implemented (pseudo code required)? (2)
@@ -3357,6 +6127,13 @@ Please describe how the Split parallel pattern works and its performance conside
 Source: [[Tema Esame 2026-1-22-2nd.pdf#page=3|2026-1-22-2nd · Exercise 2B · p. 3]]
 
 ^aapp-19-054
+
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
 
 ### AAPP-19-055
 
@@ -3366,6 +6143,13 @@ Source: [[Tema Esame 2026-2-09-2nd.pdf#page=1|2026-2-09-2nd · Exercise 1A · p.
 
 ^aapp-19-055
 
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
+
 ### AAPP-19-056
 
 Please describe the parallel gather pattern, including assumptions, PRAM complexity. In which other parallel patterns discussed during the lecture has the gather been used? (2)
@@ -3373,6 +6157,13 @@ Please describe the parallel gather pattern, including assumptions, PRAM complex
 Source: [[Tema Esame 2026-2-09-2nd.pdf#page=3|2026-2-09-2nd · Exercise 2A · p. 3]]
 
 ^aapp-19-056
+
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
 
 ### AAPP-19-057
 
@@ -3382,6 +6173,13 @@ Source: [[Tema Esame 2026-2-09-2nd.pdf#page=3|2026-2-09-2nd · Exercise 2B · p.
 
 ^aapp-19-057
 
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
+
 ### AAPP-19-058
 
 Describe the reduce parallel pattern and at least one fusion optimization that can be applied to it. (1)
@@ -3389,6 +6187,13 @@ Describe the reduce parallel pattern and at least one fusion optimization that c
 Source: [[Tema Esame 2026-6-11-2nd.pdf#page=1|2026-6-11-2nd · Exercise 1A · p. 1]]
 
 ^aapp-19-058
+
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
 
 ### AAPP-19-059
 
@@ -3398,6 +6203,13 @@ Source: [[Tema Esame 2026-6-11-2nd.pdf#page=3|2026-6-11-2nd · Exercise 2A · p.
 
 ^aapp-19-059
 
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
+
 ### AAPP-19-060
 
 Please describe how the Pack parallel pattern works and its performance considering a PRAM model. How is it implemented (pseudo code required)? (2)
@@ -3405,6 +6217,13 @@ Please describe how the Pack parallel pattern works and its performance consider
 Source: [[Tema Esame 2026-6-11-2nd.pdf#page=3|2026-6-11-2nd · Exercise 2B · p. 3]]
 
 ^aapp-19-060
+
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
 
 ### AAPP-19-061
 
@@ -3414,6 +6233,13 @@ Source: [[Tema Esame 2026-6-29-2nd.pdf#page=1|2026-6-29-2nd · Exercise 1A · p.
 
 ^aapp-19-061
 
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
+
 ### AAPP-19-062
 
 Please describe how the Unpack parallel pattern works and its performance considering a PRAM model. How is it implemented (pseudo code required)? (2)
@@ -3421,6 +6247,13 @@ Please describe how the Unpack parallel pattern works and its performance consid
 Source: [[Tema Esame 2026-6-29-2nd.pdf#page=3|2026-6-29-2nd · Exercise 2A · p. 3]]
 
 ^aapp-19-062
+
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
 
 ### AAPP-19-063
 
@@ -3430,6 +6263,13 @@ Source: [[Tema Esame 2026-9-10-2nd.pdf#page=1|2026-9-10-2nd · Exercise 1A · p.
 
 ^aapp-19-063
 
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
+
 ### AAPP-19-064
 
 Describe the parallel pipeline pattern and one condition required for good scalability. (1)
@@ -3438,6 +6278,13 @@ Source: [[Tema Esame 2026-9-10-2nd.pdf#page=1|2026-9-10-2nd · Exercise 1B · p.
 
 ^aapp-19-064
 
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
+
 ### AAPP-19-065
 
 Describe the Pack pattern and give its PRAM work and time complexity. (2)
@@ -3445,6 +6292,13 @@ Describe the Pack pattern and give its PRAM work and time complexity. (2)
 Source: [[Tema Esame 2026-9-10-2nd.pdf#page=3|2026-9-10-2nd · Exercise 2A · p. 3]]
 
 ^aapp-19-065
+
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
 
 ## Task graphs and OpenMP implementations
 
@@ -3462,6 +6316,13 @@ Source: [[Tema Esame 2023-01-17-2nd.pdf#page=4|2023-01-17-2nd · Exercise 3A · 
 
 ^aapp-20-001
 
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
+
 ### AAPP-20-002
 
 Please describe what is meant by task parallelism (Parallel Task Graph) and how could be implemented in OpenMP?(2)
@@ -3469,6 +6330,13 @@ Please describe what is meant by task parallelism (Parallel Task Graph) and how 
 Source: [[Tema Esame 2023-09-11-2nd.pdf#page=4|2023-09-11-2nd · Exercise 3A · p. 4]]
 
 ^aapp-20-002
+
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
 
 ### AAPP-20-003
 
@@ -3482,6 +6350,13 @@ Source: [[Tema Esame 2023-12-21-2nd.pdf#page=4|2023-12-21-2nd · Exercise 3B · 
 
 ^aapp-20-003
 
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
+
 ### AAPP-20-004
 
 Is it better to implement the program with 3 or 4 threads? (1)
@@ -3494,6 +6369,13 @@ Source: [[Tema Esame 2024-07-24-2nd.pdf#page=4|2024-07-24-2nd · Exercise 3A · 
 
 ^aapp-20-004
 
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
+
 ### AAPP-20-005
 
 Write a corresponding OpenMP implementation. (2)
@@ -3504,6 +6386,13 @@ Source: [[Tema Esame 2024-07-24-2nd.pdf#page=4|2024-07-24-2nd · Exercise 3B · 
 > ![[2024-07-24-2nd-p4.png|800]]
 
 ^aapp-20-005
+
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
 
 ### AAPP-20-006
 
@@ -3516,6 +6405,13 @@ Source: [[Tema Esame 2024-07-24-2nd.pdf#page=4|2024-07-24-2nd · Exercise 3C · 
 
 ^aapp-20-006
 
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
+
 ### AAPP-20-007
 
 Describe the method to qualitatively evaluate a parallel algorithm through its data flow graph. (1)
@@ -3523,6 +6419,13 @@ Describe the method to qualitatively evaluate a parallel algorithm through its d
 Source: [[Tema Esame 2024-09-05-2nd.pdf#page=4|2024-09-05-2nd · Exercise 3A · p. 4]]
 
 ^aapp-20-007
+
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
 
 ### AAPP-20-008
 
@@ -3538,6 +6441,13 @@ Source: [[Tema Esame 2025-01-24-2nd.pdf#page=3|2025-01-24-2nd · Exercise 3B · 
 
 ^aapp-20-008
 
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
+
 ### AAPP-20-009
 
 Write a corresponding OpenMP implementation. (2)
@@ -3550,6 +6460,13 @@ Source: [[Tema Esame 2025-01-24-2nd.pdf#page=3|2025-01-24-2nd · Exercise 3C · 
 > ![[2025-01-24-2nd-p3.png|800]]
 
 ^aapp-20-009
+
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
 
 ### AAPP-20-010
 
@@ -3565,6 +6482,13 @@ Source: [[Tema Esame 2025-07-04-2nd.pdf#page=3|2025-07-04-2nd · Exercise 3B · 
 
 ^aapp-20-010
 
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
+
 ### AAPP-20-011
 
 Write a corresponding OpenMP implementation, explaining your choice of work-sharing construct. (2)
@@ -3578,6 +6502,13 @@ Source: [[Tema Esame 2025-07-04-2nd.pdf#page=3|2025-07-04-2nd · Exercise 3C · 
 
 ^aapp-20-011
 
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
+
 ### AAPP-20-012
 
 Given the structure of the following parallel algorithm: what is the average number of processes that are not idle? Is it better to run it with 2 or 3 threads? (1)
@@ -3590,6 +6521,13 @@ Source: [[Tema Esame 2025-12-18-2nd.pdf#page=4|2025-12-18-2nd · Exercise 3B · 
 
 ^aapp-20-012
 
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
+
 ### AAPP-20-013
 
 Consider the following task graph: Calculate Work and Parallelism. Imagine having the possibility to optimize a task, halving its computational cost. Which one would you choose to reduce the span? (motivate) (2)
@@ -3601,6 +6539,13 @@ Source: [[Tema Esame 2026-9-10-2nd.pdf#page=4|2026-9-10-2nd · Exercise 3A · p.
 *Original source page for the graph or diagram. [[Tema Esame 2026-9-10-2nd.pdf#page=4|PDF page 4]].*
 
 ^aapp-20-013
+
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
 
 ## OpenMP
 
@@ -3615,6 +6560,13 @@ Source: [[Tema Esame 2022-02-11-2nd-b.pdf#page=2|2022-02-11-2nd-b · Exercise 1A
 
 ^aapp-21-001
 
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
+
 ### AAPP-21-002
 
 Describe the functionality of the private, shared, default Data Scope Attribute Clauses
@@ -3623,6 +6575,13 @@ Source: [[Tema Esame 2022-02-11-2nd-a.pdf#page=2|2022-02-11-2nd-a · Exercise 1B
 Source: [[Tema Esame 2022-02-11-2nd-b.pdf#page=2|2022-02-11-2nd-b · Exercise 1B · p. 2]]
 
 ^aapp-21-002
+
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
 
 ### AAPP-21-003
 
@@ -3633,6 +6592,13 @@ Source: [[Tema Esame 2022-02-11-2nd-b.pdf#page=2|2022-02-11-2nd-b · Exercise 1C
 
 ^aapp-21-003
 
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
+
 ### AAPP-21-004
 
 The maximum number of threads that can be spawned in OpenMP depends on the underlying hardware architecture: true or false?
@@ -3641,6 +6607,13 @@ Source: [[Tema Esame 2022-02-11-2nd-a.pdf#page=2|2022-02-11-2nd-a · Exercise 1D
 Source: [[Tema Esame 2022-02-11-2nd-b.pdf#page=2|2022-02-11-2nd-b · Exercise 1D · p. 2]]
 
 ^aapp-21-004
+
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
 
 ### AAPP-21-005
 
@@ -3651,6 +6624,13 @@ Source: [[Tema Esame 2022-06-09-2nd-b.pdf#page=2|2022-06-09-2nd-b · Exercise 1A
 
 ^aapp-21-005
 
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
+
 ### AAPP-21-006
 
 What are Work-Sharing constructs in OpenMP? Describe their use and the conditions required for them to effectively parallelize a task.
@@ -3659,6 +6639,13 @@ Source: [[Tema Esame 2022-06-09-2nd-a.pdf#page=2|2022-06-09-2nd-a · Exercise 1B
 Source: [[Tema Esame 2022-06-09-2nd-b.pdf#page=2|2022-06-09-2nd-b · Exercise 1B · p. 2]]
 
 ^aapp-21-006
+
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
 
 ### AAPP-21-007
 
@@ -3669,6 +6656,13 @@ Source: [[Tema Esame 2022-06-09-2nd-b.pdf#page=2|2022-06-09-2nd-b · Exercise 1C
 
 ^aapp-21-007
 
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
+
 ### AAPP-21-008
 
 Is it possible to express nested parallelism in OpenMP? Is it generally a good practice?
@@ -3677,6 +6671,13 @@ Source: [[Tema Esame 2022-06-09-2nd-a.pdf#page=2|2022-06-09-2nd-a · Exercise 1D
 Source: [[Tema Esame 2022-06-09-2nd-b.pdf#page=2|2022-06-09-2nd-b · Exercise 1D · p. 2]]
 
 ^aapp-21-008
+
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
 
 ### AAPP-21-009
 
@@ -3687,6 +6688,13 @@ Source: [[Tema Esame 2022-06-30-2nd-b.pdf#page=2|2022-06-30-2nd-b · Exercise 1A
 
 ^aapp-21-009
 
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
+
 ### AAPP-21-010
 
 How is variables visibility managed in OpenMP?
@@ -3695,6 +6703,13 @@ Source: [[Tema Esame 2022-06-30-2nd-a.pdf#page=2|2022-06-30-2nd-a · Exercise 1B
 Source: [[Tema Esame 2022-06-30-2nd-b.pdf#page=2|2022-06-30-2nd-b · Exercise 1B · p. 2]]
 
 ^aapp-21-010
+
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
 
 ### AAPP-21-011
 
@@ -3705,6 +6720,13 @@ Source: [[Tema Esame 2022-06-30-2nd-b.pdf#page=2|2022-06-30-2nd-b · Exercise 1C
 
 ^aapp-21-011
 
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
+
 ### AAPP-21-012
 
 Is it possible and/or mandatory to define barriers in OpenMP?
@@ -3714,6 +6736,13 @@ Source: [[Tema Esame 2022-06-30-2nd-b.pdf#page=2|2022-06-30-2nd-b · Exercise 1D
 
 ^aapp-21-012
 
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
+
 ### AAPP-21-013
 
 What are the static and dynamic extents of the omp parallel directive?
@@ -3721,6 +6750,13 @@ What are the static and dynamic extents of the omp parallel directive?
 Source: [[Tema Esame 2022-09-07-2nd-b.pdf#page=2|2022-09-07-2nd-b · Exercise 1A · p. 2]]
 
 ^aapp-21-013
+
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
 
 ### AAPP-21-014
 
@@ -3730,6 +6766,13 @@ Source: [[Tema Esame 2022-09-07-2nd-b.pdf#page=2|2022-09-07-2nd-b · Exercise 1B
 
 ^aapp-21-014
 
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
+
 ### AAPP-21-015
 
 What is the functionality of the omp_set_num_threads function? Are there other ways for achieving the same result?
@@ -3737,6 +6780,13 @@ What is the functionality of the omp_set_num_threads function? Are there other w
 Source: [[Tema Esame 2022-09-07-2nd-b.pdf#page=2|2022-09-07-2nd-b · Exercise 1C · p. 2]]
 
 ^aapp-21-015
+
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
 
 ### AAPP-21-016
 
@@ -3746,6 +6796,13 @@ Source: [[Tema Esame 2022-09-07-2nd-b.pdf#page=2|2022-09-07-2nd-b · Exercise 1D
 
 ^aapp-21-016
 
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
+
 ### AAPP-21-017
 
 What’s the use of the omp single directive? (1)
@@ -3753,6 +6810,13 @@ What’s the use of the omp single directive? (1)
 Source: [[Tema Esame 2022-12-22-2nd.pdf#page=4|2022-12-22-2nd · Exercise 3B · p. 4]]
 
 ^aapp-21-017
+
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
 
 ### AAPP-21-018
 
@@ -3762,6 +6826,13 @@ Source: [[Tema Esame 2022-12-22-2nd.pdf#page=4|2022-12-22-2nd · Exercise 3C · 
 
 ^aapp-21-018
 
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
+
 ### AAPP-21-019
 
 What’s the use of the omp critical directive? (1)
@@ -3769,6 +6840,13 @@ What’s the use of the omp critical directive? (1)
 Source: [[Tema Esame 2023-01-17-2nd.pdf#page=4|2023-01-17-2nd · Exercise 3B · p. 4]]
 
 ^aapp-21-019
+
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
 
 ### AAPP-21-020
 
@@ -3778,6 +6856,13 @@ Source: [[Tema Esame 2023-02-14-2nd.pdf#page=4|2023-02-14-2nd · Exercise 3B · 
 
 ^aapp-21-020
 
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
+
 ### AAPP-21-021
 
 Please describe what is meant by nested parallelism and how could be implemented in OpenMP?(2)
@@ -3785,6 +6870,13 @@ Please describe what is meant by nested parallelism and how could be implemented
 Source: [[Tema Esame 2023-06-19-2nd.pdf#page=4|2023-06-19-2nd · Exercise 3A · p. 4]]
 
 ^aapp-21-021
+
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
 
 ### AAPP-21-022
 
@@ -3794,6 +6886,13 @@ Source: [[Tema Esame 2023-06-19-2nd.pdf#page=4|2023-06-19-2nd · Exercise 3B · 
 
 ^aapp-21-022
 
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
+
 ### AAPP-21-023
 
 Please describe the work-sharing constructs in OpenMP. (2)
@@ -3802,6 +6901,13 @@ Source: [[Tema Esame 2023-07-11-2nd.pdf#page=4|2023-07-11-2nd · Exercise 3B · 
 
 ^aapp-21-023
 
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
+
 ### AAPP-21-024
 
 Please describe the simd directive in OpenMP. (2)
@@ -3809,6 +6915,13 @@ Please describe the simd directive in OpenMP. (2)
 Source: [[Tema Esame 2023-09-11-2nd.pdf#page=4|2023-09-11-2nd · Exercise 3B · p. 4]]
 
 ^aapp-21-024
+
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
 
 ### AAPP-21-025
 
@@ -3822,6 +6935,13 @@ Source: [[Tema Esame 2024-01-26-2nd.pdf#page=4|2024-01-26-2nd · Exercise 3C · 
 
 ^aapp-21-025
 
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
+
 ### AAPP-21-026
 
 Why is synchronization necessary when programming with the shared memory model? (1)
@@ -3829,6 +6949,13 @@ Why is synchronization necessary when programming with the shared memory model? 
 Source: [[Tema Esame 2024-02-16-2nd.pdf#page=4|2024-02-16-2nd · Exercise 3A · p. 4]]
 
 ^aapp-21-026
+
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
 
 ### AAPP-21-027
 
@@ -3838,6 +6965,13 @@ Source: [[Tema Esame 2024-02-16-2nd.pdf#page=4|2024-02-16-2nd · Exercise 3C · 
 
 ^aapp-21-027
 
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
+
 ### AAPP-21-028
 
 Please write a short pseudo-code showing how the map parallel pattern could be implemented in OpenMP. (2)
@@ -3845,6 +6979,13 @@ Please write a short pseudo-code showing how the map parallel pattern could be i
 Source: [[Tema Esame 2024-06-26-2nd.pdf#page=2|2024-06-26-2nd · Exercise 1A · p. 2]]
 
 ^aapp-21-028
+
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
 
 ### AAPP-21-029
 
@@ -3855,6 +6996,13 @@ Source: [[Tema Esame 2025-09-05-2nd.pdf#page=3|2025-09-05-2nd · Exercise 3B · 
 
 ^aapp-21-029
 
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
+
 ### AAPP-21-030
 
 Why is cancellation in OpenMP described as “best effort” cancellation? (1.5)
@@ -3862,6 +7010,13 @@ Why is cancellation in OpenMP described as “best effort” cancellation? (1.5)
 Source: [[Tema Esame 2024-06-26-2nd.pdf#page=4|2024-06-26-2nd · Exercise 3C · p. 4]]
 
 ^aapp-21-030
+
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
 
 ### AAPP-21-031
 
@@ -3875,6 +7030,13 @@ Source: [[Tema Esame 2024-09-05-2nd.pdf#page=4|2024-09-05-2nd · Exercise 3B · 
 
 ^aapp-21-031
 
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
+
 ### AAPP-21-032
 
 List similarities and differences between a single and a master region in OpenMP. (1)
@@ -3882,6 +7044,13 @@ List similarities and differences between a single and a master region in OpenMP
 Source: [[Tema Esame 2025-02-14-2nd.pdf#page=3|2025-02-14-2nd · Exercise 3A · p. 3]]
 
 ^aapp-21-032
+
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
 
 ### AAPP-21-033
 
@@ -3895,6 +7064,13 @@ Source: [[Tema Esame 2025-02-14-2nd.pdf#page=3|2025-02-14-2nd · Exercise 3C · 
 
 ^aapp-21-033
 
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
+
 ### AAPP-21-034
 
 It is always necessary to place an explicit barrier at the end of an OpenMP work sharing construct. Is this statement true or false? Explain. (1)
@@ -3903,6 +7079,13 @@ Source: [[Tema Esame 2025-06-05-2nd.pdf#page=3|2025-06-05-2nd · Exercise 3A · 
 
 ^aapp-21-034
 
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
+
 ### AAPP-21-035
 
 List the factors that determine the number of threads in an OpenMP parallel region. (1)
@@ -3910,6 +7093,13 @@ List the factors that determine the number of threads in an OpenMP parallel regi
 Source: [[Tema Esame 2025-06-05-2nd.pdf#page=3|2025-06-05-2nd · Exercise 3B · p. 3]]
 
 ^aapp-21-035
+
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
 
 ### AAPP-21-036
 
@@ -3923,6 +7113,13 @@ Source: [[Tema Esame 2025-06-05-2nd.pdf#page=3|2025-06-05-2nd · Exercise 3C · 
 
 ^aapp-21-036
 
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
+
 ### AAPP-21-037
 
 What is the difference between a static and a dynamic schedule in the OpenMP for construct? (1)
@@ -3930,6 +7127,13 @@ What is the difference between a static and a dynamic schedule in the OpenMP for
 Source: [[Tema Esame 2025-09-05-2nd.pdf#page=3|2025-09-05-2nd · Exercise 3A · p. 3]]
 
 ^aapp-21-037
+
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
 
 ### AAPP-21-038
 
@@ -3943,6 +7147,13 @@ Source: [[Tema Esame 2025-09-05-2nd.pdf#page=3|2025-09-05-2nd · Exercise 3C · 
 
 ^aapp-21-038
 
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
+
 ### AAPP-21-039
 
 Provide an example of how OpenMP can hinge on both the parallelism across different CPU cores and data parallelism within each one? (1)
@@ -3950,6 +7161,13 @@ Provide an example of how OpenMP can hinge on both the parallelism across differ
 Source: [[Tema Esame 2025-12-18-2nd.pdf#page=4|2025-12-18-2nd · Exercise 3A · p. 4]]
 
 ^aapp-21-039
+
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
 
 ### AAPP-21-040
 
@@ -3959,6 +7177,13 @@ Source: [[Tema Esame 2025-12-18-2nd.pdf#page=4|2025-12-18-2nd · Exercise 3C · 
 
 ^aapp-21-040
 
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
+
 ### AAPP-21-041
 
 When should you use the OpenMP task construct? Is it possible to replace this construct with the section construct? (If you say no, provide an example as justification) (1)
@@ -3967,6 +7192,13 @@ Source: [[Tema Esame 2026-1-22-2nd.pdf#page=4|2026-1-22-2nd · Exercise 3A · p.
 
 ^aapp-21-041
 
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
+
 ### AAPP-21-042
 
 What is the tradeoff between using static and dynamic scheduling policies in a #pragma omp for worksharing construct? (1)
@@ -3974,6 +7206,13 @@ What is the tradeoff between using static and dynamic scheduling policies in a #
 Source: [[Tema Esame 2026-1-22-2nd.pdf#page=4|2026-1-22-2nd · Exercise 3B · p. 4]]
 
 ^aapp-21-042
+
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
 
 ### AAPP-21-043
 
@@ -3996,6 +7235,13 @@ Source: [[Tema Esame 2026-1-22-2nd.pdf#page=4|2026-1-22-2nd · Exercise 3C · p.
 
 ^aapp-21-043
 
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
+
 ### AAPP-21-044
 
 If you need to parallelize a breadth-first search in a graph using OpenMP, which worksharing construct would you use? (Explain the reason) (1)
@@ -4004,6 +7250,13 @@ Source: [[Tema Esame 2026-2-09-2nd.pdf#page=4|2026-2-09-2nd · Exercise 3A · p.
 
 ^aapp-21-044
 
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
+
 ### AAPP-21-045
 
 What does it mean that OpenMP has a relaxed memory model? (1)
@@ -4011,6 +7264,13 @@ What does it mean that OpenMP has a relaxed memory model? (1)
 Source: [[Tema Esame 2026-2-09-2nd.pdf#page=4|2026-2-09-2nd · Exercise 3B · p. 4]]
 
 ^aapp-21-045
+
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
 
 ### AAPP-21-046
 
@@ -4029,6 +7289,13 @@ Source: [[Tema Esame 2026-2-09-2nd.pdf#page=4|2026-2-09-2nd · Exercise 3C · p.
 
 ^aapp-21-046
 
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
+
 ### AAPP-21-047
 
 When is it useful to use the OpenMP sections construct instead of tasking? Provide an explanation to support your answer. (1)
@@ -4036,6 +7303,13 @@ When is it useful to use the OpenMP sections construct instead of tasking? Provi
 Source: [[Tema Esame 2026-6-11-2nd.pdf#page=4|2026-6-11-2nd · Exercise 3B · p. 4]]
 
 ^aapp-21-047
+
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
 
 ### AAPP-21-048
 
@@ -4057,6 +7331,13 @@ Source: [[Tema Esame 2026-6-11-2nd.pdf#page=4|2026-6-11-2nd · Exercise 3C · p.
 
 ^aapp-21-048
 
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
+
 ### AAPP-21-049
 
 A program processes a large array in two phases. In the first phase, the same independent operation is applied to every element. In the second phase, all processed values are combined into a single scalar result. How would you structure this computation in OpenMP, and what correctness or performance problems could arise from an implementation using atomic primitives? (2)
@@ -4064,6 +7345,13 @@ A program processes a large array in two phases. In the first phase, the same in
 Source: [[Tema Esame 2026-6-29-2nd.pdf#page=3|2026-6-29-2nd · Exercise 2B · p. 3]]
 
 ^aapp-21-049
+
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
 
 ### AAPP-21-050
 
@@ -4099,6 +7387,13 @@ Source: [[Tema Esame 2026-6-29-2nd.pdf#page=4|2026-6-29-2nd · Exercise 3A · p.
 
 ^aapp-21-050
 
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
+
 ### AAPP-21-051
 
 For all the points in this exercise, consider the following C snippet of code that prints all the elements in a tree (the order of lines in the output does not matter):
@@ -4132,6 +7427,13 @@ Which is a suitable OpenMP worksharing construct to use for parallelizing the co
 Source: [[Tema Esame 2026-6-29-2nd.pdf#page=4|2026-6-29-2nd · Exercise 3B · p. 4]]
 
 ^aapp-21-051
+
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
 
 ### AAPP-21-052
 
@@ -4167,6 +7469,13 @@ Source: [[Tema Esame 2026-6-29-2nd.pdf#page=4|2026-6-29-2nd · Exercise 3C · p.
 
 ^aapp-21-052
 
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
+
 ### AAPP-21-053
 
 A program has three independent, known-at-compile-time stages, followed by a recursive computation that creates an unknown number of irregular subproblems. For each phase, choose between OpenMP sections and tasks, and justify the choice in terms of scheduling, load balancing, and synchronization. Mention the OpenMP construct needed to ensure that all generated work is complete before the program continues. (2)
@@ -4174,6 +7483,13 @@ A program has three independent, known-at-compile-time stages, followed by a rec
 Source: [[Tema Esame 2026-9-10-2nd.pdf#page=3|2026-9-10-2nd · Exercise 2B · p. 3]]
 
 ^aapp-21-053
+
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
 
 ### AAPP-21-054
 
@@ -4183,6 +7499,13 @@ Source: [[Tema Esame 2026-9-10-2nd.pdf#page=4|2026-9-10-2nd · Exercise 3B · p.
 
 ^aapp-21-054
 
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
+
 ### AAPP-21-055
 
 State the pros and cons of dynamic and static schedules in OpenMP when applied to the for worksharing construct. (1)
@@ -4190,6 +7513,13 @@ State the pros and cons of dynamic and static schedules in OpenMP when applied t
 Source: [[Tema Esame 2026-9-10-2nd.pdf#page=4|2026-9-10-2nd · Exercise 3C · p. 4]]
 
 ^aapp-21-055
+
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
 
 ## Pthreads and shared-memory synchronization
 
@@ -4204,6 +7534,13 @@ Source: [[Tema Esame 2022-02-11-2nd-b.pdf#page=5|2022-02-11-2nd-b · Exercise 4A
 
 ^aapp-22-001
 
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
+
 ### AAPP-22-002
 
 Can PThread be used to implement a fixed-depth parallel pipeline? How should the pipeline stages synchronize their execution?
@@ -4212,6 +7549,13 @@ Source: [[Tema Esame 2022-02-11-2nd-a.pdf#page=5|2022-02-11-2nd-a · Exercise 4B
 Source: [[Tema Esame 2022-02-11-2nd-b.pdf#page=5|2022-02-11-2nd-b · Exercise 4B · p. 5]]
 
 ^aapp-22-002
+
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
 
 ### AAPP-22-003
 
@@ -4222,6 +7566,13 @@ Source: [[Tema Esame 2022-06-09-2nd-b.pdf#page=5|2022-06-09-2nd-b · Exercise 4A
 
 ^aapp-22-003
 
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
+
 ### AAPP-22-004
 
 What are the possible approaches for managing the execution flow of different threads using PThreads?
@@ -4230,6 +7581,13 @@ Source: [[Tema Esame 2022-06-09-2nd-a.pdf#page=5|2022-06-09-2nd-a · Exercise 4B
 Source: [[Tema Esame 2022-06-09-2nd-b.pdf#page=5|2022-06-09-2nd-b · Exercise 4B · p. 5]]
 
 ^aapp-22-004
+
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
 
 ### AAPP-22-005
 
@@ -4240,6 +7598,13 @@ Source: [[Tema Esame 2022-06-30-2nd-b.pdf#page=5|2022-06-30-2nd-b · Exercise 4A
 
 ^aapp-22-005
 
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
+
 ### AAPP-22-006
 
 What is the difference between joinable and detached threads?
@@ -4249,6 +7614,13 @@ Source: [[Tema Esame 2022-06-30-2nd-b.pdf#page=5|2022-06-30-2nd-b · Exercise 4B
 
 ^aapp-22-006
 
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
+
 ### AAPP-22-007
 
 What is the use of condition variables in PThreads?
@@ -4256,6 +7628,13 @@ What is the use of condition variables in PThreads?
 Source: [[Tema Esame 2022-09-07-2nd-b.pdf#page=5|2022-09-07-2nd-b · Exercise 4A · p. 5]]
 
 ^aapp-22-007
+
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
 
 ### AAPP-22-008
 
@@ -4265,6 +7644,13 @@ Source: [[Tema Esame 2022-09-07-2nd-b.pdf#page=5|2022-09-07-2nd-b · Exercise 4B
 
 ^aapp-22-008
 
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
+
 ### AAPP-22-009
 
 Using Pthreads, is it possible to synchronize the execution flow of multiple threads so that they will progress beyond a given point only after all threads have reached it? (1)
@@ -4272,6 +7658,13 @@ Using Pthreads, is it possible to synchronize the execution flow of multiple thr
 Source: [[Tema Esame 2022-12-22-2nd.pdf#page=4|2022-12-22-2nd · Exercise 3A · p. 4]]
 
 ^aapp-22-009
+
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
 
 ### AAPP-22-010
 
@@ -4281,6 +7674,13 @@ Source: [[Tema Esame 2023-01-17-2nd.pdf#page=5|2023-01-17-2nd · Exercise 4B · 
 
 ^aapp-22-010
 
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
+
 ### AAPP-22-011
 
 What is the difference between joinable and detached threads in PThread? Can detached threads’ execution be synchronized with other threads? (2)
@@ -4288,6 +7688,13 @@ What is the difference between joinable and detached threads in PThread? Can det
 Source: [[Tema Esame 2023-02-14-2nd.pdf#page=5|2023-02-14-2nd · Exercise 4B · p. 5]]
 
 ^aapp-22-011
+
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
 
 ### AAPP-22-012
 
@@ -4297,6 +7704,13 @@ Source: [[Tema Esame 2023-06-19-2nd.pdf#page=5|2023-06-19-2nd · Exercise 4B · 
 
 ^aapp-22-012
 
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
+
 ### AAPP-22-013
 
 Describe the main advantages of OpenMP over Pthreads. (1)
@@ -4304,6 +7718,13 @@ Describe the main advantages of OpenMP over Pthreads. (1)
 Source: [[Tema Esame 2023-12-21-2nd.pdf#page=4|2023-12-21-2nd · Exercise 3A · p. 4]]
 
 ^aapp-22-013
+
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
 
 ### AAPP-22-014
 
@@ -4313,6 +7734,13 @@ Source: [[Tema Esame 2024-01-26-2nd.pdf#page=4|2024-01-26-2nd · Exercise 3A · 
 
 ^aapp-22-014
 
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
+
 ### AAPP-22-015
 
 What is the difference between joining and waiting on a barrier in Pthreads? (1)
@@ -4320,6 +7748,13 @@ What is the difference between joining and waiting on a barrier in Pthreads? (1)
 Source: [[Tema Esame 2024-01-26-2nd.pdf#page=4|2024-01-26-2nd · Exercise 3B · p. 4]]
 
 ^aapp-22-015
+
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
 
 ### AAPP-22-016
 
@@ -4329,6 +7764,13 @@ Source: [[Tema Esame 2024-02-16-2nd.pdf#page=4|2024-02-16-2nd · Exercise 3B · 
 
 ^aapp-22-016
 
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
+
 ### AAPP-22-017
 
 What are the main differences between Pthreads and OpenMP? (1)
@@ -4337,6 +7779,13 @@ Source: [[Tema Esame 2025-01-24-2nd.pdf#page=3|2025-01-24-2nd · Exercise 3A · 
 
 ^aapp-22-017
 
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
+
 ### AAPP-22-018
 
 What happens when threads encounter a barrier in Pthreads? Is the same behavior achievable through joining? (1)
@@ -4344,6 +7793,13 @@ What happens when threads encounter a barrier in Pthreads? Is the same behavior 
 Source: [[Tema Esame 2025-02-14-2nd.pdf#page=3|2025-02-14-2nd · Exercise 3B · p. 3]]
 
 ^aapp-22-018
+
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
 
 ## MPI
 
@@ -4357,6 +7813,13 @@ Source: [[Tema Esame 2022-02-11-2nd-b.pdf#page=4|2022-02-11-2nd-b · Exercise 3A
 
 ^aapp-23-001
 
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
+
 ### AAPP-23-002
 
 Describe the behavior of MPI_Bcast.
@@ -4364,6 +7827,13 @@ Describe the behavior of MPI_Bcast.
 Source: [[Tema Esame 2022-02-11-2nd-b.pdf#page=4|2022-02-11-2nd-b · Exercise 3B · p. 4]]
 
 ^aapp-23-002
+
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
 
 ### AAPP-23-003
 
@@ -4373,6 +7843,13 @@ Source: [[Tema Esame 2022-02-11-2nd-b.pdf#page=4|2022-02-11-2nd-b · Exercise 3C
 
 ^aapp-23-003
 
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
+
 ### AAPP-23-004
 
 Which memory architectures are supported by MPI? Are there any differences with the other parallel programming models presented?
@@ -4380,6 +7857,13 @@ Which memory architectures are supported by MPI? Are there any differences with 
 Source: [[Tema Esame 2022-06-09-2nd-b.pdf#page=4|2022-06-09-2nd-b · Exercise 3A · p. 4]]
 
 ^aapp-23-004
+
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
 
 ### AAPP-23-005
 
@@ -4389,6 +7873,13 @@ Source: [[Tema Esame 2022-06-09-2nd-b.pdf#page=4|2022-06-09-2nd-b · Exercise 3B
 
 ^aapp-23-005
 
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
+
 ### AAPP-23-006
 
 Describe how to spread data across processes according to a user-defined distribution using MPI.
@@ -4396,6 +7887,13 @@ Describe how to spread data across processes according to a user-defined distrib
 Source: [[Tema Esame 2022-06-09-2nd-b.pdf#page=4|2022-06-09-2nd-b · Exercise 3C · p. 4]]
 
 ^aapp-23-006
+
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
 
 ### AAPP-23-007
 
@@ -4405,6 +7903,13 @@ Source: [[Tema Esame 2022-06-30-2nd-b.pdf#page=4|2022-06-30-2nd-b · Exercise 3A
 
 ^aapp-23-007
 
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
+
 ### AAPP-23-008
 
 Describe the behavior of the MPI_Reduce routine.
@@ -4412,6 +7917,13 @@ Describe the behavior of the MPI_Reduce routine.
 Source: [[Tema Esame 2022-06-30-2nd-b.pdf#page=4|2022-06-30-2nd-b · Exercise 3B · p. 4]]
 
 ^aapp-23-008
+
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
 
 ### AAPP-23-009
 
@@ -4421,6 +7933,13 @@ Source: [[Tema Esame 2022-06-30-2nd-b.pdf#page=4|2022-06-30-2nd-b · Exercise 3C
 
 ^aapp-23-009
 
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
+
 ### AAPP-23-010
 
 Describe the processes synchronization model used by MPI.
@@ -4428,6 +7947,13 @@ Describe the processes synchronization model used by MPI.
 Source: [[Tema Esame 2022-09-07-2nd-b.pdf#page=4|2022-09-07-2nd-b · Exercise 3A · p. 4]]
 
 ^aapp-23-010
+
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
 
 ### AAPP-23-011
 
@@ -4437,6 +7963,13 @@ Source: [[Tema Esame 2022-09-07-2nd-b.pdf#page=4|2022-09-07-2nd-b · Exercise 3B
 
 ^aapp-23-011
 
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
+
 ### AAPP-23-012
 
 Describe the use of communicators in MPI and the advantages of defining multiple communicators in a program.
@@ -4444,6 +7977,13 @@ Describe the use of communicators in MPI and the advantages of defining multiple
 Source: [[Tema Esame 2022-09-07-2nd-b.pdf#page=4|2022-09-07-2nd-b · Exercise 3C · p. 4]]
 
 ^aapp-23-012
+
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
 
 ### AAPP-23-013
 
@@ -4453,6 +7993,13 @@ Source: [[Tema Esame 2022-12-22-2nd.pdf#page=5|2022-12-22-2nd · Exercise 4A · 
 
 ^aapp-23-013
 
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
+
 ### AAPP-23-014
 
 How does MPI differ from Pthreads and OpenMP? (2)
@@ -4460,6 +8007,13 @@ How does MPI differ from Pthreads and OpenMP? (2)
 Source: [[Tema Esame 2022-12-22-2nd.pdf#page=5|2022-12-22-2nd · Exercise 4B · p. 5]]
 
 ^aapp-23-014
+
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
 
 ### AAPP-23-015
 
@@ -4469,6 +8023,13 @@ Source: [[Tema Esame 2023-01-17-2nd.pdf#page=5|2023-01-17-2nd · Exercise 4A · 
 
 ^aapp-23-015
 
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
+
 ### AAPP-23-016
 
 Describe the functionality of the MPI_Reduce subroutine (2)
@@ -4476,6 +8037,13 @@ Describe the functionality of the MPI_Reduce subroutine (2)
 Source: [[Tema Esame 2023-02-14-2nd.pdf#page=5|2023-02-14-2nd · Exercise 4A · p. 5]]
 
 ^aapp-23-016
+
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
 
 ### AAPP-23-017
 
@@ -4485,6 +8053,13 @@ Source: [[Tema Esame 2023-06-19-2nd.pdf#page=5|2023-06-19-2nd · Exercise 4A · 
 
 ^aapp-23-017
 
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
+
 ### AAPP-23-018
 
 Describe the functionality and the parameters meaning of the function MPI_Bcast (You can skip this question if you completed the second challenge) (2)
@@ -4492,6 +8067,13 @@ Describe the functionality and the parameters meaning of the function MPI_Bcast 
 Source: [[Tema Esame 2023-07-11-2nd.pdf#page=5|2023-07-11-2nd · Exercise 4A · p. 5]]
 
 ^aapp-23-018
+
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
 
 ### AAPP-23-019
 
@@ -4501,6 +8083,13 @@ Source: [[Tema Esame 2023-09-11-2nd.pdf#page=5|2023-09-11-2nd · Exercise 4A · 
 
 ^aapp-23-019
 
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
+
 ### AAPP-23-020
 
 Most of the point-to-point communication functions have a parameter named “tag”. Please, state its type, explain its usage and why we might need to use the “MPI_ANY_TAG” value. (1)
@@ -4508,6 +8097,13 @@ Most of the point-to-point communication functions have a parameter named “tag
 Source: [[Tema Esame 2023-12-21-2nd.pdf#page=5|2023-12-21-2nd · Exercise 4A · p. 5]]
 
 ^aapp-23-020
+
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
 
 ### AAPP-23-021
 
@@ -4517,6 +8113,13 @@ Source: [[Tema Esame 2023-12-21-2nd.pdf#page=5|2023-12-21-2nd · Exercise 4B · 
 
 ^aapp-23-021
 
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
+
 ### AAPP-23-022
 
 What are the approaches that the receiver in point-to-point communications can use to allocate a suitable receiving buffer, i.e. allocate a suitable number of elements? (1)
@@ -4524,6 +8127,13 @@ What are the approaches that the receiver in point-to-point communications can u
 Source: [[Tema Esame 2024-01-26-2nd.pdf#page=5|2024-01-26-2nd · Exercise 4A · p. 5]]
 
 ^aapp-23-022
+
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
 
 ### AAPP-23-023
 
@@ -4533,6 +8143,13 @@ Source: [[Tema Esame 2024-01-26-2nd.pdf#page=5|2024-01-26-2nd · Exercise 4B · 
 
 ^aapp-23-023
 
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
+
 ### AAPP-23-024
 
 What are the main differences between collective and point-to-point functions when we focus on data exchange functions? (2)
@@ -4540,6 +8157,13 @@ What are the main differences between collective and point-to-point functions wh
 Source: [[Tema Esame 2024-01-26-2nd.pdf#page=5|2024-01-26-2nd · Exercise 4C · p. 5]]
 
 ^aapp-23-024
+
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
 
 ### AAPP-23-025
 
@@ -4549,6 +8173,13 @@ Source: [[Tema Esame 2024-02-16-2nd.pdf#page=5|2024-02-16-2nd · Exercise 4A · 
 
 ^aapp-23-025
 
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
+
 ### AAPP-23-026
 
 When in doubt about the behavior of an MPI function, why is it important to rely on the MPI standard instead of just trying how it works with your MPI implementation? (1)
@@ -4557,6 +8188,13 @@ Source: [[Tema Esame 2024-02-16-2nd.pdf#page=5|2024-02-16-2nd · Exercise 4B · 
 
 ^aapp-23-026
 
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
+
 ### AAPP-23-027
 
 What is the relationship between i) MPI functions with blocking semantics, ii) MPI functions without blocking semantics, and iii) MPI + multithreading? (2) ù
@@ -4564,6 +8202,13 @@ What is the relationship between i) MPI functions with blocking semantics, ii) M
 Source: [[Tema Esame 2024-02-16-2nd.pdf#page=5|2024-02-16-2nd · Exercise 4C · p. 5]]
 
 ^aapp-23-027
+
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
 
 ### AAPP-23-028
 
@@ -4585,6 +8230,13 @@ Source: [[Tema Esame 2024-06-26-2nd.pdf#page=4|2024-06-26-2nd · Exercise 3A · 
 
 ^aapp-23-028
 
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
+
 ### AAPP-23-029
 
 Why should I use the MPI_Probe function? (1)
@@ -4592,6 +8244,13 @@ Why should I use the MPI_Probe function? (1)
 Source: [[Tema Esame 2024-06-26-2nd.pdf#page=5|2024-06-26-2nd · Exercise 4A · p. 5]]
 
 ^aapp-23-029
+
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
 
 ### AAPP-23-030
 
@@ -4601,6 +8260,13 @@ Source: [[Tema Esame 2024-06-26-2nd.pdf#page=5|2024-06-26-2nd · Exercise 4B · 
 
 ^aapp-23-030
 
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
+
 ### AAPP-23-031
 
 What are communicators in MPI? Why should I use more than one? (2)
@@ -4608,6 +8274,13 @@ What are communicators in MPI? Why should I use more than one? (2)
 Source: [[Tema Esame 2024-06-26-2nd.pdf#page=5|2024-06-26-2nd · Exercise 4C · p. 5]]
 
 ^aapp-23-031
+
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
 
 ### AAPP-23-032
 
@@ -4617,6 +8290,13 @@ Source: [[Tema Esame 2024-07-24-2nd.pdf#page=5|2024-07-24-2nd · Exercise 4A · 
 
 ^aapp-23-032
 
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
+
 ### AAPP-23-033
 
 Explain what the MPI_Comm_split function does and give an example of its usage, without implementation details such as the function signature. (1)
@@ -4624,6 +8304,13 @@ Explain what the MPI_Comm_split function does and give an example of its usage, 
 Source: [[Tema Esame 2024-07-24-2nd.pdf#page=5|2024-07-24-2nd · Exercise 4B · p. 5]]
 
 ^aapp-23-033
+
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
 
 ### AAPP-23-034
 
@@ -4633,6 +8320,13 @@ Source: [[Tema Esame 2024-07-24-2nd.pdf#page=5|2024-07-24-2nd · Exercise 4C · 
 
 ^aapp-23-034
 
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
+
 ### AAPP-23-035
 
 Provide an example of when it is useful to use the MPI_Barrier function. (1)
@@ -4640,6 +8334,13 @@ Provide an example of when it is useful to use the MPI_Barrier function. (1)
 Source: [[Tema Esame 2024-09-05-2nd.pdf#page=5|2024-09-05-2nd · Exercise 4A · p. 5]]
 
 ^aapp-23-035
+
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
 
 ### AAPP-23-036
 
@@ -4649,6 +8350,13 @@ Source: [[Tema Esame 2024-09-05-2nd.pdf#page=5|2024-09-05-2nd · Exercise 4B · 
 
 ^aapp-23-036
 
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
+
 ### AAPP-23-037
 
 Since each MPI process has a different memory address space, how is it possible to have a deadlock? Also, make an example to explain how we can solve it. (2)
@@ -4656,6 +8364,13 @@ Since each MPI process has a different memory address space, how is it possible 
 Source: [[Tema Esame 2024-09-05-2nd.pdf#page=5|2024-09-05-2nd · Exercise 4C · p. 5]]
 
 ^aapp-23-037
+
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
 
 ### AAPP-23-038
 
@@ -4665,6 +8380,13 @@ Source: [[Tema Esame 2025-01-24-2nd.pdf#page=4|2025-01-24-2nd · Exercise 4A · 
 
 ^aapp-23-038
 
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
+
 ### AAPP-23-039
 
 When two MPI processes are running on two different computers, e.g. on two HPC nodes, is it possible that they could end up in a deadlock? (explain the answer) (1)
@@ -4672,6 +8394,13 @@ When two MPI processes are running on two different computers, e.g. on two HPC n
 Source: [[Tema Esame 2025-01-24-2nd.pdf#page=4|2025-01-24-2nd · Exercise 4B · p. 4]]
 
 ^aapp-23-039
+
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
 
 ### AAPP-23-040
 
@@ -4681,6 +8410,13 @@ Source: [[Tema Esame 2025-01-24-2nd.pdf#page=4|2025-01-24-2nd · Exercise 4C · 
 
 ^aapp-23-040
 
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
+
 ### AAPP-23-041
 
 What do I get from an MPI implementation, e.g. from OpenMPI? (1)
@@ -4688,6 +8424,13 @@ What do I get from an MPI implementation, e.g. from OpenMPI? (1)
 Source: [[Tema Esame 2025-02-14-2nd.pdf#page=4|2025-02-14-2nd · Exercise 4A · p. 4]]
 
 ^aapp-23-041
+
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
 
 ### AAPP-23-042
 
@@ -4697,6 +8440,13 @@ Source: [[Tema Esame 2025-02-14-2nd.pdf#page=4|2025-02-14-2nd · Exercise 4B · 
 
 ^aapp-23-042
 
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
+
 ### AAPP-23-043
 
 How MPI_Reduce work when the send and receive data are buffers with a single element? What happens when the buffers have more than one element? Describe how the result is computed. (2)
@@ -4704,6 +8454,13 @@ How MPI_Reduce work when the send and receive data are buffers with a single ele
 Source: [[Tema Esame 2025-02-14-2nd.pdf#page=4|2025-02-14-2nd · Exercise 4C · p. 4]]
 
 ^aapp-23-043
+
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
 
 ### AAPP-23-044
 
@@ -4713,6 +8470,13 @@ Source: [[Tema Esame 2025-06-05-2nd.pdf#page=4|2025-06-05-2nd · Exercise 4A · 
 
 ^aapp-23-044
 
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
+
 ### AAPP-23-045
 
 Make an example where the program’s correct execution requires MPI_probe (1)
@@ -4720,6 +8484,13 @@ Make an example where the program’s correct execution requires MPI_probe (1)
 Source: [[Tema Esame 2025-06-05-2nd.pdf#page=4|2025-06-05-2nd · Exercise 4B · p. 4]]
 
 ^aapp-23-045
+
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
 
 ### AAPP-23-046
 
@@ -4729,6 +8500,13 @@ Source: [[Tema Esame 2025-06-05-2nd.pdf#page=4|2025-06-05-2nd · Exercise 4C · 
 
 ^aapp-23-046
 
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
+
 ### AAPP-23-047
 
 Which software components do I get from an MPI implementation? (1)
@@ -4736,6 +8514,13 @@ Which software components do I get from an MPI implementation? (1)
 Source: [[Tema Esame 2025-07-04-2nd.pdf#page=4|2025-07-04-2nd · Exercise 4A · p. 4]]
 
 ^aapp-23-047
+
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
 
 ### AAPP-23-048
 
@@ -4752,6 +8537,13 @@ Source: [[Tema Esame 2025-07-04-2nd.pdf#page=4|2025-07-04-2nd · Exercise 4B · 
 
 ^aapp-23-048
 
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
+
 ### AAPP-23-049
 
 Make an example where MPI_Comm_split is useful. Do not describe what the function does. Describe a scenario where it makes sense to use it, how you use it, and the reason you use it. (2)
@@ -4759,6 +8551,13 @@ Make an example where MPI_Comm_split is useful. Do not describe what the functio
 Source: [[Tema Esame 2025-07-04-2nd.pdf#page=4|2025-07-04-2nd · Exercise 4C · p. 4]]
 
 ^aapp-23-049
+
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
 
 ### AAPP-23-050
 
@@ -4768,6 +8567,13 @@ Source: [[Tema Esame 2025-09-05-2nd.pdf#page=4|2025-09-05-2nd · Exercise 4A · 
 
 ^aapp-23-050
 
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
+
 ### AAPP-23-051
 
 In which scenario does it make sense to use MPI_ANY_TAG in MPI_Probe? (1)
@@ -4775,6 +8581,13 @@ In which scenario does it make sense to use MPI_ANY_TAG in MPI_Probe? (1)
 Source: [[Tema Esame 2025-09-05-2nd.pdf#page=4|2025-09-05-2nd · Exercise 4B · p. 4]]
 
 ^aapp-23-051
+
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
 
 ### AAPP-23-052
 
@@ -4784,6 +8597,13 @@ Source: [[Tema Esame 2025-09-05-2nd.pdf#page=4|2025-09-05-2nd · Exercise 4C · 
 
 ^aapp-23-052
 
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
+
 ### AAPP-23-053
 
 Why is it important to ensure to write standard-compliant MPI code, besides checking if it works on the target testbed? (1)
@@ -4791,6 +8611,13 @@ Why is it important to ensure to write standard-compliant MPI code, besides chec
 Source: [[Tema Esame 2025-12-18-2nd.pdf#page=5|2025-12-18-2nd · Exercise 4A · p. 5]]
 
 ^aapp-23-053
+
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
 
 ### AAPP-23-054
 
@@ -4800,6 +8627,13 @@ Source: [[Tema Esame 2025-12-18-2nd.pdf#page=5|2025-12-18-2nd · Exercise 4B · 
 
 ^aapp-23-054
 
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
+
 ### AAPP-23-055
 
 Provide an example where MPI non-blocking functions do not solve a deadlock. When you want to overlap communication with computation, what are the alternatives that you have, including both MPI and/or OpenMP? (2)
@@ -4807,6 +8641,13 @@ Provide an example where MPI non-blocking functions do not solve a deadlock. Whe
 Source: [[Tema Esame 2025-12-18-2nd.pdf#page=5|2025-12-18-2nd · Exercise 4C · p. 5]]
 
 ^aapp-23-055
+
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
 
 ### AAPP-23-056
 
@@ -4822,6 +8663,13 @@ Source: [[Tema Esame 2026-1-22-2nd.pdf#page=5|2026-1-22-2nd · Exercise 4A · p.
 
 ^aapp-23-056
 
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
+
 ### AAPP-23-057
 
 Why do you need mpirun to execute a valid MPI application? (1)
@@ -4829,6 +8677,13 @@ Why do you need mpirun to execute a valid MPI application? (1)
 Source: [[Tema Esame 2026-1-22-2nd.pdf#page=5|2026-1-22-2nd · Exercise 4B · p. 5]]
 
 ^aapp-23-057
+
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
 
 ### AAPP-23-058
 
@@ -4838,6 +8693,13 @@ Source: [[Tema Esame 2026-1-22-2nd.pdf#page=5|2026-1-22-2nd · Exercise 4C · p.
 
 ^aapp-23-058
 
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
+
 ### AAPP-23-059
 
 Make an example where the usage of the tag parameter matters (no point for vague or generic examples) (1)
@@ -4845,6 +8707,13 @@ Make an example where the usage of the tag parameter matters (no point for vague
 Source: [[Tema Esame 2026-2-09-2nd.pdf#page=5|2026-2-09-2nd · Exercise 4A · p. 5]]
 
 ^aapp-23-059
+
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
 
 ### AAPP-23-060
 
@@ -4854,6 +8723,13 @@ Source: [[Tema Esame 2026-2-09-2nd.pdf#page=5|2026-2-09-2nd · Exercise 4B · p.
 
 ^aapp-23-060
 
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
+
 ### AAPP-23-061
 
 Write a meta code that shows how you can implement a scatter operation using MPI point-to-point operations on the root and non-root processes (2)
@@ -4861,6 +8737,13 @@ Write a meta code that shows how you can implement a scatter operation using MPI
 Source: [[Tema Esame 2026-2-09-2nd.pdf#page=5|2026-2-09-2nd · Exercise 4C · p. 5]]
 
 ^aapp-23-061
+
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
 
 ### AAPP-23-062
 
@@ -4870,6 +8753,13 @@ Source: [[Tema Esame 2026-6-11-2nd.pdf#page=5|2026-6-11-2nd · Exercise 4A · p.
 
 ^aapp-23-062
 
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
+
 ### AAPP-23-063
 
 If I were to look inside MPI, what would I expect to read? Can you give some examples? (1)
@@ -4877,6 +8767,13 @@ If I were to look inside MPI, what would I expect to read? Can you give some exa
 Source: [[Tema Esame 2026-6-11-2nd.pdf#page=5|2026-6-11-2nd · Exercise 4B · p. 5]]
 
 ^aapp-23-063
+
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
 
 ### AAPP-23-064
 
@@ -4895,6 +8792,13 @@ Source: [[Tema Esame 2026-6-11-2nd.pdf#page=5|2026-6-11-2nd · Exercise 4C · p.
 
 ^aapp-23-064
 
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
+
 ### AAPP-23-065
 
 Make an application example where the usage of the tag parameter in MPI_Recv matters. (1)
@@ -4902,6 +8806,13 @@ Make an application example where the usage of the tag parameter in MPI_Recv mat
 Source: [[Tema Esame 2026-6-29-2nd.pdf#page=5|2026-6-29-2nd · Exercise 4A · p. 5]]
 
 ^aapp-23-065
+
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
 
 ### AAPP-23-066
 
@@ -4911,6 +8822,13 @@ Source: [[Tema Esame 2026-6-29-2nd.pdf#page=5|2026-6-29-2nd · Exercise 4B · p.
 
 ^aapp-23-066
 
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
+
 ### AAPP-23-067
 
 How can I use OpenMP, or multithreading in general, to work synergistically with MPI? If we decide to use only MPI, what features of the standard should I use to overlap computation with communication within a single MPI Process? Please explain also the reasons (2)
@@ -4918,6 +8836,13 @@ How can I use OpenMP, or multithreading in general, to work synergistically with
 Source: [[Tema Esame 2026-6-29-2nd.pdf#page=5|2026-6-29-2nd · Exercise 4C · p. 5]]
 
 ^aapp-23-067
+
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
 
 ### AAPP-23-068
 
@@ -4938,6 +8863,13 @@ Source: [[Tema Esame 2026-9-10-2nd.pdf#page=5|2026-9-10-2nd · Exercise 4A · p.
 
 ^aapp-23-068
 
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
+
 ### AAPP-23-069
 
 Which is a scenario where it is useful to use non-blocking semantics? (1)
@@ -4946,6 +8878,13 @@ Source: [[Tema Esame 2026-9-10-2nd.pdf#page=5|2026-9-10-2nd · Exercise 4B · p.
 
 ^aapp-23-069
 
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
+
 ### AAPP-23-070
 
 What MPI_Comm_split does? Describe an application scenario where its usage is useful (2)
@@ -4953,6 +8892,13 @@ What MPI_Comm_split does? Describe an application scenario where its usage is us
 Source: [[Tema Esame 2026-9-10-2nd.pdf#page=5|2026-9-10-2nd · Exercise 4C · p. 5]]
 
 ^aapp-23-070
+
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
 
 ## CUDA
 
@@ -4966,6 +8912,13 @@ Source: [[Tema Esame 2022-02-11-2nd-a.pdf#page=4|2022-02-11-2nd-a · Exercise 3A
 
 ^aapp-24-001
 
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
+
 ### AAPP-24-002
 
 Briefly describe which are the main issues in implementing a parallel application with CUDA.
@@ -4975,6 +8928,13 @@ Source: [[Tema Esame 2022-06-09-2nd-a.pdf#page=4|2022-06-09-2nd-a · Exercise 3B
 
 ^aapp-24-002
 
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
+
 ### AAPP-24-003
 
 Concurrent CUDA Streams: operations within a given stream occur in order. True or false?
@@ -4982,6 +8942,13 @@ Concurrent CUDA Streams: operations within a given stream occur in order. True o
 Source: [[Tema Esame 2022-02-11-2nd-a.pdf#page=4|2022-02-11-2nd-a · Exercise 3C · p. 4]]
 
 ^aapp-24-003
+
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
 
 ### AAPP-24-004
 
@@ -4991,6 +8958,13 @@ Source: [[Tema Esame 2022-06-09-2nd-a.pdf#page=4|2022-06-09-2nd-a · Exercise 3A
 
 ^aapp-24-004
 
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
+
 ### AAPP-24-005
 
 How parallel threads are identified in a CUDA kernel?
@@ -4998,6 +8972,13 @@ How parallel threads are identified in a CUDA kernel?
 Source: [[Tema Esame 2022-06-09-2nd-a.pdf#page=4|2022-06-09-2nd-a · Exercise 3C · p. 4]]
 
 ^aapp-24-005
+
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
 
 ### AAPP-24-006
 
@@ -5007,6 +8988,13 @@ Source: [[Tema Esame 2022-06-30-2nd-a.pdf#page=4|2022-06-30-2nd-a · Exercise 3A
 
 ^aapp-24-006
 
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
+
 ### AAPP-24-007
 
 Briefly describe the hierarchy of memories of CUDA programming model.
@@ -5015,6 +9003,13 @@ Source: [[Tema Esame 2022-06-30-2nd-a.pdf#page=4|2022-06-30-2nd-a · Exercise 3B
 
 ^aapp-24-007
 
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
+
 ### AAPP-24-008
 
 Briefly describe how threads are grouped in CUDA.
@@ -5022,6 +9017,13 @@ Briefly describe how threads are grouped in CUDA.
 Source: [[Tema Esame 2022-06-30-2nd-a.pdf#page=4|2022-06-30-2nd-a · Exercise 3C · p. 4]]
 
 ^aapp-24-008
+
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
 
 ## Halide and high-level synthesis
 
@@ -5035,6 +9037,13 @@ Source: [[Tema Esame 2023-07-11-2nd.pdf#page=5|2023-07-11-2nd · Exercise 4B · 
 
 ^aapp-25-001
 
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
+
 ### AAPP-25-002
 
 Please briefly discuss what the term “schedule” means in the domain-specific language Halide. (2)
@@ -5042,6 +9051,13 @@ Please briefly discuss what the term “schedule” means in the domain-specific
 Source: [[Tema Esame 2023-09-11-2nd.pdf#page=5|2023-09-11-2nd · Exercise 4B · p. 5]]
 
 ^aapp-25-002
+
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
 
 ### AAPP-25-003
 
@@ -5056,6 +9072,13 @@ Source: [[Tema Esame 2024-02-16-2nd.pdf#page=4|2024-02-16-2nd · Exercise 3D · 
 
 ^aapp-25-003
 
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
+
 ### AAPP-25-004
 
 In Halide, it is good practice to schedule pipeline stages from the output to the input. Is this statement true or false? Explain. (1)
@@ -5064,6 +9087,13 @@ Source: [[Tema Esame 2024-09-05-2nd.pdf#page=4|2024-09-05-2nd · Exercise 3C · 
 
 ^aapp-25-004
 
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
+
 ### AAPP-25-005
 
 The input to a High-Level Synthesis tool is a Register-Transfer Level description of an accelerator. Is this statement true or false? Explain. (1)
@@ -5071,6 +9101,13 @@ The input to a High-Level Synthesis tool is a Register-Transfer Level descriptio
 Source: [[Tema Esame 2025-07-04-2nd.pdf#page=3|2025-07-04-2nd · Exercise 3A · p. 3]]
 
 ^aapp-25-005
+
+**My answer**
+
+*Write your answer here.*
+
+> [!note]- Feedback
+> Not reviewed yet.
 
 ## Source register
 
