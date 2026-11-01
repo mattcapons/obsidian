@@ -1,0 +1,312 @@
+[
+  {
+    "question": "AAPP-02-008",
+    "source_checks": [
+      {
+        "source": "Tema Esame 2023-07-11-1st.pdf",
+        "prompt_matches": true
+      }
+    ]
+  },
+  {
+    "question": "AAPP-02-009",
+    "source_checks": [
+      {
+        "source": "Tema Esame 2023-09-11-1st.pdf",
+        "prompt_matches": true
+      }
+    ]
+  },
+  {
+    "question": "AAPP-02-010",
+    "source_checks": [
+      {
+        "source": "Tema Esame 2023-11-09-1st.pdf",
+        "prompt_matches": true
+      }
+    ]
+  },
+  {
+    "question": "AAPP-02-011",
+    "source_checks": [
+      {
+        "source": "Tema Esame 2023-11-09-1st.pdf",
+        "prompt_matches": true
+      }
+    ]
+  },
+  {
+    "question": "AAPP-02-012",
+    "source_checks": [
+      {
+        "source": "Tema Esame 2024-01-26-1st.pdf",
+        "prompt_matches": true
+      }
+    ]
+  },
+  {
+    "question": "AAPP-02-013",
+    "source_checks": [
+      {
+        "source": "Tema Esame 2024-01-26-1st.pdf",
+        "prompt_matches": true
+      }
+    ]
+  },
+  {
+    "question": "AAPP-02-014",
+    "source_checks": [
+      {
+        "source": "Tema Esame 2024-02-16-1st.pdf",
+        "prompt_matches": true
+      }
+    ]
+  },
+  {
+    "question": "AAPP-02-015",
+    "source_checks": [
+      {
+        "source": "Tema Esame 2024-02-16-1st.pdf",
+        "prompt_matches": true
+      }
+    ]
+  },
+  {
+    "question": "AAPP-02-016",
+    "source_checks": [
+      {
+        "source": "Tema Esame 2024-06-26-1st.pdf",
+        "prompt_matches": true
+      },
+      {
+        "source": "Tema Esame 2026-6-29-1st.pdf",
+        "prompt_matches": true
+      }
+    ]
+  },
+  {
+    "question": "AAPP-02-017",
+    "source_checks": [
+      {
+        "source": "Tema Esame 2024-07-24-1st.pdf",
+        "prompt_matches": true
+      }
+    ]
+  },
+  {
+    "question": "AAPP-02-018",
+    "source_checks": [
+      {
+        "source": "Tema Esame 2024-09-05-1st.pdf",
+        "prompt_matches": true
+      }
+    ]
+  },
+  {
+    "question": "AAPP-02-019",
+    "source_checks": [
+      {
+        "source": "Tema Esame 2024-09-05-1st.pdf",
+        "prompt_matches": true
+      }
+    ]
+  },
+  {
+    "question": "AAPP-02-020",
+    "source_checks": [
+      {
+        "source": "Tema Esame 2024-09-05-1st.pdf",
+        "prompt_matches": true
+      }
+    ]
+  },
+  {
+    "question": "AAPP-02-021",
+    "source_checks": [
+      {
+        "source": "Tema Esame 2024-11-12-1st.pdf",
+        "prompt_matches": true
+      }
+    ]
+  },
+  {
+    "question": "AAPP-02-022",
+    "source_checks": [
+      {
+        "source": "Tema Esame 2024-11-12-1st.pdf",
+        "prompt_matches": true
+      }
+    ]
+  },
+  {
+    "question": "AAPP-02-023",
+    "source_checks": [
+      {
+        "source": "Tema Esame 2024-11-12-1st.pdf",
+        "prompt_matches": true
+      }
+    ]
+  },
+  {
+    "question": "AAPP-02-024",
+    "source_checks": [
+      {
+        "source": "Tema Esame 2025-01-24-1st.pdf",
+        "prompt_matches": true
+      }
+    ]
+  },
+  {
+    "question": "AAPP-02-025",
+    "source_checks": [
+      {
+        "source": "Tema Esame 2025-01-24-1st.pdf",
+        "prompt_matches": true
+      }
+    ]
+  },
+  {
+    "question": "AAPP-02-026",
+    "source_checks": [
+      {
+        "source": "Tema Esame 2025-01-24-1st.pdf",
+        "prompt_matches": true
+      }
+    ]
+  },
+  {
+    "question": "AAPP-02-027",
+    "source_checks": [
+      {
+        "source": "Tema Esame 2025-02-14-1st.pdf",
+        "prompt_matches": true
+      }
+    ]
+  },
+  {
+    "question": "AAPP-02-028",
+    "source_checks": [
+      {
+        "source": "Tema Esame 2025-02-14-1st.pdf",
+        "prompt_matches": true
+      }
+    ]
+  },
+  {
+    "question": "AAPP-02-029",
+    "source_checks": [
+      {
+        "source": "Tema Esame 2025-06-05-1st.pdf",
+        "prompt_matches": true
+      }
+    ]
+  },
+  {
+    "question": "AAPP-02-030",
+    "source_checks": [
+      {
+        "source": "Tema Esame 2025-06-05-1st.pdf",
+        "prompt_matches": true
+      }
+    ]
+  },
+  {
+    "question": "AAPP-02-031",
+    "source_checks": [
+      {
+        "source": "Tema Esame 2025-07-04-1st.pdf",
+        "prompt_matches": true
+      }
+    ]
+  },
+  {
+    "question": "AAPP-02-032",
+    "source_checks": [
+      {
+        "source": "Tema Esame 2025-07-04-1st.pdf",
+        "prompt_matches": true
+      }
+    ]
+  },
+  {
+    "question": "AAPP-02-033",
+    "source_checks": [
+      {
+        "source": "Tema Esame 2025-11-06-1st.pdf",
+        "prompt_matches": true
+      }
+    ]
+  },
+  {
+    "question": "AAPP-02-034",
+    "source_checks": [
+      {
+        "source": "Tema Esame 2025-11-06-1st.pdf",
+        "prompt_matches": true
+      }
+    ]
+  },
+  {
+    "question": "AAPP-02-035",
+    "source_checks": [
+      {
+        "source": "Tema Esame 2026-1-22-1st.pdf",
+        "prompt_matches": true
+      }
+    ]
+  },
+  {
+    "question": "AAPP-02-036",
+    "source_checks": [
+      {
+        "source": "Tema Esame 2026-2-09-1st.pdf",
+        "prompt_matches": true
+      }
+    ]
+  },
+  {
+    "question": "AAPP-02-037",
+    "source_checks": [
+      {
+        "source": "Tema Esame 2026-2-09-1st.pdf",
+        "prompt_matches": true
+      }
+    ]
+  },
+  {
+    "question": "AAPP-02-038",
+    "source_checks": [
+      {
+        "source": "Tema Esame 2026-6-11-1st.pdf",
+        "prompt_matches": true
+      }
+    ]
+  },
+  {
+    "question": "AAPP-02-039",
+    "source_checks": [
+      {
+        "source": "Tema Esame 2026-6-29-1st.pdf",
+        "prompt_matches": true
+      }
+    ]
+  },
+  {
+    "question": "AAPP-02-040",
+    "source_checks": [
+      {
+        "source": "Tema Esame 2026-9-10-1st.pdf",
+        "prompt_matches": true
+      }
+    ]
+  },
+  {
+    "question": "AAPP-02-041",
+    "source_checks": [
+      {
+        "source": "Tema Esame 2026-9-10-1st.pdf",
+        "prompt_matches": true
+      }
+    ]
+  }
+]

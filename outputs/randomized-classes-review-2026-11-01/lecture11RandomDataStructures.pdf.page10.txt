@@ -1,0 +1,20 @@
+              Treaps: tree + heap
+
+❑   Definition: A treap is a binary tree
+
+❑   Each node contains one element x with key(x) ∈ U and prio(x) ∈ R
+
+❑   The following properties hold:
+     –   Search tree property
+          •   For each element x:
+          •   elements y in the left subtree of x satisfy: key(y) < key(x)
+          •   elements y in the right subtree of x satisfy : key(y) > key(x)
+     –   Heap property
+          •   For all elements x,y:
+                – If y is a child of x, then prio(y) > prio(x).
+                – All priorities are pairwise distinct.
+
+
+
+
+                                                  - 10 -

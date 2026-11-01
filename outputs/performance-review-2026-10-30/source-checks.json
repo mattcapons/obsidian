@@ -1,0 +1,38 @@
+[
+  {
+    "source": "Tema Esame 2022-11-08-1st.pdf",
+    "sha256": "acd91946faa3e68f1d6ce2fb6f3bf51800c8acfa4595e8e8535ab9f901f570df",
+    "pages": 5,
+    "extracted_page": 2
+  },
+  {
+    "source": "Tema Esame 2023-01-17-1st.pdf",
+    "sha256": "e2405195c31089d2ea46fbab0a52713282bfe1d0d55fa5c065807a1a94636ece",
+    "pages": 5,
+    "extracted_page": 2
+  },
+  {
+    "source": "Tema Esame 2023-02-14-1st.pdf",
+    "sha256": "201d3b83c5f35e00ad91bf38f2278b74abb50f50b35b85e4329ded7b7194e36b",
+    "pages": 5,
+    "extracted_page": 2
+  },
+  {
+    "source": "Tema Esame 2023-06-19-1st.pdf",
+    "sha256": "9e6e8e7d2d9259c389c1421a6ff882bd3d30a7a590bdb4454b4f48128d617576",
+    "pages": 5,
+    "extracted_page": 2
+  },
+  {
+    "source": "Tema Esame 2025-09-05-1st.pdf",
+    "sha256": "2edd64375d0613f2932c8a644a40c1aece249dc7093db023a08a38e98d8ed3f2",
+    "pages": 5,
+    "extracted_page": 2
+  },
+  {
+    "source": "Tema Esame 2023-07-11-1st.pdf",
+    "sha256": "2acfa09108b999f0299970e6f9a73857033ad10039496c92b69198888a7462fc",
+    "pages": 5,
+    "extracted_page": 2
+  }
+]

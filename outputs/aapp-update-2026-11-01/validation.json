@@ -1,0 +1,26 @@
+{
+  "markdown_files": 20,
+  "internal_references": 2254,
+  "heading_or_block_anchors": 905,
+  "pdf_page_references": 954,
+  "image_embeds": 83,
+  "unique_embedded_images": 78,
+  "table_lines_checked": 396,
+  "pdf_files_checked": 73,
+  "slide_decks": 15,
+  "slide_pages": 577,
+  "old_source_hashes_unchanged": 14,
+  "bank_prompts_sources_and_ids_preserved": 552,
+  "concurrently_edited_answer_areas": [
+    "AAPP-04-001"
+  ],
+  "existing_files_changed": [
+    "AAPP Index.md",
+    "Course Workflow.md",
+    "Past Exam Question Bank.md",
+    "Exam Recap.md",
+    "Notes/Amortized Analysis.md",
+    "Notes/Course Introduction.md"
+  ],
+  "errors": []
+}

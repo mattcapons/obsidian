@@ -1,0 +1,16 @@
+Two families of randomized algorithms
+
+
+     Las Vegas                                    Monte Carlo
+
+     Always returns the correct answer.           Runs within a bounded time.
+     Randomness affects the running time.         Randomness can affect correctness.
+
+
+
+
+                   Example intuition: randomized sorting vs. randomized min-cut
+
+
+
+Randomized Algorithms                                                                  21

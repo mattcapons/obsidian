@@ -1,0 +1,33 @@
+{
+  "reviewed_question_ids": [
+    "AAPP-01-021",
+    "AAPP-01-022",
+    "AAPP-01-023",
+    "AAPP-01-024",
+    "AAPP-01-025",
+    "AAPP-01-026",
+    "AAPP-01-027",
+    "AAPP-01-028",
+    "AAPP-01-029",
+    "AAPP-01-030",
+    "AAPP-01-031",
+    "AAPP-01-032",
+    "AAPP-01-033",
+    "AAPP-01-034",
+    "AAPP-01-035",
+    "AAPP-01-036"
+  ],
+  "question_entries_preserved": 552,
+  "all_original_attempts_and_prompts_preserved": true,
+  "unrelated_sections_preserved": true,
+  "frontmatter_and_block_ids_preserved": true,
+  "feedback_callouts_added": 16,
+  "study_wikilinks_checked": 43,
+  "source_exam_pdfs_checked": 12,
+  "study_pdfs_checked": {
+    "lecture4-PRAM.pdf": {
+      "pages": 36,
+      "sha256": "487c574dfa68dbf84b8282086c1ce2be827f9b3066ff780020d36ca99181399b"
+    }
+  }
+}

@@ -7,7 +7,7 @@ source: "[[lezione14AmortizedAnalysis.pdf]]"
 ---
 # Amortized Analysis
 
-[[AAPP Index|Course index]] · Previous: [[Binary Decision Diagrams]] · Related: [[Randomized Algorithms#Where randomness comes from]] · [[Randomized Data Structures#Comparing guarantees]]
+[[AAPP Index|Course index]] · Previous: [[Binary Decision Diagrams]] · Next: [[Competitive Analysis]] · Related: [[Randomized Algorithms#Where randomness comes from]] · [[Randomized Data Structures#Comparing guarantees]]
 
 ## Overview
 
@@ -226,6 +226,10 @@ Source: [[lezione14AmortizedAnalysis.pdf#page=31|Potential construction and calc
 | 10 | 1 | 4 | 2 | 3 |
 
 Total charges are $2+9\cdot3=29$. Actual work is 25 and final potential 4, so $29=25+4$. The accounting balance $B_i$ and potential $\Phi_i$ are identical in this refined scheme. Alternative valid charges may leave different amounts of unused credit; there is no unique numerical amortized charge inherent in the implementation.
+
+### From one-state costs to two-state comparisons
+
+[[Competitive Analysis#The inversion potential]] applies the same telescoping identity to a potential $\Phi(L_i,L_i^*)$ measuring disagreement between an online list and an offline comparator. The goal changes from a constant append charge to $\widehat c_i\le4c_i^*$, a bound relative to the comparator's cost. Summing gives $C_{\mathrm{MTF}}(S)\le4C_{\mathrm{OPT}}(S)+\Phi_0$, because final potential is nonnegative. This explains how amortized analysis can prove a competitive guarantee without proving constant actual time per request. See [[Competitive Analysis#Proving paid-model MTF is 4-competitive]] for the complete four-set derivation.
 
 ## Cost-model changes and limits
 

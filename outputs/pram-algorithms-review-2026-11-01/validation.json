@@ -1,0 +1,61 @@
+{
+  "reviewed_question_ids": [
+    "AAPP-03-001",
+    "AAPP-03-002",
+    "AAPP-03-003",
+    "AAPP-03-004",
+    "AAPP-03-005",
+    "AAPP-03-006",
+    "AAPP-03-007",
+    "AAPP-03-008",
+    "AAPP-03-009"
+  ],
+  "feedback_added": 9,
+  "all_original_questions_and_attempts_preserved": 552,
+  "previous_reviews_and_other_sections_preserved": true,
+  "frontmatter_and_block_ids_preserved": true,
+  "new_study_links_checked": 32,
+  "original_exam_prompts_matched": 9,
+  "source_exam_pdfs_checked": 8,
+  "source_pdfs_unchanged": true,
+  "new_code_fences_and_callouts_checked": true,
+  "broadcast_scan_trace_and_operation_counts_checked": true,
+  "matrix_and_chunked_reduction_examples_checked": true,
+  "scan_calculation_checks": [
+    {
+      "input_length": 1,
+      "padded_length": 1,
+      "additions": 0
+    },
+    {
+      "input_length": 2,
+      "padded_length": 2,
+      "additions": 1
+    },
+    {
+      "input_length": 3,
+      "padded_length": 4,
+      "additions": 4
+    },
+    {
+      "input_length": 4,
+      "padded_length": 4,
+      "additions": 4
+    },
+    {
+      "input_length": 5,
+      "padded_length": 8,
+      "additions": 12
+    },
+    {
+      "input_length": 8,
+      "padded_length": 8,
+      "additions": 12
+    },
+    {
+      "input_length": 16,
+      "padded_length": 16,
+      "additions": 32
+    }
+  ]
+}

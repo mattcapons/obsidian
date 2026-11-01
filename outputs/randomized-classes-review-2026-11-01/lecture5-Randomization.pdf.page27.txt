@@ -1,0 +1,20 @@
+Monte Carlo version
+
+                            Limit the number of random trials to k.
+
+                                                       Guarantee
+
+                                                       Runtime is bounded by k trials.
+      findingA_MC(A, n, k)
+      for t = 1 to k                                   It may fail if all k samples are 'b'.
+          choose a random index j in {1, …,
+      n}
+          if A[j] = 'a' then return j
+      return FAIL
+                                                                Pr[fail] = (1/2)^k
+
+                                                            Pr[find 'a'] = 1 − (1/2)^k
+
+
+
+Randomized Algorithms                                                                          26

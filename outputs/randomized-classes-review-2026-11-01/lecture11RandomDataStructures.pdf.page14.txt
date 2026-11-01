@@ -1,0 +1,17 @@
+         Search for an element: key
+
+b?                   d
+                     1
+
+     a                                f
+                                      2
+     3
+
+               c               e          g
+               4               5          6
+
+
+     b
+     7
+
+                          - 14 -

@@ -1,0 +1,6 @@
+{
+  "explanation": "The recap acquired completed section 3 after the initial snapshot. Those changes were already observed in the read before the theory-link edit. The later baseline is reconstructed by reversing our one exact theory-link substitution; the original snapshot is retained unchanged.",
+  "reconstructed_file": "recap-before-theory-link-reconstructed.snapshot",
+  "preserved_changes": "preserved-concurrent-recap.diff",
+  "our_only_edit": "section 16 theory link"
+}

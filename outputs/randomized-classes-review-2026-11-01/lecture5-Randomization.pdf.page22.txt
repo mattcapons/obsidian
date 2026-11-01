@@ -1,0 +1,18 @@
+Monte Carlo error types
+
+                             For decision problems, the answer is YES or NO.
+
+      One-sided error                                 Two-sided error
+
+      The algorithm has zero probability of error     There is a non-zero probability of error
+      for at least one possible output.               when the algorithm outputs either YES or
+                                                      NO.
+
+
+
+
+                        We bound the probability of an incorrect output.
+
+
+
+Randomized Algorithms                                                                            22

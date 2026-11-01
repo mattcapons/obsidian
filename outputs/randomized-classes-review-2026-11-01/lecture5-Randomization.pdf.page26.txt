@@ -1,0 +1,21 @@
+Las Vegas version
+
+                                 Repeat until an 'a' is found.
+
+                                                       Guarantee
+
+                                                       Always succeeds.
+      findingA_LV(A, n)
+      repeat                                           Running time is random, but E[trials] =
+          choose a random index j in {1, …,            2 because Pr['a'] = 1/2.
+      n}
+      until A[j] = 'a'
+      return j
+
+
+                                                             Expected time: O(1)
+
+
+
+
+Randomized Algorithms                                                                            25

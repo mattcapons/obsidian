@@ -1,0 +1,17 @@
+Efficiency
+
+                        A Las Vegas algorithm is an efficient Las Vegas
+                        algorithm if on any input its expected running time is
+                        bounded by a polynomial function of the input size
+
+
+
+
+                        A Monte Carlo algorithm is an efficient Monte Carlo
+                        algorithm if on any input its worst-case running time is
+                        bounded by a polynomial function of the input size
+
+
+
+
+Randomized Algorithms                                                              23

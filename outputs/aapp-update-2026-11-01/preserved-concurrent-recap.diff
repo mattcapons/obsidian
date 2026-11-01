@@ -1,0 +1,64 @@
+--- initial snapshot
++++ concurrent recap content preserved
+@@ -9,12 +9,13 @@
+ completed-sections:
+   - "01 — PRAM model and memory rules"
+   - "02 — Parallel performance and scaling"
++  - "03 — PRAM algorithms"
+ ---
+ # AAPP — Exam Recap
+ 
+ [[AAPP Index|Course index]] · [[Past Exam Question Bank|Question bank]]
+ 
+-Quick reminders from completed bank sections. **Prioritize frequent questions, recent exams, and corrected mistakes.** The 25 sections match the bank; sections 1–2 are complete.
++Quick reminders from completed bank sections. **Prioritize frequent questions, recent exams, and corrected mistakes.** The 25 sections match the bank; sections 1–3 are complete.
+ 
+ %%
+ Future updates: keep one short paragraph per topic, normally 40–80 words. Assume the theory is already known. Preserve course-note topic order and all 25 main sections. Keep only essential definitions, formulas, examples and corrections; omit derivations, quizzes and repeated explanations. Expand sections after their answers are reviewed, preserve user additions, and update completed-sections and the date.
+@@ -40,6 +41,13 @@
+ Gustafson: 005,011,028,032,035 — 5 questions; 2026-01-22.
+ Law comparison/interpretation: 002,003,007,030,037,038,039 — 7 questions; 2026-06-29.
+ Section 02 IDs have prefix AAPP-02-. All 41 questions had review feedback as of 2026-11-01. The five scaling/law groups account for 22 questions: matrix-vector, strong/weak scaling, Amdahl, Gustafson and law comparison. Each question is assigned once; all attached exam sources were checked for recency.
++Section 03 provenance (primary groups; latest exam source):
++Matrix-vector: 004 — 1 question; 2024-06-26.
++Matrix-matrix: 001,005 — 2 questions; 2024-07-24.
++Reduction/vector-sum access: 008,009 — 2 questions; 2026-09-10.
++Prefix scan/access pattern: 002,003,007 — 3 questions; 2025-11-06.
++Scan/reduction comparison: 006 — 1 question; 2025-07-04.
++Section 03 IDs have prefix AAPP-03-. All nine questions had review feedback as of 2026-11-01. Prefix scan and its comparison with reduction account for four questions. Each question is assigned once; all attached exam sources were checked for recency. Follow PRAM theory order: map, reduction, prefix scan. Do not infer an exam exclusion from a question's age.
+ %%
+ 
+ ## PRAM model and memory rules
+@@ -136,7 +144,31 @@
+ 
+ ## PRAM algorithms
+ 
+-*Pending — bank section 03, AAPP-03-001–AAPP-03-009 (9 questions).* Theory: [[PRAM]]. Reuse the memory-rule explanations above when discussing algorithm legality.
++**9 reviewed questions.** Most repeated: prefix scan and its comparison with reduction (**4 questions**). Latest: vector-sum memory accesses, September 2026. Full theory: [[PRAM]].
++
++### Matrix-vector multiplication — corrected complexity
++
++Use [[#Matrix-vector scaling — June 2025|section 2's row decomposition]]: an $n\times n$ matrix has $n$ output rows, each requiring an $n$-term dot product. For $1\le p\le n$, **$T_p=\Theta(n\lceil n/p\rceil)$ and $W=\Theta(n^2)$**; $p=n$ gives $\Theta(n)$ time. Your $n/p$ estimate omitted the work inside each row. Shared vector reads and distinct output writes make this schedule CREW.
++
++### Matrix-matrix multiplication — corrected complexity
++
++Classical multiplication computes **$C_{ij}=\sum_k A_{ik}B_{kj}$**: $n^2$ output tasks, each with an $n$-term dot product, so **$W=\Theta(n^3)$**. Distribute outputs over $p\le n^2$ processors using private accumulators and sequential inner loops: $T_p=\Theta(n\lceil n^2/p\rceil)$. Thus $p=n$ gives $\Theta(n^2)$ time; $p=n^2$ gives $\Theta(n)$. Reused inputs require CREW in this schedule. A dot product is not one primitive operation; parallelizing it requires a further reduction.
++
++### Tree reduction and chunking — January 2026
++
++A tree sum combines disjoint pairs until one total remains: **$n-1$ additions and $\Theta(\log n)$ depth**. For power-of-two $n$, the first level needs $n/2$ processors. With $1\le p\le n$, first sum chunks locally, then reduce the **$p$ partial sums**: $T_p=\Theta(n/p+\log p)$, $W=\Theta(n)$, and allocated cost $\Theta(n+p\log p)$. The final tree has $\log p$ levels, rather than $\log n$.
++
++### Vector-sum memory accesses — September 2026 correction
++
++**Identify the operation and schedule before choosing a memory policy.** A properly staged tree reduction is EREW: processors read disjoint pairs and write distinct next-level cells. Elementwise vector addition is also naturally EREW with disjoint index assignments. The lecture's broadcast prefix scan instead uses CREW because several processors read one block total. Saying accesses take unit time does not identify their read/write policy.
++
++### Prefix scan and its access pattern — most repeated; November 2025
++
++**Scan returns every prefix**, not just the total. The lecture merges equal-sized blocks, adding the left block's total to every right-block prefix, then doubles block size: $[3,1,4,2]\rightarrow[3,4,4,6]\rightarrow[3,4,8,10]$. Right-block processors concurrently read the same total and write distinct outputs: **CREW**. Read the preceding stage's values, using separate buffers. This broadcast trace differs from the note's offset-doubling trace; do not mix them.
++
++### Scan versus reduction: what “more efficient” means
++
++Parallel scan shortens sequential accumulation's linear dependency chain, but **scan and tree reduction can both take $\Theta(\log n)$ time** and produce different outputs. The simple broadcast scan does $\Theta(n\log n)$ work for all prefixes; reduction does $\Theta(n)$ for one total. Busier processors do not prove better efficiency. An alternative up-sweep/down-sweep scan achieves $\Theta(n)$ work and logarithmic depth, including on EREW, so the extra-work trade-off is implementation-specific.
+ 
+ ## Divide and conquer and recurrences
+ 

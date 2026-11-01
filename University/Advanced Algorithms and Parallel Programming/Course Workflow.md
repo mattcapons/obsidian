@@ -5,14 +5,14 @@ tags:
 ---
 # Course Workflow
 
-[[AAPP Index|Course index]] · Last collection review: 2026-10-26
+[[AAPP Index|Course index]] · Last collection review: 2026-11-01
 
 ## Location and conventions
 
 - Vault: `/home/matteo/Documents/obsidian` (lowercase). The uppercase `/home/matteo/Documents/Obsidian` path in the reusable prompt does not exist in this environment.
 - Course: `University/Advanced Algorithms and Parallel Programming/`; source PDFs in `Slides/`, one substantive note per deck in `Notes/`, selected slide renders in `Attachments/<note topic>/`.
 - English, explained exam-preparation notes. Preserve filenames, frontmatter, annotations, existing images, and useful explanations. Minimal lecture properties are `tags: [aapp, lecture]`, a quoted `lecture`, and a quoted source wikilink.
-- Follow supplied lecture order 1, 2, 3, 4, 4b, 5, 6, 7, 8, 10, 11, 12, 13, 14. No deck numbered 9 is currently present; do not invent one. Include index/previous/next navigation where applicable, concept cross-links, assumptions, correctness and cost arguments, worked examples, takeaways, original exam practice with collapsed worked solutions, and revision questions with answers.
+- Follow supplied lecture order 1, 2, 3, 4, 4b, 5, 6, 7, 8, 10, 11, 12, 13, 14, 15. No deck numbered 9 is currently present; do not invent one. Include index/previous/next navigation where applicable, concept cross-links, assumptions, correctness and cost arguments, worked examples, takeaways, original exam practice with collapsed worked solutions, and revision questions with answers.
 - Use wikilinks for notes and PDF pages, LaTeX for mathematics, fenced pseudocode, local Obsidian image embeds with captions and page attribution, and Markdown links for external sources. Escape alias pipes in tables. PDF references use physical PDF page numbers, not inferred labels.
 - Consolidate repeated animation slides without omitting their final algorithm or proof. Inspect rendered pages when extraction misses diagrams or mathematical grouping. Label supplementary explanations and apparent slide errors. Keep the lecturer's terminology while stating necessary qualifications.
 - Follow [[Study Note Prompts#Continue when new slides arrive]]; this note records the course-specific state.
@@ -27,7 +27,7 @@ Prefer useful supplied diagrams, original exact explanatory diagrams, and select
 
 ## Source mapping and revision baseline
 
-At the initial 2026-10-12 review, no earlier Course Workflow or source fingerprint record was present. Lectures 6 and 7 were then new to the note collection (no corresponding notes or index entries); their filesystem arrival dates are not asserted. The six existing notes were compared with deck topics and page references, and no additional substantive coverage gap was identified in that comparison. Historical revision status before that baseline cannot be established. On 2026-10-26, all eight baseline hashes still match, and six additional decks were identified and given new notes. The current mapping covers fourteen PDFs and 537 physical pages.
+At the initial 2026-10-12 review, no earlier Course Workflow or source fingerprint record was present. Lectures 6 and 7 were then new to the note collection (no corresponding notes or index entries); their filesystem arrival dates are not asserted. The six existing notes were compared with deck topics and page references, and no additional substantive coverage gap was identified in that comparison. Historical revision status before that baseline cannot be established. On 2026-10-26, all eight baseline hashes still match, and six additional decks were identified and given new notes. On 2026-11-01, those fourteen hashes still match and lecture 15 is the sole new deck. The current mapping covers fifteen PDFs and 577 physical pages.
 
 | Source | Pages | Note | Coverage |
 |---|---|---|---|
@@ -45,6 +45,7 @@ At the initial 2026-10-12 review, no earlier Course Workflow or source fingerpri
 | [[lezione12DynamicProgramming.pdf]] | 34 | [[Dynamic Programming and LCS]] | 1–34: motivation and LCS (3–12), recurrence/proof (13–19), recursion/memoization (20–29), tabulation/reconstruction/space exercise (30–33), acknowledgment (34) |
 | [[lezione13Dynamic ProgrammingBDD.pdf]] | 36 | [[Binary Decision Diagrams]] | 1–36: ROBDDs and tables (3–13), ITE/caches/complements (14–24), composition (25), ordering/memory (26–31), variants/ZBDDs/combinational sets (32–36) |
 | [[lezione14AmortizedAnalysis.pdf]] | 44 | [[Amortized Analysis]] | 1–44: tables/aggregate method (3–20), accounting (21–25), potential/telescoping/first insertion (26–42), conclusions/acknowledgments (43–44) |
+| [[lezione15CompetitiveAnalysis.pdf]] | 40 | [[Competitive Analysis]] | 1–40: cover/roadmap (1–2), list model and online/average-case analysis (3–10), MTF and competitive models (11–15), inversion potential and proof (16–29), free moves/startup/interpretation (30–32), paging/LRU/MIN (33–37), implementation examples/takeaways/references (38–40) |
 
 SHA-256 of the full source PDF bytes, recorded 2026-10-12:
 
@@ -82,7 +83,7 @@ c3c017fd35ec1fa597297bd3872c5905f421a9daf62a809c8492a60c050bedda  lecture10Prima
 
 ## Outstanding gaps and scope — 2026-10-12 (historical)
 
-The statements in this section record the earlier collection state. See [[#Current gaps and scope — 2026-10-26]] for current availability and coverage.
+The statements in this section record the earlier collection state. See [[#Current gaps and scope — 2026-11-01]] for current availability and coverage.
 
 - No newly supplied technical deck remains without a substantive note. Lecture 7's historical appendix is summarized for its relation to stable digit sorting; it is not transcribed verbatim, and its incidental anecdotes were not all independently verified.
 - The eight decks do not establish full exam coverage. No additional explicit topic exclusions were found. Assessment statements remain attributed to the uploaded 2026–2027 introduction, not independently verified against later announcements or WeBeep.
@@ -146,6 +147,8 @@ External explanations were checked against CMU's selection, LCS and amortized-an
 
 ## Current gaps and scope — 2026-10-26
 
+*Historical collection state; see [[#Current gaps and scope — 2026-11-01]] for the latest review.*
+
 - All fourteen supplied slide decks have a substantive corresponding note. No revised baseline PDF was detected. The collection is not a claim of complete exam coverage.
 - No lecture-9 deck is present. Further material remains needed for approximation, competitive/online algorithms including move-to-front, further string-matching topics, disjoint sets, and broader parallel tools/patterns. Historical bank questions are evidence of past questions, not new current-year syllabus rules. The introduction explicitly excludes CUDA from the current syllabus; keep its historical bank entries without treating them as current requirements.
 - Lecture 12's O(min(m,n))-space exercise is explained for the LCS length. A complete linear-space witness-reconstruction algorithm is not supplied in that deck. Lecture 11 gives treap Union but no skip-list Union algorithm; the corresponding historical question is not fully covered by the supplied slides. The bank remains intentionally unanswered.
@@ -160,3 +163,48 @@ Validated 18 Markdown files (17 course files and Study Note Prompts): 1915 actua
 Recalculated the new selection trace and odd/even expected-size sums; checked deterministic discard thresholds; compared checked-power and standard strong tests on small odd integers; verified the pseudoprime/root examples and RSA recovery for every representative in both illustrative moduli; enumerated priority permutations through size seven for treap path expectations and actual insertion rotations; recalculated both small LCS tables and every cell of the slide example; checked ITE truth values/complement identities and the ordering example; and checked both dynamic-table cost models and potential identities through 10,000 appends. No discrepancy remained. These finite checks support the supplied derivations and are not substitutes for their proofs. No notebook or benchmark execution is claimed.
 
 Intermediate source text, selected renders, source manifest, arithmetic/reference audit scripts and results, and pre-edit snapshots are in outputs/aapp-update-2026-10-26/. Snapshot filenames use a non-Markdown extension so they do not create duplicate vault-note titles.
+
+## New slide review — 2026-11-01
+
+Compared all fifteen PDFs with the recorded mapping and full-file SHA-256 baselines. Lecture 15, [[lezione15CompetitiveAnalysis.pdf]], is the sole new source: 40 pages, bringing the supplied collection to 577 pages. All fourteen older hashes match. No revised older source was detected, and no older note was rewritten as a source-revision update.
+
+New source SHA-256 baseline:
+
+```text
+7a80acec8eff38796d3b498fc99efedba95b6e0c403e06113813507c2db239ee  lezione15CompetitiveAnalysis.pdf
+```
+
+Created [[Competitive Analysis]] in the established English study-note style. It covers every supplied topic: rank/swap costs, online/offline information, the tail adversary, fixed-order average costs, MTF and locality, competitive quantifiers and startup terms, the complete four-set inversion-potential proof, free-forward moves, recency/paging, LRU and MIN, the eight-versus-five-fault trace, unequal/equal-capacity guarantees, and implementation examples. Consolidated repeated proof slides without losing their final statements. Added six original exam-style exercises with collapsed solutions, revision answers, worked cost/potential traces, an original reverse-order stress test, and five locally rendered slide images with captions and physical-page links.
+
+Significant qualifications and supplementary explanations:
+
+- PDF page 10 labels a one-search expectation as a sequence total. The note flags the notation mismatch and derives the appropriate fixed-order sequence expectation. The average-cost exchange argument and numerical example are supplementary.
+- The tail adversary is qualified for deterministic strategies; its constructed sequence may depend on the strategy. The notes do not claim one fixed sequence defeats every possible online strategy or transfer an adaptive adversary argument to randomized algorithms without a model.
+- Distinguish paid MTF's exact cost $2r-1$ and factor 4 from free-forward MTF's cost $r$ and factor 2. A supplementary derivation explains the latter. Potential depends on both lists, comparator swaps contribute to its change, and initial disagreement produces an additive term rather than a per-request guarantee.
+- Original reverse-order requests give paid MTF/OPT ratio $4-6/(n+1)$; the note proves the static comparator optimal for this example and illustrates failure of a pointwise factor-4 claim.
+- Paging counts faults rather than list scan distance. The supplied general $k/(k-h+1)$ theorem is recorded with its startup term; a labeled supplementary phase proof explains only the equal-capacity case. MIN's five-fault slide schedule is also checked against an example-specific lower bound. No proof of the full unequal-capacity theorem is claimed to be present in the deck.
+- Physical PDF pages differ from printed labels from page 23 onward (for example, PDF page 37 is labeled 39). References follow physical pages. The cover supplies no academic-year label; none is inferred.
+
+External checks used Sleator and Tarjan's original 1985 paper (including a visual check of Theorem 6), CMU 15-451's online-algorithm notes for the supplementary equal-capacity phase proof, and official Linux Multi-Gen LRU and Redis eviction documentation for the slide's implementation examples. Citations appear beside the relevant explanations. All four sources were accessible. Supplied diagrams suffice, so no external visual was needed. Real implementations are described as variants/approximations, without transferring ideal LRU's theorem to them.
+
+Integrated lecture 15 into [[AAPP Index]], the lecture table, study routes, and practice links. Updated [[Course Introduction]]'s coverage and outstanding-topic statements. Added next-lecture navigation and the two-state potential connection in [[Amortized Analysis]]. Replaced only the obsolete section-16 theory notices in [[Past Exam Question Bank]] and [[Exam Recap]]; question prompts, IDs, user answers, feedback, completion markers, and all other recap sections are preserved.
+
+## Current gaps and scope — 2026-11-01
+
+- All fifteen supplied slide decks now have corresponding substantive notes. Lecture 15 was the only new source; no previously mapped deck changed. No page of the new PDF remains unreadable or unprocessed.
+- No lecture-9 deck is present. Dedicated approximation material, further string-matching topics, disjoint sets, and broader parallel tools/patterns remain outside the supplied technical decks. Competitive/online list update and LRU paging are now covered and should no longer be described as awaiting slides.
+- Lecture 15 states the full unequal-capacity LRU theorem without proving it. This note explains its parameters and provides a supplementary equal-capacity proof, not a full derivation of the resource-augmentation theorem. Insertion/deletion extensions for list update and randomized paging are not developed by this deck and are not added as exam requirements.
+- Earlier gaps remain: lecture 12 supplies a linear-space LCS-length exercise rather than complete linear-space witness reconstruction; lecture 11 does not supply skip-list Union; BDD PDF page 31 has an incomplete memory-locality bullet whose continuation is not reconstructed.
+- The five local notebooks recorded in the 2026-10-26 review remain available but were not executed or revalidated in this slide-note update. No benchmark measurements or equivalence to external Colab versions are asserted.
+- The bank and recap contain ongoing user work. This update adds study links without answering or reviewing pending entries. Historical questions are not current-year syllabus rules. Keep historical CUDA entries, while preserving the introduction's explicit CUDA exclusion.
+- Administration and exam scope remain attributed to the uploaded 2026–2027 introduction. No later WeBeep announcement was accessed. Earlier source-year differences remain; lecture 15 has no academic-year label on its cover.
+
+## Verification — 2026-11-01
+
+Source extraction, contact sheets covering all 40 slides, the external theorem check, pre-edit snapshots, the source manifest, and calculation/reference audit scripts and results are retained in outputs/aapp-update-2026-11-01/. Snapshot and draft extensions avoid duplicate Markdown note titles. Temporary local PDF/image/YAML libraries were used because system PDF utilities were unavailable; their versions are recorded with the audit artifacts.
+
+The recap acquired its completed PRAM-algorithms section during this review, and the index's recap summary was also updated concurrently to three completed sections and 86 reviewed questions. That content and its properties are preserved; this slide update only changes the recap's section-16 theory notice. The initial snapshot, a documented reconstruction of the later pre-link recap content, and their diff are retained for audit. A new user answer in AAPP-04-001 also appeared during verification and was retained. Reference checks compare all 552 protected question prompts, source references and IDs, while logging concurrent answer/feedback changes rather than treating them as edits made by this slide update.
+
+Validation passed for 20 Markdown files: 2254 internal references, 905 heading/block targets, 954 physical-PDF-page references, and 83 image embeds (78 distinct images). All image files decoded, and YAML properties, table columns, code fences, source mapping, and page bounds passed. All fourteen earlier PDF hashes remain unchanged. Existing image embeds and note properties were retained, including the concurrent recap update. All 552 question prompts, sources and IDs are unchanged; ongoing answer/feedback changes are recorded separately.
+
+Recomputed every new worked trace and numerical example. Exhaustively checked 74,421 local list-access cases through five items, including every adjacent comparator swap and permitted free promotion; independently optimized reverse-order paid sequences through five items to verify the original stress test. For 5,461 sequences over four pages through length six, compared MIN with an independent optimal-cache dynamic program and checked the stated LRU bounds for all capacities one through four and permitted benchmark capacities. No discrepancy remained. Finite arithmetic checks support the written proofs; no benchmark or notebook execution is claimed.

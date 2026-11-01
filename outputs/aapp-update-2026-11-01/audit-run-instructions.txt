@@ -1,0 +1,5 @@
+Audit dependencies: see requirements-audit.txt. Temporary installed libraries for this run are in /tmp/aapp-study-tools-2026-11-01/python.
+Run from vault root:
+PYTHONPATH=/tmp/aapp-study-tools-2026-11-01/python python3 outputs/aapp-update-2026-11-01/verify_collection.py
+PYTHONPATH=/tmp/aapp-study-tools-2026-11-01/python python3 outputs/aapp-update-2026-11-01/check_calculations.py
+The archive integration script records performed edits; it is not an idempotent updater. Concurrent user-work provenance is recorded separately.

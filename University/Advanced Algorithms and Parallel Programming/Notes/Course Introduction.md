@@ -37,9 +37,9 @@ The announced syllabus groups several ways to design and assess algorithms:
 | Approximation | Can we obtain a provably good solution when exact optimization is expensive? |
 | Competitive analysis | How well does an online algorithm compare with an offline solution? |
 
-The decks supplied so far cover review material in [[Algorithm as recipes]], the design paradigm in [[Divide and Conquer]], and the foundations in [[Randomized Algorithms]], followed by applications in [[Minimum Cut]], [[Sorting]], [[Selection and Order Statistics]], [[Primality Testing and Cryptosystems]], and [[Randomized Data Structures]]. [[Dynamic Programming and LCS]], [[Binary Decision Diagrams]], and [[Amortized Analysis]] now develop three further syllabus areas.
+The decks supplied so far cover review material in [[Algorithm as recipes]], the design paradigm in [[Divide and Conquer]], and the foundations in [[Randomized Algorithms]], followed by applications in [[Minimum Cut]], [[Sorting]], [[Selection and Order Statistics]], [[Primality Testing and Cryptosystems]], and [[Randomized Data Structures]]. [[Dynamic Programming and LCS]], [[Binary Decision Diagrams]], [[Amortized Analysis]], and [[Competitive Analysis]] develop further syllabus areas, including move-to-front lists and LRU paging.
 
-The introduction additionally lists the hiring problem, random permutations, randomized quicksort, order statistics, primality tests and fast exponentiation, cryptosystems, Karger and Karger–Stein min-cut, skip lists, treaps, memoization, string matching, BDDs, dynamic tables, and move-to-front lists. These are syllabus items, not all content of the fourteen supplied decks; [[AAPP Index#Topics announced but not yet supplied]] records the remaining gaps.
+The introduction additionally lists the hiring problem, random permutations, randomized quicksort, order statistics, primality tests and fast exponentiation, cryptosystems, Karger and Karger–Stein min-cut, skip lists, treaps, memoization, string matching, BDDs, dynamic tables, and move-to-front lists. These are syllabus items, not all content of the fifteen supplied decks; [[AAPP Index#Topics announced but not yet supplied]] records the remaining gaps.
 
 Source: [[lecture1-Intro-Course2026-2027.pdf#page=4|Algorithm syllabus, pp. 4–5]].
 
@@ -51,7 +51,7 @@ Source: [[lecture1-Intro-Course2026-2027.pdf#page=4|Algorithm syllabus, pp. 4–
 
 Randomization averages over deliberately chosen random decisions, as in [[Sorting#Randomized quicksort]]. [[Dynamic Programming and LCS|Dynamic programming]], by contrast, exploits repeated subproblems by retaining results instead of recomputing them. [[Amortized Analysis]] bounds the total cost of a sequence of operations even if an individual operation is expensive; it does not inherently assume a random distribution.
 
-Approximation methods relax the demand for an exact optimum while seeking a provable quality bound. Competitive analysis compares a procedure acting without future information with a benchmark that knows the full input sequence. These short distinctions explain the syllabus categories; detailed approximation and competitive algorithms still await their lecture material. They should not be confused with the error probability in Monte Carlo algorithms: an approximation guarantee and a probability of returning the exact optimum are different kinds of promise.
+Approximation methods relax the demand for an exact optimum while seeking a provable quality bound. Competitive analysis compares a procedure acting without future information with a benchmark that knows the full input sequence. [[Competitive Analysis]] now develops online list update and paging, while dedicated approximation material remains unavailable. They should not be confused with the error probability in Monte Carlo algorithms: an approximation guarantee and a probability of returning the exact optimum are different kinds of promise.
 
 ## Part II: parallel programming
 
@@ -99,7 +99,7 @@ This question sequence is a supplementary study aid, based on the course objecti
 
 ## Study priorities for the supplied decks
 
-This checklist defines the scope of this note collection, based on the fourteen PDFs currently supplied. It is a study guide, not confirmation that these PDFs cover the entire exam.
+This checklist defines the scope of this note collection, based on the fifteen PDFs currently supplied. It is a study guide, not confirmation that these PDFs cover the entire exam.
 
 | Note | What to be able to do without looking |
 |---|---|
@@ -116,6 +116,7 @@ This checklist defines the scope of this note collection, based on the fourteen 
 | [[Dynamic Programming and LCS]] | Define prefix states, prove the recurrence, fill tables, reconstruct a witness, qualify space reduction |
 | [[Binary Decision Diagrams]] | Reduce ordered diagrams, distinguish unique/computed tables, trace ITE, explain order and ZDD semantics |
 | [[Amortized Analysis]] | Sum resize costs, maintain credit, telescope potentials, handle first insertion and allocation models |
+| [[Competitive Analysis]] | State online/offline and cost models, derive MTF's inversion bound, trace LRU/MIN, interpret capacity and startup terms |
 
 For a written answer, state the assumptions, explain the algorithm, justify correctness, and show the calculation. For an open question, connect the definition to one of the lecture examples. The technical notes now include **Exam practice** sections with original problems and worked solutions based on these topics.
 
@@ -177,6 +178,6 @@ The final slide names **Fabrizio Ferrandi** and **Davide Gadioli**, both associa
 
 - The course combines theoretical guarantees with practical implementation constraints.
 - Sequential complexity alone does not explain parallel performance.
-- The announced syllabus is broader than the fourteen decks currently available.
+- The announced syllabus is broader than the fifteen decks currently available.
 
 Try explaining why a theoretically efficient algorithm might perform poorly in practice, and identify which prerequisite topics you need to review before studying [[PRAM]] and [[Randomized Algorithms]].

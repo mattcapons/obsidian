@@ -1,0 +1,19 @@
+{
+  "reviewed_question_ids": [
+    "AAPP-02-001",
+    "AAPP-02-002",
+    "AAPP-02-003",
+    "AAPP-02-004",
+    "AAPP-02-005",
+    "AAPP-02-006",
+    "AAPP-02-007"
+  ],
+  "entries_preserved": 552,
+  "all_original_attempts_and_prompts_preserved": true,
+  "other_feedback_and_sections_preserved": true,
+  "question_008_still_unanswered_and_unreviewed": true,
+  "frontmatter_and_block_ids_preserved": true,
+  "study_links_checked": 23,
+  "source_exam_pdfs_checked": 6,
+  "worked_example_arithmetic_checked": true
+}

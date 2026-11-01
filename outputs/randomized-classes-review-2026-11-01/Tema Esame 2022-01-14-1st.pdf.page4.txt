@@ -1,0 +1,1 @@
+Advanced Algorithms and Parallel Programming 1st part (Advanced Algorithms)–January 14th 2022 page 4 of 4 Exercise n. 3 Explain the difference between Monte Carlo and Las Vegas Randomized based algorithms. 

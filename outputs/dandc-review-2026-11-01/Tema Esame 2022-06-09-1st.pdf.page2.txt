@@ -1,0 +1,1 @@
+ Advanced Algorithms and Parallel Programming 1st part (Advanced Algorithms)–June 9th 2022 page 2 of 4 Exercise n. 1 Describe how divide and conquer work with some examples and why master theorem method matter. 

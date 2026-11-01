@@ -1,0 +1,17 @@
+            Approach for randomized search trees
+
+❑   If n elements are inserted in random order into a binary
+    search tree, the expected depth is 1.39 log n
+
+❑   Goal:
+    –   the search tree has the structure that would result if elements
+        were inserted in the order of their priorities (property 1)
+
+
+❑   Idea:
+    –   Each element x is assigned a priority chosen uniformly at random
+                                  prio(x) ∈ R
+
+
+
+                                    -9-

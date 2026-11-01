@@ -1,0 +1,28 @@
+ Pattern 1 · Map: matrix-vector multiply
+ Each processor computes an independent block of rows
+
+
+
+    y=Ax
+                                                                                               Why is it embarrassingly parallel?
+                                                                P0          y0
+                                                                                                Each yᵢ depends on one row of A and on all of x,
+                                                                                                  but not on other yⱼ. Therefore no reductions
+                                                                                                        across processors are needed.
+                                                                P1          y1
+                                                                                                                Model: CREW
+
+
+                                                                P2          y2
+
+
+
+           A split by rows     x read by all
+
+
+
+
+   Actionable: to decompose a problem, look for independent outputs before thinking about synchronization.
+
+
+PATTERNS                                                                                                                                           AAPP · PRAM

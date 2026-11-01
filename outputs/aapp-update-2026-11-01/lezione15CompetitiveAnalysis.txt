@@ -1,0 +1,662 @@
+
+--- PDF PAGE 1 ---
+095946- ADVANCED ALGORITHMS 
+AND PARALLEL PROGRAMMING
+Fabrizio Ferrandi
+❑Lecture 15 — Competitive Analysis
+- 1 -
+
+
+--- PDF PAGE 2 ---
+- 2 -
+01
+Self-organizing lists and online algorithms
+02
+Move-to-Front and competitive analysis
+03
+Potential-function proof
+04
+Paging: LRU vs. offline MIN
+
+
+--- PDF PAGE 3 ---
+Self-organizing lists
+- 3 -
+Unsorted list L with n items
+ACCESS(x) costs rankL(x): position of x, counting from 1.
+Swapping adjacent items costs 1 in the paid-exchange model.
+
+
+--- PDF PAGE 4 ---
+Self-organizing lists
+12
+3
+50
+14
+17
+4
+L
+Example:
+- 4 -
+Unsorted list L with n items
+ACCESS(x) costs rankL(x): position of x, counting from 1.
+Swapping adjacent items costs 1 in the paid-exchange model.
+
+
+--- PDF PAGE 5 ---
+Self-organizing lists
+12
+3
+50
+14
+17
+4
+L
+Accessing the element with key 14 costs 4.
+Example:
+12
+3
+50
+14
+- 5 -
+Unsorted list L with n items
+ACCESS(x) costs rankL(x): position of x, counting from 1.
+Swapping adjacent items costs 1 in the paid-exchange model.
+
+
+--- PDF PAGE 6 ---
+Self-organizing lists
+12
+3
+50
+14
+17
+4
+L
+Transposing 3 and 50 costs 1.
+Example:
+3
+50
+- 6 -
+Unsorted list L with n items
+ACCESS(x) costs rankL(x): position of x, counting from 1.
+Swapping adjacent items costs 1 in the paid-exchange model.
+
+
+--- PDF PAGE 7 ---
+On-line and off-line problems
+Definition. A sequence S of operations is 
+provided one at a time.  For each operation, 
+an 
+on-line algorithm A must execute the 
+operation immediately without any 
+knowledge of future operations (e.g., Tetris).
+An off-line algorithm may see the whole 
+sequence S in advance. 
+Goal: Minimize the total cost CA(S).
+The game of Tetris
+- 7 -
+
+
+--- PDF PAGE 8 ---
+Worst-case analysis of self-organizing lists
+An adversary always accesses the tail (nth) element of L.  
+Then, for any on-line algorithm A, we have
+CA(S) = (|S| n) 
+in the worst case.
+- 8 -
+
+
+--- PDF PAGE 9 ---
+Why competitive analysis?
+FROM A PESSIMISTIC BOUND TO A MEANINGFUL COMPARISON
+Worst-case and average-case answers do not tell the same story.
+Worst case
+An adversary can repeatedly request the current tail: 
+Ω(mn) for any deterministic online strategy.
+Average case
+Requires a probabilistic assumption p(x); the access 
+sequence might instead be bursty.
+Competitive 
+analysis
+Compares online A with OPT on the same access 
+sequence, even if OPT sees the future.
+OPT is a mathematical benchmark, not a practical algorithm that can predict future requests.
+- 9 -
+
+
+--- PDF PAGE 10 ---
+E[𝐶𝐴(𝑆)] = ෍
+𝑥∈𝐿
+𝑝(𝑥) ⋅rank𝐿( 𝑥)
+Average-case analysis of self-organizing lists
+Assume independent requests X with P[X = x] = p(x).
+For one access, with list L fixed:
+Among fixed orderings, the minimum is achieved by sorting L in 
+decreasing order of p(x).
+Heuristic: estimate popularity using access counts.
+Caution: this assumes a probabilistic model.
+- 10 -
+
+
+--- PDF PAGE 11 ---
+The move-to-front heuristic
+Practice: Implementers discovered that the move-to-front 
+(MTF) heuristic empirically yields good results.
+IDEA: After accessing x, move x to the head of L using 
+transposes:
+exact cost = r + (r − 1) = 2r − 1 ≤ 2r
+The MTF heuristic responds well to locality in the access 
+sequence S.
+- 11 -
+
+
+--- PDF PAGE 12 ---
+Competitive analysis
+Definition. An on-line algorithm A is 
+-competitive if there exists a constant k such that for any sequence 
+S of operations,
+CA(S)    COPT(S) + k ,
+where OPT is the optimal off-line algorithm (“God’s algorithm”).
+- 12 -
+
+
+--- PDF PAGE 13 ---
+What is paid for?
+TWO LIST-UPDATE COST MODELS
+The competitive factor depends on how we charge reordering.
+PAID MODEL
+cMTF = 2r − 1 ≤ 2r
+4-competitive
+All adjacent transposes cost 1.
+FREE MODEL
+cMTF = r
+2-competitive
+Forward moves of the accessed 
+item are free.
+Sleator–Tarjan (1985), §2 and §5. This lecture proves the paid-model factor 4.
+- 13 -
+
+
+--- PDF PAGE 14 ---
+MTF is O(1)-competitive
+Theorem. MTF is 4-competitive for self-organizing lists.
+- 14 -
+
+
+--- PDF PAGE 15 ---
+MTF is O(1)-competitive
+Theorem. MTF is 4-competitive for self-organizing lists.
+- 15 -
+Proof setup: let Lᵢ and Lᵢ* be the lists after access i.
+r = rank of x in MTF before the access
+r* = rank of x in OPT before the access
+cᵢ ≤ 2r       ;       cᵢ* = r* + tᵢ
+tᵢ counts the adjacent swaps made by OPT; MTF uses the upper bound 2r.
+
+
+--- PDF PAGE 16 ---
+Why this potential?
+INTUITION BEFORE THE ALGEBRA
+Count the pairwise disagreements between MTF and OPT.
+MTF
+E
+→
+C
+→
+A
+→
+D
+→
+B
+OPT
+C
+→
+A
+→
+B
+→
+D
+→
+E
+5 inverted pairs    →    Φ = 2 · 5 = 10
+Potential decreases can pay for expensive MTF moves; Φ compares TWO evolving 
+lists.
+- 16 -
+
+
+--- PDF PAGE 17 ---
+Potential function
+Potential at step i: compare the order in Lᵢ (MTF) and Lᵢ* (OPT).
+(Li) = 2  |{(x, y) : x Li  y and y Li* x}|
+ 
+= 2  # inversions .
+- 17 -
+
+
+--- PDF PAGE 18 ---
+Potential function
+Potential at step i: compare the order in Lᵢ (MTF) and Lᵢ* (OPT).
+(Li) = 2  |{(x, y) : x Li  y and y Li* x}|
+ 
+= 2  # inversions .
+Example.
+E
+C
+A
+D
+B
+Li
+C
+A
+B
+D
+E
+Li*
+(Li) = 2  |{(E,C), (E,A), (E,D), (E,B), (D,B)}|
+ 
+= 10 .
+- 18 -
+
+
+--- PDF PAGE 19 ---
+Reading the inversion example
+WHY Φ = 10 IN THE PREVIOUS SLIDE
+An inversion is an item pair whose relative order differs.
+Pairs reversed between MTF and OPT:
+(E,C)
+(E,A)
+(E,B)
+(E,D)
+(D,B)
+5 disagreements  × weight 2  =  Φ = 10
+The number is not a time cost: it is a measure of how far the two orderings 
+differ.
+- 19 -
+
+
+--- PDF PAGE 20 ---
+Potential function
+Potential at step i: compare the order in Lᵢ (MTF) and Lᵢ* (OPT).
+(Li) = 2  |{(x, y) : x Li  y and y Li* x}|
+ 
+= 2  # inversions .
+- 20 -
+
+
+--- PDF PAGE 21 ---
+Potential function
+Potential at step i: compare the order in Lᵢ (MTF) and Lᵢ* (OPT).
+(Li) = 2  |{(x, y) : x Li  y and y Li* x}|
+ 
+= 2  # inversions .
+Note that
+• (Li)  0 for i = 0, 1, …,
+• (L0) = 0 if MTF and OPT start with the 
+same list.
+- 21 -
+
+
+--- PDF PAGE 22 ---
+Potential function
+Potential at step i: compare the order in Lᵢ (MTF) and Lᵢ* (OPT).
+(Li) = 2  |{(x, y) : x Li  y and y Li* x}|
+ 
+= 2  # inversions .
+Note that
+• (Li)  0 for i = 0, 1, …,
+• (L0) = 0 if MTF and OPT start with the 
+same list.
+How much does  change from 1 transpose?
+• A transpose creates/destroys 1 inversion.
+•  = 2 .
+- 22 -
+
+
+--- PDF PAGE 23 ---
+What happens on an access?
+Suppose that operation i accesses element x, 
+and define
+A  B
+x
+C  D
+A  C
+x
+B  D
+Li–1
+Li–1*
+A = {y  Li–1 : y Li–1x and y Li–1* x},
+B = {y  Li–1 : y Li–1x and y Li–1* x},
+C = {y  Li–1 : y Li–1x and y Li–1* x},
+D = {y  Li–1 : y Li–1x and y Li–1* x}.
+- 24 -
+
+
+--- PDF PAGE 24 ---
+What happens on an access?
+A  B
+x
+C  D
+A  C
+x
+B  D
+Li–1
+Li–1*
+r = rankLi–1(x)
+r* = rankLi–1* (x)
+We have r = |A| + |B| + 1 and r* = |A| + |C| + 1.
+- 25 -
+
+
+--- PDF PAGE 25 ---
+What happens on an access?
+A  B
+x
+C  D
+A  C
+x
+B  D
+Li–1
+Li–1*
+We have r = |A| + |B| + 1 and r* = |A| + |C| + 1.
+r = rankLi–1(x)
+r* = rankLi–1* (x)
+When MTF moves x to the front, it creates |A| inversions and 
+destroys |B| inversions.  Each transpose by OPT creates  1 
+inversion.  Thus, we have
+(Li) – (Li–1)  2(|A| – |B| + ti) . 
+- 26 -
+
+
+--- PDF PAGE 26 ---
+Amortized cost
+ĉi = ci + (Li) – (Li–1)
+The amortized cost for the ith operation of MTF with 
+respect to  is
+- 27 -
+
+
+--- PDF PAGE 27 ---
+From ranks to a competitive factor
+TWO SHORT ESTIMATES
+Apply the potential bound and eliminate the rank r.
+ĉᵢ = cᵢ + ΔΦᵢ  ≤  2r + 2(|A| − |B| + tᵢ)
+Use |B| = r − 1 − |A|:
+ĉᵢ ≤ 4|A| + 2 + 2tᵢ
+Since |A| ≤ r* − 1,    ĉᵢ ≤ 4(r* + tᵢ) = 4cᵢ*
+The next slide records the whole derivation in one place.
+- 28 -
+
+
+--- PDF PAGE 28 ---
+Amortized cost
+ĉi = ci + (Li) – (Li–1)
+ 
+ 2r + 2(|A| – |B| + ti)
+ 
+= 2r + 2(|A| – (r – 1 – |A|) + ti)
+ 
+= 2r + 4|A| – 2r + 2 + 2ti 
+ 
+= 4|A| + 2 + 2ti 
+ 
+ 4(r* + ti)
+ 
+= 4ci*.
+The amortized cost for the ith operation of MTF with 
+respect to  is
+- 29 -
+
+
+--- PDF PAGE 29 ---
+The grand finale
+𝐶෍
+𝑖=1
+𝑆
+𝑐𝑖
+MTF
+= ෍
+𝑖=1
+𝑆
+Ƹ𝑐𝑖+ Φ(𝐿𝑖−1) −Φ(𝐿𝑖)
+≤
+෍
+𝑖=1
+𝑆
+4𝑐𝑖∗
++ Φ(𝐿0) −Φ(𝐿𝑆)
+≤4 ⋅𝐶OPT
+Thus, we have
+since (L0) = 0 and (L|S|)  0.
+- 30 -
+
+
+--- PDF PAGE 30 ---
+Addendum
+If we count transpositions that move x toward the front as “free” 
+(models splicing x in and out of L in constant time), then MTF is 2-
+competitive.
+- 32 -
+
+
+--- PDF PAGE 31 ---
+Addendum
+If we count transpositions that move x toward the front as “free” 
+(models splicing x in and out of L in constant time), then MTF is 2-
+competitive.
+- 33 -
+What if L₀ ≠ L₀*?
+0 ≤ Φ₀ ≤ n(n − 1)  =  O(n²)
+CMTF(S) ≤ 4 · COPT(S) + Φ₀
+The additive term is constant w.r.t. |S| when list size n is fixed.
+
+
+--- PDF PAGE 32 ---
+What the theorem does — and does 
+not — say
+INTERPRETING 4-COMPETITIVENESS
+It DOES guarantee
+Across every fixed access sequence, MTF total cost ≤ 
+4 · offline optimum (+ startup term).
+It does NOT 
+guarantee
+Each operation of MTF is at most four times the same 
+operation of OPT.
+It DOES explain
+Why exploiting locality can be robust even when 
+future accesses are unknown.
+Next: the very same recency idea in operating-system page 
+replacement.
+- 34 -
+
+
+--- PDF PAGE 33 ---
+From MTF to LRU
+THE SAME RECENCY PRINCIPLE
+MTF maintains a recency order; LRU keeps only its first k pages.
+D
+→
+B
+→
+A
+→
+C
+→
+E
+→
+F
+FAST MEMORY (k = 3)
+NOT IN CACHE
+Access to D (hit): D becomes most recent. Access to E (miss): evict A (least 
+recent) and insert E.
+Sleator–Tarjan (1985), §4: LRU paging corresponds to the recency rule of move-to-front.
+- 35 -
+
+
+--- PDF PAGE 34 ---
+Paging model and offline optimum
+COST IS A PAGE FAULT, NOT A SCAN DISTANCE
+f(r) = 0  for r ≤ k          f(r) = 1  for r > k
+LRU — online
+Evict the page least recently requested. No future 
+knowledge.
+MIN — offline OPT
+Evict the page whose next request is farthest in the 
+future.
+The step function f is not convex, so the earlier MTF proof cannot be reused verbatim.
+- 36 -
+
+
+--- PDF PAGE 35 ---
+Worked example: LRU versus MIN
+CACHE CAPACITY k = 3 · BOTH START EMPTY
+Access sequence:   A → B → C → D → A → B → C → D
+#
+Request
+LRU cache state (most → 
+least recent)
+LRU fault?
+MIN: set
+MIN
+1
+A
+A
+MISS
+A
+MISS
+2
+B
+BA
+MISS
+AB
+MISS
+3
+C
+CBA
+MISS
+ABC
+MISS
+4
+D
+DCB
+MISS
+ABD
+MISS
+5
+A
+ADC
+MISS
+ABD
+HIT
+6
+B
+BAD
+MISS
+ABD
+HIT
+7
+C
+CBA
+MISS
+BCD
+MISS
+8
+D
+DCB
+MISS
+BCD
+HIT
+Total faults:  LRU = 8     |     MIN = 5    (MIN knows the complete future)
+- 37 -
+
+
+--- PDF PAGE 36 ---
+Why LRU can lose — and still be 
+competitive
+CYCLIC ACCESS PATTERN
+Four distinct pages repeatedly compete for three cache slots.
+A
+→
+B
+→
+C
+→
+D
+→
+A
+→
+B
+→
+C
+→
+D
+LRU
+8 misses
+The just-evicted page is requested again.
+MIN
+5 misses
+Knowledge of future requests avoids 3 
+misses.
+This example is NOT a proof of the competitive ratio; it motivates its worst-case 
+guarantee.
+- 38 -
+
+
+--- PDF PAGE 37 ---
+The competitive guarantee for LRU
+SLEATOR–TARJAN (1985), THEOREM 6
+Let LRU have k frames and offline MIN have h ≤ k frames.
+F_LRU(S) ≤ [ k / (k − h + 1) ] · F_MIN(S) + h
+If h = k:     F_LRU(S) ≤ k · F_OPT(S) + k
+For k = 3 the factor is 3 (plus an additive startup term). In general this factor 
+depends on memory size.
+Reference: Sleator & Tarjan, “Amortized Efficiency…”, §4, Theorem 6, p. 207.
+- 39 -
+
+
+--- PDF PAGE 38 ---
+LRU in real systems
+THE THEORY IS AN IDEALIZED MODEL
+Linux memory management
+Multi-Gen LRU groups pages by access recency to inform page reclamation.
+docs.kernel.org/mm/multigen_lru.html
+Redis in-memory cache
+Approximated LRU samples eviction candidates rather than maintaining 
+exact recency.
+redis.io/docs/latest/develop/reference/eviction/
+Important: real policies are variants/approximations; the theorem is about 
+ideal LRU.
+External references: official Linux and Redis documentation (consulted October 2026).
+- 41 -
+
+
+--- PDF PAGE 39 ---
+Takeaways
+COMPETITIVE ANALYSIS CONNECTS THEORY AND SYSTEMS
+1
+Online algorithms cannot see the future
+Evaluate them against an offline benchmark on the same request sequence.
+2
+Potential captures future benefit
+Pairwise inversions yield a global proof even when single accesses are 
+costly.
+3
+Recency also governs paging
+LRU generalizes the idea, but needs a different proof and a k-dependent 
+bound.
+Question: why can LRU be costly on one sequence yet remain k-competitive?
+- 42 -
+
+
+--- PDF PAGE 40 ---
+References and further reading
+- 43 -
+Primary reference
+D. D. Sleator and R. E. Tarjan, “Amortized Efficiency of List Update and 
+Paging Rules,” Communications of the ACM 28(2), 1985, pp. 202–208.
+https://www.cs.cmu.edu/~sleator/papers/amortized-efficiency.pdf
+Applications and implementations
+Linux Kernel Documentation — Multi-Gen LRU
+https://docs.kernel.org/mm/multigen_lru.html
+Redis Documentation — Key eviction / approximated LRU
+https://redis.io/docs/latest/develop/reference/eviction/

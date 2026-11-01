@@ -1,0 +1,31 @@
+ Pattern 2 · Reduce: tree sum
+ From n elements to 1 result in log₂(n) rounds if you have enough processors
+
+
+
+     Why reduction matters                                                            Reduction tree
+                                                    a0           a1            a2    a3           a4     a5          a6               a7
+       Reduction is the primitive that                                                                            round 0: 8 values
+      turns a global dependency into a
+      sequence of local combinations.
+
+           Examples: sum, max, OR, dot
+            product, convergence tests.                                                                           round 1: 4 sums
+
+
+
+
+                                                                                                                  round 2: 2 sums
+
+
+
+
+                                                                                                                  round 3: final result
+                                                                                            Σ
+
+                                                         Tₚ = Θ(log n) with p≈n     Active work = Θ(n)        Cost pT = Θ(n log n)
+
+
+
+
+PATTERNS                                                                                                                                   AAPP · PRAM

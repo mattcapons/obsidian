@@ -2,10 +2,10 @@
 epoch: 1793097004660
 mode: agent
 backendId: codex
-sessionId: "01a17ce8-46c5-7880-8eb1-463d1628bbd0"
+sessionId: "01a18a1e-746e-7833-8593-25301f6d23af"
 agentLabel: "As you can see i have a series of question from old exams, i…"
-lastAccessedAt: 1793183749783
-usage: '{"usedTokens":141567,"contextWindow":828400,"updatedAt":1793184199701}'
+lastAccessedAt: 1793549444475
+usage: '{"usedTokens":313523,"contextWindow":828400,"updatedAt":1793571498256}'
 tags:
   - copilot-conversation
 ---
@@ -45,3 +45,197 @@ Each **Feedback** callout now includes an assessment, suggested exam answer, and
 
 Your original attempts and previous feedback are unchanged. The main areas to revisit are space complexity and the common-CW security example.
 [Timestamp: 2026/10/28 11:39:24]
+
+**user**: I answered to all question for the first PRAM section please correct them. it should be APP 01 from 021 to 036
+[Timestamp: 2026/10/30 02:01:57]
+
+**ai**: I’ll find APP 01 questions 021–036, check your answers, and add corrections in the note.
+I’m using the Obsidian Markdown skill to preserve the note’s formatting and links while reviewing your answers.
+The main corrections are that unit-time memory access still takes one model step, and an EREW algorithm can run unchanged on CREW or CRCW. I’m also checking the bounded-processor and reduced-memory questions, where the assumptions affect the answer.
+Your explanation of synchronization is mostly sound. The recurring gaps are the memory-access rules and complexity claims: shared memory still has access restrictions, and the reduced-memory lemma gives an upper bound rather than an exact slowdown. I’ll preserve your attempts and put each assessment and corrected answer in its existing collapsed Feedback callout.
+All 16 Feedback callouts are now filled in, with your original answers preserved. I’m checking the study links and confirming that the edits are limited to questions 021–036.
+Reviewed **AAPP-01-021–036** in [[Past Exam Question Bank]]. All 16 **Feedback** callouts now contain an assessment, corrected exam answer, and study references. Your original answers are preserved.
+
+Focus your revision on **023, 026, 032, and 033**. Another recurring correction: unit-time memory access takes **one model step**, not zero time.
+[Timestamp: 2026/10/30 02:01:57]
+
+**user**: Ok i moved to section 2 and i aswered up to question 8 correct them please
+[Timestamp: 2026/10/30 20:23:42]
+
+**ai**: I’ll review AAPP-02-001–008 and add feedback beneath each answer, preserving your attempts.
+Question 008 still contains the answer placeholder, so I’ll leave it unreviewed. For 001–007, the main corrections concern the difference between defining speedup and predicting it, and the runtime used to measure the serial fraction in each scaling law.
+Your answers to 004 and 006 are correct. Answers 002, 003, and 007 need clearer assumptions, while 001 needs the general speedup definition before Amdahl’s formula. For 005, I’ll add a self-contained answer so it can stand on its own in an exam.
+Reviewed **AAPP-02-001–007** in [[Past Exam Question Bank]], adding assessments, corrected answers, and study links while preserving your attempts.
+
+**004 and 006 are correct.** The main revisions concern speedup definitions and the assumptions behind Amdahl and Gustafson.
+
+**008 still contains the answer placeholder**, so it remains unreviewed.
+[Timestamp: 2026/10/30 20:23:42]
+
+**user**: Ok then i don't understand what gustafson law really is
+[Timestamp: 2026/10/30 22:01:09]
+
+**ai**: I’ll use the course’s explanation and a small example to show what Gustafson’s speedup actually compares.
+**Gustafson starts with a fixed time budget: use more processors to solve a larger problem within that time.**
+
+Imagine a simulation with these ideal timings:
+
+- Setting it up takes **2 seconds**, performed sequentially.
+- Simulating **100 particles** takes **8 seconds on one processor**.
+
+With one processor, you simulate 100 particles in $2+8=10$ seconds.
+
+Now use **4 processors** and increase the simulation to **400 particles**. Each processor handles 100 particles, so the parallel phase still takes 8 seconds. Including setup, you still finish in **10 seconds**.
+
+To calculate speedup, compare how long **that same 400-particle simulation** takes:
+
+| Part | On 4 processors | On 1 processor |
+|---|---:|---:|
+| Setup | 2 seconds | 2 seconds |
+| Simulating 400 particles | 8 seconds | 32 seconds |
+| **Total** | **10 seconds** | **34 seconds** |
+
+Therefore:
+
+$$
+S=\frac{34}{10}=3.4
+$$
+
+The extra processors let you complete a larger simulation within your original time budget.
+
+Gustafson’s formula expresses this calculation generally. Let $s$ be the fraction of the **parallel run’s elapsed time** spent on sequential work. Here:
+
+$$
+s=\frac{2}{10}=0.2
+$$
+
+The sequential part runs once. The work completed by $p$ processors during the parallel part would take $p$ times as long on one processor. Thus:
+
+$$
+S_G=s+p(1-s)
+$$
+
+For the example:
+
+$$
+S_G=0.2+4(0.8)=3.4
+$$
+
+This assumes ideal distribution of the parallel work, unchanged serial work, and no additional overhead. [Gustafson’s original paper](https://users.cs.utah.edu/~hari/teaching/paralg/Gustafson88.pdf#page=2)
+
+The distinction from Amdahl is what you hold fixed:
+
+- **Amdahl:** keep the particle count fixed and calculate how runtime decreases.
+- **Gustafson:** keep the time budget fixed and increase the particle count as processors are added.
+[Timestamp: 2026/10/30 22:01:09]
+
+**user**: But why multiple by p, it just increases the workload
+[Timestamp: 2026/10/30 22:03:53]
+
+**ai**: We multiply by $p$ because we are calculating **how long one processor would need to do the work completed by all $p$ processors**.
+
+Suppose 4 processors work simultaneously for 8 seconds:
+
+- Each performs 8 seconds’ worth of work.
+- Together they perform $4\times8=32$ processor-seconds of work.
+- One processor would need **32 seconds** to perform those four pieces sequentially.
+
+The parallel execution still takes **8 seconds**. Multiplication reconstructs the sequential comparison time.
+
+Including the 2-second setup:
+
+$$
+S=\frac{\text{one processor doing all that work}}{\text{four processors doing all that work}}
+=\frac{2+4\times8}{2+8}=3.4
+$$
+
+**Your observation is right: the workload increases.** Gustafson quantifies the benefit of completing that larger workload within the same time budget. Both sides of the speedup ratio execute that same larger workload.
+[Timestamp: 2026/10/30 22:03:53]
+
+**user**: ok so it right to say that gustafson is calculating the factor by which the parallel alogrithm is longer, if executed sequentially?
+[Timestamp: 2026/10/30 22:06:49]
+
+**ai**: Yes—**“longer” means execution time**. You can say:
+
+> Gustafson’s speedup tells us how many times longer the same scaled workload would take to execute sequentially than on $p$ processors.
+
+For example, $S_G=3.4$ means sequential execution would take **3.4 times as long**.
+
+What makes it specifically Gustafson’s viewpoint is that **the workload grows with processor count while the parallel execution time stays fixed**.
+[Timestamp: 2026/10/30 22:06:49]
+
+**user**: Ok i completed the second section please correct that
+[Timestamp: 2026/11/01 00:49:38]
+
+**ai**: I’ll check the completed second section and add feedback to the remaining answers. I’ll also check whether any previously reviewed answers have changed.
+Questions 001–007 are unchanged, and I found answers for all of 008–041. The main issues so far are a reversed speedup ratio in 031, weak scaling’s fixed work per processor, and the conclusion in 037: near-linear speedup alone does not identify which scaling model applies.
+The corrections are drafted. I’ve treated “already answered above” entries as revision cross-references and supplied concise answers that can stand on their own in an exam. The feedback also includes worked examples for extra work, idle processor cost, and speedup.
+All **41 questions in section 2** are now reviewed in [[Past Exam Question Bank]]. I added feedback to **008–041**, preserving your answers and earlier reviews.
+
+Main points to revisit:
+
+- **031:** the one-processor speedup ratio is $p$; efficiency 1 does not prove sequential optimality.
+- **037:** near-linear speedup can fit either scaling model.
+- **Weak scaling:** work per processor stays fixed; constant runtime is the desired result.
+- **022/040:** distinguish extra executed work from idle processor cost.
+[Timestamp: 2026/11/01 00:49:38]
+
+**user**: Ok i completed section 3
+[Timestamp: 2026/11/01 19:08:22]
+
+**ai**: I’ll review section 3 and add corrections beneath your answers, preserving your attempts.
+The main corrections concern matrix complexity and the comparison between scan and reduction. Your matrix–matrix answers use matrix–vector work bounds. Also, scan computes every prefix while reduction computes one total, so keeping more processors busy does not by itself make scan more efficient.
+Your concurrent-read example matches the lecture diagram: after the first pairwise sums, the value at position 2 is read by the processors computing prefixes 3 and 4. I’m keeping that broadcast scan separate from other scan implementations, since their intermediate values and work counts can differ.
+I’ve also qualified two prompts where the wording matters: 006 does not specify the efficiency metric, and “vector sum” in 009 could mean a reduction, elementwise addition, or a prefix scan. The feedback states the algorithm and assumptions for each answer.
+Reviewed **AAPP-03-001–009** in [[Past Exam Question Bank]], preserving your answers and adding corrected explanations, pseudocode, and study references.
+
+Main corrections:
+
+- **001/005:** classical matrix–matrix multiplication performs $\Theta(n^3)$ work.
+- **004:** the matrix–vector time bound was missing a factor of $n$.
+- **003/006:** scan computes every prefix; greater processor activity does not automatically mean greater efficiency.
+
+Your concurrent-read example in **002 is correct** for the lecture’s broadcast scan.
+[Timestamp: 2026/11/01 19:08:22]
+
+**user**: I completed section 5
+[Timestamp: 2026/11/01 20:38:10]
+
+**ai**: I’ll review section 5 and add feedback beneath your answers, preserving your attempts.
+
+[Timestamp: 2026/11/01 20:38:10]
+
+**user**: Sorry i mean i completed section 4
+[Timestamp: 2026/11/01 20:38:23]
+
+**ai**: I’ll review section 4, “Divide and conquer and recurrences,” and add feedback beneath your answers.
+Your powering explanation has the right central idea: compute the half-power once and reuse it. The main gaps are the Master theorem’s conditions and the space analyses. There are also two formula corrections: the odd exponent needs parentheses around $(n-1)/2$, and Strassen’s exponent is $\log_2 7\approx2.807$, so $O(n^{2.8})$ is not a valid exact bound.
+The exam prompts explicitly ask about space in 007, 008, and 011, so I’ll cover those parts too. Recursive powering uses $\Theta(\log n)$ stack space under the course’s word-cost model. I’ll also explain when the Master theorem can help analyze space or layout area.
+The feedback for all 19 questions is ready. I’ve kept your “already answered above” entries and added self-contained exam answers beneath them. The review also distinguishes ordinary block multiplication, which remains cubic, from Strassen’s seven-product recursion.
+Reviewed **AAPP-04-001–019** in [[Past Exam Question Bank]], preserving your answers and adding corrections and study references.
+
+Main points to revisit:
+
+- **008/010/011:** Master theorem assumptions, polynomial gaps, and regularity.
+- **007/011:** recursive powering uses $\Theta(\log n)$ stack space.
+- **005/012:** Strassen achieves $\Theta(n^{\log_2 7})$; ordinary block multiplication remains cubic.
+- **011:** the odd exponent is $(n-1)/2$.
+[Timestamp: 2026/11/01 20:38:23]
+
+**user**: I completed section 5
+[Timestamp: 2026/11/01 23:12:23]
+
+**ai**: I’ll review section 5 and add feedback beneath your answers, preserving your attempts.
+Your distinction between Las Vegas and Monte Carlo is mostly correct. I’ll clarify the runtime guarantees and the assumptions in your sampling example. Questions 008 and 009 also need a concrete data-structure example; a treap shows how randomization can improve expected performance while preserving exact answers.
+Your sampling example works under the lecture’s assumptions: independent uniform samples, with half the entries equal to `a`. Then Las Vegas needs 2 samples on average, and 20 Monte Carlo samples have failure probability $2^{-20}$. I’ll make those assumptions explicit and explain what changes if `a` is rare or absent.
+The nine feedback entries are ready, including a treap example for 008 and 009. I’ve also clarified that a Las Vegas algorithm can have a finite worst-case bound; an unbounded worst case is possible, but it is not part of the definition.
+Reviewed **AAPP-05-001–009** in [[Past Exam Question Bank]], preserving your answers and adding corrections and study links.
+
+Your main classification is mostly correct. Key clarifications:
+
+- Las Vegas algorithms can have finite worst-case bounds.
+- Monte Carlo efficiency also needs an error guarantee.
+- Your sampling example needs assumptions about target frequency.
+
+I added concrete **treap examples for 008 and 009** to explain randomized balancing with exact answers.
+[Timestamp: 2026/11/01 23:12:23]

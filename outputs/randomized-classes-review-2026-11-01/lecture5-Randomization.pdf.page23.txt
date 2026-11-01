@@ -1,0 +1,19 @@
+Which type is better?
+
+                         It depends on the application and the cost of being wrong.
+
+     Las Vegas                                          Monte Carlo
+
+     Error probability is 0.                            Running time is bounded.
+     Efficient if expected running time is              Efficient if worst-case running time is
+     polynomial.                                        polynomial and error probability is bounded.
+
+
+
+
+              If an incorrect answer is catastrophic, error probability matters more
+                                            than speed.
+
+
+
+Randomized Algorithms                                                                                  23

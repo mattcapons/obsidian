@@ -5,7 +5,7 @@ tags:
 ---
 # Advanced Algorithms and Parallel Programming
 
-Study collection for the fourteen currently available slide decks (537 PDF pages). Read the notes in lecture order; follow the cross-links when a later lecture reuses an earlier idea. No deck numbered 9 is supplied, so navigation continues from lecture 8 to lecture 10.
+Study collection for the fifteen currently available slide decks (577 PDF pages). Read the notes in lecture order; follow the cross-links when a later lecture reuses an earlier idea. No deck numbered 9 is supplied, so navigation continues from lecture 8 to lecture 10.
 
 ## Lectures
 
@@ -25,6 +25,7 @@ Study collection for the fourteen currently available slide decks (537 PDF pages
 | 12 | [[Dynamic Programming and LCS]] | Optimal substructure, memoization, LCS tables and reconstruction | [[lezione12DynamicProgramming.pdf\|Dynamic programming and LCS]] |
 | 13 | [[Binary Decision Diagrams]] | ROBDDs, unique/computed tables, ITE, ordering, ZBDDs | [[lezione13Dynamic ProgrammingBDD.pdf\|BDDs]] |
 | 14 | [[Amortized Analysis]] | Dynamic tables, aggregate, accounting and potential methods | [[lezione14AmortizedAnalysis.pdf\|Amortized analysis]] |
+| 15 | [[Competitive Analysis]] | Online/offline models, MTF and inversion potentials, LRU versus MIN paging | [[lezione15CompetitiveAnalysis.pdf\|Competitive analysis]] |
 
 ## Study routes
 
@@ -38,6 +39,7 @@ Study collection for the fourteen currently available slide decks (537 PDF pages
 - **Maintain an ordered dictionary:** [[Randomized Data Structures#Treaps: a search tree and a priority heap]] → [[Randomized Data Structures#Split and the restricted Union]] → [[Randomized Data Structures#Skip lists: fast lanes over a sorted list]].
 - **Reuse overlapping states:** [[Dynamic Programming and LCS#State definition and recurrence]] → [[Dynamic Programming and LCS#Memoization: solve each requested state once]] → [[Binary Decision Diagrams#Unique table and computed table]] → [[Binary Decision Diagrams#The if-then-else operation]].
 - **Separate expected and amortized costs:** [[Randomized Data Structures#Comparing guarantees]] → [[Amortized Analysis#Worst-case per operation versus worst-case sequence]] → [[Amortized Analysis#Aggregate method]] → [[Amortized Analysis#Potential method]].
+- **Compare an online strategy with offline OPT:** [[Amortized Analysis#Potential method]] → [[Competitive Analysis#Competitive guarantees and the additive constant]] → [[Competitive Analysis#The inversion potential]] → [[Competitive Analysis#Proving paid-model MTF is 4-competitive]] → [[Competitive Analysis#LRU's competitive guarantee]].
 
 ## How to use these notes
 
@@ -71,17 +73,20 @@ The notes have been reviewed against the supplied slides and checked with select
 - [[Dynamic Programming and LCS#Exam practice]] — tables, reconstruction, memoized states and space claims.
 - [[Binary Decision Diagrams#Exam practice]] — reduction, caching, ordered composition and ZDD semantics.
 - [[Amortized Analysis#Exam practice]] — exact prefix costs, potentials and allocation models.
+- [[Competitive Analysis#Exam practice]] — list-update cost models, inversion accounting, startup terms, paging traces and online decisions.
 
-The worked problems are original practice, not retrieved past-paper questions. The fourteen decks establish the current slide collection's boundaries; they do not establish that every announced exam topic has already been supplied. The introduction explicitly excludes CUDA from the current syllabus even though historical CUDA questions remain in the bank.
+The worked problems are original practice, not retrieved past-paper questions. The fifteen decks establish the current slide collection's boundaries; they do not establish that every announced exam topic has already been supplied. The introduction explicitly excludes CUDA from the current syllabus even though historical CUDA questions remain in the bank.
 
 ## Topics announced but not yet supplied
 
-Selection, primality/cryptosystems, treaps/skip lists, LCS, BDDs and dynamic-table amortization now have dedicated notes. Still awaiting lecture-specific decks for approximation, competitive/online methods (including move-to-front), further string-matching topics, and the broader parallel tools and patterns announced by the introduction. The bank also contains disjoint-set and other questions beyond the currently supplied slide topics. A related note link does not certify complete coverage of every historical question.
+Selection, primality/cryptosystems, treaps/skip lists, LCS, BDDs, dynamic-table amortization, and competitive/online methods now have dedicated notes. [[Competitive Analysis]] covers move-to-front and LRU versus offline MIN, including the paid/free list models and the distinct paging guarantee. Still awaiting lecture-specific decks for approximation, further string-matching topics, and the broader parallel tools and patterns announced by the introduction. The bank also contains disjoint-set and other questions beyond the currently supplied slide topics. A related note link does not certify complete coverage of every historical question.
 
 ## Local notebooks
 
-Five notebook files are present: [[lecture3-DandC-profiling.ipynb]], [[01_pram_reduction_prefix_sum.ipynb]], [[02_amdahl_gustafson_scaling.ipynb]], [[03_strong_weak_scaling.ipynb]], and [[04_ispc.ipynb]]. They have not been executed in this slide-note update; see [[Course Workflow#Current gaps and scope — 2026-10-26|current verification limits]].
+Five notebook files are present: [[lecture3-DandC-profiling.ipynb]], [[01_pram_reduction_prefix_sum.ipynb]], [[02_amdahl_gustafson_scaling.ipynb]], [[03_strong_weak_scaling.ipynb]], and [[04_ispc.ipynb]]. They have not been executed in this slide-note update; see [[Course Workflow#Current gaps and scope — 2026-11-01|current verification limits]].
 
 ## Past exams
 
-[[Past Exam Question Bank]] — 552 unanswered questions from 58 distinct 2022–2026 exam papers, grouped by topic, with original exam references, code, and diagrams. The bank's current entries and IDs are preserved; new lecture links provide study context.
+[[Past Exam Question Bank]] — 552 questions from 58 distinct 2022–2026 exam papers, grouped by topic, with original exam references, code, and diagrams. The bank's current entries and IDs are preserved; new lecture links provide study context.
+
+[[Exam Recap]] — a growing revision companion with the same 25 topic sections as the bank. Sections 1–5 currently consolidate 114 reviewed questions on PRAM, parallel performance and scaling, divide and conquer/recurrences, and randomized algorithm classes, with short reminders emphasizing corrected mistakes and recent exams; the remaining sections are ready for later expansion.

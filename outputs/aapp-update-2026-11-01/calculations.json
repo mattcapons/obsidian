@@ -1,0 +1,390 @@
+{
+  "mtf_locality_trace": [
+    {
+      "request": 14,
+      "rank": 4,
+      "paid": 7,
+      "after": [
+        14,
+        12,
+        3,
+        50,
+        17,
+        4
+      ]
+    },
+    {
+      "request": 14,
+      "rank": 1,
+      "paid": 1,
+      "after": [
+        14,
+        12,
+        3,
+        50,
+        17,
+        4
+      ]
+    },
+    {
+      "request": 3,
+      "rank": 3,
+      "paid": 5,
+      "after": [
+        3,
+        14,
+        12,
+        50,
+        17,
+        4
+      ]
+    },
+    {
+      "request": 14,
+      "rank": 2,
+      "paid": 3,
+      "after": [
+        14,
+        3,
+        12,
+        50,
+        17,
+        4
+      ]
+    }
+  ],
+  "practice1": [
+    {
+      "request": "C",
+      "rank": 3,
+      "paid": 5,
+      "after": [
+        "C",
+        "A",
+        "B",
+        "D"
+      ]
+    },
+    {
+      "request": "A",
+      "rank": 2,
+      "paid": 3,
+      "after": [
+        "A",
+        "C",
+        "B",
+        "D"
+      ]
+    },
+    {
+      "request": "C",
+      "rank": 2,
+      "paid": 3,
+      "after": [
+        "C",
+        "A",
+        "B",
+        "D"
+      ]
+    },
+    {
+      "request": "D",
+      "rank": 4,
+      "paid": 7,
+      "after": [
+        "D",
+        "C",
+        "A",
+        "B"
+      ]
+    }
+  ],
+  "exhaustive_local_access_cases_n_le_5": 74421,
+  "reverse_order_exact_optima": [
+    {
+      "n": 1,
+      "MTF": 1,
+      "OPT": 1
+    },
+    {
+      "n": 2,
+      "MTF": 6,
+      "OPT": 3
+    },
+    {
+      "n": 3,
+      "MTF": 15,
+      "OPT": 6
+    },
+    {
+      "n": 4,
+      "MTF": 28,
+      "OPT": 10
+    },
+    {
+      "n": 5,
+      "MTF": 45,
+      "OPT": 15
+    }
+  ],
+  "slide_paging_trace": {
+    "LRU": [
+      [
+        "A",
+        [
+          "A"
+        ],
+        true
+      ],
+      [
+        "B",
+        [
+          "B",
+          "A"
+        ],
+        true
+      ],
+      [
+        "C",
+        [
+          "C",
+          "B",
+          "A"
+        ],
+        true
+      ],
+      [
+        "D",
+        [
+          "D",
+          "C",
+          "B"
+        ],
+        true
+      ],
+      [
+        "A",
+        [
+          "A",
+          "D",
+          "C"
+        ],
+        true
+      ],
+      [
+        "B",
+        [
+          "B",
+          "A",
+          "D"
+        ],
+        true
+      ],
+      [
+        "C",
+        [
+          "C",
+          "B",
+          "A"
+        ],
+        true
+      ],
+      [
+        "D",
+        [
+          "D",
+          "C",
+          "B"
+        ],
+        true
+      ]
+    ],
+    "MIN": [
+      [
+        "A",
+        [
+          "A"
+        ],
+        true,
+        null
+      ],
+      [
+        "B",
+        [
+          "A",
+          "B"
+        ],
+        true,
+        null
+      ],
+      [
+        "C",
+        [
+          "A",
+          "B",
+          "C"
+        ],
+        true,
+        null
+      ],
+      [
+        "D",
+        [
+          "A",
+          "B",
+          "D"
+        ],
+        true,
+        "C"
+      ],
+      [
+        "A",
+        [
+          "A",
+          "B",
+          "D"
+        ],
+        false,
+        null
+      ],
+      [
+        "B",
+        [
+          "A",
+          "B",
+          "D"
+        ],
+        false,
+        null
+      ],
+      [
+        "C",
+        [
+          "B",
+          "C",
+          "D"
+        ],
+        true,
+        "A"
+      ],
+      [
+        "D",
+        [
+          "B",
+          "C",
+          "D"
+        ],
+        false,
+        null
+      ]
+    ]
+  },
+  "practice4": {
+    "LRU": [
+      [
+        "A",
+        [
+          "A"
+        ],
+        true
+      ],
+      [
+        "B",
+        [
+          "B",
+          "A"
+        ],
+        true
+      ],
+      [
+        "A",
+        [
+          "A",
+          "B"
+        ],
+        false
+      ],
+      [
+        "C",
+        [
+          "C",
+          "A"
+        ],
+        true
+      ],
+      [
+        "A",
+        [
+          "A",
+          "C"
+        ],
+        false
+      ],
+      [
+        "B",
+        [
+          "B",
+          "A"
+        ],
+        true
+      ]
+    ],
+    "MIN": [
+      [
+        "A",
+        [
+          "A"
+        ],
+        true,
+        null
+      ],
+      [
+        "B",
+        [
+          "A",
+          "B"
+        ],
+        true,
+        null
+      ],
+      [
+        "A",
+        [
+          "A",
+          "B"
+        ],
+        false,
+        null
+      ],
+      [
+        "C",
+        [
+          "A",
+          "C"
+        ],
+        true,
+        "B"
+      ],
+      [
+        "A",
+        [
+          "A",
+          "C"
+        ],
+        false,
+        null
+      ],
+      [
+        "B",
+        [
+          "B",
+          "C"
+        ],
+        true,
+        "A"
+      ]
+    ]
+  },
+  "exhaustive_paging_sequences_4_pages_length_le_6": 5461,
+  "all_assertions_passed": true
+}

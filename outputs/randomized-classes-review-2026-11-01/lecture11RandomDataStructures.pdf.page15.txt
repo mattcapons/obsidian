@@ -1,0 +1,14 @@
+       Search for element with key k
+
+1 v := root;
+2 while v ≠ nil do
+3   case key(v) = k : stop; “element found”
+(successful search)
+4     key(v) < k : v:= RightChild(v);
+5     key(v) > k : v:= LeftChild(v);
+6   endcase;
+7 endwhile;
+8 “element not found” (unsuccessful search)
+
+Running time: O(# elements on the search path)
+                           - 15 -

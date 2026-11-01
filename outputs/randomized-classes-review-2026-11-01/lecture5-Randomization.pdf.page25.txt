@@ -1,0 +1,19 @@
+Example: find character 'a'
+
+                              Input: an array of n elements, half 'a' and half 'b'.
+
+
+
+
+                 a      b    b        a        b        a        a         b          a   b
+
+
+
+
+                                          Output: find any 'a'
+
+                            We compare a Las Vegas version and a Monte Carlo version.
+
+
+
+Randomized Algorithms                                                                         24

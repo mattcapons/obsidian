@@ -481,6 +481,7 @@ Same answer as before. Maybe give me a different example here.
 >
 > **Study and attribution:** [[PRAM#CRCW write rules]]; [[lecture4-PRAM.pdf#page=6|slides 6–7]]. This worked sortedness example applies the Boolean-AND construction in [John E. Savage, *Models of Computation*, §7.9.2, proof of Theorem 7.9.2](https://cs.brown.edu/people/jsavage/book/pdfs/ModelsOfComputation_Chapter7.pdf#page=34): initialize to 1 and let only failing conditions write 0.
 
+
 ### AAPP-01-019
 
 Explain the factors that simplify the computation of time complexity in a PRAM application, giving them in order of priority. (1)
@@ -543,10 +544,16 @@ Source: [[Tema Esame 2024-11-12-1st.pdf#page=2|2024-11-12-1st · Exercise 1A · 
 
 **My answer**
 
-*Write your answer here.*
+True, synchronization primitives are used mainly for read/write conflict. But in a PRAM model all processor are synchronized, so read and write phase never overlap. In order to exchange data, the data is written in memory and on the next cycle it is read.
 
 > [!note]- Feedback
-> Not reviewed yet.
+> **Reviewed: 2026-10-30.**
+>
+> **Assessment: mostly correct; refine the reason.** True is the intended answer. Your write-in-one-round/read-in-the-next explanation is correct. Synchronization primitives also enforce ordering and mutual exclusion in real programs; they are not mainly a remedy for mixed read/write conflicts. PRAM supplies the required phase ordering as part of the model. Same-phase read/read and write/write restrictions still apply.
+>
+> **Suggested exam answer:** True, for exchanging data between synchronous PRAM rounds. All processors execute read, compute, and write phases in lockstep, with an implicit global barrier before the next round. A value written in round $r$ can therefore be read in round $r+1$ without programming a lock, signal, or barrier. The algorithm must still obey its EREW/CREW/CRCW memory-access rules.
+>
+> **Study:** [[PRAM#What a synchronous round actually guarantees]]; [[lecture4-PRAM.pdf#page=5|slide 5]].
 
 ### AAPP-01-022
 
@@ -558,10 +565,16 @@ Source: [[Tema Esame 2025-01-24-1st.pdf#page=2|2025-01-24-1st · Exercise 1A · 
 
 **My answer**
 
-*Write your answer here.*
+This phrase has mainly 2 implications. The first is that an arbitrary amout of processor can access memory through a private channel at the same time, while normally this would have bandwidth issues. The second  is that to have unit time there must be no latency, which is impossible in real systems. 
 
 > [!note]- Feedback
-> Not reviewed yet.
+> **Reviewed: 2026-10-30.**
+>
+> **Assessment: partly correct; unit latency does not mean zero latency.** You correctly identify the idealization of bandwidth and simultaneous access. A permitted access costs one model step, independently of processor, address, or other permitted accesses. PRAM does not require a particular physical implementation such as a private channel per processor.
+>
+> **Suggested exam answer:** Every processor can read or write any shared-memory cell in constant, unit time. All $p$ processors can perform permitted accesses simultaneously, with no extra penalty for network distance, cache misses, bandwidth saturation, or contention between permitted accesses. This makes communication costs independent of the machine's physical layout. Same-cell accesses must still satisfy the selected EREW/CREW/CRCW rule. Each access takes one model step, rather than zero time.
+>
+> **Study:** [[PRAM#RAM and PRAM execution]]; [[PRAM#Memory-access rules]]; [[lecture4-PRAM.pdf#page=4|slide 4]]. See also [Blelloch and Maggs, §25.2.1](https://www.cs.cmu.edu/~guyb/papers/BM10.pdf#page=4).
 
 ### AAPP-01-023
 
@@ -574,10 +587,18 @@ Source: [[Tema Esame 2026-6-29-1st.pdf#page=2|2026-6-29-1st · Exercise 1A · p.
 
 **My answer**
 
-*Write your answer here.*
+I would say that a pram model can be scaled to any number of processors, so the algorithm should take advantage of that. But with a bounded amount there is a hard cap to possible performance and the normal algorithm might generalize too much for a fixed amount of processors.
 
 > [!note]- Feedback
-> Not reviewed yet.
+> **Reviewed: 2026-10-30.**
+>
+> **Assessment: incomplete; state the time bound and distinguish a fixed constant from a parameter.** You recognize that fewer processors limit parallelism, but the question needs a complexity statement. A processor bound does not make an algorithm inappropriate; excess virtual processors can be simulated.
+>
+> **Suggested exam answer:** With $p$ available processors, at most $p$ basic operations execute per step, so an execution doing $W(n)$ operations needs at least $W(n)/p$ time; dependencies can impose a larger bound. If an algorithm uses $q>p$ virtual processors for $t(n)$ rounds, batching them gives a simulation in $O(t(n)\lceil q/p\rceil)$ time, preserving the shared memory and phase/access rules. If $p$ is a fixed constant independent of input size, parallelism can improve time only by a constant factor relative to an optimal sequential solution under the same instruction and memory assumptions. If $p=p(n)$ grows with $n$, retain it in the bound $T_p(n)$.
+>
+> **Example:** Chunked summation takes $O(n/p+\log p)$ time for $1\le p\le n$. For fixed $p$, its worst-case time is $\Theta(n)$, like sequential summation.
+>
+> **Study:** [[PRAM#Simulating limited resources]]; [[PRAM#Why work and depth give two different lower bounds]]; [[lecture4-PRAM.pdf#page=25|slide 25]].
 
 ### AAPP-01-024
 
@@ -589,10 +610,16 @@ Source: [[Tema Esame 2025-02-14-1st.pdf#page=2|2025-02-14-1st · Exercise 1B · 
 
 **My answer**
 
-*Write your answer here.*
+All memory access in a PRAM model is parallel and unit time, which means that an arbitrary amount of processors can access the memory at the same time with no bandwidth limit and with no latency.
 
 > [!note]- Feedback
-> Not reviewed yet.
+> **Reviewed: 2026-10-30.**
+>
+> **Assessment: mostly correct about parallel access; replace “no latency” and describe the exchange.** Unit-time access means a fixed one-step latency. It also does not mean every processor can access arbitrarily many cells in one step, or that all same-cell accesses are legal.
+>
+> **Suggested exam answer:** Processors communicate indirectly through shared memory: one processor writes a value, and another reads it in a subsequent round. Each permitted read/write has unit latency, independent of processor or address. All processors can make their permitted accesses in parallel, without an additional bandwidth or network-contention penalty. Same-cell accesses remain subject to EREW/CREW/CRCW rules. A value written in the write phase cannot already be observed during that round's earlier read phase.
+>
+> **Study:** [[PRAM#RAM and PRAM execution]]; [[PRAM#What a synchronous round actually guarantees]]; [[lecture4-PRAM.pdf#page=4|slides 4–5]].
 
 ### AAPP-01-025
 
@@ -604,10 +631,16 @@ Source: [[Tema Esame 2025-06-05-1st.pdf#page=2|2025-06-05-1st · Exercise 1A · 
 
 **My answer**
 
-*Write your answer here.*
+The PRAM model guarantees that all computes units follow a fixed phase cycle and are synchronized. For communication all processor have simultaneous unit time acces to the shared memory. The implications for algorithm design is that no read/write conflicts can happen and the memory is not affected by caching, bandwidth or latency issues. 
 
 > [!note]- Feedback
-> Not reviewed yet.
+> **Reviewed: 2026-10-30.**
+>
+> **Assessment: mostly correct; synchronization does not eliminate every memory conflict.** Your account of lockstep phases and ideal shared-memory access is sound. Separate read and write phases prevent overlap between those phases, but simultaneous readers or writers can still violate the model's access policy. Access latency is fixed at one model step, with realistic additional delays ignored.
+>
+> **Suggested exam answer:** PRAM assumes synchronous read–compute–write rounds with an implicit barrier, so the programmer does not implement synchronization between rounds. Communication uses globally addressable shared memory with unit-time permitted accesses in parallel. Cache behavior, network delays, bandwidth limits, and realistic synchronization overheads are abstracted away. Algorithm design can therefore focus on dependencies, parallel time, total work, and legal memory access. The algorithm must still satisfy EREW/CREW/CRCW rules, and a good PRAM bound must be reassessed when mapping it to real hardware.
+>
+> **Study:** [[PRAM#Overview]]; [[PRAM#Memory-access rules]]; [[lecture4-PRAM.pdf#page=3|slides 3–6]].
 
 ### AAPP-01-026
 
@@ -620,10 +653,20 @@ Source: [[Tema Esame 2026-6-29-1st.pdf#page=2|2026-6-29-1st · Exercise 1C · p.
 
 **My answer**
 
-*Write your answer here.*
+I could go on about what each model does but all i can say about the algorithm design is that random allows the individual computations to matter less. While common allows to have algorithms that only write if the result is a predetermined value, which must be the same for all units.
 
 > [!note]- Feedback
-> Not reviewed yet.
+> **Reviewed: 2026-10-30.**
+>
+> **Assessment: partly correct; explain each rule's correctness obligation.** Your common-write idea is useful, but the agreed value need not be a fixed constant chosen in advance: all actual writers to a cell must agree in that phase. An arbitrary or random winner does not make individual computations less important. Every possible winning value must satisfy the required correctness condition; probability-based claims need a specified random rule and analysis.
+>
+> **Suggested exam answer:** The CW rule determines which algorithms and correctness proofs are valid. In **common CW**, all simultaneous writers to a cell must propose the same value. In **priority CW**, the highest-priority contender wins, allowing deterministic selection by processor priority. In **arbitrary CW**, any contender may win, so correctness must hold for every permitted winner. A **random CW** rule specifies a random winner and can support a probabilistic analysis. The same access pattern may be correct under one rule and incorrect under another.
+>
+> **Example:** To compute Boolean OR under common CRCW, first set a flag to 0, then let only processors with true inputs write 1. All writers agree. Letting false-input processors also write 0 would violate common CW, and an arbitrary winner could give the wrong OR.
+>
+> **Course terminology:** Slide 7 groups “Arbitrary/Random” together. Keep the unspecified-winner versus probabilistic-winner distinction explicit.
+>
+> **Study:** [[PRAM#CRCW write rules]]; [[PRAM#A useful CRCW example: Boolean OR]]; [[lecture4-PRAM.pdf#page=7|slide 7]]; [Karp and Ramachandran, §2.1](https://www.cs.cmu.edu/~guyb/paralg/papers/KarpRamachandran90.pdf#page=4).
 
 ### AAPP-01-027
 
@@ -636,10 +679,18 @@ Source: [[Tema Esame 2026-9-10-1st.pdf#page=2|2026-9-10-1st · Exercise 1A · p.
 
 **My answer**
 
-*Write your answer here.*
+It means that each individual cell has no limits of what value it can hold. Normally a memory element has a fixed size in bits, which determins what the bound for the representable value are, while in PRAM this bound don't exist. So if normally a bigger data would require multiple memory cells and a more complex logic to handle it, in PRAM this is simplified. 
 
 > [!note]- Feedback
-> Not reviewed yet.
+> **Reviewed: 2026-10-30.**
+>
+> **Assessment: correct; add the consequence for the cost model.** You correctly distinguish an unbounded integer from a fixed-width machine word. Be explicit that the question assumes the unbounded-word variant; an unbounded number of cells is a separate assumption.
+>
+> **Suggested exam answer:** In the assumed variant, one cell stores an arbitrarily large integer without overflow or splitting it across words. Under the unit-cost instruction assumption, permitted primitive operations cost constant time independently of operand bit length, and space counts cells rather than bits. Real fixed-width machines may need several words and extra operations, so these bounds need not describe bit complexity. This word-size convention is model-dependent. See [Tvrdík, RAM model and constrained PRAM models](https://pages.cs.wisc.edu/~tvrdik/2/html/Section2.html).
+>
+> **Example:** $2^{1000}$ occupies one cell under this assumption, although its binary representation requires 1001 bits. This does not mean an arbitrarily long sequence of operations takes one step.
+>
+> **Study:** [[PRAM#RAM and PRAM execution]]; [[lecture4-PRAM.pdf#page=4|slide 4]]. The slide says one word/integer per cell; the exam prompt supplies the explicit unbounded-integer assumption.
 
 ### AAPP-01-028
 
@@ -652,10 +703,16 @@ Source: [[Tema Esame 2026-1-22-1st.pdf#page=2|2026-1-22-1st · Exercise 1A · p.
 
 **My answer**
 
-*Write your answer here.*
+PRAM uses a fixed cycle, phase based behavior for all processors. All processors are synchronized to be in the same phase at the same time and only advance to the next when all are done. The phases are: Read, Compute, Write, Barrier(implies synchronization). 
 
 > [!note]- Feedback
-> Not reviewed yet.
+> **Reviewed: 2026-10-30.**
+>
+> **Assessment: correct.** You identified global phase synchronization and the four phases used in the course. Add that the barrier is implicit in the ideal model, rather than an explicit runtime primitive with a separately analyzed waiting cost.
+>
+> **Suggested exam answer:** PRAM uses synchronous, lockstep execution. Every round consists of read, local compute, write, and an implicit global barrier before the next round. No processor starts the next round until the current round is complete. Processors may be idle, and synchronization overhead is abstracted away. Textbooks that list only three read–compute–write phases include the same synchronization implicitly.
+>
+> **Study:** [[PRAM#RAM and PRAM execution]]; [[lecture4-PRAM.pdf#page=5|slide 5]].
 
 ### AAPP-01-029
 
@@ -667,10 +724,16 @@ Source: [[Tema Esame 2025-09-05-1st.pdf#page=2|2025-09-05-1st · Exercise 1B · 
 
 **My answer**
 
-*Write your answer here.*
+I already answered this multiple times. It is about the unit time simultaneous access from all processors.
 
 > [!note]- Feedback
-> Not reviewed yet.
+> **Reviewed: 2026-10-30.**
+>
+> **Assessment: correct central idea; make the answer self-contained.** “Unit-time simultaneous access” identifies the relevant assumption. In an exam, state what it guarantees directly; a reference to previous answers does not provide the requested explanation.
+>
+> **Suggested exam answer:** The simplifying assumption is that every processor can access any shared-memory cell in unit time, and all processors can perform permitted accesses in parallel. The model therefore ignores extra costs from network distance, cache behavior, or limited aggregate memory bandwidth. Same-cell accesses still obey EREW/CREW/CRCW rules.
+>
+> **Study:** [[PRAM#RAM and PRAM execution]]; [[lecture4-PRAM.pdf#page=4|slide 4]].
 
 ### AAPP-01-030
 
@@ -682,10 +745,16 @@ Source: [[Tema Esame 2025-11-06-1st.pdf#page=2|2025-11-06-1st · Exercise 1A · 
 
 **My answer**
 
-*Write your answer here.*
+The PRAM model is Write Exclusive and 2 different processors try to write to the same memory unit in the same cycle.
 
 > [!note]- Feedback
-> Not reviewed yet.
+> **Reviewed: 2026-10-30.**
+>
+> **Assessment: correct for exclusive-write PRAM, but too restrictive as a general definition.** You correctly identify the same address and simultaneous writes. Competing writes can also occur on CRCW, where the write rule specifies how they are handled. Equal proposed values still violate exclusive write.
+>
+> **Suggested exam answer:** “A write conflict occurs when two or more processors attempt to write to the same shared-memory cell in the same write phase.” On EREW or CREW, this is illegal even when their proposed values coincide. On CRCW, the specified rule applies: common CW requires agreement, while priority or arbitrary CW selects a winning writer. Writes to different cells, or to the same cell in different rounds, do not create this simultaneous-write conflict.
+>
+> **Study:** [[PRAM#Memory-access rules]]; [[PRAM#CRCW write rules]]; [[lecture4-PRAM.pdf#page=6|slides 6–7]].
 
 ### AAPP-01-031
 
@@ -697,10 +766,16 @@ Source: [[Tema Esame 2026-1-22-1st.pdf#page=2|2026-1-22-1st · Exercise 1B · p.
 
 **My answer**
 
-*Write your answer here.*
+Because we can create and optimize one algorithm that takes advantage of it and then it can allow multiple real architectures to use the ideal version by tuning it specifically for it instead of creating it from scratch. Furthermore the ideal PRAM model makes the initial algorithm design easier.
 
 > [!note]- Feedback
-> Not reviewed yet.
+> **Reviewed: 2026-10-30.**
+>
+> **Assessment: mostly correct; connect portability to analysis of parallelism.** Your explanation of easier initial design and adapting an abstract algorithm to architectures is sound. Add what can actually be measured and what the model cannot predict by itself.
+>
+> **Suggested exam answer:** PRAM provides a simple, machine-independent framework for designing parallel algorithms and analyzing their parallel time, work, dependencies, and memory conflicts. It helps identify available parallelism and compare algorithms before hardware details obscure the analysis. It also provides an optimistic benchmark: real implementations must add communication, bandwidth, cache, and synchronization costs. A PRAM algorithm is therefore a useful starting point for implementation, while a fast PRAM bound alone does not guarantee good real performance.
+>
+> **Study:** [[PRAM#Overview]]; [[lecture4-PRAM.pdf#page=3|slide 3]]; [[lecture4-PRAM.pdf#page=24|slide 24]].
 
 ### AAPP-01-032
 
@@ -712,10 +787,18 @@ Source: [[Tema Esame 2026-2-09-1st.pdf#page=2|2026-2-09-1st · Exercise 1B · p.
 
 **My answer**
 
-*Write your answer here.*
+No it is definitely not true. Since it has Both exclusive read and write, changing either to concurrent could create errors in the execution in the algorithm. It is possible that such algorithm exists but it is not a guarantee. 
 
 > [!note]- Feedback
-> Not reviewed yet.
+> **Reviewed: 2026-10-30.**
+>
+> **Assessment: incorrect; the intended answer is True.** You have reversed the direction of the model hierarchy. A more permissive machine allows additional access patterns; it does not force the program to make additional simultaneous accesses.
+>
+> **Suggested exam answer:** Yes, assuming the same processors, instruction set, memory, and synchronous execution semantics. A valid EREW algorithm never has simultaneous readers or writers to one cell. Every access it makes is therefore also legal on CREW and on CRCW. Running the unchanged program preserves its access pattern and result; the CRCW write-resolution rule is never needed to choose between competing writers. Thus EREW algorithms run unchanged on these more permissive models.
+>
+> **Direction matters:** A CREW algorithm that has several processors read the same cell in one phase is not automatically legal on EREW. That reverse direction may require copying or extra rounds.
+>
+> **Study:** [[PRAM#Memory-access rules]]; [[PRAM#Deciding legality from addresses]]; [[lecture4-PRAM.pdf#page=6|slide 6]]. The access restrictions are also defined by [Karp and Ramachandran, §2.1](https://www.cs.cmu.edu/~guyb/paralg/papers/KarpRamachandran90.pdf#page=4).
 
 ### AAPP-01-033
 
@@ -727,10 +810,18 @@ Source: [[Tema Esame 2026-2-09-1st.pdf#page=2|2026-2-09-1st · Exercise 1C · p.
 
 **My answer**
 
-*Write your answer here.*
+It would degrade more, because the lemma for memory limit says that the real memory takes on the work of multiple ideal memory cells, by a factor of p/p' by serializing access. The algorithm that uses a small working set mean that the factor p/p' is smaller and thus less memory operations are needed.
 
 > [!note]- Feedback
-> Not reviewed yet.
+> **Reviewed: 2026-10-30.**
+>
+> **Assessment: plausible conclusion, but correct the ratio and qualify what the lemma proves.** The memory ratio is $m/m'$, with $m$ simulated shared cells and $m'$ available shared cells. $p/p'$ is the processor ratio. For fixed $m,m'$, the stated ratio is unchanged by access order; a small working set can help only if the simulation exploits it.
+>
+> **Suggested exam answer:** I would generally expect more degradation when accesses are spread over many simulated memory segments, because more serialized segment visits may be needed. A small working set that fits in the available shared memory may permit reuse and fewer visits. The slide's general simulation bound is $O(t\lceil m/m'\rceil)$ time, using $\max(p,m')$ processors. This is an upper bound, rather than an exact slowdown or a proof that one access pattern is always slower. The locality advantage is an inference about a simulation that exploits the working set. In the original ideal PRAM, random versus nearby addresses alone has no extra access cost.
+>
+> **Storage assumption:** Reducing shared memory does not remove the simulated state. A standard proof retains the virtual cells in processor-local memory and uses the smaller shared memory for transfers; it does not store arbitrary $m$ words in $m'$ words of total storage. See [Tvrdík, “Simulation of large PRAMs on small PRAMs,” second lemma and proof](https://pages.cs.wisc.edu/~tvrdik/2/html/Section2.html).
+>
+> **Study:** [[PRAM#Simulating limited resources]]; [[PRAM#Why processor batching must preserve phases]]; [[lecture4-PRAM.pdf#page=25|slides 25–26]].
 
 ### AAPP-01-034
 
@@ -742,10 +833,16 @@ Source: [[Tema Esame 2026-6-11-1st.pdf#page=2|2026-6-11-1st · Exercise 1A · p.
 
 **My answer**
 
-*Write your answer here.*
+A RRAM i am assuming refers to everything and not only the compute phase. So it is divided in three phases: Read, Compute, Write. Every processor executes the same phase at the same time and they are repeated in a cycle. The computations are unitary time and the memory access is unbounded and unit time as well.
 
 > [!note]- Feedback
-> Not reviewed yet.
+> **Reviewed: 2026-10-30.**
+>
+> **Assessment: mostly correct; make synchronization and the amount of work per round explicit.** Your phase order and unit-cost idea are right. Three read–compute–write phases with implicit synchronization describe the same ordering as the course's four-phase presentation. Use “PRAM” rather than “RRAM.” Unbounded memory capacity does not allow one processor to access arbitrarily many cells in one step.
+>
+> **Suggested exam answer:** A PRAM consists of processors with private registers that communicate through globally addressable shared memory. They execute synchronous rounds: read a shared value into local state, perform a basic local computation, write a result, and synchronize before the next round. Each processor performs only a constant amount of primitive work per round and may be idle. Permitted memory accesses and basic operations have unit cost. Simultaneous accesses must obey the chosen EREW/CREW/CRCW policy.
+>
+> **Study:** [[PRAM#RAM and PRAM execution]]; [[lecture4-PRAM.pdf#page=4|slides 4–6]].
 
 ### AAPP-01-035
 
@@ -757,10 +854,16 @@ Source: [[Tema Esame 2026-6-11-1st.pdf#page=2|2026-6-11-1st · Exercise 1B · p.
 
 **My answer**
 
-*Write your answer here.*
+The possible conflict that may arise during memory access have to do with the exclusive policy, either for read or for write. If 2 separate processor try to access the same memory resource using the same operation, read or write, during the same cycle and the model is exclusive that would generate a conflict.
 
 > [!note]- Feedback
-> Not reviewed yet.
+> **Reviewed: 2026-10-30.**
+>
+> **Assessment: mostly correct for exclusive access; add CRCW and the phase distinction.** You correctly identify same-cell access by multiple processors under an exclusive policy. The answer should also explain how concurrent writes are handled, including illegal disagreement under common CW. Two reads do not corrupt a value, but they still violate an exclusive-read rule.
+>
+> **Suggested exam answer:** Simultaneous accesses to the same shared cell can produce read/read or write/write conflicts. On EREW, both are forbidden. On CREW, concurrent reads are allowed but concurrent writes are forbidden. On CRCW, concurrent writes follow a specified rule: common requires identical proposed values, priority selects the highest-priority writer, and arbitrary selects an unspecified contender. Different values violate common CW. Read and write phases are separated, so they do not overlap within a round. Accesses to distinct cells remain legal in parallel.
+>
+> **Study:** [[PRAM#Memory-access rules]]; [[PRAM#CRCW write rules]]; [[lecture4-PRAM.pdf#page=5|slides 5–7]].
 
 ### AAPP-01-036
 
@@ -772,10 +875,16 @@ Source: [[Tema Esame 2026-6-11-1st.pdf#page=2|2026-6-11-1st · Exercise 1C · p.
 
 **My answer**
 
-*Write your answer here.*
+As i said multiple times the memory has unit time unlimited simultaneous accesses. This makes it so that the memory phases are unit time and can be considered a fixed constant operation in complexity analysis. Add to that the fact that instruction for the processors are also considered unit time, a full cycle can be considered like a time unit.
 
 > [!note]- Feedback
-> Not reviewed yet.
+> **Reviewed: 2026-10-30.**
+>
+> **Assessment: mostly correct; complete the shared-memory description and qualify “unlimited simultaneous accesses.”** Your main complexity argument is right: a round contains a constant number of unit-cost phases. The model lets all available processors access memory in parallel, subject to the access policy, rather than letting one processor perform an unbounded number of accesses in a round.
+>
+> **Suggested exam answer:** Shared memory is a globally addressable array of cells through which processors communicate. In the ideal model its capacity is unbounded, and each permitted access costs one time unit independently of address or processor. All processors can make permitted accesses in parallel, subject to EREW/CREW/CRCW rules, without extra cache, network, bandwidth, or synchronization costs. Consequently, for a stated processor count $p$, parallel time $T_p(n)$ counts synchronous constant-time rounds. Operations performed concurrently do not add to elapsed time, although they do add to total work $W(n)$. Dependencies and repeated accesses across rounds still contribute to time.
+>
+> **Study:** [[PRAM#RAM and PRAM execution]]; [[PRAM#Performance quantities]]; [[lecture4-PRAM.pdf#page=4|slides 4–6]].
 
 ## Parallel performance and scaling
 
@@ -791,10 +900,18 @@ Source: [[Tema Esame 2022-11-08-1st.pdf#page=2|2022-11-08-1st · Exercise 1B · 
 
 **My answer**
 
-*Write your answer here.*
+This is speedup is described by ahmdal's law. Which is $S = \frac{1}{(1-f)+\frac t p}$ where p is the number of processors and t is the fraction of operations that can be parallelized. So the speed up is 1 divided by a non changable fraction plus a fraction, the sum is less then 1 if at least some part can be parallelized and so the speedup is higher than 1. The higher the parallel fraction or the number of processor is the higher the speedup.
 
 > [!note]- Feedback
-> Not reviewed yet.
+> **Reviewed: 2026-10-30.**
+>
+> **Assessment: partly correct, but you give a prediction law instead of the general definition.** You recognize how parallelizable work and processor count affect ideal speedup. However, your formula mixes an undefined $f$ with $t$. Use one symbol consistently, and define the fraction in terms of sequential execution time. Amdahl's law applies under additional assumptions; it is not the definition of speedup.
+>
+> **Suggested exam answer:** Speedup is the ratio of the sequential execution time to the parallel execution time for the same problem and input: $S_p(n)=T_{\mathrm{seq}}(n)/T_p(n)$. With the course's best sequential baseline, write $S_p(n)=T^*(n)/T_p(n)$. A speedup of 4 means the parallel run takes one quarter of the sequential time.
+>
+> **Your Amdahl formula, corrected:** If $f$ is the parallelizable fraction of the fixed-size sequential runtime, then ideal speedup is $S_p=1/((1-f)+f/p)$. This assumes ideal division of that parallel part and no additional overhead. It gives $S_p>1$ when $f>0$ and $p>1$; $p=1$ or $f=0$ gives 1. Measured speedup can be below 1 if a parallel implementation is slower.
+>
+> **Study:** [[PRAM#Speedup and efficiency]]; [[PRAM#Amdahl's law]]; [[lecture4-PRAM.pdf#page=11|slide 11]]; [[lecture4-PRAM.pdf#page=31|slide 31]].
 
 ### AAPP-02-002
 
@@ -806,10 +923,18 @@ Source: [[Tema Esame 2022-11-08-1st.pdf#page=2|2022-11-08-1st · Exercise 1C · 
 
 **My answer**
 
-*Write your answer here.*
+The main difference is that amdahl law calculates the speedup on a task that is initally sequential and it can be parallelized in part, that speedup can be read as a percentage. Gustafson law, instead calculates the speedup as the time it would take for an already parallelized program to be run sequentially, so the higher the more time it is saved. They can be compared with strong and weak scaling respectively. Strong scaling has the workload remain the same while the time dimishes, weak scaling instead increases the workload while keep the time the same.
 
 > [!note]- Feedback
-> Not reviewed yet.
+> **Reviewed: 2026-10-30.**
+>
+> **Assessment: mostly correct intuition; specify what remains fixed and how the fractions are measured.** You correctly connect Amdahl to strong scaling and Gustafson to scaled workloads. Both laws compare a sequential time with a parallel time; the distinction is not whether the program was initially sequential or already parallelized. Speedup is a dimensionless factor, usually expressed as “times faster,” rather than a percentage.
+>
+> **Suggested exam answer:** Amdahl considers a **fixed-size problem**. If $s_A$ is the serial fraction of its sequential runtime, ideal speedup on $p$ processors is $S_A(p)=1/(s_A+(1-s_A)/p)$, with a ceiling of $1/s_A$ when $s_A>0$. Gustafson considers a **scaled problem at fixed parallel runtime**. If $s_G$ is the serial fraction of that parallel run, its scaled speedup is $S_G(p)=s_G+(1-s_G)p$. Its sequential comparison executes that same scaled workload. The two serial fractions use different runtime baselines. Both ideal formulas omit additional parallel overhead.
+>
+> **Scaling qualification:** Strong scaling fixes total problem size. Weak scaling fixes work per processor while total work grows with $p$; approximately constant runtime is the desired outcome, rather than a guarantee. Gustafson's fixed-time viewpoint explains the benefit of growing the parallel workload.
+>
+> **Study:** [[PRAM#Strong and weak scaling]]; [[PRAM#Amdahl's law]]; [[PRAM#Gustafson's law]]; [[lecture4-PRAM.pdf#page=28|slide 28]]; [[lecture4-PRAM.pdf#page=31|slide 31]].
 
 ### AAPP-02-003
 
@@ -821,10 +946,18 @@ Source: [[Tema Esame 2023-01-17-1st.pdf#page=2|2023-01-17-1st · Exercise 1D · 
 
 **My answer**
 
-*Write your answer here.*
+False, each law right in its own way, amdahl is based on a fraction while gustafson on a multiplication of the parallel work by p cores.
 
 > [!note]- Feedback
-> Not reviewed yet.
+> **Reviewed: 2026-10-30.**
+>
+> **Assessment: correct True/False choice, but the explanation is insufficient.** False is the intended answer. Saying that one formula uses a fraction and the other a multiplication describes their algebra, not why they are compatible. Both formulas contain a serial fraction and processor count.
+>
+> **Suggested exam answer:** False. Gustafson challenges applying a fixed-problem-size assumption to workloads that grow with the available processors; he does not invalidate Amdahl's calculation under its assumptions. Amdahl holds problem size fixed, whereas Gustafson considers scaling the parallel workload within a fixed runtime. Their serial fractions are measured relative to the sequential and parallel runtimes respectively. For the same execution, using the corresponding fractions gives the same speedup. See [Gustafson, *Reevaluating Amdahl's Law*, fixed-size and scaled-size models](https://users.cs.utah.edu/~hari/teaching/paralg/Gustafson88.pdf#page=2).
+>
+> **Example:** A sequential run takes 100 seconds: 20 serial and 80 parallelizable. With four ideal processors it takes $20+80/4=40$ seconds, so speedup is $2.5$. Amdahl uses $s_A=20/100=0.2$ and gives $1/(0.2+0.8/4)=2.5$. Gustafson uses $s_G=20/40=0.5$ and gives $0.5+0.5\cdot4=2.5$. Substituting the same numerical fraction into both formulas would describe different assumptions.
+>
+> **Study:** [[PRAM#Reconciling the two serial fractions]]; [[lecture4-PRAM.pdf#page=31|slide 31]].
 
 ### AAPP-02-004
 
@@ -836,10 +969,16 @@ Source: [[Tema Esame 2023-02-14-1st.pdf#page=2|2023-02-14-1st · Exercise 1C · 
 
 **My answer**
 
-*Write your answer here.*
+The speedup using p processors is $S_{p}=\frac{T^*}{T_{p}}$ where T* is the time taken using the best comparable senquential algorithm, while the Tp is the time taken in PRAM using p processors in parallel.
 
 > [!note]- Feedback
-> Not reviewed yet.
+> **Reviewed: 2026-10-30.**
+>
+> **Assessment: correct.** You give the course's formula and correctly identify the best sequential baseline. State that both times refer to the same problem and input size. $T^*$ need not equal $T_1$, the time of the parallel algorithm run on one processor.
+>
+> **Suggested exam answer:** The speedup of a PRAM algorithm on $p$ processors is $S_p(n)=T^*(n)/T_p(n)$, where $T^*(n)$ is the execution time of the best sequential algorithm used as the baseline and $T_p(n)$ is the parallel execution time on $p$ processors for the same problem and input. It measures the factor by which parallel execution reduces runtime.
+>
+> **Study:** [[PRAM#Performance quantities]]; [[PRAM#Speedup and efficiency]]; [[lecture4-PRAM.pdf#page=11|slide 11]].
 
 ### AAPP-02-005
 
@@ -851,10 +990,18 @@ Source: [[Tema Esame 2023-02-14-1st.pdf#page=2|2023-02-14-1st · Exercise 1D · 
 
 **My answer**
 
-*Write your answer here.*
+I already answered this pretty much. 
 
 > [!note]- Feedback
-> Not reviewed yet.
+> **Reviewed: 2026-10-30.**
+>
+> **Assessment: no self-contained answer supplied.** Your earlier explanation contains the main idea, but “I already answered this” does not supply the requested definition. Write the formula and specify what its serial fraction measures.
+>
+> **Suggested exam answer:** Gustafson defines scaled speedup by comparing the runtime of a scaled problem on $p$ processors with the time a sequential processor would need for that same scaled problem. Normalize the parallel runtime to 1, and let $s_G$ be its serial fraction. The serial part still takes $s_G$ sequentially, while the parallel part would take $p(1-s_G)$. Therefore $S_G(p)=s_G+p(1-s_G)=p-(p-1)s_G$. The model scales the parallel workload to use additional processors while keeping parallel runtime fixed. This is the [scaled-size construction in Gustafson's original paper](https://users.cs.utah.edu/~hari/teaching/paralg/Gustafson88.pdf#page=2).
+>
+> **Example:** If a four-processor run takes 10 seconds, with 2 serial seconds and 8 parallel seconds, the corresponding sequential time is $2+4\cdot8=34$ seconds. Thus $s_G=0.2$ and $S_G=34/10=0.2+4\cdot0.8=3.4$.
+>
+> **Study:** [[PRAM#Gustafson's law]]; [[lecture4-PRAM.pdf#page=31|slide 31]].
 
 ### AAPP-02-006
 
@@ -866,10 +1013,18 @@ Source: [[Tema Esame 2023-06-19-1st.pdf#page=2|2023-06-19-1st · Exercise 1C · 
 
 **My answer**
 
-*Write your answer here.*
+Efficiency of PRAM means how well the algorithm uses multiple p processors. It is $E_{p}=\frac{T_{1}}{pT_{p}}$ so it is comparing running the PRAM algorithm on one processor to the total use of the algorithm using p processors. So if it is inefficient there is a lot of idling so the fraction is well below 1. 
 
 > [!note]- Feedback
-> Not reviewed yet.
+> **Reviewed: 2026-10-30.**
+>
+> **Assessment: correct; refine the interpretation of inefficiency.** Your formula and distinction between one-processor runtime and allocated processor-time are correct. Idling is an important cause of low efficiency, but additional communication, scheduling, or synchronization overhead can also reduce efficiency on real systems. $pT_p$ measures allocated processor-time, including idle capacity, rather than only the operations actually performed.
+>
+> **Suggested exam answer:** According to the course convention, efficiency is $E_p(n)=T_1(n)/(pT_p(n))$, where $T_1(n)$ is the time of the same parallel algorithm on one processor and $T_p(n)$ is its time on $p$ processors. It compares the one-processor runtime with the total allocated processor-time. Under ideal linear scaling, $T_p=T_1/p$ and $E_p=1$; a lower value indicates less effective use of the allocated processors relative to this baseline.
+>
+> **Baseline caution:** The course defines speedup using $T^*$, so $E_p=S_p/p$ only when $T_1=T^*$. In general, $E_p=(T_1/T^*)\,S_p/p$. Keep this distinction, which you already handled correctly in question 004.
+>
+> **Study:** [[PRAM#Speedup and efficiency]]; [[PRAM#Work versus cost]]; [[lecture4-PRAM.pdf#page=8|slide 8]].
 
 ### AAPP-02-007
 
@@ -882,10 +1037,16 @@ Source: [[Tema Esame 2025-09-05-1st.pdf#page=2|2025-09-05-1st · Exercise 1D · 
 
 **My answer**
 
-*Write your answer here.*
+Amdahl assumes there is a task and a portion of this taks can be parallelized and another called s not. So using p processors the total task becomes s+(1-s)/p so the parallel part is split among the p processor. For the Gustafson law the task is already run in parallel, at least a fraction and we try to find how long it would take sequentially by multipling the parallel part by the number of processors, s+(1-s)p.
 
 > [!note]- Feedback
-> Not reviewed yet.
+> **Reviewed: 2026-10-30.**
+>
+> **Assessment: mostly correct; add the fixed-size/fixed-time assumptions and distinguish the fractions.** Your two runtime constructions are right. In Amdahl's model, $s+(1-s)/p$ is the normalized **parallel runtime**; speedup is its reciprocal. In Gustafson's model, $s+(1-s)p$ is the normalized **sequential runtime** of the scaled problem, and also its speedup because parallel runtime is normalized to 1. The two occurrences of $s$ therefore have different denominators.
+>
+> **Suggested exam answer:** Amdahl assumes a fixed problem size with an unchanged serial component. Normalize its sequential runtime to 1; if the serial fraction is $s_A$, then ideal parallel runtime is $s_A+(1-s_A)/p$ and speedup is its reciprocal. Gustafson assumes that the parallel workload grows with processor count while parallel runtime remains fixed and the serial component does not grow in the ideal model. Normalize that parallel runtime to 1; with serial fraction $s_G$, the same scaled work would take $s_G+p(1-s_G)$ sequentially. Both models assume ideal distribution of the parallel part over comparable processors and omit additional parallel overhead. Their different workload assumptions explain why they do not contradict each other.
+>
+> **Study:** [[PRAM#Amdahl's law]]; [[PRAM#Gustafson's law]]; [[PRAM#Reconciling the two serial fractions]]; [[lecture4-PRAM.pdf#page=31|slide 31]].
 
 ### AAPP-02-008
 
@@ -897,10 +1058,16 @@ Source: [[Tema Esame 2023-07-11-1st.pdf#page=2|2023-07-11-1st · Exercise 1D · 
 
 **My answer**
 
-*Write your answer here.*
+Work i a pram model is the number of operation executed across all processors. So every addition for example counts as 1, while the processor idling is not counted.
 
 > [!note]- Feedback
-> Not reviewed yet.
+> **Reviewed: 2026-11-01.**
+>
+> **Assessment: correct.** You correctly count executed operations across all processors and exclude idle slots. Count all basic operations required by the algorithm, including extra bookkeeping, rather than only useful arithmetic.
+>
+> **Suggested exam answer:** Work $W(n)$ is the total number of basic operations actually executed by all processors during a PRAM computation. If $a_r$ operations execute in round $r$, then $W=\sum_r a_r$. Simultaneous operations count separately; idle processors contribute no operations. Allocated cost is instead $C_p=pT_p$, so $W\le C_p$ under the unit-operation convention.
+>
+> **Study:** [[PRAM#Work versus cost]]; [[lecture4-PRAM.pdf#page=15|slide 15]].
 
 ### AAPP-02-009
 
@@ -912,10 +1079,16 @@ Source: [[Tema Esame 2023-09-11-1st.pdf#page=2|2023-09-11-1st · Exercise 1D · 
 
 **My answer**
 
-*Write your answer here.*
+Cost in PRAM is the total CPU time used. So i counts the time for the total execution times the number of processors pT_p. This is also counting unused processors in certain round, even if they are idle they are still considered a cost.
 
 > [!note]- Feedback
-> Not reviewed yet.
+> **Reviewed: 2026-11-01.**
+>
+> **Assessment: correct; use “allocated processor-time” for precision.** Your formula and inclusion of idle processors are right. Cost does not count every processor physically present in a machine: it counts the $p$ processors allocated to this computation for its duration.
+>
+> **Suggested exam answer:** PRAM cost is $C_p(n)=pT_p(n)$, the number of allocated processors multiplied by the parallel execution time. It includes idle processor-time within that allocation. Work counts actual operations and can be smaller. For example, four processors reserved for three rounds cost 12 processor-rounds even if only seven operations execute.
+>
+> **Study:** [[PRAM#Work versus cost]]; [[PRAM#Reading a processor-time diagram]]; [[lecture4-PRAM.pdf#page=8|slide 8]].
 
 ### AAPP-02-010
 
@@ -927,10 +1100,16 @@ Source: [[Tema Esame 2023-11-09-1st.pdf#page=2|2023-11-09-1st · Exercise 1B · 
 
 **My answer**
 
-*Write your answer here.*
+Look at the answer above
 
 > [!note]- Feedback
-> Not reviewed yet.
+> **Reviewed: 2026-11-01.**
+>
+> **Assessment: correct by reference to 009; supply the formula directly in an exam.** Your preceding definition applies here. The sequential baseline is needed to assess cost optimality, rather than to define cost itself.
+>
+> **Suggested exam answer:** If execution on $p$ processors takes $T_p(n)$ time, its cost is $C_p(n)=pT_p(n)$. This is allocated processor-time, including idle time. Relative to the best sequential baseline $T^*(n)$, the implementation is cost-optimal when $C_p(n)=\Theta(T^*(n))$.
+>
+> **Study:** [[PRAM#Work versus cost]]; [[lecture4-PRAM.pdf#page=8|slide 8]].
 
 ### AAPP-02-011
 
@@ -942,10 +1121,16 @@ Source: [[Tema Esame 2023-11-09-1st.pdf#page=2|2023-11-09-1st · Exercise 1C · 
 
 **My answer**
 
-*Write your answer here.*
+Fixed time model is referring to gustafson law. The time for a parallel execution is fixed to one and it is compared to the same program but run sequentially. Eventually the law can increase the workload but the time remains fixed.
 
 > [!note]- Feedback
-> Not reviewed yet.
+> **Reviewed: 2026-11-01.**
+>
+> **Assessment: mostly correct; distinguish the fixed budget from normalization.** You correctly identify Gustafson and the sequential comparison. The runtime is kept at a chosen budget, such as 10 seconds; writing it as 1 simply chooses normalized units. Growing the parallel workload as processors increase is the defining experiment.
+>
+> **Suggested exam answer:** A fixed-time model keeps the parallel runtime approximately constant while increasing the amount of work with the number of processors. This is Gustafson's viewpoint. If $s_G$ is the serial fraction of the parallel runtime, scaled speedup is $S_G(p)=s_G+p(1-s_G)$. It compares the time of the same scaled workload on one processor with its time on $p$ processors, assuming ideal parallel execution and unchanged serial work.
+>
+> **Study:** [[PRAM#Gustafson's law]]; [[lecture4-PRAM.pdf#page=31|slide 31]].
 
 ### AAPP-02-012
 
@@ -957,10 +1142,16 @@ Source: [[Tema Esame 2024-01-26-1st.pdf#page=2|2024-01-26-1st · Exercise 1B · 
 
 **My answer**
 
-*Write your answer here.*
+Efficiency in PRAM is how well the algorithm utilizes all processors in parallel. To compute it we compare the time it would take to execute the program on one processor to the total CPU time used on p processors $E=\frac{T_{1}}{pT_{p}}$. If all parallel cores are used perfectly with no wasted idling the efficiency is one, otherwise it is lower. The higher the better.
 
 > [!note]- Feedback
-> Not reviewed yet.
+> **Reviewed: 2026-11-01.**
+>
+> **Assessment: correct formula and main interpretation; qualify the “no idling” explanation.** Efficiency compares runtimes and allocated cost. On real systems, overhead can lower efficiency even when processors are active. Keeping processors busy with duplicated or unnecessary work also does not establish efficiency relative to the best sequential algorithm.
+>
+> **Suggested exam answer:** The course defines $E_p(n)=T_1(n)/(pT_p(n))$, where $T_1$ is the runtime of the parallel algorithm on one processor and $T_p$ its runtime on $p$ processors. Ideal linear scaling gives $T_p=T_1/p$ and $E_p=1$. Lower efficiency indicates that the allocated processor-time exceeds the one-processor baseline, for example through idle capacity or additional overhead. $T_1$ need not equal the best sequential time $T^*$.
+>
+> **Study:** [[PRAM#Speedup and efficiency]]; [[PRAM#Work versus cost]]; [[lecture4-PRAM.pdf#page=8|slide 8]].
 
 ### AAPP-02-013
 
@@ -972,10 +1163,16 @@ Source: [[Tema Esame 2024-01-26-1st.pdf#page=2|2024-01-26-1st · Exercise 1D · 
 
 **My answer**
 
-*Write your answer here.*
+Ok the stong scaling is related to the amdahl law because it is the principle of having a fixed workload and we want to test how much faster it can complete by adding compute, the speedup of amdahl law tells us exacltly that. For the weak scaling instead, the workload can vary but the compute time is fixed. We want to test how much work can be completed in the same time. Gustafson law fixes the parallel execution for for any workload to 1 and compares it with the sequential time.
 
 > [!note]- Feedback
-> Not reviewed yet.
+> **Reviewed: 2026-11-01.**
+>
+> **Assessment: mostly correct; define weak scaling through fixed work per processor.** Your association of strong scaling with Amdahl and scaled workloads with Gustafson is right. In a weak-scaling measurement, constant runtime is the desired result; the experiment fixes work per processor and measures whether runtime stays constant. Normalizing time to 1 does not make arbitrary workloads finish in the same time.
+>
+> **Suggested exam answer:** Strong scaling fixes total workload and increases processor count to reduce runtime; Amdahl models this with $S_A(p)=1/(s_A+(1-s_A)/p)$ for serial fraction $s_A$ of sequential runtime. Weak scaling increases total workload in proportion to processor count, keeping work per processor fixed; good weak scaling keeps runtime approximately constant. Gustafson's fixed-time model explains the benefit of growing the parallel workload, with $S_G(p)=s_G+p(1-s_G)$, where $s_G$ is measured in the parallel run. Both ideal laws omit additional overhead.
+>
+> **Study:** [[PRAM#Strong and weak scaling]]; [[lecture4-PRAM.pdf#page=28|slide 28]]; [[lecture4-PRAM.pdf#page=31|slide 31]].
 
 ### AAPP-02-014
 
@@ -987,10 +1184,16 @@ Source: [[Tema Esame 2024-02-16-1st.pdf#page=2|2024-02-16-1st · Exercise 1B · 
 
 **My answer**
 
-*Write your answer here.*
+In a PRAM application Speedup means how much faster a problem can be solved by exploiting parallel execution, compared to a normal sequential execution. The formula is     $S_{p}=\frac{T^*}{T_{p}}$ , where T* is the time for the best sequential alogrithm and Tp is the time taken why the parallel algorithm using a PRAM model with p processors.
 
 > [!note]- Feedback
-> Not reviewed yet.
+> **Reviewed: 2026-11-01.**
+>
+> **Assessment: correct.** Your formula and definitions match the course. State explicitly that both runtimes solve the same problem on the same input.
+>
+> **Suggested exam answer:** Speedup on $p$ processors is $S_p(n)=T^*(n)/T_p(n)$, where $T^*$ is the best sequential runtime used as the baseline and $T_p$ is the PRAM runtime on $p$ processors for the same problem and input. A speedup of 4 means parallel execution takes one quarter of the sequential time. The best sequential baseline $T^*$ can differ from $T_1$ for the parallel algorithm.
+>
+> **Study:** [[PRAM#Speedup and efficiency]]; [[lecture4-PRAM.pdf#page=11|slide 11]].
 
 ### AAPP-02-015
 
@@ -1002,10 +1205,16 @@ Source: [[Tema Esame 2024-02-16-1st.pdf#page=2|2024-02-16-1st · Exercise 1D · 
 
 **My answer**
 
-*Write your answer here.*
+No amdahl law is not fixed time. What is fixed is the workload and it tries to find how much faster that same workload can be executed by exploiting parallel computation.
 
 > [!note]- Feedback
-> Not reviewed yet.
+> **Reviewed: 2026-11-01.**
+>
+> **Assessment: correct.** You identify the fixed workload and the changing runtime. Add the ideal formula if space permits.
+>
+> **Suggested exam answer:** No. Amdahl uses a fixed-size problem: its workload remains the same as processors are added. If $s_A$ is the serial fraction of the sequential runtime, ideal speedup is $S_A(p)=1/(s_A+(1-s_A)/p)$. When $s_A>0$, speedup approaches $1/s_A$ as $p$ grows. Gustafson is associated with a fixed-time, scaled-workload model.
+>
+> **Study:** [[PRAM#Amdahl's law]]; [[lecture4-PRAM.pdf#page=31|slide 31]].
 
 ### AAPP-02-016
 
@@ -1018,10 +1227,16 @@ Source: [[Tema Esame 2026-6-29-1st.pdf#page=2|2026-6-29-1st · Exercise 1B · p.
 
 **My answer**
 
-*Write your answer here.*
+Already answered this question above.
 
 > [!note]- Feedback
-> Not reviewed yet.
+> **Reviewed: 2026-11-01.**
+>
+> **Assessment: revision cross-reference to 008; that definition is correct.** Write a self-contained definition when answering an individual exam question.
+>
+> **Suggested exam answer:** Work $W(n)$ is the total number of basic operations actually executed across all processors. Equivalently, sum the number of executed operations over all rounds. Concurrent operations count separately and idle processor slots do not count. For a reduction of eight inputs, counting additions only, $W=4+2+1=7$ even though the parallel execution has three addition rounds.
+>
+> **Study:** [[PRAM#Work versus cost]]; [[lecture4-PRAM.pdf#page=15|slide 15]].
 
 ### AAPP-02-017
 
@@ -1033,10 +1248,16 @@ Source: [[Tema Esame 2024-07-24-1st.pdf#page=2|2024-07-24-1st · Exercise 1B · 
 
 **My answer**
 
-*Write your answer here.*
+Already answered this question above.
 
 > [!note]- Feedback
-> Not reviewed yet.
+> **Reviewed: 2026-11-01.**
+>
+> **Assessment: revision cross-reference to 009; that definition is correct.** Include the formula and the treatment of idle processors directly in an exam answer.
+>
+> **Suggested exam answer:** Cost is $C_p(n)=pT_p(n)$, the total processor-time allocated to the PRAM application. All $p$ allocated processors count for the full runtime, including rounds in which some are idle. Thus cost can exceed work, which counts only executed operations. For four processors over three rounds, cost is 12 processor-rounds.
+>
+> **Study:** [[PRAM#Work versus cost]]; [[lecture4-PRAM.pdf#page=8|slide 8]].
 
 ### AAPP-02-018
 
@@ -1048,10 +1269,16 @@ Source: [[Tema Esame 2024-09-05-1st.pdf#page=2|2024-09-05-1st · Exercise 1A · 
 
 **My answer**
 
-*Write your answer here.*
+No $pE_{p}(n)=\frac{T_{1}}{T_{p}}$ but $S_{p}=\frac{T^*}{T_{p}}$. So the T1 is the parallel algorithm executed on a single processor, while T* is the best sequential algorithm that solves the same problem. It can happen that T1=T* and in that case it holds that pEp=Sp, it just means that the parallel algorithm on one processor is also the best sequential algorithm.
 
 > [!note]- Feedback
-> Not reviewed yet.
+> **Reviewed: 2026-11-01.**
+>
+> **Assessment: correct.** You correctly distinguish the two baselines and give the condition for equality. Phrase the initial answer as “not necessarily,” since equality does hold when $T_1=T^*$.
+>
+> **Suggested exam answer:** Not necessarily. Under the course definitions, $pE_p(n)=T_1(n)/T_p(n)$ while $S_p(n)=T^*(n)/T_p(n)$. Consequently, $pE_p=S_p$ exactly when the two sequential baselines agree, $T_1=T^*$. In general, $pE_p=(T_1/T^*)S_p$. Running a parallel algorithm on one processor can require more work than the best sequential algorithm.
+>
+> **Study:** [[PRAM#Speedup and efficiency]]; [[lecture4-PRAM.pdf#page=8|slide 8]].
 
 ### AAPP-02-019
 
@@ -1063,10 +1290,18 @@ Source: [[Tema Esame 2024-09-05-1st.pdf#page=2|2024-09-05-1st · Exercise 1B · 
 
 **My answer**
 
-*Write your answer here.*
+If the number of processor is bounded and lower than the required number, we can use enough virtual processor, and the real ones will share the workload of more than one virtual processor. More precisely with p virtual processors and p' physical ones, each one shares the load of p/p' virtual processors, thus the complexity of the problem is also increased by that factor. The speedup will just consider the real processor p' and not the virtual ones.
 
 > [!note]- Feedback
-> Not reviewed yet.
+> **Reviewed: 2026-11-01.**
+>
+> **Assessment: mostly correct simulation argument; quantify the do-all speedup.** Your virtual-processor explanation is sound. The simulation gives a bound on runtime, rather than an exact slowdown for every algorithm. Saying that speedup uses the physical processor count does not yet describe its behavior for independent iterations.
+>
+> **Suggested exam answer:** If $p$ virtual processors require $t$ rounds, $p'<p$ physical processors can simulate them by batching, in $O(t\lceil p/p'\rceil)$ time with the same shared memory. Save virtual local states and preserve the original read–compute–write ordering and access policy. For a do-all computation of $n$ independent, equal-cost iterations, $p'$ processors need $\lceil n/p'\rceil$ iteration rounds. Relative to $n$ sequential rounds, ideal speedup is $n/\lceil n/p'\rceil$, approximately $p'$ for enough evenly divisible work. Extra virtual processors do not provide extra physical throughput.
+>
+> **Example:** Eight independent unit-time iterations on three processors take three rounds, so speedup is $8/3$, below 3 because the last batch is incomplete. Fixed setup or other serial work can reduce speedup further.
+>
+> **Study:** [[PRAM#Simulating limited resources]]; [[PRAM#Why processor batching must preserve phases]]; [[lecture4-PRAM.pdf#page=25|slide 25]].
 
 ### AAPP-02-020
 
@@ -1078,10 +1313,16 @@ Source: [[Tema Esame 2024-09-05-1st.pdf#page=2|2024-09-05-1st · Exercise 1C · 
 
 **My answer**
 
-*Write your answer here.*
+It is true, the explanation was reported in other questions multiple times.
 
 > [!note]- Feedback
-> Not reviewed yet.
+> **Reviewed: 2026-11-01.**
+>
+> **Assessment: correct True/False choice; include the explanation locally.** The statement describes Amdahl's fixed-workload assumption. Runtime improvement is an ideal prediction when some work is parallelizable, rather than a guarantee on real hardware.
+>
+> **Suggested exam answer:** True as a description of Amdahl's model. The input and total computational task stay fixed when processor count increases. The serial part retains its duration, while the parallelizable part is ideally divided among $p$ processors. For serial fraction $s_A$ of the sequential runtime, $T_p/T_{\mathrm{seq}}=s_A+(1-s_A)/p$. Its reciprocal is speedup. The same data is processed sooner when parallelism is available; communication or scheduling overhead can limit real gains.
+>
+> **Study:** [[PRAM#Amdahl's law]]; [[lecture4-PRAM.pdf#page=31|slide 31]].
 
 ### AAPP-02-021
 
@@ -1093,10 +1334,16 @@ Source: [[Tema Esame 2024-11-12-1st.pdf#page=2|2024-11-12-1st · Exercise 1B · 
 
 **My answer**
 
-*Write your answer here.*
+You can find the same answer above
 
 > [!note]- Feedback
-> Not reviewed yet.
+> **Reviewed: 2026-11-01.**
+>
+> **Assessment: revision cross-reference to 006; the earlier formula is correct.** This question explicitly asks for the formula, so write it directly.
+>
+> **Suggested exam answer:** $E_p(n)=T_1(n)/(pT_p(n))$, where $T_1$ is the parallel algorithm's runtime on one processor and $T_p$ is its runtime on $p$ processors. The denominator is allocated processor-time. Ideal linear scaling gives efficiency 1. Since the course defines speedup using $T^*$, the identity $E_p=S_p/p$ additionally requires $T_1=T^*$.
+>
+> **Study:** [[PRAM#Speedup and efficiency]]; [[lecture4-PRAM.pdf#page=8|slide 8]].
 
 ### AAPP-02-022
 
@@ -1108,10 +1355,18 @@ Source: [[Tema Esame 2024-11-12-1st.pdf#page=2|2024-11-12-1st · Exercise 1C · 
 
 **My answer**
 
-*Write your answer here.*
+If the problem requires reductions, those could add more operations to the base ones already executed like in the sequential algorithm. I don't have a good real example.
 
 > [!note]- Feedback
-> Not reviewed yet.
+> **Reviewed: 2026-11-01.**
+>
+> **Assessment: plausible idea, but incomplete without actual operation counts.** A reduction does not automatically do extra arithmetic: an ordinary binary-tree sum and an optimal sequential sum both use $n-1$ additions. Specify which parallelization operations add work. Idle processors increase cost, not work.
+>
+> **Suggested exam answer:** Parallelizing a sum can introduce extra accumulator and merge operations. For example, a sequential loop that initializes one accumulator to 0 and adds eight inputs performs eight additions. In a parallel version, four processors each initialize an accumulator to 0 and add two inputs: eight additions in total. Combining the four partial sums needs three further additions, giving 11 additions versus eight sequentially. The extra work comes from the chosen partial-sum implementation. These counts isolate additions and consistently omit loads, stores, and initialization instructions.
+>
+> **Qualification:** This overhead is implementation-dependent. Seeding each partial sum with its first input can avoid the redundant additions to zero. Extra work must be demonstrated, rather than inferred from the presence of a reduction.
+>
+> **Study:** [[PRAM#Work versus cost]]; [[PRAM#Reduction]]; [[PRAM#Chunk first, then reduce]]; [[lecture4-PRAM.pdf#page=15|slide 15]].
 
 ### AAPP-02-023
 
@@ -1123,10 +1378,16 @@ Source: [[Tema Esame 2024-11-12-1st.pdf#page=2|2024-11-12-1st · Exercise 1D · 
 
 **My answer**
 
-*Write your answer here.*
+That would be amdahl law like i have already explained above.
 
 > [!note]- Feedback
-> Not reviewed yet.
+> **Reviewed: 2026-11-01.**
+>
+> **Assessment: correct identification; state what “fixed-size” means.** Referring to earlier explanations is sufficient for your revision shorthand, but an exam answer needs the defining assumption.
+>
+> **Suggested exam answer:** A fixed-size model holds the input and computational workload constant while increasing the number of processors. It asks how much the same problem's runtime can decrease. This is Amdahl's viewpoint: with sequential serial fraction $s_A$, $S_A(p)=1/(s_A+(1-s_A)/p)$.
+>
+> **Study:** [[PRAM#Amdahl's law]]; [[lecture4-PRAM.pdf#page=31|slide 31]].
 
 ### AAPP-02-024
 
@@ -1138,10 +1399,18 @@ Source: [[Tema Esame 2025-01-24-1st.pdf#page=2|2025-01-24-1st · Exercise 1B · 
 
 **My answer**
 
-*Write your answer here.*
+No idea
 
 > [!note]- Feedback
-> Not reviewed yet.
+> **Reviewed: 2026-11-01.**
+>
+> **Assessment: no solution supplied; the key condition is perfect linear speedup.** The question concerns the course's ideal comparison for the same problem and input, with compatible unit-cost operations and a best sequential baseline.
+>
+> **Suggested exam answer:** Since $S_p=T^*/T_p$, equality $S_p=p$ holds when $T_p=T^*/p$, equivalently when allocated cost $pT_p$ exactly matches the sequential baseline $T^*$. This is ideal linear speedup: the baseline work is perfectly distributed with no lost processor-time or additional overhead. Strict inequality $S_p<p$ holds when $T_p>T^*/p$, for example because of serial dependencies, load imbalance, idle slots, or extra executed operations. Keeping every processor busy is insufficient if the parallel implementation does more work than the sequential baseline.
+>
+> **Amdahl illustration:** With $T^*=T_{\mathrm{seq}}$ and the ideal fixed-size formula, $S_p=1/(s_A+(1-s_A)/p)$. For $p>1$, $s_A=0$ gives $S_p=p$, while $s_A>0$ gives $S_p<p$. Even with $s_A=0$, real overhead can prevent equality. The bound $S_p\le p$ assumes the stated ideal comparison; changing the baseline, workload, or machine cost assumptions changes that comparison.
+>
+> **Study:** [[PRAM#Speedup and efficiency]]; [[PRAM#Amdahl's law]]; [[lecture4-PRAM.pdf#page=11|slide 11]]; [[lecture4-PRAM.pdf#page=31|slide 31]].
 
 ### AAPP-02-025
 
@@ -1153,10 +1422,16 @@ Source: [[Tema Esame 2025-01-24-1st.pdf#page=2|2025-01-24-1st · Exercise 1C · 
 
 **My answer**
 
-*Write your answer here.*
+I already answered that.
 
 > [!note]- Feedback
-> Not reviewed yet.
+> **Reviewed: 2026-11-01.**
+>
+> **Assessment: revision cross-reference; refine the earlier weak-scaling definition.** Keep work per processor fixed. Approximately constant runtime is the desired scaling behavior, rather than a condition automatically satisfied by an implementation.
+>
+> **Suggested exam answer:** Weak scaling increases total workload proportionally to the number of processors, holding work per processor fixed. For a baseline workload $n_0$ per processor, compare $T_1(n_0)$ with $T_p(pn_0)$ when workload is proportional to $n$. Good weak scaling keeps those runtimes approximately equal. It is associated with Gustafson's scaled-workload, fixed-time viewpoint. Gustafson's scaled speedup compares sequential and parallel execution of the same larger workload; that ratio differs from the weak-scaling efficiency measurement.
+>
+> **Study:** [[PRAM#Strong and weak scaling]]; [[PRAM#Gustafson's law]]; [[lecture4-PRAM.pdf#page=28|slide 28]].
 
 ### AAPP-02-026
 
@@ -1168,10 +1443,16 @@ Source: [[Tema Esame 2025-01-24-1st.pdf#page=2|2025-01-24-1st · Exercise 1D · 
 
 **My answer**
 
-*Write your answer here.*
+That is amdahl law as i have already explained
 
 > [!note]- Feedback
-> Not reviewed yet.
+> **Reviewed: 2026-11-01.**
+>
+> **Assessment: correct law identified; give its speedup and limiting behavior.** Referring to Amdahl alone does not supply the requested discussion.
+>
+> **Suggested exam answer:** For a fixed-size workload with serial fraction $s_A$ measured in sequential runtime, ideal speedup is $S_A(p)=1/(s_A+(1-s_A)/p)$. Only the parallel part is divided by $p$; the serial duration stays fixed. If $s_A>0$, increasing processor count gives diminishing gains and speedup approaches $1/s_A$. If $s_A=0$, the ideal formula gives $S_A=p$. The formula assumes perfect distribution of parallel work and no additional overhead.
+>
+> **Study:** [[PRAM#Amdahl's law]]; [[lecture4-PRAM.pdf#page=31|slide 31]].
 
 ### AAPP-02-027
 
@@ -1183,10 +1464,16 @@ Source: [[Tema Esame 2025-02-14-1st.pdf#page=2|2025-02-14-1st · Exercise 1C · 
 
 **My answer**
 
-*Write your answer here.*
+already done above
 
 > [!note]- Feedback
-> Not reviewed yet.
+> **Reviewed: 2026-11-01.**
+>
+> **Assessment: revision cross-reference; make the two experiments explicit.** Your earlier distinction is useful, with the correction that weak scaling fixes work per processor and measures the resulting runtime.
+>
+> **Suggested exam answer:** Strong scaling holds total workload fixed and adds processors to reduce runtime; Amdahl's law describes the ideal fixed-size speedup and its serial bottleneck. Weak scaling holds work per processor fixed, so total work grows with processor count; good behavior is approximately constant runtime. Gustafson's law describes the benefit of scaling the parallel workload within a fixed time budget. The serial fractions in the two laws refer to sequential and parallel runtime respectively.
+>
+> **Study:** [[PRAM#Strong and weak scaling]]; [[lecture4-PRAM.pdf#page=28|slide 28]]; [[lecture4-PRAM.pdf#page=31|slide 31]].
 
 ### AAPP-02-028
 
@@ -1198,10 +1485,16 @@ Source: [[Tema Esame 2025-02-14-1st.pdf#page=2|2025-02-14-1st · Exercise 1D · 
 
 **My answer**
 
-*Write your answer here.*
+already done above
 
 > [!note]- Feedback
-> Not reviewed yet.
+> **Reviewed: 2026-11-01.**
+>
+> **Assessment: revision cross-reference; use the precise interpretation established in our discussion.** Gustafson reconstructs the sequential time of the same scaled workload. Multiplication by $p$ accounts for the work performed concurrently by all processors.
+>
+> **Suggested exam answer:** With parallel runtime normalized to 1 and its serial fraction denoted by $s_G$, Gustafson's scaled speedup is $S_G(p)=s_G+p(1-s_G)$. A sequential processor executes the serial part once and takes $p$ times as long for the work completed during the parallel phase. Thus $S_G$ is the factor by which sequential execution of that same scaled workload would take longer. The model grows parallel work with processor count while holding the parallel time budget fixed. For fixed $s_G<1$, scaled speedup grows linearly with $p$ under the ideal assumptions.
+>
+> **Study:** [[PRAM#Gustafson's law]]; [[lecture4-PRAM.pdf#page=31|slide 31]].
 
 ### AAPP-02-029
 
@@ -1213,10 +1506,16 @@ Source: [[Tema Esame 2025-06-05-1st.pdf#page=2|2025-06-05-1st · Exercise 1C · 
 
 **My answer**
 
-*Write your answer here.*
+Strong scaling is trying to measure how much faster a fixed workload can be completed by adding more computing resources. In a matrix multiplication of fixed sized there are a lot of row columns multiplications that can be executed in parallel as they are not dependent on each other.  If i add more processors i can reduce the compute time. Matrix multiplication has a good strong scaling. While in a weak scaling scenario it tries to measure how much workload can be finished in the same fixed time by having more compute.
 
 > [!note]- Feedback
-> Not reviewed yet.
+> **Reviewed: 2026-11-01.**
+>
+> **Assessment: mostly correct strong-scaling idea; use matrix-vector multiplication and specify how the weak-scaling input grows.** The supplied example computes each matrix row dotted with one shared vector. Different output rows are independent. “Good strong scaling” is possible in the ideal model within the available row parallelism; it is not guaranteed for arbitrary processor counts or real memory systems.
+>
+> **Suggested exam answer:** In $y=Ax$, separate processors can compute independent output rows. For a fixed $r\times c$ matrix and vector of length $c$, a row-based PRAM schedule takes $\Theta(c\lceil r/p\rceil)$ time, so increasing $p\le r$ reduces runtime while input size remains fixed: strong scaling. For weak scaling, one concrete choice is to grow the number of rows proportionally to $p$ while keeping $c$ and rows per processor fixed. Each processor then performs the same number of dot-product operations, so ideal runtime stays approximately constant while the total matrix grows. Real bandwidth, communication, and imbalance can limit either scaling behavior.
+>
+> **Study:** [[PRAM#Map: matrix-vector multiplication]]; [[PRAM#Worked row decomposition]]; [[PRAM#Strong and weak scaling]]; [[lecture4-PRAM.pdf#page=20|slide 20]]; [[lecture4-PRAM.pdf#page=28|slide 28]].
 
 ### AAPP-02-030
 
@@ -1228,10 +1527,16 @@ Source: [[Tema Esame 2025-06-05-1st.pdf#page=2|2025-06-05-1st · Exercise 1D · 
 
 **My answer**
 
-*Write your answer here.*
+Amdal law has the number of processor as fraction. So as it increases the parallelizable part of the program is less and less up to infinite p where the speedup caps at 1/s, where s is the serial part. Gustafson law instead does not have this limit as if we have an infinite number of processor the speedup would also be infinite.
 
 > [!note]- Feedback
-> Not reviewed yet.
+> **Reviewed: 2026-11-01.**
+>
+> **Assessment: partly correct; explain the unchanged serial time and the growing workload.** You correctly identify Amdahl's ceiling when the serial fraction is positive. The parallelizable fraction of the original sequential workload remains fixed; its elapsed parallel execution time decreases. Gustafson's growth describes larger workloads and assumes a parallel-time serial fraction below 1.
+>
+> **Suggested exam answer:** Amdahl fixes problem size. As $p$ increases, $(1-s_A)/p$ shrinks while serial time $s_A$ remains, so $S_A(p)=1/(s_A+(1-s_A)/p)$ approaches $1/s_A$ for $s_A>0$. Gustafson changes the experiment by increasing parallel work within a fixed runtime: $S_G(p)=s_G+p(1-s_G)$. For fixed $s_G<1$, scaled speedup grows linearly with processor count. This explains why many processors can remain useful for larger problems; it does not eliminate the serial bottleneck for a fixed problem. Both laws use ideal assumptions and different serial-fraction baselines.
+>
+> **Study:** [[PRAM#Amdahl's law]]; [[PRAM#Gustafson's law]]; [[lecture4-PRAM.pdf#page=31|slide 31]].
 
 ### AAPP-02-031
 
@@ -1243,10 +1548,16 @@ Source: [[Tema Esame 2025-07-04-1st.pdf#page=2|2025-07-04-1st · Exercise 1B · 
 
 **My answer**
 
-*Write your answer here.*
+speedup is 1/p while efficiency is 1 it also means that T1 is the best sequential algorithm and no processor idle.
 
 > [!note]- Feedback
-> Not reviewed yet.
+> **Reviewed: 2026-11-01.**
+>
+> **Assessment: speedup is inverted; efficiency is correct; optimality does not follow.** $(n^3)/(n^3/p)=p$, rather than $1/p$. Also, being given $T_1=n^3$ does not establish that no better sequential algorithm exists.
+>
+> **Suggested exam answer:** The speedup relative to the one-processor execution is $T_1/T_p=n^3/(n^3/p)=p$, and efficiency is $E_p=T_1/(pT_p)=1$. Thus the formulas describe ideal linear scaling relative to $T_1$ in the processor range where the stated runtime model applies. With the course's definition $S_p=T^*/T_p$, the exact expression is $S_p=pT^*(n)/n^3$. If the intended additional assumption is $T^*=T_1=n^3$, then $S_p=p$ and the cost $pT_p=n^3$ matches that sequential baseline. The supplied runtimes alone do not prove $T_1=T^*$ or establish a detailed processor schedule.
+>
+> **Study:** [[PRAM#Performance quantities]]; [[PRAM#Speedup and efficiency]]; [[lecture4-PRAM.pdf#page=8|slide 8]].
 
 ### AAPP-02-032
 
@@ -1258,10 +1569,16 @@ Source: [[Tema Esame 2025-07-04-1st.pdf#page=2|2025-07-04-1st · Exercise 1D · 
 
 **My answer**
 
-*Write your answer here.*
+Not sure about the implication for massive parallel, but for weak scaling i already answered a lot.
 
 > [!note]- Feedback
-> Not reviewed yet.
+> **Reviewed: 2026-11-01.**
+>
+> **Assessment: incomplete; explain why a large processor count can still be useful.** The implication for massively parallel systems follows from growing the amount of parallel work, rather than repeatedly accelerating a fixed small problem.
+>
+> **Suggested exam answer:** Weak scaling keeps work per processor fixed as processors and total work increase. Gustafson's fixed-time model expresses the associated opportunity: for parallel-run serial fraction $s_G$, scaled speedup is $S_G(p)=s_G+p(1-s_G)$. If $s_G$ remains small, it is close to $p$, so a massively parallel system can solve a proportionally larger problem within roughly the same time budget. This requires sufficient independent work and controlled serial, communication, and synchronization costs. The law supports this possibility; it does not guarantee that every growing application scales well.
+>
+> **Study:** [[PRAM#Strong and weak scaling]]; [[PRAM#Gustafson's law]]; [[lecture4-PRAM.pdf#page=31|slide 31]].
 
 ### AAPP-02-033
 
@@ -1273,10 +1590,16 @@ Source: [[Tema Esame 2025-11-06-1st.pdf#page=2|2025-11-06-1st · Exercise 1B · 
 
 **My answer**
 
-*Write your answer here.*
+the speedup S=pE
 
 > [!note]- Feedback
-> Not reviewed yet.
+> **Reviewed: 2026-11-01.**
+>
+> **Assessment: correct; add a one-line derivation.** The prompt explicitly supplies the baseline equality needed for your identity.
+>
+> **Suggested exam answer:** Since $T^*(n)=T_1(n)$, $S_p(n)=T_1(n)/T_p(n)$ and $E_p(n)=T_1(n)/(pT_p(n))$. Therefore $S_p(n)=pE_p(n)$, equivalently $E_p=S_p/p$. With these matching baselines, ideal speedup $S_p=p$ gives efficiency 1.
+>
+> **Study:** [[PRAM#Speedup and efficiency]]; [[lecture4-PRAM.pdf#page=8|slide 8]].
 
 ### AAPP-02-034
 
@@ -1288,10 +1611,16 @@ Source: [[Tema Esame 2025-11-06-1st.pdf#page=2|2025-11-06-1st · Exercise 1D · 
 
 **My answer**
 
-*Write your answer here.*
+already done above
 
 > [!note]- Feedback
-> Not reviewed yet.
+> **Reviewed: 2026-11-01.**
+>
+> **Assessment: revision cross-reference; include the experiment, ideal behavior, and limitations.** These are the key aspects an exam answer should state directly.
+>
+> **Suggested exam answer:** Strong scalability measures how runtime changes when processor count increases for the same fixed total problem. Ideally, $T_p\approx T_1/p$ and speedup relative to $T_1$ is approximately $p$. Measure fixed-input runtimes over increasing processor counts and examine speedup and efficiency. Serial dependencies, limited parallelism, load imbalance, and real communication or synchronization overhead eventually limit gains. Amdahl's fixed-size model gives a ceiling $1/s_A$ when the sequential serial fraction $s_A$ is positive.
+>
+> **Study:** [[PRAM#Strong and weak scaling]]; [[PRAM#Amdahl's law]]; [[lecture4-PRAM.pdf#page=28|slide 28]].
 
 ### AAPP-02-035
 
@@ -1303,10 +1632,16 @@ Source: [[Tema Esame 2026-1-22-1st.pdf#page=2|2026-1-22-1st · Exercise 1D · p.
 
 **My answer**
 
-*Write your answer here.*
+already done above
 
 > [!note]- Feedback
-> Not reviewed yet.
+> **Reviewed: 2026-11-01.**
+>
+> **Assessment: revision cross-reference; include the workload assumption and the runtime baseline of the serial fraction.** Your later explanation of sequential time for a scaled workload is the useful interpretation here.
+>
+> **Suggested exam answer:** Gustafson considers growing the parallel workload with processor count while keeping parallel runtime fixed. If $s_G$ is the serial fraction of that parallel run, scaled speedup is $S_G(p)=s_G+p(1-s_G)$. It compares one-processor and $p$-processor execution of the same scaled problem. For a small, approximately constant $s_G$, scaled speedup can remain close to linear, supporting the usefulness of large systems for larger workloads. This relates to weak scaling; it assumes enough parallel work and manageable serial and communication costs. See also [Gustafson's fixed-size and scaled-size comparison](https://users.cs.utah.edu/~hari/teaching/paralg/Gustafson88.pdf#page=2).
+>
+> **Study:** [[PRAM#Gustafson's law]]; [[lecture4-PRAM.pdf#page=31|slide 31]].
 
 ### AAPP-02-036
 
@@ -1318,10 +1653,16 @@ Source: [[Tema Esame 2026-2-09-1st.pdf#page=2|2026-2-09-1st · Exercise 1A · p.
 
 **My answer**
 
-*Write your answer here.*
+When for example we have a sum and the first round we use all processors. Then we reduce the results and use only half of the processors, those are idle, and the more this happens the less the efficiency is, beacase the total cpu time increases even if no work is being done. Max efficiency is 1.
 
 > [!note]- Feedback
-> Not reviewed yet.
+> **Reviewed: 2026-11-01.**
+>
+> **Assessment: correct example and effect; make the cost calculation explicit.** In a fixed tree-reduction schedule, later levels have fewer independent operations, so the allocated processors cannot all stay busy. Idle slots contribute to allocated cost without adding work. They do not necessarily make elapsed runtime increase when more processors are added.
+>
+> **Suggested exam answer:** Consider summing eight inputs by a binary tree on four allocated processors. Counting addition rounds only, the three levels execute 4, 2, and 1 additions. Thus $W=7$, $T_4=3$, and $C_4=4\cdot3=12$. The last two levels have insufficient independent additions to occupy every processor, leaving five idle slots. A one-processor execution needs seven additions, so $E_4=7/12\approx0.583$. The dependencies impose this loss of utilization for the stated schedule. Efficiency 1 is the ideal upper value for this fixed-computation PRAM comparison.
+>
+> **Study:** [[PRAM#Reading a processor-time diagram]]; [[PRAM#Reduction]]; [[lecture4-PRAM.pdf#page=21|slide 21]].
 
 ### AAPP-02-037
 
@@ -1333,10 +1674,18 @@ Source: [[Tema Esame 2026-2-09-1st.pdf#page=2|2026-2-09-1st · Exercise 1D · p.
 
 **My answer**
 
-*Write your answer here.*
+most probably gustafson, Amdahl law has diminishing return and caps at 1/s
 
 > [!note]- Feedback
-> Not reviewed yet.
+> **Reviewed: 2026-11-01.**
+>
+> **Assessment: not justified; near-linear speedup alone does not distinguish the models.** Amdahl can predict nearly linear speedup over the measured processor range if its serial fraction is sufficiently small. Its eventual ceiling does not imply visibly diminishing returns at every processor count.
+>
+> **Suggested exam answer:** More information about the experiment is needed. If the workload is fixed, near-linear speedup is compatible with Amdahl when the sequential serial fraction is small; with $s_A=0$, its ideal formula gives exactly $S_A=p$. If the workload grows with processor count at approximately fixed runtime, near-linear scaled speedup is consistent with Gustafson and a small parallel-run serial fraction $s_G$. Identify what remains fixed and how speedup is defined before selecting a model. The observed curve alone is insufficient.
+>
+> **Example:** Amdahl with $s_A=0.001$ and $p=8$ gives $S_A=1/(0.001+0.999/8)\approx7.94$, very close to 8 despite using a fixed-size model. This counterexample follows directly from the formula; it is not a claim about which experiment the question omitted.
+>
+> **Study:** [[PRAM#Strong and weak scaling]]; [[PRAM#Amdahl's law]]; [[PRAM#Gustafson's law]]; [[lecture4-PRAM.pdf#page=31|slide 31]].
 
 ### AAPP-02-038
 
@@ -1348,10 +1697,16 @@ Source: [[Tema Esame 2026-6-11-1st.pdf#page=2|2026-6-11-1st · Exercise 1D · p.
 
 **My answer**
 
-*Write your answer here.*
+already done above
 
 > [!note]- Feedback
-> Not reviewed yet.
+> **Reviewed: 2026-11-01.**
+>
+> **Assessment: revision cross-reference; summarize the two laws with their assumptions.** The interpretation in terms of time and processors is essential, rather than just naming the formulas.
+>
+> **Suggested exam answer:** Amdahl holds problem size fixed and models how adding processors reduces runtime: $S_A(p)=1/(s_A+(1-s_A)/p)$, where $s_A$ is the serial fraction of sequential runtime. For $s_A>0$, speedup approaches $1/s_A$. Gustafson keeps a parallel time budget fixed while increasing parallel workload: $S_G(p)=s_G+p(1-s_G)$, where $s_G$ is measured in the parallel run. This can give near-linear scaled speedup for small $s_G$. The laws correspond to fixed-size and scaled-size viewpoints, associated with strong and weak scaling. They are compatible; their workloads and serial-fraction baselines differ. Real overhead must be assessed separately.
+>
+> **Study:** [[PRAM#Strong and weak scaling]]; [[PRAM#Reconciling the two serial fractions]]; [[lecture4-PRAM.pdf#page=31|slide 31]].
 
 ### AAPP-02-039
 
@@ -1363,10 +1718,16 @@ Source: [[Tema Esame 2026-6-29-1st.pdf#page=2|2026-6-29-1st · Exercise 1D · p.
 
 **My answer**
 
-*Write your answer here.*
+already done above
 
 > [!note]- Feedback
-> Not reviewed yet.
+> **Reviewed: 2026-11-01.**
+>
+> **Assessment: revision cross-reference; give both runtime constructions explicitly.** Both speedups compare sequential and parallel execution of the same workload within each calculation; the workload may grow across Gustafson's processor-count experiments.
+>
+> **Suggested exam answer:** Amdahl normalizes a fixed problem's sequential time to 1. With sequential serial fraction $s_A$, its parallel time is $s_A+(1-s_A)/p$, so speedup is $1/(s_A+(1-s_A)/p)$. Gustafson normalizes the scaled problem's parallel time to 1. With parallel-run serial fraction $s_G$, its sequential time would be $s_G+p(1-s_G)$, which is also its scaled speedup. The fractions use different denominators, and both formulas assume ideal parallelization without extra overhead.
+>
+> **Study:** [[PRAM#Amdahl's law]]; [[PRAM#Gustafson's law]]; [[PRAM#Reconciling the two serial fractions]]; [[lecture4-PRAM.pdf#page=31|slide 31]].
 
 ### AAPP-02-040
 
@@ -1378,10 +1739,18 @@ Source: [[Tema Esame 2026-9-10-1st.pdf#page=2|2026-9-10-1st · Exercise 1B · p.
 
 **My answer**
 
-*Write your answer here.*
+already done above
 
 > [!note]- Feedback
-> Not reviewed yet.
+> **Reviewed: 2026-11-01.**
+>
+> **Assessment: incomplete by reference; work efficiency and a concrete overhead example still need to be supplied.** Your earlier work definition is correct. Work efficiency is an asymptotic comparison, rather than the fraction of allocated processor-time that is busy.
+>
+> **Suggested exam answer:** A parallel algorithm is work-efficient if $W(n)=O(T^*(n))$: its total executed operations are within a constant factor of the best sequential baseline. Parallelization may add initialization, duplicated calculations, or bookkeeping and merging operations. For example, summing $n$ values sequentially into one accumulator initialized to 0 uses $n$ additions. With $p$ nonempty chunks, initializing each partial accumulator to 0 and adding its inputs still uses $n$ additions, then merging the $p$ partials adds $p-1$ more. The parallel implementation therefore uses $n+p-1$ additions. Counting additions only, this demonstrates extra executed work, and it remains $O(n)$ for $p\le n$: more operations do not automatically destroy work efficiency. Idle processors affect cost rather than work.
+>
+> **Model detail:** The example's extra additions depend on its accumulator initialization strategy and can be optimized away; it demonstrates one concrete implementation rather than a lower bound for parallel summation.
+>
+> **Study:** [[PRAM#Work versus cost]]; [[lecture4-PRAM.pdf#page=15|slide 15]]. The asymptotic definition is also given by [Blelloch and Maggs, §25.2.3](https://www.cs.cmu.edu/~guyb/papers/BM10.pdf#page=9).
 
 ### AAPP-02-041
 
@@ -1393,10 +1762,16 @@ Source: [[Tema Esame 2026-9-10-1st.pdf#page=2|2026-9-10-1st · Exercise 1D · p.
 
 **My answer**
 
-*Write your answer here.*
+already done above
 
 > [!note]- Feedback
-> Not reviewed yet.
+> **Reviewed: 2026-11-01.**
+>
+> **Assessment: revision cross-reference; use the corrected definition of weak scalability.** State what is fixed in the experiment and what successful performance looks like.
+>
+> **Suggested exam answer:** Weak scalability measures runtime as processors and total work increase together, keeping work per processor fixed. If one processor handles workload $n_0$ in $T_1(n_0)$, ideal weak scaling gives $T_p(pn_0)\approx T_1(n_0)$ when work grows proportionally to $n$. Weak-scaling efficiency can be reported as $E_{\mathrm{weak}}=T_1(n_0)/T_p(pn_0)$. Communication, global synchronization, serial work, or imbalance can make runtime grow. Gustafson's fixed-time, scaled-workload viewpoint explains the benefit of larger systems, while constant measured runtime remains a result to verify.
+>
+> **Study:** [[PRAM#Strong and weak scaling]]; [[PRAM#Two experiments with different meanings]]; [[lecture4-PRAM.pdf#page=28|slide 28]].
 
 ## PRAM algorithms
 
@@ -1412,10 +1787,37 @@ Source: [[Tema Esame 2023-01-17-1st.pdf#page=2|2023-01-17-1st · Exercise 1A · 
 
 **My answer**
 
-*Write your answer here.*
+For matrix multiplication we have to compute a linear combination of row columns couples. We need to match all rows of the first matrix with all columns of the second. The code is:
+for (int i=0; i<size; i++) {
+	for (int j=0; j<size; j++) {
+			result\[i]\[j] = linear_combination(A1.row(i), A2.column(j))
+	}
+}
+
+where linear combinations is just the sum of multiplied element from the two vectors. All instances of for exectuion can be parallel. The complexity is given p processors. O(n(n/p)), if p=n O(n) while work is O(n^2). For the exam sake this is an old kind of question and should not appear in newer exams.
 
 > [!note]- Feedback
-> Not reviewed yet.
+> **Reviewed: 2026-11-01.**
+>
+> **Assessment: correct row–column idea, but the complexity counts matrix–vector work.** An $n\times n$ matrix product has $n^2$ output entries, each requiring a dot product of length $n$. Your function `linear_combination` hides that inner loop; it is not a unit-time operation. Both output loops can run in parallel, but each dot product needs either sequential accumulation or an explicitly parallel reduction.
+>
+> **Suggested exam answer:** For dense square matrices, $C_{ij}=\sum_{k=0}^{n-1}A_{ik}B_{kj}$. One simple PRAM algorithm assigns output entries to processors, with a private accumulator per entry:
+>
+> ```text
+> parallel for each pair (i, j), scheduled over p processors:
+>     s = 0                         // private accumulator
+>     for k = 0 to n - 1:           // sequential within this task
+>         s = s + A[i,k] * B[k,j]
+>     C[i,j] = s
+> ```
+>
+> For this schedule, $W=\Theta(n^3)$ and $T_p=\Theta(n\lceil n^2/p\rceil)$ for $1\le p\le n^2$. Thus $p=n$ gives $\Theta(n^2)$ time, while $p=n^2$ gives $\Theta(n)$ time. Shared input entries may have several readers, while each output has one writer, so CREW suffices.
+>
+> **Further parallelism:** Parallelizing the products within each dot product and reducing them can give $O(\log n)$ time with $\Theta(n^3)$ processors and $\Theta(n^3)$ work. The processor allocation and reduction must be stated. These are classical multiplication bounds, rather than lower bounds for every multiplication algorithm. See [Blelloch and Maggs, §25.8.1](https://www.cs.cmu.edu/~guyb/papers/BM10.pdf#page=37).
+>
+> **Course scope:** The supplied PRAM deck illustrates matrix–vector multiplication; the construction above explicitly answers a matrix–matrix interpretation. The bank also contains a matrix–matrix prompt from July 2024 in [[#AAPP-03-005]]. The age of a question does not establish its exclusion from a future exam; no such exclusion has been verified here.
+>
+> **Study:** [[Divide and Conquer#Matrix multiplication]]; compare [[PRAM#Map: matrix-vector multiplication]].
 
 ### AAPP-03-002
 
@@ -1427,10 +1829,18 @@ Source: [[Tema Esame 2023-01-17-1st.pdf#page=2|2023-01-17-1st · Exercise 1C · 
 
 **My answer**
 
-*Write your answer here.*
+True, besides the first round every other one has multiple processor read the same values, and it adds different elements based on which partial sum we need to obtain. For example the value in position 2 is read by two processor that compute the partial sum of 3 and of 4 elements.
 
 > [!note]- Feedback
-> Not reviewed yet.
+> **Reviewed: 2026-11-01.**
+>
+> **Assessment: correct for the broadcast scan illustrated in the lecture.** Your example matches the diagram when positions are numbered from 1. Be explicit that processors read the same intermediate cell during the same read phase; simultaneous reads of different cells do not require concurrent-read permission.
+>
+> **Suggested exam answer:** True for the lecture's broadcast implementation. After the first pairwise stage, cell 2 contains $a_1+a_2$. In the next stage, processors computing prefixes 3 and 4 both read that cell and add it to their respective right-half partial sums. For eight inputs, a later stage similarly broadcasts the sum in cell 4 to processors computing prefixes 5 through 8. The resulting prefix entries have distinct writers, so this implementation uses CREW. The first pairwise stage does not need this shared-prefix broadcast.
+>
+> **Qualification:** This describes the diagram's implementation. Prefix scan can also be implemented on EREW with a different schedule, so concurrent reads are not an unavoidable property of the prefix-sum problem itself.
+>
+> **Study:** [[PRAM#Prefix sum]]; [[lecture4-PRAM.pdf#page=23|slide 23, green CR labels]]; [[PRAM#How the work-efficient tree scan works]].
 
 ### AAPP-03-003
 
@@ -1442,10 +1852,20 @@ Source: [[Tema Esame 2024-02-16-1st.pdf#page=2|2024-02-16-1st · Exercise 1C · 
 
 **My answer**
 
-*Write your answer here.*
+Prefix scan i am not sure it was covered in the PRAM part.
 
 > [!note]- Feedback
-> Not reviewed yet.
+> **Reviewed: 2026-11-01.**
+>
+> **Assessment: no algorithm supplied; prefix scan is covered in the PRAM material.** “Scan” is another name for the prefix operation. The inclusive sum scan outputs $S_i=\sum_{j=1}^{i}a_j$ for every position, rather than returning only the final total.
+>
+> **Suggested exam answer:** In the lecture's broadcast pattern, start with blocks of one input. At each stage, combine adjacent blocks of equal size: the prefixes in the left block stay unchanged, and the total of that left block is added to every local prefix in the right block. Double the block size and synchronize before the next stage. Each stage reads the preceding stage's values; use separate input/output buffers to make that ordering explicit. After $\lceil\log_2 n\rceil$ stages, each position holds its complete prefix. Padding with zeros handles a non-power-of-two length without changing the asymptotic bounds.
+>
+> **Example following that pattern:** $[3,1,4,2]\rightarrow[3,4,4,6]\rightarrow[3,4,8,10]$. In the second stage, the left total 4 is read by both right-half processors.
+>
+> **Complexity and memory rule:** This simple broadcast implementation has $\Theta(\log n)$ time with $O(n)$ processors, $\Theta(n\log n)$ work, concurrent reads of shared block totals, and exclusive writes. A work-efficient tree scan can instead achieve $\Theta(n)$ work and logarithmic depth. The note's separate offset-doubling construction has different intermediate arrays; do not mix its trace with this broadcast trace.
+>
+> **Study:** [[PRAM#Prefix sum]]; [[PRAM#How the work-efficient tree scan works]]; [[lecture4-PRAM.pdf#page=23|slide 23]].
 
 ### AAPP-03-004
 
@@ -1457,10 +1877,26 @@ Source: [[Tema Esame 2024-06-26-1st.pdf#page=2|2024-06-26-1st · Exercise 1C · 
 
 **My answer**
 
-*Write your answer here.*
+For a matrix vector multiplication, we need to linearly combine the vector with every single row of the matrix. Since those results are independent we can parallelize that by using concurrent reads and exclusive rights. Each processor takes care of 1 or more, in case p < n, rows of the matrix. That reduces the complexity to O(n/p) compared to n^2.
 
 > [!note]- Feedback
-> Not reviewed yet.
+> **Reviewed: 2026-11-01.**
+>
+> **Assessment: correct decomposition and CREW policy; the time bound is missing a factor of $n$.** There are $n$ independent output rows, but each row needs $n$ products and additions. Assigning $n/p$ rows to a processor therefore requires $\Theta(n^2/p)$ time in the divisible case, rather than $O(n/p)$.
+>
+> **Suggested exam answer:** For an $n\times n$ matrix and length-$n$ vector, compute $y_i=\sum_{j=0}^{n-1}A_{ij}x_j$. Assign independent rows to processors:
+>
+> ```text
+> parallel for each row i, scheduled over p processors:
+>     s = 0                         // private accumulator
+>     for j = 0 to n - 1:
+>         s = s + A[i,j] * x[j]
+>     y[i] = s
+> ```
+>
+> The row-based schedule takes $T_p=\Theta(n\lceil n/p\rceil)$ for $1\le p\le n$, with $W=\Theta(n^2)$. At $p=n$, time is $\Theta(n)$, rather than constant. Processors read distinct matrix rows, may read the same vector element simultaneously, and write distinct outputs: CREW suffices. More than $n$ processors cannot help this unchanged row-only schedule; further parallelism needs a reduction within each row.
+>
+> **Study:** [[PRAM#Map: matrix-vector multiplication]]; [[PRAM#Worked row decomposition]]; [[lecture4-PRAM.pdf#page=20|slide 20]].
 
 ### AAPP-03-005
 
@@ -1472,10 +1908,18 @@ Source: [[Tema Esame 2024-07-24-1st.pdf#page=2|2024-07-24-1st · Exercise 1C · 
 
 **My answer**
 
-*Write your answer here.*
+Answered right above.
 
 > [!note]- Feedback
-> Not reviewed yet.
+> **Reviewed: 2026-11-01.**
+>
+> **Assessment: the reference needs correcting: the immediately preceding answer describes matrix–vector multiplication.** The matrix–matrix idea is in 001, whose complexity also needs the correction given there. Matrix–matrix multiplication has $n^2$ dot products, whereas matrix–vector multiplication has $n$.
+>
+> **Suggested exam answer:** For two $n\times n$ matrices, each output is $C_{ij}=\sum_{k=0}^{n-1}A_{ik}B_{kj}$. Compute different output entries in parallel, with one private sequential accumulator for each entry and one final writer to $C_{ij}$. This classical method performs $\Theta(n^3)$ work. With $p\le n^2$ processors distributing the $n^2$ output tasks, its time is $\Theta(n\lceil n^2/p\rceil)$. In particular, $n^2$ processors give $\Theta(n)$ time; $n$ processors give $\Theta(n^2)$ time. Reused input entries require concurrent reads in the natural schedule, while output writes are exclusive. Parallel reductions within dot products offer another allocation/time trade-off.
+>
+> **Pseudocode:** See the corrected explicit algorithm in [[#AAPP-03-001]].
+>
+> **Study:** [[Divide and Conquer#Matrix multiplication]]; compare [[PRAM#Map: matrix-vector multiplication]].
 
 ### AAPP-03-006
 
@@ -1487,10 +1931,20 @@ Source: [[Tema Esame 2025-07-04-1st.pdf#page=2|2025-07-04-1st · Exercise 1C · 
 
 **My answer**
 
-*Write your answer here.*
+It is more efficient because there are more intermediate operation that use the processors, and less dependency on recutions. Meanwhile with normal sum reduction is the most taxing part and every round the number of unused processors doubles.
 
 > [!note]- Feedback
-> Not reviewed yet.
+> **Reviewed: 2026-11-01.**
+>
+> **Assessment: partly correct utilization intuition, but “more efficient” needs a metric and a named algorithm.** A scan can keep more addition tasks active across stages, but extra activity can also mean extra work. Scan computes every prefix; reduction computes one total. A standard tree reduction already has logarithmic depth. Its active processor count halves at each level; the idle count itself does not generally double.
+>
+> **Suggested exam answer:** Compared with sequential accumulation, a parallel scan replaces a linear dependency chain with logarithmic-depth stages and returns all prefix sums. Compared with a parallel tree reduction, a scan is not inherently faster: both can take $\Theta(\log n)$ time with enough processors, and they produce different outputs. In the lecture's simple broadcast scan, the trade-off is obtaining every prefix through more intermediate operations and concurrent reads: work is $\Theta(n\log n)$, while a tree reduction needs only $\Theta(n)$ work for one total. Better processor utilization alone does not prove lower work or cost.
+>
+> **Small comparison:** For four inputs, a tree reduction needs three additions. The broadcast scan in 003 needs four additions and returns four prefixes. With eight inputs, that scan performs $4\cdot3=12$ additions, while reduction performs seven.
+>
+> **Source qualification:** The exam does not define “basic sum” or the efficiency metric. A universal claim that scan beats reduction is therefore unsupported. The extra-work trade-off is specific to the simple scan: a work-efficient tree scan can compute all prefixes with linear work and logarithmic depth, including on EREW. See [Blelloch, *Prefix Sums and Their Applications*, §1.2](https://www.cs.cmu.edu/~guyb/papers/Ble93.pdf#page=5).
+>
+> **Study:** [[PRAM#Reduction]]; [[PRAM#Prefix sum]]; [[PRAM#How the work-efficient tree scan works]]; [[lecture4-PRAM.pdf#page=21|slide 21]]; [[lecture4-PRAM.pdf#page=23|slide 23]].
 
 ### AAPP-03-007
 
@@ -1502,10 +1956,18 @@ Source: [[Tema Esame 2025-11-06-1st.pdf#page=2|2025-11-06-1st · Exercise 1C · 
 
 **My answer**
 
-*Write your answer here.*
+PRAM performs unit time access to any part of memory, all processors can access it at the same time with no networking or bandwidth limit. This allows to abstract away from real systems, where latency bandwidth and other factor are present and it allows to examine how the algorithm scales in a more ideal environment.
 
 > [!note]- Feedback
-> Not reviewed yet.
+> **Reviewed: 2026-11-01.**
+>
+> **Assessment: correct general PRAM idealization, but the algorithm-specific access pattern is missing.** The question asks which reads and writes the prefix algorithm uses. Unit-time access explains their cost; it does not identify which accesses are legal.
+>
+> **Suggested exam answer:** The lecture's broadcast prefix scan uses concurrent reads and exclusive writes, so CREW suffices. Several processors may read the same left-block total during a stage; for example, the partial sum in cell 2 is read by the processors computing prefixes 3 and 4. Each processor writes its own distinct prefix/output cell. All reads use the preceding stage's values, and the synchronous stage boundary orders the writes before the next stage. Each permitted memory access has unit cost, so the constant-work stages give $\Theta(\log n)$ parallel time with enough processors. No concurrent writes are required.
+>
+> **Qualification:** This is the access policy of the illustrated broadcast implementation; other scan algorithms can satisfy EREW.
+>
+> **Study:** [[PRAM#Memory-access rules]]; [[PRAM#Prefix sum]]; [[lecture4-PRAM.pdf#page=23|slide 23]].
 
 ### AAPP-03-008
 
@@ -1517,10 +1979,18 @@ Source: [[Tema Esame 2026-1-22-1st.pdf#page=2|2026-1-22-1st · Exercise 1C · p.
 
 **My answer**
 
-*Write your answer here.*
+The work can be split among many processor, however the final result is still a single value so we need to take the intermidiate results and merge them togheter, that is called reduction. In a normal sum every round we can reduce the sums to half so the algorithm need logn rounds where n is the number of addends. If we don't have p > n for the first round then we need to chunk some operation first so now the complexity is logn + n/p for chunking.
 
 > [!note]- Feedback
-> Not reviewed yet.
+> **Reviewed: 2026-11-01.**
+>
+> **Assessment: mostly correct; refine the processor threshold and the chunked reduction term.** Your reduction explanation and logarithmic bound are sound. The first level needs about $n/2$ addition tasks, rather than more than $n$ processors. With chunking, the final tree combines $p$ partial sums, so that phase has $\Theta(\log p)$ time. Your $O(n/p+\log n)$ remains a valid upper bound for $1\le p\le n$; $n/p+\log p$ identifies the two phases more directly.
+>
+> **Suggested exam answer:** Sequential summation needs $\Theta(n)$ time. A balanced binary reduction combines disjoint pairs at each level, requiring $\Theta(\log n)$ parallel time with $\Theta(n)$ processors and $n-1$ additions in total. For $n$ a power of two, $n/2$ processors suffice for the first level. With $1\le p\le n$, each processor can first sum a chunk of about $n/p$ inputs, then reduce the $p$ partial sums in a tree. This gives $T_p=\Theta(n/p+\log p)$ and $W=\Theta(n)$. If all $p$ processors remain allocated, cost is $\Theta(n+p\log p)$; it includes idle slots during the tree phase. Distinct read operands and write destinations make a properly staged tree reduction EREW.
+>
+> **Example, counting additions only:** For 16 values and four processors, each four-value chunk needs three additions, then the four partial sums need two tree rounds. Thus $T_4=3+2=5$ addition rounds, while total work is $4\cdot3+3=15$ additions.
+>
+> **Study:** [[PRAM#Reduction]]; [[PRAM#Chunk first, then reduce]]; [[PRAM#Choosing processors with an exact small model]]; [[lecture4-PRAM.pdf#page=21|slides 21–22]].
 
 ### AAPP-03-009
 
@@ -1532,10 +2002,18 @@ Source: [[Tema Esame 2026-9-10-1st.pdf#page=2|2026-9-10-1st · Exercise 1C · p.
 
 **My answer**
 
-*Write your answer here.*
+Already answered above.
 
 > [!note]- Feedback
-> Not reviewed yet.
+> **Reviewed: 2026-11-01.**
+>
+> **Assessment: revision cross-reference, but distinguish a plain vector sum from a prefix scan.** The source says “vector sum” without specifying a schedule. The CREW answer for the broadcast prefix scan should not automatically be applied to a reduction that returns one total.
+>
+> **Suggested exam answer, interpreting vector sum as $\sum_i a_i$:** A standard pairwise tree reduction can use EREW. At each level, processors handle disjoint pairs of input/partial-sum cells, perform their reads in a constant number of read steps, compute a sum, and write to distinct cells of the next level. No shared cell needs multiple readers or writers in the same access phase. Separate level buffers and synchronous rounds preserve the old values until all needed reads complete. Unit-cost accesses and a logarithmic number of levels give logarithmic parallel time with enough processors.
+>
+> **Other interpretations:** Elementwise vector addition $c_i=a_i+b_i$ is also naturally EREW with disjoint index assignments. If “vector sum” refers to the broadcast **prefix** algorithm illustrated on slide 23, use the CREW explanation in [[#AAPP-03-007]]: common block totals are read by several processors and each output has one writer. State which operation and schedule you are analyzing; the phrase alone does not determine one access policy.
+>
+> **Study:** [[PRAM#Reduction]]; [[PRAM#Prefix sum]]; [[lecture4-PRAM.pdf#page=21|slide 21]]; [[lecture4-PRAM.pdf#page=23|slide 23]].
 
 ## Divide and conquer and recurrences
 
@@ -1551,10 +2029,16 @@ Source: [[Tema Esame 2022-06-09-1st.pdf#page=2|2022-06-09-1st · Exercise 1 · p
 
 **My answer**
 
-*Write your answer here.*
+The divide and conquer is a strategy for solving certain problems. It consists of take an initial big problem and divide it in smaller subproblems, then solve those or split those as well. For example this is the principle behind binary search, start with a big list, and split it then search among those lists. But those list can also be split again. Another example can be powering a number, matrix multiplication or H tree embedding. The reason master theorem is very important is that with this divide and conquer approches we usually take an initial complexity T(n) and obtain a fraction of that for multiple subproblems, aT(n/b) plus a fixed cost operation usually. That is exactly what the master theorem is able to solve and so it provides a simple way of analyzing the complexity of the divide and conquer approach.
 
 > [!note]- Feedback
-> Not reviewed yet.
+> **Reviewed: 2026-11-01.**
+>
+> **Assessment: mostly correct; add combination and refine the recurrence explanation.** Your examples and the connection to recurrences are sound. Divide and conquer also needs base cases and a rule for combining subproblem solutions. In binary search, the array must be sorted and only one of the two possible halves is searched. The nonrecursive cost $f(n)$ need not be constant: merging or adding matrix blocks can take growing time.
+>
+> **Suggested exam answer:** Divide and conquer divides an instance into smaller subproblems, solves them recursively until base cases are reached, and combines their solutions. Merge sort solves both halves and merges them, giving $T(n)=2T(n/2)+\Theta(n)=\Theta(n\log n)$. Binary search follows only one half of a sorted array, giving worst-case $T(n)=T(n/2)+\Theta(1)=\Theta(\log n)$ when using indices. Many balanced algorithms yield $T(n)=aT(n/b)+f(n)$, where $a$ counts recursive calls, $n/b$ is their size, and $f(n)$ counts work outside recursion. The Master theorem quickly solves recurrences that meet its assumptions and one of its cases; it does not apply to every divide-and-conquer algorithm.
+>
+> **Study:** [[Divide and Conquer#Overview]]; [[Divide and Conquer#Binary search]]; [[Algorithm as recipes#Master theorem]]; [[lecture3-DandC.pdf#page=2|slide 2]].
 
 ### AAPP-04-002
 
@@ -1566,10 +2050,16 @@ Source: [[Tema Esame 2023-02-14-1st.pdf#page=3|2023-02-14-1st · Exercise 2A · 
 
 **My answer**
 
-*Write your answer here.*
+Answer above should be enough.
 
 > [!note]- Feedback
-> Not reviewed yet.
+> **Reviewed: 2026-11-01.**
+>
+> **Assessment: revision cross-reference; the main idea in 001 is correct with the additions noted there.** A self-contained definition should state all three stages and the base case.
+>
+> **Suggested exam answer:** Divide and conquer has three stages: divide an instance into smaller instances of the same problem, conquer by solving them recursively, and combine their answers. Directly solve sufficiently small instances as base cases. Recursive arguments must shrink so the algorithm terminates, and the combination rule must produce a correct solution. For example, merge sort recursively sorts two halves and merges the sorted results. Splitting a problem is useful only if the resulting recursion and combination costs are favorable.
+>
+> **Study:** [[Divide and Conquer#Overview]]; [[Divide and Conquer#From a recursive specification to a proof]]; [[lecture3-DandC.pdf#page=2|slide 2]].
 
 ### AAPP-04-003
 
@@ -1581,10 +2071,16 @@ Source: [[Tema Esame 2023-02-14-1st.pdf#page=3|2023-02-14-1st · Exercise 2B · 
 
 **My answer**
 
-*Write your answer here.*
+Answer above should be enough.
 
 > [!note]- Feedback
-> Not reviewed yet.
+> **Reviewed: 2026-11-01.**
+>
+> **Assessment: revision cross-reference; explicitly show how the cost recurrence is built.** A recurrence describes the actual recursive calls and the nonrecursive work, rather than dividing an already-known complexity by the number of pieces.
+>
+> **Suggested exam answer:** Specify the input-size measure and base-case cost, count the recursive calls and their sizes, and add the divide/combine work. For $a$ equal-size calls on size $n/b$, sequential time satisfies $T(n)=aT(n/b)+f(n)$ with a constant-size base case. Identify $a,b,f(n)$, check the Master theorem's assumptions and case conditions, and solve it. If they fail, use a recursion tree, substitution, or another suitable method. For merge sort, $a=b=2$ and $f(n)=\Theta(n)$, giving $\Theta(n\log n)$. Count calls actually executed: binary search uses one half, not both.
+>
+> **Study:** [[Algorithm as recipes#Solving recurrences]]; [[Algorithm as recipes#Master theorem]]; [[Divide and Conquer#Merge sort as the template]].
 
 ### AAPP-04-004
 
@@ -1597,10 +2093,16 @@ Source: [[Tema Esame 2026-6-29-1st.pdf#page=3|2026-6-29-1st · Exercise 2B · p.
 
 **My answer**
 
-*Write your answer here.*
+When power a number we can, instead of power of n, multiply together the two n/2 powers. By doing so since the two sides are the same number we only have to compute one and then multiply by itself. We can keep applying this for multiple levels until we reach exponent 1. The complexity is O(logn) because starting from n we halve it every time until we reach 1.
 
 > [!note]- Feedback
-> Not reviewed yet.
+> **Reviewed: 2026-11-01.**
+>
+> **Assessment: correct central argument; add odd exponents, a base case, and the cost model.** You correctly explain that the equal half-power must be computed once and reused. An exponent is not always even, so halving needs a floor and sometimes one extra multiplication.
+>
+> **Suggested exam answer:** To compute $x^n$ for a nonnegative integer $n$, return 1 at $n=0$. Otherwise compute $y=x^{\lfloor n/2\rfloor}$ recursively once. Return $y^2$ for even $n$ and $xy^2$ for odd $n$. Thus $T(n)=T(\lfloor n/2\rfloor)+\Theta(1)=\Theta(\log n)$ for growing positive $n$, counting arithmetic at unit cost. Repeated multiplication takes $\Theta(n)$ operations. Calling the half-power routine twice would instead give $2T(n/2)+\Theta(1)=\Theta(n)$ and lose the improvement. Exact large-integer bit complexity requires a separate analysis.
+>
+> **Study:** [[Divide and Conquer#Exponentiation by squaring]]; [[lecture3-DandC.pdf#page=17|slides 17–19]].
 
 ### AAPP-04-005
 
@@ -1612,10 +2114,27 @@ Source: [[Tema Esame 2023-06-19-1st.pdf#page=3|2023-06-19-1st · Exercise 2A · 
 
 **My answer**
 
-*Write your answer here.*
+Strassen algorithm is a way to apply divide and conquer to matrix multiplication in order to obtain a smaller complexity. What it does is divide the starting matrices in certain block. For 2x2 matrix it reduces the recursive multiplications from 8 to 7 by performing some more blocks addition and subtraction. It need a further step to reconstruct the real output from the obtained values. The original complexity would be O(n^3) while Strassen achieves O(n^2.8), which is marginally better, but for big matrix it can matter a lot.
 
 > [!note]- Feedback
-> Not reviewed yet.
+> **Reviewed: 2026-11-01.**
+>
+> **Assessment: mostly correct mechanism; use the exact exponent and explain the recursive saving.** You correctly identify seven recursive products, additional additions/subtractions, and reconstruction. The improvement repeats at every level. Formally, $O(n^{2.8})$ is too small: $\log_2 7\approx2.8073549>2.8$. Use $\Theta(n^{\log_2 7})$, or give 2.807 as an approximate exponent.
+>
+> **Suggested exam answer:** Strassen is a divide-and-conquer matrix-multiplication algorithm. Partition each $n\times n$ input into four $(n/2)\times(n/2)$ blocks. Ordinary block multiplication uses eight recursive products; Strassen uses seven specially chosen products and reconstructs the four output blocks through additions and subtractions. With the lecture's block names $A=\begin{pmatrix}a&b\\c&d\end{pmatrix}$ and $B=\begin{pmatrix}e&f\\g&h\end{pmatrix}$, compute
+>
+> $$
+> \begin{aligned}
+> P_1&=a(f-h),&P_2&=(a+b)h,\\
+> P_3&=(c+d)e,&P_4&=d(g-e),\\
+> P_5&=(a+d)(e+h),&P_6&=(b-d)(g+h),\\
+> P_7&=(a-c)(e+f).
+> \end{aligned}
+> $$
+>
+> Then $C_{11}=P_5+P_4-P_2+P_6$, $C_{12}=P_1+P_2$, $C_{21}=P_3+P_4$, and $C_{22}=P_5+P_1-P_3-P_7$. Recursively apply the same method down to a small base case. The block additions cost $\Theta(n^2)$ per call, yielding $T(n)=7T(n/2)+\Theta(n^2)=\Theta(n^{\log_2 7})$, compared with $\Theta(n^3)$ for the classical method. Extra constants and storage affect practical performance, so a smaller exponent does not guarantee an advantage for every matrix size.
+>
+> **Study:** [[Divide and Conquer#Strassen's algorithm]]; [[Divide and Conquer#Complexity]]; [[Divide and Conquer#Why saving one product compounds]]; [[lecture3-DandC.pdf#page=29|slides 29–38]].
 
 ### AAPP-04-006
 
@@ -1627,10 +2146,16 @@ Source: [[Tema Esame 2023-06-19-1st.pdf#page=3|2023-06-19-1st · Exercise 2B · 
 
 **My answer**
 
-*Write your answer here.*
+Already answered above
 
 > [!note]- Feedback
-> Not reviewed yet.
+> **Reviewed: 2026-11-01.**
+>
+> **Assessment: revision cross-reference; explain the recurrence structure and the theorem's limits.** Your first answer identifies the main reason for using it, with the correction that divide/combine cost is a function $f(n)$ and can grow with $n$.
+>
+> **Suggested exam answer:** Many divide-and-conquer runtimes have the form $T(n)=aT(n/b)+f(n)$: $a$ recursive calls on equal reduced sizes and nonrecursive divide/combine cost $f(n)$. The Master theorem compares $f(n)$ with $n^{\log_b a}$ and gives an asymptotic bound without expanding every recursion level. It requires constants $a\ge1$, $b>1$, an eventually positive cost, suitable base cases, and one of the theorem's case conditions. Polynomial separation is required in Cases 1 and 3, and Case 3 also needs regularity. Other recurrences require another analysis method.
+>
+> **Study:** [[Algorithm as recipes#Master theorem]]; [[Algorithm as recipes#Reading a recursion tree level by level]]; [[lecture2-AlgorithmAsRecipe.pdf#page=18|slides 18–21]].
 
 ### AAPP-04-007
 
@@ -1642,10 +2167,16 @@ Source: [[Tema Esame 2023-07-11-1st.pdf#page=3|2023-07-11-1st · Exercise 2A · 
 
 **My answer**
 
-*Write your answer here.*
+Already answered above. For space i am not sure.
 
 > [!note]- Feedback
-> Not reviewed yet.
+> **Reviewed: 2026-11-01.**
+>
+> **Assessment: the time argument is correct by reference to 004; space was missing.** Count the live recursion frames, not the total number of multiplications, and state whether the implementation is recursive or iterative.
+>
+> **Suggested exam answer:** Compute $y=x^{\lfloor n/2\rfloor}$ once, then return $y^2$ or $xy^2$ according to the parity of $n$, with $x^0=1$. The time recurrence is $T(n)=T(\lfloor n/2\rfloor)+\Theta(1)$, giving $\Theta(\log n)$ unit-cost arithmetic operations. The ordinary recursive implementation has $\Theta(\log n)$ nested calls and a constant number of words per frame, so auxiliary stack space is $\Theta(\log n)$. Equivalently, $S(n)=S(\lfloor n/2\rfloor)+\Theta(1)$. An iterative exponentiation-by-squaring implementation uses $\Theta(1)$ auxiliary words while retaining logarithmic arithmetic-operation count. These space bounds use the course's word model and exclude input/output storage; they do not assert constant-bit storage for arbitrarily large powers.
+>
+> **Study:** [[Divide and Conquer#Exponentiation by squaring]]; [[Divide and Conquer#Following the calls and returns of POWER]]; [[lecture3-DandC.pdf#page=17|slides 17–19]].
 
 ### AAPP-04-008
 
@@ -1657,10 +2188,27 @@ Source: [[Tema Esame 2023-09-11-1st.pdf#page=3|2023-09-11-1st · Exercise 2A · 
 
 **My answer**
 
-*Write your answer here.*
+Master theorem solves the complexity for problems that look like this:
+T(n) = aT(n/b) + f(n) where multiple sub-tasks are computed plus a fixed amount f. It compares $n^{\log_{b}a}$ to f(n) and based on 3 cases of asysntotic comparison, it directly gives a value to the complexity, which can be just f(n) or $n^{\log_{b}a}$ or $n^{\log_{b}a}(\log n)^{k+1}$.
 
 > [!note]- Feedback
-> Not reviewed yet.
+> **Reviewed: 2026-11-01.**
+>
+> **Assessment: correct reference term and result shapes, but substantial parts are missing.** State the exact case conditions, apply them to binary search, and answer the space question. $f(n)$ is nonrecursive cost, which need not be fixed or constant.
+>
+> **Suggested exam answer — theorem:** For $T(n)=aT(n/b)+f(n)$ with constants $a\ge1$, $b>1$, constant-size base cases, and eventually positive $f(n)$, put $d=\log_b a$. In the form used in the notes:
+>
+> 1. If $f(n)=O(n^{d-\varepsilon})$ for some constant $\varepsilon>0$, then $T(n)=\Theta(n^d)$.
+> 2. If $f(n)=\Theta(n^d\log^k n)$ for a constant $k\ge0$, then $T(n)=\Theta(n^d\log^{k+1}n)$.
+> 3. If $f(n)=\Omega(n^{d+\varepsilon})$ for some constant $\varepsilon>0$ and $af(n/b)\le cf(n)$ for some constant $0<c<1$ and all sufficiently large $n$, then $T(n)=\Theta(f(n))$.
+>
+> The outer cases require a polynomial gap, rather than merely being smaller or larger. The recurrence has equal-size subproblems, up to standard floor/ceiling rounding. Some recurrences satisfy none of these cases. This statement matches [MIT's Master theorem sheet](https://people.csail.mit.edu/thies/6.046-web/master.pdf#page=1).
+>
+> **Application to binary search:** For a sorted array represented by index bounds, only one half is searched. Worst-case $T(n)=T(n/2)+\Theta(1)$ has $a=1,b=2,d=0$ and $f(n)=\Theta(1)=\Theta(n^0\log^0 n)$. Case 2 gives $\Theta(\log n)$ time. The best case is constant time if the first midpoint matches.
+>
+> **Space or spatial complexity:** The theorem solves suitable recurrences for other resources too, but first derive the right recurrence. Recursive index-based binary search has $S(n)=S(n/2)+\Theta(1)=\Theta(\log n)$ stack words; an iterative version needs $\Theta(1)$ auxiliary words. Sequential sibling calls can reuse storage, so peak space does not automatically add their space costs. For the lecture's geometric example, H-tree side length satisfies $L(n)=2L(n/4)+\Theta(1)=\Theta(\sqrt n)$, and its area is $L(n)^2=\Theta(n)$. The side-length result must be squared to obtain area.
+>
+> **Study:** [[Algorithm as recipes#Master theorem]]; [[Divide and Conquer#Binary search]]; [[Divide and Conquer#H-tree layout]]; [[lecture3-DandC.pdf#page=5|slides 5–7]]; [[lecture3-DandC.pdf#page=46|slide 46]].
 
 ### AAPP-04-009
 
@@ -1672,10 +2220,16 @@ Source: [[Tema Esame 2024-02-16-1st.pdf#page=3|2024-02-16-1st · Exercise 2C · 
 
 **My answer**
 
-*Write your answer here.*
+Already answered above
 
 > [!note]- Feedback
-> Not reviewed yet.
+> **Reviewed: 2026-11-01.**
+>
+> **Assessment: revision cross-reference to 004; include the odd case and reuse rule.** The logarithmic bound depends on making one recursive call per level.
+>
+> **Suggested exam answer:** To compute $x^n$, return 1 when $n=0$; otherwise recursively compute $y=x^{\lfloor n/2\rfloor}$ once and reuse it. Return $y^2$ for even $n$, or $xy^2$ for odd $n$. The exponent halves at each level and combination uses at most two multiplications, so $T(n)=T(\lfloor n/2\rfloor)+\Theta(1)=\Theta(\log n)$ under unit-cost arithmetic. Recursively computing the two equal half-powers separately would require linear arithmetic work instead.
+>
+> **Study:** [[Divide and Conquer#Exponentiation by squaring]]; [[lecture3-DandC.pdf#page=17|slides 17–19]].
 
 ### AAPP-04-010
 
@@ -1687,10 +2241,16 @@ Source: [[Tema Esame 2024-06-26-1st.pdf#page=3|2024-06-26-1st · Exercise 2C · 
 
 **My answer**
 
-*Write your answer here.*
+Already answered above
 
 > [!note]- Feedback
-> Not reviewed yet.
+> **Reviewed: 2026-11-01.**
+>
+> **Assessment: revision cross-reference, but the earlier answer did not list the required conditions.** “It looks like $aT(n/b)+f(n)$” alone is insufficient: the constants, cost assumptions, and a valid case must also be checked.
+>
+> **Suggested exam answer:** Use a recurrence $T(n)=aT(n/b)+f(n)$ with fixed constants $a\ge1$ and $b>1$, eventually positive nonrecursive cost $f(n)$, and constant-size base cases. Subproblems have the same size $n/b$, allowing ordinary floor/ceiling rounding. With $d=\log_b a$, establish either a polynomially smaller $f(n)$, the boundary form $f(n)=\Theta(n^d\log^k n)$ with constant $k\ge0$, or a polynomially larger $f(n)$ satisfying regularity $af(n/b)\le cf(n)$ for some $0<c<1$ eventually. If no case applies, this version of the theorem gives no result. Unequal recursive sizes or a nonconstant $a$ do not fit this standard form directly.
+>
+> **Study:** [[Algorithm as recipes#Master theorem]]; full cases in [[#AAPP-04-008]]; [[lecture2-AlgorithmAsRecipe.pdf#page=18|slides 18–21]].
 
 ### AAPP-04-011
 
@@ -1702,10 +2262,20 @@ Source: [[Tema Esame 2024-07-24-1st.pdf#page=3|2024-07-24-1st · Exercise 2A · 
 
 **My answer**
 
-*Write your answer here.*
+Already answered above. For the powering, we start from a^n, then we divide in $a^{n/2}\cdot a^{n/2}$ if even or $a^{n-1/2}\cdot a^{n-1/2} \cdot a$  if odd. The complexity for a normal powering is O(n) while now T(n) = 1T(n/2) + O(1) so a=1 and b=2. We compare n^0 to 1 which is the same so we take the complexity O(n^0logn) = O(logn).
 
 > [!note]- Feedback
-> Not reviewed yet.
+> **Reviewed: 2026-11-01.**
+>
+> **Assessment: correct recurrence and Case 2 application; fix the odd exponent and complete the theorem/space discussion.** For odd $n$, use $(n-1)/2$, not $n-1/2$. Those expressions differ: with $n=5$, the former is 2 and the latter 4.5. Compute the half-power once. Your $a=1$, $b=2$ analysis correctly counts that single recursive call.
+>
+> **Suggested exam answer:** The Master theorem uses $T(n)=aT(n/b)+f(n)$ with constants $a\ge1,b>1$, eventually positive $f(n)$, and suitable constant-size base cases. Put $d=\log_b a$. Case 1 requires $f(n)=O(n^{d-\varepsilon})$ and gives $\Theta(n^d)$. Case 2 has $f(n)=\Theta(n^d\log^k n)$, $k\ge0$, and gives $\Theta(n^d\log^{k+1}n)$. Case 3 requires $f(n)=\Omega(n^{d+\varepsilon})$ and regularity $af(n/b)\le cf(n)$ eventually, for constants $\varepsilon>0$ and $0<c<1$; it gives $\Theta(f(n))$.
+>
+> **Powering:** Use $x^0=1$ and $x^n=(x^{n/2})^2$ for even $n$, or $x^n=x(x^{(n-1)/2})^2$ for odd $n$. Reusing the recursive result gives $T(n)=T(\lfloor n/2\rfloor)+\Theta(1)$. Here $d=\log_2 1=0$, so Case 2 with $k=0$ gives $\Theta(\log n)$ unit-cost time.
+>
+> **Space:** Yes, the theorem can help when a correctly derived space recurrence has the required form. Ordinary recursive powering has $S(n)=S(\lfloor n/2\rfloor)+\Theta(1)=\Theta(\log n)$ auxiliary stack words. The iterative version uses $\Theta(1)$ auxiliary words. This must be analyzed separately from time. For geometric spatial complexity, the lecture's H-tree similarly uses $L(n)=2L(n/4)+\Theta(1)$ for side length and then squares the result to get linear area.
+>
+> **Study:** [[Algorithm as recipes#Master theorem]]; [[Divide and Conquer#Exponentiation by squaring]]; [[Divide and Conquer#H-tree layout]]; [[lecture3-DandC.pdf#page=17|slides 17–19]].
 
 ### AAPP-04-012
 
@@ -1717,10 +2287,18 @@ Source: [[Tema Esame 2024-09-05-1st.pdf#page=3|2024-09-05-1st · Exercise 2A · 
 
 **My answer**
 
-*Write your answer here.*
+Already answered above. For the matrix multiplication the result is the same as the naive version
 
 > [!note]- Feedback
-> Not reviewed yet.
+> **Reviewed: 2026-11-01.**
+>
+> **Assessment: correct for ordinary block multiplication, but the Strassen comparison and recurrence analysis are missing.** Ordinary divide-and-conquer multiplication has the same cubic order as the triple loop. Strassen changes the number of recursive products, so its asymptotic bound differs.
+>
+> **Suggested exam answer:** The Master theorem applies to balanced recurrences $T(n)=aT(n/b)+f(n)$ with constant $a\ge1,b>1$, positive nonrecursive cost, appropriate base cases, and one of its valid case conditions. Ordinary multiplication partitions each matrix into four quadrants, but each output block needs two products: eight recursive multiplications overall. Thus $T(n)=8T(n/2)+\Theta(n^2)$. Since $d=\log_2 8=3$ and $f(n)=\Theta(n^2)$ is polynomially smaller, Case 1 gives $\Theta(n^3)$.
+>
+> Strassen uses seven recursive products and extra block additions/subtractions, giving $T(n)=7T(n/2)+\Theta(n^2)$. Now $d=\log_2 7\approx2.807>2$, so Case 1 gives $\Theta(n^{\log_2 7})$. The saving compounds across recursion levels. These are arithmetic-operation bounds; merely partitioning into quadrants does not produce the improved exponent.
+>
+> **Study:** [[Algorithm as recipes#Master theorem]]; [[Divide and Conquer#Ordinary block recursion]]; [[Divide and Conquer#Complexity]]; [[lecture3-DandC.pdf#page=23|slide 23]]; [[lecture3-DandC.pdf#page=38|slide 38]].
 
 ### AAPP-04-013
 
@@ -1732,10 +2310,16 @@ Source: [[Tema Esame 2024-11-12-1st.pdf#page=3|2024-11-12-1st · Exercise 2B · 
 
 **My answer**
 
-*Write your answer here.*
+Already answered above
 
 > [!note]- Feedback
-> Not reviewed yet.
+> **Reviewed: 2026-11-01.**
+>
+> **Assessment: revision cross-reference; give both the usefulness and the assumptions explicitly.** The principle in 001 is sound, but the restrictions should be stated.
+>
+> **Suggested exam answer:** Divide-and-conquer algorithms often generate $T(n)=aT(n/b)+f(n)$, with a fixed number of equal-size smaller calls plus divide/combine work. The Master theorem compares $f(n)$ with $n^{\log_b a}$ and quickly yields an asymptotic bound when a case applies. It assumes constant $a\ge1,b>1$, eventually positive cost, and suitable base cases. Cases 1 and 3 require polynomial separation; Case 3 additionally requires $af(n/b)\le cf(n)$ for some $c<1$ eventually. The boundary case covers $f(n)=\Theta(n^{\log_b a}\log^k n)$ for $k\ge0$. Other recurrences need another method.
+>
+> **Study:** [[Algorithm as recipes#Master theorem]]; [[lecture2-AlgorithmAsRecipe.pdf#page=18|slides 18–21]].
 
 ### AAPP-04-014
 
@@ -1747,10 +2331,16 @@ Source: [[Tema Esame 2025-01-24-1st.pdf#page=3|2025-01-24-1st · Exercise 2A · 
 
 **My answer**
 
-*Write your answer here.*
+Already answered above
 
 > [!note]- Feedback
-> Not reviewed yet.
+> **Reviewed: 2026-11-01.**
+>
+> **Assessment: revision cross-reference to 005; the class is divide and conquer.** Use the corrected exponent and identify how the seven-product saving is repeated recursively.
+>
+> **Suggested exam answer:** Strassen belongs to divide and conquer. It splits two square matrices into quadrants, recursively computes seven products of chosen sums/differences of those blocks, and combines the products to reconstruct the output quadrants. Ordinary block multiplication uses eight recursive products. The extra additions and subtractions still cost $\Theta(n^2)$ per call, giving $T(n)=7T(n/2)+\Theta(n^2)=\Theta(n^{\log_2 7})$, compared with classical $\Theta(n^3)$ time. Its smaller exponent provides an asymptotic improvement, while practical crossover depends on implementation costs.
+>
+> **Study:** [[Divide and Conquer#Strassen's algorithm]]; [[Divide and Conquer#Complexity]]; product formulas in [[#AAPP-04-005]]; [[lecture3-DandC.pdf#page=29|slides 29–38]].
 
 ### AAPP-04-015
 
@@ -1762,10 +2352,16 @@ Source: [[Tema Esame 2025-02-14-1st.pdf#page=3|2025-02-14-1st · Exercise 2A · 
 
 **My answer**
 
-*Write your answer here.*
+Already answered above
 
 > [!note]- Feedback
-> Not reviewed yet.
+> **Reviewed: 2026-11-01.**
+>
+> **Assessment: revision cross-reference to 004; explicitly name divide and conquer and handle both parities.** One recursive subproblem still fits the course's divide-and-conquer classification.
+>
+> **Suggested exam answer:** Exponentiation by squaring is a divide-and-conquer algorithm. For $x^n$, stop at $n=0$ with result 1. Compute the smaller power $y=x^{\lfloor n/2\rfloor}$ once, then combine it as $y^2$ for even $n$ or $xy^2$ for odd $n$. The recursive exponent halves and combination takes constant arithmetic work, so $T(n)=T(\lfloor n/2\rfloor)+\Theta(1)=\Theta(\log n)$ under the unit-cost model. Reusing $y$ is essential; the repeated equal factor is not a second required recursive call.
+>
+> **Study:** [[Divide and Conquer#Exponentiation by squaring]]; [[lecture3-DandC.pdf#page=17|slides 17–19]].
 
 ### AAPP-04-016
 
@@ -1777,10 +2373,16 @@ Source: [[Tema Esame 2025-09-05-1st.pdf#page=3|2025-09-05-1st · Exercise 2A · 
 
 **My answer**
 
-*Write your answer here.*
+Already answered above. To provide a different example we can talk about merge sort. Instead of sorting the whole array, we split it in half and merge the two halves then merge them together in the order. We can also recursively split the sub array until we reach a single element array and merge from that point on.
 
 > [!note]- Feedback
-> Not reviewed yet.
+> **Reviewed: 2026-11-01.**
+>
+> **Assessment: mostly correct; say “recursively sort” before merging.** Your final description of splitting to single elements and merging upward gives the right structure. A merge relies on both input halves already being sorted; splitting an unsorted array and immediately merging its unsorted halves does not implement merge sort.
+>
+> **Suggested exam answer:** Merge sort illustrates divide and conquer. Divide the array into two nearly equal halves. Conquer by recursively sorting both halves, stopping at arrays of size zero or one, which are already sorted. Combine by repeatedly taking the smaller next element from the two sorted halves. This linear-time merge produces the sorted full array. Its sequential recurrence is $T(n)=2T(n/2)+\Theta(n)$, with constant base-case cost, giving $\Theta(n\log n)$ time by Master Case 2.
+>
+> **Study:** [[Divide and Conquer#Merge sort as the template]]; [[Algorithm as recipes#Looking inside the merge]]; [[lecture3-DandC.pdf#page=4|slide 4]].
 
 ### AAPP-04-017
 
@@ -1792,10 +2394,16 @@ Source: [[Tema Esame 2025-11-06-1st.pdf#page=3|2025-11-06-1st · Exercise 2B · 
 
 **My answer**
 
-*Write your answer here.*
+Already answered above
 
 > [!note]- Feedback
-> Not reviewed yet.
+> **Reviewed: 2026-11-01.**
+>
+> **Assessment: revision cross-reference; state the one-call recurrence and the exact Master case.** The idea in 004 is correct, with the odd-exponent correction explained in 011.
+>
+> **Suggested exam answer:** Compute $x^{\lfloor n/2\rfloor}$ once and square the result; multiply by $x$ once more if $n$ is odd. Stop at $n=0$ with result 1. This gives $T(n)=T(\lfloor n/2\rfloor)+\Theta(1)$. For the Master theorem, $a=1,b=2$ and $n^{\log_2 1}=1$. The nonrecursive cost is $\Theta(1)$, so Case 2 with $k=0$ gives $\Theta(\log n)$ unit-cost arithmetic time. Computing the same half-power twice would change the recurrence and result in linear work.
+>
+> **Study:** [[Divide and Conquer#Exponentiation by squaring]]; [[Algorithm as recipes#Master theorem]]; [[lecture3-DandC.pdf#page=19|slide 19]].
 
 ### AAPP-04-018
 
@@ -1807,10 +2415,16 @@ Source: [[Tema Esame 2026-6-11-1st.pdf#page=5|2026-6-11-1st · Exercise 3B · p.
 
 **My answer**
 
-*Write your answer here.*
+Already answered above
 
 > [!note]- Feedback
-> Not reviewed yet.
+> **Reviewed: 2026-11-01.**
+>
+> **Assessment: revision cross-reference to 005; replace the rounded $O(n^{2.8})$ claim with the exact bound.** For this comparison, the recurrences show why the exponent changes.
+>
+> **Suggested exam answer:** Classical matrix multiplication takes $\Theta(n^3)$ time; its ordinary block-recursive form uses eight half-size products and has $T(n)=8T(n/2)+\Theta(n^2)$. Strassen uses seven half-size products of block sums/differences and reconstructs the result through additional additions/subtractions. Its recurrence is $T(n)=7T(n/2)+\Theta(n^2)$, giving $\Theta(n^{\log_2 7})$ arithmetic operations, with exponent approximately 2.807. This is asymptotically smaller than cubic time. The reduction from eight to seven occurs at every recursive level, though extra overhead can outweigh the saving for small matrices.
+>
+> **Study:** [[Divide and Conquer#Ordinary block recursion]]; [[Divide and Conquer#Complexity]]; [[Divide and Conquer#Why saving one product compounds]]; [[lecture3-DandC.pdf#page=38|slide 38]].
 
 ### AAPP-04-019
 
@@ -1822,10 +2436,16 @@ Source: [[Tema Esame 2026-9-10-1st.pdf#page=3|2026-9-10-1st · Exercise 2B · p.
 
 **My answer**
 
-*Write your answer here.*
+Already answered above
 
 > [!note]- Feedback
-> Not reviewed yet.
+> **Reviewed: 2026-11-01.**
+>
+> **Assessment: revision cross-reference; one concrete example and its recurrence make a complete answer.** Merge sort, already discussed in 016 and in the lecture, gives a direct illustration.
+>
+> **Suggested exam answer:** Merge sort divides an array into two halves, recursively sorts each half, and merges the sorted results in linear time, stopping at constant-size arrays. Its recurrence is $T(n)=2T(n/2)+\Theta(n)$. The Master theorem has $a=2,b=2$, so $n^{\log_b a}=n$ matches the nonrecursive cost. Case 2 gives $T(n)=\Theta(n\log n)$. The theorem is useful because many balanced divide-and-conquer algorithms have this fixed-number, fixed-ratio structure, allowing their bounds to be derived by checking standard cases. Its assumptions must be verified rather than applied to every recursive algorithm.
+>
+> **Study:** [[Divide and Conquer#Merge sort as the template]]; [[Algorithm as recipes#Master theorem]]; [[lecture3-DandC.pdf#page=4|slides 4–7]].
 
 ## Randomized algorithm classes
 
@@ -1841,10 +2461,16 @@ Source: [[Tema Esame 2022-01-14-1st.pdf#page=4|2022-01-14-1st · Exercise 3 · p
 
 **My answer**
 
-*Write your answer here.*
+They are both randomized algorithm, meaning they have some functioning that is random and so is some aspect of the result and complexity. Monte Carlo algorithms have a fixed maximum time under which they are guaranteed to finish, but it does not guarantee that the result is correct. Las Vegas is the opposite, the time to finish is random but it always find the result. 
 
 > [!note]- Feedback
-> Not reviewed yet.
+> **Reviewed: 2026-11-01.**
+>
+> **Assessment: mostly correct; make the guarantees precise.** You correctly distinguish bounded-time possible error from zero-error random runtime. A randomized algorithm need not have both a random answer and a random runtime. Also, a Monte Carlo time bound is a function of input size and the chosen parameters, rather than one fixed constant for every input.
+>
+> **Suggested exam answer:** A Las Vegas algorithm never returns an incorrect solution; randomness affects its execution time. Under the usual finite-expected-time guarantee it terminates with probability one, although some algorithms allow arbitrarily long runs. A Monte Carlo algorithm has a stated worst-case runtime bound and may return an incorrect answer or fail to find the requested solution with a specified probability. Its error guarantee must be stated. Independent repetition can often reduce that probability. Las Vegas does not necessarily have an unbounded worst-case runtime: randomized quicksort is always correct and still has a finite quadratic worst case.
+>
+> **Study:** [[Randomized Algorithms#Las Vegas and Monte Carlo]]; [[Sorting#Randomized quicksort]]; [[lecture5-Randomization.pdf#page=21|slides 21–24]].
 
 ### AAPP-05-002
 
@@ -1856,10 +2482,18 @@ Source: [[Tema Esame 2024-02-16-1st.pdf#page=3|2024-02-16-1st · Exercise 2A · 
 
 **My answer**
 
-*Write your answer here.*
+For Las Vegas it is efficient when the expected time is bounded by a polynomial of the input size, for Monte Carlo the worst case has to be bounded to that same amount.
 
 > [!note]- Feedback
-> Not reviewed yet.
+> **Reviewed: 2026-11-01.**
+>
+> **Assessment: correct runtime criteria; add what is being averaged and the Monte Carlo error guarantee.** Your expected-polynomial versus worst-case-polynomial distinction matches the lecture. The Las Vegas expectation is over internal random choices for each fixed input, rather than over a favorable distribution of inputs.
+>
+> **Suggested exam answer:** An efficient Las Vegas algorithm is zero-error and has expected runtime bounded by a polynomial in input size on every valid input. In symbols, for some polynomial $P$, $\mathbb E_R[T(x,R)]\le P(|x|)$ for each input $x$. An efficient Monte Carlo algorithm has polynomial worst-case runtime on every valid input, together with a specified useful error bound. For a standard bounded-error decision algorithm, one can require error at most $1/3$ on each input; the particular constant is conventional and can often be improved by independent repetition. The repetition needed to achieve the required guarantee must also fit the polynomial budget.
+>
+> **Course wording:** Slide 24 states the runtime criteria; slide 23 explicitly adds bounded error for Monte Carlo. Read those statements together.
+>
+> **Study:** [[Randomized Algorithms#Las Vegas and Monte Carlo]]; [[Randomized Algorithms#Fixing the input before taking an expectation]]; [[lecture5-Randomization.pdf#page=23|slides 23–24]].
 
 ### AAPP-05-003
 
@@ -1871,10 +2505,16 @@ Source: [[Tema Esame 2024-06-26-1st.pdf#page=3|2024-06-26-1st · Exercise 2A · 
 
 **My answer**
 
-*Write your answer here.*
+Already answered.
 
 > [!note]- Feedback
-> Not reviewed yet.
+> **Reviewed: 2026-11-01.**
+>
+> **Assessment: revision cross-reference; your main distinction in 001 is correct with the qualifications there.** Give the guarantees directly when answering an individual exam question.
+>
+> **Suggested exam answer:** Las Vegas algorithms preserve correctness: any returned solution is correct, while runtime depends on the random choices and is usually analyzed in expectation. Monte Carlo algorithms have a stated worst-case runtime bound while allowing a quantified probability of error or failure. Efficient Las Vegas algorithms have polynomial expected time for each input; efficient Monte Carlo algorithms have polynomial worst-case time with a controlled error guarantee. Randomized quicksort illustrates zero-error random runtime, while the lecture's bounded random search illustrates bounded time with possible failure.
+>
+> **Study:** [[Randomized Algorithms#Las Vegas and Monte Carlo]]; [[Randomized Algorithms#Example: finding an a]]; [[lecture5-Randomization.pdf#page=21|slides 21–27]].
 
 ### AAPP-05-004
 
@@ -1886,10 +2526,16 @@ Source: [[Tema Esame 2024-11-12-1st.pdf#page=4|2024-11-12-1st · Exercise 3A · 
 
 **My answer**
 
-*Write your answer here.*
+Already answered above. For time complexity Las Vegas has an expected time but worst case could be infinite, Monte Carlo instead is bound.
 
 > [!note]- Feedback
-> Not reviewed yet.
+> **Reviewed: 2026-11-01.**
+>
+> **Assessment: mostly correct; distinguish an unbounded worst case from a positive probability of never finishing.** A Las Vegas algorithm can have arbitrarily long executions, but this is not required of every Las Vegas algorithm. A finite expected runtime implies termination with probability one; it does not provide a deterministic deadline.
+>
+> **Suggested exam answer:** Las Vegas algorithms are zero-error and are efficient when expected runtime is polynomial on every input. In the lecture's repeat-until-hit example, no finite deterministic trial bound exists, yet termination has probability one and the expectation is finite under the promised target fraction. Other Las Vegas algorithms have finite worst-case bounds: standard randomized quicksort on distinct keys has expected $\Theta(n\log n)$ time and worst-case $\Theta(n^2)$ time. Monte Carlo algorithms instead have a stated worst-case time bound and permit controlled error or failure; efficient versions use polynomial time with a suitable error guarantee. A polynomial expectation and a polynomial worst-case bound are different guarantees.
+>
+> **Study:** [[Randomized Algorithms#Las Vegas version]]; [[Randomized Algorithms#Probability of stopping now versus still waiting]]; [[Sorting#Randomized quicksort]]; [[lecture5-Randomization.pdf#page=26|slides 26–27]].
 
 ### AAPP-05-005
 
@@ -1901,10 +2547,16 @@ Source: [[Tema Esame 2025-07-04-1st.pdf#page=3|2025-07-04-1st · Exercise 2B · 
 
 **My answer**
 
-*Write your answer here.*
+Already answered above.
 
 > [!note]- Feedback
-> Not reviewed yet.
+> **Reviewed: 2026-11-01.**
+>
+> **Assessment: revision cross-reference; combine the classification with the efficiency criteria.** Your answer in 002 supplies the correct runtime distinction. Include the correctness/error requirements as well.
+>
+> **Suggested exam answer:** A Las Vegas algorithm gives a correct answer whenever it terminates; an efficient version has polynomial expected runtime for every fixed valid input, averaging over its own random choices. Under that guarantee termination occurs with probability one. A Monte Carlo algorithm has a bounded worst-case runtime and a specified probability of error or failure. An efficient version has polynomial worst-case runtime and meets the required error guarantee, including any repetitions used to improve reliability. A Las Vegas run need not finish within its expected time, and bounded time alone does not make an unreliable Monte Carlo solver adequate.
+>
+> **Study:** [[Randomized Algorithms#Las Vegas and Monte Carlo]]; [[lecture5-Randomization.pdf#page=23|slides 23–24]].
 
 ### AAPP-05-006
 
@@ -1916,10 +2568,20 @@ Source: [[Tema Esame 2026-1-22-1st.pdf#page=5|2026-1-22-1st · Exercise 3A · p.
 
 **My answer**
 
-*Write your answer here.*
+Already answered above. An example can be made from find a in a list of elements. Las Vegas is look a random element until a is found, always finds a but time is not bound. Monte Carlo says look for a randomly 20 times, a might not be found but time is bound to 20 executions.
 
 > [!note]- Feedback
-> Not reviewed yet.
+> **Reviewed: 2026-11-01.**
+>
+> **Assessment: good examples; add the input promise, sampling model, and probabilities.** Your repeat-until-found versus 20-trial distinction matches the lecture. “Always finds a” needs the promise that an `a` exists and should be expressed as termination with probability one. If no `a` exists, the unbounded loop never succeeds. Twenty trials alone do not establish a useful success probability for an arbitrary array.
+>
+> **Suggested exam answer:** Las Vegas is zero-error with runtime analyzed in expectation; efficient versions have polynomial expected time on each input. Monte Carlo has a stated worst-case time bound with controlled error or failure; efficient versions meet the required error guarantee in polynomial worst-case time. For the lecture's example, assume an array with half its entries equal to `a`, and take independent uniform samples with replacement. The Las Vegas version samples until it reads an `a` and returns that index. Every returned index is valid, expected trial count is $1/(1/2)=2$, and termination has probability one, with no finite deterministic trial limit. The Monte Carlo version samples at most 20 times, returning a valid index if found and `FAIL` otherwise. It uses at most 20 samples, and $\Pr(\mathrm{FAIL})=(1/2)^{20}=2^{-20}\approx9.54\times10^{-7}$.
+>
+> **Error interpretation:** `FAIL` means that the bounded search did not find a witness. It does not establish that the array contains no `a`. If failure is reported as a membership answer NO, an existing `a` can be missed: a false negative. This is the bounded-sampling example used in the lecture's Monte Carlo discussion.
+>
+> **Why the promise matters:** With target fraction $q>0$, the expected repeat-until-hit count is $1/q$ and the 20-trial failure probability is $(1-q)^{20}$. If there is only one `a` among $n$ entries, the latter is $(1-1/n)^{20}$ and approaches 1 as $n$ grows. Thus 20 trials are not uniformly reliable without a lower bound on the target fraction. These sample-time bounds assume unit-cost random indexing and lookup.
+>
+> **Study:** [[Randomized Algorithms#Example: finding an a]]; [[Randomized Algorithms#Generalizing the success probability]]; [[Randomized Algorithms#Interpreting the error direction]]; [[lecture5-Randomization.pdf#page=25|slides 25–27]].
 
 ### AAPP-05-007
 
@@ -1931,10 +2593,16 @@ Source: [[Tema Esame 2026-6-29-1st.pdf#page=4|2026-6-29-1st · Exercise 2C · p.
 
 **My answer**
 
-*Write your answer here.*
+Already answered above
 
 > [!note]- Feedback
-> Not reviewed yet.
+> **Reviewed: 2026-11-01.**
+>
+> **Assessment: revision cross-reference; the earlier classification and runtime criteria are mostly correct.** State both guarantees explicitly and identify the source of the expectation.
+>
+> **Suggested exam answer:** In a Las Vegas algorithm, randomness affects performance while correctness is preserved; finite expected time gives termination with probability one. It is efficient when, for every valid input, expected runtime over internal random choices is polynomial in input size. A Monte Carlo algorithm has a stated worst-case runtime bound and a quantified probability of error or failure. Efficient versions have polynomial worst-case time and meet an appropriate error guarantee, often improved through independent repetition. Some Las Vegas algorithms have finite worst-case bounds, so “Las Vegas always has an infinite worst case” is not a defining distinction.
+>
+> **Study:** [[Randomized Algorithms#Las Vegas and Monte Carlo]]; [[lecture5-Randomization.pdf#page=21|slides 21–24]].
 
 ### AAPP-05-008
 
@@ -1946,10 +2614,16 @@ Source: [[Tema Esame 2026-9-10-1st.pdf#page=5|2026-9-10-1st · Exercise 3A · p.
 
 **My answer**
 
-*Write your answer here.*
+Yes of coure. Mainly Las Vegas, because Monte Carlo can be erroneous. To see if it is useful we need to analyze the problem and the efficiency of Las Vegas in that problem. If the expected time for success is bounded by a polynomial of the input size than it is efficient. Then we can compare it to a deterministic method and see which is better. 
 
 > [!note]- Feedback
-> Not reviewed yet.
+> **Reviewed: 2026-11-01.**
+>
+> **Assessment: relevant zero-error intuition, but the data-structure mechanism and example are missing.** The question asks how randomness can improve structure or operation costs while searches remain exact. A general polynomial-time comparison does not explain that benefit.
+>
+> **Suggested exam answer:** Random choices can determine a data structure's shape while its invariants guarantee correct answers. For example, a treap stores keys in binary-search-tree order and gives each node an independent random priority, maintaining a heap order on priorities. Rotations preserve key order while restoring the priority invariant, so searches and updates remain correct for every valid priority assignment. Under the standard model of independent distinct priorities and a fixed operation sequence independent of those priorities, search, insertion, and deletion take $O(\log n)$ expected time, although a worst-case chain can take $O(n)$. Thus randomness supplies favorable expected structure without requiring the keys to arrive in random order. Expected performance does not imply perfect balance on every run.
+>
+> **Study:** [[Randomized Data Structures#Overview]]; [[Randomized Data Structures#Treaps: a search tree and a priority heap]]; [[Randomized Data Structures#Search and harmonic path lengths]]; [[Randomized Data Structures#Rotations and updates]]; [[lecture11RandomDataStructures.pdf#page=9|slides 9–17]].
 
 ### AAPP-05-009
 
@@ -1961,10 +2635,18 @@ Source: [[Tema Esame 2026-9-10-1st.pdf#page=6|2026-9-10-1st · Exercise 3C · p.
 
 **My answer**
 
-*Write your answer here.*
+Not sure what this means.
 
 > [!note]- Feedback
-> Not reviewed yet.
+> **Reviewed: 2026-11-01.**
+>
+> **Assessment: no answer supplied; the statement is True under the usual randomized-data-structure assumptions.** Randomization can choose the shape, while deterministic structural invariants preserve the meaning of every operation.
+>
+> **Suggested exam answer:** True. A treap maintains binary-search-tree order on keys and heap order on independent random priorities. Rotations preserve key order and restore the priority invariant, avoiding the need for deterministic balance factors or coloring rules. Search, insertion, and deletion remain exact and have $O(\log n)$ expected cost for fixed operation sequences independent of the sampled priorities. A possible worst-case chain still costs $O(n)$ per operation. The expectation concerns the priorities, rather than random user inputs. See [Aspnes, randomized search trees, §§6.3–6.3.1](https://www.cs.yale.edu/~aspnes/classes/469/notes.pdf#page=139).
+>
+> **Concrete example:** Insert keys $1,2,3$ in that order. An ordinary unbalanced BST forms a rightward chain. Assign treap priorities $(3,1,2)$ to those keys and use the lecture's min-heap convention. Inserting key 2 rotates it above key 1; inserting key 3 gives a tree with root 2, left child 1, and right child 3. Searches are still ordinary exact BST comparisons. This example illustrates how priorities change shape; the logarithmic expected bound comes from analysis over all independent priority choices, rather than from this one balanced instance.
+>
+> **Study:** [[Randomized Data Structures#Treaps: a search tree and a priority heap]]; [[Randomized Data Structures#Why a rotation preserves search order]]; [[Randomized Data Structures#Insertion: search down, rotate up]]; [[lecture11RandomDataStructures.pdf#page=9|slides 9–20]].
 
 ## Minimum cut
 
@@ -1980,7 +2662,7 @@ Source: [[Tema Esame 2022-01-14-1st.pdf#page=3|2022-01-14-1st · Exercise 2 · p
 
 **My answer**
 
-*Write your answer here.*
+Krager algorithm by itself is used to find the minimum cut of a graph. In order to do so an edge is picked at random and the 2 nodes it connect are merged, repeat that until only 2 nodes remain and all the edges between those represents a cut, the change to be the minumum is 2/(n(n-1)) so we repeat the algorithm n(n-1)/2 times clogn and take the smallest cut found, that still does not guarantee success. With a O(n^2) time to execute it once, the total is O(n^4logn). Stein imporved the algorithm by reducing the complexity. To do so it avoids doing more branching reductions at the beginning since the chance of hitting the wrong edge is low, so it finds 2 reduction with  1+n/radix(2) nodes. After that it behaves like the normal Krager algorithm so the complexity is reduced.
 
 > [!note]- Feedback
 > Not reviewed yet.
@@ -1995,7 +2677,7 @@ Source: [[Tema Esame 2022-02-11-1st.pdf#page=3|2022-02-11-1st · Exercise 2 · p
 
 **My answer**
 
-*Write your answer here.*
+Yes beacause the number of runs is limited, but it does not guarantee to find the min cut. It does find a resulting cut altought it might not be minimal
 
 > [!note]- Feedback
 > Not reviewed yet.
@@ -3991,7 +4673,7 @@ Source: [[Tema Esame 2026-9-10-1st.pdf#page=7|2026-9-10-1st · Exercise 4B · p.
 
 ## Online algorithms and competitive analysis
 
-*No dedicated study note is currently available for this topic.*
+Related study note: [[Competitive Analysis]] — online/offline models, move-to-front and its potential proof, and LRU versus MIN paging. The paid/free cost distinction matters for the competitive factor.
 
 ### AAPP-16-001
 
