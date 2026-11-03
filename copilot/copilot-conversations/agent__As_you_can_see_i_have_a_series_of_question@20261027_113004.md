@@ -4,8 +4,8 @@ mode: agent
 backendId: codex
 sessionId: "01a18a1e-746e-7833-8593-25301f6d23af"
 agentLabel: "As you can see i have a series of question from old exams, i…"
-lastAccessedAt: 1793632091543
-usage: '{"usedTokens":163388,"contextWindow":828400,"updatedAt":1793643635631}'
+lastAccessedAt: 1793731270891
+usage: '{"usedTokens":175489,"contextWindow":828400,"updatedAt":1793731746199}'
 tags:
   - copilot-conversation
 ---
@@ -266,3 +266,148 @@ Added answers to **all 552 questions** in [[Past Exam Question Bank]], each unde
 
 Your attempts and existing feedback are preserved, including your newest answer. I’ve flagged source errors and necessary assumptions. You can still write under **My answer** and ask me to check it later.
 [Timestamp: 2026/11/02 18:50:16]
+
+**user**: i have a doubt about select ith algorithms. If the random quick select is is O(n) expected and worst case O(n^2) and the deterministic is O(n) worst case why would i not use it every time
+[Timestamp: 2026/11/03 19:42:17]
+
+**ai**: I’ll check how your notes compare the two, especially the extra work needed to choose the deterministic pivot.
+Because **deterministic SELECT does extra work to guarantee a good pivot**, and Big-O hides that overhead.
+
+- **Randomized Quickselect:** pick a random element cheaply, partition, and recurse into the needed side.
+- **Median-of-medians SELECT:** find the median of every group of five, recursively select the median of those medians, then partition and recurse into the needed side.
+
+That extra pivot construction guarantees progress, but costs more work. Both can be linear while having different constants: hypothetically, $5n$ expected operations versus $20n$ guaranteed operations. Those numbers are illustrative, but both are $O(n)$.
+
+So the tradeoff is:
+
+| Algorithm | What you gain | What you pay |
+|---|---|---|
+| Randomized Quickselect | Simple pivot choice, often lower overhead | An unlucky execution can take $\Theta(n^2)$ |
+| Deterministic SELECT | Guaranteed $\Theta(n)$ worst-case time | More expensive pivot construction |
+
+**A better worst-case bound does not necessarily mean a faster algorithm on typical executions.** Deterministic SELECT buys predictability; randomized Quickselect avoids paying for that guarantee every time.
+[Timestamp: 2026/11/03 19:42:17]
+
+**user**: I still don't understand how the deterministic having a max partition of 7/10 make the worst case linear
+[Timestamp: 2026/11/03 19:43:58]
+
+**ai**: Because **the work gets smaller at every recursive step**. You don’t process all $n$ elements again each time.
+
+Suppose you start with **1,000 elements**. After partitioning, you only search the side containing the requested rank. Its size is at most:
+
+$$
+1000 \;\to\; 700 \;\to\; 490 \;\to\; 343 \;\to\;\cdots
+$$
+
+Each partition costs time proportional to its current size. So, temporarily ignoring pivot construction, the total work is bounded by:
+
+$$
+n+0.7n+0.7^2n+\cdots
+=\frac{n}{1-0.7}
+=\frac{10}{3}n.
+$$
+
+That is **a constant times $n$**, hence linear.
+
+Now include the work of finding the deterministic pivot. There are **two recursive calls**:
+
+- One on $n/5$ elements to find the median of the group medians.
+- One on at most $7n/10$ elements to find your requested element.
+
+Therefore, ignoring rounding:
+
+$$
+T(n)\le T(0.2n)+T(0.7n)+cn.
+$$
+
+The crucial observation is **$0.2+0.7=0.9<1$**. Across the entire recursion tree, the combined problem sizes shrink:
+
+| Recursion level | Total size of all subproblems |
+|---|---:|
+| 0 | $n$ |
+| 1 | At most $0.9n$ |
+| 2 | At most $0.81n$ |
+| 3 | At most $0.729n$ |
+
+Thus the total work is bounded by:
+
+$$
+cn+0.9cn+0.9^2cn+\cdots
+=\frac{cn}{1-0.9}
+=10cn
+=O(n).
+$$
+
+There are many recursive calls, but **their combined work forms a shrinking geometric sum**.
+[Timestamp: 2026/11/03 19:43:58]
+
+**user**: Ok but in the exam how should i answer about the time guarantee. Like i know how to get to that 7/10 but then how do i describe the next step in a simple way. Or i should just skip the implication
+[Timestamp: 2026/11/03 19:46:10]
+
+**ai**: **Include the implication; a short explanation is enough.** You can write:
+
+> Finding the pivot requires a recursive call on $n/5$ elements, and selecting the desired element requires a call on at most $7n/10$ elements. Grouping and partitioning take $O(n)$ time. Therefore, ignoring rounding:
+>
+> $T(n)\le T(n/5)+T(7n/10)+O(n)$.
+>
+> Since $1/5+7/10=9/10<1$, the total size of the subproblems decreases geometrically across recursion levels. Summing their work gives **$O(n)$ worst-case time**.
+
+The essential phrase is **“the fractions sum to less than one, so the total work decreases geometrically.”** You can omit the full geometric-series calculation unless a detailed proof is requested.
+[Timestamp: 2026/11/03 19:46:10]
+
+**user**: what is the n/5
+[Timestamp: 2026/11/03 19:47:05]
+
+**ai**: The **$n/5$ is the number of group medians used to choose the pivot**.
+
+For example, with **100 elements**:
+
+1. Divide them into **20 groups of 5**.
+2. Find each group’s median → you now have **20 medians**.
+3. Recursively run SELECT on those **20 medians** to find their median. That value becomes your pivot.
+
+Since $20=100/5$, this recursive call costs **$T(n/5)$**.
+
+So the recurrence includes two jobs:
+
+- **$T(n/5)$:** find a good pivot.
+- **$T(7n/10)$:** after partitioning, search for your requested element in the remaining side.
+
+Grouping and partitioning supply the additional $O(n)$ work.
+[Timestamp: 2026/11/03 19:47:05]
+
+**user**: and how is this different from the quickselect O(n^2)
+[Timestamp: 2026/11/03 19:48:36]
+
+**ai**: The difference is **how much smaller the remaining problem is guaranteed to become**.
+
+With **randomized Quickselect**, suppose you want the maximum and keep randomly choosing the minimum as pivot. You discard only **one element** each time:
+
+$$
+n,\;n-1,\;n-2,\;\ldots
+$$
+
+Each partition scans the remaining elements, so:
+
+$$
+T(n)=T(n-1)+O(n)
+\quad\Rightarrow\quad
+n+(n-1)+(n-2)+\cdots=\Theta(n^2).
+$$
+
+With **deterministic SELECT**, the extra $T(n/5)$ work constructs a pivot that guarantees you discard roughly **30%**. The side searched is therefore at most:
+
+$$
+n,\;0.7n,\;0.49n,\;\ldots
+$$
+
+Including pivot construction, the recurrence is:
+
+$$
+T(n)\le T(0.2n)+T(0.7n)+O(n).
+$$
+
+Since $0.2+0.7=0.9<1$, the combined work shrinks geometrically, giving **$O(n)$ worst-case time**.
+
+So **the $T(n/5)$ is extra work you pay to guarantee good progress**. Randomized Quickselect chooses its pivot cheaply and achieves linear time in expectation, but permits the unlucky quadratic execution.
+[Timestamp: 2026/11/03 19:48:36]
