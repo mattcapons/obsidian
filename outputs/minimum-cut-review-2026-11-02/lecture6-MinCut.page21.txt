@@ -1,0 +1,9 @@
+COMPUTE THE RUNNING TIME
+                       straightforward to solve, e.g.,
+                       the Master theorem applies
+
+
+
+
+                               Total complexity: O(n2 log3 n)
+                                                         - 21 -

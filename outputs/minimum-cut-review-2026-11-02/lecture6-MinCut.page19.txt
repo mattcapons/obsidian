@@ -1,0 +1,30 @@
+PSEUDO CODE
+procedure contract(G=(V,E), t):
+
+  while |V| > t
+
+      choose e\in E uniformly at random
+
+      G = G/e
+
+  return G
+
+procedure fastmincut(G= (V,E)):
+
+  if |V| < 6:
+
+      return mincut(V)
+
+  else:
+
+      t= ceil( 1 + |V|/√2)
+
+      G1 =   contract(G, t)
+
+      G2 =   contract(G, t)
+
+      return min {fastmincut(G1), fastmincut(G_2)}
+
+
+
+                                                     - 19 -

@@ -4,8 +4,8 @@ mode: agent
 backendId: codex
 sessionId: "01a18a1e-746e-7833-8593-25301f6d23af"
 agentLabel: "As you can see i have a series of question from old exams, i…"
-lastAccessedAt: 1793549444475
-usage: '{"usedTokens":313523,"contextWindow":828400,"updatedAt":1793571498256}'
+lastAccessedAt: 1793632091543
+usage: '{"usedTokens":163388,"contextWindow":828400,"updatedAt":1793643635631}'
 tags:
   - copilot-conversation
 ---
@@ -202,7 +202,6 @@ Your concurrent-read example in **002 is correct** for the lecture’s broadcast
 [Timestamp: 2026/11/01 20:38:10]
 
 **ai**: I’ll review section 5 and add feedback beneath your answers, preserving your attempts.
-
 [Timestamp: 2026/11/01 20:38:10]
 
 **user**: Sorry i mean i completed section 4
@@ -239,3 +238,31 @@ Your main classification is mostly correct. Key clarifications:
 
 I added concrete **treap examples for 008 and 009** to explain randomized balancing with exact answers.
 [Timestamp: 2026/11/01 23:12:23]
+
+**user**: i did a few from section 6
+[Timestamp: 2026/11/02 16:08:21]
+
+**ai**: I’ll find the answers you’ve filled in under section 6 and add feedback, leaving unanswered questions blank.
+I found answers for **AAPP-06-001 and 002**. Your basic Karger description is mostly correct. The main correction is that Karger–Stein recursively branches at every level; its advantage comes from needing far fewer repetitions, even though one recursive run costs more than one basic Karger run.
+Your $O(n^4\log n)$ amplified bound for basic Karger is correct under the course’s implementation model. I’ve clarified that $2/[n(n-1)]$ is a success lower bound, and added separate single-run and amplified bounds for Karger–Stein.
+Reviewed **AAPP-06-001 and 002** in [[Past Exam Question Bank]], preserving your attempts and leaving unanswered questions blank.
+
+The main correction is that **Karger–Stein recursively solves both branches at every level**. I added a table separating single-run cost from amplified cost.
+
+Your Monte Carlo classification is correct. I also clarified that $2/[n(n-1)]$ is a **success lower bound**, not necessarily the exact probability.
+[Timestamp: 2026/11/02 16:08:21]
+
+**user**: Actually there are too many questions, can you go ahead and answer to all question even if incomplete, later i might ask you to check my answer but i can't do all of them
+[Timestamp: 2026/11/02 18:50:16]
+
+**ai**: I’ll add model answers throughout the question bank, including unanswered and incomplete entries, while preserving your attempts and existing feedback. I’ll check the course material for each topic and flag answers that need assumptions or lack course-specific support.
+The bank has **552 entries**, and 116 already contain reviewed reference answers. I’m using the Obsidian Markdown skill to add a separate collapsed **Model answer** to each entry, so you can still write your own attempt and ask for feedback later.
+I’ve mapped the remaining topics. Later sections include code defects, synchronization cases, and questions that depend on diagrams, so I’m checking those individually. I also found your newer competitive-analysis notes, which distinguish the paid-swap and free-move models for move-to-front.
+The diagram questions need more than a work/span calculation: some graphs need extra threads to reach the span because several tasks must overlap. I’m checking actual schedules and marking defects in the printed code so the model answers explain them explicitly.
+The answers through section 19 are drafted, including the code corrections and the PRAM time/work bounds. I’m now filling in the OpenMP, Pthreads, MPI, CUDA and Halide sections, using the official specifications where the course notes don’t cover a detail.
+Every question now has a draft answer. I’m checking the full set for missing subparts, math formatting and links, and verifying that your original attempts and feedback stay intact. Where a question asks for an example “from the lecture” that the supplied material doesn’t identify, I’ve labelled the standard example I used.
+I noticed you added an answer to AAPP-06-011 while I was working. I’ll preserve that newer text too. The checks confirm coverage for all 552 entries and valid links to the referenced vault notes.
+Added answers to **all 552 questions** in [[Past Exam Question Bank]], each under a collapsed **Model answer** callout.
+
+Your attempts and existing feedback are preserved, including your newest answer. I’ve flagged source errors and necessary assumptions. You can still write under **My answer** and ask me to check it later.
+[Timestamp: 2026/11/02 18:50:16]

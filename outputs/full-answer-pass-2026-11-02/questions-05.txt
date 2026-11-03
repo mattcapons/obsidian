@@ -1,0 +1,62 @@
+AAPP-05-001
+Explain the difference between Monte Carlo and Las Vegas Randomized based algorithms.
+
+Source: [[Tema Esame 2022-01-14-1st.pdf#page=4|2022-01-14-1st · Exercise 3 · p. 4]]
+
+^aapp-05-001
+
+AAPP-05-002
+Please define when Las Vegas and Monte Carlo algorithms are defined as efficient algorithms. (2)
+
+Source: [[Tema Esame 2024-02-16-1st.pdf#page=3|2024-02-16-1st · Exercise 2A · p. 3]]
+
+^aapp-05-002
+
+AAPP-05-003
+Please list the main differences between the Las Vegas and Monte Carlo algorithms. (2)
+
+Source: [[Tema Esame 2024-06-26-1st.pdf#page=3|2024-06-26-1st · Exercise 2A · p. 3]]
+
+^aapp-05-003
+
+AAPP-05-004
+Please describe the differences between Las Vegas and Monte Carlo algorithms, even considering time complexity issues. (2)
+
+Source: [[Tema Esame 2024-11-12-1st.pdf#page=4|2024-11-12-1st · Exercise 3A · p. 4]]
+
+^aapp-05-004
+
+AAPP-05-005
+Please list the main differences, including the efficiency, between the Las Vegas and Monte Carlo algorithms. (2)
+
+Source: [[Tema Esame 2025-07-04-1st.pdf#page=3|2025-07-04-1st · Exercise 2B · p. 3]]
+
+^aapp-05-005
+
+AAPP-05-006
+Could you outline the main differences between Las Vegas and Monte Carlo algorithms, especially in terms of efficiency, and give examples of each? (1)
+
+Source: [[Tema Esame 2026-1-22-1st.pdf#page=5|2026-1-22-1st · Exercise 3A · p. 5]]
+
+^aapp-05-006
+
+AAPP-05-007
+Please list the main differences between the Las Vegas and Monte Carlo algorithms. What about the efficiency? (1)
+
+Source: [[Tema Esame 2026-6-29-1st.pdf#page=4|2026-6-29-1st · Exercise 2C · p. 4]]
+
+^aapp-05-007
+
+AAPP-05-008
+Why can randomization be useful in a data structure even when the required answer must always be correct? Give one example. (1)
+
+Source: [[Tema Esame 2026-9-10-1st.pdf#page=5|2026-9-10-1st · Exercise 3A · p. 5]]
+
+^aapp-05-008
+
+AAPP-05-009
+Randomization can simplify balancing and give good expected performance while preserving correctness. True/False? Example? (2)
+
+Source: [[Tema Esame 2026-9-10-1st.pdf#page=6|2026-9-10-1st · Exercise 3C · p. 6]]
+
+^aapp-05-009

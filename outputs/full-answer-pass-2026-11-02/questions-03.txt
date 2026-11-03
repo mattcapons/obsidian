@@ -1,0 +1,62 @@
+AAPP-03-001
+Please describe the matrix multiply algorithm on PRAM (Pseudo code. Complexity). (1)
+
+Source: [[Tema Esame 2023-01-17-1st.pdf#page=2|2023-01-17-1st · Exercise 1A · p. 2]]
+
+^aapp-03-001
+
+AAPP-03-002
+The PRAM algorithm computing the prefix sum of a vector uses concurrent reads. True/False? Where? (1)
+
+Source: [[Tema Esame 2023-01-17-1st.pdf#page=2|2023-01-17-1st · Exercise 1C · p. 2]]
+
+^aapp-03-002
+
+AAPP-03-003
+Please describe how prefix scan works when a PRAM architecture is considered. (1)
+
+Source: [[Tema Esame 2024-02-16-1st.pdf#page=2|2024-02-16-1st · Exercise 1C · p. 2]]
+
+^aapp-03-003
+
+AAPP-03-004
+Please describe how matrix x vector works when a PRAM architecture is considered. (1)
+
+Source: [[Tema Esame 2024-06-26-1st.pdf#page=2|2024-06-26-1st · Exercise 1C · p. 2]]
+
+^aapp-03-004
+
+AAPP-03-005
+Please describe how matrix x matrix works when considering a PRAM architecture. (1)
+
+Source: [[Tema Esame 2024-07-24-1st.pdf#page=2|2024-07-24-1st · Exercise 1C · p. 2]]
+
+^aapp-03-005
+
+AAPP-03-006
+Why is the prefix sum algorithm on PRAM more efficient than the basic sum algorithm, and what is the trade-off? (1)
+
+Source: [[Tema Esame 2025-07-04-1st.pdf#page=2|2025-07-04-1st · Exercise 1C · p. 2]]
+
+^aapp-03-006
+
+AAPP-03-007
+During the lectures, we discussed how the prefix sum and PRAM memory access enable us to maintain low algorithm complexity. Please discuss what type of PRAM memory accesses are performed. (1)
+
+Source: [[Tema Esame 2025-11-06-1st.pdf#page=2|2025-11-06-1st · Exercise 1C · p. 2]]
+
+^aapp-03-007
+
+AAPP-03-008
+During the lectures, we discuss how to compute the sum of a collection of integer values in a PRAM model. Could you discuss the conclusions we reached regarding the problem's complexity? (1)
+
+Source: [[Tema Esame 2026-1-22-1st.pdf#page=2|2026-1-22-1st · Exercise 1C · p. 2]]
+
+^aapp-03-008
+
+AAPP-03-009
+Please discuss what type of PRAM memory accesses are performed in the vector sum PRAM algorithm. (1)
+
+Source: [[Tema Esame 2026-9-10-1st.pdf#page=2|2026-9-10-1st · Exercise 1C · p. 2]]
+
+^aapp-03-009

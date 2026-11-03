@@ -1,0 +1,56 @@
+AAPP-10-001
+Discuss why dynamic programming matter for Longest common subsequence algorithm.
+
+AAPP-10-002
+Discuss an example of dynamic programming based algorithm. Which are the key features of an algorithm for being classified as a dynamic programming algorithm?
+
+AAPP-10-003
+Describe the Longest Common Subsequence (LCS) algorithm. (2)
+
+AAPP-10-004
+What kind of temporal or spatial complexity has LCS? (1)
+
+AAPP-10-005
+LCS is classified as a dynamic programming algorithm. Why? (1)
+
+AAPP-10-006
+Please explain why an algorithm could be classified as a Dynamic programming algorithm. (2)
+
+AAPP-10-007
+Detail the Longest Common Subsequence algorithm: pseudo code and space and temporal complexity. (2)
+
+AAPP-10-008
+What kind of spatial complexity has the longest common subsequence problem? (1).
+
+AAPP-10-009
+Why does spatial complexity matter for all dynamic programming algorithms? (1)
+
+AAPP-10-010
+What kind of time complexity has the longest common subsequence problem (1)
+
+AAPP-10-011
+Please discuss how the longest common subsequence works. What about its complexity? (2)
+
+AAPP-10-012
+Please discuss the key property of the longest common subsequence. In which class of algorithm can be inserted? Why? (2)
+
+AAPP-10-013
+To which class does the Longest Common Subsequence Algorithm belong? How is its complexity evaluated? (1)
+
+AAPP-10-014
+In class, we studied an algorithm that shows the main hallmarks of dynamic programming. Describe the algorithm and its complexity, and why it is classified as a good dynamic programming example. (2)
+
+AAPP-10-015
+What properties and algorithmic steps are required to convert a divide-and-conquer solution into a dynamic programming solution? (1)
+
+AAPP-10-016
+Please describe a problem that is typically solved by a divide‑and‑conquer strategy, yet also admits a dynamic‑programming formulation. In your explanation, highlight how memoization is employed. (2)
+
+AAPP-10-017
+What kind of spatial complexity does the longest common subsequence problem have? (1)
+
+AAPP-10-018
+Detail the Longest Common Subsequence algorithm: pseudo code, space, and temporal complexity. (2)
+
+AAPP-10-019
+What is memoization, and why is it useful in Dynamic Programming? Give an example of a repeated subproblem for which memoization avoids recomputation. (1)

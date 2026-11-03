@@ -89,4 +89,4 @@ Five notebook files are present: [[lecture3-DandC-profiling.ipynb]], [[01_pram_r
 
 [[Past Exam Question Bank]] — 552 questions from 58 distinct 2022–2026 exam papers, grouped by topic, with original exam references, code, and diagrams. The bank's current entries and IDs are preserved; new lecture links provide study context.
 
-[[Exam Recap]] — a growing revision companion with the same 25 topic sections as the bank. Sections 1–5 currently consolidate 114 reviewed questions on PRAM, parallel performance and scaling, divide and conquer/recurrences, and randomized algorithm classes, with short reminders emphasizing corrected mistakes and recent exams; the remaining sections are ready for later expansion.
+[[Exam Recap]] — concise reminders for all 25 topic sections and 552 bank questions, emphasizing repeated topics, recent exams and important corrections. Sections 6–25 include supplied model answers for questions not yet attempted; recap coverage does not record study completion.

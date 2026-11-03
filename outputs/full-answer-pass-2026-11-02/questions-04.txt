@@ -1,0 +1,133 @@
+AAPP-04-001
+Describe how divide and conquer work with some examples and why master theorem method matter.
+
+Source: [[Tema Esame 2022-06-09-1st.pdf#page=2|2022-06-09-1st · Exercise 1 · p. 2]]
+
+^aapp-04-001
+
+AAPP-04-002
+Please describe how the Divide and Conquer class of algorithms works. (2)
+
+Source: [[Tema Esame 2023-02-14-1st.pdf#page=3|2023-02-14-1st · Exercise 2A · p. 3]]
+
+^aapp-04-002
+
+AAPP-04-003
+How the complexity of a Divide and Conquer algorithm can be computed? (1)
+
+Source: [[Tema Esame 2023-02-14-1st.pdf#page=3|2023-02-14-1st · Exercise 2B · p. 3]]
+
+^aapp-04-003
+
+AAPP-04-004
+Please discuss the complexity of the “Powering a number” algorithm. (1)
+
+Source: [[Tema Esame 2023-02-14-1st.pdf#page=3|2023-02-14-1st · Exercise 2C · p. 3]]
+Source: [[Tema Esame 2026-6-29-1st.pdf#page=3|2026-6-29-1st · Exercise 2B · p. 3]]
+
+^aapp-04-004
+
+AAPP-04-005
+Please describe how Strassen’s algorithm works. (2)
+
+Source: [[Tema Esame 2023-06-19-1st.pdf#page=3|2023-06-19-1st · Exercise 2A · p. 3]]
+
+^aapp-04-005
+
+AAPP-04-006
+Why is the Master Theorem method frequently used to evaluate the asymptotic complexity of a Divide and Conquer algorithm can be computed? (2)
+
+Source: [[Tema Esame 2023-06-19-1st.pdf#page=3|2023-06-19-1st · Exercise 2B · p. 3]]
+
+^aapp-04-006
+
+AAPP-04-007
+Please discuss how the complexity of the powering of a number algorithm can be computed. Please report also the complexity in terms of time and space. (2)
+
+Source: [[Tema Esame 2023-07-11-1st.pdf#page=3|2023-07-11-1st · Exercise 2A · p. 3]]
+
+^aapp-04-007
+
+AAPP-04-008
+Please discuss the cases the master theorem solves and under which assumption the theorem holds. Apply then to the binary search algorithm. Is the master theorem of any help in case we would like to estimate the spatial complexity of an algorithm? (2)
+
+Source: [[Tema Esame 2023-09-11-1st.pdf#page=3|2023-09-11-1st · Exercise 2A · p. 3]]
+
+^aapp-04-008
+
+AAPP-04-009
+Please describe the divide and conquer powering of a number algorithm. What complexity does it have? (1)
+
+Source: [[Tema Esame 2024-02-16-1st.pdf#page=3|2024-02-16-1st · Exercise 2C · p. 3]]
+
+^aapp-04-009
+
+AAPP-04-010
+Please list the condition under which the Master Theorem can be used to compute the complexity of an algorithm. (1)
+
+Source: [[Tema Esame 2024-06-26-1st.pdf#page=3|2024-06-26-1st · Exercise 2C · p. 3]]
+
+^aapp-04-010
+
+AAPP-04-011
+Please discuss the cases the master theorem solves and under which assumption the theorem holds. Apply then to the powering algorithm. Is the master theorem of any help if we would like to estimate the spatial complexity of an algorithm? (2)
+
+Source: [[Tema Esame 2024-07-24-1st.pdf#page=3|2024-07-24-1st · Exercise 2A · p. 3]]
+
+^aapp-04-011
+
+AAPP-04-012
+Please discuss the types of problems that the master theorem can solve and the assumptions under which the theorem holds. Apply the theorem to the matrix multiplication algorithm and explain why Strassen’s version is more efficient. (2)
+
+Source: [[Tema Esame 2024-09-05-1st.pdf#page=3|2024-09-05-1st · Exercise 2A · p. 3]]
+
+^aapp-04-012
+
+AAPP-04-013
+Master Theorem method is an important tool for the Divide and Conquer class of algorithms. Why and under which assumptions the theorem could be applied? (1)
+
+Source: [[Tema Esame 2024-11-12-1st.pdf#page=3|2024-11-12-1st · Exercise 2B · p. 3]]
+
+^aapp-04-013
+
+AAPP-04-014
+Could you please describe how the Strassen algorithm improves matrix multiplication? Additionally, which class of algorithms does the Strassen approach belong to? (2)
+
+Source: [[Tema Esame 2025-01-24-1st.pdf#page=3|2025-01-24-1st · Exercise 2A · p. 3]]
+
+^aapp-04-014
+
+AAPP-04-015
+Could you please describe how the powering algorithm works? Additionally, which class of algorithms does it belong to? (2)
+
+Source: [[Tema Esame 2025-02-14-1st.pdf#page=3|2025-02-14-1st · Exercise 2A · p. 3]]
+
+^aapp-04-015
+
+AAPP-04-016
+Please describe how the Divide and Conquer class of algorithms works by using one of the algorithms presented in class. (2)
+
+Source: [[Tema Esame 2025-09-05-1st.pdf#page=3|2025-09-05-1st · Exercise 2A · p. 3]]
+
+^aapp-04-016
+
+AAPP-04-017
+Please explain how powering of a number works and how, with the Master Theorem method, you can compute its asymptotic complexity. (1)
+
+Source: [[Tema Esame 2025-11-06-1st.pdf#page=3|2025-11-06-1st · Exercise 2B · p. 3]]
+
+^aapp-04-017
+
+AAPP-04-018
+Discuss Strassen’s matrix multiplication algorithm and compare its complexity with the standard matrix multiplication algorithm. (1)
+
+Source: [[Tema Esame 2026-6-11-1st.pdf#page=5|2026-6-11-1st · Exercise 3B · p. 5]]
+
+^aapp-04-018
+
+AAPP-04-019
+Describe one Divide and Conquer example discussed during the lectures and explain why the Master Theorem is useful for analyzing this class of algorithms. (1)
+
+Source: [[Tema Esame 2026-9-10-1st.pdf#page=3|2026-9-10-1st · Exercise 2B · p. 3]]
+
+^aapp-04-019

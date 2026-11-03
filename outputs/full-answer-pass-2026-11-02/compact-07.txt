@@ -1,0 +1,59 @@
+AAPP-07-001
+Discuss counting sort complexity. Why does counting sort matter in radix sort?
+
+AAPP-07-002
+The best worst-case running time that we have seen for comparison sorting is O(nlg n). Can you explain why? (2)
+
+AAPP-07-003
+Please explain following theorem and why does not hold for the counting sort algorithm: Theorem: “Any decision tree that can sort n elements must have height W(nlg n)” (2)
+
+AAPP-07-004
+Please explain the following theorem and why does not hold for the counting sort algorithm: Theorem: “Any decision tree that can sort n elements must have a height of W(nlog n)” (2)
+
+AAPP-07-005
+What are the key properties that the auxiliary sorting algorithm used by the radix sort must have to achieve efficient and correct sorting? (1)
+
+AAPP-07-006
+What are the key properties of the counting sort algorithm? (1)
+
+AAPP-07-007
+Please describe the partitioning algorithm used by the quick sort and its key properties. How is it randomized? (1)
+
+AAPP-07-008
+Please explain what “Lower bound for comparison sorting” means and its implications. (1)
+
+AAPP-07-009
+Please show the pseudo-code of the partitioning algorithm used by Quicksort and report its variants, complexity, and usage in other algorithms. (2)
+
+AAPP-07-010
+Why is the Counting sort used as the auxiliary algorithm of the Radix sort? (1)
+
+AAPP-07-011
+Please discuss the complexity of the partitioning algorithm used by the quick sort. (1)
+
+AAPP-07-012
+Please discuss the lower bound of the comparison-based sort algorithms. (1)
+
+AAPP-07-013
+Could you please list the characteristics of the counting sort algorithm that make it suitable for use in radix sort? (1)
+
+AAPP-07-014
+Why does quicksort perform poorly in the worst case, and how can this be mitigated? Report the class of algorithms to which it belongs and its average-case complexity. According to the definition, is it an efficient algorithm? (2)
+
+AAPP-07-015
+Please discuss why, for many algorithms we have discussed during the lectures, the complexity of the best sorting algorithm is bounded by $O(n\lg n)$. (2)
+
+AAPP-07-016
+Please explain why counting sort matters with the radix sort algorithm. (1)
+
+AAPP-07-017
+Explain when the quick sort algorithm falls in the best case or in the worst case recurrence. (1)
+
+AAPP-07-018
+Explain the role of Counting Sort inside Radix Sort. (1)
+
+AAPP-07-019
+For randomized Quicksort, explain how the expected running time is obtained from the recurrence induced by a random pivot. Discuss why the worst case remains quadratic. (2)
+
+AAPP-07-020
+What does it mean for a sorting algorithm to be stable, and why is stability important in Radix Sort? (1)

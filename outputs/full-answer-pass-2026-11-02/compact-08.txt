@@ -1,0 +1,35 @@
+AAPP-08-001
+Describe how the randomized select-ith method work. Is it a Monte Carlo randomization-based algorithm?
+
+AAPP-08-002
+Describe the algorithm selecting the ith smallest of n elements (Pseudo code, complexity). (2)
+
+AAPP-08-003
+Is there a Select ith smallest of n elements algorithm that runs in linear time in the worst case? (1)
+
+AAPP-08-004
+Context: Exercise 2A asks for the algorithm selecting the ith smallest of n elements (pseudocode and complexity). In which class of randomized algorithms could the algorithm described in A be inserted? (1)
+
+AAPP-08-005
+Please describe how the partitioning work in the “Select the ith smallest of n elements” algorithm. How is it randomized? (2)
+
+AAPP-08-006
+Please describe the “Select the i th smallest of n elements” algorithm and its key properties. How is it randomized? (1)
+
+AAPP-08-007
+Please discuss the different variants of the Select-ith algorithm. (2)
+
+AAPP-08-008
+Describe the Select-ith deterministic algorithm and its complexity. Why is dividing into groups of 5 critical for the deterministic Select-ith algorithm’s performance? (2)
+
+AAPP-08-009
+What are the differences between the randomized and deterministic algorithms for solving the Select-ith problem? (2)
+
+AAPP-08-010
+Please explain how the “Select the i th smallest of n elements” can be solved (pseudo code required) and what kind of complexity we may expect from the reported solutions. (2)
+
+AAPP-08-011
+Both RAND-SELECT and SELECT find the i-th order statistic, but only SELECT guarantees worst-case time complexity. What specific pivot-selection mechanism does SELECT use to limit the size of the largest recursive subproblem, and how does that guarantee lead to the worst-case bound (i.e., what fraction of elements is discarded each step)? (2)
+
+AAPP-08-012
+What are the differences between the randomized and deterministic algorithms for solving the Select-ith problem (pseudo code required)? (1)

@@ -1,0 +1,138 @@
+AAPP-20-001
+Given an algorithm with the following structure: And the following values of work: W(Task1) = 2, W(Task2) = 1, W(Task3) = 3, W(Task4) = 2, W(Task5) = 1, W(Task6) = 2, W(Task7) = 5, W(Task8) = 1. Compute the Work and the Makespan of the algorithm. What is the minimum number of threads required to guarantee the maximum parallelism? (1) Provide a pseudocode implementation using OpenMP (2)
+
+Source: [[Tema Esame 2023-01-17-2nd.pdf#page=4|2023-01-17-2nd · Exercise 3A · p. 4]]
+
+![[2023-01-17-2nd-p4.png|800]]
+
+*Original source page for the graph or diagram. [[Tema Esame 2023-01-17-2nd.pdf#page=4|PDF page 4]].*
+
+^aapp-20-001
+
+AAPP-20-002
+Please describe what is meant by task parallelism (Parallel Task Graph) and how could be implemented in OpenMP?(2)
+
+Source: [[Tema Esame 2023-09-11-2nd.pdf#page=4|2023-09-11-2nd · Exercise 3A · p. 4]]
+
+^aapp-20-002
+
+AAPP-20-003
+Consider the following task graph: Calculate work and parallelism. Is it a good idea to use 3 threads? (1) Write a corresponding OpenMP implementation. (2)
+
+Source: [[Tema Esame 2023-12-21-2nd.pdf#page=4|2023-12-21-2nd · Exercise 3B · p. 4]]
+
+![[2023-12-21-2nd-p4.png|800]]
+
+*Original source page for the graph or diagram. [[Tema Esame 2023-12-21-2nd.pdf#page=4|PDF page 4]].*
+
+^aapp-20-003
+
+AAPP-20-004
+Is it better to implement the program with 3 or 4 threads? (1)
+
+Source: [[Tema Esame 2024-07-24-2nd.pdf#page=4|2024-07-24-2nd · Exercise 3A · p. 4]]
+
+![[2024-07-24-2nd-p4.png|800]]
+
+*Original source page for the graph or diagram. [[Tema Esame 2024-07-24-2nd.pdf#page=4|PDF page 4]].*
+
+^aapp-20-004
+
+AAPP-20-005
+Write a corresponding OpenMP implementation. (2)
+
+Source: [[Tema Esame 2024-07-24-2nd.pdf#page=4|2024-07-24-2nd · Exercise 3B · p. 4]]
+
+> [!example]- Shared graph or diagram
+> ![[2024-07-24-2nd-p4.png|800]]
+
+^aapp-20-005
+
+AAPP-20-006
+If you could optimize one task bringing its work to 0 (maintaining the graph structure), which one would yield the best improvement in terms of parallel execution time? (1)
+
+Source: [[Tema Esame 2024-07-24-2nd.pdf#page=4|2024-07-24-2nd · Exercise 3C · p. 4]]
+
+> [!example]- Shared graph or diagram
+> ![[2024-07-24-2nd-p4.png|800]]
+
+^aapp-20-006
+
+AAPP-20-007
+Describe the method to qualitatively evaluate a parallel algorithm through its data flow graph. (1)
+
+Source: [[Tema Esame 2024-09-05-2nd.pdf#page=4|2024-09-05-2nd · Exercise 3A · p. 4]]
+
+^aapp-20-007
+
+AAPP-20-008
+Calculate Span and Parallelism. If Tasks 0, 2 and 10 represent the thread management overhead, what is the maximum theoretical speedup over a sequential implementation? (1)
+
+*Shared exercise context:* Consider the task graph on the source page.
+
+Source: [[Tema Esame 2025-01-24-2nd.pdf#page=3|2025-01-24-2nd · Exercise 3B · p. 3]]
+
+![[2025-01-24-2nd-p3.png|800]]
+
+*Original source page for the graph or diagram. [[Tema Esame 2025-01-24-2nd.pdf#page=3|PDF page 3]].*
+
+^aapp-20-008
+
+AAPP-20-009
+Write a corresponding OpenMP implementation. (2)
+
+*Shared exercise context:* Consider the task graph on the source page.
+
+Source: [[Tema Esame 2025-01-24-2nd.pdf#page=3|2025-01-24-2nd · Exercise 3C · p. 3]]
+
+> [!example]- Shared graph or diagram
+> ![[2025-01-24-2nd-p3.png|800]]
+
+^aapp-20-009
+
+AAPP-20-010
+Indicate the critical path in the figure, and calculate the Parallelism. (1)
+
+*Shared exercise context:* Consider the task graph on the source page. All tasks contain the same amount of work.
+
+Source: [[Tema Esame 2025-07-04-2nd.pdf#page=3|2025-07-04-2nd · Exercise 3B · p. 3]]
+
+![[2025-07-04-2nd-p3.png|800]]
+
+*Original source page for the graph or diagram. [[Tema Esame 2025-07-04-2nd.pdf#page=3|PDF page 3]].*
+
+^aapp-20-010
+
+AAPP-20-011
+Write a corresponding OpenMP implementation, explaining your choice of work-sharing construct. (2)
+
+*Shared exercise context:* Consider the task graph on the source page. All tasks contain the same amount of work.
+
+Source: [[Tema Esame 2025-07-04-2nd.pdf#page=3|2025-07-04-2nd · Exercise 3C · p. 3]]
+
+> [!example]- Shared graph or diagram
+> ![[2025-07-04-2nd-p3.png|800]]
+
+^aapp-20-011
+
+AAPP-20-012
+Given the structure of the following parallel algorithm: what is the average number of processes that are not idle? Is it better to run it with 2 or 3 threads? (1)
+
+Source: [[Tema Esame 2025-12-18-2nd.pdf#page=4|2025-12-18-2nd · Exercise 3B · p. 4]]
+
+![[2025-12-18-2nd-p4.png|800]]
+
+*Original source page for the graph or diagram. [[Tema Esame 2025-12-18-2nd.pdf#page=4|PDF page 4]].*
+
+^aapp-20-012
+
+AAPP-20-013
+Consider the following task graph: Calculate Work and Parallelism. Imagine having the possibility to optimize a task, halving its computational cost. Which one would you choose to reduce the span? (motivate) (2)
+
+Source: [[Tema Esame 2026-9-10-2nd.pdf#page=4|2026-9-10-2nd · Exercise 3A · p. 4]]
+
+![[2026-9-10-2nd-p4.png|800]]
+
+*Original source page for the graph or diagram. [[Tema Esame 2026-9-10-2nd.pdf#page=4|PDF page 4]].*
+
+^aapp-20-013

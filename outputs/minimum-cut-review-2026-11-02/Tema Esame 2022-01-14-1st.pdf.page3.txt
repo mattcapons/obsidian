@@ -1,0 +1,1 @@
+Advanced Algorithms and Parallel Programming 1st part (Advanced Algorithms)–January 14th 2022 page 3 of 4 Exercise n. 2 Describe how Karger and Stein algorithm works. Discuss and compare the two algorithms’ complexity. 

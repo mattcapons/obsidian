@@ -1,0 +1,52 @@
+AAPP-17-001
+List and describe the different kinds of parallelism according to the Flynn taxonomy, together with architectures implementing them when possible.
+
+AAPP-17-002
+It is not recommendable to mix parallelism technologies since doing so increases the complexity of the compiled binaries: true or false?
+
+AAPP-17-003
+Is it possible to obtain the same low level implementation starting from different parallel programming models descriptions of the same parallel pattern?
+
+AAPP-17-004
+Parallel programming models using threads spawn a single process, therefore the program I/O correctness is always guaranteed: true or false?
+
+AAPP-17-005
+Is it possible to use multiple parallelization models in the same program? Would it benefit some hardware architectures in particular?
+
+AAPP-17-006
+Which are the main differences between parallel programming models based on threads and those based on processes in terms of low-level information management and architectures that can benefit from them?
+
+AAPP-17-007
+Could you please summarize why manual parallelization is preferred to automatic parallelization? (1)
+
+AAPP-17-008
+Designing a «good» parallel algorithm by extracting all the available parallelism is not enough. True/False? Why?(1)
+
+AAPP-17-009
+Please comment this sentence: “Design a «good» parallel algorithm by extracting all the available parallelism is not enough.” (1)
+
+AAPP-17-010
+Please comment on this sentence: “Automatic parallelization cannot be used because it produces wrong solutions.”. True/false, partially true? (1)
+
+AAPP-17-011
+“A single instruction can manipulate different data at a time”. Please comment on the sentence and discuss which kind of parallelism it is referring to. (1)
+
+AAPP-17-012
+What does PCAM Design Methodology mean? (1)
+
+AAPP-17-013
+Could you please explain what PCAM design methodology is? (1)
+
+AAPP-17-014
+Could you please explain what the aim of agglomeration is in the PCAM design methodology? (1)
+
+AAPP-17-015
+Please explain what is meant by AoS and SoA, and in which cases you would use one or the other. (1)
+
+AAPP-17-016
+Based on the architecture illustrated in the figure below, describe how you would exploit the different levels of parallelism to accelerate the execution of an application. (1)
+
+
+![[2026-6-11-2nd-p4.png|800]]
+
+*Original source page for the graph or diagram. [[Tema Esame 2026-6-11-2nd.pdf#page=4|PDF page 4]].*

@@ -1,0 +1,26 @@
+AAPP-13-001
+Discuss how skip list insertion work? What about its worst vs average case complexity?
+
+AAPP-13-002
+Describe the skip-list data structure, how the search is performed, and which complexity has. (2)
+
+AAPP-13-003
+Describe the skip list data structure and how the union is performed, and which complexity has. (2)
+
+AAPP-13-004
+Describe how the search for skip-list data structure works. (2)
+
+AAPP-13-005
+Describe how the insertion for skip-list data structure works. What about its complexity? (2)
+
+AAPP-13-006
+Describe how the search for Skip-list data structure works and discuss its complexity. (2)
+
+AAPP-13-007
+Describe how the insert for the Skip-list data structure works and discuss its complexity. (2)
+
+AAPP-13-008
+Describe the skip list data structure and how the search is performed, and what the complexity is. (2)
+
+AAPP-13-009
+Describe how the insert for the skip-list data structure works and discuss its complexity. (1)

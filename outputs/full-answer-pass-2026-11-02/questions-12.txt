@@ -1,0 +1,132 @@
+AAPP-12-001
+Describe how treap Union works.
+
+Source: [[Tema Esame 2022-02-11-1st.pdf#page=2|2022-02-11-1st · Exercise 1 · p. 2]]
+
+^aapp-12-001
+
+AAPP-12-002
+Describe how Treap split/union works.
+
+Source: [[Tema Esame 2022-09-07-1st.pdf#page=4|2022-09-07-1st · Exercise 3 · p. 4]]
+
+^aapp-12-002
+
+AAPP-12-003
+Describe how Treap split/union works.? (2)
+
+Source: [[Tema Esame 2022-11-08-1st.pdf#page=4|2022-11-08-1st · Exercise 3B · p. 4]]
+
+^aapp-12-003
+
+AAPP-12-004
+Describe the treap data structure, how the search is performed, and which complexity has. (2)
+
+Source: [[Tema Esame 2023-06-19-1st.pdf#page=4|2023-06-19-1st · Exercise 3B · p. 4]]
+
+^aapp-12-004
+
+AAPP-12-005
+Describe the treap data structure and how the split is performed, and which complexity has. (2)
+
+Source: [[Tema Esame 2023-09-11-1st.pdf#page=4|2023-09-11-1st · Exercise 3B · p. 4]]
+
+^aapp-12-005
+
+AAPP-12-006
+Please provide the implementation of the split operation for Treaps. What is the operation complexity? (2)
+
+Source: [[Tema Esame 2024-01-26-1st.pdf#page=4|2024-01-26-1st · Exercise 3B · p. 4]]
+
+^aapp-12-006
+
+AAPP-12-007
+Please provide the implementation of the union operation for Treaps. What is the operation complexity? (2)
+
+Source: [[Tema Esame 2024-02-16-1st.pdf#page=4|2024-02-16-1st · Exercise 3B · p. 4]]
+
+^aapp-12-007
+
+AAPP-12-008
+Please discuss the key properties of a Treap and of its search function. (2)
+
+Source: [[Tema Esame 2024-06-26-1st.pdf#page=4|2024-06-26-1st · Exercise 3A · p. 4]]
+
+^aapp-12-008
+
+AAPP-12-009
+Please discuss how a Union is implemented in a Treap Data-Structure. How does the number of rotations impact the search for an element in a Treap? (2)
+
+Source: [[Tema Esame 2024-07-24-1st.pdf#page=4|2024-07-24-1st · Exercise 3A · p. 4]]
+
+^aapp-12-009
+
+AAPP-12-010
+Why does randomized Treap structure have a complexity on average similar to a balanced binary tree? Treap required all priorities to be pairwise distinct. How can this property be satisfied? (2)
+
+Source: [[Tema Esame 2024-09-05-1st.pdf#page=4|2024-09-05-1st · Exercise 3A · p. 4]]
+
+^aapp-12-010
+
+AAPP-12-011
+Please discuss how a Split is implemented in a Treap Data-Structure. What happen in case the k element is in the initial Treap? (2)
+
+Source: [[Tema Esame 2024-09-05-1st.pdf#page=4|2024-09-05-1st · Exercise 3B · p. 4]]
+
+^aapp-12-011
+
+AAPP-12-012
+Describe how the split for Treaps data structure works and discuss its complexity. (2)
+
+Source: [[Tema Esame 2024-11-12-1st.pdf#page=4|2024-11-12-1st · Exercise 3B · p. 4]]
+
+^aapp-12-012
+
+AAPP-12-013
+Describe how the split and the union work in a treap and discuss their complexity. (2)
+
+Source: [[Tema Esame 2025-02-14-1st.pdf#page=4|2025-02-14-1st · Exercise 3B · p. 4]]
+
+^aapp-12-013
+
+AAPP-12-014
+Describe how the union and the split work in a treap and discuss its complexity. (2)
+
+Source: [[Tema Esame 2025-07-04-1st.pdf#page=4|2025-07-04-1st · Exercise 3B · p. 4]]
+
+^aapp-12-014
+
+AAPP-12-015
+Describe how the union for Treaps data structure works and discuss its complexity. (1)
+
+Source: [[Tema Esame 2025-11-06-1st.pdf#page=4|2025-11-06-1st · Exercise 2C · p. 4]]
+
+^aapp-12-015
+
+AAPP-12-016
+Describe how the split for Treaps data structure works and discuss its complexity. (1)
+
+Source: [[Tema Esame 2026-1-22-1st.pdf#page=4|2026-1-22-1st · Exercise 2C · p. 4]]
+
+^aapp-12-016
+
+AAPP-12-017
+Treap required all priorities to be pairwise distinct. How can this property be satisfied? (1)
+
+Source: [[Tema Esame 2026-2-09-1st.pdf#page=5|2026-2-09-1st · Exercise 3B · p. 5]]
+
+^aapp-12-017
+
+AAPP-12-018
+Please describe how the treap split works. (1)
+
+Source: [[Tema Esame 2026-6-11-1st.pdf#page=5|2026-6-11-1st · Exercise 3A · p. 5]]
+
+^aapp-12-018
+
+AAPP-12-019
+Please describe how the treap union works. (1)
+
+Source: [[Tema Esame 2026-6-29-1st.pdf#page=5|2026-6-29-1st · Exercise 3A · p. 5]]
+
+^aapp-12-019

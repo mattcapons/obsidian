@@ -1,0 +1,16 @@
+PROOF (1)
+Denote the edges we contract in the algorithm as {e1 , e2 , … , en−2 }
+The algorithms succeeds if none of the contracted edges are in δ(S). To
+upper bound the probability that the algorithm succeeds in the first
+contraction, i.e., that e1  δ(S) we need to lower bound the number of edges
+in the input graph G in terms of k.
+ Note, the minimum degree is at least k in G, otherwise we have a cut of size smaller than k
+  since we can disconnect the vertex from the rest of the graph by removing all edges incident
+  to it.
+
+This implies that the original input graph G has at least nk/2 edges.
+
+
+
+
+                                                                                                 - 13 -

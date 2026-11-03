@@ -1,0 +1,84 @@
+AAPP-11-001
+Please explain what the memoization technique is meant for and where it matters. (2)
+
+Source: [[Tema Esame 2023-02-14-1st.pdf#page=4|2023-02-14-1st · Exercise 3A · p. 4]]
+Source: [[Tema Esame 2025-09-05-1st.pdf#page=4|2025-09-05-1st · Exercise 3A · p. 4]]
+
+^aapp-11-001
+
+AAPP-11-002
+Why the BDD data structure can be classified as an example of dynamic programming. (2)
+
+Source: [[Tema Esame 2023-11-09-1st.pdf#page=3|2023-11-09-1st · Exercise 2A · p. 3]]
+
+^aapp-11-002
+
+AAPP-11-003
+Please explain the differences between “Computed table” and “Unique table” with BDDs. Why are they used? (2)
+
+Source: [[Tema Esame 2024-01-26-1st.pdf#page=5|2024-01-26-1st · Exercise 4B · p. 5]]
+
+^aapp-11-003
+
+AAPP-11-004
+What is the Unique Table, and what is it used for in ROBDDs? Does it also have to do with the canonicity of ROBDD? (2)
+
+Source: [[Tema Esame 2024-06-26-1st.pdf#page=5|2024-06-26-1st · Exercise 4A · p. 5]]
+
+^aapp-11-004
+
+AAPP-11-005
+What is the Computed Table, and what is it used for in ROBDDs? Does it also have to do with the canonicity of ROBDD? (2)
+
+Source: [[Tema Esame 2024-09-05-1st.pdf#page=5|2024-09-05-1st · Exercise 4B · p. 5]]
+
+^aapp-11-005
+
+AAPP-11-006
+What is meant by the memoization technique, and in which class of algorithm does it matter? (1)
+
+Source: [[Tema Esame 2024-11-12-1st.pdf#page=3|2024-11-12-1st · Exercise 2C · p. 3]]
+
+^aapp-11-006
+
+AAPP-11-007
+"Why can BDD be considered an example of a data structure that exploits dynamic programming? How does asymptotic complexity change with memoization?" (2)
+
+Source: [[Tema Esame 2025-01-24-1st.pdf#page=3|2025-01-24-1st · Exercise 2B · p. 3]]
+
+^aapp-11-007
+
+AAPP-11-008
+Please discuss the role of the computed table on BDD ITE operation. How does the ITE asymptotic complexity change with this table?" (2)
+
+Source: [[Tema Esame 2025-02-14-1st.pdf#page=3|2025-02-14-1st · Exercise 2B · p. 3]]
+
+^aapp-11-008
+
+AAPP-11-009
+How do the unique table and computed table contribute to the efficiency and canonicity of BDDs?" (2)
+
+Source: [[Tema Esame 2025-06-05-1st.pdf#page=3|2025-06-05-1st · Exercise 2B · p. 3]]
+
+^aapp-11-009
+
+AAPP-11-010
+Why do we mention the BDD computed tables as an example of Dynamic programming? Please provide a pseudo-code example of its usage. (2)
+
+Source: [[Tema Esame 2025-11-06-1st.pdf#page=5|2025-11-06-1st · Exercise 3A · p. 5]]
+
+^aapp-11-010
+
+AAPP-11-011
+Explain the different roles of the unique table and the computed table. Give a scenario where the unique table alone is insufficient to avoid exponential time, and the computed table fixes it. (2)
+
+Source: [[Tema Esame 2026-2-09-1st.pdf#page=7|2026-2-09-1st · Exercise 4A · p. 7]]
+
+^aapp-11-011
+
+AAPP-11-012
+Please explain the differences between the computed table and the unique table in the context of BDDs. Which one is more closely related to dynamic programming algorithms? (2)
+
+Source: [[Tema Esame 2026-6-29-1st.pdf#page=7|2026-6-29-1st · Exercise 4A · p. 7]]
+
+^aapp-11-012

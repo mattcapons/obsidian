@@ -1,0 +1,23 @@
+AAPP-24-001
+Briefly describe the hierarchy of memories of CUDA programming model
+
+AAPP-24-002
+Briefly describe which are the main issues in implementing a parallel application with CUDA.
+
+AAPP-24-003
+Concurrent CUDA Streams: operations within a given stream occur in order. True or false?
+
+AAPP-24-004
+Describe what is CUDA
+
+AAPP-24-005
+How parallel threads are identified in a CUDA kernel?
+
+AAPP-24-006
+Briefly describe which are the main disadvanteges in implementing a parallel application with CUDA with respect to OpenMP.
+
+AAPP-24-007
+Briefly describe the hierarchy of memories of CUDA programming model.
+
+AAPP-24-008
+Briefly describe how threads are grouped in CUDA.

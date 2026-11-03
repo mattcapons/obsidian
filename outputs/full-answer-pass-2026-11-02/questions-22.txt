@@ -1,0 +1,131 @@
+AAPP-22-001
+How can a thread communicate the result of its computation after completing its routine?
+
+Source: [[Tema Esame 2022-02-11-2nd-a.pdf#page=5|2022-02-11-2nd-a · Exercise 4A · p. 5]]
+Source: [[Tema Esame 2022-02-11-2nd-b.pdf#page=5|2022-02-11-2nd-b · Exercise 4A · p. 5]]
+
+^aapp-22-001
+
+AAPP-22-002
+Can PThread be used to implement a fixed-depth parallel pipeline? How should the pipeline stages synchronize their execution?
+
+Source: [[Tema Esame 2022-02-11-2nd-a.pdf#page=5|2022-02-11-2nd-a · Exercise 4B · p. 5]]
+Source: [[Tema Esame 2022-02-11-2nd-b.pdf#page=5|2022-02-11-2nd-b · Exercise 4B · p. 5]]
+
+^aapp-22-002
+
+AAPP-22-003
+Does PThread use an explicit or implicit synchronization model? Describe common approaches to manage the access to critical sections.
+
+Source: [[Tema Esame 2022-06-09-2nd-a.pdf#page=5|2022-06-09-2nd-a · Exercise 4A · p. 5]]
+Source: [[Tema Esame 2022-06-09-2nd-b.pdf#page=5|2022-06-09-2nd-b · Exercise 4A · p. 5]]
+
+^aapp-22-003
+
+AAPP-22-004
+What are the possible approaches for managing the execution flow of different threads using PThreads?
+
+Source: [[Tema Esame 2022-06-09-2nd-a.pdf#page=5|2022-06-09-2nd-a · Exercise 4B · p. 5]]
+Source: [[Tema Esame 2022-06-09-2nd-b.pdf#page=5|2022-06-09-2nd-b · Exercise 4B · p. 5]]
+
+^aapp-22-004
+
+AAPP-22-005
+When a new thread is spawned and assigned a routine, is it possible to automatically pass some arguments to that routine?
+
+Source: [[Tema Esame 2022-06-30-2nd-a.pdf#page=5|2022-06-30-2nd-a · Exercise 4A · p. 5]]
+Source: [[Tema Esame 2022-06-30-2nd-b.pdf#page=5|2022-06-30-2nd-b · Exercise 4A · p. 5]]
+
+^aapp-22-005
+
+AAPP-22-006
+What is the difference between joinable and detached threads?
+
+Source: [[Tema Esame 2022-06-30-2nd-a.pdf#page=5|2022-06-30-2nd-a · Exercise 4B · p. 5]]
+Source: [[Tema Esame 2022-06-30-2nd-b.pdf#page=5|2022-06-30-2nd-b · Exercise 4B · p. 5]]
+
+^aapp-22-006
+
+AAPP-22-007
+What is the use of condition variables in PThreads?
+
+Source: [[Tema Esame 2022-09-07-2nd-b.pdf#page=5|2022-09-07-2nd-b · Exercise 4A · p. 5]]
+
+^aapp-22-007
+
+AAPP-22-008
+Is it possible to share work over a fixed size thread pool that is spawned once at the beginning of the program execution? What kind of parallel pattern can be implemented in this way?
+
+Source: [[Tema Esame 2022-09-07-2nd-b.pdf#page=5|2022-09-07-2nd-b · Exercise 4B · p. 5]]
+
+^aapp-22-008
+
+AAPP-22-009
+Using Pthreads, is it possible to synchronize the execution flow of multiple threads so that they will progress beyond a given point only after all threads have reached it? (1)
+
+Source: [[Tema Esame 2022-12-22-2nd.pdf#page=4|2022-12-22-2nd · Exercise 3A · p. 4]]
+
+^aapp-22-009
+
+AAPP-22-010
+What are PThread condition variables and what is their use? (2)
+
+Source: [[Tema Esame 2023-01-17-2nd.pdf#page=5|2023-01-17-2nd · Exercise 4B · p. 5]]
+
+^aapp-22-010
+
+AAPP-22-011
+What is the difference between joinable and detached threads in PThread? Can detached threads’ execution be synchronized with other threads? (2)
+
+Source: [[Tema Esame 2023-02-14-2nd.pdf#page=5|2023-02-14-2nd · Exercise 4B · p. 5]]
+
+^aapp-22-011
+
+AAPP-22-012
+What is it meant for the procedure pthread_barrier_wait? (2)
+
+Source: [[Tema Esame 2023-06-19-2nd.pdf#page=5|2023-06-19-2nd · Exercise 4B · p. 5]]
+
+^aapp-22-012
+
+AAPP-22-013
+Describe the main advantages of OpenMP over Pthreads. (1)
+
+Source: [[Tema Esame 2023-12-21-2nd.pdf#page=4|2023-12-21-2nd · Exercise 3A · p. 4]]
+
+^aapp-22-013
+
+AAPP-22-014
+What is the difference between joinable and detached threads in Pthreads? (1)
+
+Source: [[Tema Esame 2024-01-26-2nd.pdf#page=4|2024-01-26-2nd · Exercise 3A · p. 4]]
+
+^aapp-22-014
+
+AAPP-22-015
+What is the difference between joining and waiting on a barrier in Pthreads? (1)
+
+Source: [[Tema Esame 2024-01-26-2nd.pdf#page=4|2024-01-26-2nd · Exercise 3B · p. 4]]
+
+^aapp-22-015
+
+AAPP-22-016
+Which Pthreads API call is needed to ensure that spawned threads can finish their execution after main() returns? (1)
+
+Source: [[Tema Esame 2024-02-16-2nd.pdf#page=4|2024-02-16-2nd · Exercise 3B · p. 4]]
+
+^aapp-22-016
+
+AAPP-22-017
+What are the main differences between Pthreads and OpenMP? (1)
+
+Source: [[Tema Esame 2025-01-24-2nd.pdf#page=3|2025-01-24-2nd · Exercise 3A · p. 3]]
+
+^aapp-22-017
+
+AAPP-22-018
+What happens when threads encounter a barrier in Pthreads? Is the same behavior achievable through joining? (1)
+
+Source: [[Tema Esame 2025-02-14-2nd.pdf#page=3|2025-02-14-2nd · Exercise 3B · p. 3]]
+
+^aapp-22-018

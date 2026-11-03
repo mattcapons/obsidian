@@ -1,0 +1,1 @@
+ Advanced Algorithms and Parallel Programming 1st part (Advanced Algorithms)–February 11th 2022 page 3 of 4 Exercise n. 2 Describe the Karger’s Min-Cut Algorithm. Is the Karger’s Min-Cut Algorithm a Monte Carlo randomization-based algorithm? 

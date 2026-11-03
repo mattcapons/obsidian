@@ -1,0 +1,132 @@
+AAPP-10-001
+Discuss why dynamic programming matter for Longest common subsequence algorithm.
+
+Source: [[Tema Esame 2022-01-14-1st.pdf#page=2|2022-01-14-1st · Exercise 1 · p. 2]]
+
+^aapp-10-001
+
+AAPP-10-002
+Discuss an example of dynamic programming based algorithm. Which are the key features of an algorithm for being classified as a dynamic programming algorithm?
+
+Source: [[Tema Esame 2022-09-07-1st.pdf#page=3|2022-09-07-1st · Exercise 2 · p. 3]]
+
+^aapp-10-002
+
+AAPP-10-003
+Describe the Longest Common Subsequence (LCS) algorithm. (2)
+
+Source: [[Tema Esame 2022-11-08-1st.pdf#page=3|2022-11-08-1st · Exercise 2A · p. 3]]
+
+^aapp-10-003
+
+AAPP-10-004
+What kind of temporal or spatial complexity has LCS? (1)
+
+Source: [[Tema Esame 2022-11-08-1st.pdf#page=3|2022-11-08-1st · Exercise 2B · p. 3]]
+
+^aapp-10-004
+
+AAPP-10-005
+LCS is classified as a dynamic programming algorithm. Why? (1)
+
+Source: [[Tema Esame 2022-11-08-1st.pdf#page=3|2022-11-08-1st · Exercise 2C · p. 3]]
+
+^aapp-10-005
+
+AAPP-10-006
+Please explain why an algorithm could be classified as a Dynamic programming algorithm. (2)
+
+Source: [[Tema Esame 2023-06-19-1st.pdf#page=4|2023-06-19-1st · Exercise 3A · p. 4]]
+
+^aapp-10-006
+
+AAPP-10-007
+Detail the Longest Common Subsequence algorithm: pseudo code and space and temporal complexity. (2)
+
+Source: [[Tema Esame 2023-07-11-1st.pdf#page=5|2023-07-11-1st · Exercise 4A · p. 5]]
+
+^aapp-10-007
+
+AAPP-10-008
+What kind of spatial complexity has the longest common subsequence problem? (1).
+
+Source: [[Tema Esame 2023-11-09-1st.pdf#page=3|2023-11-09-1st · Exercise 2B · p. 3]]
+
+^aapp-10-008
+
+AAPP-10-009
+Why does spatial complexity matter for all dynamic programming algorithms? (1)
+
+Source: [[Tema Esame 2023-11-09-1st.pdf#page=3|2023-11-09-1st · Exercise 2C · p. 3]]
+
+^aapp-10-009
+
+AAPP-10-010
+What kind of time complexity has the longest common subsequence problem (1)
+
+Source: [[Tema Esame 2024-01-26-1st.pdf#page=3|2024-01-26-1st · Exercise 2B · p. 3]]
+
+^aapp-10-010
+
+AAPP-10-011
+Please discuss how the longest common subsequence works. What about its complexity? (2)
+
+Source: [[Tema Esame 2024-02-16-1st.pdf#page=4|2024-02-16-1st · Exercise 3A · p. 4]]
+
+^aapp-10-011
+
+AAPP-10-012
+Please discuss the key property of the longest common subsequence. In which class of algorithm can be inserted? Why? (2)
+
+Source: [[Tema Esame 2024-07-24-1st.pdf#page=5|2024-07-24-1st · Exercise 4A · p. 5]]
+
+^aapp-10-012
+
+AAPP-10-013
+To which class does the Longest Common Subsequence Algorithm belong? How is its complexity evaluated? (1)
+
+Source: [[Tema Esame 2024-09-05-1st.pdf#page=3|2024-09-05-1st · Exercise 2C · p. 3]]
+
+^aapp-10-013
+
+AAPP-10-014
+In class, we studied an algorithm that shows the main hallmarks of dynamic programming. Describe the algorithm and its complexity, and why it is classified as a good dynamic programming example. (2)
+
+Source: [[Tema Esame 2025-07-04-1st.pdf#page=3|2025-07-04-1st · Exercise 2A · p. 3]]
+
+^aapp-10-014
+
+AAPP-10-015
+What properties and algorithmic steps are required to convert a divide-and-conquer solution into a dynamic programming solution? (1)
+
+Source: [[Tema Esame 2025-11-06-1st.pdf#page=6|2025-11-06-1st · Exercise 3C · p. 6]]
+
+^aapp-10-015
+
+AAPP-10-016
+Please describe a problem that is typically solved by a divide‑and‑conquer strategy, yet also admits a dynamic‑programming formulation. In your explanation, highlight how memoization is employed. (2)
+
+Source: [[Tema Esame 2026-1-22-1st.pdf#page=6|2026-1-22-1st · Exercise 3C · p. 6]]
+
+^aapp-10-016
+
+AAPP-10-017
+What kind of spatial complexity does the longest common subsequence problem have? (1)
+
+Source: [[Tema Esame 2026-2-09-1st.pdf#page=5|2026-2-09-1st · Exercise 3A · p. 5]]
+
+^aapp-10-017
+
+AAPP-10-018
+Detail the Longest Common Subsequence algorithm: pseudo code, space, and temporal complexity. (2)
+
+Source: [[Tema Esame 2026-6-11-1st.pdf#page=7|2026-6-11-1st · Exercise 4A · p. 7]]
+
+^aapp-10-018
+
+AAPP-10-019
+What is memoization, and why is it useful in Dynamic Programming? Give an example of a repeated subproblem for which memoization avoids recomputation. (1)
+
+Source: [[Tema Esame 2026-9-10-1st.pdf#page=4|2026-9-10-1st · Exercise 2C · p. 4]]
+
+^aapp-10-019

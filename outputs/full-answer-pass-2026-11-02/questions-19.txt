@@ -1,0 +1,465 @@
+AAPP-19-001
+Describe the map parallel pattern and at least one fusion optimization that can be applied to it.
+
+Source: [[Tema Esame 2022-02-11-2nd-a.pdf#page=3|2022-02-11-2nd-a · Exercise 2C · p. 3]]
+Source: [[Tema Esame 2022-02-11-2nd-b.pdf#page=3|2022-02-11-2nd-b · Exercise 2C · p. 3]]
+
+^aapp-19-001
+
+AAPP-19-002
+Describe the scan parallel pattern. Can it be implemented using different approaches with respect to the computation of intermediate values?
+
+Source: [[Tema Esame 2022-06-09-2nd-a.pdf#page=3|2022-06-09-2nd-a · Exercise 2C · p. 3]]
+Source: [[Tema Esame 2022-06-09-2nd-b.pdf#page=3|2022-06-09-2nd-b · Exercise 2C · p. 3]]
+Source: [[Tema Esame 2022-09-07-2nd-b.pdf#page=3|2022-09-07-2nd-b · Exercise 2B · p. 3]]
+
+^aapp-19-002
+
+AAPP-19-003
+Describe the workpile pattern, situations where it may be applied and possible implementations.
+
+Source: [[Tema Esame 2022-06-30-2nd-a.pdf#page=3|2022-06-30-2nd-a · Exercise 2A · p. 3]]
+Source: [[Tema Esame 2022-06-30-2nd-b.pdf#page=3|2022-06-30-2nd-b · Exercise 2A · p. 3]]
+
+^aapp-19-003
+
+AAPP-19-004
+Is the Quicksort algorithm easy to parallelize? Propose a high-level description of a possible parallelization and analyze its potential bottlenecks.
+
+Source: [[Tema Esame 2022-06-30-2nd-a.pdf#page=3|2022-06-30-2nd-a · Exercise 2B · p. 3]]
+Source: [[Tema Esame 2022-06-30-2nd-b.pdf#page=3|2022-06-30-2nd-b · Exercise 2B · p. 3]]
+
+^aapp-19-004
+
+AAPP-19-005
+Describe how to implement a map pattern with one of the parallel programming models presented in the course.
+
+Source: [[Tema Esame 2022-06-30-2nd-a.pdf#page=3|2022-06-30-2nd-a · Exercise 2C · p. 3]]
+Source: [[Tema Esame 2022-06-30-2nd-b.pdf#page=3|2022-06-30-2nd-b · Exercise 2C · p. 3]]
+
+^aapp-19-005
+
+AAPP-19-006
+Please define what a parallel reduction is: assumptions, complexity, example.(1)
+
+Source: [[Tema Esame 2022-12-22-2nd.pdf#page=3|2022-12-22-2nd · Exercise 2A · p. 3]]
+
+^aapp-19-006
+
+AAPP-19-007
+Please describe how a parallel pattern gather works. (1)
+
+Source: [[Tema Esame 2022-12-22-2nd.pdf#page=3|2022-12-22-2nd · Exercise 2B · p. 3]]
+
+^aapp-19-007
+
+AAPP-19-008
+Describe all the collision rules for a scatter pattern. (1)
+
+Source: [[Tema Esame 2022-12-22-2nd.pdf#page=3|2022-12-22-2nd · Exercise 2C · p. 3]]
+Source: [[Tema Esame 2023-02-14-2nd.pdf#page=3|2023-02-14-2nd · Exercise 2C · p. 3]]
+
+^aapp-19-008
+
+AAPP-19-009
+Describe how the pack parallel pattern could be parallelly implemented. (1)
+
+Source: [[Tema Esame 2022-12-22-2nd.pdf#page=3|2022-12-22-2nd · Exercise 2D · p. 3]]
+
+^aapp-19-009
+
+AAPP-19-010
+Please describe the stencil pattern: assumptions, complexity, example. (1)
+
+Source: [[Tema Esame 2023-01-17-2nd.pdf#page=3|2023-01-17-2nd · Exercise 2A · p. 3]]
+
+^aapp-19-010
+
+AAPP-19-011
+Please describe the differences between Split and Bin parallel patterns. (1)
+
+Source: [[Tema Esame 2023-01-17-2nd.pdf#page=3|2023-01-17-2nd · Exercise 2B · p. 3]]
+
+^aapp-19-011
+
+AAPP-19-012
+Given an input collection of 100 values and an auxiliary array of 10, which parallel pattern between the gather and the scatter is producing an output collection of 10 values? (1)
+
+Source: [[Tema Esame 2023-01-17-2nd.pdf#page=3|2023-01-17-2nd · Exercise 2C · p. 3]]
+
+^aapp-19-012
+
+AAPP-19-013
+What is meant by separating hyperplane in a recurrence parallelization? (1)
+
+Source: [[Tema Esame 2023-01-17-2nd.pdf#page=3|2023-01-17-2nd · Exercise 2D · p. 3]]
+
+^aapp-19-013
+
+AAPP-19-014
+Please describe the map pattern: assumptions, complexity, example. (1)
+
+Source: [[Tema Esame 2023-02-14-2nd.pdf#page=3|2023-02-14-2nd · Exercise 2A · p. 3]]
+
+^aapp-19-014
+
+AAPP-19-015
+Please describe the differences between Zip and Unzip parallel patterns. (1)
+
+Source: [[Tema Esame 2023-02-14-2nd.pdf#page=3|2023-02-14-2nd · Exercise 2B · p. 3]]
+
+^aapp-19-015
+
+AAPP-19-016
+What is meant by “permutation scatter”? (1)
+
+Source: [[Tema Esame 2023-02-14-2nd.pdf#page=3|2023-02-14-2nd · Exercise 2D · p. 3]]
+Source: [[Tema Esame 2023-07-11-2nd.pdf#page=3|2023-07-11-2nd · Exercise 2C · p. 3]]
+
+^aapp-19-016
+
+AAPP-19-017
+Is it possible to implement a pipeline paradigm using OpenMP? What parallel paradigm is adopted by default in OpenMP?(2)
+
+Source: [[Tema Esame 2023-02-14-2nd.pdf#page=4|2023-02-14-2nd · Exercise 3A · p. 4]]
+
+^aapp-19-017
+
+AAPP-19-018
+Please describe the reduce pattern: assumptions, complexity, and example. (2)
+
+Source: [[Tema Esame 2023-06-19-2nd.pdf#page=3|2023-06-19-2nd · Exercise 2A · p. 3]]
+Source: [[Tema Esame 2023-09-11-2nd.pdf#page=3|2023-09-11-2nd · Exercise 2A · p. 3]]
+
+^aapp-19-018
+
+AAPP-19-019
+Please describe the differences between Gather and scatter parallel patterns. (1)
+
+Source: [[Tema Esame 2023-06-19-2nd.pdf#page=3|2023-06-19-2nd · Exercise 2B · p. 3]]
+
+^aapp-19-019
+
+AAPP-19-020
+What is meant by “merge scatter”? (1)
+
+Source: [[Tema Esame 2023-06-19-2nd.pdf#page=3|2023-06-19-2nd · Exercise 2C · p. 3]]
+
+^aapp-19-020
+
+AAPP-19-021
+Please describe the stencil pattern: assumptions, complexity, and example. (2)
+
+Source: [[Tema Esame 2023-07-11-2nd.pdf#page=3|2023-07-11-2nd · Exercise 2A · p. 3]]
+
+^aapp-19-021
+
+AAPP-19-022
+Please describe how the Pack parallel pattern could be implemented. (1)
+
+Source: [[Tema Esame 2023-07-11-2nd.pdf#page=3|2023-07-11-2nd · Exercise 2B · p. 3]]
+
+^aapp-19-022
+
+AAPP-19-023
+Please describe what is meant by pipelined parallelism and how could be implemented in OpenMP?(2)
+
+Source: [[Tema Esame 2023-07-11-2nd.pdf#page=4|2023-07-11-2nd · Exercise 3A · p. 4]]
+
+^aapp-19-023
+
+AAPP-19-024
+Please describe how the Unpack parallel pattern could be implemented. (2)
+
+Source: [[Tema Esame 2023-09-11-2nd.pdf#page=3|2023-09-11-2nd · Exercise 2B · p. 3]]
+
+^aapp-19-024
+
+AAPP-19-025
+Please describe the scan pattern: assumptions, complexity, and example. (2)
+
+Source: [[Tema Esame 2023-12-21-2nd.pdf#page=3|2023-12-21-2nd · Exercise 2A · p. 3]]
+
+^aapp-19-025
+
+AAPP-19-026
+Please describe how the Split parallel pattern could be implemented. (2)
+
+Source: [[Tema Esame 2023-12-21-2nd.pdf#page=3|2023-12-21-2nd · Exercise 2B · p. 3]]
+
+^aapp-19-026
+
+AAPP-19-027
+Please describe the parallel gather pattern: assumptions, complexity, and example. (2)
+
+Source: [[Tema Esame 2024-01-26-2nd.pdf#page=3|2024-01-26-2nd · Exercise 2A · p. 3]]
+
+^aapp-19-027
+
+AAPP-19-028
+Please describe how the “Merge collision resolution” works. Is it related to the parallel gather pattern? (2)
+
+Source: [[Tema Esame 2024-01-26-2nd.pdf#page=3|2024-01-26-2nd · Exercise 2B · p. 3]]
+
+^aapp-19-028
+
+AAPP-19-029
+Please describe the parallel scatter pattern: assumptions, complexity, and example. (2)
+
+Source: [[Tema Esame 2024-02-16-2nd.pdf#page=3|2024-02-16-2nd · Exercise 2A · p. 3]]
+
+^aapp-19-029
+
+AAPP-19-030
+Please describe how the Pack parallel pattern works. How is implemented? (2)
+
+Source: [[Tema Esame 2024-02-16-2nd.pdf#page=3|2024-02-16-2nd · Exercise 2B · p. 3]]
+
+^aapp-19-030
+
+AAPP-19-031
+Please describe the parallel reduce pattern: assumptions, complexity, and example. (2)
+
+Source: [[Tema Esame 2024-06-26-2nd.pdf#page=3|2024-06-26-2nd · Exercise 2A · p. 3]]
+Source: [[Tema Esame 2024-09-05-2nd.pdf#page=3|2024-09-05-2nd · Exercise 2A · p. 3]]
+
+^aapp-19-031
+
+AAPP-19-032
+Please describe how the Split parallel pattern works. How is it implemented? (2)
+
+Source: [[Tema Esame 2024-06-26-2nd.pdf#page=3|2024-06-26-2nd · Exercise 2B · p. 3]]
+
+^aapp-19-032
+
+AAPP-19-033
+Please describe the parallel Split pattern: assumptions, complexity, and example. (2)
+
+Source: [[Tema Esame 2024-07-24-2nd.pdf#page=3|2024-07-24-2nd · Exercise 2A · p. 3]]
+
+^aapp-19-033
+
+AAPP-19-034
+Please describe how the Unzip parallel pattern works. How is it implemented (pseudo code required)? (2)
+
+Source: [[Tema Esame 2024-07-24-2nd.pdf#page=3|2024-07-24-2nd · Exercise 2B · p. 3]]
+
+^aapp-19-034
+
+AAPP-19-035
+Please explain how the parallel shift pattern functions and provide its implementation (including pseudo-code). Also, please indicate its complexity. (2)
+
+Source: [[Tema Esame 2024-09-05-2nd.pdf#page=3|2024-09-05-2nd · Exercise 2B · p. 3]]
+
+^aapp-19-035
+
+AAPP-19-036
+Please describe the parallel scan pattern, including assumptions, complexity, and examples. (2)
+
+Source: [[Tema Esame 2025-01-24-2nd.pdf#page=2|2025-01-24-2nd · Exercise 2A · p. 2]]
+
+^aapp-19-036
+
+AAPP-19-037
+Please discuss how the Zip parallel pattern works. How is it implemented (pseudo code required)? (2)
+
+Source: [[Tema Esame 2025-01-24-2nd.pdf#page=2|2025-01-24-2nd · Exercise 2B · p. 2]]
+
+^aapp-19-037
+
+AAPP-19-038
+Please describe and show an example of Parallel Data Management Patterns: pipeline. (1)
+
+Source: [[Tema Esame 2025-02-14-2nd.pdf#page=1|2025-02-14-2nd · Exercise 1A · p. 1]]
+
+^aapp-19-038
+
+AAPP-19-039
+Please describe the parallel Scatter pattern, including assumptions, PRAM-based complexity, and examples. (2)
+
+Source: [[Tema Esame 2025-02-14-2nd.pdf#page=2|2025-02-14-2nd · Exercise 2A · p. 2]]
+
+^aapp-19-039
+
+AAPP-19-040
+Please discuss how the Pack parallel pattern works. How is it implemented (pseudo code required and PRAM-based complexity)? (2)
+
+Source: [[Tema Esame 2025-02-14-2nd.pdf#page=2|2025-02-14-2nd · Exercise 2B · p. 2]]
+
+^aapp-19-040
+
+AAPP-19-041
+How does the Fork-Join pattern differ from a barrier in parallel programming? (1)
+
+Source: [[Tema Esame 2025-06-05-2nd.pdf#page=1|2025-06-05-2nd · Exercise 1A · p. 1]]
+
+^aapp-19-041
+
+AAPP-19-042
+How does the Workpile pattern differ from a standard Map pattern? (1)
+
+Source: [[Tema Esame 2025-06-05-2nd.pdf#page=1|2025-06-05-2nd · Exercise 1B · p. 1]]
+
+^aapp-19-042
+
+AAPP-19-043
+How can the map and reduce patterns be fused, and what is the benefit of doing so? (1)
+
+Source: [[Tema Esame 2025-06-05-2nd.pdf#page=2|2025-06-05-2nd · Exercise 2A · p. 2]]
+
+^aapp-19-043
+
+AAPP-19-044
+In the context of parallel scan, what is the difference between an inclusive and an exclusive scan? What about the complexity? (1)
+
+Source: [[Tema Esame 2025-06-05-2nd.pdf#page=2|2025-06-05-2nd · Exercise 2B · p. 2]]
+
+^aapp-19-044
+
+AAPP-19-045
+Please discuss how the Split parallel pattern works. How is it implemented (pseudo code required and PRAM-based complexity)? (2)
+
+Source: [[Tema Esame 2025-06-05-2nd.pdf#page=2|2025-06-05-2nd · Exercise 2C · p. 2]]
+Source: [[Tema Esame 2025-09-05-2nd.pdf#page=2|2025-09-05-2nd · Exercise 2B · p. 2]]
+
+^aapp-19-045
+
+AAPP-19-046
+What are the challenges of using a shared state in a Map function? (1)
+
+Source: [[Tema Esame 2025-07-04-2nd.pdf#page=1|2025-07-04-2nd · Exercise 1B · p. 1]]
+
+^aapp-19-046
+
+AAPP-19-047
+Please describe the parallel reduce pattern: assumptions, PRAM complexity, and example. What about the work done? Is it different from the one done by the sequential algorithm? (2)
+
+Source: [[Tema Esame 2025-07-04-2nd.pdf#page=2|2025-07-04-2nd · Exercise 2A · p. 2]]
+
+^aapp-19-047
+
+AAPP-19-048
+Please discuss how the Unpack parallel pattern works. How is it implemented (pseudo code required and PRAM-based complexity)? (2)
+
+Source: [[Tema Esame 2025-07-04-2nd.pdf#page=2|2025-07-04-2nd · Exercise 2B · p. 2]]
+
+^aapp-19-048
+
+AAPP-19-049
+Please describe the parallel gather pattern, including assumptions, PRAM-based complexity, and examples. (2)
+
+Source: [[Tema Esame 2025-09-05-2nd.pdf#page=2|2025-09-05-2nd · Exercise 2A · p. 2]]
+
+^aapp-19-049
+
+AAPP-19-050
+What kind of problems may create a parallel scatter pattern? Please discuss and provide examples. (1)
+
+Source: [[Tema Esame 2025-12-18-2nd.pdf#page=1|2025-12-18-2nd · Exercise 1A · p. 1]]
+
+^aapp-19-050
+
+AAPP-19-051
+Please describe the parallel gather pattern, including assumptions, complexity, and examples. (2)
+
+Source: [[Tema Esame 2025-12-18-2nd.pdf#page=3|2025-12-18-2nd · Exercise 2A · p. 3]]
+
+^aapp-19-051
+
+AAPP-19-052
+Please describe how the Pack parallel pattern works. How is it implemented (pseudo code required)? (2)
+
+Source: [[Tema Esame 2025-12-18-2nd.pdf#page=3|2025-12-18-2nd · Exercise 2B · p. 3]]
+
+^aapp-19-052
+
+AAPP-19-053
+Please describe the parallel scan pattern, including assumptions, PRAM complexity. In which other parallel patterns discussed during the lecture have been used? (2)
+
+Source: [[Tema Esame 2026-1-22-2nd.pdf#page=3|2026-1-22-2nd · Exercise 2A · p. 3]]
+
+^aapp-19-053
+
+AAPP-19-054
+Please describe how the Split parallel pattern works and its performance considering a PRAM model. How is it implemented (pseudo code required)? (2)
+
+Source: [[Tema Esame 2026-1-22-2nd.pdf#page=3|2026-1-22-2nd · Exercise 2B · p. 3]]
+
+^aapp-19-054
+
+AAPP-19-055
+Describe the map parallel pattern and at least one fusion optimization that can be applied to it. (1)
+
+Source: [[Tema Esame 2026-2-09-2nd.pdf#page=1|2026-2-09-2nd · Exercise 1A · p. 1]]
+
+^aapp-19-055
+
+AAPP-19-056
+Please describe the parallel gather pattern, including assumptions, PRAM complexity. In which other parallel patterns discussed during the lecture has the gather been used? (2)
+
+Source: [[Tema Esame 2026-2-09-2nd.pdf#page=3|2026-2-09-2nd · Exercise 2A · p. 3]]
+
+^aapp-19-056
+
+AAPP-19-057
+Please describe how the Unsplit parallel pattern works and its performance considering a PRAM model. How is it implemented (pseudo code required)? (2)
+
+Source: [[Tema Esame 2026-2-09-2nd.pdf#page=3|2026-2-09-2nd · Exercise 2B · p. 3]]
+
+^aapp-19-057
+
+AAPP-19-058
+Describe the reduce parallel pattern and at least one fusion optimization that can be applied to it. (1)
+
+Source: [[Tema Esame 2026-6-11-2nd.pdf#page=1|2026-6-11-2nd · Exercise 1A · p. 1]]
+
+^aapp-19-058
+
+AAPP-19-059
+Please provide a short pseudocode for the parallel scatter pattern. Discuss its assumptions and PRAM complexity. In which other parallel patterns discussed during the lecture has the scatter been used? (2)
+
+Source: [[Tema Esame 2026-6-11-2nd.pdf#page=3|2026-6-11-2nd · Exercise 2A · p. 3]]
+
+^aapp-19-059
+
+AAPP-19-060
+Please describe how the Pack parallel pattern works and its performance considering a PRAM model. How is it implemented (pseudo code required)? (2)
+
+Source: [[Tema Esame 2026-6-11-2nd.pdf#page=3|2026-6-11-2nd · Exercise 2B · p. 3]]
+
+^aapp-19-060
+
+AAPP-19-061
+Describe the map followed by a reduce parallel pattern providing PRAM complexity and show at least one example discussed during the lectures. (1)
+
+Source: [[Tema Esame 2026-6-29-2nd.pdf#page=1|2026-6-29-2nd · Exercise 1A · p. 1]]
+
+^aapp-19-061
+
+AAPP-19-062
+Please describe how the Unpack parallel pattern works and its performance considering a PRAM model. How is it implemented (pseudo code required)? (2)
+
+Source: [[Tema Esame 2026-6-29-2nd.pdf#page=3|2026-6-29-2nd · Exercise 2A · p. 3]]
+
+^aapp-19-062
+
+AAPP-19-063
+Describe the scan followed by a reduce parallel pattern providing PRAM complexity and show at least one example discussed during the lectures. (1)
+
+Source: [[Tema Esame 2026-9-10-2nd.pdf#page=1|2026-9-10-2nd · Exercise 1A · p. 1]]
+
+^aapp-19-063
+
+AAPP-19-064
+Describe the parallel pipeline pattern and one condition required for good scalability. (1)
+
+Source: [[Tema Esame 2026-9-10-2nd.pdf#page=1|2026-9-10-2nd · Exercise 1B · p. 1]]
+
+^aapp-19-064
+
+AAPP-19-065
+Describe the Pack pattern and give its PRAM work and time complexity. (2)
+
+Source: [[Tema Esame 2026-9-10-2nd.pdf#page=3|2026-9-10-2nd · Exercise 2A · p. 3]]
+
+^aapp-19-065

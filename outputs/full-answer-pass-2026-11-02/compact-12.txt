@@ -1,0 +1,56 @@
+AAPP-12-001
+Describe how treap Union works.
+
+AAPP-12-002
+Describe how Treap split/union works.
+
+AAPP-12-003
+Describe how Treap split/union works.? (2)
+
+AAPP-12-004
+Describe the treap data structure, how the search is performed, and which complexity has. (2)
+
+AAPP-12-005
+Describe the treap data structure and how the split is performed, and which complexity has. (2)
+
+AAPP-12-006
+Please provide the implementation of the split operation for Treaps. What is the operation complexity? (2)
+
+AAPP-12-007
+Please provide the implementation of the union operation for Treaps. What is the operation complexity? (2)
+
+AAPP-12-008
+Please discuss the key properties of a Treap and of its search function. (2)
+
+AAPP-12-009
+Please discuss how a Union is implemented in a Treap Data-Structure. How does the number of rotations impact the search for an element in a Treap? (2)
+
+AAPP-12-010
+Why does randomized Treap structure have a complexity on average similar to a balanced binary tree? Treap required all priorities to be pairwise distinct. How can this property be satisfied? (2)
+
+AAPP-12-011
+Please discuss how a Split is implemented in a Treap Data-Structure. What happen in case the k element is in the initial Treap? (2)
+
+AAPP-12-012
+Describe how the split for Treaps data structure works and discuss its complexity. (2)
+
+AAPP-12-013
+Describe how the split and the union work in a treap and discuss their complexity. (2)
+
+AAPP-12-014
+Describe how the union and the split work in a treap and discuss its complexity. (2)
+
+AAPP-12-015
+Describe how the union for Treaps data structure works and discuss its complexity. (1)
+
+AAPP-12-016
+Describe how the split for Treaps data structure works and discuss its complexity. (1)
+
+AAPP-12-017
+Treap required all priorities to be pairwise distinct. How can this property be satisfied? (1)
+
+AAPP-12-018
+Please describe how the treap split works. (1)
+
+AAPP-12-019
+Please describe how the treap union works. (1)

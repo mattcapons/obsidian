@@ -1,0 +1,20 @@
+AAPP-09-001
+Which is the type/class of randomized algorithms used by the primality testing algorithms presented during the lectures? (1)
+
+AAPP-09-002
+Describe the ideas behind the primality test algorithm presented during the lectures. Which class of randomized approach does it belong to? (1)
+
+AAPP-09-003
+Could you explain which aspects of primality testing use randomization and how that process works? Additionally, would you classify it as a Las Vegas randomized algorithm? (2)
+
+AAPP-09-004
+Please describe how the primality test, presented during the lectures, works, and specify which class of randomization it belongs to. (2)
+
+AAPP-09-005
+Could you explain which aspects of primality testing we have seen during the lectures that use randomization? Additionally, would you classify it as a Monte Carlo or Las Vegas randomized algorithm? (2)
+
+AAPP-09-006
+Describe the randomized primality testing algorithm presented in class, including its randomized-algorithm classification. (2)
+
+AAPP-09-007
+Describe the ideas behind the primality test algorithm presented during the lectures. Which class of randomized approach does it belong to? (2)

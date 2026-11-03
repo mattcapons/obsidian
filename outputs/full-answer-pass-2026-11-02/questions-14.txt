@@ -1,0 +1,13 @@
+AAPP-14-001
+Please explain how the disjoint set data structure works and which optimizations have been considered to reduce the complexity of the operations. (2)
+
+Source: [[Tema Esame 2023-07-11-1st.pdf#page=4|2023-07-11-1st · Exercise 3A · p. 4]]
+
+^aapp-14-001
+
+AAPP-14-002
+Please explain which optimizations have been considered to reduce the complexity of the disjoint-set operations. (2)
+
+Source: [[Tema Esame 2023-09-11-1st.pdf#page=4|2023-09-11-1st · Exercise 3A · p. 4]]
+
+^aapp-14-002

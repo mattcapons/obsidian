@@ -1,0 +1,68 @@
+AAPP-15-001
+Consider a k-bit binary counter counting upwards from 0 using the INCREMENT procedure, implemented according to the following pseudocode:
+
+```text
+INCREMENT(A, k)
+1 i = 0
+2 while i < k and A[i] == 1
+3   A[i] = 0
+4   i = i + 1
+5 if i < k
+6   A[i] = 1
+```
+
+Provide a pseudocode implementation for the RESET procedure that returns the counter to its original state (all bits set to 0). Compute the amortized cost for both procedures for a sequence of n operations starting with n-1 INCREMENTs and ending with one RESET using one of the amortized analysis methods seen at lecture. You are allowed to modify the increment procedure and add additional variables to improve the amortized cost of the RESET procedure.
+
+AAPP-15-002
+Consider a stack data structure storing elements of a given type, which can be assumed to be empty at the start time. Users can push one element on top of the stack using a PUSH operation, which has a constant cost of 1 and remove the top with a POP operation, which has a constant cost of 1. Compute the real cost of the MULTIPOP(k) operation that removes min{k,s} elements from the top of the stack where s is the number of elements in the stack. Determine the worst possible sequence of n operations on this stack and compute the amortized cost for the operations contained in the sequence using one of the methods seen during the course.
+
+AAPP-15-003
+Consider a dynamic table data structure for storing a variable number of elements in memory. When created, the table has space for storing only one element, and pushing one element in the table has a constant cost. If the table is full, twice the size of the original table is allocated to a new table and all elements of the original table are copied in the new table. The cost for allocating one unit of memory is constant. Compute the real cost for inserting n elements into a new-allocated table (having an initial capacity for storing only one element) and determine the amortized cost for the allocating the same number of elements using one of the methods seen during the course.
+
+AAPP-15-004
+Please explain what aggregate amortized analysis is. (2)
+
+AAPP-15-005
+What is meant by “accounting method”? At which class of algorithms could be applied? (2)
+
+AAPP-15-006
+What is meant by “potential method”? At which class of algorithms could be applied? Examples? (2)
+
+AAPP-15-007
+What is meant by “potential method”? To which class of algorithms could be applied? Examples? (2)
+
+AAPP-15-008
+Please discuss the amortized analysis. For which class of algorithm does it matter? (2)
+
+AAPP-15-009
+What is meant by “accounting method”? To which class of algorithms could be applied? Examples? (2)
+
+AAPP-15-010
+What is meant by “amortized analysis”? To which type of algorithms could be applied? Examples? (2)
+
+AAPP-15-011
+Please discuss the different variants of the amortized analysis. For what class of problems are they used? (2)
+
+AAPP-15-012
+Why is amortized analysis useful in algorithm design, especially for data structures? (1)
+
+AAPP-15-013
+What does it mean if the potential difference ΔΦ is negative in the potential method? What about the sign of Φ. (1)
+
+AAPP-15-014
+Describe an algorithm seen during the course lectures where the potential method has been used. (2)
+
+AAPP-15-015
+What are the characteristics of an algorithm that require the amortized analysis methods? (1)
+
+AAPP-15-016
+What is meant by “accounting method”? To which class of algorithms could be applied? Examples? (1)
+
+AAPP-15-017
+Explain the various forms of amortized analysis. What characteristics of a problem make amortized analysis the appropriate analytical technique? (2)
+
+AAPP-15-018
+Describe amortized analysis and discuss one algorithm or data structure where this analysis is appropriate. (2)
+
+AAPP-15-019
+Describe the potential method of amortized analysis and apply it conceptually to a dynamic array that doubles when full. (2)

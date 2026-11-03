@@ -1,0 +1,16 @@
+{
+  "reviewed_question_ids": [
+    "AAPP-06-001",
+    "AAPP-06-002"
+  ],
+  "feedback_added": 2,
+  "unanswered_section_6_questions_preserved": 10,
+  "all_original_questions_and_attempts_preserved": 552,
+  "previous_reviews_and_other_sections_preserved": true,
+  "frontmatter_and_block_ids_preserved": true,
+  "new_study_links_checked": 11,
+  "comparison_tables_checked": 1,
+  "exam_source_pages_and_prompts_checked": 2,
+  "source_pdfs_unchanged": true,
+  "success_bound_repetition_budget_and_recursion_threshold_checked": true
+}

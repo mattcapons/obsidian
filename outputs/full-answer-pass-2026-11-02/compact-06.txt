@@ -1,0 +1,35 @@
+AAPP-06-001
+Describe how Karger and Stein algorithm works. Discuss and compare the two algorithms’ complexity.
+
+AAPP-06-002
+Describe the Karger’s Min-Cut Algorithm. Is the Karger’s Min-Cut Algorithm a Monte Carlo randomization- based algorithm?
+
+AAPP-06-003
+Describe the Karger and Stein Min-Cut Algorithm. How is the complexity of this algorithm computed? Which is the randomization class the algorithm belongs to?
+
+AAPP-06-004
+Describe the Karger and Stein algorithm and its complexity. (2)
+
+AAPP-06-005
+What are the key differences between Karger vs Karger&Steing algorithms? (2)
+
+AAPP-06-006
+Please describe the key properties of the Karger & Stein algorithm. (2)
+
+AAPP-06-007
+Please describe the ideas used to improve the Karger approach to solving the min-cut problem. What changed with respect to the asymptotic complexity with respect to the initial approach? (2)
+
+AAPP-06-008
+What are the key ideas of the basic Karger approach compared to previous approaches? Does it affect the worst-case complexity?" (2)
+
+AAPP-06-009
+In class, we studied two algorithms for minimum cut in a graph. Describe the behavior of both algorithms, including their algorithmic class and complexity. Based on the discussion held in class, explain why one might be preferable over the other. (2)
+
+AAPP-06-010
+What is the main improvement of the Karger–Stein minimum cut algorithm over Karger’s original algorithm, and how does the complexity of one run compare to the overall complexity required to obtain the minimum cut with high probability in both cases? (2)
+
+AAPP-06-011
+Karger’s min-cut algorithm contracts uniformly random edges until only two supernodes remain and outputs the cut defined by them. In a few sentences, explain (i) what can cause a single run to return a non-minimum cut, and (ii) why and how running the same algorithm many times changes the reliability of the result. (2)
+
+AAPP-06-012
+Please describe the key properties of the Karger & Stein algorithm. How is the complexity analyzed? (2)

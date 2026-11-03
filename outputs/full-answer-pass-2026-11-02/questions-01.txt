@@ -1,0 +1,256 @@
+AAPP-01-001
+Describe the main characteristics of a PRAM model. (2)
+
+Source: [[Tema Esame 2022-11-08-1st.pdf#page=2|2022-11-08-1st · Exercise 1A · p. 2]]
+
+^aapp-01-001
+
+AAPP-01-002
+Please describe the type of Read/Write abilities a PRAM may have. (1)
+
+Source: [[Tema Esame 2023-01-17-1st.pdf#page=2|2023-01-17-1st · Exercise 1B · p. 2]]
+
+^aapp-01-002
+
+AAPP-01-003
+Please define a PRAM. (1)
+
+Source: [[Tema Esame 2023-02-14-1st.pdf#page=2|2023-02-14-1st · Exercise 1A · p. 2]]
+
+^aapp-01-003
+
+AAPP-01-004
+Please describe what “Common CRCW” means. (1)
+
+Source: [[Tema Esame 2023-02-14-1st.pdf#page=2|2023-02-14-1st · Exercise 1B · p. 2]]
+
+^aapp-01-004
+
+AAPP-01-005
+Please define the different phases followed in a PRAM computation. (1)
+
+Source: [[Tema Esame 2023-06-19-1st.pdf#page=2|2023-06-19-1st · Exercise 1A · p. 2]]
+
+^aapp-01-005
+
+AAPP-01-006
+Please describe what “Arbitrary CW” means. (1)
+
+Source: [[Tema Esame 2023-06-19-1st.pdf#page=2|2023-06-19-1st · Exercise 1B · p. 2]]
+
+^aapp-01-006
+
+AAPP-01-007
+How the time complexity in a PRAM model is computed? (1)
+
+Source: [[Tema Esame 2023-07-11-1st.pdf#page=2|2023-07-11-1st · Exercise 1A · p. 2]]
+
+^aapp-01-007
+
+AAPP-01-008
+How is the communication via shared memory performed in a PRAM model? (latency vs parallel accesses) (1)
+
+Source: [[Tema Esame 2023-07-11-1st.pdf#page=2|2023-07-11-1st · Exercise 1B · p. 2]]
+
+^aapp-01-008
+
+AAPP-01-009
+Discuss the following sentence: “If a problem has no feasible/efficient solution on PRAM, it has no feasible/efficient solution for any parallel machine.” True or False? (1)
+
+Source: [[Tema Esame 2023-07-11-1st.pdf#page=2|2023-07-11-1st · Exercise 1C · p. 2]]
+Source: [[Tema Esame 2025-09-05-1st.pdf#page=2|2025-09-05-1st · Exercise 1C · p. 2]]
+
+^aapp-01-009
+
+AAPP-01-010
+Which of the PRAM model’s assumptions help to compute the time complexity? (1)
+
+Source: [[Tema Esame 2023-09-11-1st.pdf#page=2|2023-09-11-1st · Exercise 1A · p. 2]]
+
+^aapp-01-010
+
+AAPP-01-011
+Which of the assumptions of the PRAM model simplifies the communication between processor and memory? (1)
+
+Source: [[Tema Esame 2023-09-11-1st.pdf#page=2|2023-09-11-1st · Exercise 1B · p. 2]]
+
+^aapp-01-011
+
+AAPP-01-012
+Please define when a write conflict occurs in a PRAM model. (1)
+
+Source: [[Tema Esame 2023-09-11-1st.pdf#page=2|2023-09-11-1st · Exercise 1C · p. 2]]
+
+^aapp-01-012
+
+AAPP-01-013
+Explain why, in the PRAM model, the number of instructions executed is used as time complexity. (2)
+
+Source: [[Tema Esame 2023-11-09-1st.pdf#page=2|2023-11-09-1st · Exercise 1A · p. 2]]
+
+^aapp-01-013
+
+AAPP-01-014
+Please discuss the following sentence: “In a PRAM model, processors do not have private local memories”. True/False? (1)
+
+Source: [[Tema Esame 2024-01-26-1st.pdf#page=2|2024-01-26-1st · Exercise 1A · p. 2]]
+
+^aapp-01-014
+
+AAPP-01-015
+Please provide an example of a PRAM application relying on a Common CW policy. (1)
+
+Source: [[Tema Esame 2024-01-26-1st.pdf#page=2|2024-01-26-1st · Exercise 1C · p. 2]]
+
+^aapp-01-015
+
+AAPP-01-016
+Are PRAM architectures using explicit or implicit synchronizations? (1)
+
+Source: [[Tema Esame 2024-02-16-1st.pdf#page=2|2024-02-16-1st · Exercise 1A · p. 2]]
+
+^aapp-01-016
+
+AAPP-01-017
+Explain the factors that simplify the computation of space complexity in a PRAM application, giving them in order of priority. (1)
+
+Source: [[Tema Esame 2024-06-26-1st.pdf#page=2|2024-06-26-1st · Exercise 1A · p. 2]]
+
+^aapp-01-017
+
+AAPP-01-018
+Please describe an example of Common CRCW with a PRAM model. (1)
+
+Source: [[Tema Esame 2024-06-26-1st.pdf#page=2|2024-06-26-1st · Exercise 1D · p. 2]]
+
+^aapp-01-018
+
+AAPP-01-019
+Explain the factors that simplify the computation of time complexity in a PRAM application, giving them in order of priority. (1)
+
+Source: [[Tema Esame 2024-07-24-1st.pdf#page=2|2024-07-24-1st · Exercise 1A · p. 2]]
+
+^aapp-01-019
+
+AAPP-01-020
+Please describe what happens in a PRAM model when the number of threads exceeds the number of processors. (1)
+
+Source: [[Tema Esame 2024-07-24-1st.pdf#page=2|2024-07-24-1st · Exercise 1D · p. 2]]
+
+^aapp-01-020
+
+AAPP-01-021
+“In a PRAM model, synchronization primitives are not required when data is exchanged through the shared memory.” True/False? Why? (1)
+
+Source: [[Tema Esame 2024-11-12-1st.pdf#page=2|2024-11-12-1st · Exercise 1A · p. 2]]
+
+^aapp-01-021
+
+AAPP-01-022
+In a PRAM model, “all processors can access all memory cells in unit time. Could you please provide a detailed explanation of the implications of this assumption? (1)
+
+Source: [[Tema Esame 2025-01-24-1st.pdf#page=2|2025-01-24-1st · Exercise 1A · p. 2]]
+
+^aapp-01-022
+
+AAPP-01-023
+What can be said about the time complexity of a PRAM-based application when the PRAM model has a bounded number of processors? (1)
+
+Source: [[Tema Esame 2025-02-14-1st.pdf#page=2|2025-02-14-1st · Exercise 1A · p. 2]]
+Source: [[Tema Esame 2026-6-29-1st.pdf#page=2|2026-6-29-1st · Exercise 1A · p. 2]]
+
+^aapp-01-023
+
+AAPP-01-024
+How is the communication via shared memory performed in a PRAM model? (latency vs parallel accesses)
+
+Source: [[Tema Esame 2025-02-14-1st.pdf#page=2|2025-02-14-1st · Exercise 1B · p. 2]]
+
+^aapp-01-024
+
+AAPP-01-025
+How does the PRAM model abstract away synchronization and communication, and what are the implications for algorithm design? (1)
+
+Source: [[Tema Esame 2025-06-05-1st.pdf#page=2|2025-06-05-1st · Exercise 1A · p. 2]]
+
+^aapp-01-025
+
+AAPP-01-026
+How do the different types of concurrent write (CW) models affect algorithm design in PRAM? (1)
+
+Source: [[Tema Esame 2025-06-05-1st.pdf#page=2|2025-06-05-1st · Exercise 1B · p. 2]]
+Source: [[Tema Esame 2026-6-29-1st.pdf#page=2|2026-6-29-1st · Exercise 1C · p. 2]]
+
+^aapp-01-026
+
+AAPP-01-027
+What does it imply that each memory cell can hold an integer of unbounded size in a PRAM? (1)
+
+Source: [[Tema Esame 2025-07-04-1st.pdf#page=2|2025-07-04-1st · Exercise 1A · p. 2]]
+Source: [[Tema Esame 2026-9-10-1st.pdf#page=2|2026-9-10-1st · Exercise 1A · p. 2]]
+
+^aapp-01-027
+
+AAPP-01-028
+What kind of synchronization does PRAM use? (1)
+
+Source: [[Tema Esame 2025-09-05-1st.pdf#page=2|2025-09-05-1st · Exercise 1A · p. 2]]
+Source: [[Tema Esame 2026-1-22-1st.pdf#page=2|2026-1-22-1st · Exercise 1A · p. 2]]
+
+^aapp-01-028
+
+AAPP-01-029
+Which of the assumptions of the PRAM model simplifies the communication between the processor and the memory? (1)
+
+Source: [[Tema Esame 2025-09-05-1st.pdf#page=2|2025-09-05-1st · Exercise 1B · p. 2]]
+
+^aapp-01-029
+
+AAPP-01-030
+Complete the following sentence and explain what it means: “A write conflict occurs when… (1)
+
+Source: [[Tema Esame 2025-11-06-1st.pdf#page=2|2025-11-06-1st · Exercise 1A · p. 2]]
+
+^aapp-01-030
+
+AAPP-01-031
+If the PRAM model is a theoretical model, why does it matter in real problem analysis? (1)
+
+Source: [[Tema Esame 2026-1-22-1st.pdf#page=2|2026-1-22-1st · Exercise 1B · p. 2]]
+
+^aapp-01-031
+
+AAPP-01-032
+A programmer claims: “If my algorithm runs on EREW, it will also run on CREW and CRCW without changes.” Is this always true? Explain. (1)
+
+Source: [[Tema Esame 2026-2-09-1st.pdf#page=2|2026-2-09-1st · Exercise 1B · p. 2]]
+
+^aapp-01-032
+
+AAPP-01-033
+Suppose you have a PRAM algorithm that heavily relies on random access to many distinct shared cells per step. Based on the lemma about the scaling of the performance of a PRAM with reduced memory footprint, would you expect it to degrade more (or less) than an algorithm that mostly reuses a small working set? Motivate the answer. (1)
+
+Source: [[Tema Esame 2026-2-09-1st.pdf#page=2|2026-2-09-1st · Exercise 1C · p. 2]]
+
+^aapp-01-033
+
+AAPP-01-034
+Describe the execution model of a PRAM computation. (1)
+
+Source: [[Tema Esame 2026-6-11-1st.pdf#page=2|2026-6-11-1st · Exercise 1A · p. 2]]
+
+^aapp-01-034
+
+AAPP-01-035
+Discuss the possible conflicts that may arise during memory access in the PRAM model. (1)
+
+Source: [[Tema Esame 2026-6-11-1st.pdf#page=2|2026-6-11-1st · Exercise 1B · p. 2]]
+
+^aapp-01-035
+
+AAPP-01-036
+Explain how shared memory is modeled in PRAM and how this affects complexity analysis. (1)
+
+Source: [[Tema Esame 2026-6-11-1st.pdf#page=2|2026-6-11-1st · Exercise 1C · p. 2]]
+
+^aapp-01-036

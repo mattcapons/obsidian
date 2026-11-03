@@ -1,0 +1,142 @@
+AAPP-07-001
+Discuss counting sort complexity. Why does counting sort matter in radix sort?
+
+Source: [[Tema Esame 2022-02-11-1st.pdf#page=4|2022-02-11-1st · Exercise 3 · p. 4]]
+
+^aapp-07-001
+
+AAPP-07-002
+The best worst-case running time that we have seen for comparison sorting is O(nlg n). Can you explain why? (2)
+
+Source: [[Tema Esame 2023-07-11-1st.pdf#page=3|2023-07-11-1st · Exercise 2B · p. 3]]
+
+^aapp-07-002
+
+AAPP-07-003
+Please explain following theorem and why does not hold for the counting sort algorithm: Theorem: “Any decision tree that can sort n elements must have height W(nlg n)” (2)
+
+Source: [[Tema Esame 2023-09-11-1st.pdf#page=3|2023-09-11-1st · Exercise 2B · p. 3]]
+
+^aapp-07-003
+
+AAPP-07-004
+Please explain the following theorem and why does not hold for the counting sort algorithm: Theorem: “Any decision tree that can sort n elements must have a height of W(nlog n)” (2)
+
+Source: [[Tema Esame 2023-11-09-1st.pdf#page=5|2023-11-09-1st · Exercise 4A · p. 5]]
+
+^aapp-07-004
+
+AAPP-07-005
+What are the key properties that the auxiliary sorting algorithm used by the radix sort must have to achieve efficient and correct sorting? (1)
+
+Source: [[Tema Esame 2024-02-16-1st.pdf#page=3|2024-02-16-1st · Exercise 2B · p. 3]]
+
+^aapp-07-005
+
+AAPP-07-006
+What are the key properties of the counting sort algorithm? (1)
+
+Source: [[Tema Esame 2024-06-26-1st.pdf#page=3|2024-06-26-1st · Exercise 2B · p. 3]]
+
+^aapp-07-006
+
+AAPP-07-007
+Please describe the partitioning algorithm used by the quick sort and its key properties. How is it randomized? (1)
+
+Source: [[Tema Esame 2024-09-05-1st.pdf#page=3|2024-09-05-1st · Exercise 2B · p. 3]]
+Source: [[Tema Esame 2025-07-04-1st.pdf#page=5|2025-07-04-1st · Exercise 4A · p. 5]]
+
+^aapp-07-007
+
+AAPP-07-008
+Please explain what “Lower bound for comparison sorting” means and its implications. (1)
+
+Source: [[Tema Esame 2024-11-12-1st.pdf#page=5|2024-11-12-1st · Exercise 4A · p. 5]]
+Source: [[Tema Esame 2025-09-05-1st.pdf#page=5|2025-09-05-1st · Exercise 4C · p. 5]]
+Source: [[Tema Esame 2026-6-11-1st.pdf#page=4|2026-6-11-1st · Exercise 2C · p. 4]]
+
+^aapp-07-008
+
+AAPP-07-009
+Please show the pseudo-code of the partitioning algorithm used by Quicksort and report its variants, complexity, and usage in other algorithms. (2)
+
+Source: [[Tema Esame 2024-11-12-1st.pdf#page=5|2024-11-12-1st · Exercise 4B · p. 5]]
+
+^aapp-07-009
+
+AAPP-07-010
+Why is the Counting sort used as the auxiliary algorithm of the Radix sort? (1)
+
+Source: [[Tema Esame 2024-11-12-1st.pdf#page=5|2024-11-12-1st · Exercise 4C · p. 5]]
+
+^aapp-07-010
+
+AAPP-07-011
+Please discuss the complexity of the partitioning algorithm used by the quick sort. (1)
+
+Source: [[Tema Esame 2025-01-24-1st.pdf#page=5|2025-01-24-1st · Exercise 4A · p. 5]]
+
+^aapp-07-011
+
+AAPP-07-012
+Please discuss the lower bound of the comparison-based sort algorithms. (1)
+
+Source: [[Tema Esame 2025-02-14-1st.pdf#page=5|2025-02-14-1st · Exercise 4A · p. 5]]
+
+^aapp-07-012
+
+AAPP-07-013
+Could you please list the characteristics of the counting sort algorithm that make it suitable for use in radix sort? (1)
+
+Source: [[Tema Esame 2025-02-14-1st.pdf#page=5|2025-02-14-1st · Exercise 4C · p. 5]]
+
+^aapp-07-013
+
+AAPP-07-014
+Why does quicksort perform poorly in the worst case, and how can this be mitigated? Report the class of algorithms to which it belongs and its average-case complexity. According to the definition, is it an efficient algorithm? (2)
+
+Source: [[Tema Esame 2025-06-05-1st.pdf#page=4|2025-06-05-1st · Exercise 3A · p. 4]]
+
+^aapp-07-014
+
+AAPP-07-015
+Please discuss why, for many algorithms we have discussed during the lectures, the complexity of the best sorting algorithm is bounded by $O(n\lg n)$. (2)
+
+Source: [[Tema Esame 2026-1-22-1st.pdf#page=3|2026-1-22-1st · Exercise 2A · p. 3]]
+
+^aapp-07-015
+
+AAPP-07-016
+Please explain why counting sort matters with the radix sort algorithm. (1)
+
+Source: [[Tema Esame 2026-1-22-1st.pdf#page=3|2026-1-22-1st · Exercise 2B · p. 3]]
+
+^aapp-07-016
+
+AAPP-07-017
+Explain when the quick sort algorithm falls in the best case or in the worst case recurrence. (1)
+
+Source: [[Tema Esame 2026-2-09-1st.pdf#page=3|2026-2-09-1st · Exercise 2B · p. 3]]
+
+^aapp-07-017
+
+AAPP-07-018
+Explain the role of Counting Sort inside Radix Sort. (1)
+
+Source: [[Tema Esame 2026-6-11-1st.pdf#page=3|2026-6-11-1st · Exercise 2B · p. 3]]
+
+^aapp-07-018
+
+AAPP-07-019
+For randomized Quicksort, explain how the expected running time is obtained from the recurrence induced by a random pivot. Discuss why the worst case remains quadratic. (2)
+
+Source: [[Tema Esame 2026-9-10-1st.pdf#page=3|2026-9-10-1st · Exercise 2A · p. 3]]
+
+^aapp-07-019
+
+AAPP-07-020
+What does it mean for a sorting algorithm to be stable, and why is stability important in Radix Sort? (1)
+
+Source: [[Tema Esame 2026-9-10-1st.pdf#page=5|2026-9-10-1st · Exercise 3B · p. 5]]
+
+^aapp-07-020

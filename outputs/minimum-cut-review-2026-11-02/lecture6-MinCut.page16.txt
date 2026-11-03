@@ -1,0 +1,18 @@
+REPEATING THE ALGORITHM
+❑ In order to boost the probability of success,
+        we simply run the algorithm 𝑙 𝑛2
+❑ The probability that at least one run succeeds is at least
+                 𝑙 𝑛
+                   2
+             1
+1− 1− 𝑛                ≥ 1 − 𝑒 −𝑙
+             2
+
+❑ Setting l = c log n we have an error probability ≤ 1/𝑛𝑐
+❑ It's easy to implement Karger's algorithm so that one run takes O(𝑛2 ) time.
+ ▪ we have an 𝑂(𝑛4 log 𝑛) time randomized algorithm with error probability 1/poly(n).
+
+
+
+
+                                                                                        - 16 -

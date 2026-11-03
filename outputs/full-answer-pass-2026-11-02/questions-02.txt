@@ -1,0 +1,288 @@
+AAPP-02-001
+Define the speedup when a sequential code is accelerated with p processors. (1)
+
+Source: [[Tema Esame 2022-11-08-1st.pdf#page=2|2022-11-08-1st · Exercise 1B · p. 2]]
+
+^aapp-02-001
+
+AAPP-02-002
+Please describe the differences between the Amdahl and the Gustafson laws. (1)
+
+Source: [[Tema Esame 2022-11-08-1st.pdf#page=2|2022-11-08-1st · Exercise 1C · p. 2]]
+
+^aapp-02-002
+
+AAPP-02-003
+Gustafson says that the Amdahl law is wrong. True/False? Why? (1)
+
+Source: [[Tema Esame 2023-01-17-1st.pdf#page=2|2023-01-17-1st · Exercise 1D · p. 2]]
+
+^aapp-02-003
+
+AAPP-02-004
+Please define the speed-up of a parallel algorithm according to the PRAM model (1)
+
+Source: [[Tema Esame 2023-02-14-1st.pdf#page=2|2023-02-14-1st · Exercise 1C · p. 2]]
+
+^aapp-02-004
+
+AAPP-02-005
+Please describe how Gustafson defines the speed-up. (1)
+
+Source: [[Tema Esame 2023-02-14-1st.pdf#page=2|2023-02-14-1st · Exercise 1D · p. 2]]
+
+^aapp-02-005
+
+AAPP-02-006
+Please define the efficiency of a parallel algorithm according to the PRAM model (1)
+
+Source: [[Tema Esame 2023-06-19-1st.pdf#page=2|2023-06-19-1st · Exercise 1C · p. 2]]
+
+^aapp-02-006
+
+AAPP-02-007
+Please compare the assumptions behind the Gustafson and the Amdahl laws. (1)
+
+Source: [[Tema Esame 2023-06-19-1st.pdf#page=2|2023-06-19-1st · Exercise 1D · p. 2]]
+Source: [[Tema Esame 2025-09-05-1st.pdf#page=2|2025-09-05-1st · Exercise 1D · p. 2]]
+
+^aapp-02-007
+
+AAPP-02-008
+Define the “work” in a PRAM model. (1)
+
+Source: [[Tema Esame 2023-07-11-1st.pdf#page=2|2023-07-11-1st · Exercise 1D · p. 2]]
+
+^aapp-02-008
+
+AAPP-02-009
+Define the “cost” in a PRAM model. (1)
+
+Source: [[Tema Esame 2023-09-11-1st.pdf#page=2|2023-09-11-1st · Exercise 1D · p. 2]]
+
+^aapp-02-009
+
+AAPP-02-010
+Define the cost C when a sequential code is accelerated with p processors. (1)
+
+Source: [[Tema Esame 2023-11-09-1st.pdf#page=2|2023-11-09-1st · Exercise 1B · p. 2]]
+
+^aapp-02-010
+
+AAPP-02-011
+What is it meant with a fixed time model? Is it referring to Gustafson or Amdahl’s law? (1)
+
+Source: [[Tema Esame 2023-11-09-1st.pdf#page=2|2023-11-09-1st · Exercise 1C · p. 2]]
+
+^aapp-02-011
+
+AAPP-02-012
+Please define what is meant by “Efficiency” in a PRAM application. (1)
+
+Source: [[Tema Esame 2024-01-26-1st.pdf#page=2|2024-01-26-1st · Exercise 1B · p. 2]]
+
+^aapp-02-012
+
+AAPP-02-013
+Please relate the strong scaling vs the weak scaling to the Amdahl vs Gustafson laws. (1)
+
+Source: [[Tema Esame 2024-01-26-1st.pdf#page=2|2024-01-26-1st · Exercise 1D · p. 2]]
+
+^aapp-02-013
+
+AAPP-02-014
+Please define what is meant by “Speed up” in a PRAM application. (1)
+
+Source: [[Tema Esame 2024-02-16-1st.pdf#page=2|2024-02-16-1st · Exercise 1B · p. 2]]
+
+^aapp-02-014
+
+AAPP-02-015
+Is the Amdahl law a fixed-time model? (1)
+
+Source: [[Tema Esame 2024-02-16-1st.pdf#page=2|2024-02-16-1st · Exercise 1D · p. 2]]
+
+^aapp-02-015
+
+AAPP-02-016
+Please define what is meant by “Work” in a PRAM application. (1)
+
+Source: [[Tema Esame 2024-06-26-1st.pdf#page=2|2024-06-26-1st · Exercise 1B · p. 2]]
+Source: [[Tema Esame 2026-6-29-1st.pdf#page=2|2026-6-29-1st · Exercise 1B · p. 2]]
+
+^aapp-02-016
+
+AAPP-02-017
+Please define what “Cost” means in a PRAM application. (1)
+
+Source: [[Tema Esame 2024-07-24-1st.pdf#page=2|2024-07-24-1st · Exercise 1B · p. 2]]
+
+^aapp-02-017
+
+AAPP-02-018
+In a PRAM, 𝑝𝐸𝑝(𝑛) is equal to the application speed-up? (1)
+
+Source: [[Tema Esame 2024-09-05-1st.pdf#page=2|2024-09-05-1st · Exercise 1A · p. 2]]
+
+^aapp-02-018
+
+AAPP-02-019
+What happens to the PRAM model if we have a bounded number of processors smaller than the one required by the theoretical model? What happens to the speed-up if the application is a do-all kind of application and we have a bounded number of processors? (2)
+
+Source: [[Tema Esame 2024-09-05-1st.pdf#page=2|2024-09-05-1st · Exercise 1B · p. 2]]
+
+^aapp-02-019
+
+AAPP-02-020
+Could you please discuss the following sentence? “Amdahl's law presupposes that the computing requirements will stay the same, given increased processing power. In other words, an analysis of the same data will take less time given more computing power“. Is it true or false? What does it mean? (1)
+
+Source: [[Tema Esame 2024-09-05-1st.pdf#page=2|2024-09-05-1st · Exercise 1C · p. 2]]
+
+^aapp-02-020
+
+AAPP-02-021
+Please show the formula defining the “Efficiency” in a PRAM model. (1)
+
+Source: [[Tema Esame 2024-11-12-1st.pdf#page=2|2024-11-12-1st · Exercise 1B · p. 2]]
+
+^aapp-02-021
+
+AAPP-02-022
+Can you provide an example where the “work” done by a parallel PRAM program exceeds that of the sequential version of the same algorithm? (1)
+
+Source: [[Tema Esame 2024-11-12-1st.pdf#page=2|2024-11-12-1st · Exercise 1C · p. 2]]
+
+^aapp-02-022
+
+AAPP-02-023
+What does it mean fixed-size model? Does it refer to Gustafson or Amdahl’s law? (1)
+
+Source: [[Tema Esame 2024-11-12-1st.pdf#page=2|2024-11-12-1st · Exercise 1D · p. 2]]
+
+^aapp-02-023
+
+AAPP-02-024
+Could you please elaborate on the conditions under which the following formula holds as an equality and when it holds as an inequality: SUp ≤ p?"
+
+Source: [[Tema Esame 2025-01-24-1st.pdf#page=2|2025-01-24-1st · Exercise 1B · p. 2]]
+
+^aapp-02-024
+
+AAPP-02-025
+Could you please elaborate on what “weak scaling” means? To which law we have seen during the lectures is referring to? (1)
+
+Source: [[Tema Esame 2025-01-24-1st.pdf#page=2|2025-01-24-1st · Exercise 1C · p. 2]]
+
+^aapp-02-025
+
+AAPP-02-026
+Please describe the speed-up when a fixed-size model is considered. (1)
+
+Source: [[Tema Esame 2025-01-24-1st.pdf#page=2|2025-01-24-1st · Exercise 1D · p. 2]]
+
+^aapp-02-026
+
+AAPP-02-027
+Could you please discuss the differences between “weak scaling” and “strong scaling”? To which laws we have seen during the lectures are referring to? (1)
+
+Source: [[Tema Esame 2025-02-14-1st.pdf#page=2|2025-02-14-1st · Exercise 1C · p. 2]]
+
+^aapp-02-027
+
+AAPP-02-028
+Please define and discuss the speed-up when Gustafson’s law is considered. (1)
+
+Source: [[Tema Esame 2025-02-14-1st.pdf#page=2|2025-02-14-1st · Exercise 1D · p. 2]]
+
+^aapp-02-028
+
+AAPP-02-029
+How does the matrix-vector multiplication example illustrate strong scaling, and what would change in a weak scaling scenario? (1)
+
+Source: [[Tema Esame 2025-06-05-1st.pdf#page=2|2025-06-05-1st · Exercise 1C · p. 2]]
+
+^aapp-02-029
+
+AAPP-02-030
+Why does Amdahl’s Law suggest diminishing returns with increasing processors, and how does Gustafson’s Law counter this? (1)
+
+Source: [[Tema Esame 2025-06-05-1st.pdf#page=2|2025-06-05-1st · Exercise 1D · p. 2]]
+
+^aapp-02-030
+
+AAPP-02-031
+Given an algorithm with $T_1(n)=n^3$ and $T_p(n)=n^3/p$, analyze the speedup and efficiency. What can you conclude? (1)
+
+Source: [[Tema Esame 2025-07-04-1st.pdf#page=2|2025-07-04-1st · Exercise 1B · p. 2]]
+
+^aapp-02-031
+
+AAPP-02-032
+How does Gustafson’s Law support the concept of weak scaling, and what is its implication for massively parallel systems? (1)
+
+Source: [[Tema Esame 2025-07-04-1st.pdf#page=2|2025-07-04-1st · Exercise 1D · p. 2]]
+
+^aapp-02-032
+
+AAPP-02-033
+Assuming $T^*(n)=T_1(n)$, what kind of relation do you have between the efficiency and the speedup of a PRAM-based application? (1)
+
+Source: [[Tema Esame 2025-11-06-1st.pdf#page=2|2025-11-06-1st · Exercise 1B · p. 2]]
+
+^aapp-02-033
+
+AAPP-02-034
+Please outline the key aspects of strong scalability (1)
+
+Source: [[Tema Esame 2025-11-06-1st.pdf#page=2|2025-11-06-1st · Exercise 1D · p. 2]]
+
+^aapp-02-034
+
+AAPP-02-035
+Please outline the key aspects of Gustafson's law and how it relates to scalability. (1)
+
+Source: [[Tema Esame 2026-1-22-1st.pdf#page=2|2026-1-22-1st · Exercise 1D · p. 2]]
+
+^aapp-02-035
+
+AAPP-02-036
+Please show an example where idling processors is unavoidable, and explain how it affects efficiency. (1)
+
+Source: [[Tema Esame 2026-2-09-1st.pdf#page=2|2026-2-09-1st · Exercise 1A · p. 2]]
+
+^aapp-02-036
+
+AAPP-02-037
+You observe near-linear speedup when increasing processors. Is this evidence supporting Amdahl’s model or Gustafson’s model? Explain why. (1)
+
+Source: [[Tema Esame 2026-2-09-1st.pdf#page=2|2026-2-09-1st · Exercise 1D · p. 2]]
+
+^aapp-02-037
+
+AAPP-02-038
+Discuss the scalability laws presented in class and their interpretation in terms of time and processors. (1)
+
+Source: [[Tema Esame 2026-6-11-1st.pdf#page=2|2026-6-11-1st · Exercise 1D · p. 2]]
+
+^aapp-02-038
+
+AAPP-02-039
+Please describe how Amdahl and Gustafson define the speed-up. (1)
+
+Source: [[Tema Esame 2026-6-29-1st.pdf#page=2|2026-6-29-1st · Exercise 1D · p. 2]]
+
+^aapp-02-039
+
+AAPP-02-040
+In the PRAM model, explain the meaning of work efficiency and why a parallel algorithm may perform more work than its sequential counterpart. Give one concrete example involving parallel overhead. (1)
+
+Source: [[Tema Esame 2026-9-10-1st.pdf#page=2|2026-9-10-1st · Exercise 1B · p. 2]]
+
+^aapp-02-040
+
+AAPP-02-041
+Please outline the key aspects of weak scalability (1)
+
+Source: [[Tema Esame 2026-9-10-1st.pdf#page=2|2026-9-10-1st · Exercise 1D · p. 2]]
+
+^aapp-02-041

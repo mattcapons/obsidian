@@ -1,0 +1,194 @@
+AAPP-19-001
+Describe the map parallel pattern and at least one fusion optimization that can be applied to it.
+
+AAPP-19-002
+Describe the scan parallel pattern. Can it be implemented using different approaches with respect to the computation of intermediate values?
+
+AAPP-19-003
+Describe the workpile pattern, situations where it may be applied and possible implementations.
+
+AAPP-19-004
+Is the Quicksort algorithm easy to parallelize? Propose a high-level description of a possible parallelization and analyze its potential bottlenecks.
+
+AAPP-19-005
+Describe how to implement a map pattern with one of the parallel programming models presented in the course.
+
+AAPP-19-006
+Please define what a parallel reduction is: assumptions, complexity, example.(1)
+
+AAPP-19-007
+Please describe how a parallel pattern gather works. (1)
+
+AAPP-19-008
+Describe all the collision rules for a scatter pattern. (1)
+
+AAPP-19-009
+Describe how the pack parallel pattern could be parallelly implemented. (1)
+
+AAPP-19-010
+Please describe the stencil pattern: assumptions, complexity, example. (1)
+
+AAPP-19-011
+Please describe the differences between Split and Bin parallel patterns. (1)
+
+AAPP-19-012
+Given an input collection of 100 values and an auxiliary array of 10, which parallel pattern between the gather and the scatter is producing an output collection of 10 values? (1)
+
+AAPP-19-013
+What is meant by separating hyperplane in a recurrence parallelization? (1)
+
+AAPP-19-014
+Please describe the map pattern: assumptions, complexity, example. (1)
+
+AAPP-19-015
+Please describe the differences between Zip and Unzip parallel patterns. (1)
+
+AAPP-19-016
+What is meant by “permutation scatter”? (1)
+
+AAPP-19-017
+Is it possible to implement a pipeline paradigm using OpenMP? What parallel paradigm is adopted by default in OpenMP?(2)
+
+AAPP-19-018
+Please describe the reduce pattern: assumptions, complexity, and example. (2)
+
+AAPP-19-019
+Please describe the differences between Gather and scatter parallel patterns. (1)
+
+AAPP-19-020
+What is meant by “merge scatter”? (1)
+
+AAPP-19-021
+Please describe the stencil pattern: assumptions, complexity, and example. (2)
+
+AAPP-19-022
+Please describe how the Pack parallel pattern could be implemented. (1)
+
+AAPP-19-023
+Please describe what is meant by pipelined parallelism and how could be implemented in OpenMP?(2)
+
+AAPP-19-024
+Please describe how the Unpack parallel pattern could be implemented. (2)
+
+AAPP-19-025
+Please describe the scan pattern: assumptions, complexity, and example. (2)
+
+AAPP-19-026
+Please describe how the Split parallel pattern could be implemented. (2)
+
+AAPP-19-027
+Please describe the parallel gather pattern: assumptions, complexity, and example. (2)
+
+AAPP-19-028
+Please describe how the “Merge collision resolution” works. Is it related to the parallel gather pattern? (2)
+
+AAPP-19-029
+Please describe the parallel scatter pattern: assumptions, complexity, and example. (2)
+
+AAPP-19-030
+Please describe how the Pack parallel pattern works. How is implemented? (2)
+
+AAPP-19-031
+Please describe the parallel reduce pattern: assumptions, complexity, and example. (2)
+
+AAPP-19-032
+Please describe how the Split parallel pattern works. How is it implemented? (2)
+
+AAPP-19-033
+Please describe the parallel Split pattern: assumptions, complexity, and example. (2)
+
+AAPP-19-034
+Please describe how the Unzip parallel pattern works. How is it implemented (pseudo code required)? (2)
+
+AAPP-19-035
+Please explain how the parallel shift pattern functions and provide its implementation (including pseudo-code). Also, please indicate its complexity. (2)
+
+AAPP-19-036
+Please describe the parallel scan pattern, including assumptions, complexity, and examples. (2)
+
+AAPP-19-037
+Please discuss how the Zip parallel pattern works. How is it implemented (pseudo code required)? (2)
+
+AAPP-19-038
+Please describe and show an example of Parallel Data Management Patterns: pipeline. (1)
+
+AAPP-19-039
+Please describe the parallel Scatter pattern, including assumptions, PRAM-based complexity, and examples. (2)
+
+AAPP-19-040
+Please discuss how the Pack parallel pattern works. How is it implemented (pseudo code required and PRAM-based complexity)? (2)
+
+AAPP-19-041
+How does the Fork-Join pattern differ from a barrier in parallel programming? (1)
+
+AAPP-19-042
+How does the Workpile pattern differ from a standard Map pattern? (1)
+
+AAPP-19-043
+How can the map and reduce patterns be fused, and what is the benefit of doing so? (1)
+
+AAPP-19-044
+In the context of parallel scan, what is the difference between an inclusive and an exclusive scan? What about the complexity? (1)
+
+AAPP-19-045
+Please discuss how the Split parallel pattern works. How is it implemented (pseudo code required and PRAM-based complexity)? (2)
+
+AAPP-19-046
+What are the challenges of using a shared state in a Map function? (1)
+
+AAPP-19-047
+Please describe the parallel reduce pattern: assumptions, PRAM complexity, and example. What about the work done? Is it different from the one done by the sequential algorithm? (2)
+
+AAPP-19-048
+Please discuss how the Unpack parallel pattern works. How is it implemented (pseudo code required and PRAM-based complexity)? (2)
+
+AAPP-19-049
+Please describe the parallel gather pattern, including assumptions, PRAM-based complexity, and examples. (2)
+
+AAPP-19-050
+What kind of problems may create a parallel scatter pattern? Please discuss and provide examples. (1)
+
+AAPP-19-051
+Please describe the parallel gather pattern, including assumptions, complexity, and examples. (2)
+
+AAPP-19-052
+Please describe how the Pack parallel pattern works. How is it implemented (pseudo code required)? (2)
+
+AAPP-19-053
+Please describe the parallel scan pattern, including assumptions, PRAM complexity. In which other parallel patterns discussed during the lecture have been used? (2)
+
+AAPP-19-054
+Please describe how the Split parallel pattern works and its performance considering a PRAM model. How is it implemented (pseudo code required)? (2)
+
+AAPP-19-055
+Describe the map parallel pattern and at least one fusion optimization that can be applied to it. (1)
+
+AAPP-19-056
+Please describe the parallel gather pattern, including assumptions, PRAM complexity. In which other parallel patterns discussed during the lecture has the gather been used? (2)
+
+AAPP-19-057
+Please describe how the Unsplit parallel pattern works and its performance considering a PRAM model. How is it implemented (pseudo code required)? (2)
+
+AAPP-19-058
+Describe the reduce parallel pattern and at least one fusion optimization that can be applied to it. (1)
+
+AAPP-19-059
+Please provide a short pseudocode for the parallel scatter pattern. Discuss its assumptions and PRAM complexity. In which other parallel patterns discussed during the lecture has the scatter been used? (2)
+
+AAPP-19-060
+Please describe how the Pack parallel pattern works and its performance considering a PRAM model. How is it implemented (pseudo code required)? (2)
+
+AAPP-19-061
+Describe the map followed by a reduce parallel pattern providing PRAM complexity and show at least one example discussed during the lectures. (1)
+
+AAPP-19-062
+Please describe how the Unpack parallel pattern works and its performance considering a PRAM model. How is it implemented (pseudo code required)? (2)
+
+AAPP-19-063
+Describe the scan followed by a reduce parallel pattern providing PRAM complexity and show at least one example discussed during the lectures. (1)
+
+AAPP-19-064
+Describe the parallel pipeline pattern and one condition required for good scalability. (1)
+
+AAPP-19-065
+Describe the Pack pattern and give its PRAM work and time complexity. (2)

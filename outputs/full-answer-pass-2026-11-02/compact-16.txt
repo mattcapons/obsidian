@@ -1,0 +1,44 @@
+AAPP-16-001
+Please discuss the difference between Online and Offline algorithms. (2)
+
+AAPP-16-002
+Please explain what the competitive analysis is meant for. (2)
+
+AAPP-16-003
+Please explain why the amortized analysis matters for the analysis of the complexity of the Move to Front algorithm. (2)
+
+AAPP-16-004
+Detail the Move to Front algorithm. What approach is followed to estimate the temporal complexity of this class of algorithms? Which class of algorithms does it belongs to? (2)
+
+AAPP-16-005
+Please discuss the competitive analysis. For which class of algorithm does it matter? (2)
+
+AAPP-16-006
+Please describe the difference between on-line and off-line algorithms. How is their complexity analyzed? (2)
+
+AAPP-16-007
+Please describe the “move to front” heuristic (complexity included). Why did we use amortized analysis instead of the worst-case? (2)
+
+AAPP-16-008
+To which class does the Move-To-Front Algorithm belong? How is its complexity evaluated? (1)
+
+AAPP-16-009
+Please discuss the competitive analysis. In which class of algorithm is used? Amortized analysis could be of some use; why? (2)
+
+AAPP-16-010
+Please explain what the competitive analysis is meant for by using one of the examples presented during the course lectures. (2)
+
+AAPP-16-011
+Please describe what is peculiar to the self-organizing list problem, how this problem can be solved, and how its complexity could be analyzed. (1)
+
+AAPP-16-012
+Please describe an example of an online problem and how its complexity could be analyzed. (1)
+
+AAPP-16-013
+Explain why the self-organizing list problem is naturally online, and give a concrete access sequence where having future knowledge (offline) allows strictly lower cost than any online strategy. (2)
+
+AAPP-16-014
+Discuss self-organizing lists, including one heuristic presented in class and the method used to analyze its performance. (2)
+
+AAPP-16-015
+Please describe the difference between online and offline algorithms. How is their complexity analyzed? (2)

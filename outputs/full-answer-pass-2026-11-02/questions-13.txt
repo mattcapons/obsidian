@@ -1,0 +1,62 @@
+AAPP-13-001
+Discuss how skip list insertion work? What about its worst vs average case complexity?
+
+Source: [[Tema Esame 2022-06-09-1st.pdf#page=4|2022-06-09-1st · Exercise 3 · p. 4]]
+
+^aapp-13-001
+
+AAPP-13-002
+Describe the skip-list data structure, how the search is performed, and which complexity has. (2)
+
+Source: [[Tema Esame 2023-02-14-1st.pdf#page=4|2023-02-14-1st · Exercise 3B · p. 4]]
+
+^aapp-13-002
+
+AAPP-13-003
+Describe the skip list data structure and how the union is performed, and which complexity has. (2)
+
+Source: [[Tema Esame 2023-07-11-1st.pdf#page=4|2023-07-11-1st · Exercise 3B · p. 4]]
+
+^aapp-13-003
+
+AAPP-13-004
+Describe how the search for skip-list data structure works. (2)
+
+Source: [[Tema Esame 2023-11-09-1st.pdf#page=4|2023-11-09-1st · Exercise 3B · p. 4]]
+
+^aapp-13-004
+
+AAPP-13-005
+Describe how the insertion for skip-list data structure works. What about its complexity? (2)
+
+Source: [[Tema Esame 2024-07-24-1st.pdf#page=4|2024-07-24-1st · Exercise 3B · p. 4]]
+
+^aapp-13-005
+
+AAPP-13-006
+Describe how the search for Skip-list data structure works and discuss its complexity. (2)
+
+Source: [[Tema Esame 2025-01-24-1st.pdf#page=4|2025-01-24-1st · Exercise 3B · p. 4]]
+
+^aapp-13-006
+
+AAPP-13-007
+Describe how the insert for the Skip-list data structure works and discuss its complexity. (2)
+
+Source: [[Tema Esame 2025-06-05-1st.pdf#page=4|2025-06-05-1st · Exercise 3B · p. 4]]
+
+^aapp-13-007
+
+AAPP-13-008
+Describe the skip list data structure and how the search is performed, and what the complexity is. (2)
+
+Source: [[Tema Esame 2025-09-05-1st.pdf#page=5|2025-09-05-1st · Exercise 4B · p. 5]]
+
+^aapp-13-008
+
+AAPP-13-009
+Describe how the insert for the skip-list data structure works and discuss its complexity. (1)
+
+Source: [[Tema Esame 2026-2-09-1st.pdf#page=4|2026-2-09-1st · Exercise 2C · p. 4]]
+
+^aapp-13-009

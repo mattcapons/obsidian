@@ -1,0 +1,534 @@
+AAPP-23-001
+Is the synchronization between processes explicit or implicit?
+
+Source: [[Tema Esame 2022-02-11-2nd-b.pdf#page=4|2022-02-11-2nd-b · Exercise 3A · p. 4]]
+
+^aapp-23-001
+
+AAPP-23-002
+Describe the behavior of MPI_Bcast.
+
+Source: [[Tema Esame 2022-02-11-2nd-b.pdf#page=4|2022-02-11-2nd-b · Exercise 3B · p. 4]]
+
+^aapp-23-002
+
+AAPP-23-003
+What are communicators? What is the advantage of defining multiple communicators in an MPI program?
+
+Source: [[Tema Esame 2022-02-11-2nd-b.pdf#page=4|2022-02-11-2nd-b · Exercise 3C · p. 4]]
+
+^aapp-23-003
+
+AAPP-23-004
+Which memory architectures are supported by MPI? Are there any differences with the other parallel programming models presented?
+
+Source: [[Tema Esame 2022-06-09-2nd-b.pdf#page=4|2022-06-09-2nd-b · Exercise 3A · p. 4]]
+
+^aapp-23-004
+
+AAPP-23-005
+Describe the behavior of MPI_Gather.
+
+Source: [[Tema Esame 2022-06-09-2nd-b.pdf#page=4|2022-06-09-2nd-b · Exercise 3B · p. 4]]
+
+^aapp-23-005
+
+AAPP-23-006
+Describe how to spread data across processes according to a user-defined distribution using MPI.
+
+Source: [[Tema Esame 2022-06-09-2nd-b.pdf#page=4|2022-06-09-2nd-b · Exercise 3C · p. 4]]
+
+^aapp-23-006
+
+AAPP-23-007
+Does MPI parallelize over thread or processes? What are the main differences between the two approaches?
+
+Source: [[Tema Esame 2022-06-30-2nd-b.pdf#page=4|2022-06-30-2nd-b · Exercise 3A · p. 4]]
+
+^aapp-23-007
+
+AAPP-23-008
+Describe the behavior of the MPI_Reduce routine.
+
+Source: [[Tema Esame 2022-06-30-2nd-b.pdf#page=4|2022-06-30-2nd-b · Exercise 3B · p. 4]]
+
+^aapp-23-008
+
+AAPP-23-009
+Are there any restrictions on the use of communication routines in MPI, particularly related to the use of other routines?
+
+Source: [[Tema Esame 2022-06-30-2nd-b.pdf#page=4|2022-06-30-2nd-b · Exercise 3C · p. 4]]
+
+^aapp-23-009
+
+AAPP-23-010
+Describe the processes synchronization model used by MPI.
+
+Source: [[Tema Esame 2022-09-07-2nd-b.pdf#page=4|2022-09-07-2nd-b · Exercise 3A · p. 4]]
+
+^aapp-23-010
+
+AAPP-23-011
+Describe the behavior of the MPI_Bcast routine.
+
+Source: [[Tema Esame 2022-09-07-2nd-b.pdf#page=4|2022-09-07-2nd-b · Exercise 3B · p. 4]]
+
+^aapp-23-011
+
+AAPP-23-012
+Describe the use of communicators in MPI and the advantages of defining multiple communicators in a program.
+
+Source: [[Tema Esame 2022-09-07-2nd-b.pdf#page=4|2022-09-07-2nd-b · Exercise 3C · p. 4]]
+
+^aapp-23-012
+
+AAPP-23-013
+Describe the functionality of the MPI_Gather subroutine (2)
+
+Source: [[Tema Esame 2022-12-22-2nd.pdf#page=5|2022-12-22-2nd · Exercise 4A · p. 5]]
+
+^aapp-23-013
+
+AAPP-23-014
+How does MPI differ from Pthreads and OpenMP? (2)
+
+Source: [[Tema Esame 2022-12-22-2nd.pdf#page=5|2022-12-22-2nd · Exercise 4B · p. 5]]
+
+^aapp-23-014
+
+AAPP-23-015
+What are Communicators in MPI? Describe if it is possible to define custom communicators in a program at runtime, and why doing so would be useful. (2)
+
+Source: [[Tema Esame 2023-01-17-2nd.pdf#page=5|2023-01-17-2nd · Exercise 4A · p. 5]]
+
+^aapp-23-015
+
+AAPP-23-016
+Describe the functionality of the MPI_Reduce subroutine (2)
+
+Source: [[Tema Esame 2023-02-14-2nd.pdf#page=5|2023-02-14-2nd · Exercise 4A · p. 5]]
+
+^aapp-23-016
+
+AAPP-23-017
+Describe the procedure MPI_Send (2)
+
+Source: [[Tema Esame 2023-06-19-2nd.pdf#page=5|2023-06-19-2nd · Exercise 4A · p. 5]]
+
+^aapp-23-017
+
+AAPP-23-018
+Describe the functionality and the parameters meaning of the function MPI_Bcast (You can skip this question if you completed the second challenge) (2)
+
+Source: [[Tema Esame 2023-07-11-2nd.pdf#page=5|2023-07-11-2nd · Exercise 4A · p. 5]]
+
+^aapp-23-018
+
+AAPP-23-019
+Describe the functionality and the parameters meaning of the function MPI_Gather(You can skip this question if you completed the second challenge) (2)
+
+Source: [[Tema Esame 2023-09-11-2nd.pdf#page=5|2023-09-11-2nd · Exercise 4A · p. 5]]
+
+^aapp-23-019
+
+AAPP-23-020
+Most of the point-to-point communication functions have a parameter named “tag”. Please, state its type, explain its usage and why we might need to use the “MPI_ANY_TAG” value. (1)
+
+Source: [[Tema Esame 2023-12-21-2nd.pdf#page=5|2023-12-21-2nd · Exercise 4A · p. 5]]
+
+^aapp-23-020
+
+AAPP-23-021
+Explain when the MPI usage overlaps with OpenMP and when OpenMP cannot replace MPI. (3)
+
+Source: [[Tema Esame 2023-12-21-2nd.pdf#page=5|2023-12-21-2nd · Exercise 4B · p. 5]]
+
+^aapp-23-021
+
+AAPP-23-022
+What are the approaches that the receiver in point-to-point communications can use to allocate a suitable receiving buffer, i.e. allocate a suitable number of elements? (1)
+
+Source: [[Tema Esame 2024-01-26-2nd.pdf#page=5|2024-01-26-2nd · Exercise 4A · p. 5]]
+
+^aapp-23-022
+
+AAPP-23-023
+Why are there multiple MPI implementations? (1)
+
+Source: [[Tema Esame 2024-01-26-2nd.pdf#page=5|2024-01-26-2nd · Exercise 4B · p. 5]]
+
+^aapp-23-023
+
+AAPP-23-024
+What are the main differences between collective and point-to-point functions when we focus on data exchange functions? (2)
+
+Source: [[Tema Esame 2024-01-26-2nd.pdf#page=5|2024-01-26-2nd · Exercise 4C · p. 5]]
+
+^aapp-23-024
+
+AAPP-23-025
+When is it possible that at least two MPI processes are stuck waiting for each other, without the possibility of continuing their execution? (1)
+
+Source: [[Tema Esame 2024-02-16-2nd.pdf#page=5|2024-02-16-2nd · Exercise 4A · p. 5]]
+
+^aapp-23-025
+
+AAPP-23-026
+When in doubt about the behavior of an MPI function, why is it important to rely on the MPI standard instead of just trying how it works with your MPI implementation? (1)
+
+Source: [[Tema Esame 2024-02-16-2nd.pdf#page=5|2024-02-16-2nd · Exercise 4B · p. 5]]
+
+^aapp-23-026
+
+AAPP-23-027
+What is the relationship between i) MPI functions with blocking semantics, ii) MPI functions without blocking semantics, and iii) MPI + multithreading? (2) ù
+
+Source: [[Tema Esame 2024-02-16-2nd.pdf#page=5|2024-02-16-2nd · Exercise 4C · p. 5]]
+
+^aapp-23-027
+
+AAPP-23-028
+What error will arise compiling the following code snippet? (1.5)
+
+```c
+#pragma omp parallel for private(x) reduction(+:sum) default(none)
+for (i=1;i<= num_steps; i++)
+{
+```
+
+x = (i-0.5)*step; sum = sum + 4.0/(1.0+x*x);
+
+```c
+}
+```
+
+Source: [[Tema Esame 2024-06-26-2nd.pdf#page=4|2024-06-26-2nd · Exercise 3A · p. 4]]
+
+^aapp-23-028
+
+AAPP-23-029
+Why should I use the MPI_Probe function? (1)
+
+Source: [[Tema Esame 2024-06-26-2nd.pdf#page=5|2024-06-26-2nd · Exercise 4A · p. 5]]
+
+^aapp-23-029
+
+AAPP-23-030
+Provide an example(s) of how the MPI tag and rank can be used in a program (1)
+
+Source: [[Tema Esame 2024-06-26-2nd.pdf#page=5|2024-06-26-2nd · Exercise 4B · p. 5]]
+
+^aapp-23-030
+
+AAPP-23-031
+What are communicators in MPI? Why should I use more than one? (2)
+
+Source: [[Tema Esame 2024-06-26-2nd.pdf#page=5|2024-06-26-2nd · Exercise 4C · p. 5]]
+
+^aapp-23-031
+
+AAPP-23-032
+Why should I use mpirun to execute my MPI application? (1)
+
+Source: [[Tema Esame 2024-07-24-2nd.pdf#page=5|2024-07-24-2nd · Exercise 4A · p. 5]]
+
+^aapp-23-032
+
+AAPP-23-033
+Explain what the MPI_Comm_split function does and give an example of its usage, without implementation details such as the function signature. (1)
+
+Source: [[Tema Esame 2024-07-24-2nd.pdf#page=5|2024-07-24-2nd · Exercise 4B · p. 5]]
+
+^aapp-23-033
+
+AAPP-23-034
+Explain the blocking semantics in point-to-point communications and the problems it introduces in the program. (2)
+
+Source: [[Tema Esame 2024-07-24-2nd.pdf#page=5|2024-07-24-2nd · Exercise 4C · p. 5]]
+
+^aapp-23-034
+
+AAPP-23-035
+Provide an example of when it is useful to use the MPI_Barrier function. (1)
+
+Source: [[Tema Esame 2024-09-05-2nd.pdf#page=5|2024-09-05-2nd · Exercise 4A · p. 5]]
+
+^aapp-23-035
+
+AAPP-23-036
+What is the main difference between MPI and OpenMPI? (1)
+
+Source: [[Tema Esame 2024-09-05-2nd.pdf#page=5|2024-09-05-2nd · Exercise 4B · p. 5]]
+
+^aapp-23-036
+
+AAPP-23-037
+Since each MPI process has a different memory address space, how is it possible to have a deadlock? Also, make an example to explain how we can solve it. (2)
+
+Source: [[Tema Esame 2024-09-05-2nd.pdf#page=5|2024-09-05-2nd · Exercise 4C · p. 5]]
+
+^aapp-23-037
+
+AAPP-23-038
+What is the role of the root parameter in the MPI_Gather function? How does it relate to the sending and receiving buffers? (1)
+
+Source: [[Tema Esame 2025-01-24-2nd.pdf#page=4|2025-01-24-2nd · Exercise 4A · p. 4]]
+
+^aapp-23-038
+
+AAPP-23-039
+When two MPI processes are running on two different computers, e.g. on two HPC nodes, is it possible that they could end up in a deadlock? (explain the answer) (1)
+
+Source: [[Tema Esame 2025-01-24-2nd.pdf#page=4|2025-01-24-2nd · Exercise 4B · p. 4]]
+
+^aapp-23-039
+
+AAPP-23-040
+What is an MPI communicator? How and why should I manipulate communicators? Please also provide an example where it is useful. (2)
+
+Source: [[Tema Esame 2025-01-24-2nd.pdf#page=4|2025-01-24-2nd · Exercise 4C · p. 4]]
+
+^aapp-23-040
+
+AAPP-23-041
+What do I get from an MPI implementation, e.g. from OpenMPI? (1)
+
+Source: [[Tema Esame 2025-02-14-2nd.pdf#page=4|2025-02-14-2nd · Exercise 4A · p. 4]]
+
+^aapp-23-041
+
+AAPP-23-042
+Make an example where non-blocking semantics does not help with solving an MPI deadlock. (1)
+
+Source: [[Tema Esame 2025-02-14-2nd.pdf#page=4|2025-02-14-2nd · Exercise 4B · p. 4]]
+
+^aapp-23-042
+
+AAPP-23-043
+How MPI_Reduce work when the send and receive data are buffers with a single element? What happens when the buffers have more than one element? Describe how the result is computed. (2)
+
+Source: [[Tema Esame 2025-02-14-2nd.pdf#page=4|2025-02-14-2nd · Exercise 4C · p. 4]]
+
+^aapp-23-043
+
+AAPP-23-044
+Modern HPC systems feature cores in the order of millions. Why can MPi help my application to use more cores than a plain OpenMP application?(1)
+
+Source: [[Tema Esame 2025-06-05-2nd.pdf#page=4|2025-06-05-2nd · Exercise 4A · p. 4]]
+
+^aapp-23-044
+
+AAPP-23-045
+Make an example where the program’s correct execution requires MPI_probe (1)
+
+Source: [[Tema Esame 2025-06-05-2nd.pdf#page=4|2025-06-05-2nd · Exercise 4B · p. 4]]
+
+^aapp-23-045
+
+AAPP-23-046
+MPI functions with non-blocking semantics, e.g. MPI_Irecv, and multi-threading programming, e.g. OpenMP, can be used to solve the same problem. What is the problem and how can the two approaches be used to solve it? (2)
+
+Source: [[Tema Esame 2025-06-05-2nd.pdf#page=4|2025-06-05-2nd · Exercise 4C · p. 4]]
+
+^aapp-23-046
+
+AAPP-23-047
+Which software components do I get from an MPI implementation? (1)
+
+Source: [[Tema Esame 2025-07-04-2nd.pdf#page=4|2025-07-04-2nd · Exercise 4A · p. 4]]
+
+^aapp-23-047
+
+AAPP-23-048
+The following is the MPI_Recv signature:
+
+```c
+      int MPI_Recv(void *buf, int count, MPI_Datatype datatype,
+                   int source, int tag, MPI_Comm comm, MPI_Status *status)
+```
+
+What value should I provide to the count parameter? (1)
+
+Source: [[Tema Esame 2025-07-04-2nd.pdf#page=4|2025-07-04-2nd · Exercise 4B · p. 4]]
+
+^aapp-23-048
+
+AAPP-23-049
+Make an example where MPI_Comm_split is useful. Do not describe what the function does. Describe a scenario where it makes sense to use it, how you use it, and the reason you use it. (2)
+
+Source: [[Tema Esame 2025-07-04-2nd.pdf#page=4|2025-07-04-2nd · Exercise 4C · p. 4]]
+
+^aapp-23-049
+
+AAPP-23-050
+Why does MPI enable the usage of distributed architectures? (1)
+
+Source: [[Tema Esame 2025-09-05-2nd.pdf#page=4|2025-09-05-2nd · Exercise 4A · p. 4]]
+
+^aapp-23-050
+
+AAPP-23-051
+In which scenario does it make sense to use MPI_ANY_TAG in MPI_Probe? (1)
+
+Source: [[Tema Esame 2025-09-05-2nd.pdf#page=4|2025-09-05-2nd · Exercise 4B · p. 4]]
+
+^aapp-23-051
+
+AAPP-23-052
+What is the purpose of the function MPI_Reduce? When the input buffer in each MPI process has more than one value, what is the size and content of the output buffer? (2)
+
+Source: [[Tema Esame 2025-09-05-2nd.pdf#page=4|2025-09-05-2nd · Exercise 4C · p. 4]]
+
+^aapp-23-052
+
+AAPP-23-053
+Why is it important to ensure to write standard-compliant MPI code, besides checking if it works on the target testbed? (1)
+
+Source: [[Tema Esame 2025-12-18-2nd.pdf#page=5|2025-12-18-2nd · Exercise 4A · p. 5]]
+
+^aapp-23-053
+
+AAPP-23-054
+What is an MPI communicator? Provide an example where it makes sense to create multiple communicators. (Generic or vague examples do not count) (1)
+
+Source: [[Tema Esame 2025-12-18-2nd.pdf#page=5|2025-12-18-2nd · Exercise 4B · p. 5]]
+
+^aapp-23-054
+
+AAPP-23-055
+Provide an example where MPI non-blocking functions do not solve a deadlock. When you want to overlap communication with computation, what are the alternatives that you have, including both MPI and/or OpenMP? (2)
+
+Source: [[Tema Esame 2025-12-18-2nd.pdf#page=5|2025-12-18-2nd · Exercise 4C · p. 5]]
+
+^aapp-23-055
+
+AAPP-23-056
+Given the following signature of the MPI scatter function, why are sendcount and recvcount scalar? What if one or more processes need to compute leftovers? (1)
+
+```c
+int MPI_Scatter(const void *sendbuf, int sendcount, MPI_Datatype
+sendtype, void *recvbuf, int recvcount, MPI_Datatype recvtype, int
+root, MPI_Comm comm)
+```
+
+Source: [[Tema Esame 2026-1-22-2nd.pdf#page=5|2026-1-22-2nd · Exercise 4A · p. 5]]
+
+^aapp-23-056
+
+AAPP-23-057
+Why do you need mpirun to execute a valid MPI application? (1)
+
+Source: [[Tema Esame 2026-1-22-2nd.pdf#page=5|2026-1-22-2nd · Exercise 4B · p. 5]]
+
+^aapp-23-057
+
+AAPP-23-058
+What are the two main strategies that I have to allocate a receiving buffer from point-to-point communication? (2)
+
+Source: [[Tema Esame 2026-1-22-2nd.pdf#page=5|2026-1-22-2nd · Exercise 4C · p. 5]]
+
+^aapp-23-058
+
+AAPP-23-059
+Make an example where the usage of the tag parameter matters (no point for vague or generic examples) (1)
+
+Source: [[Tema Esame 2026-2-09-2nd.pdf#page=5|2026-2-09-2nd · Exercise 4A · p. 5]]
+
+^aapp-23-059
+
+AAPP-23-060
+What is the difference between MPI, Open MPI, and MPICH? (1)
+
+Source: [[Tema Esame 2026-2-09-2nd.pdf#page=5|2026-2-09-2nd · Exercise 4B · p. 5]]
+
+^aapp-23-060
+
+AAPP-23-061
+Write a meta code that shows how you can implement a scatter operation using MPI point-to-point operations on the root and non-root processes (2)
+
+Source: [[Tema Esame 2026-2-09-2nd.pdf#page=5|2026-2-09-2nd · Exercise 4C · p. 5]]
+
+^aapp-23-061
+
+AAPP-23-062
+Assuming that echo is a serial executable that prints its command-line arguments to standard output, what would be the output of the following command? mpirun –np 4 echo hello world? (1)
+
+Source: [[Tema Esame 2026-6-11-2nd.pdf#page=5|2026-6-11-2nd · Exercise 4A · p. 5]]
+
+^aapp-23-062
+
+AAPP-23-063
+If I were to look inside MPI, what would I expect to read? Can you give some examples? (1)
+
+Source: [[Tema Esame 2026-6-11-2nd.pdf#page=5|2026-6-11-2nd · Exercise 4B · p. 5]]
+
+^aapp-23-063
+
+AAPP-23-064
+Describe how you could use OpenMP to parallelize the snippet of pseudocode written below that uses non-blocking semantics to overlap communication with computation (2)
+
+```c
+MPI_Irecv_c(/* parameter recv 1 */, &request);
+int request_is_complete = 0;
+while(request_is_complete == 0) {
+ do_work(); // this function perform the computation
+  MPI_Test(&request, &request_is_complete, /* the status of recv */)
+}
+```
+
+Source: [[Tema Esame 2026-6-11-2nd.pdf#page=5|2026-6-11-2nd · Exercise 4C · p. 5]]
+
+^aapp-23-064
+
+AAPP-23-065
+Make an application example where the usage of the tag parameter in MPI_Recv matters. (1)
+
+Source: [[Tema Esame 2026-6-29-2nd.pdf#page=5|2026-6-29-2nd · Exercise 4A · p. 5]]
+
+^aapp-23-065
+
+AAPP-23-066
+In an application that uses only MPI to parallelize the computation, it would make sense to use a mutex? Explain the reason. (1)
+
+Source: [[Tema Esame 2026-6-29-2nd.pdf#page=5|2026-6-29-2nd · Exercise 4B · p. 5]]
+
+^aapp-23-066
+
+AAPP-23-067
+How can I use OpenMP, or multithreading in general, to work synergistically with MPI? If we decide to use only MPI, what features of the standard should I use to overlap computation with communication within a single MPI Process? Please explain also the reasons (2)
+
+Source: [[Tema Esame 2026-6-29-2nd.pdf#page=5|2026-6-29-2nd · Exercise 4C · p. 5]]
+
+^aapp-23-067
+
+AAPP-23-068
+Consider the following snippet of code of an MPI program with three processes:
+
+```c
+int x = 10;
+if (rank == 0) {
+      MPI_Recv(&x, 1, MPI_INT, 2, 2, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
+      MPI_Recv(&x, 1, MPI_INT, 1, 1, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
+} else if (rank == 1) { MPI_Send(&x, 1, MPI_INT, 0, 1, MPI_COMM_WORLD);
+} else if (rank == 2) { MPI_Send(&x, 1, MPI_INT, 0, 2, MPI_COMM_WORLD); }
+```
+
+Is it possible that it leads to a deadlock? (Explain) (1) note: in both MPI functions, the 4th parameter is the rank, while the 5th is the tag)
+
+Source: [[Tema Esame 2026-9-10-2nd.pdf#page=5|2026-9-10-2nd · Exercise 4A · p. 5]]
+
+^aapp-23-068
+
+AAPP-23-069
+Which is a scenario where it is useful to use non-blocking semantics? (1)
+
+Source: [[Tema Esame 2026-9-10-2nd.pdf#page=5|2026-9-10-2nd · Exercise 4B · p. 5]]
+
+^aapp-23-069
+
+AAPP-23-070
+What MPI_Comm_split does? Describe an application scenario where its usage is useful (2)
+
+Source: [[Tema Esame 2026-9-10-2nd.pdf#page=5|2026-9-10-2nd · Exercise 4C · p. 5]]
+
+^aapp-23-070

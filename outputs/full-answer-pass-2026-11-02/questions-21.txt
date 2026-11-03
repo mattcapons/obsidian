@@ -1,0 +1,529 @@
+AAPP-21-001
+OpenMP is an API dedicated to the acceleration of applications in distributed-memory environments: true or false?
+
+Source: [[Tema Esame 2022-02-11-2nd-a.pdf#page=2|2022-02-11-2nd-a · Exercise 1A · p. 2]]
+Source: [[Tema Esame 2022-02-11-2nd-b.pdf#page=2|2022-02-11-2nd-b · Exercise 1A · p. 2]]
+
+^aapp-21-001
+
+AAPP-21-002
+Describe the functionality of the private, shared, default Data Scope Attribute Clauses
+
+Source: [[Tema Esame 2022-02-11-2nd-a.pdf#page=2|2022-02-11-2nd-a · Exercise 1B · p. 2]]
+Source: [[Tema Esame 2022-02-11-2nd-b.pdf#page=2|2022-02-11-2nd-b · Exercise 1B · p. 2]]
+
+^aapp-21-002
+
+AAPP-21-003
+How can the search of an element inside an (unbalanced) binary tree be accelerated using OpenMP?
+
+Source: [[Tema Esame 2022-02-11-2nd-a.pdf#page=2|2022-02-11-2nd-a · Exercise 1C · p. 2]]
+Source: [[Tema Esame 2022-02-11-2nd-b.pdf#page=2|2022-02-11-2nd-b · Exercise 1C · p. 2]]
+
+^aapp-21-003
+
+AAPP-21-004
+The maximum number of threads that can be spawned in OpenMP depends on the underlying hardware architecture: true or false?
+
+Source: [[Tema Esame 2022-02-11-2nd-a.pdf#page=2|2022-02-11-2nd-a · Exercise 1D · p. 2]]
+Source: [[Tema Esame 2022-02-11-2nd-b.pdf#page=2|2022-02-11-2nd-b · Exercise 1D · p. 2]]
+
+^aapp-21-004
+
+AAPP-21-005
+Are there any compiler-related limitations to the use of OpenMP?
+
+Source: [[Tema Esame 2022-06-09-2nd-a.pdf#page=2|2022-06-09-2nd-a · Exercise 1A · p. 2]]
+Source: [[Tema Esame 2022-06-09-2nd-b.pdf#page=2|2022-06-09-2nd-b · Exercise 1A · p. 2]]
+
+^aapp-21-005
+
+AAPP-21-006
+What are Work-Sharing constructs in OpenMP? Describe their use and the conditions required for them to effectively parallelize a task.
+
+Source: [[Tema Esame 2022-06-09-2nd-a.pdf#page=2|2022-06-09-2nd-a · Exercise 1B · p. 2]]
+Source: [[Tema Esame 2022-06-09-2nd-b.pdf#page=2|2022-06-09-2nd-b · Exercise 1B · p. 2]]
+
+^aapp-21-006
+
+AAPP-21-007
+Describe how to parallelize the search of an element inside a list of unknown length using OpenMP.
+
+Source: [[Tema Esame 2022-06-09-2nd-a.pdf#page=2|2022-06-09-2nd-a · Exercise 1C · p. 2]]
+Source: [[Tema Esame 2022-06-09-2nd-b.pdf#page=2|2022-06-09-2nd-b · Exercise 1C · p. 2]]
+
+^aapp-21-007
+
+AAPP-21-008
+Is it possible to express nested parallelism in OpenMP? Is it generally a good practice?
+
+Source: [[Tema Esame 2022-06-09-2nd-a.pdf#page=2|2022-06-09-2nd-a · Exercise 1D · p. 2]]
+Source: [[Tema Esame 2022-06-09-2nd-b.pdf#page=2|2022-06-09-2nd-b · Exercise 1D · p. 2]]
+
+^aapp-21-008
+
+AAPP-21-009
+Describe the multithreading paradigm used in OpenMP and the lifespan of threads with respect to tasks.
+
+Source: [[Tema Esame 2022-06-30-2nd-a.pdf#page=2|2022-06-30-2nd-a · Exercise 1A · p. 2]]
+Source: [[Tema Esame 2022-06-30-2nd-b.pdf#page=2|2022-06-30-2nd-b · Exercise 1A · p. 2]]
+
+^aapp-21-009
+
+AAPP-21-010
+How is variables visibility managed in OpenMP?
+
+Source: [[Tema Esame 2022-06-30-2nd-a.pdf#page=2|2022-06-30-2nd-a · Exercise 1B · p. 2]]
+Source: [[Tema Esame 2022-06-30-2nd-b.pdf#page=2|2022-06-30-2nd-b · Exercise 1B · p. 2]]
+
+^aapp-21-010
+
+AAPP-21-011
+What is the “omp sections” directive used for?
+
+Source: [[Tema Esame 2022-06-30-2nd-a.pdf#page=2|2022-06-30-2nd-a · Exercise 1C · p. 2]]
+Source: [[Tema Esame 2022-06-30-2nd-b.pdf#page=2|2022-06-30-2nd-b · Exercise 1C · p. 2]]
+
+^aapp-21-011
+
+AAPP-21-012
+Is it possible and/or mandatory to define barriers in OpenMP?
+
+Source: [[Tema Esame 2022-06-30-2nd-a.pdf#page=2|2022-06-30-2nd-a · Exercise 1D · p. 2]]
+Source: [[Tema Esame 2022-06-30-2nd-b.pdf#page=2|2022-06-30-2nd-b · Exercise 1D · p. 2]]
+
+^aapp-21-012
+
+AAPP-21-013
+What are the static and dynamic extents of the omp parallel directive?
+
+Source: [[Tema Esame 2022-09-07-2nd-b.pdf#page=2|2022-09-07-2nd-b · Exercise 1A · p. 2]]
+
+^aapp-21-013
+
+AAPP-21-014
+Is it possible for the programmer to control the distribution of parallel loop iterations across threads when using an omp for directive?
+
+Source: [[Tema Esame 2022-09-07-2nd-b.pdf#page=2|2022-09-07-2nd-b · Exercise 1B · p. 2]]
+
+^aapp-21-014
+
+AAPP-21-015
+What is the functionality of the omp_set_num_threads function? Are there other ways for achieving the same result?
+
+Source: [[Tema Esame 2022-09-07-2nd-b.pdf#page=2|2022-09-07-2nd-b · Exercise 1C · p. 2]]
+
+^aapp-21-015
+
+AAPP-21-016
+Is it possible to perform a reduction over a single variable using OpenMP?
+
+Source: [[Tema Esame 2022-09-07-2nd-b.pdf#page=2|2022-09-07-2nd-b · Exercise 1D · p. 2]]
+
+^aapp-21-016
+
+AAPP-21-017
+What’s the use of the omp single directive? (1)
+
+Source: [[Tema Esame 2022-12-22-2nd.pdf#page=4|2022-12-22-2nd · Exercise 3B · p. 4]]
+
+^aapp-21-017
+
+AAPP-21-018
+How can we control the number of threads spawned by the omp parallel pragma? (2)
+
+Source: [[Tema Esame 2022-12-22-2nd.pdf#page=4|2022-12-22-2nd · Exercise 3C · p. 4]]
+
+^aapp-21-018
+
+AAPP-21-019
+What’s the use of the omp critical directive? (1)
+
+Source: [[Tema Esame 2023-01-17-2nd.pdf#page=4|2023-01-17-2nd · Exercise 3B · p. 4]]
+
+^aapp-21-019
+
+AAPP-21-020
+Is it possible to control the visibility of variables between different threads in OpenMP? In which ways? (2)
+
+Source: [[Tema Esame 2023-02-14-2nd.pdf#page=4|2023-02-14-2nd · Exercise 3B · p. 4]]
+
+^aapp-21-020
+
+AAPP-21-021
+Please describe what is meant by nested parallelism and how could be implemented in OpenMP?(2)
+
+Source: [[Tema Esame 2023-06-19-2nd.pdf#page=4|2023-06-19-2nd · Exercise 3A · p. 4]]
+
+^aapp-21-021
+
+AAPP-21-022
+What is the difference between static and dynamic schedule clauses of OpenMP? In which OpenMP directive is it used? (2)
+
+Source: [[Tema Esame 2023-06-19-2nd.pdf#page=4|2023-06-19-2nd · Exercise 3B · p. 4]]
+
+^aapp-21-022
+
+AAPP-21-023
+Please describe the work-sharing constructs in OpenMP. (2)
+
+Source: [[Tema Esame 2023-07-11-2nd.pdf#page=4|2023-07-11-2nd · Exercise 3B · p. 4]]
+
+^aapp-21-023
+
+AAPP-21-024
+Please describe the simd directive in OpenMP. (2)
+
+Source: [[Tema Esame 2023-09-11-2nd.pdf#page=4|2023-09-11-2nd · Exercise 3B · p. 4]]
+
+^aapp-21-024
+
+AAPP-21-025
+Describe how each thread in the following diagram behaves at runtime as it encounters points marked with 1, representing pragma omp cancel, and with 2, representing pragma omp cancellation point. (2)
+
+Source: [[Tema Esame 2024-01-26-2nd.pdf#page=4|2024-01-26-2nd · Exercise 3C · p. 4]]
+
+![[2024-01-26-2nd-p4.png|800]]
+
+*Original source page for the graph or diagram. [[Tema Esame 2024-01-26-2nd.pdf#page=4|PDF page 4]].*
+
+^aapp-21-025
+
+AAPP-21-026
+Why is synchronization necessary when programming with the shared memory model? (1)
+
+Source: [[Tema Esame 2024-02-16-2nd.pdf#page=4|2024-02-16-2nd · Exercise 3A · p. 4]]
+
+^aapp-21-026
+
+AAPP-21-027
+What is the difference between static and dynamic schedule of OpenMP for loops? (1)
+
+Source: [[Tema Esame 2024-02-16-2nd.pdf#page=4|2024-02-16-2nd · Exercise 3C · p. 4]]
+
+^aapp-21-027
+
+AAPP-21-028
+Please write a short pseudo-code showing how the map parallel pattern could be implemented in OpenMP. (2)
+
+Source: [[Tema Esame 2024-06-26-2nd.pdf#page=2|2024-06-26-2nd · Exercise 1A · p. 2]]
+
+^aapp-21-028
+
+AAPP-21-029
+What happens when a variable is declared as firstprivate in an OpenMP pragma? (1)
+
+Source: [[Tema Esame 2024-06-26-2nd.pdf#page=4|2024-06-26-2nd · Exercise 3B · p. 4]]
+Source: [[Tema Esame 2025-09-05-2nd.pdf#page=3|2025-09-05-2nd · Exercise 3B · p. 3]]
+
+^aapp-21-029
+
+AAPP-21-030
+Why is cancellation in OpenMP described as “best effort” cancellation? (1.5)
+
+Source: [[Tema Esame 2024-06-26-2nd.pdf#page=4|2024-06-26-2nd · Exercise 3C · p. 4]]
+
+^aapp-21-030
+
+AAPP-21-031
+Describe what is the effect of the following OpenMP directive: (2)
+
+```c
+     #pragma omp for simd schedule(simd:static, 5)
+```
+
+Source: [[Tema Esame 2024-09-05-2nd.pdf#page=4|2024-09-05-2nd · Exercise 3B · p. 4]]
+
+^aapp-21-031
+
+AAPP-21-032
+List similarities and differences between a single and a master region in OpenMP. (1)
+
+Source: [[Tema Esame 2025-02-14-2nd.pdf#page=3|2025-02-14-2nd · Exercise 3A · p. 3]]
+
+^aapp-21-032
+
+AAPP-21-033
+Describe how each thread in the following diagram behaves at runtime as it encounters points marked with 1, representing pragma omp cancel, and with 2, representing pragma omp cancellation point. (2)
+
+Source: [[Tema Esame 2025-02-14-2nd.pdf#page=3|2025-02-14-2nd · Exercise 3C · p. 3]]
+
+![[2025-02-14-2nd-p3.png|800]]
+
+*Original source page for the graph or diagram. [[Tema Esame 2025-02-14-2nd.pdf#page=3|PDF page 3]].*
+
+^aapp-21-033
+
+AAPP-21-034
+It is always necessary to place an explicit barrier at the end of an OpenMP work sharing construct. Is this statement true or false? Explain. (1)
+
+Source: [[Tema Esame 2025-06-05-2nd.pdf#page=3|2025-06-05-2nd · Exercise 3A · p. 3]]
+
+^aapp-21-034
+
+AAPP-21-035
+List the factors that determine the number of threads in an OpenMP parallel region. (1)
+
+Source: [[Tema Esame 2025-06-05-2nd.pdf#page=3|2025-06-05-2nd · Exercise 3B · p. 3]]
+
+^aapp-21-035
+
+AAPP-21-036
+Describe the effects of the following pragma. (2)
+
+```c
+#pragma omp task depend(in: status[i])
+```
+
+Source: [[Tema Esame 2025-06-05-2nd.pdf#page=3|2025-06-05-2nd · Exercise 3C · p. 3]]
+
+^aapp-21-036
+
+AAPP-21-037
+What is the difference between a static and a dynamic schedule in the OpenMP for construct? (1)
+
+Source: [[Tema Esame 2025-09-05-2nd.pdf#page=3|2025-09-05-2nd · Exercise 3A · p. 3]]
+
+^aapp-21-037
+
+AAPP-21-038
+Describe in detail the effects of the following OpenMP pragma. (2)
+
+```c
+#pragma omp parallel for reduction(+:sum)
+```
+
+Source: [[Tema Esame 2025-09-05-2nd.pdf#page=3|2025-09-05-2nd · Exercise 3C · p. 3]]
+
+^aapp-21-038
+
+AAPP-21-039
+Provide an example of how OpenMP can hinge on both the parallelism across different CPU cores and data parallelism within each one? (1)
+
+Source: [[Tema Esame 2025-12-18-2nd.pdf#page=4|2025-12-18-2nd · Exercise 3A · p. 4]]
+
+^aapp-21-039
+
+AAPP-21-040
+When should you use `#pragma omp cancel <construct>`? Why do you also need `#pragma omp cancellation point`? (2)
+
+Source: [[Tema Esame 2025-12-18-2nd.pdf#page=4|2025-12-18-2nd · Exercise 3C · p. 4]]
+
+^aapp-21-040
+
+AAPP-21-041
+When should you use the OpenMP task construct? Is it possible to replace this construct with the section construct? (If you say no, provide an example as justification) (1)
+
+Source: [[Tema Esame 2026-1-22-2nd.pdf#page=4|2026-1-22-2nd · Exercise 3A · p. 4]]
+
+^aapp-21-041
+
+AAPP-21-042
+What is the tradeoff between using static and dynamic scheduling policies in a #pragma omp for worksharing construct? (1)
+
+Source: [[Tema Esame 2026-1-22-2nd.pdf#page=4|2026-1-22-2nd · Exercise 3B · p. 4]]
+
+^aapp-21-042
+
+AAPP-21-043
+What is the parallelization issue within the following code fragment that aims to parallelize the pi computation using a Monte Carlo approach? (2)
+
+```c
+float pi = 0;
+#pragma omp parallel default(shared) {
+ unsigned int seed = 0;
+#pragma omp for firstprivate(seed) reduction(+:pi) {
+for(int i = 0; i < 100; ++i) {
+    const float x = (rand_r(&seed)) / (float) RAND_MAX;
+    const float y = (rand_r(&seed)) / (float) RAND_MAX;
+    if (x*x + y*y) pi += 1;
+}}
+pi = 4 * pi / 100;
+```
+
+Source: [[Tema Esame 2026-1-22-2nd.pdf#page=4|2026-1-22-2nd · Exercise 3C · p. 4]]
+
+^aapp-21-043
+
+AAPP-21-044
+If you need to parallelize a breadth-first search in a graph using OpenMP, which worksharing construct would you use? (Explain the reason) (1)
+
+Source: [[Tema Esame 2026-2-09-2nd.pdf#page=4|2026-2-09-2nd · Exercise 3A · p. 4]]
+
+^aapp-21-044
+
+AAPP-21-045
+What does it mean that OpenMP has a relaxed memory model? (1)
+
+Source: [[Tema Esame 2026-2-09-2nd.pdf#page=4|2026-2-09-2nd · Exercise 3B · p. 4]]
+
+^aapp-21-045
+
+AAPP-21-046
+What is the parallelization issue within the following code fragment that aims to parallelize a simple loop that initializes an array? (Explain the reason) (2)
+
+```c
+int offset = 5;
+int result[N];
+#pragma omp parallel for default(shared) private(offset)
+for (int i = 0; i < N; i++) {
+  result[i] = i + offset;
+}
+```
+
+Source: [[Tema Esame 2026-2-09-2nd.pdf#page=4|2026-2-09-2nd · Exercise 3C · p. 4]]
+
+^aapp-21-046
+
+AAPP-21-047
+When is it useful to use the OpenMP sections construct instead of tasking? Provide an explanation to support your answer. (1)
+
+Source: [[Tema Esame 2026-6-11-2nd.pdf#page=4|2026-6-11-2nd · Exercise 3B · p. 4]]
+
+^aapp-21-047
+
+AAPP-21-048
+Based on the architecture illustrated in point A, how would you parallelize the following code snippet using OpenMP pragmas? (2)
+
+```c
+float a[N], b[N]; // initialization of a and b is omitted
+float c = 0.0f;
+for (int i = 0; i < N; i++) {
+        c += (a[i] + b[i]) * (a[i] + b[i]) + a[i] * 3.0f;
+}
+```
+
+Source: [[Tema Esame 2026-6-11-2nd.pdf#page=4|2026-6-11-2nd · Exercise 3C · p. 4]]
+
+![[2026-6-11-2nd-p4.png|800]]
+
+*Original source page for the graph or diagram. [[Tema Esame 2026-6-11-2nd.pdf#page=4|PDF page 4]].*
+
+^aapp-21-048
+
+AAPP-21-049
+A program processes a large array in two phases. In the first phase, the same independent operation is applied to every element. In the second phase, all processed values are combined into a single scalar result. How would you structure this computation in OpenMP, and what correctness or performance problems could arise from an implementation using atomic primitives? (2)
+
+Source: [[Tema Esame 2026-6-29-2nd.pdf#page=3|2026-6-29-2nd · Exercise 2B · p. 3]]
+
+^aapp-21-049
+
+AAPP-21-050
+For all the points in this exercise, consider the following C snippet of code that prints all the elements in a tree (the order of lines in the output does not matter):
+
+```c
+typedef struct node {
+ int value;
+ struct node *left;
+ struct node *right;
+} node;
+
+void dfs(node *root) {
+ if (root == NULL)
+   return;
+
+    printf("%d\n", root->value);
+
+    dfs(root->left);
+    dfs(root->right);
+}
+
+Int main() {
+  node root;
+  // initialize the tree (code omitted)
+  dfs(&root);
+}
+```
+
+Why can't we use the OpenMP sections construct to parallelize the code? (1)
+
+Source: [[Tema Esame 2026-6-29-2nd.pdf#page=4|2026-6-29-2nd · Exercise 3A · p. 4]]
+
+^aapp-21-050
+
+AAPP-21-051
+For all the points in this exercise, consider the following C snippet of code that prints all the elements in a tree (the order of lines in the output does not matter):
+
+```c
+typedef struct node {
+ int value;
+ struct node *left;
+ struct node *right;
+} node;
+
+void dfs(node *root) {
+ if (root == NULL)
+   return;
+
+    printf("%d\n", root->value);
+
+    dfs(root->left);
+    dfs(root->right);
+}
+
+Int main() {
+  node root;
+  // initialize the tree (code omitted)
+  dfs(&root);
+}
+```
+
+Which is a suitable OpenMP worksharing construct to use for parallelizing the code? (1)
+
+Source: [[Tema Esame 2026-6-29-2nd.pdf#page=4|2026-6-29-2nd · Exercise 3B · p. 4]]
+
+^aapp-21-051
+
+AAPP-21-052
+For all the points in this exercise, consider the following C snippet of code that prints all the elements in a tree (the order of lines in the output does not matter):
+
+```c
+typedef struct node {
+ int value;
+ struct node *left;
+ struct node *right;
+} node;
+
+void dfs(node *root) {
+ if (root == NULL)
+   return;
+
+    printf("%d\n", root->value);
+
+    dfs(root->left);
+    dfs(root->right);
+}
+
+Int main() {
+  node root;
+  // initialize the tree (code omitted)
+  dfs(&root);
+}
+```
+
+Describe exactly which OpenMP pragma you would use to make the code parallel. You can either decorate the code or write here what pragma you use and where to put them (2)
+
+Source: [[Tema Esame 2026-6-29-2nd.pdf#page=4|2026-6-29-2nd · Exercise 3C · p. 4]]
+
+^aapp-21-052
+
+AAPP-21-053
+A program has three independent, known-at-compile-time stages, followed by a recursive computation that creates an unknown number of irregular subproblems. For each phase, choose between OpenMP sections and tasks, and justify the choice in terms of scheduling, load balancing, and synchronization. Mention the OpenMP construct needed to ensure that all generated work is complete before the program continues. (2)
+
+Source: [[Tema Esame 2026-9-10-2nd.pdf#page=3|2026-9-10-2nd · Exercise 2B · p. 3]]
+
+^aapp-21-053
+
+AAPP-21-054
+Within a parallel OpenMP section, there is only a plain for loop. What would happen if we didn’t use the OpenMP for construct? (1)
+
+Source: [[Tema Esame 2026-9-10-2nd.pdf#page=4|2026-9-10-2nd · Exercise 3B · p. 4]]
+
+^aapp-21-054
+
+AAPP-21-055
+State the pros and cons of dynamic and static schedules in OpenMP when applied to the for worksharing construct. (1)
+
+Source: [[Tema Esame 2026-9-10-2nd.pdf#page=4|2026-9-10-2nd · Exercise 3C · p. 4]]
+
+^aapp-21-055

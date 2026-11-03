@@ -1,0 +1,19 @@
+AAPP-25-001
+Please shortly describe the main characteristic of the domain-specific language Halide. (2)
+
+AAPP-25-002
+Please briefly discuss what the term “schedule” means in the domain-specific language Halide. (2)
+
+AAPP-25-003
+Describe what is the effect of the following Halide schedule: (1)
+
+```c
+gradient.split(x, x_outer, x_inner, 4);
+gradient.vectorize(x_inner);
+```
+
+AAPP-25-004
+In Halide, it is good practice to schedule pipeline stages from the output to the input. Is this statement true or false? Explain. (1)
+
+AAPP-25-005
+The input to a High-Level Synthesis tool is a Register-Transfer Level description of an accelerator. Is this statement true or false? Explain. (1)

@@ -1,0 +1,330 @@
+AAPP-18-001
+Loop-carried dependences prevent loop parallelization. True/False? Why?(1)
+
+AAPP-18-002
+Is an output dependence a true dependence? True/False? Why? (1)
+
+AAPP-18-003
+What is meant by DOALL loop? Example? (1)
+
+AAPP-18-004
+Is the following code parallelizable? (1)
+
+```c
+           for (i=10; i<100; i++)
+             a[i-10] = a[i] + 100;
+```
+
+AAPP-18-005
+Please describe the differences between flow, output and anti-dependencies. (2)
+
+AAPP-18-006
+“Parallel execution must address control, data, and system dependences”. What is meant by “dependency” in this context? (1)
+
+AAPP-18-007
+Is the following code parallelizable? Are there better parallelizable solutions? (2)
+
+```c
+           for (j=1; j<100; j++)
+                     for (i=0; i<100; i++)
+                           a[i][j] = f(a[i][j-1]);
+```
+
+AAPP-18-008
+Please explain the differences between “loop-carried“ and “loop-independent”.(1)
+
+AAPP-18-009
+Is it possible to eliminate a flow dependency by modifying the program and ensuring that the program remains equivalent? (2)
+
+AAPP-18-010
+Is the following code parallelizable? Are there better parallelizable solutions? (2)
+
+```c
+           for (i=0; i<100; i++)
+                      for (j=1; j<100; j++)
+                            a[i][j] = f(a[i][j-1]);
+```
+
+AAPP-18-011
+DOALL loops have linear speedup even using the Amdahl law. Could you please write a short pseudo code showing an example of a DOALL loop? (2)
+
+AAPP-18-012
+Is the following code parallelizable? Are there better parallelizable solutions? (2)
+
+```c
+           for (i=0; i<100; i++)
+                     for (j=0; j<91; j++)
+                        a[i][j+9] = f(a[i][j]);
+```
+
+AAPP-18-013
+Could you please describe the statement/operation dependency and how and when it can be removed? (2)
+
+AAPP-18-014
+Under which condition the following code is parallelizable? In case the conditions hold, are there better parallelizable solutions? (2)
+
+```c
+           for (i=0; i<100; i++)
+                     for (j=0; j<10; j++)
+                           a[i][j] = f(a[i][j]);
+```
+
+AAPP-18-015
+Could you please write a short pseudo code showing an example of a DOALL loop in C? Which parallel pattern is directly connected to the DOALL loop? (2)
+
+AAPP-18-016
+Under what conditions can the following code be parallelized? If these conditions are met, is there a way to write the code for better parallelization? (2)
+
+```c
+            for (i=1; i<100; i++)
+                      for (j=0; j<10; j++)
+                            a[i][j] = f(a[j][i-1]);
+```
+
+AAPP-18-017
+Is it possible to eliminate a flow dependency by modifying the program and ensuring that the program remains equivalent? Is it the same with output dependency? Please show an example of what can be done. (2)
+
+AAPP-18-018
+Under what conditions can the following code be parallelized? If these conditions are met, is there a way to write the code for better parallelization? (2)
+
+```c
+            for (i=1; i<100; i++)
+                      for (j=0; j<100; j++)
+                             c[j][i] += a[i]*b[j];
+```
+
+AAPP-18-019
+Please describe the Parallel Data Management Patterns: Pipeline. Are flow dependencies preventing correct parallelization of pipeline parallel pattern when present? (2)
+
+AAPP-18-020
+Under what conditions can the following code be parallelized? If these conditions are met, is there a way to write the code for better parallelization? (2)
+
+```c
+            for (i=1; i<100; i++)
+                      for (j=0; j<100; j++)
+                            b[i][j] += f(a[i][j]);
+```
+
+AAPP-18-021
+Under what conditions can the following code be parallelized? If these conditions are met, is there a way to write the code for better parallelization? (2)
+
+```c
+            for (i=1; i<100; i++)
+                      for (j=i; j<100; j++)
+                            b[i][j] += f(a[i][j]);
+```
+
+AAPP-18-022
+Is it possible to eliminate an anti-dependency by modifying the program and ensuring that the program remains equivalent? Is it the same with output-dependency? Please show an example of what can be done in both cases. (1)
+
+AAPP-18-023
+Under what conditions can the following code be parallelized? If these conditions are met, is there a way to write the code for better parallelization? (2)
+
+```c
+            for (i=0; i<100; i++)
+                      for (j=2; j<100; j++)
+                            a[i][j] = f(a[i][j]) + a[i][j-2];
+```
+
+AAPP-18-024
+Which loop can be parallelized and under which conditions? Does the overhead of the runtime impact the parallelization of the loops? Which is the best way to parallelize this code on multi-core systems? (2)
+
+```c
+            for (i=0; i<1000; i++)
+                      for (j=0; j<4; j++)
+                            a[i][j] = f(a[i][j]) + a[i][j];
+```
+
+AAPP-18-025
+Please explain when a dependence can be classified as lexically forward dependence. (1)
+
+AAPP-18-026
+Where and under what conditions can the following code be parallelized? Is there a way to write the code for better parallelization if these conditions are met? (2)
+
+```c
+            for (i=0; i<100; i++) {
+                      for (j=1; j<100; j++)
+                         a[i][0] += f(a[i-5][j]);
+                      for (j=0; j<100; j++)
+                            b[i][j] += f(b[i][j]);
+          }
+```
+
+AAPP-18-027
+What dependencies can be eliminated by renaming the variables? (1)
+
+AAPP-18-028
+Where and under what conditions can the following code be parallelized? Is there a way to write the code for better parallelization if these conditions are met? Assume that a and b store integers. (2)
+
+```c
+            for (i=3; i<100; i++) {
+                      for (j=1; j<100; j++)
+                         a[i][0] *= f(a[i][j]);
+                      for (j=0; j<100; j++)
+                          b[i-3][j] += f(b[i][j]);
+          }
+```
+
+AAPP-18-029
+Consider the following nested loop:
+
+```c
+        for (j = 0; j < 100; j++) {
+            for (i = 1; i < 100; i++) {
+                a[i][j] = f(a[i-1][j]);
+            }
+        }
+```
+
+Evaluate the cache-friendliness of this code. How does the memory layout of the array affect performance, and what changes could improve cache utilization? Is it still parallelizable? How? Justify your answer. (2)
+
+AAPP-18-030
+What is the difference between a true dependence and an anti-dependence? (1)
+
+AAPP-18-031
+Consider the following nested loop:
+
+```c
+        for (j = 0; j < 100; j++) {
+            b[j] = f1(a[j]);
+        }
+        for (j = 99; j >= 0; j--) {
+            a[j] = f2(b[j]);
+        }
+```
+
+Which loop can be parallelized and under which conditions (j is declared as an integer)? Is there a way to improve the code? Is the OpenMP nowait clause a possible option? Justify your answers. (2)
+
+AAPP-18-032
+Please describe the differences between flow, output, and anti-dependencies. (1)
+
+AAPP-18-033
+Consider the following nested loop:
+
+```c
+        for (i=0; i<100; i++) {
+          for (j=0; j<100; j++)
+            b[i][j] += f(a[i][j]);
+          for (j=99; j>=0; j++)
+            a[i][j] += f(b[i][j]);
+        }
+```
+
+Which loop can be parallelized and under which conditions (i and j are declared as integers)? Is there a way to improve the code? Is the OpenMP nowait clause a possible option? Justify your answers. (2)
+
+AAPP-18-034
+Under what conditions can the following code be parallelized? Is there a way to write the code for better efficiency if these conditions are met? (2)
+
+```c
+double total_sum = 0.0;
+for (i = 0; i < 100; i++)
+   for (j = 2; j < 100; j += 2) {
+       a[i][j] = f(a[i][j]) + b[i][j-2];
+       total_sum += a[i][j];
+   }
+for (i = 0; i < 100; i++)
+   for (j = 3; j < 100; j += 2) {
+       c[i][j] = f(a[i][j]) + b[i][j-2];
+       total_sum += c[i][j];
+   }
+```
+
+AAPP-18-035
+What is meant by Loop-carried dependency? Please provide an example with a short code snippet that demonstrates a loop-carried dependency that cannot be parallelized. (1)
+
+AAPP-18-036
+Given the following C-based code:
+
+```c
+int acc = 0;
+for (i = 0; i < 100; i++)
+   for (j = 1; j < 100; j += 2) {
+       a[i][j] += a[i][j-1];
+       acc += a[i][j];
+   }
+for (i = 0; i < 100; i++)
+   for (j = 2; j < 100; j += 2) {
+       c[i][j] += f(a[i][j]) + b[i][j-2];
+   }
+```
+
+Where both matrices a, b and c store integers and already contain actual data (e.g., are not full of zeros). How and under what conditions can the previous code be parallelized? Is there a way to write the code exploiting parallel OMP pragmas? (2)
+
+AAPP-18-037
+Given the following C-based code:
+
+```c
+int acc = 0;
+for (i = 3; i < 100; i++)
+   for (j = 1; j < 100; j ++) {
+       a[i][2*j] = f(a[i-3][2*j-1]);
+   }
+for (i = 0; i < 100; i++)
+   for (j = 0; j < 100; j ++) {
+       c[i][j] += a[i][2*j+1]) + b[i][j];
+   }
+```
+
+Where both matrices a, b and c store integers and already contain actual data (e.g., are not full of zeros). How and under what conditions can the previous code be parallelized? Which OMP pragmas will you use to parallelize the code? (2)
+
+AAPP-18-038
+Please provide a practical example of instruction dependency that prevents parallelization and an example that does not prevent parallelization. (1)
+
+AAPP-18-039
+Given the following C-based code:
+
+```c
+int sum = 0;
+for (i = 2; i < 100; i++) {
+   for (j = 1; j < 100; j++) {
+       x[i][j] = g(x[i-2][j], y[i][j-1]);
+   }
+}
+for (i = 0; i < 100; i++) {
+   for (j = 1; j < 100; j++) {
+       z[i][j] = z[i][j] + x[i][j] * w[i][j];
+       sum += z[i][j];
+   }
+}
+```
+
+where matrices x, y, z, and w store integers and already contain valid data before the execution of the code. Discuss how and under which conditions the previous code can be parallelized. In particular, identify possible loop-carried dependencies, specify which loops can be safely parallelized, and state which OpenMP pragmas you would use. Discuss how the variable sum must be handled. (2)
+
+AAPP-18-040
+Please provide a practical example of a loop carry dependency that cannot be parallelizable. (1)
+
+AAPP-18-041
+Given the following C-based code:
+
+```c
+int sum = 0;
+for (i = 4; i < 100; i++) {
+   for (j = 1; j < 100; j++) {
+       x[i][j] = g(x[i-4][j], y[i][j-1]);
+   }
+}
+for (i = 0; i < 100; i++) {
+   for (j = 1; j < 100; j++) {
+       z[i][j-1] = z[i][j-1] + x[i][j-1] * w[i][j-1];
+       sum *= z[i][j-1];
+   }
+}
+```
+
+where matrices x, y, z, and w store integers and already contain valid data before the execution of the code. Discuss when function g prevents code parallelization (a practical example is required). Is the memory layout of x,y,z creating issues for the parallelization of the code (show an example where this is going to happen)? How and under what conditions can the previous code be parallelized? (2)
+
+AAPP-18-042
+Given the following C-based code:
+
+```c
+for (i=1; i<n; i++)
+   for (j=1; j<m; j++)
+       x[i][j] = x[i-1][j] + x[i][j-1] + y[i][j]
+for (i = 0; i < 100; i++) {
+   for (j = 1; j < 100; j++) {
+       z[i][j] = z[i][j-1] - x[i][j-1] + w[i][j-1];
+   }
+}
+```
+
+where matrices x, y, z, and w store integers and already contain valid data before the execution of the code. Discuss when function g prevents code parallelization (a practical example is required). Is the memory layout of x,y,z and w creating issues for the parallelization of the code (show an example where this is going to happen)? How and under what conditions can the previous code be parallelized? (2)
